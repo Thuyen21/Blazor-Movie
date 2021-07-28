@@ -1,0 +1,21 @@
+﻿<h3>logout</h3>
+
+@page "/logout"
+
+@*@attribute [Authorize(Roles = "Studio, Admin")]*@
+
+@code {
+    [CascadingParameter]
+    public Error Error { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        var response = await _httpClient.GetAsync("user/Logout");
+        var content = await response.Content.ReadAsStringAsync();
+     if (!response.IsSuccessStatusCode)
+        throw new ApplicationException($"Reason: {response.ReasonPhrase}, Message: {content}");
+        _navigationManager.NavigateTo("/", true);
+    }
+
+}

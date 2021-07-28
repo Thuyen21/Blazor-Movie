@@ -1,0 +1,30 @@
+﻿<h3>StudioUpload</h3>
+
+@page "/CreateStudio"
+
+<EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    MovieGenre
+    <InputText  @bind-Value="@movie.MovieGenre"/><br>
+    MovieName
+    <InputText  @bind-Value="@movie.MovieName"/><br>
+    PremiereDate
+    <InputDate  @bind-Value="@movie.PremiereDate"/><br>
+
+    <button type="submit">Submit</button>
+</EditForm>
+<div>@content</div>
+@code {
+    public MovieModel movie = new();
+    public string content;
+    public async Task HandleValidSubmit()
+    {
+        var response = await _httpClient.PostAsJsonAsync<MovieModel>("Studio/Upload",movie);
+        content = await response.Content.ReadAsStringAsync();
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        movie.PremiereDate = DateTime.Now;
+    }
+}

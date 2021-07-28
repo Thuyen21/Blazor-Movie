@@ -1,0 +1,42 @@
+﻿@page "/counter"
+@using Google.Cloud.Firestore
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+<div>@acc.Email</div>
+
+<div>@mess</div>
+
+@code {
+    private int currentCount;
+    private AccountManagementModel acc = new();
+    private string mess = null;
+    private async Task IncrementCount()
+    {
+        currentCount++;
+        try
+        {
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
+            Query usersRef = db.Collection("Account").WhereEqualTo("Id", "woD7khzuOvVmaRkPv2gnvSNMdOc2");
+
+            QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
+
+        
+            foreach (DocumentSnapshot document in snapshot.Documents)
+            {
+                acc = document.ConvertTo<AccountManagementModel>();
+            }
+        }
+        catch (Exception e)
+        {
+            mess = e.Message;
+        }
+        
+    }
+
+}

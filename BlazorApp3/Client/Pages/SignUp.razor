@@ -1,0 +1,46 @@
+﻿<h3>SignUp</h3>
+@page "/signup"
+
+<EditForm Model="@signUpModel" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    
+    Email
+    <InputText  @bind-Value="@signUpModel.Email"/><br>
+  Name  
+    <InputText  @bind-Value="@signUpModel.Name"/><br>
+    DateOfBirth
+    <InputDate @bind-Value="@signUpModel.DateOfBirth"/><br>
+    Password
+    <InputText  @bind-Value="@signUpModel.Password"/><br>
+    ConfirmPassword
+    <InputText  @bind-Value="@signUpModel.ConfirmPassword"/><br>
+    
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+<div>@content</div>
+@code {
+
+    public SignUpModel signUpModel = new() {DateOfBirth = DateTime.Now };
+
+
+    public string content;
+
+    public async Task HandleValidSubmit()
+    {
+
+        var response =  await _httpClient.PostAsJsonAsync<SignUpModel>("user/signUp", signUpModel);
+        if(response.IsSuccessStatusCode)
+        {
+            _navigationManager.NavigateTo("/", true);
+        }
+        else
+        {
+            content = await response.Content.ReadAsStringAsync();
+        }
+        
+    }
+
+}

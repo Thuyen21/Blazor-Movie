@@ -1,0 +1,93 @@
+﻿<h3>MovieAdmin</h3>
+@page "/MovieAdmin"
+@attribute [Authorize(Roles ="Admin")]
+<input placeholder="Enter your text" @bind-value="@searchString" />
+
+    <button class="btn btn-primary" @onclick="OnInitializedAsync">Search</button>
+
+@if(movies == null)
+{
+    <div>Loading</div>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>MovieId</th>
+           
+            <th>StudioId</th>
+            <th><button class="btn btn-primary" @onclick="GenreSortParm">MovieGenre</button></th>
+            <th><button class="btn btn-primary" @onclick="NameSortParm">MovieName</button></th>
+             <th><button class="btn btn-primary" @onclick="DateSortParm">PremiereDate</button></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in movies)
+        {
+            <tr>
+                <td>@item.MovieId</td>
+                
+                <td>@item.StudioId</td>
+                <td>@item.MovieGenre</td>
+                 <td>@item.MovieName</td>
+                 <td>@item.PremiereDate.ToShortDateString()</td>
+                 @{ var linkEdit = $"EditMovieAdmin/{item.MovieId}"; var linkBan = $"DeleteMovieAdmin/{item.MovieId}";}
+                 <td><NavLink class="nav-link" href="@linkEdit">Edit</NavLink></td>
+                 <td><NavLink class="nav-link" href="@linkBan">Delete</NavLink> </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    
+}
+
+@code {
+    public List<MovieModel> movies = new();
+    public string NameSort ="name";
+    public string DateSort ="date";
+     public string GenreSort ="genre";
+    public string sortOrder = "Id";
+    public string searchString { get; set; }
+
+    public async Task NameSortParm()
+    {
+        sortOrder = NameSort;
+        NameSort = NameSort == "name" ? "nameDesc" : "name";
+        searchString = " ";
+        await OnInitializedAsync();
+    }
+
+    public async Task DateSortParm()
+    {
+        sortOrder = DateSort;
+        DateSort = DateSort == "date" ? "dateDesc" : "date";
+        searchString = " ";
+        await OnInitializedAsync();
+    }
+    public async Task GenreSortParm()
+    {
+        sortOrder = GenreSort;
+        GenreSort = GenreSort == "genre" ? "genreDesc" : "genre";
+        searchString = " ";
+        await OnInitializedAsync();
+    }
+    protected override async Task OnInitializedAsync()
+    {       
+        if(string.IsNullOrEmpty(searchString))
+        {
+            if(string.IsNullOrEmpty(sortOrder))
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>("Admin/Movie/ /{no}");
+            else
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Admin/Movie/ /{sortOrder}");
+        }
+        else
+        {
+             movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Admin/Movie/{searchString}/{sortOrder}");
+        }
+        
+    }
+}

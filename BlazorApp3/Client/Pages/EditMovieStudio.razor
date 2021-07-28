@@ -1,0 +1,151 @@
+﻿<h3>EditMovieStudio</h3>
+@using System.IO
+@using Firebase.Storage
+@attribute [Authorize(Roles ="Studio")]
+@page "/EditMovieStudio/{Id}"
+
+@if (movie == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    MovieId
+    <InputText  @bind-Value="@movie.MovieId"/><br>
+    StudioId
+    <InputText  @bind-Value="@movie.StudioId"/><br>
+    MovieGenre
+    <InputText  @bind-Value="@movie.MovieGenre"/><br>
+    MovieName
+    <InputText  @bind-Value="@movie.MovieName"/><br>
+    PremiereDate
+    <InputDate  @bind-Value="@movie.PremiereDate"/><br>
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+<div>@content</div>
+
+<div>After pick a file it auto Upload. If it is not a movie or image correct MIME it will not be uploaded.</div>
+<div>Movie Up</div>
+<InputFile OnChange="OnChooseMovieFile" />
+
+<div>Image Up</div>
+<InputFile OnChange="OnChooseImageFile" />
+
+
+<div>If your upload more 500MB click this button</div>
+<button type="submit" @onclick="@Upload">Upload</button>
+    
+}
+
+@code {
+    [Parameter]
+    public string Id{ get; set; }
+    public MovieModel movie;
+    private IBrowserFile movieFile;
+    private IBrowserFile imageFile;
+    public string content;
+     protected override async Task OnInitializedAsync()
+    {
+        
+        if(Id == null)
+        _navigationManager.NavigateTo("/MovieStudio");
+
+        movie =  await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
+    }
+    protected async Task HandleValidSubmit()
+    {
+        var moviePost = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
+        movie.StudioId = moviePost.StudioId;
+        
+        movie.MovieId = moviePost.MovieId;
+        var response =  await _httpClient.PostAsJsonAsync<MovieModel>("Studio/EditMovie", movie);
+       content = await response.Content.ReadAsStringAsync();
+    }
+    public async Task OnChooseMovieFile(InputFileChangeEventArgs e)
+    {
+         List<string> list = new List<string>();
+                list.Add("video/x-msvideo");
+                list.Add("video/mp4");
+                list.Add("video/mpeg");
+                list.Add("video/ogg");
+                list.Add("video/mp2t");
+                list.Add("video/webm");
+                list.Add("video/3gpp");
+                list.Add("video/3gpp2");
+        list.Add("video/x-matroska");
+        if(list.Contains(e.File.ContentType))
+        {
+            movieFile = e.File;
+      
+        var tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+        var token = new string(tokena);
+        FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com",
+                                new FirebaseStorageOptions
+                                {
+                                    AuthTokenAsyncFactory = async () => await Task.FromResult( await Task.FromResult(token)),
+                                    ThrowOnCancel = true,
+                                    HttpClientTimeout = TimeSpan.FromHours(2)
+                                }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie")
+                            .PutAsync(movieFile.OpenReadStream(long.MaxValue));
+                             task.Progress.ProgressChanged += async (s, e) =>
+                        {
+                            
+                            content = e.Percentage.ToString();
+                        };
+                    await task;
+        }
+        else
+        {
+            content = "Incorrect MIME";
+        }
+        
+    }
+    public async Task OnChooseImageFile(InputFileChangeEventArgs e)
+    { 
+        List<string> list = new List<string>();
+                list.Add("image/bmp");
+                list.Add("image/gif");
+                list.Add("image/jpeg");
+                list.Add("image/png");
+                list.Add("image/svg+xml");
+                list.Add("image/tiff");
+                list.Add("image/webp");
+                if (list.Contains(e.File.ContentType))
+        {
+            imageFile=(e.File);
+        var tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+        var token = new string(tokena);
+        FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com",
+                                new FirebaseStorageOptions
+                                {
+                                    AuthTokenAsyncFactory = async () => await Task.FromResult( await Task.FromResult(token)),
+                                    ThrowOnCancel = true,
+                                    HttpClientTimeout = TimeSpan.FromHours(2)
+                                }).Child(movie.StudioId).Child(movie.MovieId).Child("Image")
+                            .PutAsync(imageFile.OpenReadStream(long.MaxValue));
+                             task.Progress.ProgressChanged += async (s, e) =>
+                        {
+                            
+                            content = e.Percentage.ToString();
+                        };
+                    await task;
+        }
+        else
+        {
+            content = "Incorrect MIME";
+        }
+
+       
+    }
+     public async Task Upload()
+    {
+       _navigationManager.NavigateTo($"/Studio/MovieUpload/{Id}",true);
+    }
+}

@@ -1,0 +1,35 @@
+﻿<h3>Login</h3>
+@page "/login"
+<EditForm Model="@login" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    Email
+    <InputText  @bind-Value="@login.Email"/>
+    Password
+    <InputText @bind-Value="@login.Password"/>
+    <button type="submit">Submit</button>
+</EditForm>
+
+
+<div>@content</div>
+
+<NavLink class="nav-link" href="ResetPassword"> ResetPassword </NavLink>
+
+@code {
+    
+    private LogInModel login = new LogInModel();
+    public string content;
+
+    public async Task HandleValidSubmit()
+    {
+       var response =  await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
+       content = await response.Content.ReadAsStringAsync();
+        if(response.IsSuccessStatusCode)
+        {
+            _navigationManager.NavigateTo("/", true);
+        }
+
+
+    }
+
+}

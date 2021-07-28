@@ -1,0 +1,116 @@
+﻿<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<h1>Deposit</h1>
+@{
+    var clientToken = ViewBag.clientToken as string;
+    var cash = ViewBag.Cash as string;
+}
+
+@if (clientToken == null || cash == null)
+{
+    <form method="get" action="Deposit">
+        <label for="Cash">Cash</label>
+        <input type="number" step="0.01" min="0.01" id="Cash" name="Cash"/>
+        <input type="submit"/>
+    </form>
+}
+else
+{
+    <script src="https://js.braintreegateway.com/web/dropin/1.30.1/js/dropin.min.js"></script>
+    <!-- Load the client component. -->
+    <script src="https://js.braintreegateway.com/web/3.79.0/js/client.min.js"></script>
+
+    <!-- Load the PayPal Checkout component. -->
+    <script src="https://js.braintreegateway.com/web/3.79.0/js/paypal-checkout.min.js"></script>
+
+
+    <div id="dropin-container"></div>
+    <form id="payment-form" method="post">
+        <!-- Putting the empty container you plan to pass to
+        `braintree.dropin.create` inside a form will make layout and flow
+        easier to manage -->
+
+
+        <input type="submit"/>
+        <input type="hidden" id="nonce" name="nonce"/>
+        <input type="hidden" id="cash" name="cash"/>
+    </form>
+    <div id="paypal-button"></div>
+
+
+    <script type="text/javascript">
+        var form = document.getElementById('payment-form');
+        braintree.dropin.create({
+            authorization: '@clientToken',
+            container: '#dropin-container'
+        }).then((dropinInstance) => {
+            form.addEventListener('submit',
+                (event) => {
+                    event.preventDefault();
+                    dropinInstance.requestPaymentMethod().then((payload) => {
+                        document.getElementById('nonce').value = payload.nonce;
+                        document.getElementById('cash').value = '@cash';
+                        form.action = 'DoCard';
+                        form.submit();
+                    }).catch((error) => { throw error; });
+                });
+        }).catch((error) => {
+        });
+    </script>
+
+    <script type="text/javascript">
+        var form = document.getElementById('payment-form');
+        // Create a client.
+        braintree.client.create({
+            authorization: '@clientToken'
+        }).then(function(clientInstance) {
+            // Create a PayPal Checkout component.
+            return braintree.paypalCheckout.create({
+                client: clientInstance
+            });
+        }).then(function(paypalCheckoutInstance) {
+            return paypalCheckoutInstance.loadPayPalSDK({
+                currency: 'USD',
+                intent: 'capture'
+            });
+        }).then(function(paypalCheckoutInstance) {
+            return paypal.Buttons({
+                fundingSource: paypal.FUNDING.PAYPAL,
+                createOrder: function() {
+                    return paypalCheckoutInstance.createPayment({
+                        flow: 'checkout', // Required
+                        amount: '@cash', // Required
+                        currency: 'USD', // Required, must match the currency passed in with loadPayPalSDK
+                        intent: 'capture' // Must match the intent passed in with loadPayPalSDK
+                    });
+                },
+                onApprove: function(data, actions) {
+                    return paypalCheckoutInstance.tokenizePayment(data).then(function(payload) {
+                        // Submit `payload.nonce` to your server
+                        document.getElementById('nonce').value = payload.nonce;
+                        document.getElementById('cash').value = '@cash';
+                        form.action = 'DoPayPal';
+                        form.submit();
+                    });
+                },
+                onCancel: function(data) {
+                    console.log('PayPal payment cancelled', JSON.stringify(data, 0, 2));
+                },
+                onError: function(err) {
+                    console.error('PayPal error', err);
+                }
+            }).render('#paypal-button');
+        }).then(function() {
+            // The PayPal button will be rendered in an html element with the ID
+            // `paypal-button`. This function will be called when the PayPal button
+            // is set up and ready to be used
+        });
+    </script>
+
+
+    <!-- Load the PayPal JS SDK with your PayPal Client ID-->
+    <script src="https://www.paypal.com/sdk/js?client-id=AUiGr3FOSHrsVSTbFwS_NFq8g-fGt1ovVj0LY9f0D260rprZgDB-VL8-Ww0Gwz4bsShhLz0YG8iawmjf"></script>
+
+    <!-- Load the Braintree components -->
+    <script src="https://js.braintreegateway.com/web/3.79.0/js/client.min.js"></script>
+    <script src="https://js.braintreegateway.com/web/3.79.0/js/paypal-checkout.min.js"></script>
+}

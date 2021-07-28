@@ -1,0 +1,34 @@
+﻿@using Braintree
+<h3>DepositCustomer</h3>
+@page "/Deposit/{Code}"
+@page "/Deposit"
+
+@if(content == null)
+{
+    <div>Loadding</div>
+}
+else
+{
+    <div>@content</div>
+
+}
+
+@code {
+    [Parameter]
+    public string Code{ get; set; }
+    public string content;
+    protected override async Task OnInitializedAsync()
+    {
+        if(Code == null)
+        {
+
+            _navigationManager.NavigateTo("/Customer/Deposit", true);
+        }
+        else
+        {
+            content = Code;
+        }
+
+    }
+    
+}
