@@ -8268,11 +8268,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
+      "projectUniqueName": "D:\\Core\\BlazorApp3\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
       "projectName": "BlazorApp3.Shared",
-      "projectPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
+      "projectPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
       "packagesPath": "C:\\Users\\thuye\\.nuget\\packages\\",
-      "outputPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\obj\\",
+      "outputPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -8371,7 +8371,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\6.0.100-preview.6.21355.2\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.6.21355.2\\RuntimeIdentifierGraph.json"
       }
     }
   }

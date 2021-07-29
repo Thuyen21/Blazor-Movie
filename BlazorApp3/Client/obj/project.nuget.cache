@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pATsAT4WSJcL6DPfsbhxTc2J5AKv8kJk+h6RML/vLjeAxG9AiWAtZi6A4qWm6TlXhME/sy8RimjrTa+pSLOywg==",
+  "dgSpecHash": "do3rMjKWdQXhPwBhMzDq4+nR4xgmOehzHzWCN24c+VyXhIv0mtYwWNuVBZjbqhLTaGEC9qmYJvkZoGErUIfe3A==",
   "success": true,
-  "projectFilePath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\BlazorApp3.Client.csproj",
+  "projectFilePath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Client\\BlazorApp3.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thuye\\.nuget\\packages\\aspnetcore.firebase.authentication\\2.0.1\\aspnetcore.firebase.authentication.2.0.1.nupkg.sha512",
     "C:\\Users\\thuye\\.nuget\\packages\\bootstrapblazor\\5.3.2\\bootstrapblazor.5.3.2.nupkg.sha512",

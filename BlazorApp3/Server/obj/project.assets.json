@@ -9641,11 +9641,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Server\\BlazorApp3.Server.csproj",
+      "projectUniqueName": "D:\\Core\\BlazorApp3\\BlazorApp3\\Server\\BlazorApp3.Server.csproj",
       "projectName": "BlazorApp3.Server",
-      "projectPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Server\\BlazorApp3.Server.csproj",
+      "projectPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Server\\BlazorApp3.Server.csproj",
       "packagesPath": "C:\\Users\\thuye\\.nuget\\packages\\",
-      "outputPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Server\\obj\\",
+      "outputPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -9668,11 +9668,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\BlazorApp3.Client.csproj": {
-              "projectPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\BlazorApp3.Client.csproj"
+            "D:\\Core\\BlazorApp3\\BlazorApp3\\Client\\BlazorApp3.Client.csproj": {
+              "projectPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Client\\BlazorApp3.Client.csproj"
             },
-            "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj": {
-              "projectPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj"
+            "D:\\Core\\BlazorApp3\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj": {
+              "projectPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj"
             }
           }
         }
