@@ -16,7 +16,9 @@
 <button @onclick="@(async () => await JS.InvokeVoidAsync("myFunction2"))" style="width:auto;">Login</button>
 
 <div id="id01" class="modal">
-<EditForm Model="@login" OnValidSubmit="HandleValidSubmit" class="modal-content animate">
+
+<div class="modal-content animate">
+<EditForm Model="@login" OnValidSubmit="HandleValidSubmit" >
     <DataAnnotationsValidator/>
     <ValidationSummary/>
 
@@ -40,6 +42,7 @@
   
 </EditForm>
 </div>
+</div>
 
 <div>@content</div>
 
@@ -52,13 +55,13 @@
 
     protected async Task HandleValidSubmit()
     {
-        await JS.InvokeVoidAsync("myFunction");
-       //var response =  await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
-       //content = await response.Content.ReadAsStringAsync();
-       // if(response.IsSuccessStatusCode)
-       // {
-       //     _navigationManager.NavigateTo("/", true);
-       // }
+        await JS.InvokeVoidAsync("onclick");
+       var response =  await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
+       content = await response.Content.ReadAsStringAsync();
+        if(response.IsSuccessStatusCode)
+        {
+            _navigationManager.NavigateTo("/", true);
+        }
 
         
     }
