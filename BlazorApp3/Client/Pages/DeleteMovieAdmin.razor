@@ -36,8 +36,8 @@ else
 @code {
 [Parameter]
     public string Id { get; set; }
-    public MovieModel movie;
-    public string content;
+    protected MovieModel movie;
+    protected string content;
     protected override async Task OnInitializedAsync()
     {
         

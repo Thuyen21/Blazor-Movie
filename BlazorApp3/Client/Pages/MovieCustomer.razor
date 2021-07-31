@@ -50,15 +50,15 @@ else
 }
 
 @code {
-    public List<MovieModel> movies = new();
-    public string NameSort ="name";
-    public string DateSort ="date";
-     public string GenreSort ="genre";
-    public string sortOrder = "Id";
-    public string searchString { get; set; }
-    public Dictionary<string, string> DicImageLink = new();
+    protected List<MovieModel> movies = new();
+    protected string NameSort ="name";
+    protected string DateSort ="date";
+     protected string GenreSort ="genre";
+    protected string sortOrder = "Id";
+    protected string searchString { get; set; }
+    protected Dictionary<string, string> DicImageLink = new();
 
-    public async Task NameSortParm()
+    protected async Task NameSortParm()
     {
         sortOrder = NameSort;
         NameSort = NameSort == "name" ? "nameDesc" : "name";
@@ -66,14 +66,14 @@ else
         await OnInitializedAsync();
     }
 
-    public async Task DateSortParm()
+    protected async Task DateSortParm()
     {
         sortOrder = DateSort;
         DateSort = DateSort == "date" ? "dateDesc" : "date";
         searchString = " ";
         await OnInitializedAsync();
     }
-    public async Task GenreSortParm()
+    protected async Task GenreSortParm()
     {
         sortOrder = GenreSort;
         GenreSort = GenreSort == "genre" ? "genreDesc" : "genre";

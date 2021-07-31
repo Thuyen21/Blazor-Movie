@@ -31,8 +31,8 @@ else
 @code {
     [Parameter]
     public string Id { get; set; }
-    public AccountManagementModel acc;
-    public string content;
+    protected AccountManagementModel acc;
+    protected string content;
     protected override async Task OnInitializedAsync()
     {
         if(Id == null)

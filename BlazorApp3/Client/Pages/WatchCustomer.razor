@@ -40,13 +40,13 @@ else
 @code {
     [Parameter]
     public string Id{ get; set; }
-    public MovieModel movie;
-    public string movieLink;
-    public bool canWatch = false;
-    public string Acomment;
-    public string content;
-    List<CommentModel> commentList = new();
-    MyForm form = new MyForm();
+    protected MovieModel movie;
+    protected string movieLink;
+    protected bool canWatch = false;
+    protected string Acomment;
+    protected string content;
+    protected List<CommentModel> commentList = new();
+    protected MyForm form = new MyForm();
     
     protected override async Task OnInitializedAsync()
     {
@@ -86,23 +86,23 @@ else
         }
         
         }
-        public async Task Com()
+        protected async Task Com()
         {
         var up = new CommentModel() {Time = DateTime.UtcNow, MovieId = Id, CommentText = Acomment};
         content = await (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up)).Content.ReadAsStringAsync();
         commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}");
     }
-    public async Task AcDisLike(string Id)
+    protected async Task AcDisLike(string Id)
     {
         await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "DisLike");
         await OnInitializedAsync();
     }
-    public async Task AcLike(string Id)
+    protected async Task AcLike(string Id)
     {
         await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "Like");
         await OnInitializedAsync();
     }
-    public class MyForm
+    protected class MyForm
     {
         public string MyProperty { get; set; }
     }

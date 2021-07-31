@@ -16,7 +16,7 @@ else
 @code {
     [Parameter]
     public string Code{ get; set; }
-    public string content;
+    protected string content;
     protected override async Task OnInitializedAsync()
     {
         if(Code == null)

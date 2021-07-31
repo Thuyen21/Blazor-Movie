@@ -57,28 +57,28 @@ else
 @code {
     [Parameter]
     public List<AccountManagementModel> accs { get; set; } = new();
-    public string NameSort ="name";
-    public string DateSort ="date";
-     public string EmailSort ="email";
-    public string sortOrder = "Id";
-    public string searchString { get; set; }
+    protected string NameSort ="name";
+    protected string DateSort ="date";
+     protected string EmailSort ="email";
+    protected string sortOrder = "Id";
+    protected string searchString { get; set; }
 
     
 
-    public async Task NameSortParm()
+    protected async Task NameSortParm()
     {
         sortOrder = NameSort;
         NameSort = NameSort == "name" ? "nameDesc" : "name";
         await OnInitializedAsync();
     }
 
-    public async Task DateSortParm()
+    protected async Task DateSortParm()
     {
         sortOrder = DateSort;
         DateSort = DateSort == "date" ? "dateDesc" : "date";
         await OnInitializedAsync();
     }
-    public async Task EmailSortParm()
+    protected async Task EmailSortParm()
     {
         sortOrder = EmailSort;
         EmailSort = EmailSort == "email" ? "emailDesc" : "email";

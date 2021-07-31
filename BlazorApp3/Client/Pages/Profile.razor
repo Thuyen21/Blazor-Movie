@@ -24,13 +24,13 @@
 <div>@content </div>
 
 @code {
-    public AccountManagementModel accountManagementModel = new AccountManagementModel();
-    public string content;
+    protected AccountManagementModel accountManagementModel = new AccountManagementModel();
+    protected string content;
     protected override async Task OnInitializedAsync()
     {
         accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");
     }
-    public async Task HandleValidSubmit()
+    protected async Task HandleValidSubmit()
     {
         var response =  await _httpClient.PostAsJsonAsync<AccountManagementModel>("user/EditProfile", accountManagementModel);
         

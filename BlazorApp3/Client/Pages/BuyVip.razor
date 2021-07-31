@@ -43,10 +43,10 @@ else
 @code { [Parameter]
     public string movieId{ get; set; }
 
-    public VipModel vip = new VipModel() {Choose = 1 };
-    public string vipStatus ;
+    protected VipModel vip = new VipModel() {Choose = 1 };
+    protected string vipStatus ;
 
-    public string content;
+    protected string content;
     
     
     protected override async Task OnInitializedAsync()
@@ -60,7 +60,7 @@ else
             vipStatus = new string(await _httpClient.GetFromJsonAsync<char[]>("Customer/VipCheck"));
 
         }
-        public async Task Buy()
+        protected async Task Buy()
         {
             
         var response = await _httpClient.PostAsJsonAsync<VipModel>("Customer/BuyVip", vip);

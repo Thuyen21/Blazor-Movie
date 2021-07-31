@@ -12,10 +12,10 @@
 <div>@mess</div>
 
 @code {
-    private int currentCount;
-    private AccountManagementModel acc = new();
-    private string mess = null;
-    private async Task IncrementCount()
+    public int currentCount;
+    protected AccountManagementModel acc = new();
+    protected string mess = null;
+    protected async Task IncrementCount()
     {
         currentCount++;
         try

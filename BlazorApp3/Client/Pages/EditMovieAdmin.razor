@@ -53,12 +53,12 @@ else
 @code {
     [Parameter]
     public string Id{ get; set; }
-    public MovieModel movie;
-    private IBrowserFile movieFile;
-    private IBrowserFile imageFile;
-    public string content;
-    public string mp;
-    public string ip;
+    protected MovieModel movie;
+    protected IBrowserFile movieFile;
+    protected IBrowserFile imageFile;
+    protected string content;
+    protected string mp;
+    protected string ip;
     
     protected override async Task OnInitializedAsync()
     {
@@ -77,7 +77,7 @@ else
         var response =  await _httpClient.PostAsJsonAsync<MovieModel>("Admin/EditMovie", movie);
        content = await response.Content.ReadAsStringAsync();
     }
-    public async Task OnChooseMovieFile(InputFileChangeEventArgs e)
+    protected async Task OnChooseMovieFile(InputFileChangeEventArgs e)
     {
          List<string> list = new List<string>();
                 list.Add("video/x-msvideo");
@@ -116,7 +116,7 @@ else
         }
         
     }
-    public async Task OnChooseImageFile(InputFileChangeEventArgs e)
+    protected async Task OnChooseImageFile(InputFileChangeEventArgs e)
     { 
         List<string> list = new List<string>();
                 list.Add("image/bmp");
