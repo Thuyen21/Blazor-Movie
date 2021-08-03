@@ -5,6 +5,7 @@
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.analyzers\6.0.0-preview.6.21355.2\buildTransitive\netstandard2.0\Microsoft.AspNetCore.Components.Analyzers.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.analyzers\6.0.0-preview.6.21355.2\buildTransitive\netstandard2.0\Microsoft.AspNetCore.Components.Analyzers.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.ml\1.5.5\build\netstandard2.0\Microsoft.ML.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.ml\1.5.5\build\netstandard2.0\Microsoft.ML.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly.server\6.0.0-preview.6.21355.2\build\Microsoft.AspNetCore.Components.WebAssembly.Server.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.webassembly.server\6.0.0-preview.6.21355.2\build\Microsoft.AspNetCore.Components.WebAssembly.Server.targets')" />
   </ImportGroup>
 </Project>

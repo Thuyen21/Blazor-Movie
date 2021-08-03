@@ -1,9 +1,13 @@
 ﻿using BlazorApp3.Shared;
+using BlazorApp3_Server;
+using Braintree;
 using Firebase.Storage;
 using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PayoutsSdk.Core;
+using PayoutsSdk.Payouts;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,7 +22,7 @@ namespace BlazorApp3.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize(Roles = "Studio")]
+    //[Authorize(Roles = "Studio")]
     public class StudioController : Controller
     {
         [HttpGet("Index/{searchString}/{sortOrder}")]
@@ -67,7 +71,7 @@ namespace BlazorApp3.Server.Controllers
 
                 return await Task.FromResult(myFoo);
             }
-            catch (Exception ex)
+            catch 
             {
                 return BadRequest();
             }
@@ -244,6 +248,172 @@ namespace BlazorApp3.Server.Controllers
             string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
 
             return Redirect(hostname + "/EditMovieStudio/" + MovieId);
+        }
+        [HttpGet("Comment/{Id}")]
+        public async Task<ActionResult<List<CommentModel>>> Comment(string Id)
+        {
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
+            Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time");
+            QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
+            List<CommentModel> commentList = new List<CommentModel>();
+            
+            foreach (DocumentSnapshot item in commentSnapshot.Documents)
+            {
+                var commentConvert = item.ConvertTo<CommentModel>();
+                var like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
+                var Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
+                commentList.Add(new CommentModel() { Id = commentConvert.Id, Email = commentConvert.Email, MovieId = commentConvert.MovieId, Time = commentConvert.Time, CommentText = commentConvert.CommentText, Like = like, DisLike = Dislike });
+            }
+
+            return await Task.FromResult(commentList);
+        }
+        [HttpGet("CommentStatus/{Id}/{check}")]
+        public async Task<ActionResult<List<int>>> CommentStatus(string Id, string check)
+        {
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
+            Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time");
+            QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
+
+            List<int> list = new();
+            list.Add(0);
+            list.Add(0);
+            var sampleData = new MLModel.ModelInput();
+            foreach (DocumentSnapshot item in commentSnapshot.Documents)
+            {
+                var commentConvert = item.ConvertTo<CommentModel>();
+
+                
+                    //Load sample data
+                    sampleData.Review = commentConvert.CommentText;
+                    //Load model and predict output
+                    var result = MLModel.Predict(sampleData);
+                    if (result.Prediction == "positive")
+                    {
+                        list[0] = list[0] + 1;
+                        await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Positive" } });
+                    }
+                    else
+                    {
+                        list[1] = list[1] + 1;
+                        await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Negative" } });
+                    }
+              
+
+            }
+
+            return list;
+        }
+        [HttpGet("CommentStatus/{Id}")]
+        public async Task<ActionResult<List<int>>> CommentStatus(string Id)
+        {
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
+            Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time");
+            QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
+
+            List<int> list = new();
+            list.Add(0);
+            list.Add(0);
+            var sampleData = new MLModel.ModelInput();
+            foreach (DocumentSnapshot item in commentSnapshot.Documents)
+            {
+                var commentConvert = item.ConvertTo<CommentModel>();
+
+                if(commentConvert.Prediction == null)
+                {
+                    //Load sample data
+                    sampleData.Review = commentConvert.CommentText;
+                    //Load model and predict output
+                    var result = MLModel.Predict(sampleData);
+                    if (result.Prediction == "positive")
+                    {
+                        list[0] = list[0] + 1;
+                        await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Positive" } });
+                    }
+                    else
+                    {
+                        list[1] = list[1] + 1;
+                        await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Negative" } });
+                    }
+                }
+                else
+{
+                    if (commentConvert.Prediction == "Positive")
+                    {
+                        list[0] = list[0] + 1;
+                    }
+                    else
+                    {
+                        list[1] = list[1] + 1;
+                    }
+                }
+                
+                
+            }
+            
+            return list;
+        }
+        [HttpPost("Salary")]
+        public async Task<ActionResult> Salary([FromBody] Dictionary<string,string> dic)
+        {
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+            QuerySnapshot snapshot = await db.Collection("Account")
+                .WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid))
+                .GetSnapshotAsync();
+            foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
+            {
+                double cashTest = snapshotDocument.ConvertTo<AccountManagementModel>().Wallet;
+
+
+                if (Convert.ToDouble(dic["Cash"]) > cashTest)
+                {
+                    
+                    return BadRequest($"Lower than {cashTest}");
+                }
+
+                await snapshotDocument.Reference.UpdateAsync(
+                    new Dictionary<string, object> { { "Wallet", cashTest - Convert.ToDouble(dic["Cash"]) } });
+            }
+            string clientId = "AUiGr3FOSHrsVSTbFwS_NFq8g-fGt1ovVj0LY9f0D260rprZgDB-VL8-Ww0Gwz4bsShhLz0YG8iawmjf";
+            string secret = "EONxXLT9WLegeVtXtnvqfXCaGbDGrn2pyeLtB_ngG10Dq8Wu-Ay8JpmIvEGrH3fN4dA0dNhcPdTXjwgk";
+
+            SandboxEnvironment environment = new(clientId, secret);
+            PayPalHttpClient client = new(environment);
+            CreatePayoutRequest createPayoutRequest = new()
+            {
+                SenderBatchHeader =
+                    new SenderBatchHeader
+                    {
+                        EmailMessage = $"Congrats on recieving {dic["Cash"]}$",
+                        EmailSubject = "You recieved a payout!!"
+                    },
+                Items = new List<PayoutItem> {
+                    new() {
+                        RecipientType = "EMAIL",
+                        Amount = new Currency {CurrencyCode = "USD", Value = dic["Cash"]},
+                        Receiver = dic["Email"]
+                    }
+                }
+            };
+            try
+            {
+                PayoutsPostRequest request = new();
+                request.RequestBody(createPayoutRequest);
+
+                PayPalHttp.HttpResponse response = await client.Execute(request);
+                
+
+                CreatePayoutResponse result = response.Result<CreatePayoutResponse>();
+                
+                return Ok("Success");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
     }
 }

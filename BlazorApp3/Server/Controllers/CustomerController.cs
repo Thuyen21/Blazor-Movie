@@ -1,4 +1,5 @@
 ﻿using BlazorApp3.Shared;
+using BlazorApp3_Server;
 using Braintree;
 using Firebase.Storage;
 using Google.Apis.Drive.v3.Data;
@@ -16,6 +17,7 @@ using System.Security.Claims;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static BlazorApp3_Server.MLModel;
 
 namespace BlazorApp3.Server.Controllers
 {
@@ -190,7 +192,7 @@ namespace BlazorApp3.Server.Controllers
 
             return View();
         }
-        [HttpPost]
+        [HttpPost("DoPayPal")]
         public async Task<ActionResult> DoPaypal([FromForm] string nonce, [FromForm] string cash)
         {
             BraintreeGateway gateway = new()
@@ -439,6 +441,9 @@ namespace BlazorApp3.Server.Controllers
                 commentList.Add(new CommentModel() { Id = commentConvert.Id, Email = commentConvert.Email, MovieId = commentConvert.MovieId, Time = commentConvert.Time, CommentText = censor.CensorText(commentConvert.CommentText), Like = like, DisLike = Dislike });
             }
 
+            
+
+
             return await Task.FromResult(commentList);
         }
         [HttpPost("Acomment")]
@@ -448,6 +453,7 @@ namespace BlazorApp3.Server.Controllers
             comment.Email = User.FindFirstValue(ClaimTypes.Email);
             DocumentReference commentUp = await db.Collection("Comment").AddAsync(comment);
             await commentUp.UpdateAsync(new Dictionary<string, object> { { "Id", commentUp.Id } });
+
             return Ok("Commented");
         }
         [HttpPost("Ac/{Id}")]

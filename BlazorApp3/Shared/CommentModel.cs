@@ -43,5 +43,7 @@ namespace BlazorApp3.Shared
         public int Like { get; set; }
 
         public int DisLike { get; set; }
+        [FirestoreProperty]
+        public string Prediction { get; set; }
     }
 }

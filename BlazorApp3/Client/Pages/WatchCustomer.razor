@@ -1,5 +1,6 @@
 ﻿<h3>WatchCustomer</h3>
 @page "/WatchCustomer/{Id}"
+@attribute [Authorize(Roles ="Customer")]
 @using Firebase.Storage
 @if(movie == null || movieLink == null)
 {
@@ -37,6 +38,7 @@ else
 
 <button @onclick="@Com" >Comment</button>
 
+<div>@content</div>
 @code {
     [Parameter]
     public string Id{ get; set; }

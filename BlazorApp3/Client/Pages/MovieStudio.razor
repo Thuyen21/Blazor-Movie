@@ -22,6 +22,7 @@ else
              <th><button class="btn btn-primary" @onclick="DateSortParm">PremiereDate</button></th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -34,9 +35,10 @@ else
                 <td>@item.MovieGenre</td>
                  <td>@item.MovieName</td>
                  <td>@item.PremiereDate.ToShortDateString()</td>
-                 @{ var linkEdit = $"EditMovieStudio/{item.MovieId}"; var linkBan = $"DeleteMovieStudio/{item.MovieId}";}
-                 <td><NavLink class="nav-link" href="@linkEdit">Edit</NavLink></td>
+                    @{ var linkEdit = $"EditMovieStudio/{item.MovieId}"; var linkBan = $"DeleteMovieStudio/{item.MovieId}";var linkStatus = $"StatusStudio/{item.MovieId}";}
+                    <td><NavLink class="nav-link" href="@linkEdit">Edit</NavLink></td>
                  <td><NavLink class="nav-link" href="@linkBan">Delete</NavLink> </td>
+                 <td><NavLink class="nav-link" href="@linkStatus">Status</NavLink> </td>
             </tr>
         }
         </tbody>

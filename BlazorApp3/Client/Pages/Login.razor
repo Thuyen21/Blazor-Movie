@@ -55,7 +55,7 @@
 
     protected async Task HandleValidSubmit()
     {
-        await JS.InvokeVoidAsync("onclick");
+        
        var response =  await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
        content = await response.Content.ReadAsStringAsync();
         if(response.IsSuccessStatusCode)

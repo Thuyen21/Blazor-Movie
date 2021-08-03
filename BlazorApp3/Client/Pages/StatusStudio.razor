@@ -1,0 +1,34 @@
+﻿<h3>StatusStudio</h3>
+@attribute [Authorize(Roles ="Studio")]
+@page "/StatusStudio/{Id}"
+
+@if(commentStatus.Count < 1)
+{
+    <div>loadding</div>
+}
+else
+{
+    <div>Positive: @commentStatus[0]</div>
+
+<div>Negative: @commentStatus[1]</div>
+<button @onclick="Submit">Make AI check again</button>
+
+}
+
+@code {
+
+    [Parameter]
+    public string Id{ get; set; }
+    protected List<CommentModel> commentList = new();
+   protected List<int> commentStatus = new(); 
+
+    protected override async Task OnInitializedAsync()
+    {
+        //commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Studio/Comment/{Id}");
+            commentStatus= await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}");
+    }
+    protected async Task Submit()
+    {
+        commentStatus= await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/check");
+    }
+}

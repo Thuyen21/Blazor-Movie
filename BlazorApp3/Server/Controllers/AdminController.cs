@@ -275,45 +275,7 @@ namespace BlazorApp3.Server.Controllers
             }
                 return Ok("Success");
         }
-        [HttpPost("UploadMovie")]
-        [RequestSizeLimit(long.MaxValue)]
-        [RequestFormLimits(MultipartBodyLengthLimit = long.MaxValue)]
-        public async Task<ActionResult> UploadMovie([FromForm] IEnumerable<IFormFile> files)
-{
-            
-
-            //try
-            //{
-
-            //    var token = User.FindFirst("Token").ToString();
-            //    using (var stream = file.OpenReadStream())
-            //    {
-
-            //        FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com",
-            //                        new FirebaseStorageOptions
-            //                        {
-            //                            AuthTokenAsyncFactory = async () => await Task.FromResult(token),
-            //                            ThrowOnCancel = true,
-            //                            HttpClientTimeout = TimeSpan.FromHours(2)
-            //                        }).Child(StudioId).Child(MovieId).Child("Movie")
-            //                    .PutAsync(stream);
-
-
-            //        task.Progress.ProgressChanged += (s, e) =>
-            //        {
-
-            //        };
-
-            //        await task;
-            //    }
-            //    return Ok();
-            //}
-            //catch (Exception ex)
-            //{
-            //    return BadRequest(ex.Message);
-            //}
-            return Ok();
-        }
+        
         [HttpGet("MovieUpload/{MovieId}")]
         public async Task<ActionResult> MovieUpload(string MovieId)
         {

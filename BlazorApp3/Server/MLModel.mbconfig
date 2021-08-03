@@ -1,0 +1,92 @@
+﻿{
+  "TrainingConfigurationVersion": 0,
+  "TrainingTime": 600,
+  "Scenario": {
+    "ScenarioType": "Classification"
+  },
+  "DataSource": {
+    "DataSourceType": "TabularFile",
+    "FilePath": "D:\\Downloads\\IMDB Dataset.csv\\IMDB Dataset.csv",
+    "Delimiter": ",",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "review",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "String",
+        "IsCategorical": false
+      },
+      {
+        "ColumnName": "sentiment",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "String",
+        "IsCategorical": true
+      }
+    ]
+  },
+  "Environment": {
+    "EnvironmentType": "LocalCPU"
+  },
+  "RunHistory": {
+    "Trials": [
+      {
+        "TrainerName": "FastTreeOva",
+        "Score": 0.84354679802955668,
+        "RuntimeInSeconds": 62.820999145507813
+      },
+      {
+        "TrainerName": "FastTreeOva",
+        "Score": 0.78955665024630539,
+        "RuntimeInSeconds": 39.53900146484375
+      },
+      {
+        "TrainerName": "FastTreeOva",
+        "Score": 0.77182266009852218,
+        "RuntimeInSeconds": 37.744998931884766
+      },
+      {
+        "TrainerName": "FastTreeOva",
+        "Score": 0.75487684729064042,
+        "RuntimeInSeconds": 34.922000885009766
+      },
+      {
+        "TrainerName": "FastForestOva",
+        "Score": 0.73871921182266009,
+        "RuntimeInSeconds": 41.817001342773438
+      },
+      {
+        "TrainerName": "FastForestOva",
+        "Score": 0.72472906403940884,
+        "RuntimeInSeconds": 36.222000122070313
+      },
+      {
+        "TrainerName": "FastForestOva",
+        "Score": 0.72453201970443348,
+        "RuntimeInSeconds": 39.173000335693359
+      },
+      {
+        "TrainerName": "LightGbmMulti",
+        "Score": 0.68827586206896552,
+        "RuntimeInSeconds": 17.333999633789063
+      },
+      {
+        "TrainerName": "FastTreeOva",
+        "Score": 0.68768472906403944,
+        "RuntimeInSeconds": 29.724000930786133
+      },
+      {
+        "TrainerName": "SdcaMaximumEntropyMulti",
+        "Score": 0.4995073891625616,
+        "RuntimeInSeconds": 17.301000595092773
+      },
+      {
+        "TrainerName": "SdcaMaximumEntropyMulti",
+        "Score": 0.4995073891625616,
+        "RuntimeInSeconds": 18.818000793457031
+      }
+    ],
+    "Pipeline": "[{\"EstimatorType\":\"FeaturizeText\",\"Inputs\":[\"review\"],\"Outputs\":[\"review\"]},{\"EstimatorType\":\"Concatenate\",\"Inputs\":[\"review\"],\"Outputs\":[\"Features\"]},{\"EstimatorType\":\"MapValueToKey\",\"Inputs\":[\"sentiment\"],\"Outputs\":[\"sentiment\"]},{\"LabelColumnName\":\"sentiment\",\"FeatureColumnName\":\"Features\",\"NumberOfLeaves\":\"10\",\"MinimumExampleCountPerLeaf\":\"128\",\"NumberOfTrees\":\"12289\",\"LearningRate\":\"0.00312274267498996\",\"FeatureFraction\":\"1\",\"MaximumBinCountPerFeature\":\"323\",\"EstimatorType\":\"FastTreeOva\",\"Inputs\":[\"sentiment\"],\"Outputs\":[\"Features\"]},{\"EstimatorType\":\"MapKeyToValue\",\"Inputs\":[\"PredictedLabel\"],\"Outputs\":[\"PredictedLabel\"]}]",
+    "MetricName": "MicroAccuracy"
+  }
+}

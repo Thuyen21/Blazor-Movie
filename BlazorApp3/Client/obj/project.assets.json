@@ -13051,9 +13051,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\thuye\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Thuyen\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
@@ -13061,18 +13060,16 @@
       "projectUniqueName": "D:\\Core\\BlazorApp3\\BlazorApp3\\Client\\BlazorApp3.Client.csproj",
       "projectName": "BlazorApp3.Client",
       "projectPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Client\\BlazorApp3.Client.csproj",
-      "packagesPath": "C:\\Users\\thuye\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\Thuyen\\.nuget\\packages\\",
       "outputPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\thuye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Thuyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -13192,7 +13189,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\6.0.100-preview.6.21355.2\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.6.21355.2\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
