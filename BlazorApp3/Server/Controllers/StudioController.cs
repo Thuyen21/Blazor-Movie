@@ -16,7 +16,6 @@ using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using static BlazorApp3.Client.Pages.WatchCustomer;
 
 namespace BlazorApp3.Server.Controllers
 {
