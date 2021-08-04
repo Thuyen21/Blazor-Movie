@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BlazorApp3.Shared
 {
-   public class VipModel
+    public class VipModel
     {
         public string Id { get; set; }
         [Required]

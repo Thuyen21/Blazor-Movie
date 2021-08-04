@@ -5,7 +5,6 @@ using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -19,7 +18,7 @@ namespace BlazorApp3.Server.Controllers
     public class UserController : Controller
     {
 
-       
+
         private static readonly FirebaseAuthConfig config = new()
         {
             ApiKey = "AIzaSyAqCxl98i68Te5_xy3vgMcAEoF5qiBKE9o",
@@ -44,7 +43,7 @@ namespace BlazorApp3.Server.Controllers
             try
             {
                 userCredential = await client.SignInWithEmailAndPasswordAsync(logIn.Email, logIn.Password);
-                
+
             }
             catch (FirebaseAuthHttpException ex)
             {
@@ -60,33 +59,33 @@ namespace BlazorApp3.Server.Controllers
             {
                 acc = document.ConvertTo<AccountManagementModel>();
             }
-            
-            
-            var claimsIdentity = new ClaimsIdentity(new[] {
+
+
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
                 new Claim(ClaimTypes.Email, logIn.Email),
                     new Claim(ClaimTypes.Sid, user.Uid),
                     new Claim(ClaimTypes.Name, acc.Name),
                     new Claim(ClaimTypes.Role, acc.Role),
                     new Claim(ClaimTypes.DateOfBirth, acc.DateOfBirth.ToShortDateString()),
                     new Claim("Token", await user.GetIdTokenAsync(true))
-                   
+
             }, "serverAuth");
             //create claimsPrincipal
-            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+            ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
             //Sign In User
             await HttpContext.SignInAsync(claimsPrincipal);
 
             return Ok();
         }
-        
+
         [HttpGet("Logout")]
-        
+
         public async Task<ActionResult> LogOut()
         {
             await HttpContext.SignOutAsync();
             return Ok();
         }
-        
+
         [HttpGet("GetCurrentUser")]
         public async Task<ActionResult<AccountManagementModel>> GetCurrentUser()
         {
@@ -94,7 +93,7 @@ namespace BlazorApp3.Server.Controllers
             //if (User.Identity.IsAuthenticated) logInModel.Email = User.FindFirstValue(ClaimTypes.Name);
             //return await Task.FromResult(logInModel);
             AccountManagementModel acc = new();
-            if(User.Identity.IsAuthenticated)
+            if (User.Identity.IsAuthenticated)
             {
                 string Id = User.FindFirst(ClaimTypes.Sid).Value;
                 FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
@@ -109,15 +108,15 @@ namespace BlazorApp3.Server.Controllers
                     acc = VARIABLE.ConvertTo<AccountManagementModel>();
                 }
             }
-            
+
             return await Task.FromResult(acc);
 
         }
-        
+
         [HttpPost("ResetPassword")]
-        public async Task<ActionResult> ResetPassword([FromBody]ResetPasswordModel resetPassword)
+        public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordModel resetPassword)
         {
-            
+
             try
             {
                 await client.ResetEmailPasswordAsync(resetPassword.Email);
@@ -125,12 +124,12 @@ namespace BlazorApp3.Server.Controllers
             }
             catch (FirebaseAuthHttpException ex)
             {
-                return BadRequest(ex.Reason.ToString());  
+                return BadRequest(ex.Reason.ToString());
             }
         }
         [Authorize]
         [HttpGet("Profile")]
-        public async Task<ActionResult<AccountManagementModel>> Profile ()
+        public async Task<ActionResult<AccountManagementModel>> Profile()
         {
             AccountManagementModel acc = new();
             if (User.Identity.IsAuthenticated)
@@ -174,12 +173,12 @@ namespace BlazorApp3.Server.Controllers
                     await document.Reference.UpdateAsync(update);
                 }
 
-                
+
                 return Ok("Success");
             }
             catch (Exception ex)
             {
-                return BadRequest(ex);  
+                return BadRequest(ex);
             }
         }
         [HttpPost("SignUp")]
@@ -202,7 +201,7 @@ namespace BlazorApp3.Server.Controllers
                 }
                 catch (FirebaseAuthException ex)
                 {
-                    
+
                     return BadRequest(ex.Reason.ToString());
                 }
 
@@ -222,7 +221,7 @@ namespace BlazorApp3.Server.Controllers
 
 
                 await docRef.AddAsync(account);
-                var claimsIdentity = new ClaimsIdentity(new[] {
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
                 new Claim(ClaimTypes.Email, account.Email),
                     new Claim(ClaimTypes.Sid, user.Uid),
                     new Claim(ClaimTypes.Name, account.Name),
@@ -231,7 +230,7 @@ namespace BlazorApp3.Server.Controllers
                     new Claim("Token", await user.GetIdTokenAsync())
             }, "serverAuth");
                 //create claimsPrincipal
-                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 //Sign In User
                 await HttpContext.SignInAsync(claimsPrincipal);
 
@@ -242,12 +241,12 @@ namespace BlazorApp3.Server.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        
+
         [HttpGet("GetToken")]
         public async Task<ActionResult<char[]>> GetToken()
         {
-            
-            var token = User.FindFirstValue("Token");
+
+            string token = User.FindFirstValue("Token");
             char[] ch = new char[token.Length];
             for (int i = 0; i < token.Length; i++)
             {

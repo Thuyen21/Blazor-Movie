@@ -68,7 +68,7 @@ namespace BlazorApp3.Server
             app.UseRouting();
             app.UseAuthentication();
 
-            
+
             app.UseAuthorization();
 
             app.UseCors("CorsPocliy");

@@ -30,7 +30,7 @@ namespace BlazorApp3.Shared
         [Required]
         [DisplayName("Date of birth")]
         [DataType(DataType.Date)]
-        
+
         public DateTime DateOfBirth { get; set; }
 
         [FirestoreProperty]

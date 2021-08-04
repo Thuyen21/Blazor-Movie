@@ -1,16 +1,13 @@
 ﻿using BlazorApp3.Shared;
 using BlazorApp3_Server;
-using Braintree;
 using Firebase.Storage;
 using Google.Cloud.Firestore;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PayoutsSdk.Core;
 using PayoutsSdk.Payouts;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -60,7 +57,7 @@ namespace BlazorApp3.Server.Controllers
 
                 List<MovieModel> myFoo = new();
 
-                var snapshot = await usersRef.GetSnapshotAsync();
+                QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
 
 
                 foreach (DocumentSnapshot document in snapshot.Documents)
@@ -70,11 +67,11 @@ namespace BlazorApp3.Server.Controllers
 
                 return await Task.FromResult(myFoo);
             }
-            catch 
+            catch
             {
                 return BadRequest();
             }
-            
+
         }
         [HttpPost("Upload")]
         public async Task<ActionResult> Upload([FromBody] MovieModel movie)
@@ -93,18 +90,18 @@ namespace BlazorApp3.Server.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            
+
         }
         [HttpGet("EditMovie/{Id}")]
         public async Task<ActionResult<MovieModel>> EditMovie(string Id)
         {
             FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
-            Query collection = db.Collection("Movie").WhereEqualTo("MovieId", Id).WhereEqualTo("StudioId",User.FindFirstValue(ClaimTypes.Sid));
+            Query collection = db.Collection("Movie").WhereEqualTo("MovieId", Id).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid));
 
             QuerySnapshot snapshot = await collection.GetSnapshotAsync();
             MovieModel movie = new();
 
-            if(snapshot.Documents.Count < 1)
+            if (snapshot.Documents.Count < 1)
             {
                 return null;
             }
@@ -140,7 +137,7 @@ namespace BlazorApp3.Server.Controllers
         public async Task<ActionResult> MovieUpload(string MovieId)
         {
             FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
-            Query collection = db.Collection("Movie").WhereEqualTo("MovieId", MovieId).WhereEqualTo("StudioId",User.FindFirstValue(ClaimTypes.Sid));
+            Query collection = db.Collection("Movie").WhereEqualTo("MovieId", MovieId).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid));
 
             QuerySnapshot snapshot = await collection.GetSnapshotAsync();
             MovieModel movie = new();
@@ -163,14 +160,16 @@ namespace BlazorApp3.Server.Controllers
             }
             else
             {
-                List<string> list = new List<string>();
-                list.Add("image/bmp");
-                list.Add("image/gif");
-                list.Add("image/jpeg");
-                list.Add("image/png");
-                list.Add("image/svg+xml");
-                list.Add("image/tiff");
-                list.Add("image/webp");
+                List<string> list = new List<string>
+                {
+                    "image/bmp",
+                    "image/gif",
+                    "image/jpeg",
+                    "image/png",
+                    "image/svg+xml",
+                    "image/tiff",
+                    "image/webp"
+                };
                 if (list.Contains(ImageFileUp.ContentType))
                 {
                     using Stream fileStream = ImageFileUp.OpenReadStream();
@@ -205,16 +204,18 @@ namespace BlazorApp3.Server.Controllers
             }
             else
             {
-                List<string> list = new List<string>();
-                list.Add("video/x-msvideo");
-                list.Add("video/mp4");
-                list.Add("video/mpeg");
-                list.Add("video/ogg");
-                list.Add("video/mp2t");
-                list.Add("video/webm");
-                list.Add("video/3gpp");
-                list.Add("video/3gpp2");
-                list.Add("video/x-matroska");
+                List<string> list = new List<string>
+                {
+                    "video/x-msvideo",
+                    "video/mp4",
+                    "video/mpeg",
+                    "video/ogg",
+                    "video/mp2t",
+                    "video/webm",
+                    "video/3gpp",
+                    "video/3gpp2",
+                    "video/x-matroska"
+                };
 
                 if (list.Contains(MovieFileUp.ContentType))
                 {
@@ -256,12 +257,12 @@ namespace BlazorApp3.Server.Controllers
             Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time");
             QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
             List<CommentModel> commentList = new List<CommentModel>();
-            
+
             foreach (DocumentSnapshot item in commentSnapshot.Documents)
             {
-                var commentConvert = item.ConvertTo<CommentModel>();
-                var like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
-                var Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
+                CommentModel commentConvert = item.ConvertTo<CommentModel>();
+                int like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
+                int Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
                 commentList.Add(new CommentModel() { Id = commentConvert.Id, Email = commentConvert.Email, MovieId = commentConvert.MovieId, Time = commentConvert.Time, CommentText = commentConvert.CommentText, Like = like, DisLike = Dislike });
             }
 
@@ -278,27 +279,27 @@ namespace BlazorApp3.Server.Controllers
             List<int> list = new();
             list.Add(0);
             list.Add(0);
-            var sampleData = new MLModel.ModelInput();
+            MLModel.ModelInput sampleData = new MLModel.ModelInput();
             foreach (DocumentSnapshot item in commentSnapshot.Documents)
             {
-                var commentConvert = item.ConvertTo<CommentModel>();
+                CommentModel commentConvert = item.ConvertTo<CommentModel>();
 
-                
-                    //Load sample data
-                    sampleData.Review = commentConvert.CommentText;
-                    //Load model and predict output
-                    var result = MLModel.Predict(sampleData);
-                    if (result.Prediction == "positive")
-                    {
-                        list[0] = list[0] + 1;
-                        await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Positive" } });
-                    }
-                    else
-                    {
-                        list[1] = list[1] + 1;
-                        await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Negative" } });
-                    }
-              
+
+                //Load sample data
+                sampleData.Review = commentConvert.CommentText;
+                //Load model and predict output
+                MLModel.ModelOutput result = MLModel.Predict(sampleData);
+                if (result.Prediction == "positive")
+                {
+                    list[0] = list[0] + 1;
+                    await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Positive" } });
+                }
+                else
+                {
+                    list[1] = list[1] + 1;
+                    await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Negative" } });
+                }
+
 
             }
 
@@ -315,17 +316,17 @@ namespace BlazorApp3.Server.Controllers
             List<int> list = new();
             list.Add(0);
             list.Add(0);
-            var sampleData = new MLModel.ModelInput();
+            MLModel.ModelInput sampleData = new MLModel.ModelInput();
             foreach (DocumentSnapshot item in commentSnapshot.Documents)
             {
-                var commentConvert = item.ConvertTo<CommentModel>();
+                CommentModel commentConvert = item.ConvertTo<CommentModel>();
 
-                if(commentConvert.Prediction == null)
+                if (commentConvert.Prediction == null)
                 {
                     //Load sample data
                     sampleData.Review = commentConvert.CommentText;
                     //Load model and predict output
-                    var result = MLModel.Predict(sampleData);
+                    MLModel.ModelOutput result = MLModel.Predict(sampleData);
                     if (result.Prediction == "positive")
                     {
                         list[0] = list[0] + 1;
@@ -338,7 +339,7 @@ namespace BlazorApp3.Server.Controllers
                     }
                 }
                 else
-{
+                {
                     if (commentConvert.Prediction == "Positive")
                     {
                         list[0] = list[0] + 1;
@@ -348,14 +349,14 @@ namespace BlazorApp3.Server.Controllers
                         list[1] = list[1] + 1;
                     }
                 }
-                
-                
+
+
             }
-            
+
             return list;
         }
         [HttpPost("Salary")]
-        public async Task<ActionResult> Salary([FromBody] Dictionary<string,string> dic)
+        public async Task<ActionResult> Salary([FromBody] Dictionary<string, string> dic)
         {
             FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
             QuerySnapshot snapshot = await db.Collection("Account")
@@ -368,7 +369,7 @@ namespace BlazorApp3.Server.Controllers
 
                 if (Convert.ToDouble(dic["Cash"]) > cashTest)
                 {
-                    
+
                     return BadRequest($"Lower than {cashTest}");
                 }
 
@@ -402,17 +403,17 @@ namespace BlazorApp3.Server.Controllers
                 request.RequestBody(createPayoutRequest);
 
                 PayPalHttp.HttpResponse response = await client.Execute(request);
-                
+
 
                 CreatePayoutResponse result = response.Result<CreatePayoutResponse>();
-                
+
                 return Ok("Success");
             }
             catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
-            
+
         }
     }
 }

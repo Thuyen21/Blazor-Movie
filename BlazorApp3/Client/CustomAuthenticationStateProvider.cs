@@ -18,19 +18,19 @@ namespace BlazorApp3.Client
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
-            var user = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/GetCurrentUser");
-            
+            AccountManagementModel user = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/GetCurrentUser");
+
             if (user.Email != null)
             {
 
-                var claimsIdentity = new ClaimsIdentity(new[] {
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
 
 
                     new Claim(ClaimTypes.Name, user.Email),
                     new Claim(ClaimTypes.Role, user.Role),
-                    new Claim(ClaimTypes.Email, user.Email) 
+                    new Claim(ClaimTypes.Email, user.Email)
                 }, "serverAuth");
-                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
 
                 return new AuthenticationState(claimsPrincipal);
             }
@@ -38,6 +38,6 @@ namespace BlazorApp3.Client
             return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
 
         }
-        
+
     }
 }

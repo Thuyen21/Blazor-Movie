@@ -1,5 +1,4 @@
 ﻿using BlazorApp3.Shared;
-using BootstrapBlazor.Components;
 using Firebase.Auth;
 using Firebase.Auth.Providers;
 using Firebase.Storage;
@@ -84,9 +83,9 @@ namespace BlazorApp3.Server.Controllers
             QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
             foreach (DocumentSnapshot document in snapshot.Documents)
             {
-                var convert = document.ConvertTo<AccountManagementModel>();
+                AccountManagementModel convert = document.ConvertTo<AccountManagementModel>();
 
-                
+
                 myFoo.Add(convert);
             }
             return await Task.FromResult(myFoo);
@@ -119,7 +118,7 @@ namespace BlazorApp3.Server.Controllers
             else
 
             {
-                
+
                 return BadRequest("Don't edit role");
             }
 
@@ -142,34 +141,34 @@ namespace BlazorApp3.Server.Controllers
                     await snapshotDocument.Reference.UpdateAsync(update);
                 }
 
-                
+
                 return Ok("Success");
             }
             catch (Exception ex)
             {
-                
+
                 return BadRequest(ex.Message);
             }
 
-           
+
         }
         [HttpPost("Ban")]
-        public async Task<ActionResult> Ban([FromBody]string Id)
+        public async Task<ActionResult> Ban([FromBody] string Id)
         {
             try
             {
-               
+
                 string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
 
                 FirebaseApp.Create(new AppOptions { Credential = GoogleCredential.FromFile(path) });
 
-                UserRecordArgs userRecordArgs = new UserRecordArgs() {Uid = Id, Disabled = true};
+                UserRecordArgs userRecordArgs = new UserRecordArgs() { Uid = Id, Disabled = true };
                 await FirebaseAuth.DefaultInstance.UpdateUserAsync(userRecordArgs);
 
                 FirebaseApp.DefaultInstance.Delete();
                 return Ok("Success");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -257,25 +256,25 @@ namespace BlazorApp3.Server.Controllers
             return await Task.FromResult(movie);
         }
         [HttpPost("EditMovie")]
-        public async Task<ActionResult> EditMoviePost([FromBody ]MovieModel movie)
+        public async Task<ActionResult> EditMoviePost([FromBody] MovieModel movie)
         {
             FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
             Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
             QuerySnapshot snapshot = await collection.GetSnapshotAsync();
-            
+
             movie.PremiereDate = movie.PremiereDate.ToUniversalTime();
 
             Dictionary<string, object> dictionary = movie.GetType()
                 .GetProperties(BindingFlags.Instance | BindingFlags.Public)
                 .ToDictionary(prop => prop.Name, prop => prop.GetValue(movie, null));
-            
+
             foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
             {
                 await snapshotDocument.Reference.UpdateAsync(dictionary);
             }
-                return Ok("Success");
+            return Ok("Success");
         }
-        
+
         [HttpGet("MovieUpload/{MovieId}")]
         public async Task<ActionResult> MovieUpload(string MovieId)
         {
@@ -298,20 +297,22 @@ namespace BlazorApp3.Server.Controllers
         [RequestFormLimits(MultipartBodyLengthLimit = long.MaxValue)]
         public async Task<ActionResult> MovieUpload(string StudioId, string MovieId, IFormFile ImageFileUp, IFormFile MovieFileUp)
         {
-            if(ImageFileUp == null)
+            if (ImageFileUp == null)
             {
-                
+
             }
             else
             {
-                List<string> list = new List<string>();
-                list.Add("image/bmp");
-                list.Add("image/gif");
-                list.Add("image/jpeg");
-                list.Add("image/png");
-                list.Add("image/svg+xml");
-                list.Add("image/tiff");
-                list.Add("image/webp");
+                List<string> list = new List<string>
+                {
+                    "image/bmp",
+                    "image/gif",
+                    "image/jpeg",
+                    "image/png",
+                    "image/svg+xml",
+                    "image/tiff",
+                    "image/webp"
+                };
                 if (list.Contains(ImageFileUp.ContentType))
                 {
                     using Stream fileStream = ImageFileUp.OpenReadStream();
@@ -338,24 +339,26 @@ namespace BlazorApp3.Server.Controllers
                         fileStream.Close();
                     }
                 }
-                
+
             }
             if (MovieFileUp == null)
             {
-                
+
             }
             else
             {
-                List<string> list = new List<string>();
-                list.Add("video/x-msvideo");
-                list.Add("video/mp4");
-                list.Add("video/mpeg");
-                list.Add("video/ogg");
-                list.Add("video/mp2t");
-                list.Add("video/webm");
-                list.Add("video/3gpp");
-                list.Add("video/3gpp2");
-                list.Add("video/x-matroska");
+                List<string> list = new List<string>
+                {
+                    "video/x-msvideo",
+                    "video/mp4",
+                    "video/mpeg",
+                    "video/ogg",
+                    "video/mp2t",
+                    "video/webm",
+                    "video/3gpp",
+                    "video/3gpp2",
+                    "video/x-matroska"
+                };
 
                 if (list.Contains(MovieFileUp.ContentType))
                 {
@@ -381,16 +384,16 @@ namespace BlazorApp3.Server.Controllers
                         fileStream.Close();
                     }
                 }
-                
+
             }
 
 
             string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
 
-            return Redirect(hostname+ "/EditMovieAdmin/" + MovieId);
+            return Redirect(hostname + "/EditMovieAdmin/" + MovieId);
         }
         [HttpPost("DeleteMovie")]
-       
+
         public async Task<ActionResult> DeleteMovie([FromBody] MovieModel movie)
         {
             FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
