@@ -103,10 +103,6 @@
               "target": "Package",
               "version": "[6.0.0-preview.6.21355.2, )"
             },
-            "Microsoft.NET.Sdk.BlazorWebAssembly.AOT": {
-              "target": "Package",
-              "version": "[6.0.0-preview.5.21301.17, )"
-            },
             "PayPalCheckoutSdk": {
               "target": "Package",
               "version": "[1.0.3, )"
@@ -118,10 +114,6 @@
             "PayoutsSdk": {
               "target": "Package",
               "version": "[1.1.0, )"
-            },
-            "Syncfusion.Blazor.Inputs": {
-              "target": "Package",
-              "version": "[19.2.0.48, )"
             }
           },
           "imports": [

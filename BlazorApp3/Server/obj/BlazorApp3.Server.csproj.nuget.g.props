@@ -17,14 +17,6 @@
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)syncfusion.blazor.themes\19.2.0.48\buildTransitive\Syncfusion.Blazor.Themes.props" Condition="Exists('$(NuGetPackageRoot)syncfusion.blazor.themes\19.2.0.48\buildTransitive\Syncfusion.Blazor.Themes.props')" />
-    <Import Project="$(NuGetPackageRoot)syncfusion.blazor.core\19.2.0.48\buildTransitive\Syncfusion.Blazor.Core.props" Condition="Exists('$(NuGetPackageRoot)syncfusion.blazor.core\19.2.0.48\buildTransitive\Syncfusion.Blazor.Core.props')" />
-    <Import Project="$(NuGetPackageRoot)syncfusion.blazor.spinner\19.2.0.48\buildTransitive\Syncfusion.Blazor.Spinner.props" Condition="Exists('$(NuGetPackageRoot)syncfusion.blazor.spinner\19.2.0.48\buildTransitive\Syncfusion.Blazor.Spinner.props')" />
-    <Import Project="$(NuGetPackageRoot)syncfusion.blazor.buttons\19.2.0.48\buildTransitive\Syncfusion.Blazor.Buttons.props" Condition="Exists('$(NuGetPackageRoot)syncfusion.blazor.buttons\19.2.0.48\buildTransitive\Syncfusion.Blazor.Buttons.props')" />
-    <Import Project="$(NuGetPackageRoot)syncfusion.blazor.popups\19.2.0.48\buildTransitive\Syncfusion.Blazor.Popups.props" Condition="Exists('$(NuGetPackageRoot)syncfusion.blazor.popups\19.2.0.48\buildTransitive\Syncfusion.Blazor.Popups.props')" />
-    <Import Project="$(NuGetPackageRoot)syncfusion.blazor.splitbuttons\19.2.0.48\buildTransitive\Syncfusion.Blazor.SplitButtons.props" Condition="Exists('$(NuGetPackageRoot)syncfusion.blazor.splitbuttons\19.2.0.48\buildTransitive\Syncfusion.Blazor.SplitButtons.props')" />
-    <Import Project="$(NuGetPackageRoot)syncfusion.blazor.data\19.2.0.48\buildTransitive\Syncfusion.Blazor.Data.props" Condition="Exists('$(NuGetPackageRoot)syncfusion.blazor.data\19.2.0.48\buildTransitive\Syncfusion.Blazor.Data.props')" />
-    <Import Project="$(NuGetPackageRoot)syncfusion.blazor.inputs\19.2.0.48\buildTransitive\Syncfusion.Blazor.Inputs.props" Condition="Exists('$(NuGetPackageRoot)syncfusion.blazor.inputs\19.2.0.48\buildTransitive\Syncfusion.Blazor.Inputs.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.ml\1.5.5\build\netstandard2.0\Microsoft.ML.props" Condition="Exists('$(NuGetPackageRoot)microsoft.ml\1.5.5\build\netstandard2.0\Microsoft.ML.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.ml.fasttree\1.5.5\build\netstandard2.0\Microsoft.ML.FastTree.props" Condition="Exists('$(NuGetPackageRoot)microsoft.ml.fasttree\1.5.5\build\netstandard2.0\Microsoft.ML.FastTree.props')" />
     <Import Project="$(NuGetPackageRoot)bootstrapblazor\5.3.2\buildTransitive\BootstrapBlazor.props" Condition="Exists('$(NuGetPackageRoot)bootstrapblazor\5.3.2\buildTransitive\BootstrapBlazor.props')" />
