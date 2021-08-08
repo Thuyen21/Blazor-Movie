@@ -13,7 +13,7 @@ namespace BlazorApp3.Client
     {
         public static async Task Main(string[] args)
         {
-            WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault(args);
+            var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddOptions();

@@ -61,7 +61,7 @@ namespace BlazorApp3.Server.Controllers
             }
 
 
-            ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
+            var claimsIdentity = new ClaimsIdentity(new[] {
                 new Claim(ClaimTypes.Email, logIn.Email),
                     new Claim(ClaimTypes.Sid, user.Uid),
                     new Claim(ClaimTypes.Name, acc.Name),
@@ -71,7 +71,7 @@ namespace BlazorApp3.Server.Controllers
 
             }, "serverAuth");
             //create claimsPrincipal
-            ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
             //Sign In User
             await HttpContext.SignInAsync(claimsPrincipal);
 
@@ -221,7 +221,7 @@ namespace BlazorApp3.Server.Controllers
 
 
                 await docRef.AddAsync(account);
-                ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
+                var claimsIdentity = new ClaimsIdentity(new[] {
                 new Claim(ClaimTypes.Email, account.Email),
                     new Claim(ClaimTypes.Sid, user.Uid),
                     new Claim(ClaimTypes.Name, account.Name),
@@ -230,7 +230,7 @@ namespace BlazorApp3.Server.Controllers
                     new Claim("Token", await user.GetIdTokenAsync())
             }, "serverAuth");
                 //create claimsPrincipal
-                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 //Sign In User
                 await HttpContext.SignInAsync(claimsPrincipal);
 
@@ -246,7 +246,7 @@ namespace BlazorApp3.Server.Controllers
         public async Task<ActionResult<char[]>> GetToken()
         {
 
-            string token = User.FindFirstValue("Token");
+            var token = User.FindFirstValue("Token");
             char[] ch = new char[token.Length];
             for (int i = 0; i < token.Length; i++)
             {

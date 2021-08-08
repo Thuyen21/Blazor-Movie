@@ -12,6 +12,7 @@
 		<TargetFramework>net6.0</TargetFramework>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 		<TypeScriptModuleKind>amd</TypeScriptModuleKind>
+    <RunAOTCompilation>true</RunAOTCompilation>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -33,6 +34,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.0-preview.6.21355.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-preview.6.21355.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-preview.6.21355.2" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.NET.Sdk.BlazorWebAssembly.AOT" Version="6.0.0-preview.5.21301.17" />
 		<PackageReference Include="PayoutsSdk" Version="1.1.0" />
 		<PackageReference Include="PayPalCheckoutSdk" Version="1.0.3" />
 		<PackageReference Include="PayPalHttp" Version="1.0.0" />

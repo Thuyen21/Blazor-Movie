@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kqkiLv1WzAEyUfVq66WmPy3Feid5ZRCNo7Lghav/R+q4DBNcJI6TxhhENL0jpI7XgI2EcURHdXPhGBP8y4c5Jw==",
+  "dgSpecHash": "KD3UxtJvD/B2ARsaijf0D2407f3/Mg+BhtzkqPISWkRM2qZXt9zHC1X0iHrhrzs4X9qOlB0G9DQjZumPAfcVVQ==",
   "success": true,
-  "projectFilePath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\BlazorApp3.Client.csproj",
+  "projectFilePath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Client\\BlazorApp3.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Thuyen\\.nuget\\packages\\aspnetcore.firebase.authentication\\2.0.1\\aspnetcore.firebase.authentication.2.0.1.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\bootstrapblazor\\5.3.2\\bootstrapblazor.5.3.2.nupkg.sha512",
@@ -103,6 +103,7 @@
     "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.jsinterop\\6.0.0-preview.6.21355.2\\microsoft.jsinterop.6.0.0-preview.6.21355.2.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.jsinterop.webassembly\\6.0.0-preview.6.21355.2\\microsoft.jsinterop.webassembly.6.0.0-preview.6.21355.2.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.net.http.headers\\2.0.2\\microsoft.net.http.headers.2.0.2.nupkg.sha512",
+    "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.net.sdk.blazorwebassembly.aot\\6.0.0-preview.5.21301.17\\microsoft.net.sdk.blazorwebassembly.aot.6.0.0-preview.5.21301.17.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",

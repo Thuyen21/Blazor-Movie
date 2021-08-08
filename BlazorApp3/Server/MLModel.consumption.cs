@@ -37,7 +37,7 @@ namespace BlazorApp3_Server
 
         #endregion
 
-        private static readonly string MLNetModelPath = Path.GetFullPath("MLModel.zip");
+        private static string MLNetModelPath = Path.GetFullPath("MLModel.zip");
 
         /// <summary>
         /// Use this method to predict on <see cref="ModelInput"/>.
@@ -49,8 +49,8 @@ namespace BlazorApp3_Server
             MLContext mlContext = new MLContext();
 
             // Load model & create prediction engine
-            ITransformer mlModel = mlContext.Model.Load(MLNetModelPath, out DataViewSchema modelInputSchema);
-            PredictionEngine<ModelInput, ModelOutput> predEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
+            ITransformer mlModel = mlContext.Model.Load(MLNetModelPath, out var modelInputSchema);
+            var predEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
 
             ModelOutput result = predEngine.Predict(input);
             return result;

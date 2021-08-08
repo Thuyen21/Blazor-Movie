@@ -57,7 +57,7 @@ namespace BlazorApp3.Server.Controllers
 
                 List<MovieModel> myFoo = new();
 
-                QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
+                var snapshot = await usersRef.GetSnapshotAsync();
 
 
                 foreach (DocumentSnapshot document in snapshot.Documents)
@@ -160,16 +160,14 @@ namespace BlazorApp3.Server.Controllers
             }
             else
             {
-                List<string> list = new List<string>
-                {
-                    "image/bmp",
-                    "image/gif",
-                    "image/jpeg",
-                    "image/png",
-                    "image/svg+xml",
-                    "image/tiff",
-                    "image/webp"
-                };
+                List<string> list = new List<string>();
+                list.Add("image/bmp");
+                list.Add("image/gif");
+                list.Add("image/jpeg");
+                list.Add("image/png");
+                list.Add("image/svg+xml");
+                list.Add("image/tiff");
+                list.Add("image/webp");
                 if (list.Contains(ImageFileUp.ContentType))
                 {
                     using Stream fileStream = ImageFileUp.OpenReadStream();
@@ -204,18 +202,16 @@ namespace BlazorApp3.Server.Controllers
             }
             else
             {
-                List<string> list = new List<string>
-                {
-                    "video/x-msvideo",
-                    "video/mp4",
-                    "video/mpeg",
-                    "video/ogg",
-                    "video/mp2t",
-                    "video/webm",
-                    "video/3gpp",
-                    "video/3gpp2",
-                    "video/x-matroska"
-                };
+                List<string> list = new List<string>();
+                list.Add("video/x-msvideo");
+                list.Add("video/mp4");
+                list.Add("video/mpeg");
+                list.Add("video/ogg");
+                list.Add("video/mp2t");
+                list.Add("video/webm");
+                list.Add("video/3gpp");
+                list.Add("video/3gpp2");
+                list.Add("video/x-matroska");
 
                 if (list.Contains(MovieFileUp.ContentType))
                 {
@@ -260,9 +256,9 @@ namespace BlazorApp3.Server.Controllers
 
             foreach (DocumentSnapshot item in commentSnapshot.Documents)
             {
-                CommentModel commentConvert = item.ConvertTo<CommentModel>();
-                int like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
-                int Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
+                var commentConvert = item.ConvertTo<CommentModel>();
+                var like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
+                var Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
                 commentList.Add(new CommentModel() { Id = commentConvert.Id, Email = commentConvert.Email, MovieId = commentConvert.MovieId, Time = commentConvert.Time, CommentText = commentConvert.CommentText, Like = like, DisLike = Dislike });
             }
 
@@ -279,16 +275,16 @@ namespace BlazorApp3.Server.Controllers
             List<int> list = new();
             list.Add(0);
             list.Add(0);
-            MLModel.ModelInput sampleData = new MLModel.ModelInput();
+            var sampleData = new MLModel.ModelInput();
             foreach (DocumentSnapshot item in commentSnapshot.Documents)
             {
-                CommentModel commentConvert = item.ConvertTo<CommentModel>();
+                var commentConvert = item.ConvertTo<CommentModel>();
 
 
                 //Load sample data
                 sampleData.Review = commentConvert.CommentText;
                 //Load model and predict output
-                MLModel.ModelOutput result = MLModel.Predict(sampleData);
+                var result = MLModel.Predict(sampleData);
                 if (result.Prediction == "positive")
                 {
                     list[0] = list[0] + 1;
@@ -316,17 +312,17 @@ namespace BlazorApp3.Server.Controllers
             List<int> list = new();
             list.Add(0);
             list.Add(0);
-            MLModel.ModelInput sampleData = new MLModel.ModelInput();
+            var sampleData = new MLModel.ModelInput();
             foreach (DocumentSnapshot item in commentSnapshot.Documents)
             {
-                CommentModel commentConvert = item.ConvertTo<CommentModel>();
+                var commentConvert = item.ConvertTo<CommentModel>();
 
                 if (commentConvert.Prediction == null)
                 {
                     //Load sample data
                     sampleData.Review = commentConvert.CommentText;
                     //Load model and predict output
-                    MLModel.ModelOutput result = MLModel.Predict(sampleData);
+                    var result = MLModel.Predict(sampleData);
                     if (result.Prediction == "positive")
                     {
                         list[0] = list[0] + 1;
