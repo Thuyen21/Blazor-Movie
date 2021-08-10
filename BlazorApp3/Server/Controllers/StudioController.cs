@@ -275,8 +275,6 @@ namespace BlazorApp3.Server.Controllers
             List<int> list = new();
             list.Add(0);
             list.Add(0);
-            
-
             var sampleData = new MLModel.ModelInput();
             foreach (DocumentSnapshot item in commentSnapshot.Documents)
             {

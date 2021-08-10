@@ -22,6 +22,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
+		<PackageReference Include="BootstrapBlazor" Version="5.5.3" />
 		<PackageReference Include="Braintree" Version="5.8.0" />
 		<PackageReference Include="FirebaseAdmin" Version="2.2.0" />
 		<PackageReference Include="FirebaseAuthentication.net" Version="4.0.0-alpha.2" />

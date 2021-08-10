@@ -8,17 +8,11 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <TypeScriptModuleKind>amd</TypeScriptModuleKind>
+    
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="MLModel.consumption.cs" />
-    <Compile Remove="MLModel.training.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="MLModel.zip" />
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
     <PackageReference Include="Braintree" Version="5.8.0" />
@@ -38,19 +32,8 @@
     <PackageReference Include="PayPalHttp" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Client\BlazorApp3.Client.csproj" />
     <ProjectReference Include="..\MLModel_WebApi\MLModel_WebApi.csproj" />
     <ProjectReference Include="..\Shared\BlazorApp3.Shared.csproj" />
-  </ItemGroup>
-  <ItemGroup Label="MLModel">
-    <None Include="MLModel.consumption.cs">
-      <DependentUpon>MLModel.mbconfig</DependentUpon>
-    </None>
-    <None Include="MLModel.training.cs">
-      <DependentUpon>MLModel.mbconfig</DependentUpon>
-    </None>
-    <None Include="MLModel.zip">
-      <DependentUpon>MLModel.mbconfig</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>
