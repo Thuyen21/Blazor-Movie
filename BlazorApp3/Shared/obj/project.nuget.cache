@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+oFQ/B+Wc56v/C6wd0AO7e2hJFLqhn4vqGpF8jOtvh+fXwndz9L24OWu2r+VstPzcqcb/HE9haBI1+h1WiXgDg==",
+  "dgSpecHash": "6kaIecmCjclWyKhEyVCiZfy/cmVdounM0EEoCDVBU/yhqp4aLAFmb2l2kW2A7uZlAAg5k56yqTjsqq24w3j8tg==",
   "success": true,
   "projectFilePath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
   "expectedPackageFiles": [
@@ -15,10 +15,10 @@
     "C:\\Users\\Thuyen\\.nuget\\packages\\google.api.gax.grpc\\3.3.0\\google.api.gax.grpc.3.3.0.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\google.api.gax.grpc.grpccore\\3.3.0\\google.api.gax.grpc.grpccore.3.3.0.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\google.api.gax.rest\\3.3.0\\google.api.gax.rest.3.3.0.nupkg.sha512",
-    "C:\\Users\\Thuyen\\.nuget\\packages\\google.apis\\1.52.0\\google.apis.1.52.0.nupkg.sha512",
-    "C:\\Users\\Thuyen\\.nuget\\packages\\google.apis.auth\\1.52.0\\google.apis.auth.1.52.0.nupkg.sha512",
-    "C:\\Users\\Thuyen\\.nuget\\packages\\google.apis.core\\1.52.0\\google.apis.core.1.52.0.nupkg.sha512",
-    "C:\\Users\\Thuyen\\.nuget\\packages\\google.apis.drive.v3\\1.52.0.2383\\google.apis.drive.v3.1.52.0.2383.nupkg.sha512",
+    "C:\\Users\\Thuyen\\.nuget\\packages\\google.apis\\1.54.0\\google.apis.1.54.0.nupkg.sha512",
+    "C:\\Users\\Thuyen\\.nuget\\packages\\google.apis.auth\\1.54.0\\google.apis.auth.1.54.0.nupkg.sha512",
+    "C:\\Users\\Thuyen\\.nuget\\packages\\google.apis.core\\1.54.0\\google.apis.core.1.54.0.nupkg.sha512",
+    "C:\\Users\\Thuyen\\.nuget\\packages\\google.apis.drive.v3\\1.54.0.2397\\google.apis.drive.v3.1.54.0.2397.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\google.apis.storage.v1\\1.51.0.2234\\google.apis.storage.v1.1.51.0.2234.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\google.cloud.firestore\\2.4.0\\google.cloud.firestore.2.4.0.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\google.cloud.firestore.v1\\2.3.0\\google.cloud.firestore.v1.2.3.0.nupkg.sha512",

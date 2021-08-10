@@ -149,10 +149,10 @@
           "lib/netstandard2.0/Google.Api.Gax.Rest.dll": {}
         }
       },
-      "Google.Apis/1.52.0": {
+      "Google.Apis/1.54.0": {
         "type": "package",
         "dependencies": {
-          "Google.Apis.Core": "1.52.0"
+          "Google.Apis.Core": "1.54.0"
         },
         "compile": {
           "lib/netstandard2.0/Google.Apis.dll": {}
@@ -161,11 +161,11 @@
           "lib/netstandard2.0/Google.Apis.dll": {}
         }
       },
-      "Google.Apis.Auth/1.52.0": {
+      "Google.Apis.Auth/1.54.0": {
         "type": "package",
         "dependencies": {
-          "Google.Apis": "1.52.0",
-          "Google.Apis.Core": "1.52.0"
+          "Google.Apis": "1.54.0",
+          "Google.Apis.Core": "1.54.0"
         },
         "compile": {
           "lib/netstandard2.0/Google.Apis.Auth.PlatformServices.dll": {},
@@ -176,7 +176,7 @@
           "lib/netstandard2.0/Google.Apis.Auth.dll": {}
         }
       },
-      "Google.Apis.Core/1.52.0": {
+      "Google.Apis.Core/1.54.0": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "12.0.3"
@@ -188,11 +188,11 @@
           "lib/netstandard2.0/Google.Apis.Core.dll": {}
         }
       },
-      "Google.Apis.Drive.v3/1.52.0.2383": {
+      "Google.Apis.Drive.v3/1.54.0.2397": {
         "type": "package",
         "dependencies": {
-          "Google.Apis": "1.52.0",
-          "Google.Apis.Auth": "1.52.0"
+          "Google.Apis": "1.54.0",
+          "Google.Apis.Auth": "1.54.0"
         },
         "compile": {
           "lib/netstandard2.0/Google.Apis.Drive.v3.dll": {}
@@ -2924,16 +2924,16 @@
         "lib/netstandard2.0/Google.Api.Gax.Rest.xml"
       ]
     },
-    "Google.Apis/1.52.0": {
-      "sha512": "5YWTBzHuNUiYIUoIBkCGYMokyYuaOuAn+w96lIJ2WNqeiAurKq3ZLqZ86fYae32PDWHZa+itFYc9O1iVfYi5dQ==",
+    "Google.Apis/1.54.0": {
+      "sha512": "53PujXOst4JNibnySRlOzduBwr3wt4hiLPbVCpZs/P2G8waltIW3cmma6sG7lTaW9ag/3T6MtIgt/uFtWBBkwA==",
       "type": "package",
-      "path": "google.apis/1.52.0",
+      "path": "google.apis/1.54.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
-        "google.apis.1.52.0.nupkg.sha512",
+        "google.apis.1.54.0.nupkg.sha512",
         "google.apis.nuspec",
         "lib/net45/Google.Apis.PlatformServices.dll",
         "lib/net45/Google.Apis.dll",
@@ -2947,16 +2947,16 @@
         "lib/netstandard2.0/Google.Apis.xml"
       ]
     },
-    "Google.Apis.Auth/1.52.0": {
-      "sha512": "T7JKjq4zmk8b4lrOn+kyatgDQdLytoV+i6Fw4agyWlm4Q+bbZbu3DcCz+UuliEtXHbShgHD1PWfiMJoQGuPEog==",
+    "Google.Apis.Auth/1.54.0": {
+      "sha512": "gVWia+KE7MLBTiAaDG//TociR6lE0/reEXx+go065L/w20skB2Ib58vnp4iGPaLehwY8ib8XmXy3P1n/Fr5Y4A==",
       "type": "package",
-      "path": "google.apis.auth/1.52.0",
+      "path": "google.apis.auth/1.54.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
-        "google.apis.auth.1.52.0.nupkg.sha512",
+        "google.apis.auth.1.54.0.nupkg.sha512",
         "google.apis.auth.nuspec",
         "lib/net45/Google.Apis.Auth.PlatformServices.dll",
         "lib/net45/Google.Apis.Auth.dll",
@@ -2976,16 +2976,16 @@
         "lib/netstandard2.0/Google.Apis.Auth.xml"
       ]
     },
-    "Google.Apis.Core/1.52.0": {
-      "sha512": "cgQpnZ9IC5SBNsAFTXHKUMB8bOkBWPLtXcLgwSYkV8oL0FfUdHwrDzH5qrf/mFB9fQIPgJyV6tdUwf2hu1UJ+A==",
+    "Google.Apis.Core/1.54.0": {
+      "sha512": "NKeTTKCttOQrLUCyLyRo5m53b2mG8ymJaiL+i1fR6w8TrrHD31ixPGO+BlwQs9OLuLd/p8BKkSdSaNGjKw5rkA==",
       "type": "package",
-      "path": "google.apis.core/1.52.0",
+      "path": "google.apis.core/1.54.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
-        "google.apis.core.1.52.0.nupkg.sha512",
+        "google.apis.core.1.54.0.nupkg.sha512",
         "google.apis.core.nuspec",
         "lib/net45/Google.Apis.Core.dll",
         "lib/net45/Google.Apis.Core.pdb",
@@ -2998,16 +2998,16 @@
         "lib/netstandard2.0/Google.Apis.Core.xml"
       ]
     },
-    "Google.Apis.Drive.v3/1.52.0.2383": {
-      "sha512": "En7zdh3iIqUqcVqccYHr74D71sH4XHtMbzj52tEkbpFYS8yjbNOVVnPh7JCYCnIzg/JQhgbi/mUi03qn8HLiCA==",
+    "Google.Apis.Drive.v3/1.54.0.2397": {
+      "sha512": "6uKx9qbcADW/fNOZKWXHdafvLSjR7jVpWs6eyoDlxE4oT31uAEVT7Kk5yJYRe7tNs8dhHAbJZYg+8fRWPD5lDA==",
       "type": "package",
-      "path": "google.apis.drive.v3/1.52.0.2383",
+      "path": "google.apis.drive.v3/1.54.0.2397",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
-        "google.apis.drive.v3.1.52.0.2383.nupkg.sha512",
+        "google.apis.drive.v3.1.54.0.2397.nupkg.sha512",
         "google.apis.drive.v3.nuspec",
         "lib/net40/Google.Apis.Drive.v3.dll",
         "lib/net40/Google.Apis.Drive.v3.pdb",
@@ -8252,7 +8252,7 @@
       "FirebaseAuthentication.net >= 4.0.0-alpha.2",
       "FirebaseDatabase.net >= 4.0.6",
       "FirebaseStorage.net >= 1.0.3",
-      "Google.Apis.Drive.v3 >= 1.52.0.2383",
+      "Google.Apis.Drive.v3 >= 1.54.0.2397",
       "Google.Cloud.Firestore >= 2.4.0",
       "Google.Cloud.Storage.V1 >= 3.5.0",
       "PayPalCheckoutSdk >= 1.0.3",
@@ -8262,7 +8262,8 @@
   },
   "packageFolders": {
     "C:\\Users\\Thuyen\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -8274,12 +8275,14 @@
       "outputPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
         "C:\\Users\\Thuyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -8332,7 +8335,7 @@
           },
           "Google.Apis.Drive.v3": {
             "target": "Package",
-            "version": "[1.52.0.2383, )"
+            "version": "[1.54.0.2397, )"
           },
           "Google.Cloud.Firestore": {
             "target": "Package",

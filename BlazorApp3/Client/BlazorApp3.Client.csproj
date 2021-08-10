@@ -22,13 +22,12 @@
 
 	<ItemGroup>
 		<PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
-		<PackageReference Include="BootstrapBlazor" Version="5.3.2" />
 		<PackageReference Include="Braintree" Version="5.8.0" />
 		<PackageReference Include="FirebaseAdmin" Version="2.2.0" />
 		<PackageReference Include="FirebaseAuthentication.net" Version="4.0.0-alpha.2" />
 		<PackageReference Include="FirebaseDatabase.net" Version="4.0.6" />
 		<PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
-		<PackageReference Include="Google.Apis.Drive.v3" Version="1.52.0.2383" />
+		<PackageReference Include="Google.Apis.Drive.v3" Version="1.54.0.2397" />
 		<PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
 		<PackageReference Include="Google.Cloud.Storage.V1" Version="3.5.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.0-preview.6.21355.2" />

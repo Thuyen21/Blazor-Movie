@@ -8,11 +8,17 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <TypeScriptModuleKind>amd</TypeScriptModuleKind>
-    
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="MLModel.consumption.cs" />
+    <Compile Remove="MLModel.training.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="MLModel.zip" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
     <PackageReference Include="Braintree" Version="5.8.0" />
@@ -20,19 +26,19 @@
     <PackageReference Include="FirebaseAuthentication.net" Version="4.0.0-alpha.2" />
     <PackageReference Include="FirebaseDatabase.net" Version="4.0.6" />
     <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
-    <PackageReference Include="Google.Apis.Drive.v3" Version="1.52.0.2383" />
+    <PackageReference Include="Google.Apis.Drive.v3" Version="1.54.0.2397" />
     <PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
     <PackageReference Include="Google.Cloud.Storage.V1" Version="3.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0-preview.6.21355.2" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.0-preview.6.21355.2" />
-    <PackageReference Include="Microsoft.ML" Version="1.5.5" />
-    <PackageReference Include="Microsoft.ML.FastTree" Version="1.5.5" />
+    <PackageReference Include="Microsoft.ML" Version="1.6.0" />
+    <PackageReference Include="Microsoft.ML.FastTree" Version="1.6.0" />
     <PackageReference Include="PayoutsSdk" Version="1.1.0" />
     <PackageReference Include="PayPalCheckoutSdk" Version="1.0.3" />
     <PackageReference Include="PayPalHttp" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Client\BlazorApp3.Client.csproj" />
+    <ProjectReference Include="..\MLModel_WebApi\MLModel_WebApi.csproj" />
     <ProjectReference Include="..\Shared\BlazorApp3.Shared.csproj" />
   </ItemGroup>
   <ItemGroup Label="MLModel">

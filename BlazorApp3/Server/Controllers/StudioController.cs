@@ -1,9 +1,9 @@
 ﻿using BlazorApp3.Shared;
-using BlazorApp3_Server;
 using Firebase.Storage;
 using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MLModel_WebApi;
 using PayoutsSdk.Core;
 using PayoutsSdk.Payouts;
 using System;
@@ -275,6 +275,8 @@ namespace BlazorApp3.Server.Controllers
             List<int> list = new();
             list.Add(0);
             list.Add(0);
+            
+
             var sampleData = new MLModel.ModelInput();
             foreach (DocumentSnapshot item in commentSnapshot.Documents)
             {

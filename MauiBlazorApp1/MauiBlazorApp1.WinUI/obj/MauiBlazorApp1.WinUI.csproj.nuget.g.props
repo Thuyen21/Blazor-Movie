@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
+    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Thuyen\.nuget\packages\;C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages</NuGetPackageFolders>
+    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.0.0</NuGetToolVersion>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <SourceRoot Include="C:\Users\Thuyen\.nuget\packages\" />
+    <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+  </PropertyGroup>
+  <ImportGroup Condition=" '$(TargetFramework)' == '' AND '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.fileproviders.embedded\6.0.0-preview.6.21355.2\buildMultiTargeting\Microsoft.Extensions.FileProviders.Embedded.props" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.fileproviders.embedded\6.0.0-preview.6.21355.2\buildMultiTargeting\Microsoft.Extensions.FileProviders.Embedded.props')" />
+  </ImportGroup>
+  <ImportGroup Condition=" '$(TargetFramework)' == 'net6.0-windows10.0.19041' AND '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.projectreunion.winui\0.8.0\buildTransitive\Microsoft.ProjectReunion.WinUI.props" Condition="Exists('$(NuGetPackageRoot)microsoft.projectreunion.winui\0.8.0\buildTransitive\Microsoft.ProjectReunion.WinUI.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.projectreunion.foundation\0.8.0\build\Microsoft.ProjectReunion.Foundation.props" Condition="Exists('$(NuGetPackageRoot)microsoft.projectreunion.foundation\0.8.0\build\Microsoft.ProjectReunion.Foundation.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.projectreunion.dwrite\0.8.0\build\Microsoft.ProjectReunion.DWrite.props" Condition="Exists('$(NuGetPackageRoot)microsoft.projectreunion.dwrite\0.8.0\build\Microsoft.ProjectReunion.DWrite.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.projectreunion\0.8.0\build\Microsoft.ProjectReunion.props" Condition="Exists('$(NuGetPackageRoot)microsoft.projectreunion\0.8.0\build\Microsoft.ProjectReunion.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.extensions.fileproviders.embedded\6.0.0-preview.6.21355.2\build\netstandard2.0\Microsoft.Extensions.FileProviders.Embedded.props" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.fileproviders.embedded\6.0.0-preview.6.21355.2\build\netstandard2.0\Microsoft.Extensions.FileProviders.Embedded.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.webview.maui\6.0.100-preview.6.1003\build\Microsoft.AspNetCore.Components.WebView.Maui.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.webview.maui\6.0.100-preview.6.1003\build\Microsoft.AspNetCore.Components.WebView.Maui.props')" />
+  </ImportGroup>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net6.0-windows10.0.19041' AND '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgMicrosoft_ProjectReunion_WinUI Condition=" '$(PkgMicrosoft_ProjectReunion_WinUI)' == '' ">C:\Users\Thuyen\.nuget\packages\microsoft.projectreunion.winui\0.8.0</PkgMicrosoft_ProjectReunion_WinUI>
+    <PkgMicrosoft_ProjectReunion Condition=" '$(PkgMicrosoft_ProjectReunion)' == '' ">C:\Users\Thuyen\.nuget\packages\microsoft.projectreunion\0.8.0</PkgMicrosoft_ProjectReunion>
+  </PropertyGroup>
+</Project>

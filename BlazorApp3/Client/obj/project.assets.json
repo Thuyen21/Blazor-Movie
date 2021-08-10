@@ -16,29 +16,6 @@
           "lib/netstandard2.0/AspNetCore.Firebase.Authentication.dll": {}
         }
       },
-      "BootstrapBlazor/5.3.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components.Authorization": "5.0.0",
-          "Microsoft.AspNetCore.Components.Web": "5.0.0",
-          "Microsoft.Extensions.Configuration.Json": "5.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Localization": "5.0.0",
-          "Microsoft.Extensions.Options.ConfigurationExtensions": "5.0.0"
-        },
-        "compile": {
-          "lib/net5.0/BootstrapBlazor.dll": {}
-        },
-        "runtime": {
-          "lib/net5.0/BootstrapBlazor.dll": {}
-        },
-        "build": {
-          "buildTransitive/BootstrapBlazor.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/BootstrapBlazor.props": {}
-        }
-      },
       "Braintree/5.8.0": {
         "type": "package",
         "dependencies": {
@@ -172,10 +149,10 @@
           "lib/netstandard2.0/Google.Api.Gax.Rest.dll": {}
         }
       },
-      "Google.Apis/1.52.0": {
+      "Google.Apis/1.54.0": {
         "type": "package",
         "dependencies": {
-          "Google.Apis.Core": "1.52.0"
+          "Google.Apis.Core": "1.54.0"
         },
         "compile": {
           "lib/netstandard2.0/Google.Apis.dll": {}
@@ -184,11 +161,11 @@
           "lib/netstandard2.0/Google.Apis.dll": {}
         }
       },
-      "Google.Apis.Auth/1.52.0": {
+      "Google.Apis.Auth/1.54.0": {
         "type": "package",
         "dependencies": {
-          "Google.Apis": "1.52.0",
-          "Google.Apis.Core": "1.52.0"
+          "Google.Apis": "1.54.0",
+          "Google.Apis.Core": "1.54.0"
         },
         "compile": {
           "lib/netstandard2.0/Google.Apis.Auth.PlatformServices.dll": {},
@@ -199,7 +176,7 @@
           "lib/netstandard2.0/Google.Apis.Auth.dll": {}
         }
       },
-      "Google.Apis.Core/1.52.0": {
+      "Google.Apis.Core/1.54.0": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "12.0.3"
@@ -211,11 +188,11 @@
           "lib/netstandard2.0/Google.Apis.Core.dll": {}
         }
       },
-      "Google.Apis.Drive.v3/1.52.0.2383": {
+      "Google.Apis.Drive.v3/1.54.0.2397": {
         "type": "package",
         "dependencies": {
-          "Google.Apis": "1.52.0",
-          "Google.Apis.Auth": "1.52.0"
+          "Google.Apis": "1.54.0",
+          "Google.Apis.Auth": "1.54.0"
         },
         "compile": {
           "lib/netstandard2.0/Google.Apis.Drive.v3.dll": {}
@@ -1129,30 +1106,6 @@
           "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Localization/5.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Localization.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Options": "5.0.0"
-        },
-        "compile": {
-          "lib/net5.0/Microsoft.Extensions.Localization.dll": {}
-        },
-        "runtime": {
-          "lib/net5.0/Microsoft.Extensions.Localization.dll": {}
-        }
-      },
-      "Microsoft.Extensions.Localization.Abstractions/5.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net5.0/Microsoft.Extensions.Localization.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net5.0/Microsoft.Extensions.Localization.Abstractions.dll": {}
-        }
-      },
       "Microsoft.Extensions.Logging/6.0.0-preview.6.21352.12": {
         "type": "package",
         "dependencies": {
@@ -1242,14 +1195,13 @@
           "lib/netstandard2.1/Microsoft.Extensions.Options.dll": {}
         }
       },
-      "Microsoft.Extensions.Options.ConfigurationExtensions/5.0.0": {
+      "Microsoft.Extensions.Options.ConfigurationExtensions/2.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Configuration.Binder": "5.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Options": "5.0.0",
-          "Microsoft.Extensions.Primitives": "5.0.0"
+          "Microsoft.Extensions.Configuration.Abstractions": "2.0.1",
+          "Microsoft.Extensions.Configuration.Binder": "2.0.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
+          "Microsoft.Extensions.Options": "2.0.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
@@ -2975,7 +2927,7 @@
           "FirebaseAuthentication.net": "4.0.0-alpha.2",
           "FirebaseDatabase.net": "4.0.6",
           "FirebaseStorage.net": "1.0.3",
-          "Google.Apis.Drive.v3": "1.52.0.2383",
+          "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
           "PayPalCheckoutSdk": "1.0.3",
@@ -3003,29 +2955,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/AspNetCore.Firebase.Authentication.dll": {}
-        }
-      },
-      "BootstrapBlazor/5.3.2": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components.Authorization": "5.0.0",
-          "Microsoft.AspNetCore.Components.Web": "5.0.0",
-          "Microsoft.Extensions.Configuration.Json": "5.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Localization": "5.0.0",
-          "Microsoft.Extensions.Options.ConfigurationExtensions": "5.0.0"
-        },
-        "compile": {
-          "lib/net5.0/BootstrapBlazor.dll": {}
-        },
-        "runtime": {
-          "lib/net5.0/BootstrapBlazor.dll": {}
-        },
-        "build": {
-          "buildTransitive/BootstrapBlazor.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/BootstrapBlazor.props": {}
         }
       },
       "Braintree/5.8.0": {
@@ -3161,10 +3090,10 @@
           "lib/netstandard2.0/Google.Api.Gax.Rest.dll": {}
         }
       },
-      "Google.Apis/1.52.0": {
+      "Google.Apis/1.54.0": {
         "type": "package",
         "dependencies": {
-          "Google.Apis.Core": "1.52.0"
+          "Google.Apis.Core": "1.54.0"
         },
         "compile": {
           "lib/netstandard2.0/Google.Apis.dll": {}
@@ -3173,11 +3102,11 @@
           "lib/netstandard2.0/Google.Apis.dll": {}
         }
       },
-      "Google.Apis.Auth/1.52.0": {
+      "Google.Apis.Auth/1.54.0": {
         "type": "package",
         "dependencies": {
-          "Google.Apis": "1.52.0",
-          "Google.Apis.Core": "1.52.0"
+          "Google.Apis": "1.54.0",
+          "Google.Apis.Core": "1.54.0"
         },
         "compile": {
           "lib/netstandard2.0/Google.Apis.Auth.PlatformServices.dll": {},
@@ -3188,7 +3117,7 @@
           "lib/netstandard2.0/Google.Apis.Auth.dll": {}
         }
       },
-      "Google.Apis.Core/1.52.0": {
+      "Google.Apis.Core/1.54.0": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "12.0.3"
@@ -3200,11 +3129,11 @@
           "lib/netstandard2.0/Google.Apis.Core.dll": {}
         }
       },
-      "Google.Apis.Drive.v3/1.52.0.2383": {
+      "Google.Apis.Drive.v3/1.54.0.2397": {
         "type": "package",
         "dependencies": {
-          "Google.Apis": "1.52.0",
-          "Google.Apis.Auth": "1.52.0"
+          "Google.Apis": "1.54.0",
+          "Google.Apis.Auth": "1.54.0"
         },
         "compile": {
           "lib/netstandard2.0/Google.Apis.Drive.v3.dll": {}
@@ -4066,30 +3995,6 @@
           "lib/netstandard2.0/Microsoft.Extensions.Hosting.Abstractions.dll": {}
         }
       },
-      "Microsoft.Extensions.Localization/5.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Localization.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Options": "5.0.0"
-        },
-        "compile": {
-          "lib/net5.0/Microsoft.Extensions.Localization.dll": {}
-        },
-        "runtime": {
-          "lib/net5.0/Microsoft.Extensions.Localization.dll": {}
-        }
-      },
-      "Microsoft.Extensions.Localization.Abstractions/5.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net5.0/Microsoft.Extensions.Localization.Abstractions.dll": {}
-        },
-        "runtime": {
-          "lib/net5.0/Microsoft.Extensions.Localization.Abstractions.dll": {}
-        }
-      },
       "Microsoft.Extensions.Logging/6.0.0-preview.6.21352.12": {
         "type": "package",
         "dependencies": {
@@ -4179,14 +4084,13 @@
           "lib/netstandard2.1/Microsoft.Extensions.Options.dll": {}
         }
       },
-      "Microsoft.Extensions.Options.ConfigurationExtensions/5.0.0": {
+      "Microsoft.Extensions.Options.ConfigurationExtensions/2.0.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Configuration.Binder": "5.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
-          "Microsoft.Extensions.Options": "5.0.0",
-          "Microsoft.Extensions.Primitives": "5.0.0"
+          "Microsoft.Extensions.Configuration.Abstractions": "2.0.1",
+          "Microsoft.Extensions.Configuration.Binder": "2.0.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.0.0",
+          "Microsoft.Extensions.Options": "2.0.1"
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll": {}
@@ -5902,7 +5806,7 @@
           "FirebaseAuthentication.net": "4.0.0-alpha.2",
           "FirebaseDatabase.net": "4.0.6",
           "FirebaseStorage.net": "1.0.3",
-          "Google.Apis.Drive.v3": "1.52.0.2383",
+          "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
           "PayPalCheckoutSdk": "1.0.3",
@@ -5930,31 +5834,6 @@
         "aspnetcore.firebase.authentication.nuspec",
         "lib/netstandard2.0/AspNetCore.Firebase.Authentication.dll",
         "lib/netstandard2.0/AspNetCore.Firebase.Authentication.xml"
-      ]
-    },
-    "BootstrapBlazor/5.3.2": {
-      "sha512": "tzqgiH6XPL0SMgJhotCpDrCqGL3sqxx5t80Jx2LpfJ4i1Wkv/yBwDki+SOYLcU96E9Hs8Nk0i0/ZT+7BkTcmNg==",
-      "type": "package",
-      "path": "bootstrapblazor/5.3.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "bootstrapblazor.5.3.2.nupkg.sha512",
-        "bootstrapblazor.nuspec",
-        "build/BootstrapBlazor.props",
-        "build/Microsoft.AspNetCore.StaticWebAssets.props",
-        "buildMultiTargeting/BootstrapBlazor.props",
-        "buildTransitive/BootstrapBlazor.props",
-        "lib/net5.0/BootstrapBlazor.dll",
-        "lib/net5.0/BootstrapBlazor.xml",
-        "logo.png",
-        "staticwebassets/css/bootstrap.blazor.bundle.min.css",
-        "staticwebassets/js/bootstrap.blazor.bundle.min.js",
-        "staticwebassets/lib/animate/animate.min.css",
-        "staticwebassets/lib/summernote/font/summernote.eot",
-        "staticwebassets/lib/summernote/font/summernote.ttf",
-        "staticwebassets/lib/summernote/font/summernote.woff",
-        "staticwebassets/lib/summernote/font/summernote.woff2"
       ]
     },
     "Braintree/5.8.0": {
@@ -6121,16 +6000,16 @@
         "lib/netstandard2.0/Google.Api.Gax.Rest.xml"
       ]
     },
-    "Google.Apis/1.52.0": {
-      "sha512": "5YWTBzHuNUiYIUoIBkCGYMokyYuaOuAn+w96lIJ2WNqeiAurKq3ZLqZ86fYae32PDWHZa+itFYc9O1iVfYi5dQ==",
+    "Google.Apis/1.54.0": {
+      "sha512": "53PujXOst4JNibnySRlOzduBwr3wt4hiLPbVCpZs/P2G8waltIW3cmma6sG7lTaW9ag/3T6MtIgt/uFtWBBkwA==",
       "type": "package",
-      "path": "google.apis/1.52.0",
+      "path": "google.apis/1.54.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
-        "google.apis.1.52.0.nupkg.sha512",
+        "google.apis.1.54.0.nupkg.sha512",
         "google.apis.nuspec",
         "lib/net45/Google.Apis.PlatformServices.dll",
         "lib/net45/Google.Apis.dll",
@@ -6144,16 +6023,16 @@
         "lib/netstandard2.0/Google.Apis.xml"
       ]
     },
-    "Google.Apis.Auth/1.52.0": {
-      "sha512": "T7JKjq4zmk8b4lrOn+kyatgDQdLytoV+i6Fw4agyWlm4Q+bbZbu3DcCz+UuliEtXHbShgHD1PWfiMJoQGuPEog==",
+    "Google.Apis.Auth/1.54.0": {
+      "sha512": "gVWia+KE7MLBTiAaDG//TociR6lE0/reEXx+go065L/w20skB2Ib58vnp4iGPaLehwY8ib8XmXy3P1n/Fr5Y4A==",
       "type": "package",
-      "path": "google.apis.auth/1.52.0",
+      "path": "google.apis.auth/1.54.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
-        "google.apis.auth.1.52.0.nupkg.sha512",
+        "google.apis.auth.1.54.0.nupkg.sha512",
         "google.apis.auth.nuspec",
         "lib/net45/Google.Apis.Auth.PlatformServices.dll",
         "lib/net45/Google.Apis.Auth.dll",
@@ -6173,16 +6052,16 @@
         "lib/netstandard2.0/Google.Apis.Auth.xml"
       ]
     },
-    "Google.Apis.Core/1.52.0": {
-      "sha512": "cgQpnZ9IC5SBNsAFTXHKUMB8bOkBWPLtXcLgwSYkV8oL0FfUdHwrDzH5qrf/mFB9fQIPgJyV6tdUwf2hu1UJ+A==",
+    "Google.Apis.Core/1.54.0": {
+      "sha512": "NKeTTKCttOQrLUCyLyRo5m53b2mG8ymJaiL+i1fR6w8TrrHD31ixPGO+BlwQs9OLuLd/p8BKkSdSaNGjKw5rkA==",
       "type": "package",
-      "path": "google.apis.core/1.52.0",
+      "path": "google.apis.core/1.54.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
-        "google.apis.core.1.52.0.nupkg.sha512",
+        "google.apis.core.1.54.0.nupkg.sha512",
         "google.apis.core.nuspec",
         "lib/net45/Google.Apis.Core.dll",
         "lib/net45/Google.Apis.Core.pdb",
@@ -6195,16 +6074,16 @@
         "lib/netstandard2.0/Google.Apis.Core.xml"
       ]
     },
-    "Google.Apis.Drive.v3/1.52.0.2383": {
-      "sha512": "En7zdh3iIqUqcVqccYHr74D71sH4XHtMbzj52tEkbpFYS8yjbNOVVnPh7JCYCnIzg/JQhgbi/mUi03qn8HLiCA==",
+    "Google.Apis.Drive.v3/1.54.0.2397": {
+      "sha512": "6uKx9qbcADW/fNOZKWXHdafvLSjR7jVpWs6eyoDlxE4oT31uAEVT7Kk5yJYRe7tNs8dhHAbJZYg+8fRWPD5lDA==",
       "type": "package",
-      "path": "google.apis.drive.v3/1.52.0.2383",
+      "path": "google.apis.drive.v3/1.54.0.2397",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE",
         "NuGetIcon.png",
-        "google.apis.drive.v3.1.52.0.2383.nupkg.sha512",
+        "google.apis.drive.v3.1.54.0.2397.nupkg.sha512",
         "google.apis.drive.v3.nuspec",
         "lib/net40/Google.Apis.Drive.v3.dll",
         "lib/net40/Google.Apis.Drive.v3.pdb",
@@ -7329,44 +7208,6 @@
         "microsoft.extensions.hosting.abstractions.nuspec"
       ]
     },
-    "Microsoft.Extensions.Localization/5.0.0": {
-      "sha512": "PJ2TouziI0zcgiq2VapjNFkMsT05rZUfq0i6sY+59Ri6Mn9W7okJ1U5/CvetFDUAN0DHrXOTaaMSt5epUn6rQQ==",
-      "type": "package",
-      "path": "microsoft.extensions.localization/5.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/Microsoft.Extensions.Localization.dll",
-        "lib/net461/Microsoft.Extensions.Localization.xml",
-        "lib/net5.0/Microsoft.Extensions.Localization.dll",
-        "lib/net5.0/Microsoft.Extensions.Localization.xml",
-        "lib/netstandard2.0/Microsoft.Extensions.Localization.dll",
-        "lib/netstandard2.0/Microsoft.Extensions.Localization.xml",
-        "microsoft.extensions.localization.5.0.0.nupkg.sha512",
-        "microsoft.extensions.localization.nuspec"
-      ]
-    },
-    "Microsoft.Extensions.Localization.Abstractions/5.0.0": {
-      "sha512": "Uey8VI3FbPFLiLh+mnFN13DTbQASSuzV3ZeN9Oma2Y4YW7OBWjU9LAsvPISRBQHrwztXegSoCacFWqB9o992xQ==",
-      "type": "package",
-      "path": "microsoft.extensions.localization.abstractions/5.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "Icon.png",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/Microsoft.Extensions.Localization.Abstractions.dll",
-        "lib/net461/Microsoft.Extensions.Localization.Abstractions.xml",
-        "lib/net5.0/Microsoft.Extensions.Localization.Abstractions.dll",
-        "lib/net5.0/Microsoft.Extensions.Localization.Abstractions.xml",
-        "lib/netstandard2.0/Microsoft.Extensions.Localization.Abstractions.dll",
-        "lib/netstandard2.0/Microsoft.Extensions.Localization.Abstractions.xml",
-        "microsoft.extensions.localization.abstractions.5.0.0.nupkg.sha512",
-        "microsoft.extensions.localization.abstractions.nuspec"
-      ]
-    },
     "Microsoft.Extensions.Logging/6.0.0-preview.6.21352.12": {
       "sha512": "yc3aA2GoJEzyIJ8r9rKTQIGAf5ITCwFbhKq6kz2OApfc2eHiQzooZooxj8eKT8aSv4MCfDPs98mocKaG0ZWqkQ==",
       "type": "package",
@@ -7493,24 +7334,17 @@
         "microsoft.extensions.options.nuspec"
       ]
     },
-    "Microsoft.Extensions.Options.ConfigurationExtensions/5.0.0": {
-      "sha512": "280RxNJqOeQqq47aJLy5D9LN61CAWeuRA83gPToQ8B9jl9SNdQ5EXjlfvF66zQI5AXMl+C/3hGnbtIEN+X3mqA==",
+    "Microsoft.Extensions.Options.ConfigurationExtensions/2.0.1": {
+      "sha512": "O1/MZSjWHdo4NNBD83ibRi83kKkbqbe+XTuoQtyk9NpfzYO6GoeEA+5ClEMJ56BO9DCNZb5SCBCPdlt2MdLFfw==",
       "type": "package",
-      "path": "microsoft.extensions.options.configurationextensions/5.0.0",
+      "path": "microsoft.extensions.options.configurationextensions/2.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "Icon.png",
-        "LICENSE.TXT",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
-        "lib/net461/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Options.ConfigurationExtensions.xml",
-        "microsoft.extensions.options.configurationextensions.5.0.0.nupkg.sha512",
-        "microsoft.extensions.options.configurationextensions.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "microsoft.extensions.options.configurationextensions.2.0.1.nupkg.sha512",
+        "microsoft.extensions.options.configurationextensions.nuspec"
       ]
     },
     "Microsoft.Extensions.Primitives/6.0.0-preview.6.21352.12": {
@@ -12406,13 +12240,12 @@
     "net6.0": [
       "AspNetCore.Firebase.Authentication >= 2.0.1",
       "BlazorApp3.Shared >= 1.0.0",
-      "BootstrapBlazor >= 5.3.2",
       "Braintree >= 5.8.0",
       "FirebaseAdmin >= 2.2.0",
       "FirebaseAuthentication.net >= 4.0.0-alpha.2",
       "FirebaseDatabase.net >= 4.0.6",
       "FirebaseStorage.net >= 1.0.3",
-      "Google.Apis.Drive.v3 >= 1.52.0.2383",
+      "Google.Apis.Drive.v3 >= 1.54.0.2397",
       "Google.Cloud.Firestore >= 2.4.0",
       "Google.Cloud.Storage.V1 >= 3.5.0",
       "Microsoft.AspNetCore.Components.Authorization >= 6.0.0-preview.6.21355.2",
@@ -12425,7 +12258,8 @@
   },
   "packageFolders": {
     "C:\\Users\\Thuyen\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -12437,12 +12271,14 @@
       "outputPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Client\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
         "C:\\Users\\Thuyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -12477,10 +12313,6 @@
             "target": "Package",
             "version": "[2.0.1, )"
           },
-          "BootstrapBlazor": {
-            "target": "Package",
-            "version": "[5.3.2, )"
-          },
           "Braintree": {
             "target": "Package",
             "version": "[5.8.0, )"
@@ -12503,7 +12335,7 @@
           },
           "Google.Apis.Drive.v3": {
             "target": "Package",
-            "version": "[1.52.0.2383, )"
+            "version": "[1.54.0.2397, )"
           },
           "Google.Cloud.Firestore": {
             "target": "Package",
