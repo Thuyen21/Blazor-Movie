@@ -6,7 +6,7 @@ using System.Linq;
 using System.IO;
 using System.Collections.Generic;
 
-namespace MLModel_WebApi
+namespace BlazorApp3.Server
 {
     public partial class MLModel
     {

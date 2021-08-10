@@ -8,7 +8,7 @@ using Microsoft.ML.Data;
 using Microsoft.ML.Trainers;
 using Microsoft.ML;
 
-namespace MLModel_WebApi
+namespace BlazorApp3.Server
 {
     public partial class MLModel
     {

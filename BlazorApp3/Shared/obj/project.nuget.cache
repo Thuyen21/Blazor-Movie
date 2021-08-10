@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6kaIecmCjclWyKhEyVCiZfy/cmVdounM0EEoCDVBU/yhqp4aLAFmb2l2kW2A7uZlAAg5k56yqTjsqq24w3j8tg==",
+  "dgSpecHash": "1fYc1wkK8yiCb0cZWgTW7nknMmGiVNTpfQS2tB7jJ8rJ9QeXbm6B3NcKfghahTVDrqbQO11I8a0Jv3iBsPo4UA==",
   "success": true,
-  "projectFilePath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
+  "projectFilePath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Thuyen\\.nuget\\packages\\aspnetcore.firebase.authentication\\2.0.1\\aspnetcore.firebase.authentication.2.0.1.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\braintree\\5.8.0\\braintree.5.8.0.nupkg.sha512",

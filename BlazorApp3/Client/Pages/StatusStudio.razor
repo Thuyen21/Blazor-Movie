@@ -12,7 +12,7 @@ else
 
 <div>Negative: @commentStatus[1]</div>
 <button @onclick="Submit">Make AI check again</button>
-
+<div>@content</div>
 }
 
 @code {
@@ -21,14 +21,19 @@ else
     public string Id{ get; set; }
     protected List<CommentModel> commentList = new();
    protected List<int> commentStatus = new(); 
+   protected string content; 
+
 
     protected override async Task OnInitializedAsync()
     {
         //commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Studio/Comment/{Id}");
             commentStatus= await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}");
     }
+    
     protected async Task Submit()
     {
+        content = "checking";
         commentStatus= await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/check");
+        _navigationManager.NavigateTo($"/StatusStudio/{Id}");
     }
 }

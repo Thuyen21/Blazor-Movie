@@ -33,7 +33,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Client\BlazorApp3.Client.csproj" />
-    <ProjectReference Include="..\MLModel_WebApi\MLModel_WebApi.csproj" />
     <ProjectReference Include="..\Shared\BlazorApp3.Shared.csproj" />
   </ItemGroup>
 </Project>

@@ -1292,23 +1292,7 @@
           "lib/netstandard2.0/Microsoft.Extensions.Logging.Debug.dll": {}
         }
       },
-      "Microsoft.Extensions.ML/1.6.0": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.0",
-          "Microsoft.Extensions.Logging": "2.1.0",
-          "Microsoft.Extensions.ObjectPool": "2.1.0",
-          "Microsoft.Extensions.Options": "2.1.0",
-          "Microsoft.ML": "1.6.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.Extensions.ML.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.ML.dll": {}
-        }
-      },
-      "Microsoft.Extensions.ObjectPool/2.1.0": {
+      "Microsoft.Extensions.ObjectPool/2.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll": {}
@@ -3278,23 +3262,6 @@
         "runtime": {
           "bin/placeholder/BlazorApp3.Shared.dll": {}
         }
-      },
-      "MLModel_WebApi/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v5.0",
-        "dependencies": {
-          "Microsoft.Extensions.ML": "1.6.0",
-          "Microsoft.ML": "1.6.0"
-        },
-        "compile": {
-          "bin/placeholder/MLModel_WebApi.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/MLModel_WebApi.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.AspNetCore.App"
-        ]
       }
     }
   },
@@ -4841,32 +4808,16 @@
         "microsoft.extensions.logging.debug.nuspec"
       ]
     },
-    "Microsoft.Extensions.ML/1.6.0": {
-      "sha512": "4M9sLsYYNGClHZqmWf/fgWHe8BvgPq7bxG0xZu0xNhpgODIBSO/XWgneCcklcD/4q5KvNOd5wghsV0UTP4hDag==",
+    "Microsoft.Extensions.ObjectPool/2.0.0": {
+      "sha512": "drOmgNZCJiNEqFM/TvyqwtogS8wqoWGQCW5KB/CVGKL6VXHw8OOMdaHyspp8HPstP9UDnrnuq+8eaCaAcQg6tA==",
       "type": "package",
-      "path": "microsoft.extensions.ml/1.6.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE",
-        "THIRD-PARTY-NOTICES.TXT",
-        "lib/netstandard2.0/Microsoft.Extensions.ML.dll",
-        "lib/netstandard2.0/Microsoft.Extensions.ML.xml",
-        "microsoft.extensions.ml.1.6.0.nupkg.sha512",
-        "microsoft.extensions.ml.nuspec",
-        "mlnetlogo.png"
-      ]
-    },
-    "Microsoft.Extensions.ObjectPool/2.1.0": {
-      "sha512": "tIbO45cohqexTJPXBubpwluycDT+6OWy2m7PukG37XMrtQ6Zv4AnoLrgUTaCmpWihSs5RZHKvThiAJFcBlR3AA==",
-      "type": "package",
-      "path": "microsoft.extensions.objectpool/2.1.0",
+      "path": "microsoft.extensions.objectpool/2.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.dll",
         "lib/netstandard2.0/Microsoft.Extensions.ObjectPool.xml",
-        "microsoft.extensions.objectpool.2.1.0.nupkg.sha512",
+        "microsoft.extensions.objectpool.2.0.0.nupkg.sha512",
         "microsoft.extensions.objectpool.nuspec"
       ]
     },
@@ -9490,11 +9441,6 @@
       "type": "project",
       "path": "../Shared/BlazorApp3.Shared.csproj",
       "msbuildProject": "../Shared/BlazorApp3.Shared.csproj"
-    },
-    "MLModel_WebApi/1.0.0": {
-      "type": "project",
-      "path": "../MLModel_WebApi/MLModel_WebApi.csproj",
-      "msbuildProject": "../MLModel_WebApi/MLModel_WebApi.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -9510,7 +9456,6 @@
       "Google.Apis.Drive.v3 >= 1.54.0.2397",
       "Google.Cloud.Firestore >= 2.4.0",
       "Google.Cloud.Storage.V1 >= 3.5.0",
-      "MLModel_WebApi >= 1.0.0",
       "Microsoft.AspNetCore.Components.WebAssembly.Server >= 6.0.0-preview.6.21355.2",
       "Microsoft.AspNetCore.SignalR.Client.Core >= 6.0.0-preview.6.21355.2",
       "Microsoft.ML >= 1.6.0",
@@ -9528,11 +9473,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Core\\BlazorApp3\\BlazorApp3\\Server\\BlazorApp3.Server.csproj",
+      "projectUniqueName": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Server\\BlazorApp3.Server.csproj",
       "projectName": "BlazorApp3.Server",
-      "projectPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Server\\BlazorApp3.Server.csproj",
+      "projectPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Server\\BlazorApp3.Server.csproj",
       "packagesPath": "C:\\Users\\Thuyen\\.nuget\\packages\\",
-      "outputPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Server\\obj\\",
+      "outputPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -9557,14 +9502,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Core\\BlazorApp3\\BlazorApp3\\Client\\BlazorApp3.Client.csproj": {
-              "projectPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Client\\BlazorApp3.Client.csproj"
+            "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\BlazorApp3.Client.csproj": {
+              "projectPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\BlazorApp3.Client.csproj"
             },
-            "D:\\Core\\BlazorApp3\\BlazorApp3\\MLModel_WebApi\\MLModel_WebApi.csproj": {
-              "projectPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\MLModel_WebApi\\MLModel_WebApi.csproj"
-            },
-            "D:\\Core\\BlazorApp3\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj": {
-              "projectPath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj"
+            "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj": {
+              "projectPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj"
             }
           }
         }

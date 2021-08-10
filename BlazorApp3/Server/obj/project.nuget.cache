@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eurQzKyo11M8hPv0+Q2MEGzPj8gOhhihJO5XyLGf9vtLz4H+Q1ez0psUd53NCvhHkBKyHPeS63m1fkfgvia7/g==",
+  "dgSpecHash": "1aYDfKxPZFe7WjN096sFHUWwMYr0rPvYxOVS2qdS3gaZJ/enUrLyJi0wjSH4w024n7uhZ0JgQRw2lFYHPdYFLw==",
   "success": true,
-  "projectFilePath": "D:\\Core\\BlazorApp3\\BlazorApp3\\Server\\BlazorApp3.Server.csproj",
+  "projectFilePath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Server\\BlazorApp3.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Thuyen\\.nuget\\packages\\aspnetcore.firebase.authentication\\2.0.1\\aspnetcore.firebase.authentication.2.0.1.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\bootstrapblazor\\5.5.3\\bootstrapblazor.5.5.3.nupkg.sha512",
@@ -95,8 +95,7 @@
     "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.extensions.logging.configuration\\2.0.1\\microsoft.extensions.logging.configuration.2.0.1.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.extensions.logging.console\\2.0.1\\microsoft.extensions.logging.console.2.0.1.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.extensions.logging.debug\\2.0.1\\microsoft.extensions.logging.debug.2.0.1.nupkg.sha512",
-    "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.extensions.ml\\1.6.0\\microsoft.extensions.ml.1.6.0.nupkg.sha512",
-    "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.extensions.objectpool\\2.1.0\\microsoft.extensions.objectpool.2.1.0.nupkg.sha512",
+    "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.extensions.objectpool\\2.0.0\\microsoft.extensions.objectpool.2.0.0.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.extensions.options\\6.0.0-preview.6.21352.12\\microsoft.extensions.options.6.0.0-preview.6.21352.12.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\5.0.0\\microsoft.extensions.options.configurationextensions.5.0.0.nupkg.sha512",
     "C:\\Users\\Thuyen\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0-preview.6.21352.12\\microsoft.extensions.primitives.6.0.0-preview.6.21352.12.nupkg.sha512",

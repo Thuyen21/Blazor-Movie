@@ -3,7 +3,6 @@ using Firebase.Storage;
 using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MLModel_WebApi;
 using PayoutsSdk.Core;
 using PayoutsSdk.Payouts;
 using System;
@@ -275,26 +274,34 @@ namespace BlazorApp3.Server.Controllers
             List<int> list = new();
             list.Add(0);
             list.Add(0);
-            var sampleData = new MLModel.ModelInput();
+            
             foreach (DocumentSnapshot item in commentSnapshot.Documents)
             {
                 var commentConvert = item.ConvertTo<CommentModel>();
 
-
-                //Load sample data
-                sampleData.Review = commentConvert.CommentText;
-                //Load model and predict output
-                var result = MLModel.Predict(sampleData);
-                if (result.Prediction == "positive")
+                try
                 {
-                    list[0] = list[0] + 1;
-                    await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Positive" } });
+                    //Load sample data
+                    var sampleData = new MLModel.ModelInput();
+                    sampleData.Review = commentConvert.CommentText;
+                    //Load model and predict output
+                    var result = MLModel.Predict(sampleData);
+                    if (result.Prediction == "positive")
+                    {
+                        list[0] = list[0] + 1;
+                        await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Positive" } });
+                    }
+                    else
+                    {
+                        list[1] = list[1] + 1;
+                        await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Negative" } });
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    list[1] = list[1] + 1;
-                    await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Negative" } });
+                    
                 }
+                
 
 
             }
