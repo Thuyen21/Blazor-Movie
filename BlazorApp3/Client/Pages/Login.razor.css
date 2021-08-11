@@ -42,7 +42,7 @@ button {
 }
 
 img.avatar {
-    width: 40%;
+    width: 25%;
     border-radius: 50%;
 }
 
@@ -75,7 +75,7 @@ span.psw {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 30%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */
@@ -96,8 +96,8 @@ span.psw {
 
 /* Add Zoom Animation */
 ::deep .animate {
-    -webkit-animation: animatezoom 0.6s;
-    animation: animatezoom 0.6s
+    -webkit-animation: animatezoom 1.6s;
+    animation: animatezoom 1.6s
 }
 
 @-webkit-keyframes animatezoom {

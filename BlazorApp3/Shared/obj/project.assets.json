@@ -16,7 +16,7 @@
           "lib/netstandard2.0/AspNetCore.Firebase.Authentication.dll": {}
         }
       },
-      "Braintree/5.8.0": {
+      "Braintree/5.9.0": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "9.0.1",
@@ -2760,14 +2760,14 @@
         "lib/netstandard2.0/AspNetCore.Firebase.Authentication.xml"
       ]
     },
-    "Braintree/5.8.0": {
-      "sha512": "jgTPhTeo9tal6fIgX91UDwtg1l5t2GW7WEa1m45DPH0tlctr3YH2UbjxL0nAA2LpelPhvyZpXGBJtXw3ydmZEA==",
+    "Braintree/5.9.0": {
+      "sha512": "fWXJekFrYj1Q9JiI3IsNSptv2i08bHyEYMHpl3HTp6oAK95WuQeTi4lEcmUS0Y3obaV8Nq+HvnqfnPvj9p+r4Q==",
       "type": "package",
-      "path": "braintree/5.8.0",
+      "path": "braintree/5.9.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "braintree.5.8.0.nupkg.sha512",
+        "braintree.5.9.0.nupkg.sha512",
         "braintree.nuspec",
         "lib/net452/Braintree.dll",
         "lib/netstandard2.0/Braintree.dll"
@@ -8247,7 +8247,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "AspNetCore.Firebase.Authentication >= 2.0.1",
-      "Braintree >= 5.8.0",
+      "Braintree >= 5.9.0",
       "FirebaseAdmin >= 2.2.0",
       "FirebaseAuthentication.net >= 4.0.0-alpha.2",
       "FirebaseDatabase.net >= 4.0.6",
@@ -8261,28 +8261,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Thuyen\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\Bpham\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
+      "projectUniqueName": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
       "projectName": "BlazorApp3.Shared",
-      "projectPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
-      "packagesPath": "C:\\Users\\Thuyen\\.nuget\\packages\\",
-      "outputPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\obj\\",
+      "projectPath": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
+      "packagesPath": "C:\\Users\\Bpham\\.nuget\\packages\\",
+      "outputPath": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Thuyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\Bpham\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -8315,7 +8307,7 @@
           },
           "Braintree": {
             "target": "Package",
-            "version": "[5.8.0, )"
+            "version": "[5.9.0, )"
           },
           "FirebaseAdmin": {
             "target": "Package",
@@ -8373,7 +8365,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.6.21355.2\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.7.21379.14\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -10,38 +10,49 @@
     Password
     <InputText @bind-Value="@login.Password" class="form-control"/>
     <button type="submit">Submit</button>
-</EditForm>*@
+    </EditForm>*@
 
 
 <button @onclick="@(async () => await JS.InvokeVoidAsync("myFunction2"))" style="width:auto;">Login</button>
 
 <div id="id01" class="modal">
 
-<div class="modal-content animate">
-<EditForm Model="@login" OnValidSubmit="HandleValidSubmit" >
-    <DataAnnotationsValidator/>
-    <ValidationSummary/>
+    <div class="modal-content animate">
+        <EditForm Model="@login" OnValidSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
 
-    <div class="imgcontainer">
-        <span @onclick="@(async () => await JS.InvokeVoidAsync("myFunction"))" class="close" title="Close Modal">&times;</span>
-        <img src="https://anhdep123.com/wp-content/uploads/2021/02/meme-bat-luc.jpg" width="100" height="100"  alt="Avatar" class="avatar">
-        </div>
-        <div class="container">
-            <label for="email"><b>Email</b></label>
-            <InputText  @bind-Value="@login.Email" placeholder="Enter Email" name="email"/>
+            <div class="imgcontainer">
+                <span @onclick="@(async () => await JS.InvokeVoidAsync("myFunction"))" class="close" title="Close Modal">&times;</span>
+                <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
+            </div>
+            <div class="container">
+                <label for="email"><b>Email</b></label>
+                @*<InputText type="text" @bind-Value="@login.Email" placeholder="Enter Email" name="email" />*@
+                 
 
-            <label for="psw"><b>Password</b></label>
-            <InputText @bind-Value="@login.Password" placeholder="Enter Password" name="psw"/>
-            <button type="submit">Submit</button>
-</div>
-   
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" @onclick="@(async () => await JS.InvokeVoidAsync("myFunction"))" class="cancelbtn">Cancel</button>
-      <NavLink class="nav-link" href="ResetPassword"> ResetPassword </NavLink>
+                <input type="text" @bind="@login.Email" />
+
+                <label for="psw"><b>Password</b></label>
+                @*<InputText type="password" @bind-Value="@login.Password" placeholder="Enter Password" name="psw" />*@
+                <input type="password" @bind="@login.Password" />
+
+                <button type="submit">Login</button>
+
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" @onclick="@(async () => await JS.InvokeVoidAsync("myFunction"))" class="cancelbtn">Cancel</button>
+                @*<NavLink class="nav-link" href="ResetPassword"> ResetPassword </NavLink>*@
+                @*<button type="button" class="cancelbtn" ><a href="ResetPassword" > Fogot Password</a> </button>*@
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+
+        </EditForm>
     </div>
-  
-</EditForm>
-</div>
 </div>
 
 <div>@content</div>
@@ -55,15 +66,15 @@
 
     protected async Task HandleValidSubmit()
     {
-        
-       var response =  await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
-       content = await response.Content.ReadAsStringAsync();
-        if(response.IsSuccessStatusCode)
+
+        var response = await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
+        content = await response.Content.ReadAsStringAsync();
+        if (response.IsSuccessStatusCode)
         {
             _navigationManager.NavigateTo("/", true);
         }
 
-        
+
     }
 
 }
