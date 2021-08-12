@@ -5,10 +5,7 @@ using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 
 namespace BlazorApp3.Server.Controllers
@@ -61,7 +58,7 @@ namespace BlazorApp3.Server.Controllers
             }
 
 
-            var claimsIdentity = new ClaimsIdentity(new[] {
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
                 new Claim(ClaimTypes.Email, logIn.Email),
                     new Claim(ClaimTypes.Sid, user.Uid),
                     new Claim(ClaimTypes.Name, acc.Name),
@@ -71,7 +68,7 @@ namespace BlazorApp3.Server.Controllers
 
             }, "serverAuth");
             //create claimsPrincipal
-            var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+            ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
             //Sign In User
             await HttpContext.SignInAsync(claimsPrincipal);
 
@@ -221,7 +218,7 @@ namespace BlazorApp3.Server.Controllers
 
 
                 await docRef.AddAsync(account);
-                var claimsIdentity = new ClaimsIdentity(new[] {
+                ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
                 new Claim(ClaimTypes.Email, account.Email),
                     new Claim(ClaimTypes.Sid, user.Uid),
                     new Claim(ClaimTypes.Name, account.Name),
@@ -230,7 +227,7 @@ namespace BlazorApp3.Server.Controllers
                     new Claim("Token", await user.GetIdTokenAsync())
             }, "serverAuth");
                 //create claimsPrincipal
-                var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 //Sign In User
                 await HttpContext.SignInAsync(claimsPrincipal);
 
@@ -246,7 +243,7 @@ namespace BlazorApp3.Server.Controllers
         public async Task<ActionResult<char[]>> GetToken()
         {
 
-            var token = User.FindFirstValue("Token");
+            string token = User.FindFirstValue("Token");
             char[] ch = new char[token.Length];
             for (int i = 0; i < token.Length; i++)
             {

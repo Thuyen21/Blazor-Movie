@@ -11,7 +11,7 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-		<TypeScriptModuleKind>amd</TypeScriptModuleKind>
+		<TypeScriptModuleKind>none</TypeScriptModuleKind>
     		<RunAOTCompilation>true</RunAOTCompilation>
 	</PropertyGroup>
 

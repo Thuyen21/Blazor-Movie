@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.IO;
-
-namespace BlazorApp3.Server
+﻿namespace BlazorApp3.Server
 {
     public class Program
     {

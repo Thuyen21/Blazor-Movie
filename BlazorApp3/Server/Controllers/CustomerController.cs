@@ -3,12 +3,8 @@ using Braintree;
 using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Security.Claims;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace BlazorApp3.Server.Controllers
 {
@@ -267,7 +263,7 @@ namespace BlazorApp3.Server.Controllers
         public async Task<ActionResult<char[]>> VipCheck()
         {
             FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
-            var vipCheck = await db.Collection("Vip").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
+            QuerySnapshot vipCheck = await db.Collection("Vip").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
             if (vipCheck.Documents.Count == 0)
             {
 
@@ -293,7 +289,7 @@ namespace BlazorApp3.Server.Controllers
         public async Task<ActionResult> BuyVip([FromBody] VipModel vip)
         {
             FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
-            var collection = db.Collection("Buy");
+            CollectionReference collection = db.Collection("Buy");
             if (vip.Choose == 0 && vip.Id != null)
             {
                 if ((await db.Collection("Account").
@@ -310,7 +306,7 @@ namespace BlazorApp3.Server.Controllers
             {
                 if (vip.Choose == 1 || vip.Choose == 3 || vip.Choose == 6 || vip.Choose == 12)
                 {
-                    var minus = new double();
+                    double minus = new double();
                     switch (vip.Choose)
                     {
                         case 1:
@@ -333,7 +329,7 @@ namespace BlazorApp3.Server.Controllers
                     {
                         return BadRequest("Not enough cash");
                     }
-                    var vipCheck = await db.Collection("Vip").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
+                    QuerySnapshot vipCheck = await db.Collection("Vip").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
                     if (vipCheck.Documents.Count == 0)
                     {
                         await db.Collection("Vip").AddAsync(new Dictionary<string, object>() { { "User", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow.AddMonths(vip.Choose) } });
@@ -344,7 +340,7 @@ namespace BlazorApp3.Server.Controllers
                     }
                     else
                     {
-                        var dateCheck = vipCheck.Documents[0].GetValue<DateTime>("Time");
+                        DateTime dateCheck = vipCheck.Documents[0].GetValue<DateTime>("Time");
                         if (dateCheck < DateTime.UtcNow)
                         {
                             await vipCheck.Documents[0].Reference.UpdateAsync(new Dictionary<string, object> { { "Time", DateTime.UtcNow.AddMonths(vip.Choose) } });
@@ -369,7 +365,7 @@ namespace BlazorApp3.Server.Controllers
         public async Task<ActionResult<bool>> CanWatch(string Id)
         {
             FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
-            var collectionCheckVip = await db.Collection("Vip").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).OrderByDescending("Time").Limit(1).GetSnapshotAsync();
+            QuerySnapshot collectionCheckVip = await db.Collection("Vip").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).OrderByDescending("Time").Limit(1).GetSnapshotAsync();
 
             if (collectionCheckVip.Documents.Count != 0)
 
@@ -381,7 +377,7 @@ namespace BlazorApp3.Server.Controllers
                 }
                 else
                 {
-                    var collectionCheckBuy = await db.Collection("Buy").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).WhereEqualTo("MovieId", Id).GetSnapshotAsync();
+                    QuerySnapshot collectionCheckBuy = await db.Collection("Buy").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).WhereEqualTo("MovieId", Id).GetSnapshotAsync();
                     if (collectionCheckBuy.Documents.Count == 0)
                     {
                         return await Task.FromResult(false);
@@ -395,7 +391,7 @@ namespace BlazorApp3.Server.Controllers
             }
             else
             {
-                var collectionCheckBuy = await db.Collection("Buy").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).WhereEqualTo("MovieId", Id).GetSnapshotAsync();
+                QuerySnapshot collectionCheckBuy = await db.Collection("Buy").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).WhereEqualTo("MovieId", Id).GetSnapshotAsync();
                 if (collectionCheckBuy.Documents.Count == 0)
                 {
                     return await Task.FromResult(false);
@@ -414,21 +410,21 @@ namespace BlazorApp3.Server.Controllers
             Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time");
             QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
             List<CommentModel> commentList = new List<CommentModel>();
-            var reader = new StreamReader(Path.GetFullPath(Path.Combine("wwwroot/Bad Words/base-list-of-bad-words_csv-file_2021_01_18.csv")));
+            StreamReader reader = new StreamReader(Path.GetFullPath(Path.Combine("wwwroot/Bad Words/base-list-of-bad-words_csv-file_2021_01_18.csv")));
             IList<string> censoredWords = new List<string>();
 
             while (!reader.EndOfStream)
             {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
+                string line = reader.ReadLine();
+                string[] values = line.Split(',');
                 censoredWords.Add(values[0]);
             }
             Censor censor = new Censor(censoredWords);
             foreach (DocumentSnapshot item in commentSnapshot.Documents)
             {
-                var commentConvert = item.ConvertTo<CommentModel>();
-                var like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
-                var Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
+                CommentModel commentConvert = item.ConvertTo<CommentModel>();
+                int like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
+                int Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
                 commentList.Add(new CommentModel() { Id = commentConvert.Id, Email = commentConvert.Email, MovieId = commentConvert.MovieId, Time = commentConvert.Time, CommentText = censor.CensorText(commentConvert.CommentText), Like = like, DisLike = Dislike });
             }
 
@@ -499,7 +495,9 @@ namespace BlazorApp3.Server.Controllers
         public Censor(IEnumerable<string> censoredWords)
         {
             if (censoredWords == null)
+            {
                 throw new ArgumentNullException("censoredWords");
+            }
 
             CensoredWords = new List<string>(censoredWords);
         }
@@ -507,7 +505,9 @@ namespace BlazorApp3.Server.Controllers
         public string CensorText(string text)
         {
             if (text == null)
+            {
                 throw new ArgumentNullException("text");
+            }
 
             string censoredText = text;
 

@@ -1,11 +1,6 @@
 using BlazorApp3.Shared;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace BlazorApp3.Client
 {
@@ -13,7 +8,7 @@ namespace BlazorApp3.Client
     {
         public static async Task Main(string[] args)
         {
-            var builder = WebAssemblyHostBuilder.CreateDefault(args);
+            WebAssemblyHostBuilder builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddOptions();

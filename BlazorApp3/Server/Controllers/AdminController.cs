@@ -7,16 +7,9 @@ using FirebaseAdmin.Auth;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace BlazorApp3.Server.Controllers
 {
@@ -83,7 +76,7 @@ namespace BlazorApp3.Server.Controllers
             QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
             foreach (DocumentSnapshot document in snapshot.Documents)
             {
-                var convert = document.ConvertTo<AccountManagementModel>();
+                AccountManagementModel convert = document.ConvertTo<AccountManagementModel>();
 
 
                 myFoo.Add(convert);
@@ -303,14 +296,16 @@ namespace BlazorApp3.Server.Controllers
             }
             else
             {
-                List<string> list = new List<string>();
-                list.Add("image/bmp");
-                list.Add("image/gif");
-                list.Add("image/jpeg");
-                list.Add("image/png");
-                list.Add("image/svg+xml");
-                list.Add("image/tiff");
-                list.Add("image/webp");
+                List<string> list = new List<string>
+                {
+                    "image/bmp",
+                    "image/gif",
+                    "image/jpeg",
+                    "image/png",
+                    "image/svg+xml",
+                    "image/tiff",
+                    "image/webp"
+                };
                 if (list.Contains(ImageFileUp.ContentType))
                 {
                     using Stream fileStream = ImageFileUp.OpenReadStream();
@@ -345,16 +340,18 @@ namespace BlazorApp3.Server.Controllers
             }
             else
             {
-                List<string> list = new List<string>();
-                list.Add("video/x-msvideo");
-                list.Add("video/mp4");
-                list.Add("video/mpeg");
-                list.Add("video/ogg");
-                list.Add("video/mp2t");
-                list.Add("video/webm");
-                list.Add("video/3gpp");
-                list.Add("video/3gpp2");
-                list.Add("video/x-matroska");
+                List<string> list = new List<string>
+                {
+                    "video/x-msvideo",
+                    "video/mp4",
+                    "video/mpeg",
+                    "video/ogg",
+                    "video/mp2t",
+                    "video/webm",
+                    "video/3gpp",
+                    "video/3gpp2",
+                    "video/x-matroska"
+                };
 
                 if (list.Contains(MovieFileUp.ContentType))
                 {
