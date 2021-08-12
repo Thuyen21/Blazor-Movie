@@ -21,26 +21,4 @@
 </EditForm>
 
 <div>@content</div>
-@code {
 
-    protected SignUpModel signUpModel = new() {DateOfBirth = DateTime.Now };
-
-
-    protected string content;
-
-    protected async Task HandleValidSubmit()
-    {
-
-        var response =  await _httpClient.PostAsJsonAsync<SignUpModel>("user/signUp", signUpModel);
-        if(response.IsSuccessStatusCode)
-        {
-            _navigationManager.NavigateTo("/", true);
-        }
-        else
-        {
-            content = await response.Content.ReadAsStringAsync();
-        }
-        
-    }
-
-}

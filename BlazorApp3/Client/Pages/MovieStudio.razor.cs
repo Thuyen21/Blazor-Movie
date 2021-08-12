@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 
 namespace BlazorApp3.Client.Pages
 {
-    public partial class MovieAdmin
+    public partial class MovieStudio
     {
         protected List<MovieModel> movies = new();
         protected string NameSort = "name";
@@ -42,16 +42,16 @@ namespace BlazorApp3.Client.Pages
             {
                 if (string.IsNullOrEmpty(sortOrder))
                 {
-                    movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>("Admin/Movie/ /{no}");
+                    movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>("Studio/Index/ /{no}");
                 }
                 else
                 {
-                    movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Admin/Movie/ /{sortOrder}");
+                    movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sortOrder}");
                 }
             }
             else
             {
-                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Admin/Movie/{searchString}/{sortOrder}");
+                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/{searchString}/{sortOrder}");
             }
         }
     }

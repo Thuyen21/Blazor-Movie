@@ -61,27 +61,11 @@
 
 
 
-@code {
-
-    protected LogInModel login = new LogInModel();
-    protected string content;
-
-    protected string divCSS = "display: none;";
-    protected void DivCSS(string divCSS)
-    {
-        this.divCSS = divCSS;
-    }
-    protected async Task HandleValidSubmit()
-    {
-
-        var response = await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
-        content = await response.Content.ReadAsStringAsync();
-        if (response.IsSuccessStatusCode)
+@code
+{
+        protected string divCSS = "display: none;";
+        protected void DivCSS(string divCSS)
         {
-            _navigationManager.NavigateTo("/", true);
+            this.divCSS = divCSS;
         }
-
-
-    }
-
 }

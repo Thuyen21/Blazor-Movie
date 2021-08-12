@@ -33,23 +33,4 @@ else
 
 <div>@content</div>
 }
-@code {
-[Parameter]
-    public string Id { get; set; }
-    protected MovieModel movie;
-    protected string content;
-    protected override async Task OnInitializedAsync()
-    {
-        
-        if(Id == null)
-        _navigationManager.NavigateTo("/MovieAdmin");
 
-        movie =  await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
-    }
-    protected async Task HandleValidSubmit()
-    {
-        
-        var response =  await _httpClient.PostAsJsonAsync<MovieModel>("Admin/DeleteMovie", movie);
-       content = await response.Content.ReadAsStringAsync();
-    }
-}
