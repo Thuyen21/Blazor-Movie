@@ -13,9 +13,10 @@
     </EditForm>*@
 
 
-<button @onclick="@(async () => await JS.InvokeVoidAsync("myFunction2"))" style="width:auto;">Login</button>
+@*<button @onclick="@(async () => await JS.InvokeVoidAsync("myFunction2"))" style="width:auto;">Login</button>*@
+<button @onclick="@( () =>  DivCSS("display: block;"))" style="width:auto;">Login</button>
 
-<div id="id01" class="modal">
+<div id="id01" class="modal" style="@divCSS">
 
     <div class="modal-content animate">
         <EditForm Model="@login" OnValidSubmit="HandleValidSubmit">
@@ -23,7 +24,8 @@
             <ValidationSummary />
 
             <div class="imgcontainer">
-                <span @onclick="@(async () => await JS.InvokeVoidAsync("myFunction"))" class="close" title="Close Modal">&times;</span>
+                @*<span @onclick="@(async () => await JS.InvokeVoidAsync("myFunction"))" class="close" title="Close Modal">&times;</span>*@
+                <span @onclick="@( () =>  DivCSS("display: none;"))" class="close" title="Close Modal">&times;</span>
                 <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
             </div>
             <div class="container">
@@ -64,6 +66,11 @@
     protected LogInModel login = new LogInModel();
     protected string content;
 
+    protected string divCSS = "display: none;";
+    protected void DivCSS(string divCSS)
+    {
+        this.divCSS = divCSS;
+    }
     protected async Task HandleValidSubmit()
     {
 
