@@ -22,6 +22,88 @@
 				<span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
 			</NavLink>
 		</li>
+		<AuthorizeView Roles = "Admin">
+            <Authorized>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="AdminAccountManagement">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Account Management
+                    </NavLink>
+                    </li>
+                    <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="MovieAdmin">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Movie Management
+                    </NavLink>
+                    </li>
+            </Authorized>
+        </AuthorizeView>
+        <AuthorizeView Roles = "Customer">
+            <Authorized>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="MovieCustomer">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Movie
+                    </NavLink>
+                    </li>
+                    <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="Deposit">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Deposit
+                    </NavLink>
+                    </li>
+                    <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="BuyVip">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Buy Vip
+                    </NavLink>
+                    </li>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Roles = "Studio">
+            <Authorized>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="MovieStudio">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Movie
+                    </NavLink>
+                    </li>
+                    <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="CreateStudio">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Create Movie
+                    </NavLink>
+                    </li>
+                    <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="SalaryStudio">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Salary
+                    </NavLink>
+                    </li>
+                    
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView>
+            
+            <Authorized>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="Profile">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> @context.User.Identity.Name
+                    </NavLink>
+                    </li>
+                    <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="logout">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Logout
+                    </NavLink>
+                </li>
+            </Authorized>
+            <NotAuthorized>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="Login">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Login
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="SignUp">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> SignUp
+                    </NavLink>
+                </li>
+            </NotAuthorized>
+        </AuthorizeView>
 	</ul>
 </div>
 

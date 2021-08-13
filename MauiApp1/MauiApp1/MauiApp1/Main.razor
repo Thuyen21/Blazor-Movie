@@ -1,9 +1,10 @@
 ﻿
-<Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState>
+
+<CascadingAuthenticationState>
 
 <Router AppAssembly="@GetType().Assembly">
 	<Found Context="routeData">
-		<RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+		<AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
 	</Found>
 	<NotFound>
 		<LayoutView Layout="@typeof(MainLayout)">
@@ -11,4 +12,4 @@
 		</LayoutView>
 	</NotFound>
 </Router>
-</Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState>
+</CascadingAuthenticationState>

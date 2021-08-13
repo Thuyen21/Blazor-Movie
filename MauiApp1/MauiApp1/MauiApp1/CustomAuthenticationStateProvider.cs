@@ -12,6 +12,17 @@ namespace MauiApp1
     {
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
+
+
+                    new Claim(ClaimTypes.Name, "Email"),
+                    new Claim(ClaimTypes.Role, "Admin"),
+                    //new Claim(ClaimTypes.Email, user.Email)
+                }, "serverAuth");
+            ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+            return new AuthenticationState(claimsPrincipal);
+
             return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
         }
     }

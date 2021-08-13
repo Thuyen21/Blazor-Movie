@@ -26,6 +26,7 @@ namespace MauiApp1
 				})
 				.ConfigureServices(services =>
 				{
+					services.AddAuthorizationCore();
 					services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 					services.AddBlazorWebView();
 					services.AddSingleton<WeatherForecastService>();

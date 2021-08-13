@@ -44,4 +44,8 @@
 		<PackageReference Include="Microsoft.ProjectReunion.InteractiveExperiences" Version="0.8.1" NoWarn="NU1701" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\Shared\BlazorApp3.Shared.csproj" />
+	</ItemGroup>
+
 </Project>
