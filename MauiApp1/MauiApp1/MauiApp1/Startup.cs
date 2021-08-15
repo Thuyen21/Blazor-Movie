@@ -7,6 +7,8 @@ using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Controls.Xaml;
 using MauiApp1.Data;
 using Microsoft.AspNetCore.Components.Authorization;
+using System.Net.Http;
+using System;
 
 [assembly: XamlCompilationAttribute(XamlCompilationOptions.Compile)]
 
@@ -26,10 +28,13 @@ namespace MauiApp1
 				})
 				.ConfigureServices(services =>
 				{
+					services.AddOptions();
 					services.AddAuthorizationCore();
 					services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 					services.AddBlazorWebView();
 					services.AddSingleton<WeatherForecastService>();
+					services.AddScoped(
+				sp => new HttpClient() {BaseAddress = new Uri("https://movie213.herokuapp.com/") });
 				});
 		}
 	}

@@ -8261,19 +8261,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bpham\\.nuget\\packages\\": {}
+    "C:\\Users\\Thuyen\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
+      "projectUniqueName": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
       "projectName": "BlazorApp3.Shared",
-      "projectPath": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
-      "packagesPath": "C:\\Users\\Bpham\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\obj\\",
+      "projectPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
+      "packagesPath": "C:\\Users\\Thuyen\\.nuget\\packages\\",
+      "outputPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Bpham\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Thuyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8282,7 +8287,6 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://aka.ms/maui-preview/index.json": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
