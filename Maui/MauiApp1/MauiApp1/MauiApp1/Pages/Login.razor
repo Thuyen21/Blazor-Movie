@@ -1,0 +1,73 @@
+﻿<h3>Login</h3>
+@inject IJSRuntime JS
+@inject IAccountService _accountService;
+@page "/login"
+@inject NavigationManager _navigationManager
+@inject HttpClient _httpClient
+@*<EditForm Model="@login" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    Email
+    <InputText  @bind-Value="@login.Email" class="form-control"/>
+    Password
+    <InputText @bind-Value="@login.Password" class="form-control"/>
+    <button type="submit">Submit</button>
+    </EditForm>*@
+
+
+@*<button @onclick="@(async () => await JS.InvokeVoidAsync("myFunction2"))" style="width:auto;">Login</button>*@
+<button @onclick="@( () =>  DivCSS("display: block;"))" style="width:auto;">Login</button>
+
+<div id="id01" class="modal" style="@divCSS">
+
+    <div class="modal-content animate">
+        <EditForm Model="@login" OnValidSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="imgcontainer">
+                @*<span @onclick="@(async () => await JS.InvokeVoidAsync("myFunction"))" class="close" title="Close Modal">&times;</span>*@
+                <span @onclick="@( () =>  DivCSS("display: none;"))" class="close" title="Close Modal">&times;</span>
+                <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
+            </div>
+            <div class="container">
+                <label for="email"><b>Email</b></label>
+                @*<InputText type="text" @bind-Value="@login.Email" placeholder="Enter Email" name="email" />*@
+                 
+
+                <input type="text" @bind="@login.Email" placeholder="Enter Email" />
+
+                <label for="psw"><b>Password</b></label>
+                @*<InputText type="password" @bind-Value="@login.Password" placeholder="Enter Password" name="psw" />*@
+                <input type="password" @bind="@login.Password" placeholder="Enter Password" />
+
+                <button type="submit">Login</button>
+
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" @onclick="@(async () => await JS.InvokeVoidAsync("myFunction"))" class="cancelbtn">Cancel</button>
+                @*<NavLink class="nav-link" href="ResetPassword"> ResetPassword </NavLink>*@
+                @*<button type="button" class="cancelbtn" ><a href="ResetPassword" > Fogot Password</a> </button>*@
+                <span class="psw">Forgot <a href="ResetPassword">password?</a></span>
+            </div>
+
+        </EditForm>
+    </div>
+</div>
+
+<div>@content</div>
+
+
+
+@code
+{
+        protected string divCSS = "display: none;";
+        protected void DivCSS(string divCSS)
+        {
+            this.divCSS = divCSS;
+        }
+}

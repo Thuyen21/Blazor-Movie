@@ -1,0 +1,57 @@
+﻿<h3>DeleteMovieAdmin</h3>
+@page "/DeleteMovieAdmin/{Id}"
+@attribute [Authorize(Roles ="Admin")]
+
+
+
+@if (movie == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    MovieId
+    <InputText   @bind-Value="@movie.MovieId" /><br>
+    StudioId
+    <InputText  @bind-Value="@movie.StudioId"/><br>
+    MovieGenre
+    <InputText  @bind-Value="@movie.MovieGenre"/><br>
+    MovieName
+    <InputText  @bind-Value="@movie.MovieName"/><br>
+    PremiereDate
+    <InputDate  @bind-Value="@movie.PremiereDate"/><br>
+
+    <button type="submit">Delete</button>
+</EditForm>
+
+
+
+<div>@content</div>
+}
+@code {
+    [Parameter]
+        public string Id { get; set; }
+
+        protected MovieModel movie;
+        protected string content;
+        protected override async Task OnInitializedAsync()
+        {
+            if (Id == null)
+            {
+                _navigationManager.NavigateTo("/MovieAdmin");
+            }
+
+            movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
+        }
+
+        protected async Task HandleValidSubmit()
+        {
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<MovieModel>("Admin/DeleteMovie", movie);
+            content = await response.Content.ReadAsStringAsync();
+        }
+}
