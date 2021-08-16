@@ -36,6 +36,10 @@ namespace BlazorApp3.Client
             return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
 
         }
+        public void Update()
+        {
+            NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+        }
 
     }
 }

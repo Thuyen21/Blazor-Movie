@@ -1,3 +1,4 @@
+using BlazorApp3.Client.Services;
 using BlazorApp3.Shared;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -24,7 +25,7 @@ namespace BlazorApp3.Client
 
             builder.Logging.SetMinimumLevel(LogLevel.Debug);
 
-
+            builder.Services.AddScoped<IAccountService, AccountService>();
 
 
 
