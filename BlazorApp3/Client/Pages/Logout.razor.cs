@@ -1,7 +1,5 @@
 using BlazorApp3.Client.Shared;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Net.Http;
 
 namespace BlazorApp3.Client.Pages
 {
