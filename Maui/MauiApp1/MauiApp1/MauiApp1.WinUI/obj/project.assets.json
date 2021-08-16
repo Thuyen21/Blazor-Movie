@@ -23186,6 +23186,7 @@
   "projectFileDependencyGroups": {
     "net6.0-windows10.0.19041": [
       "BlazorApp3.Shared >= 1.0.0",
+      "Braintree >= 5.9.0",
       "Microsoft.AspNetCore.Components.Authorization >= 6.0.0-preview.7.21378.6",
       "Microsoft.AspNetCore.Components.WebView.Maui >= 6.0.100-preview.7.1345",
       "Microsoft.Extensions.FileProviders.Embedded >= 6.0.0-preview.7.21378.6",
@@ -23246,6 +23247,10 @@
       "net6.0-windows10.0.19041": {
         "targetAlias": "net6.0-windows10.0.19041",
         "dependencies": {
+          "Braintree": {
+            "target": "Package",
+            "version": "[5.9.0, )"
+          },
           "Microsoft.AspNetCore.Components.Authorization": {
             "target": "Package",
             "version": "[6.0.0-preview.7.21378.6, )"

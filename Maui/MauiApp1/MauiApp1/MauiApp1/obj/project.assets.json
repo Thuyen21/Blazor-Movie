@@ -43383,6 +43383,7 @@
   "projectFileDependencyGroups": {
     "net6.0-android30.0": [
       "BlazorApp3.Shared >= 1.0.0",
+      "Braintree >= 5.9.0",
       "Microsoft.AspNetCore.Components.Authorization >= 6.0.0-preview.7.21378.6",
       "Microsoft.AspNetCore.Components.WebView.Maui >= 6.0.100-preview.7.1345",
       "Microsoft.Extensions.FileProviders.Embedded >= 6.0.0-preview.7.21378.6",
@@ -43390,6 +43391,7 @@
     ],
     "net6.0-ios13.6": [
       "BlazorApp3.Shared >= 1.0.0",
+      "Braintree >= 5.9.0",
       "Microsoft.AspNetCore.Components.Authorization >= 6.0.0-preview.7.21378.6",
       "Microsoft.AspNetCore.Components.WebView.Maui >= 6.0.100-preview.7.1345",
       "Microsoft.Extensions.FileProviders.Embedded >= 6.0.0-preview.7.21378.6",
@@ -43397,6 +43399,7 @@
     ],
     "net6.0-maccatalyst13.5": [
       "BlazorApp3.Shared >= 1.0.0",
+      "Braintree >= 5.9.0",
       "Microsoft.AspNetCore.Components.Authorization >= 6.0.0-preview.7.21378.6",
       "Microsoft.AspNetCore.Components.WebView.Maui >= 6.0.100-preview.7.1345",
       "Microsoft.Extensions.FileProviders.Embedded >= 6.0.0-preview.7.21378.6",
@@ -43471,6 +43474,10 @@
       "net6.0-android30.0": {
         "targetAlias": "net6.0-android",
         "dependencies": {
+          "Braintree": {
+            "target": "Package",
+            "version": "[5.9.0, )"
+          },
           "Microsoft.AspNetCore.Components.Authorization": {
             "target": "Package",
             "version": "[6.0.0-preview.7.21378.6, )"
@@ -43567,6 +43574,10 @@
       "net6.0-ios13.6": {
         "targetAlias": "net6.0-ios",
         "dependencies": {
+          "Braintree": {
+            "target": "Package",
+            "version": "[5.9.0, )"
+          },
           "Microsoft.AspNetCore.Components.Authorization": {
             "target": "Package",
             "version": "[6.0.0-preview.7.21378.6, )"
@@ -43647,6 +43658,10 @@
       "net6.0-maccatalyst13.5": {
         "targetAlias": "net6.0-maccatalyst",
         "dependencies": {
+          "Braintree": {
+            "target": "Package",
+            "version": "[5.9.0, )"
+          },
           "Microsoft.AspNetCore.Components.Authorization": {
             "target": "Package",
             "version": "[6.0.0-preview.7.21378.6, )"

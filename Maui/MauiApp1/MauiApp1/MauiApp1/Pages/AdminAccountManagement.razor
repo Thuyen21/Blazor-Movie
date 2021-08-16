@@ -1,0 +1,101 @@
+﻿<h3>AdminAccountManagement</h3>
+@page "/AdminAccountManagement"
+@attribute [Authorize(Roles ="Admin")]
+<input placeholder="Enter your text" @bind-value="@searchString" />
+
+    <button class="btn btn-primary" @onclick="OnInitializedAsync">Search</button>
+
+@if (accs == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+   
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th><button class="btn btn-primary" @onclick="EmailSortParm">Email</button></th>
+            <th><button class="btn btn-primary" @onclick="NameSortParm">Name</button></th>
+            <th>Role</th>
+            <th><button class="btn btn-primary" @onclick="DateSortParm">Date Of Birth</button></th>
+            <th>Wallet</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var acc in accs)
+        {
+            <tr>
+                <td>@acc.Id</td>
+                <td>@acc.Email</td>
+                <td>@acc.Name</td>
+                <td>@acc.Role</td>
+                <td>@acc.DateOfBirth.ToShortDateString()</td>
+                 <td>@acc.Wallet</td>
+                 @{ var linkEdit = $"EditAccount/{acc.Id}"; var linkBan = $"BanAccount/{acc.Id}";}
+                 <td><NavLink class="nav-link" href="@linkEdit">Edit</NavLink></td>
+                 <td><NavLink class="nav-link" href="@linkBan">Ban</NavLink> </td>
+                    
+                    
+            </tr>
+        }
+        
+
+        </tbody>
+    </table>
+}
+@code{
+    [Parameter]
+        public List<AccountManagementModel> accs { get; set; } = new();
+        protected string NameSort = "name";
+        protected string DateSort = "date";
+        protected string EmailSort = "email";
+        protected string sortOrder = "Id";
+        protected string searchString { get; set; }
+
+        protected async Task NameSortParm()
+        {
+            sortOrder = NameSort;
+            NameSort = NameSort == "name" ? "nameDesc" : "name";
+            await OnInitializedAsync();
+        }
+
+        protected async Task DateSortParm()
+        {
+            sortOrder = DateSort;
+            DateSort = DateSort == "date" ? "dateDesc" : "date";
+            await OnInitializedAsync();
+        }
+
+        protected async Task EmailSortParm()
+        {
+            sortOrder = EmailSort;
+            EmailSort = EmailSort == "email" ? "emailDesc" : "email";
+            await OnInitializedAsync();
+        }
+
+        protected override async Task OnInitializedAsync()
+        {
+            if (string.IsNullOrEmpty(searchString))
+            {
+                if (string.IsNullOrEmpty(sortOrder))
+                {
+                    accs = await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>("admin/AccountManagement/ /{no}");
+                }
+                else
+                {
+                    accs = await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/ /{sortOrder}");
+                }
+            }
+            else
+            {
+                accs = await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/{searchString}/{sortOrder}");
+            }
+        }
+}
