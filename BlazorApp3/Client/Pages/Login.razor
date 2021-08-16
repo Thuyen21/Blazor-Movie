@@ -1,7 +1,8 @@
 ﻿<h3>Login</h3>
 @inject IJSRuntime JS
-
+@inject IAccountService _accountService;
 @page "/login"
+@using BlazorApp3.Client.Services
 @*<EditForm Model="@login" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator/>
     <ValidationSummary/>

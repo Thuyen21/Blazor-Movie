@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\BlazorApp3.Client.csproj": {}
+    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\BlazorApp3.Client.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\BlazorApp3.Client.csproj": {
+    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\BlazorApp3.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\BlazorApp3.Client.csproj",
+        "projectUniqueName": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\BlazorApp3.Client.csproj",
         "projectName": "BlazorApp3.Client",
-        "projectPath": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\BlazorApp3.Client.csproj",
-        "packagesPath": "C:\\Users\\Bpham\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\",
+        "projectPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\BlazorApp3.Client.csproj",
+        "packagesPath": "C:\\Users\\Thuyen\\.nuget\\packages\\",
+        "outputPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Bpham\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Thuyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -23,15 +27,14 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://aka.ms/maui-preview/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj": {
-                "projectPath": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj"
+              "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj": {
+                "projectPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj"
               }
             }
           }
@@ -138,17 +141,21 @@
         }
       }
     },
-    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj": {
+    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
+        "projectUniqueName": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
         "projectName": "BlazorApp3.Shared",
-        "projectPath": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
-        "packagesPath": "C:\\Users\\Bpham\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\obj\\",
+        "projectPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
+        "packagesPath": "C:\\Users\\Thuyen\\.nuget\\packages\\",
+        "outputPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Bpham\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Thuyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -157,7 +164,6 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://aka.ms/maui-preview/index.json": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -211,6 +217,10 @@
             "Google.Cloud.Storage.V1": {
               "target": "Package",
               "version": "[3.5.0, )"
+            },
+            "Microsoft.AspNetCore.Components.Authorization": {
+              "target": "Package",
+              "version": "[6.0.0-preview.7.21378.6, )"
             },
             "PayPalCheckoutSdk": {
               "target": "Package",

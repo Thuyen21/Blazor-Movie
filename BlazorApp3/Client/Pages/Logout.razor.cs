@@ -16,8 +16,8 @@ namespace BlazorApp3.Client.Pages
             {
                 throw new ApplicationException($"Reason: {response.ReasonPhrase}, Message: {content}");
             }
-
-            _navigationManager.NavigateTo("/", true);
+            _accountService.Logout();
+            _navigationManager.NavigateTo("/");
         }
     }
 }

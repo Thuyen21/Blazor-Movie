@@ -1,3 +1,4 @@
+using BlazorApp3.Client.Shared;
 using BlazorApp3.Shared;
 using System.Net.Http.Json;
 
@@ -15,7 +16,12 @@ namespace BlazorApp3.Client.Pages
             content = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
-                _navigationManager.NavigateTo("/", true);
+
+                //_navigationManager.NavigateTo("/", true);
+                _accountService.Login();
+                //new CustomAuthenticationStateProvider(_httpClient).Update();
+                //new NavMenu().MenuChanged();
+                _navigationManager.NavigateTo("/");
             }
         }
     }
