@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright 2018 The Android Open Source Project
   ~
@@ -13,25 +12,4 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  -->
-
-<animated-selector
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:ignore="NewApi">
-    <item
-            android:id="@+id/on"
-            android:state_checked="true"
-            android:drawable="@drawable/btn_radio_on_mtrl" />
-    <item
-            android:id="@+id/off"
-            android:drawable="@drawable/btn_radio_off_mtrl" />
-    <transition
-            android:fromId="@+id/on"
-            android:toId="@+id/off"
-            android:drawable="@drawable/btn_radio_on_to_off_mtrl_animation" />
-    <transition
-            android:fromId="@+id/off"
-            android:toId="@+id/on"
-            android:drawable="@drawable/btn_radio_off_to_on_mtrl_animation" />
-</animated-selector>
+  --><animated-selector tools:ignore="NewApi" xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"><item android:id="@+id/on" android:state_checked="true" android:drawable="@drawable/btn_radio_on_mtrl" /><item android:id="@+id/off" android:drawable="@drawable/btn_radio_off_mtrl" /><transition android:fromId="@+id/on" android:toId="@+id/off" android:drawable="@drawable/btn_radio_on_to_off_mtrl_animation" /><transition android:fromId="@+id/off" android:toId="@+id/on" android:drawable="@drawable/btn_radio_off_to_on_mtrl_animation" /></animated-selector>

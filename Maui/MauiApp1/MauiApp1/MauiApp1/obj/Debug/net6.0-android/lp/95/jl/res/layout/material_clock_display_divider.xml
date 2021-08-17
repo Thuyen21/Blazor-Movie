@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright 2020 The Android Open Source Project
 
@@ -13,21 +12,4 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
- -->
-
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="@dimen/material_clock_display_padding"
-  android:layout_height="wrap_content"
-  android:layout_marginTop="4dp"
-  android:gravity="center"
-  android:importantForAccessibility="no"
-  android:includeFontPadding="false"
-  android:lineSpacingExtra="0dp"
-  android:maxEms="1"
-  android:text="@string/material_clock_display_divider"
-  android:textAppearance="?attr/textAppearanceHeadline3"
-  android:textColor="?attr/colorOnSurface"
-  android:textSize="56dp"
-  tools:ignore="SpUsage,UnusedAttribute"
-  tools:showIn="@layout/material_timepicker_textinput_display" />
+ --><TextView android:layout_width="@dimen/material_clock_display_padding" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:gravity="center" android:importantForAccessibility="no" android:includeFontPadding="false" android:lineSpacingExtra="0dp" android:maxEms="1" android:text="@string/material_clock_display_divider" android:textAppearance="?attr/textAppearanceHeadline3" android:textColor="?attr/colorOnSurface" android:textSize="56dp" tools:ignore="SpUsage,UnusedAttribute" tools:showIn="@layout/material_timepicker_textinput_display" xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android" />

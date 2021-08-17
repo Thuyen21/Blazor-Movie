@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
     Copyright 2017 The Android Open Source Project
 
@@ -13,22 +12,4 @@
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
--->
-
-<set xmlns:android="http://schemas.android.com/apk/res/android">
-  <objectAnimator
-      android:propertyName="opacity"
-      android:startOffset="0"
-      android:duration="200"
-      android:interpolator="@interpolator/mtrl_linear_out_slow_in"/>
-  <objectAnimator
-      android:propertyName="scale"
-      android:startOffset="0"
-      android:duration="200"
-      android:interpolator="@interpolator/mtrl_linear_out_slow_in"/>
-  <objectAnimator
-      android:propertyName="iconScale"
-      android:startOffset="0"
-      android:duration="0"
-      android:interpolator="@interpolator/mtrl_fast_out_slow_in"/>
-</set>
+--><set xmlns:android="http://schemas.android.com/apk/res/android"><objectAnimator android:propertyName="opacity" android:startOffset="0" android:duration="200" android:interpolator="@interpolator/mtrl_linear_out_slow_in" /><objectAnimator android:propertyName="scale" android:startOffset="0" android:duration="200" android:interpolator="@interpolator/mtrl_linear_out_slow_in" /><objectAnimator android:propertyName="iconScale" android:startOffset="0" android:duration="0" android:interpolator="@interpolator/mtrl_fast_out_slow_in" /></set>

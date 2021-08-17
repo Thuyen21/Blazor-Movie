@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
   Copyright 2018 The Android Open Source Project
 
@@ -13,34 +12,4 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-  -->
-
-<!-- Reflow chip group. -->
-<com.google.android.material.chip.ChipGroup
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/chip_group"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="16dp">
-  <com.google.android.material.chip.Chip
-    android:id="@+id/chip1"
-    style="@style/Widget.MaterialComponents.Chip.Filter"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:ellipsize="end"
-    android:text="@string/chip_text"/>
-  <com.google.android.material.chip.Chip
-    android:id="@+id/chip2"
-    style="@style/Widget.MaterialComponents.Chip.Filter"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:ellipsize="end"
-    android:text="@string/chip_text"/>
-  <com.google.android.material.chip.Chip
-    android:id="@+id/chip3"
-    style="@style/Widget.MaterialComponents.Chip.Filter"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:ellipsize="end"
-    android:text="@string/chip_text"/>
-  </com.google.android.material.chip.ChipGroup>
+  --><!-- Reflow chip group. --><com.google.android.material.chip.ChipGroup android:id="@+id/chip_group" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="16dp" xmlns:android="http://schemas.android.com/apk/res/android"><com.google.android.material.chip.Chip android:id="@+id/chip1" style="@style/Widget.MaterialComponents.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:ellipsize="end" android:text="@string/chip_text" /><com.google.android.material.chip.Chip android:id="@+id/chip2" style="@style/Widget.MaterialComponents.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:ellipsize="end" android:text="@string/chip_text" /><com.google.android.material.chip.Chip android:id="@+id/chip3" style="@style/Widget.MaterialComponents.Chip.Filter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:ellipsize="end" android:text="@string/chip_text" /></com.google.android.material.chip.ChipGroup>

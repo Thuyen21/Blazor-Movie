@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2020 The Android Open Source Project
 
@@ -13,32 +12,4 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
--->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/material_clock_display"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:layout_marginTop="8dp"
-  android:background="?attr/colorSurface"
-  android:layoutDirection="ltr"
-  android:orientation="horizontal"
-  android:baselineAligned="false"
-  app:layout_constraintTop_toTopOf="parent"
-  app:layout_constraintLeft_toLeftOf="parent"
-  app:layout_constraintRight_toRightOf="parent"
-  tools:ignore="UnusedAttribute">
-
-  <include
-    android:id="@+id/material_hour_tv"
-    layout="@layout/material_time_chip" />
-
-  <include layout="@layout/material_clock_display_divider" />
-
-  <include
-    android:id="@+id/material_minute_tv"
-    layout="@layout/material_time_chip" />
-
-</LinearLayout>
+--><LinearLayout android:id="@+id/material_clock_display" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:background="?attr/colorSurface" android:layoutDirection="ltr" android:orientation="horizontal" android:baselineAligned="false" app:layout_constraintTop_toTopOf="parent" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent" tools:ignore="UnusedAttribute" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"><include android:id="@+id/material_hour_tv" layout="@layout/material_time_chip" /><include layout="@layout/material_clock_display_divider" /><include android:id="@+id/material_minute_tv" layout="@layout/material_time_chip" /></LinearLayout>

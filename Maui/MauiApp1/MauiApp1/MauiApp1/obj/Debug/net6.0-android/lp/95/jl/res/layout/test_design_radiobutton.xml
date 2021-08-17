@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (C) 2020 The Android Open Source Project
   ~
@@ -13,24 +12,4 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
--->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-  <RadioButton
-      android:id="@+id/test_radiobutton_android_button_tint"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:background="?android:attr/colorBackground"
-      android:buttonTint="@color/radiobutton_themeable_attribute_color"
-      tools:ignore="UnusedAttribute"/>
-
-  <RadioButton
-      android:id="@+id/test_radiobutton_app_button_tint"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:background="?android:attr/colorBackground"
-      app:buttonTint="@color/radiobutton_themeable_attribute_color"/>
-</LinearLayout>
+--><LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android"><RadioButton android:id="@+id/test_radiobutton_android_button_tint" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="?android:attr/colorBackground" android:buttonTint="@color/radiobutton_themeable_attribute_color" tools:ignore="UnusedAttribute" /><RadioButton android:id="@+id/test_radiobutton_app_button_tint" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="?android:attr/colorBackground" app:buttonTint="@color/radiobutton_themeable_attribute_color" /></LinearLayout>

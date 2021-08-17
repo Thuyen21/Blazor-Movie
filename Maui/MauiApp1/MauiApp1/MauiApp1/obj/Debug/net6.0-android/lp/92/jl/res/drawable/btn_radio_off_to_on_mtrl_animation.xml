@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright 2018 The Android Open Source Project
   ~
@@ -13,20 +12,4 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  -->
-
-<animated-vector
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:drawable="@drawable/btn_radio_off_mtrl"
-        tools:ignore="NewApi">
-    <target
-            android:name="ring_outer"
-            android:animation="@anim/btn_radio_to_on_mtrl_ring_outer_animation" />
-    <target
-            android:name="ring_outer_path"
-            android:animation="@anim/btn_radio_to_on_mtrl_ring_outer_path_animation" />
-    <target
-            android:name="dot_group"
-            android:animation="@anim/btn_radio_to_on_mtrl_dot_group_animation" />
-</animated-vector>
+  --><animated-vector android:drawable="@drawable/btn_radio_off_mtrl" tools:ignore="NewApi" xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"><target android:name="ring_outer" android:animation="@anim/btn_radio_to_on_mtrl_ring_outer_animation" /><target android:name="ring_outer_path" android:animation="@anim/btn_radio_to_on_mtrl_ring_outer_path_animation" /><target android:name="dot_group" android:animation="@anim/btn_radio_to_on_mtrl_dot_group_animation" /></animated-vector>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright 2018 The Android Open Source Project
   ~
@@ -13,30 +12,4 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
-  -->
-
-<set xmlns:android="http://schemas.android.com/apk/res/android">
-    <set android:ordering="sequentially">
-        <objectAnimator
-                android:duration="183"
-                android:propertyName="strokeWidth"
-                android:valueFrom="2.0"
-                android:valueTo="2.0"
-                android:valueType="floatType"
-                android:interpolator="@interpolator/fast_out_slow_in"/>
-        <objectAnimator
-                android:duration="16"
-                android:propertyName="strokeWidth"
-                android:valueFrom="2.0"
-                android:valueTo="18.0"
-                android:valueType="floatType"
-                android:interpolator="@interpolator/fast_out_slow_in"/>
-        <objectAnimator
-                android:duration="300"
-                android:propertyName="strokeWidth"
-                android:valueFrom="18.0"
-                android:valueTo="2.0"
-                android:valueType="floatType"
-                android:interpolator="@interpolator/fast_out_slow_in"/>
-    </set>
-</set>
+  --><set xmlns:android="http://schemas.android.com/apk/res/android"><set android:ordering="sequentially"><objectAnimator android:duration="183" android:propertyName="strokeWidth" android:valueFrom="2.0" android:valueTo="2.0" android:valueType="floatType" android:interpolator="@interpolator/fast_out_slow_in" /><objectAnimator android:duration="16" android:propertyName="strokeWidth" android:valueFrom="2.0" android:valueTo="18.0" android:valueType="floatType" android:interpolator="@interpolator/fast_out_slow_in" /><objectAnimator android:duration="300" android:propertyName="strokeWidth" android:valueFrom="18.0" android:valueTo="2.0" android:valueType="floatType" android:interpolator="@interpolator/fast_out_slow_in" /></set></set>

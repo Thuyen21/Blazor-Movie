@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Copyright (C) 2015 The Android Open Source Project
   ~
@@ -13,15 +12,4 @@
   ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
--->
-<com.google.android.material.internal.NavigationMenuItemView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="?attr/listPreferredItemHeightSmall"
-    android:paddingLeft="?attr/listPreferredItemPaddingLeft"
-    android:paddingRight="?attr/listPreferredItemPaddingRight"
-    android:focusable="true"
-    android:foreground="?attr/selectableItemBackground"
-    tools:ignore="UnusedAttribute"/>
+--><com.google.android.material.internal.NavigationMenuItemView android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="?attr/listPreferredItemHeightSmall" android:paddingLeft="?attr/listPreferredItemPaddingLeft" android:paddingRight="?attr/listPreferredItemPaddingRight" android:focusable="true" android:foreground="?attr/selectableItemBackground" tools:ignore="UnusedAttribute" xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android" />

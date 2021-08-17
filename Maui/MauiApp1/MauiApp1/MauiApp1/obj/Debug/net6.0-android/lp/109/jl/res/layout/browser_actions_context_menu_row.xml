@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright 2018 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,32 +11,4 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License
--->
-
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingStart="15dp"
-    android:paddingEnd="15dp"
-    android:minHeight="48dp">
-    <TextView
-        android:id="@+id/browser_actions_menu_item_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_weight="1"
-        android:textSize="15sp"
-        android:textColor="@color/browser_actions_text_color" />
-    <ImageView
-        android:id="@+id/browser_actions_menu_item_icon"
-        android:layout_width="20dp"
-        android:layout_height="match_parent"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:scaleType="centerInside"
-        android:contentDescription="@null" />
-</LinearLayout>
+--><LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="15dp" android:paddingEnd="15dp" android:minHeight="48dp" xmlns:android="http://schemas.android.com/apk/res/android"><TextView android:id="@+id/browser_actions_menu_item_text" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:layout_marginStart="10dp" android:layout_marginLeft="10dp" android:layout_weight="1" android:textSize="15sp" android:textColor="@color/browser_actions_text_color" /><ImageView android:id="@+id/browser_actions_menu_item_icon" android:layout_width="20dp" android:layout_height="match_parent" android:paddingTop="8dp" android:paddingBottom="8dp" android:scaleType="centerInside" android:contentDescription="@null" /></LinearLayout>

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
     Copyright 2019 The Android Open Source Project
 
@@ -13,38 +12,4 @@
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
--->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:orientation="vertical">
-
-  <include layout="@layout/mtrl_calendar_month_navigation"/>
-
-  <FrameLayout
-    android:id="@+id/mtrl_calendar_selection_frame"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <androidx.recyclerview.widget.RecyclerView
-      android:id="@+id/mtrl_calendar_year_selector_frame"
-      android:layout_width="wrap_content"
-      android:layout_height="match_parent"
-      android:layout_gravity="center_horizontal"
-      android:scrollbars="none"/>
-
-    <LinearLayout
-      android:id="@+id/mtrl_calendar_day_selector_frame"
-      android:layout_width="wrap_content"
-      android:layout_height="match_parent"
-      android:orientation="vertical">
-
-      <include layout="@layout/mtrl_calendar_days_of_week"/>
-
-      <include layout="@layout/mtrl_calendar_months"/>
-
-    </LinearLayout>
-
-  </FrameLayout>
-
-</LinearLayout>
+--><LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android"><include layout="@layout/mtrl_calendar_month_navigation" /><FrameLayout android:id="@+id/mtrl_calendar_selection_frame" android:layout_width="match_parent" android:layout_height="match_parent"><androidx.recyclerview.widget.RecyclerView android:id="@+id/mtrl_calendar_year_selector_frame" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_gravity="center_horizontal" android:scrollbars="none" /><LinearLayout android:id="@+id/mtrl_calendar_day_selector_frame" android:layout_width="wrap_content" android:layout_height="match_parent" android:orientation="vertical"><include layout="@layout/mtrl_calendar_days_of_week" /><include layout="@layout/mtrl_calendar_months" /></LinearLayout></FrameLayout></LinearLayout>

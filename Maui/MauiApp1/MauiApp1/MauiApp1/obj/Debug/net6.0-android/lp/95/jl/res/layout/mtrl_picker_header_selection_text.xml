@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2019 The Android Open Source Project
 
@@ -13,16 +12,4 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
--->
-<TextView
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:id="@+id/mtrl_picker_header_selection_text"
-  style="?attr/materialCalendarHeaderSelection"
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  android:layout_gravity="top|start"
-  android:gravity="start|bottom"
-  app:firstBaselineToTopHeight="@dimen/mtrl_calendar_selection_text_baseline_to_top"
-  app:lineHeight="@dimen/mtrl_calendar_header_selection_line_height"
-  android:paddingBottom="@dimen/mtrl_calendar_pre_l_text_clip_padding"/>
+--><TextView android:id="@+id/mtrl_picker_header_selection_text" style="?attr/materialCalendarHeaderSelection" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="top|start" android:gravity="start|bottom" app:firstBaselineToTopHeight="@dimen/mtrl_calendar_selection_text_baseline_to_top" app:lineHeight="@dimen/mtrl_calendar_header_selection_line_height" android:paddingBottom="@dimen/mtrl_calendar_pre_l_text_clip_padding" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android" />
