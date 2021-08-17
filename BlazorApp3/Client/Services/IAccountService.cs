@@ -1,7 +1,10 @@
 ﻿
-namespace BlazorApp3.Client.Services;
-public interface IAccountService
+namespace BlazorApp3.Client.Services
 {
-    bool Login();
-    bool Logout();
+    public interface IAccountService
+    {
+        bool Login();
+        bool Logout();
+    }
 }
+

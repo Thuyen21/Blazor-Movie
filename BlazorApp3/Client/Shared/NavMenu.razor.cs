@@ -34,5 +34,7 @@ namespace BlazorApp3.Client.Shared
         {
             InvokeAsync(StateHasChanged);
         }
+        
+        
     }
 }

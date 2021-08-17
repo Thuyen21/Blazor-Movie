@@ -1,11 +1,11 @@
 {
   "ContentRoots": [
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\wwwroot\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\blazor\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\service-worker\\"
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\wwwroot\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\blazor\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\service-worker\\"
   ],
   "Root": {
     "Children": {
@@ -178,6 +178,14 @@
         "Asset": {
           "ContentRootIndex": 0,
           "SubPath": "manifest.json"
+        },
+        "Patterns": null
+      },
+      "tBarScript.js": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "tBarScript.js"
         },
         "Patterns": null
       },

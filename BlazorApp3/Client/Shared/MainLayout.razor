@@ -1,21 +1,29 @@
 ﻿@inherits LayoutComponentBase
 
 <div class="page">
-    <div class="sidebar">
+    @*<div class="sidebar">
         <NavMenu/>
-    </div>
+        </div>*@
 
-
+        
     <main>
-        <div class="top-row px-4">
+
+        <NavMenu />
+
+        @*<div class="top-row px-4">
             <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-        </div>
+            </div>
 
 
-        <article class="content px-4">
+            <article class="content px-4">
             <ErrorBoundary>
-   @Body
-</ErrorBoundary>
-        </article>
+            @Body
+            </ErrorBoundary>
+            </article>*@
+
+        @*<section class="home-section">
+            <div class="text">Dashboard Movie Brazor</div>
+            @Body
+        </section>*@
     </main>
 </div>

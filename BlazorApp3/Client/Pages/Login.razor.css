@@ -10,17 +10,19 @@ input[type=text], input[type=password] {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    border-radius: 12px;
 }
 
 /* Set a style for all buttons */
 button {
-    background-color: #04AA6D;
+    background-color: #88ebc6;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 100%;
+    border-radius: 12px;
 }
 
     button:hover {
@@ -32,6 +34,7 @@ button {
     width: auto;
     padding: 10px 18px;
     background-color: #f44336;
+    border-radius: 12px;
 }
 
 /* Center the image and position the close button */
@@ -43,11 +46,24 @@ button {
 
 img.avatar {
     width: 25%;
-    border-radius: 50%;
+    border-radius: 12px;
+}
+img.avatar:hover {
+    transition: transform 0.6s;
+    transform: rotateY(180deg);
+}
+
+.zoom:hover {
+    transform: scale(1.05); /* (110% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.zoom2:hover {
+    transform: scale(1.5);
+    background-color: #f44336;
 }
 
 .container {
     padding: 16px;
+    border-radius: 12px;
 }
 
 span.psw {
@@ -96,8 +112,8 @@ span.psw {
 
 /* Add Zoom Animation */
 ::deep .animate {
-    -webkit-animation: animatezoom 1.6s;
-    animation: animatezoom 1.6s
+    -webkit-animation: animatezoom 1.0s;
+    animation: animatezoom 1.0s
 }
 
 @-webkit-keyframes animatezoom {
