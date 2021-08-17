@@ -82,13 +82,36 @@ namespace BlazorApp3.Server.Controllers
 
             return await Task.FromResult(movie);
         }
+        //[HttpGet("Deposit")]
+        //public IActionResult Deposit(string Cash, string clientToken)
+        //{
+        //    if (Cash == null)
+        //    {
+        //        return View();
+        //    }
+
+        //    BraintreeGateway gateway = new()
+        //    {
+        //        Environment = Braintree.Environment.SANDBOX,
+        //        MerchantId = "ts2vvzhy3dzc2dzc",
+        //        PublicKey = "mg2whqyw68xxm3g9",
+        //        PrivateKey = "b12f9762c30b546c29e5172fd3729c0d"
+        //    };
+        //    if (clientToken == null)
+        //    {
+        //        clientToken = gateway.ClientToken.Generate();
+        //        ViewBag.clientToken = clientToken;
+        //        ViewBag.Cash = Cash;
+        //        return View();
+        //    }
+
+        //    return View();
+        //}
         [HttpGet("Deposit")]
-        public IActionResult Deposit(string Cash, string clientToken)
+        public async Task<ActionResult<char[]>> Deposit()
         {
-            if (Cash == null)
-            {
-                return View();
-            }
+
+            string clientToken;
 
             BraintreeGateway gateway = new()
             {
@@ -97,15 +120,8 @@ namespace BlazorApp3.Server.Controllers
                 PublicKey = "mg2whqyw68xxm3g9",
                 PrivateKey = "b12f9762c30b546c29e5172fd3729c0d"
             };
-            if (clientToken == null)
-            {
                 clientToken = gateway.ClientToken.Generate();
-                ViewBag.clientToken = clientToken;
-                ViewBag.Cash = Cash;
-                return View();
-            }
-
-            return View();
+            return clientToken.ToCharArray();
         }
         [HttpPost("DoCard")]
         public async Task<ActionResult> DoCard([FromForm] string nonce, [FromForm] string cash)
