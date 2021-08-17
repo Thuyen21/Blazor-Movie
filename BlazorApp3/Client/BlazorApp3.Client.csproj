@@ -1,49 +1,36 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
-	<PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-	  <TypeScriptTarget>ES2021</TypeScriptTarget>
-	</PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
+	  <RunAOTCompilation>true</RunAOTCompilation>
+  </PropertyGroup>
 
-	<PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-	  <TypeScriptTarget>ES2021</TypeScriptTarget>
-	</PropertyGroup>
+  <ItemGroup>
+	  <PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
+	  <PackageReference Include="Braintree" Version="5.9.0" />
+	  <PackageReference Include="FirebaseAdmin" Version="2.2.0" />
+	  <PackageReference Include="FirebaseAuthentication.net" Version="4.0.0-alpha.2" />
+	  <PackageReference Include="FirebaseDatabase.net" Version="4.0.6" />
+	  <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
+	  <PackageReference Include="Google.Apis.Drive.v3" Version="1.54.0.2397" />
+	  <PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
+	  <PackageReference Include="Google.Cloud.Storage.V1" Version="3.5.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.0-preview.7.21378.6" />
+	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-preview.7.21378.6" />
+	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-preview.7.21378.6" PrivateAssets="all" />
+	  <PackageReference Include="PayoutsSdk" Version="1.1.0" />
+	  <PackageReference Include="PayPalCheckoutSdk" Version="1.0.3" />
+	  <PackageReference Include="PayPalHttp" Version="1.0.0" />
+  </ItemGroup>
 
-	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-		<TypeScriptModuleKind>none</TypeScriptModuleKind>
-    		<RunAOTCompilation>true</RunAOTCompilation>
-	</PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\BlazorApp3.Shared.csproj" />
+  </ItemGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    
-	  <PlatformTarget>AnyCPU</PlatformTarget>
-	</PropertyGroup>
-
-	<ItemGroup>
-		<PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
-		<PackageReference Include="Braintree" Version="5.9.0" />
-		<PackageReference Include="FirebaseAdmin" Version="2.2.0" />
-		<PackageReference Include="FirebaseAuthentication.net" Version="4.0.0-alpha.2" />
-		<PackageReference Include="FirebaseDatabase.net" Version="4.0.6" />
-		<PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
-		<PackageReference Include="Google.Apis.Drive.v3" Version="1.54.0.2397" />
-		<PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
-		<PackageReference Include="Google.Cloud.Storage.V1" Version="3.5.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.0-preview.7.21378.6" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-preview.7.21378.6" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-preview.7.21378.6" PrivateAssets="all" />
-		<PackageReference Include="PayoutsSdk" Version="1.1.0" />
-		<PackageReference Include="PayPalCheckoutSdk" Version="1.0.3" />
-		<PackageReference Include="PayPalHttp" Version="1.0.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\Shared\BlazorApp3.Shared.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
-	</ItemGroup>
+  <ItemGroup>
+    <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+  </ItemGroup>
 
 </Project>

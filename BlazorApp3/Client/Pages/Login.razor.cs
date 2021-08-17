@@ -1,4 +1,3 @@
-using BlazorApp3.Client.Shared;
 using BlazorApp3.Shared;
 using System.Net.Http.Json;
 

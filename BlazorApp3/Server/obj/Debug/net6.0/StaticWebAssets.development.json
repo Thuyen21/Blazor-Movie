@@ -1,6 +1,5 @@
 {
   "ContentRoots": [
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Server\\wwwroot\\",
     "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
     "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\blazor\\",
     "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
@@ -9,26 +8,12 @@
   ],
   "Root": {
     "Children": {
-      "Bad Words": {
-        "Children": {
-          "base-list-of-bad-words_csv-file_2021_01_18.csv": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 0,
-              "SubPath": "Bad Words\\base-list-of-bad-words_csv-file_2021_01_18.csv"
-            },
-            "Patterns": null
-          }
-        },
-        "Asset": null,
-        "Patterns": null
-      },
       "_framework": {
         "Children": {
           "AspNetCore.Firebase.Authentication.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\AspNetCore.Firebase.Authentication.dll"
             },
             "Patterns": null
@@ -36,7 +21,7 @@
           "blazor.boot.json": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\blazor.boot.json"
             },
             "Patterns": null
@@ -44,7 +29,7 @@
           "blazor.webassembly.js": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\blazor.webassembly.js"
             },
             "Patterns": null
@@ -52,7 +37,7 @@
           "BlazorApp3.Client.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\BlazorApp3.Client.dll"
             },
             "Patterns": null
@@ -60,7 +45,7 @@
           "BlazorApp3.Client.pdb": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\BlazorApp3.Client.pdb"
             },
             "Patterns": null
@@ -68,7 +53,7 @@
           "BlazorApp3.Shared.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\BlazorApp3.Shared.dll"
             },
             "Patterns": null
@@ -76,7 +61,7 @@
           "BlazorApp3.Shared.pdb": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\BlazorApp3.Shared.pdb"
             },
             "Patterns": null
@@ -84,7 +69,7 @@
           "Braintree.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Braintree.dll"
             },
             "Patterns": null
@@ -92,7 +77,7 @@
           "dotnet.timezones.blat": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\dotnet.timezones.blat"
             },
             "Patterns": null
@@ -100,7 +85,7 @@
           "dotnet.wasm": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\dotnet.wasm"
             },
             "Patterns": null
@@ -108,7 +93,7 @@
           "Firebase.Auth.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Firebase.Auth.dll"
             },
             "Patterns": null
@@ -116,7 +101,7 @@
           "Firebase.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Firebase.dll"
             },
             "Patterns": null
@@ -124,7 +109,7 @@
           "Firebase.Storage.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Firebase.Storage.dll"
             },
             "Patterns": null
@@ -132,7 +117,7 @@
           "FirebaseAdmin.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\FirebaseAdmin.dll"
             },
             "Patterns": null
@@ -140,7 +125,7 @@
           "Google.Api.CommonProtos.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Api.CommonProtos.dll"
             },
             "Patterns": null
@@ -148,7 +133,7 @@
           "Google.Api.Gax.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Api.Gax.dll"
             },
             "Patterns": null
@@ -156,7 +141,7 @@
           "Google.Api.Gax.Grpc.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Api.Gax.Grpc.dll"
             },
             "Patterns": null
@@ -164,7 +149,7 @@
           "Google.Api.Gax.Grpc.GrpcCore.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Api.Gax.Grpc.GrpcCore.dll"
             },
             "Patterns": null
@@ -172,7 +157,7 @@
           "Google.Api.Gax.Rest.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Api.Gax.Rest.dll"
             },
             "Patterns": null
@@ -180,7 +165,7 @@
           "Google.Apis.Auth.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Apis.Auth.dll"
             },
             "Patterns": null
@@ -188,7 +173,7 @@
           "Google.Apis.Auth.PlatformServices.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Apis.Auth.PlatformServices.dll"
             },
             "Patterns": null
@@ -196,7 +181,7 @@
           "Google.Apis.Core.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Apis.Core.dll"
             },
             "Patterns": null
@@ -204,7 +189,7 @@
           "Google.Apis.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Apis.dll"
             },
             "Patterns": null
@@ -212,7 +197,7 @@
           "Google.Apis.Drive.v3.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Apis.Drive.v3.dll"
             },
             "Patterns": null
@@ -220,7 +205,7 @@
           "Google.Apis.Storage.v1.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Apis.Storage.v1.dll"
             },
             "Patterns": null
@@ -228,7 +213,7 @@
           "Google.Cloud.Firestore.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Cloud.Firestore.dll"
             },
             "Patterns": null
@@ -236,7 +221,7 @@
           "Google.Cloud.Firestore.V1.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Cloud.Firestore.V1.dll"
             },
             "Patterns": null
@@ -244,7 +229,7 @@
           "Google.Cloud.Storage.V1.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Cloud.Storage.V1.dll"
             },
             "Patterns": null
@@ -252,7 +237,7 @@
           "Google.LongRunning.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.LongRunning.dll"
             },
             "Patterns": null
@@ -260,7 +245,7 @@
           "Google.Protobuf.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Google.Protobuf.dll"
             },
             "Patterns": null
@@ -268,7 +253,7 @@
           "Grpc.Auth.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Grpc.Auth.dll"
             },
             "Patterns": null
@@ -276,7 +261,7 @@
           "Grpc.Core.Api.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Grpc.Core.Api.dll"
             },
             "Patterns": null
@@ -284,7 +269,7 @@
           "Grpc.Core.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Grpc.Core.dll"
             },
             "Patterns": null
@@ -292,7 +277,7 @@
           "icudt.dat": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\icudt.dat"
             },
             "Patterns": null
@@ -300,7 +285,7 @@
           "icudt_CJK.dat": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\icudt_CJK.dat"
             },
             "Patterns": null
@@ -308,7 +293,7 @@
           "icudt_EFIGS.dat": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\icudt_EFIGS.dat"
             },
             "Patterns": null
@@ -316,7 +301,7 @@
           "icudt_no_CJK.dat": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\icudt_no_CJK.dat"
             },
             "Patterns": null
@@ -324,7 +309,7 @@
           "LiteDB.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\LiteDB.dll"
             },
             "Patterns": null
@@ -332,7 +317,7 @@
           "Microsoft.AspNetCore.Authentication.Abstractions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Authentication.Abstractions.dll"
             },
             "Patterns": null
@@ -340,7 +325,7 @@
           "Microsoft.AspNetCore.Authentication.Core.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Authentication.Core.dll"
             },
             "Patterns": null
@@ -348,7 +333,7 @@
           "Microsoft.AspNetCore.Authentication.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Authentication.dll"
             },
             "Patterns": null
@@ -356,7 +341,7 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Authentication.JwtBearer.dll"
             },
             "Patterns": null
@@ -364,7 +349,7 @@
           "Microsoft.AspNetCore.Authentication.OAuth.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Authentication.OAuth.dll"
             },
             "Patterns": null
@@ -372,7 +357,7 @@
           "Microsoft.AspNetCore.Authorization.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Authorization.dll"
             },
             "Patterns": null
@@ -380,7 +365,7 @@
           "Microsoft.AspNetCore.Components.Authorization.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Components.Authorization.dll"
             },
             "Patterns": null
@@ -388,7 +373,7 @@
           "Microsoft.AspNetCore.Components.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Components.dll"
             },
             "Patterns": null
@@ -396,7 +381,7 @@
           "Microsoft.AspNetCore.Components.Forms.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Components.Forms.dll"
             },
             "Patterns": null
@@ -404,7 +389,7 @@
           "Microsoft.AspNetCore.Components.Web.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Components.Web.dll"
             },
             "Patterns": null
@@ -412,7 +397,7 @@
           "Microsoft.AspNetCore.Components.WebAssembly.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Components.WebAssembly.dll"
             },
             "Patterns": null
@@ -420,7 +405,7 @@
           "Microsoft.AspNetCore.Cryptography.Internal.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Cryptography.Internal.dll"
             },
             "Patterns": null
@@ -428,7 +413,7 @@
           "Microsoft.AspNetCore.DataProtection.Abstractions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.DataProtection.Abstractions.dll"
             },
             "Patterns": null
@@ -436,7 +421,7 @@
           "Microsoft.AspNetCore.DataProtection.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.DataProtection.dll"
             },
             "Patterns": null
@@ -444,7 +429,7 @@
           "Microsoft.AspNetCore.Diagnostics.Abstractions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Diagnostics.Abstractions.dll"
             },
             "Patterns": null
@@ -452,7 +437,7 @@
           "Microsoft.AspNetCore.Diagnostics.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Diagnostics.dll"
             },
             "Patterns": null
@@ -460,7 +445,7 @@
           "Microsoft.AspNetCore.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.dll"
             },
             "Patterns": null
@@ -468,7 +453,7 @@
           "Microsoft.AspNetCore.Hosting.Abstractions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Hosting.Abstractions.dll"
             },
             "Patterns": null
@@ -476,7 +461,7 @@
           "Microsoft.AspNetCore.Hosting.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Hosting.dll"
             },
             "Patterns": null
@@ -484,7 +469,7 @@
           "Microsoft.AspNetCore.Hosting.Server.Abstractions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll"
             },
             "Patterns": null
@@ -492,7 +477,7 @@
           "Microsoft.AspNetCore.Http.Abstractions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Http.Abstractions.dll"
             },
             "Patterns": null
@@ -500,7 +485,7 @@
           "Microsoft.AspNetCore.Http.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Http.dll"
             },
             "Patterns": null
@@ -508,7 +493,7 @@
           "Microsoft.AspNetCore.Http.Extensions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Http.Extensions.dll"
             },
             "Patterns": null
@@ -516,7 +501,7 @@
           "Microsoft.AspNetCore.Http.Features.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Http.Features.dll"
             },
             "Patterns": null
@@ -524,7 +509,7 @@
           "Microsoft.AspNetCore.HttpOverrides.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.HttpOverrides.dll"
             },
             "Patterns": null
@@ -532,7 +517,7 @@
           "Microsoft.AspNetCore.Metadata.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Metadata.dll"
             },
             "Patterns": null
@@ -540,7 +525,7 @@
           "Microsoft.AspNetCore.Routing.Abstractions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Routing.Abstractions.dll"
             },
             "Patterns": null
@@ -548,7 +533,7 @@
           "Microsoft.AspNetCore.Routing.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Routing.dll"
             },
             "Patterns": null
@@ -556,7 +541,7 @@
           "Microsoft.AspNetCore.Server.IISIntegration.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Server.IISIntegration.dll"
             },
             "Patterns": null
@@ -564,7 +549,7 @@
           "Microsoft.AspNetCore.Server.Kestrel.Core.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Server.Kestrel.Core.dll"
             },
             "Patterns": null
@@ -572,7 +557,7 @@
           "Microsoft.AspNetCore.Server.Kestrel.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Server.Kestrel.dll"
             },
             "Patterns": null
@@ -580,7 +565,7 @@
           "Microsoft.AspNetCore.Server.Kestrel.Https.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Server.Kestrel.Https.dll"
             },
             "Patterns": null
@@ -588,7 +573,7 @@
           "Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll"
             },
             "Patterns": null
@@ -596,7 +581,7 @@
           "Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv.dll"
             },
             "Patterns": null
@@ -604,7 +589,7 @@
           "Microsoft.AspNetCore.WebUtilities.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.AspNetCore.WebUtilities.dll"
             },
             "Patterns": null
@@ -612,7 +597,7 @@
           "Microsoft.Bcl.AsyncInterfaces.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Bcl.AsyncInterfaces.dll"
             },
             "Patterns": null
@@ -620,7 +605,7 @@
           "Microsoft.CSharp.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.CSharp.dll"
             },
             "Patterns": null
@@ -628,7 +613,7 @@
           "Microsoft.Extensions.Configuration.Abstractions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Configuration.Abstractions.dll"
             },
             "Patterns": null
@@ -636,7 +621,7 @@
           "Microsoft.Extensions.Configuration.Binder.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Configuration.Binder.dll"
             },
             "Patterns": null
@@ -644,7 +629,7 @@
           "Microsoft.Extensions.Configuration.CommandLine.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Configuration.CommandLine.dll"
             },
             "Patterns": null
@@ -652,7 +637,7 @@
           "Microsoft.Extensions.Configuration.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Configuration.dll"
             },
             "Patterns": null
@@ -660,7 +645,7 @@
           "Microsoft.Extensions.Configuration.EnvironmentVariables.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Configuration.EnvironmentVariables.dll"
             },
             "Patterns": null
@@ -668,7 +653,7 @@
           "Microsoft.Extensions.Configuration.FileExtensions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Configuration.FileExtensions.dll"
             },
             "Patterns": null
@@ -676,7 +661,7 @@
           "Microsoft.Extensions.Configuration.Json.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Configuration.Json.dll"
             },
             "Patterns": null
@@ -684,7 +669,7 @@
           "Microsoft.Extensions.Configuration.UserSecrets.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Configuration.UserSecrets.dll"
             },
             "Patterns": null
@@ -692,7 +677,7 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.DependencyInjection.Abstractions.dll"
             },
             "Patterns": null
@@ -700,7 +685,7 @@
           "Microsoft.Extensions.DependencyInjection.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.DependencyInjection.dll"
             },
             "Patterns": null
@@ -708,7 +693,7 @@
           "Microsoft.Extensions.FileProviders.Abstractions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.FileProviders.Abstractions.dll"
             },
             "Patterns": null
@@ -716,7 +701,7 @@
           "Microsoft.Extensions.FileProviders.Physical.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.FileProviders.Physical.dll"
             },
             "Patterns": null
@@ -724,7 +709,7 @@
           "Microsoft.Extensions.FileSystemGlobbing.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.FileSystemGlobbing.dll"
             },
             "Patterns": null
@@ -732,7 +717,7 @@
           "Microsoft.Extensions.Hosting.Abstractions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Hosting.Abstractions.dll"
             },
             "Patterns": null
@@ -740,7 +725,7 @@
           "Microsoft.Extensions.Logging.Abstractions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Logging.Abstractions.dll"
             },
             "Patterns": null
@@ -748,7 +733,7 @@
           "Microsoft.Extensions.Logging.Configuration.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Logging.Configuration.dll"
             },
             "Patterns": null
@@ -756,7 +741,7 @@
           "Microsoft.Extensions.Logging.Console.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Logging.Console.dll"
             },
             "Patterns": null
@@ -764,7 +749,7 @@
           "Microsoft.Extensions.Logging.Debug.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Logging.Debug.dll"
             },
             "Patterns": null
@@ -772,7 +757,7 @@
           "Microsoft.Extensions.Logging.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Logging.dll"
             },
             "Patterns": null
@@ -780,7 +765,7 @@
           "Microsoft.Extensions.ObjectPool.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.ObjectPool.dll"
             },
             "Patterns": null
@@ -788,7 +773,7 @@
           "Microsoft.Extensions.Options.ConfigurationExtensions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Options.ConfigurationExtensions.dll"
             },
             "Patterns": null
@@ -796,7 +781,7 @@
           "Microsoft.Extensions.Options.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Options.dll"
             },
             "Patterns": null
@@ -804,7 +789,7 @@
           "Microsoft.Extensions.Primitives.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.Primitives.dll"
             },
             "Patterns": null
@@ -812,7 +797,7 @@
           "Microsoft.Extensions.WebEncoders.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Extensions.WebEncoders.dll"
             },
             "Patterns": null
@@ -820,7 +805,7 @@
           "Microsoft.IdentityModel.Logging.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.IdentityModel.Logging.dll"
             },
             "Patterns": null
@@ -828,7 +813,7 @@
           "Microsoft.IdentityModel.Protocols.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.IdentityModel.Protocols.dll"
             },
             "Patterns": null
@@ -836,7 +821,7 @@
           "Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll"
             },
             "Patterns": null
@@ -844,7 +829,7 @@
           "Microsoft.IdentityModel.Tokens.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.IdentityModel.Tokens.dll"
             },
             "Patterns": null
@@ -852,7 +837,7 @@
           "Microsoft.JSInterop.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.JSInterop.dll"
             },
             "Patterns": null
@@ -860,7 +845,7 @@
           "Microsoft.JSInterop.WebAssembly.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.JSInterop.WebAssembly.dll"
             },
             "Patterns": null
@@ -868,7 +853,7 @@
           "Microsoft.Net.Http.Headers.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Net.Http.Headers.dll"
             },
             "Patterns": null
@@ -876,7 +861,7 @@
           "Microsoft.VisualBasic.Core.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.VisualBasic.Core.dll"
             },
             "Patterns": null
@@ -884,7 +869,7 @@
           "Microsoft.VisualBasic.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.VisualBasic.dll"
             },
             "Patterns": null
@@ -892,7 +877,7 @@
           "Microsoft.Win32.Primitives.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Win32.Primitives.dll"
             },
             "Patterns": null
@@ -900,7 +885,7 @@
           "Microsoft.Win32.Registry.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Microsoft.Win32.Registry.dll"
             },
             "Patterns": null
@@ -908,7 +893,7 @@
           "mscorlib.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\mscorlib.dll"
             },
             "Patterns": null
@@ -916,7 +901,7 @@
           "netstandard.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\netstandard.dll"
             },
             "Patterns": null
@@ -924,7 +909,7 @@
           "Newtonsoft.Json.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\Newtonsoft.Json.dll"
             },
             "Patterns": null
@@ -932,7 +917,7 @@
           "PayPalCheckoutSdk.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\PayPalCheckoutSdk.dll"
             },
             "Patterns": null
@@ -940,7 +925,7 @@
           "PayPalHttp-Dotnet.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\PayPalHttp-Dotnet.dll"
             },
             "Patterns": null
@@ -948,7 +933,7 @@
           "PayPalPayoutsSdk.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\PayPalPayoutsSdk.dll"
             },
             "Patterns": null
@@ -956,7 +941,7 @@
           "System.AppContext.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.AppContext.dll"
             },
             "Patterns": null
@@ -964,7 +949,7 @@
           "System.Buffers.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Buffers.dll"
             },
             "Patterns": null
@@ -972,7 +957,7 @@
           "System.Collections.Concurrent.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Collections.Concurrent.dll"
             },
             "Patterns": null
@@ -980,7 +965,7 @@
           "System.Collections.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Collections.dll"
             },
             "Patterns": null
@@ -988,7 +973,7 @@
           "System.Collections.Immutable.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Collections.Immutable.dll"
             },
             "Patterns": null
@@ -996,7 +981,7 @@
           "System.Collections.NonGeneric.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Collections.NonGeneric.dll"
             },
             "Patterns": null
@@ -1004,7 +989,7 @@
           "System.Collections.Specialized.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Collections.Specialized.dll"
             },
             "Patterns": null
@@ -1012,7 +997,7 @@
           "System.ComponentModel.Annotations.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.ComponentModel.Annotations.dll"
             },
             "Patterns": null
@@ -1020,7 +1005,7 @@
           "System.ComponentModel.DataAnnotations.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.ComponentModel.DataAnnotations.dll"
             },
             "Patterns": null
@@ -1028,7 +1013,7 @@
           "System.ComponentModel.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.ComponentModel.dll"
             },
             "Patterns": null
@@ -1036,7 +1021,7 @@
           "System.ComponentModel.EventBasedAsync.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.ComponentModel.EventBasedAsync.dll"
             },
             "Patterns": null
@@ -1044,7 +1029,7 @@
           "System.ComponentModel.Primitives.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.ComponentModel.Primitives.dll"
             },
             "Patterns": null
@@ -1052,7 +1037,7 @@
           "System.ComponentModel.TypeConverter.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.ComponentModel.TypeConverter.dll"
             },
             "Patterns": null
@@ -1060,7 +1045,7 @@
           "System.Configuration.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Configuration.dll"
             },
             "Patterns": null
@@ -1068,7 +1053,7 @@
           "System.Console.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Console.dll"
             },
             "Patterns": null
@@ -1076,7 +1061,7 @@
           "System.Core.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Core.dll"
             },
             "Patterns": null
@@ -1084,7 +1069,7 @@
           "System.Data.Common.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Data.Common.dll"
             },
             "Patterns": null
@@ -1092,7 +1077,7 @@
           "System.Data.DataSetExtensions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Data.DataSetExtensions.dll"
             },
             "Patterns": null
@@ -1100,7 +1085,7 @@
           "System.Data.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Data.dll"
             },
             "Patterns": null
@@ -1108,7 +1093,7 @@
           "System.Diagnostics.Contracts.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Diagnostics.Contracts.dll"
             },
             "Patterns": null
@@ -1116,7 +1101,7 @@
           "System.Diagnostics.Debug.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Diagnostics.Debug.dll"
             },
             "Patterns": null
@@ -1124,7 +1109,7 @@
           "System.Diagnostics.DiagnosticSource.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Diagnostics.DiagnosticSource.dll"
             },
             "Patterns": null
@@ -1132,7 +1117,7 @@
           "System.Diagnostics.FileVersionInfo.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Diagnostics.FileVersionInfo.dll"
             },
             "Patterns": null
@@ -1140,7 +1125,7 @@
           "System.Diagnostics.Process.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Diagnostics.Process.dll"
             },
             "Patterns": null
@@ -1148,7 +1133,7 @@
           "System.Diagnostics.StackTrace.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Diagnostics.StackTrace.dll"
             },
             "Patterns": null
@@ -1156,7 +1141,7 @@
           "System.Diagnostics.TextWriterTraceListener.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Diagnostics.TextWriterTraceListener.dll"
             },
             "Patterns": null
@@ -1164,7 +1149,7 @@
           "System.Diagnostics.Tools.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Diagnostics.Tools.dll"
             },
             "Patterns": null
@@ -1172,7 +1157,7 @@
           "System.Diagnostics.TraceSource.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Diagnostics.TraceSource.dll"
             },
             "Patterns": null
@@ -1180,7 +1165,7 @@
           "System.Diagnostics.Tracing.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Diagnostics.Tracing.dll"
             },
             "Patterns": null
@@ -1188,7 +1173,7 @@
           "System.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.dll"
             },
             "Patterns": null
@@ -1196,7 +1181,7 @@
           "System.Drawing.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Drawing.dll"
             },
             "Patterns": null
@@ -1204,7 +1189,7 @@
           "System.Drawing.Primitives.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Drawing.Primitives.dll"
             },
             "Patterns": null
@@ -1212,7 +1197,7 @@
           "System.Dynamic.Runtime.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Dynamic.Runtime.dll"
             },
             "Patterns": null
@@ -1220,7 +1205,7 @@
           "System.Formats.Asn1.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Formats.Asn1.dll"
             },
             "Patterns": null
@@ -1228,7 +1213,7 @@
           "System.Globalization.Calendars.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Globalization.Calendars.dll"
             },
             "Patterns": null
@@ -1236,7 +1221,7 @@
           "System.Globalization.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Globalization.dll"
             },
             "Patterns": null
@@ -1244,7 +1229,7 @@
           "System.Globalization.Extensions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Globalization.Extensions.dll"
             },
             "Patterns": null
@@ -1252,7 +1237,7 @@
           "System.IdentityModel.Tokens.Jwt.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IdentityModel.Tokens.Jwt.dll"
             },
             "Patterns": null
@@ -1260,7 +1245,7 @@
           "System.IO.Compression.Brotli.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.Compression.Brotli.dll"
             },
             "Patterns": null
@@ -1268,7 +1253,7 @@
           "System.IO.Compression.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.Compression.dll"
             },
             "Patterns": null
@@ -1276,7 +1261,7 @@
           "System.IO.Compression.FileSystem.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.Compression.FileSystem.dll"
             },
             "Patterns": null
@@ -1284,7 +1269,7 @@
           "System.IO.Compression.ZipFile.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.Compression.ZipFile.dll"
             },
             "Patterns": null
@@ -1292,7 +1277,7 @@
           "System.IO.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.dll"
             },
             "Patterns": null
@@ -1300,7 +1285,7 @@
           "System.IO.FileSystem.AccessControl.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.FileSystem.AccessControl.dll"
             },
             "Patterns": null
@@ -1308,7 +1293,7 @@
           "System.IO.FileSystem.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.FileSystem.dll"
             },
             "Patterns": null
@@ -1316,7 +1301,7 @@
           "System.IO.FileSystem.DriveInfo.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.FileSystem.DriveInfo.dll"
             },
             "Patterns": null
@@ -1324,7 +1309,7 @@
           "System.IO.FileSystem.Primitives.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.FileSystem.Primitives.dll"
             },
             "Patterns": null
@@ -1332,7 +1317,7 @@
           "System.IO.FileSystem.Watcher.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.FileSystem.Watcher.dll"
             },
             "Patterns": null
@@ -1340,7 +1325,7 @@
           "System.IO.IsolatedStorage.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.IsolatedStorage.dll"
             },
             "Patterns": null
@@ -1348,7 +1333,7 @@
           "System.IO.MemoryMappedFiles.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.MemoryMappedFiles.dll"
             },
             "Patterns": null
@@ -1356,7 +1341,7 @@
           "System.IO.Pipelines.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.Pipelines.dll"
             },
             "Patterns": null
@@ -1364,7 +1349,7 @@
           "System.IO.Pipes.AccessControl.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.Pipes.AccessControl.dll"
             },
             "Patterns": null
@@ -1372,7 +1357,7 @@
           "System.IO.Pipes.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.Pipes.dll"
             },
             "Patterns": null
@@ -1380,7 +1365,7 @@
           "System.IO.UnmanagedMemoryStream.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.IO.UnmanagedMemoryStream.dll"
             },
             "Patterns": null
@@ -1388,7 +1373,7 @@
           "System.Linq.Async.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Linq.Async.dll"
             },
             "Patterns": null
@@ -1396,7 +1381,7 @@
           "System.Linq.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Linq.dll"
             },
             "Patterns": null
@@ -1404,7 +1389,7 @@
           "System.Linq.Expressions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Linq.Expressions.dll"
             },
             "Patterns": null
@@ -1412,7 +1397,7 @@
           "System.Linq.Parallel.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Linq.Parallel.dll"
             },
             "Patterns": null
@@ -1420,7 +1405,7 @@
           "System.Linq.Queryable.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Linq.Queryable.dll"
             },
             "Patterns": null
@@ -1428,7 +1413,7 @@
           "System.Memory.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Memory.dll"
             },
             "Patterns": null
@@ -1436,7 +1421,7 @@
           "System.Net.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.dll"
             },
             "Patterns": null
@@ -1444,7 +1429,7 @@
           "System.Net.Http.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.Http.dll"
             },
             "Patterns": null
@@ -1452,7 +1437,7 @@
           "System.Net.Http.Json.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.Http.Json.dll"
             },
             "Patterns": null
@@ -1460,7 +1445,7 @@
           "System.Net.HttpListener.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.HttpListener.dll"
             },
             "Patterns": null
@@ -1468,7 +1453,7 @@
           "System.Net.Mail.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.Mail.dll"
             },
             "Patterns": null
@@ -1476,7 +1461,7 @@
           "System.Net.NameResolution.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.NameResolution.dll"
             },
             "Patterns": null
@@ -1484,7 +1469,7 @@
           "System.Net.NetworkInformation.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.NetworkInformation.dll"
             },
             "Patterns": null
@@ -1492,7 +1477,7 @@
           "System.Net.Ping.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.Ping.dll"
             },
             "Patterns": null
@@ -1500,7 +1485,7 @@
           "System.Net.Primitives.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.Primitives.dll"
             },
             "Patterns": null
@@ -1508,7 +1493,7 @@
           "System.Net.Quic.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.Quic.dll"
             },
             "Patterns": null
@@ -1516,7 +1501,7 @@
           "System.Net.Requests.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.Requests.dll"
             },
             "Patterns": null
@@ -1524,7 +1509,7 @@
           "System.Net.Security.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.Security.dll"
             },
             "Patterns": null
@@ -1532,7 +1517,7 @@
           "System.Net.ServicePoint.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.ServicePoint.dll"
             },
             "Patterns": null
@@ -1540,7 +1525,7 @@
           "System.Net.Sockets.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.Sockets.dll"
             },
             "Patterns": null
@@ -1548,7 +1533,7 @@
           "System.Net.WebClient.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.WebClient.dll"
             },
             "Patterns": null
@@ -1556,7 +1541,7 @@
           "System.Net.WebHeaderCollection.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.WebHeaderCollection.dll"
             },
             "Patterns": null
@@ -1564,7 +1549,7 @@
           "System.Net.WebProxy.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.WebProxy.dll"
             },
             "Patterns": null
@@ -1572,7 +1557,7 @@
           "System.Net.WebSockets.Client.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.WebSockets.Client.dll"
             },
             "Patterns": null
@@ -1580,7 +1565,7 @@
           "System.Net.WebSockets.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Net.WebSockets.dll"
             },
             "Patterns": null
@@ -1588,7 +1573,7 @@
           "System.Numerics.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Numerics.dll"
             },
             "Patterns": null
@@ -1596,7 +1581,7 @@
           "System.Numerics.Vectors.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Numerics.Vectors.dll"
             },
             "Patterns": null
@@ -1604,7 +1589,7 @@
           "System.ObjectModel.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.ObjectModel.dll"
             },
             "Patterns": null
@@ -1612,7 +1597,7 @@
           "System.Private.CoreLib.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Private.CoreLib.dll"
             },
             "Patterns": null
@@ -1620,7 +1605,7 @@
           "System.Private.DataContractSerialization.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Private.DataContractSerialization.dll"
             },
             "Patterns": null
@@ -1628,7 +1613,7 @@
           "System.Private.Runtime.InteropServices.JavaScript.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Private.Runtime.InteropServices.JavaScript.dll"
             },
             "Patterns": null
@@ -1636,7 +1621,7 @@
           "System.Private.Uri.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Private.Uri.dll"
             },
             "Patterns": null
@@ -1644,7 +1629,7 @@
           "System.Private.Xml.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Private.Xml.dll"
             },
             "Patterns": null
@@ -1652,7 +1637,7 @@
           "System.Private.Xml.Linq.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Private.Xml.Linq.dll"
             },
             "Patterns": null
@@ -1660,7 +1645,7 @@
           "System.Reactive.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Reactive.dll"
             },
             "Patterns": null
@@ -1668,7 +1653,7 @@
           "System.Reflection.DispatchProxy.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Reflection.DispatchProxy.dll"
             },
             "Patterns": null
@@ -1676,7 +1661,7 @@
           "System.Reflection.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Reflection.dll"
             },
             "Patterns": null
@@ -1684,7 +1669,7 @@
           "System.Reflection.Emit.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Reflection.Emit.dll"
             },
             "Patterns": null
@@ -1692,7 +1677,7 @@
           "System.Reflection.Emit.ILGeneration.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Reflection.Emit.ILGeneration.dll"
             },
             "Patterns": null
@@ -1700,7 +1685,7 @@
           "System.Reflection.Emit.Lightweight.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Reflection.Emit.Lightweight.dll"
             },
             "Patterns": null
@@ -1708,7 +1693,7 @@
           "System.Reflection.Extensions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Reflection.Extensions.dll"
             },
             "Patterns": null
@@ -1716,7 +1701,7 @@
           "System.Reflection.Metadata.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Reflection.Metadata.dll"
             },
             "Patterns": null
@@ -1724,7 +1709,7 @@
           "System.Reflection.Primitives.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Reflection.Primitives.dll"
             },
             "Patterns": null
@@ -1732,7 +1717,7 @@
           "System.Reflection.TypeExtensions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Reflection.TypeExtensions.dll"
             },
             "Patterns": null
@@ -1740,7 +1725,7 @@
           "System.Resources.Reader.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Resources.Reader.dll"
             },
             "Patterns": null
@@ -1748,7 +1733,7 @@
           "System.Resources.ResourceManager.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Resources.ResourceManager.dll"
             },
             "Patterns": null
@@ -1756,7 +1741,7 @@
           "System.Resources.Writer.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Resources.Writer.dll"
             },
             "Patterns": null
@@ -1764,7 +1749,7 @@
           "System.Runtime.CompilerServices.Unsafe.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.CompilerServices.Unsafe.dll"
             },
             "Patterns": null
@@ -1772,7 +1757,7 @@
           "System.Runtime.CompilerServices.VisualC.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.CompilerServices.VisualC.dll"
             },
             "Patterns": null
@@ -1780,7 +1765,7 @@
           "System.Runtime.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.dll"
             },
             "Patterns": null
@@ -1788,7 +1773,7 @@
           "System.Runtime.Extensions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.Extensions.dll"
             },
             "Patterns": null
@@ -1796,7 +1781,7 @@
           "System.Runtime.Handles.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.Handles.dll"
             },
             "Patterns": null
@@ -1804,7 +1789,7 @@
           "System.Runtime.InteropServices.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.InteropServices.dll"
             },
             "Patterns": null
@@ -1812,7 +1797,7 @@
           "System.Runtime.InteropServices.RuntimeInformation.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.InteropServices.RuntimeInformation.dll"
             },
             "Patterns": null
@@ -1820,7 +1805,7 @@
           "System.Runtime.InteropServices.WindowsRuntime.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.InteropServices.WindowsRuntime.dll"
             },
             "Patterns": null
@@ -1828,7 +1813,7 @@
           "System.Runtime.Intrinsics.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.Intrinsics.dll"
             },
             "Patterns": null
@@ -1836,7 +1821,7 @@
           "System.Runtime.Loader.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.Loader.dll"
             },
             "Patterns": null
@@ -1844,7 +1829,7 @@
           "System.Runtime.Numerics.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.Numerics.dll"
             },
             "Patterns": null
@@ -1852,7 +1837,7 @@
           "System.Runtime.Serialization.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.Serialization.dll"
             },
             "Patterns": null
@@ -1860,7 +1845,7 @@
           "System.Runtime.Serialization.Formatters.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.Serialization.Formatters.dll"
             },
             "Patterns": null
@@ -1868,7 +1853,7 @@
           "System.Runtime.Serialization.Json.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.Serialization.Json.dll"
             },
             "Patterns": null
@@ -1876,7 +1861,7 @@
           "System.Runtime.Serialization.Primitives.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.Serialization.Primitives.dll"
             },
             "Patterns": null
@@ -1884,7 +1869,7 @@
           "System.Runtime.Serialization.Xml.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Runtime.Serialization.Xml.dll"
             },
             "Patterns": null
@@ -1892,7 +1877,7 @@
           "System.Security.AccessControl.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Security.AccessControl.dll"
             },
             "Patterns": null
@@ -1900,7 +1885,7 @@
           "System.Security.Claims.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Security.Claims.dll"
             },
             "Patterns": null
@@ -1908,7 +1893,7 @@
           "System.Security.Cryptography.Algorithms.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Security.Cryptography.Algorithms.dll"
             },
             "Patterns": null
@@ -1916,7 +1901,7 @@
           "System.Security.Cryptography.Cng.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Security.Cryptography.Cng.dll"
             },
             "Patterns": null
@@ -1924,7 +1909,7 @@
           "System.Security.Cryptography.Csp.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Security.Cryptography.Csp.dll"
             },
             "Patterns": null
@@ -1932,7 +1917,7 @@
           "System.Security.Cryptography.Encoding.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Security.Cryptography.Encoding.dll"
             },
             "Patterns": null
@@ -1940,7 +1925,7 @@
           "System.Security.Cryptography.OpenSsl.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Security.Cryptography.OpenSsl.dll"
             },
             "Patterns": null
@@ -1948,7 +1933,7 @@
           "System.Security.Cryptography.Primitives.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Security.Cryptography.Primitives.dll"
             },
             "Patterns": null
@@ -1956,7 +1941,7 @@
           "System.Security.Cryptography.X509Certificates.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Security.Cryptography.X509Certificates.dll"
             },
             "Patterns": null
@@ -1964,7 +1949,7 @@
           "System.Security.Cryptography.Xml.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Security.Cryptography.Xml.dll"
             },
             "Patterns": null
@@ -1972,7 +1957,7 @@
           "System.Security.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Security.dll"
             },
             "Patterns": null
@@ -1980,7 +1965,7 @@
           "System.Security.Principal.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Security.Principal.dll"
             },
             "Patterns": null
@@ -1988,7 +1973,7 @@
           "System.Security.Principal.Windows.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Security.Principal.Windows.dll"
             },
             "Patterns": null
@@ -1996,7 +1981,7 @@
           "System.Security.SecureString.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Security.SecureString.dll"
             },
             "Patterns": null
@@ -2004,7 +1989,7 @@
           "System.ServiceModel.Web.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.ServiceModel.Web.dll"
             },
             "Patterns": null
@@ -2012,7 +1997,7 @@
           "System.ServiceProcess.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.ServiceProcess.dll"
             },
             "Patterns": null
@@ -2020,7 +2005,7 @@
           "System.Text.Encoding.CodePages.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Text.Encoding.CodePages.dll"
             },
             "Patterns": null
@@ -2028,7 +2013,7 @@
           "System.Text.Encoding.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Text.Encoding.dll"
             },
             "Patterns": null
@@ -2036,7 +2021,7 @@
           "System.Text.Encoding.Extensions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Text.Encoding.Extensions.dll"
             },
             "Patterns": null
@@ -2044,7 +2029,7 @@
           "System.Text.Encodings.Web.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Text.Encodings.Web.dll"
             },
             "Patterns": null
@@ -2052,7 +2037,7 @@
           "System.Text.Json.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Text.Json.dll"
             },
             "Patterns": null
@@ -2060,7 +2045,7 @@
           "System.Text.RegularExpressions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Text.RegularExpressions.dll"
             },
             "Patterns": null
@@ -2068,7 +2053,7 @@
           "System.Threading.Channels.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Threading.Channels.dll"
             },
             "Patterns": null
@@ -2076,7 +2061,7 @@
           "System.Threading.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Threading.dll"
             },
             "Patterns": null
@@ -2084,7 +2069,7 @@
           "System.Threading.Overlapped.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Threading.Overlapped.dll"
             },
             "Patterns": null
@@ -2092,7 +2077,7 @@
           "System.Threading.Tasks.Dataflow.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Threading.Tasks.Dataflow.dll"
             },
             "Patterns": null
@@ -2100,7 +2085,7 @@
           "System.Threading.Tasks.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Threading.Tasks.dll"
             },
             "Patterns": null
@@ -2108,7 +2093,7 @@
           "System.Threading.Tasks.Extensions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Threading.Tasks.Extensions.dll"
             },
             "Patterns": null
@@ -2116,7 +2101,7 @@
           "System.Threading.Tasks.Parallel.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Threading.Tasks.Parallel.dll"
             },
             "Patterns": null
@@ -2124,7 +2109,7 @@
           "System.Threading.Thread.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Threading.Thread.dll"
             },
             "Patterns": null
@@ -2132,7 +2117,7 @@
           "System.Threading.ThreadPool.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Threading.ThreadPool.dll"
             },
             "Patterns": null
@@ -2140,7 +2125,7 @@
           "System.Threading.Timer.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Threading.Timer.dll"
             },
             "Patterns": null
@@ -2148,7 +2133,7 @@
           "System.Transactions.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Transactions.dll"
             },
             "Patterns": null
@@ -2156,7 +2141,7 @@
           "System.Transactions.Local.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Transactions.Local.dll"
             },
             "Patterns": null
@@ -2164,7 +2149,7 @@
           "System.ValueTuple.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.ValueTuple.dll"
             },
             "Patterns": null
@@ -2172,7 +2157,7 @@
           "System.Web.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Web.dll"
             },
             "Patterns": null
@@ -2180,7 +2165,7 @@
           "System.Web.HttpUtility.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Web.HttpUtility.dll"
             },
             "Patterns": null
@@ -2188,7 +2173,7 @@
           "System.Windows.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Windows.dll"
             },
             "Patterns": null
@@ -2196,7 +2181,7 @@
           "System.Xml.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Xml.dll"
             },
             "Patterns": null
@@ -2204,7 +2189,7 @@
           "System.Xml.Linq.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Xml.Linq.dll"
             },
             "Patterns": null
@@ -2212,7 +2197,7 @@
           "System.Xml.ReaderWriter.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Xml.ReaderWriter.dll"
             },
             "Patterns": null
@@ -2220,7 +2205,7 @@
           "System.Xml.Serialization.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Xml.Serialization.dll"
             },
             "Patterns": null
@@ -2228,7 +2213,7 @@
           "System.Xml.XDocument.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Xml.XDocument.dll"
             },
             "Patterns": null
@@ -2236,7 +2221,7 @@
           "System.Xml.XmlDocument.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Xml.XmlDocument.dll"
             },
             "Patterns": null
@@ -2244,7 +2229,7 @@
           "System.Xml.XmlSerializer.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Xml.XmlSerializer.dll"
             },
             "Patterns": null
@@ -2252,7 +2237,7 @@
           "System.Xml.XPath.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Xml.XPath.dll"
             },
             "Patterns": null
@@ -2260,7 +2245,7 @@
           "System.Xml.XPath.XDocument.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Xml.XPath.XDocument.dll"
             },
             "Patterns": null
@@ -2268,7 +2253,7 @@
           "System.Xml.XPath.XmlDocument.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\System.Xml.XPath.XmlDocument.dll"
             },
             "Patterns": null
@@ -2276,7 +2261,7 @@
           "WindowsBase.dll": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework\\WindowsBase.dll"
             },
             "Patterns": null
@@ -2284,7 +2269,7 @@
           "dotnet.6.0.0-preview.7.21377.19.js": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 2,
+              "ContentRootIndex": 1,
               "SubPath": "_framework\\dotnet.js"
             },
             "Patterns": null
@@ -2292,7 +2277,7 @@
           "BlazorApp3.Shared.pdb.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/BlazorApp3.Shared.pdb.gz"
             },
             "Patterns": null
@@ -2300,7 +2285,7 @@
           "PayPalHttp-Dotnet.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/PayPalHttp-Dotnet.dll.gz"
             },
             "Patterns": null
@@ -2308,7 +2293,7 @@
           "System.Reflection.Emit.Lightweight.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Reflection.Emit.Lightweight.dll.gz"
             },
             "Patterns": null
@@ -2316,7 +2301,7 @@
           "Microsoft.AspNetCore.Routing.Abstractions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Routing.Abstractions.dll.gz"
             },
             "Patterns": null
@@ -2324,7 +2309,7 @@
           "System.Security.Cryptography.Primitives.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Security.Cryptography.Primitives.dll.gz"
             },
             "Patterns": null
@@ -2332,7 +2317,7 @@
           "System.Security.AccessControl.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Security.AccessControl.dll.gz"
             },
             "Patterns": null
@@ -2340,7 +2325,7 @@
           "System.Security.SecureString.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Security.SecureString.dll.gz"
             },
             "Patterns": null
@@ -2348,7 +2333,7 @@
           "Microsoft.AspNetCore.Diagnostics.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Diagnostics.dll.gz"
             },
             "Patterns": null
@@ -2356,7 +2341,7 @@
           "System.Threading.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Threading.dll.gz"
             },
             "Patterns": null
@@ -2364,7 +2349,7 @@
           "Microsoft.Extensions.WebEncoders.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.WebEncoders.dll.gz"
             },
             "Patterns": null
@@ -2372,7 +2357,7 @@
           "System.Configuration.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Configuration.dll.gz"
             },
             "Patterns": null
@@ -2380,7 +2365,7 @@
           "System.Collections.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Collections.dll.gz"
             },
             "Patterns": null
@@ -2388,7 +2373,7 @@
           "Microsoft.IdentityModel.Protocols.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.IdentityModel.Protocols.dll.gz"
             },
             "Patterns": null
@@ -2396,7 +2381,7 @@
           "Google.Api.Gax.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Api.Gax.dll.gz"
             },
             "Patterns": null
@@ -2404,7 +2389,7 @@
           "Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv.dll.gz"
             },
             "Patterns": null
@@ -2412,7 +2397,7 @@
           "System.Web.HttpUtility.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Web.HttpUtility.dll.gz"
             },
             "Patterns": null
@@ -2420,7 +2405,7 @@
           "System.Net.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.dll.gz"
             },
             "Patterns": null
@@ -2428,7 +2413,7 @@
           "System.Dynamic.Runtime.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Dynamic.Runtime.dll.gz"
             },
             "Patterns": null
@@ -2436,7 +2421,7 @@
           "Google.Api.Gax.Grpc.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Api.Gax.Grpc.dll.gz"
             },
             "Patterns": null
@@ -2444,7 +2429,7 @@
           "System.Web.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Web.dll.gz"
             },
             "Patterns": null
@@ -2452,7 +2437,7 @@
           "System.Private.Uri.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Private.Uri.dll.gz"
             },
             "Patterns": null
@@ -2460,7 +2445,7 @@
           "Microsoft.Win32.Primitives.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Win32.Primitives.dll.gz"
             },
             "Patterns": null
@@ -2468,7 +2453,7 @@
           "System.Windows.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Windows.dll.gz"
             },
             "Patterns": null
@@ -2476,7 +2461,7 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.DependencyInjection.Abstractions.dll.gz"
             },
             "Patterns": null
@@ -2484,7 +2469,7 @@
           "Microsoft.Extensions.Configuration.FileExtensions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Configuration.FileExtensions.dll.gz"
             },
             "Patterns": null
@@ -2492,7 +2477,7 @@
           "System.ComponentModel.EventBasedAsync.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.ComponentModel.EventBasedAsync.dll.gz"
             },
             "Patterns": null
@@ -2500,7 +2485,7 @@
           "System.Runtime.CompilerServices.VisualC.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.CompilerServices.VisualC.dll.gz"
             },
             "Patterns": null
@@ -2508,7 +2493,7 @@
           "Microsoft.Net.Http.Headers.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Net.Http.Headers.dll.gz"
             },
             "Patterns": null
@@ -2516,7 +2501,7 @@
           "System.Diagnostics.Tracing.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Diagnostics.Tracing.dll.gz"
             },
             "Patterns": null
@@ -2524,7 +2509,7 @@
           "Microsoft.CSharp.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.CSharp.dll.gz"
             },
             "Patterns": null
@@ -2532,7 +2517,7 @@
           "Google.Apis.Auth.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Apis.Auth.dll.gz"
             },
             "Patterns": null
@@ -2540,7 +2525,7 @@
           "System.Diagnostics.StackTrace.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Diagnostics.StackTrace.dll.gz"
             },
             "Patterns": null
@@ -2548,7 +2533,7 @@
           "dotnet.wasm.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/dotnet.wasm.gz"
             },
             "Patterns": null
@@ -2556,7 +2541,7 @@
           "Google.Apis.Auth.PlatformServices.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Apis.Auth.PlatformServices.dll.gz"
             },
             "Patterns": null
@@ -2564,7 +2549,7 @@
           "System.Runtime.Extensions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.Extensions.dll.gz"
             },
             "Patterns": null
@@ -2572,7 +2557,7 @@
           "System.Threading.Tasks.Dataflow.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Threading.Tasks.Dataflow.dll.gz"
             },
             "Patterns": null
@@ -2580,7 +2565,7 @@
           "System.Threading.Tasks.Extensions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Threading.Tasks.Extensions.dll.gz"
             },
             "Patterns": null
@@ -2588,7 +2573,7 @@
           "Microsoft.Extensions.Configuration.Abstractions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Configuration.Abstractions.dll.gz"
             },
             "Patterns": null
@@ -2596,7 +2581,7 @@
           "System.Runtime.Serialization.Formatters.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.Serialization.Formatters.dll.gz"
             },
             "Patterns": null
@@ -2604,7 +2589,7 @@
           "Microsoft.Extensions.Logging.Debug.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Logging.Debug.dll.gz"
             },
             "Patterns": null
@@ -2612,7 +2597,7 @@
           "Microsoft.AspNetCore.HttpOverrides.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.HttpOverrides.dll.gz"
             },
             "Patterns": null
@@ -2620,7 +2605,7 @@
           "System.ComponentModel.Annotations.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.ComponentModel.Annotations.dll.gz"
             },
             "Patterns": null
@@ -2628,7 +2613,7 @@
           "icudt.dat.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/icudt.dat.gz"
             },
             "Patterns": null
@@ -2636,7 +2621,7 @@
           "BlazorApp3.Client.pdb.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/BlazorApp3.Client.pdb.gz"
             },
             "Patterns": null
@@ -2644,7 +2629,7 @@
           "System.Security.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Security.dll.gz"
             },
             "Patterns": null
@@ -2652,7 +2637,7 @@
           "Microsoft.AspNetCore.Http.Extensions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Http.Extensions.dll.gz"
             },
             "Patterns": null
@@ -2660,7 +2645,7 @@
           "Microsoft.Extensions.Logging.Abstractions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Logging.Abstractions.dll.gz"
             },
             "Patterns": null
@@ -2668,7 +2653,7 @@
           "System.Diagnostics.FileVersionInfo.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Diagnostics.FileVersionInfo.dll.gz"
             },
             "Patterns": null
@@ -2676,7 +2661,7 @@
           "System.Threading.Tasks.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Threading.Tasks.dll.gz"
             },
             "Patterns": null
@@ -2684,7 +2669,7 @@
           "System.Runtime.Numerics.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.Numerics.dll.gz"
             },
             "Patterns": null
@@ -2692,7 +2677,7 @@
           "Microsoft.AspNetCore.Authentication.JwtBearer.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Authentication.JwtBearer.dll.gz"
             },
             "Patterns": null
@@ -2700,7 +2685,7 @@
           "System.Linq.Queryable.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Linq.Queryable.dll.gz"
             },
             "Patterns": null
@@ -2708,7 +2693,7 @@
           "System.ValueTuple.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.ValueTuple.dll.gz"
             },
             "Patterns": null
@@ -2716,7 +2701,7 @@
           "System.IO.Compression.ZipFile.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.Compression.ZipFile.dll.gz"
             },
             "Patterns": null
@@ -2724,7 +2709,7 @@
           "Microsoft.Bcl.AsyncInterfaces.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Bcl.AsyncInterfaces.dll.gz"
             },
             "Patterns": null
@@ -2732,7 +2717,7 @@
           "Microsoft.AspNetCore.Hosting.Server.Abstractions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll.gz"
             },
             "Patterns": null
@@ -2740,7 +2725,7 @@
           "System.Net.Primitives.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.Primitives.dll.gz"
             },
             "Patterns": null
@@ -2748,7 +2733,7 @@
           "System.Data.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Data.dll.gz"
             },
             "Patterns": null
@@ -2756,7 +2741,7 @@
           "System.Reflection.Emit.ILGeneration.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Reflection.Emit.ILGeneration.dll.gz"
             },
             "Patterns": null
@@ -2764,7 +2749,7 @@
           "System.Transactions.Local.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Transactions.Local.dll.gz"
             },
             "Patterns": null
@@ -2772,7 +2757,7 @@
           "System.Net.NameResolution.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.NameResolution.dll.gz"
             },
             "Patterns": null
@@ -2780,7 +2765,7 @@
           "Grpc.Core.Api.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Grpc.Core.Api.dll.gz"
             },
             "Patterns": null
@@ -2788,7 +2773,7 @@
           "System.IO.Compression.FileSystem.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.Compression.FileSystem.dll.gz"
             },
             "Patterns": null
@@ -2796,7 +2781,7 @@
           "System.Diagnostics.Debug.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Diagnostics.Debug.dll.gz"
             },
             "Patterns": null
@@ -2804,7 +2789,7 @@
           "Microsoft.AspNetCore.Components.Web.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Components.Web.dll.gz"
             },
             "Patterns": null
@@ -2812,7 +2797,7 @@
           "System.Net.ServicePoint.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.ServicePoint.dll.gz"
             },
             "Patterns": null
@@ -2820,7 +2805,7 @@
           "System.Collections.Immutable.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Collections.Immutable.dll.gz"
             },
             "Patterns": null
@@ -2828,7 +2813,7 @@
           "Google.Apis.Core.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Apis.Core.dll.gz"
             },
             "Patterns": null
@@ -2836,7 +2821,7 @@
           "System.IO.FileSystem.Watcher.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.FileSystem.Watcher.dll.gz"
             },
             "Patterns": null
@@ -2844,7 +2829,7 @@
           "Firebase.Storage.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Firebase.Storage.dll.gz"
             },
             "Patterns": null
@@ -2852,7 +2837,7 @@
           "Microsoft.AspNetCore.Http.Features.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Http.Features.dll.gz"
             },
             "Patterns": null
@@ -2860,7 +2845,7 @@
           "Microsoft.Extensions.FileProviders.Abstractions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.FileProviders.Abstractions.dll.gz"
             },
             "Patterns": null
@@ -2868,7 +2853,7 @@
           "System.Resources.ResourceManager.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Resources.ResourceManager.dll.gz"
             },
             "Patterns": null
@@ -2876,7 +2861,7 @@
           "Microsoft.VisualBasic.Core.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.VisualBasic.Core.dll.gz"
             },
             "Patterns": null
@@ -2884,7 +2869,7 @@
           "System.Diagnostics.TraceSource.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Diagnostics.TraceSource.dll.gz"
             },
             "Patterns": null
@@ -2892,7 +2877,7 @@
           "Google.Cloud.Storage.V1.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Cloud.Storage.V1.dll.gz"
             },
             "Patterns": null
@@ -2900,7 +2885,7 @@
           "Microsoft.Extensions.Configuration.Binder.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Configuration.Binder.dll.gz"
             },
             "Patterns": null
@@ -2908,7 +2893,7 @@
           "blazor.webassembly.js.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/blazor.webassembly.js.gz"
             },
             "Patterns": null
@@ -2916,7 +2901,7 @@
           "System.IO.Compression.Brotli.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.Compression.Brotli.dll.gz"
             },
             "Patterns": null
@@ -2924,7 +2909,7 @@
           "System.Net.Ping.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.Ping.dll.gz"
             },
             "Patterns": null
@@ -2932,7 +2917,7 @@
           "Microsoft.Extensions.DependencyInjection.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.DependencyInjection.dll.gz"
             },
             "Patterns": null
@@ -2940,7 +2925,7 @@
           "System.IO.Pipelines.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.Pipelines.dll.gz"
             },
             "Patterns": null
@@ -2948,7 +2933,7 @@
           "Google.Cloud.Firestore.V1.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Cloud.Firestore.V1.dll.gz"
             },
             "Patterns": null
@@ -2956,7 +2941,7 @@
           "Microsoft.Extensions.Logging.Configuration.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Logging.Configuration.dll.gz"
             },
             "Patterns": null
@@ -2964,7 +2949,7 @@
           "Microsoft.AspNetCore.Routing.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Routing.dll.gz"
             },
             "Patterns": null
@@ -2972,7 +2957,7 @@
           "BlazorApp3.Shared.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/BlazorApp3.Shared.dll.gz"
             },
             "Patterns": null
@@ -2980,7 +2965,7 @@
           "System.Formats.Asn1.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Formats.Asn1.dll.gz"
             },
             "Patterns": null
@@ -2988,7 +2973,7 @@
           "Microsoft.Extensions.ObjectPool.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.ObjectPool.dll.gz"
             },
             "Patterns": null
@@ -2996,7 +2981,7 @@
           "System.Text.Encodings.Web.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Text.Encodings.Web.dll.gz"
             },
             "Patterns": null
@@ -3004,7 +2989,7 @@
           "System.Net.Sockets.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.Sockets.dll.gz"
             },
             "Patterns": null
@@ -3012,7 +2997,7 @@
           "Microsoft.AspNetCore.Components.Authorization.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll.gz"
             },
             "Patterns": null
@@ -3020,7 +3005,7 @@
           "dotnet.6.0.0-preview.7.21377.19.js.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 2,
+              "ContentRootIndex": 1,
               "SubPath": "_framework/dotnet.6.0.0-preview.7.21377.19.js.gz"
             },
             "Patterns": null
@@ -3028,7 +3013,7 @@
           "System.ComponentModel.Primitives.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.ComponentModel.Primitives.dll.gz"
             },
             "Patterns": null
@@ -3036,7 +3021,7 @@
           "Microsoft.AspNetCore.Components.Forms.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Components.Forms.dll.gz"
             },
             "Patterns": null
@@ -3044,7 +3029,7 @@
           "System.Diagnostics.Contracts.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Diagnostics.Contracts.dll.gz"
             },
             "Patterns": null
@@ -3052,7 +3037,7 @@
           "System.AppContext.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.AppContext.dll.gz"
             },
             "Patterns": null
@@ -3060,7 +3045,7 @@
           "System.Net.NetworkInformation.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.NetworkInformation.dll.gz"
             },
             "Patterns": null
@@ -3068,7 +3053,7 @@
           "Microsoft.AspNetCore.Authorization.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Authorization.dll.gz"
             },
             "Patterns": null
@@ -3076,7 +3061,7 @@
           "System.Text.Encoding.Extensions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Text.Encoding.Extensions.dll.gz"
             },
             "Patterns": null
@@ -3084,7 +3069,7 @@
           "Microsoft.Extensions.Configuration.Json.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Configuration.Json.dll.gz"
             },
             "Patterns": null
@@ -3092,7 +3077,7 @@
           "System.Reflection.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Reflection.dll.gz"
             },
             "Patterns": null
@@ -3100,7 +3085,7 @@
           "System.Xml.XPath.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Xml.XPath.dll.gz"
             },
             "Patterns": null
@@ -3108,7 +3093,7 @@
           "System.Net.Security.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.Security.dll.gz"
             },
             "Patterns": null
@@ -3116,7 +3101,7 @@
           "System.Runtime.Serialization.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.Serialization.dll.gz"
             },
             "Patterns": null
@@ -3124,7 +3109,7 @@
           "System.Private.Runtime.InteropServices.JavaScript.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Private.Runtime.InteropServices.JavaScript.dll.gz"
             },
             "Patterns": null
@@ -3132,7 +3117,7 @@
           "System.Xml.XmlDocument.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Xml.XmlDocument.dll.gz"
             },
             "Patterns": null
@@ -3140,7 +3125,7 @@
           "System.Resources.Writer.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Resources.Writer.dll.gz"
             },
             "Patterns": null
@@ -3148,7 +3133,7 @@
           "System.Net.WebSockets.Client.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.WebSockets.Client.dll.gz"
             },
             "Patterns": null
@@ -3156,7 +3141,7 @@
           "LiteDB.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/LiteDB.dll.gz"
             },
             "Patterns": null
@@ -3164,7 +3149,7 @@
           "Newtonsoft.Json.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Newtonsoft.Json.dll.gz"
             },
             "Patterns": null
@@ -3172,7 +3157,7 @@
           "Microsoft.Extensions.Configuration.UserSecrets.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Configuration.UserSecrets.dll.gz"
             },
             "Patterns": null
@@ -3180,7 +3165,7 @@
           "System.IO.FileSystem.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.FileSystem.dll.gz"
             },
             "Patterns": null
@@ -3188,7 +3173,7 @@
           "Microsoft.Extensions.Configuration.CommandLine.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Configuration.CommandLine.dll.gz"
             },
             "Patterns": null
@@ -3196,7 +3181,7 @@
           "System.IO.FileSystem.DriveInfo.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.FileSystem.DriveInfo.dll.gz"
             },
             "Patterns": null
@@ -3204,7 +3189,7 @@
           "Microsoft.IdentityModel.Protocols.OpenIdConnect.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll.gz"
             },
             "Patterns": null
@@ -3212,7 +3197,7 @@
           "Microsoft.AspNetCore.Http.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Http.dll.gz"
             },
             "Patterns": null
@@ -3220,7 +3205,7 @@
           "Microsoft.JSInterop.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.JSInterop.dll.gz"
             },
             "Patterns": null
@@ -3228,7 +3213,7 @@
           "Microsoft.IdentityModel.Logging.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.IdentityModel.Logging.dll.gz"
             },
             "Patterns": null
@@ -3236,7 +3221,7 @@
           "System.Drawing.Primitives.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Drawing.Primitives.dll.gz"
             },
             "Patterns": null
@@ -3244,7 +3229,7 @@
           "System.Net.Requests.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.Requests.dll.gz"
             },
             "Patterns": null
@@ -3252,7 +3237,7 @@
           "System.Reflection.TypeExtensions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Reflection.TypeExtensions.dll.gz"
             },
             "Patterns": null
@@ -3260,7 +3245,7 @@
           "Google.Api.CommonProtos.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Api.CommonProtos.dll.gz"
             },
             "Patterns": null
@@ -3268,7 +3253,7 @@
           "System.Linq.Parallel.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Linq.Parallel.dll.gz"
             },
             "Patterns": null
@@ -3276,7 +3261,7 @@
           "System.Security.Principal.Windows.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Security.Principal.Windows.dll.gz"
             },
             "Patterns": null
@@ -3284,7 +3269,7 @@
           "Microsoft.JSInterop.WebAssembly.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.JSInterop.WebAssembly.dll.gz"
             },
             "Patterns": null
@@ -3292,7 +3277,7 @@
           "System.Numerics.Vectors.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Numerics.Vectors.dll.gz"
             },
             "Patterns": null
@@ -3300,7 +3285,7 @@
           "System.ComponentModel.DataAnnotations.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.ComponentModel.DataAnnotations.dll.gz"
             },
             "Patterns": null
@@ -3308,7 +3293,7 @@
           "System.Net.Quic.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.Quic.dll.gz"
             },
             "Patterns": null
@@ -3316,7 +3301,7 @@
           "icudt_CJK.dat.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/icudt_CJK.dat.gz"
             },
             "Patterns": null
@@ -3324,7 +3309,7 @@
           "System.Security.Cryptography.OpenSsl.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Security.Cryptography.OpenSsl.dll.gz"
             },
             "Patterns": null
@@ -3332,7 +3317,7 @@
           "System.Linq.Async.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Linq.Async.dll.gz"
             },
             "Patterns": null
@@ -3340,7 +3325,7 @@
           "System.Data.DataSetExtensions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Data.DataSetExtensions.dll.gz"
             },
             "Patterns": null
@@ -3348,7 +3333,7 @@
           "PayPalPayoutsSdk.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/PayPalPayoutsSdk.dll.gz"
             },
             "Patterns": null
@@ -3356,7 +3341,7 @@
           "mscorlib.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/mscorlib.dll.gz"
             },
             "Patterns": null
@@ -3364,7 +3349,7 @@
           "Microsoft.AspNetCore.Diagnostics.Abstractions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Diagnostics.Abstractions.dll.gz"
             },
             "Patterns": null
@@ -3372,7 +3357,7 @@
           "Microsoft.AspNetCore.Hosting.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Hosting.dll.gz"
             },
             "Patterns": null
@@ -3380,7 +3365,7 @@
           "System.Security.Cryptography.Algorithms.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Security.Cryptography.Algorithms.dll.gz"
             },
             "Patterns": null
@@ -3388,7 +3373,7 @@
           "System.Security.Principal.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Security.Principal.dll.gz"
             },
             "Patterns": null
@@ -3396,7 +3381,7 @@
           "System.Net.Http.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.Http.dll.gz"
             },
             "Patterns": null
@@ -3404,7 +3389,7 @@
           "Firebase.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Firebase.dll.gz"
             },
             "Patterns": null
@@ -3412,7 +3397,7 @@
           "System.Runtime.Handles.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.Handles.dll.gz"
             },
             "Patterns": null
@@ -3420,7 +3405,7 @@
           "System.Private.CoreLib.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Private.CoreLib.dll.gz"
             },
             "Patterns": null
@@ -3428,7 +3413,7 @@
           "System.Net.Http.Json.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.Http.Json.dll.gz"
             },
             "Patterns": null
@@ -3436,7 +3421,7 @@
           "Microsoft.AspNetCore.Server.IISIntegration.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Server.IISIntegration.dll.gz"
             },
             "Patterns": null
@@ -3444,7 +3429,7 @@
           "Microsoft.AspNetCore.Server.Kestrel.Https.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.Https.dll.gz"
             },
             "Patterns": null
@@ -3452,7 +3437,7 @@
           "System.Buffers.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Buffers.dll.gz"
             },
             "Patterns": null
@@ -3460,7 +3445,7 @@
           "Microsoft.AspNetCore.Components.WebAssembly.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.dll.gz"
             },
             "Patterns": null
@@ -3468,7 +3453,7 @@
           "Microsoft.AspNetCore.Metadata.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Metadata.dll.gz"
             },
             "Patterns": null
@@ -3476,7 +3461,7 @@
           "System.Globalization.Extensions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Globalization.Extensions.dll.gz"
             },
             "Patterns": null
@@ -3484,7 +3469,7 @@
           "System.IO.Compression.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.Compression.dll.gz"
             },
             "Patterns": null
@@ -3492,7 +3477,7 @@
           "System.ServiceModel.Web.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.ServiceModel.Web.dll.gz"
             },
             "Patterns": null
@@ -3500,7 +3485,7 @@
           "System.Text.Encoding.CodePages.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Text.Encoding.CodePages.dll.gz"
             },
             "Patterns": null
@@ -3508,7 +3493,7 @@
           "System.Threading.Channels.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Threading.Channels.dll.gz"
             },
             "Patterns": null
@@ -3516,7 +3501,7 @@
           "Microsoft.AspNetCore.Cryptography.Internal.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Cryptography.Internal.dll.gz"
             },
             "Patterns": null
@@ -3524,7 +3509,7 @@
           "System.Diagnostics.Process.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Diagnostics.Process.dll.gz"
             },
             "Patterns": null
@@ -3532,7 +3517,7 @@
           "System.Data.Common.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Data.Common.dll.gz"
             },
             "Patterns": null
@@ -3540,7 +3525,7 @@
           "Microsoft.Extensions.Configuration.EnvironmentVariables.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Configuration.EnvironmentVariables.dll.gz"
             },
             "Patterns": null
@@ -3548,7 +3533,7 @@
           "Microsoft.AspNetCore.WebUtilities.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.WebUtilities.dll.gz"
             },
             "Patterns": null
@@ -3556,7 +3541,7 @@
           "System.Threading.Timer.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Threading.Timer.dll.gz"
             },
             "Patterns": null
@@ -3564,7 +3549,7 @@
           "System.Reflection.Metadata.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Reflection.Metadata.dll.gz"
             },
             "Patterns": null
@@ -3572,7 +3557,7 @@
           "System.Net.WebSockets.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.WebSockets.dll.gz"
             },
             "Patterns": null
@@ -3580,7 +3565,7 @@
           "System.Security.Cryptography.Csp.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Security.Cryptography.Csp.dll.gz"
             },
             "Patterns": null
@@ -3588,7 +3573,7 @@
           "System.Text.Json.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Text.Json.dll.gz"
             },
             "Patterns": null
@@ -3596,7 +3581,7 @@
           "System.IO.MemoryMappedFiles.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.MemoryMappedFiles.dll.gz"
             },
             "Patterns": null
@@ -3604,7 +3589,7 @@
           "Microsoft.AspNetCore.Http.Abstractions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Http.Abstractions.dll.gz"
             },
             "Patterns": null
@@ -3612,7 +3597,7 @@
           "System.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.dll.gz"
             },
             "Patterns": null
@@ -3620,7 +3605,7 @@
           "System.Security.Cryptography.X509Certificates.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Security.Cryptography.X509Certificates.dll.gz"
             },
             "Patterns": null
@@ -3628,7 +3613,7 @@
           "System.Text.RegularExpressions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Text.RegularExpressions.dll.gz"
             },
             "Patterns": null
@@ -3636,7 +3621,7 @@
           "Microsoft.Extensions.Logging.Console.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Logging.Console.dll.gz"
             },
             "Patterns": null
@@ -3644,7 +3629,7 @@
           "System.Security.Claims.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Security.Claims.dll.gz"
             },
             "Patterns": null
@@ -3652,7 +3637,7 @@
           "System.Security.Cryptography.Cng.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Security.Cryptography.Cng.dll.gz"
             },
             "Patterns": null
@@ -3660,7 +3645,7 @@
           "System.Private.DataContractSerialization.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Private.DataContractSerialization.dll.gz"
             },
             "Patterns": null
@@ -3668,7 +3653,7 @@
           "System.Xml.XPath.XmlDocument.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Xml.XPath.XmlDocument.dll.gz"
             },
             "Patterns": null
@@ -3676,7 +3661,7 @@
           "Microsoft.AspNetCore.Server.Kestrel.Core.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.Core.dll.gz"
             },
             "Patterns": null
@@ -3684,7 +3669,7 @@
           "Microsoft.Extensions.FileProviders.Physical.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.FileProviders.Physical.dll.gz"
             },
             "Patterns": null
@@ -3692,7 +3677,7 @@
           "Microsoft.AspNetCore.Components.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Components.dll.gz"
             },
             "Patterns": null
@@ -3700,7 +3685,7 @@
           "Google.Protobuf.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Protobuf.dll.gz"
             },
             "Patterns": null
@@ -3708,7 +3693,7 @@
           "Microsoft.AspNetCore.DataProtection.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.DataProtection.dll.gz"
             },
             "Patterns": null
@@ -3716,7 +3701,7 @@
           "Firebase.Auth.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Firebase.Auth.dll.gz"
             },
             "Patterns": null
@@ -3724,7 +3709,7 @@
           "System.Xml.XmlSerializer.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Xml.XmlSerializer.dll.gz"
             },
             "Patterns": null
@@ -3732,7 +3717,7 @@
           "System.Runtime.Serialization.Json.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.Serialization.Json.dll.gz"
             },
             "Patterns": null
@@ -3740,7 +3725,7 @@
           "System.Runtime.Intrinsics.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.Intrinsics.dll.gz"
             },
             "Patterns": null
@@ -3748,7 +3733,7 @@
           "System.Numerics.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Numerics.dll.gz"
             },
             "Patterns": null
@@ -3756,7 +3741,7 @@
           "System.Net.WebProxy.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.WebProxy.dll.gz"
             },
             "Patterns": null
@@ -3764,7 +3749,7 @@
           "System.Reflection.DispatchProxy.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Reflection.DispatchProxy.dll.gz"
             },
             "Patterns": null
@@ -3772,7 +3757,7 @@
           "FirebaseAdmin.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/FirebaseAdmin.dll.gz"
             },
             "Patterns": null
@@ -3780,7 +3765,7 @@
           "System.Private.Xml.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Private.Xml.dll.gz"
             },
             "Patterns": null
@@ -3788,7 +3773,7 @@
           "System.Security.Cryptography.Encoding.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Security.Cryptography.Encoding.dll.gz"
             },
             "Patterns": null
@@ -3796,7 +3781,7 @@
           "System.IO.Pipes.AccessControl.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.Pipes.AccessControl.dll.gz"
             },
             "Patterns": null
@@ -3804,7 +3789,7 @@
           "System.Xml.Serialization.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Xml.Serialization.dll.gz"
             },
             "Patterns": null
@@ -3812,7 +3797,7 @@
           "Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll.gz"
             },
             "Patterns": null
@@ -3820,7 +3805,7 @@
           "netstandard.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/netstandard.dll.gz"
             },
             "Patterns": null
@@ -3828,7 +3813,7 @@
           "System.Private.Xml.Linq.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Private.Xml.Linq.dll.gz"
             },
             "Patterns": null
@@ -3836,7 +3821,7 @@
           "System.Runtime.InteropServices.RuntimeInformation.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.InteropServices.RuntimeInformation.dll.gz"
             },
             "Patterns": null
@@ -3844,7 +3829,7 @@
           "System.Drawing.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Drawing.dll.gz"
             },
             "Patterns": null
@@ -3852,7 +3837,7 @@
           "Microsoft.Extensions.Options.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Options.dll.gz"
             },
             "Patterns": null
@@ -3860,7 +3845,7 @@
           "System.Xml.Linq.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Xml.Linq.dll.gz"
             },
             "Patterns": null
@@ -3868,7 +3853,7 @@
           "System.Threading.Tasks.Parallel.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Threading.Tasks.Parallel.dll.gz"
             },
             "Patterns": null
@@ -3876,7 +3861,7 @@
           "System.Globalization.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Globalization.dll.gz"
             },
             "Patterns": null
@@ -3884,7 +3869,7 @@
           "Google.Apis.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Apis.dll.gz"
             },
             "Patterns": null
@@ -3892,7 +3877,7 @@
           "System.Xml.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Xml.dll.gz"
             },
             "Patterns": null
@@ -3900,7 +3885,7 @@
           "System.Memory.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Memory.dll.gz"
             },
             "Patterns": null
@@ -3908,7 +3893,7 @@
           "icudt_EFIGS.dat.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/icudt_EFIGS.dat.gz"
             },
             "Patterns": null
@@ -3916,7 +3901,7 @@
           "Grpc.Auth.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Grpc.Auth.dll.gz"
             },
             "Patterns": null
@@ -3924,7 +3909,7 @@
           "System.Net.HttpListener.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.HttpListener.dll.gz"
             },
             "Patterns": null
@@ -3932,7 +3917,7 @@
           "System.ComponentModel.TypeConverter.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.ComponentModel.TypeConverter.dll.gz"
             },
             "Patterns": null
@@ -3940,7 +3925,7 @@
           "System.Core.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Core.dll.gz"
             },
             "Patterns": null
@@ -3948,7 +3933,7 @@
           "Microsoft.Extensions.Configuration.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Configuration.dll.gz"
             },
             "Patterns": null
@@ -3956,7 +3941,7 @@
           "System.ObjectModel.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.ObjectModel.dll.gz"
             },
             "Patterns": null
@@ -3964,7 +3949,7 @@
           "Microsoft.AspNetCore.DataProtection.Abstractions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.DataProtection.Abstractions.dll.gz"
             },
             "Patterns": null
@@ -3972,7 +3957,7 @@
           "System.Runtime.CompilerServices.Unsafe.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.CompilerServices.Unsafe.dll.gz"
             },
             "Patterns": null
@@ -3980,7 +3965,7 @@
           "System.Xml.XDocument.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Xml.XDocument.dll.gz"
             },
             "Patterns": null
@@ -3988,7 +3973,7 @@
           "Grpc.Core.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Grpc.Core.dll.gz"
             },
             "Patterns": null
@@ -3996,7 +3981,7 @@
           "System.IO.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.dll.gz"
             },
             "Patterns": null
@@ -4004,7 +3989,7 @@
           "System.IO.IsolatedStorage.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.IsolatedStorage.dll.gz"
             },
             "Patterns": null
@@ -4012,7 +3997,7 @@
           "Google.Cloud.Firestore.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Cloud.Firestore.dll.gz"
             },
             "Patterns": null
@@ -4020,7 +4005,7 @@
           "System.Runtime.Loader.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.Loader.dll.gz"
             },
             "Patterns": null
@@ -4028,7 +4013,7 @@
           "Google.Apis.Drive.v3.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Apis.Drive.v3.dll.gz"
             },
             "Patterns": null
@@ -4036,7 +4021,7 @@
           "System.IO.FileSystem.AccessControl.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.FileSystem.AccessControl.dll.gz"
             },
             "Patterns": null
@@ -4044,7 +4029,7 @@
           "System.Console.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Console.dll.gz"
             },
             "Patterns": null
@@ -4052,7 +4037,7 @@
           "Microsoft.AspNetCore.Authentication.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Authentication.dll.gz"
             },
             "Patterns": null
@@ -4060,7 +4045,7 @@
           "System.Diagnostics.DiagnosticSource.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Diagnostics.DiagnosticSource.dll.gz"
             },
             "Patterns": null
@@ -4068,7 +4053,7 @@
           "System.Runtime.Serialization.Xml.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.Serialization.Xml.dll.gz"
             },
             "Patterns": null
@@ -4076,7 +4061,7 @@
           "Microsoft.Extensions.Primitives.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Primitives.dll.gz"
             },
             "Patterns": null
@@ -4084,7 +4069,7 @@
           "Microsoft.AspNetCore.Hosting.Abstractions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Hosting.Abstractions.dll.gz"
             },
             "Patterns": null
@@ -4092,7 +4077,7 @@
           "System.ComponentModel.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.ComponentModel.dll.gz"
             },
             "Patterns": null
@@ -4100,7 +4085,7 @@
           "Microsoft.Extensions.Options.ConfigurationExtensions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Options.ConfigurationExtensions.dll.gz"
             },
             "Patterns": null
@@ -4108,7 +4093,7 @@
           "dotnet.timezones.blat.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/dotnet.timezones.blat.gz"
             },
             "Patterns": null
@@ -4116,7 +4101,7 @@
           "System.Threading.Thread.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Threading.Thread.dll.gz"
             },
             "Patterns": null
@@ -4124,7 +4109,7 @@
           "BlazorApp3.Client.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/BlazorApp3.Client.dll.gz"
             },
             "Patterns": null
@@ -4132,7 +4117,7 @@
           "System.Reflection.Extensions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Reflection.Extensions.dll.gz"
             },
             "Patterns": null
@@ -4140,7 +4125,7 @@
           "System.Runtime.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.dll.gz"
             },
             "Patterns": null
@@ -4148,7 +4133,7 @@
           "System.IO.FileSystem.Primitives.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.FileSystem.Primitives.dll.gz"
             },
             "Patterns": null
@@ -4156,7 +4141,7 @@
           "Microsoft.AspNetCore.Authentication.OAuth.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Authentication.OAuth.dll.gz"
             },
             "Patterns": null
@@ -4164,7 +4149,7 @@
           "System.Diagnostics.TextWriterTraceListener.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Diagnostics.TextWriterTraceListener.dll.gz"
             },
             "Patterns": null
@@ -4172,7 +4157,7 @@
           "Microsoft.AspNetCore.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.dll.gz"
             },
             "Patterns": null
@@ -4180,7 +4165,7 @@
           "System.Linq.Expressions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Linq.Expressions.dll.gz"
             },
             "Patterns": null
@@ -4188,7 +4173,7 @@
           "Microsoft.Extensions.FileSystemGlobbing.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.FileSystemGlobbing.dll.gz"
             },
             "Patterns": null
@@ -4196,7 +4181,7 @@
           "Microsoft.AspNetCore.Authentication.Abstractions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Authentication.Abstractions.dll.gz"
             },
             "Patterns": null
@@ -4204,7 +4189,7 @@
           "System.Reactive.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Reactive.dll.gz"
             },
             "Patterns": null
@@ -4212,7 +4197,7 @@
           "icudt_no_CJK.dat.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/icudt_no_CJK.dat.gz"
             },
             "Patterns": null
@@ -4220,7 +4205,7 @@
           "System.IdentityModel.Tokens.Jwt.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IdentityModel.Tokens.Jwt.dll.gz"
             },
             "Patterns": null
@@ -4228,7 +4213,7 @@
           "System.Resources.Reader.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Resources.Reader.dll.gz"
             },
             "Patterns": null
@@ -4236,7 +4221,7 @@
           "System.ServiceProcess.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.ServiceProcess.dll.gz"
             },
             "Patterns": null
@@ -4244,7 +4229,7 @@
           "Microsoft.Extensions.Hosting.Abstractions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Hosting.Abstractions.dll.gz"
             },
             "Patterns": null
@@ -4252,7 +4237,7 @@
           "WindowsBase.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/WindowsBase.dll.gz"
             },
             "Patterns": null
@@ -4260,7 +4245,7 @@
           "System.Transactions.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Transactions.dll.gz"
             },
             "Patterns": null
@@ -4268,7 +4253,7 @@
           "System.Net.Mail.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.Mail.dll.gz"
             },
             "Patterns": null
@@ -4276,7 +4261,7 @@
           "System.Runtime.InteropServices.WindowsRuntime.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.InteropServices.WindowsRuntime.dll.gz"
             },
             "Patterns": null
@@ -4284,7 +4269,7 @@
           "System.Xml.XPath.XDocument.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Xml.XPath.XDocument.dll.gz"
             },
             "Patterns": null
@@ -4292,7 +4277,7 @@
           "System.Runtime.Serialization.Primitives.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.Serialization.Primitives.dll.gz"
             },
             "Patterns": null
@@ -4300,7 +4285,7 @@
           "System.Net.WebHeaderCollection.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.WebHeaderCollection.dll.gz"
             },
             "Patterns": null
@@ -4308,7 +4293,7 @@
           "Google.LongRunning.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.LongRunning.dll.gz"
             },
             "Patterns": null
@@ -4316,7 +4301,7 @@
           "AspNetCore.Firebase.Authentication.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/AspNetCore.Firebase.Authentication.dll.gz"
             },
             "Patterns": null
@@ -4324,7 +4309,7 @@
           "Google.Api.Gax.Grpc.GrpcCore.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Api.Gax.Grpc.GrpcCore.dll.gz"
             },
             "Patterns": null
@@ -4332,7 +4317,7 @@
           "System.Text.Encoding.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Text.Encoding.dll.gz"
             },
             "Patterns": null
@@ -4340,7 +4325,7 @@
           "System.Diagnostics.Tools.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Diagnostics.Tools.dll.gz"
             },
             "Patterns": null
@@ -4348,7 +4333,7 @@
           "System.Reflection.Primitives.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Reflection.Primitives.dll.gz"
             },
             "Patterns": null
@@ -4356,7 +4341,7 @@
           "Google.Api.Gax.Rest.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Api.Gax.Rest.dll.gz"
             },
             "Patterns": null
@@ -4364,7 +4349,7 @@
           "System.Collections.Specialized.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Collections.Specialized.dll.gz"
             },
             "Patterns": null
@@ -4372,7 +4357,7 @@
           "System.Collections.NonGeneric.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Collections.NonGeneric.dll.gz"
             },
             "Patterns": null
@@ -4380,7 +4365,7 @@
           "Google.Apis.Storage.v1.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Google.Apis.Storage.v1.dll.gz"
             },
             "Patterns": null
@@ -4388,7 +4373,7 @@
           "System.IO.Pipes.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.Pipes.dll.gz"
             },
             "Patterns": null
@@ -4396,7 +4381,7 @@
           "System.Xml.ReaderWriter.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Xml.ReaderWriter.dll.gz"
             },
             "Patterns": null
@@ -4404,7 +4389,7 @@
           "Microsoft.Win32.Registry.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Win32.Registry.dll.gz"
             },
             "Patterns": null
@@ -4412,7 +4397,7 @@
           "PayPalCheckoutSdk.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/PayPalCheckoutSdk.dll.gz"
             },
             "Patterns": null
@@ -4420,7 +4405,7 @@
           "System.Security.Cryptography.Xml.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Security.Cryptography.Xml.dll.gz"
             },
             "Patterns": null
@@ -4428,7 +4413,7 @@
           "Microsoft.AspNetCore.Server.Kestrel.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.dll.gz"
             },
             "Patterns": null
@@ -4436,7 +4421,7 @@
           "Microsoft.AspNetCore.Authentication.Core.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.AspNetCore.Authentication.Core.dll.gz"
             },
             "Patterns": null
@@ -4444,7 +4429,7 @@
           "Braintree.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Braintree.dll.gz"
             },
             "Patterns": null
@@ -4452,7 +4437,7 @@
           "System.Globalization.Calendars.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Globalization.Calendars.dll.gz"
             },
             "Patterns": null
@@ -4460,7 +4445,7 @@
           "System.Net.WebClient.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Net.WebClient.dll.gz"
             },
             "Patterns": null
@@ -4468,7 +4453,7 @@
           "System.Threading.ThreadPool.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Threading.ThreadPool.dll.gz"
             },
             "Patterns": null
@@ -4476,7 +4461,7 @@
           "Microsoft.IdentityModel.Tokens.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.IdentityModel.Tokens.dll.gz"
             },
             "Patterns": null
@@ -4484,7 +4469,7 @@
           "Microsoft.Extensions.Logging.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.Extensions.Logging.dll.gz"
             },
             "Patterns": null
@@ -4492,7 +4477,7 @@
           "System.IO.UnmanagedMemoryStream.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.IO.UnmanagedMemoryStream.dll.gz"
             },
             "Patterns": null
@@ -4500,7 +4485,7 @@
           "Microsoft.VisualBasic.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/Microsoft.VisualBasic.dll.gz"
             },
             "Patterns": null
@@ -4508,7 +4493,7 @@
           "System.Collections.Concurrent.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Collections.Concurrent.dll.gz"
             },
             "Patterns": null
@@ -4516,7 +4501,7 @@
           "System.Linq.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Linq.dll.gz"
             },
             "Patterns": null
@@ -4524,7 +4509,7 @@
           "System.Reflection.Emit.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Reflection.Emit.dll.gz"
             },
             "Patterns": null
@@ -4532,7 +4517,7 @@
           "System.Runtime.InteropServices.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Runtime.InteropServices.dll.gz"
             },
             "Patterns": null
@@ -4540,7 +4525,7 @@
           "System.Threading.Overlapped.dll.gz": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 1,
+              "ContentRootIndex": 0,
               "SubPath": "_framework/System.Threading.Overlapped.dll.gz"
             },
             "Patterns": null
@@ -4552,7 +4537,7 @@
       "BlazorApp3.Client.styles.css": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 3,
+          "ContentRootIndex": 2,
           "SubPath": "BlazorApp3.Client.styles.css"
         },
         "Patterns": null
@@ -4560,7 +4545,7 @@
       "service-worker.js": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 4,
+          "ContentRootIndex": 3,
           "SubPath": "service-worker.js"
         },
         "Patterns": null
@@ -4568,7 +4553,7 @@
       "service-worker-assets.js": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 1,
+          "ContentRootIndex": 0,
           "SubPath": "service-worker-assets.js"
         },
         "Patterns": null
@@ -4578,7 +4563,7 @@
           "app.css": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 5,
+              "ContentRootIndex": 4,
               "SubPath": "css\\app.css"
             },
             "Patterns": null
@@ -4588,7 +4573,7 @@
               "bootstrap.min.css": {
                 "Children": null,
                 "Asset": {
-                  "ContentRootIndex": 5,
+                  "ContentRootIndex": 4,
                   "SubPath": "css\\bootstrap\\bootstrap.min.css"
                 },
                 "Patterns": null
@@ -4596,7 +4581,7 @@
               "bootstrap.min.css.map": {
                 "Children": null,
                 "Asset": {
-                  "ContentRootIndex": 5,
+                  "ContentRootIndex": 4,
                   "SubPath": "css\\bootstrap\\bootstrap.min.css.map"
                 },
                 "Patterns": null
@@ -4614,7 +4599,7 @@
                       "open-iconic-bootstrap.min.css": {
                         "Children": null,
                         "Asset": {
-                          "ContentRootIndex": 5,
+                          "ContentRootIndex": 4,
                           "SubPath": "css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
                         },
                         "Patterns": null
@@ -4628,7 +4613,7 @@
                       "open-iconic.eot": {
                         "Children": null,
                         "Asset": {
-                          "ContentRootIndex": 5,
+                          "ContentRootIndex": 4,
                           "SubPath": "css\\open-iconic\\font\\fonts\\open-iconic.eot"
                         },
                         "Patterns": null
@@ -4636,7 +4621,7 @@
                       "open-iconic.otf": {
                         "Children": null,
                         "Asset": {
-                          "ContentRootIndex": 5,
+                          "ContentRootIndex": 4,
                           "SubPath": "css\\open-iconic\\font\\fonts\\open-iconic.otf"
                         },
                         "Patterns": null
@@ -4644,7 +4629,7 @@
                       "open-iconic.svg": {
                         "Children": null,
                         "Asset": {
-                          "ContentRootIndex": 5,
+                          "ContentRootIndex": 4,
                           "SubPath": "css\\open-iconic\\font\\fonts\\open-iconic.svg"
                         },
                         "Patterns": null
@@ -4652,7 +4637,7 @@
                       "open-iconic.ttf": {
                         "Children": null,
                         "Asset": {
-                          "ContentRootIndex": 5,
+                          "ContentRootIndex": 4,
                           "SubPath": "css\\open-iconic\\font\\fonts\\open-iconic.ttf"
                         },
                         "Patterns": null
@@ -4660,7 +4645,7 @@
                       "open-iconic.woff": {
                         "Children": null,
                         "Asset": {
-                          "ContentRootIndex": 5,
+                          "ContentRootIndex": 4,
                           "SubPath": "css\\open-iconic\\font\\fonts\\open-iconic.woff"
                         },
                         "Patterns": null
@@ -4676,7 +4661,7 @@
               "FONT-LICENSE": {
                 "Children": null,
                 "Asset": {
-                  "ContentRootIndex": 5,
+                  "ContentRootIndex": 4,
                   "SubPath": "css\\open-iconic\\FONT-LICENSE"
                 },
                 "Patterns": null
@@ -4684,7 +4669,7 @@
               "ICON-LICENSE": {
                 "Children": null,
                 "Asset": {
-                  "ContentRootIndex": 5,
+                  "ContentRootIndex": 4,
                   "SubPath": "css\\open-iconic\\ICON-LICENSE"
                 },
                 "Patterns": null
@@ -4692,7 +4677,7 @@
               "README.md": {
                 "Children": null,
                 "Asset": {
-                  "ContentRootIndex": 5,
+                  "ContentRootIndex": 4,
                   "SubPath": "css\\open-iconic\\README.md"
                 },
                 "Patterns": null
@@ -4708,7 +4693,7 @@
       "Deposit.js": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 5,
+          "ContentRootIndex": 4,
           "SubPath": "Deposit.js"
         },
         "Patterns": null
@@ -4716,7 +4701,7 @@
       "favicon.ico": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 5,
+          "ContentRootIndex": 4,
           "SubPath": "favicon.ico"
         },
         "Patterns": null
@@ -4724,7 +4709,7 @@
       "icon-192.png": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 5,
+          "ContentRootIndex": 4,
           "SubPath": "icon-192.png"
         },
         "Patterns": null
@@ -4732,7 +4717,7 @@
       "icon-512.png": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 5,
+          "ContentRootIndex": 4,
           "SubPath": "icon-512.png"
         },
         "Patterns": null
@@ -4740,7 +4725,7 @@
       "index.html": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 5,
+          "ContentRootIndex": 4,
           "SubPath": "index.html"
         },
         "Patterns": null
@@ -4748,7 +4733,7 @@
       "manifest.json": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 5,
+          "ContentRootIndex": 4,
           "SubPath": "manifest.json"
         },
         "Patterns": null
@@ -4756,7 +4741,7 @@
       "tBarScript.js": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 5,
+          "ContentRootIndex": 4,
           "SubPath": "tBarScript.js"
         },
         "Patterns": null
@@ -4764,7 +4749,7 @@
       "test.js": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 5,
+          "ContentRootIndex": 4,
           "SubPath": "test.js"
         },
         "Patterns": null
@@ -4773,7 +4758,7 @@
     "Asset": null,
     "Patterns": [
       {
-        "ContentRootIndex": 5,
+        "ContentRootIndex": 4,
         "Pattern": "**",
         "Depth": 0
       }
