@@ -214,6 +214,14 @@ public class UserController : Controller
     [HttpPost("SignUp")]
     public async Task<ActionResult> SignUp([FromBody] SignUpModel signUpModel)
     {
+        if(signUpModel.Role == "Customer" || signUpModel.Role == "Studio")
+        {
+            
+        }
+        else
+        {
+            return BadRequest("Check role");
+        }
         if (signUpModel.ConfirmPassword != signUpModel.Password)
         {
             return BadRequest("Password and Confirm Password are different");
@@ -245,7 +253,7 @@ public class UserController : Controller
                 Email = signUpModel.Email,
                 Id = user.Uid,
                 Name = signUpModel.Name,
-                Role = "Customer",
+                Role = signUpModel.Role,
                 Wallet = 0.0
             };
 

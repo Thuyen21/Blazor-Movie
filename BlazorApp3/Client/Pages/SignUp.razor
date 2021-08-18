@@ -1,6 +1,8 @@
 ﻿<h3>SignUp</h3>
 @page "/signup"
 
+<button @onclick="Role">Sign Up as @role</button>
+
 <EditForm Model="@signUpModel" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator/>
     <ValidationSummary/>

@@ -35,5 +35,7 @@ namespace BlazorApp3.Shared
         [DisplayName("Date of birth")]
         [DataType(DataType.Date)]
         public DateTime DateOfBirth { get; set; }
+
+        public string Role { get; set; }
     }
 }
