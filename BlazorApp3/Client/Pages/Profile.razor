@@ -1,6 +1,7 @@
 ﻿<h3>Profile</h3>
 @attribute [Authorize]
 @page "/profile"
+@inject IAccountService _accountService;
 <EditForm Model="@accountManagementModel" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator/>
     <ValidationSummary/>
@@ -42,6 +43,8 @@
     public async Task ChangeEmail()
     {
         content = await (await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail", changeEmail)).Content.ReadAsStringAsync();
+         _accountService.Login();
+         _navigationManager.NavigateTo("/Profile");
     }
     public async Task ChangePass()
     {
