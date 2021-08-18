@@ -1,4 +1,0 @@
-D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1\bin\Debug\net6.0-maccatalyst\maccatalyst-x64\Xamarin.MacCatalyst.dll
-D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1\bin\Debug\net6.0-maccatalyst\maccatalyst-x64\Xamarin.iOS.dll
-D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1\bin\Debug\net6.0-maccatalyst\maccatalyst-x64\icudt.dat
-D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1\bin\Debug\net6.0-maccatalyst\maccatalyst-x64\libxamarin-dotnet-debug.a

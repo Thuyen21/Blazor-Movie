@@ -1,2 +1,0 @@
-D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1\obj\Debug\net6.0-android\android\assets\Xamarin.AndroidX.DocumentFile.dll
-D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1\obj\Debug\net6.0-android\android\assets\Xamarin.Google.Android.Material.dll
