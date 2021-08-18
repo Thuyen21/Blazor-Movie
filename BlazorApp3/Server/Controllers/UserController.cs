@@ -3,6 +3,7 @@ using Firebase.Auth;
 using Firebase.Auth.Providers;
 using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -108,7 +109,40 @@ public class UserController : Controller
         return await Task.FromResult(acc);
 
     }
+    [HttpPost("ChangeEmail")]
+    public async Task<ActionResult> ChangeEmail([FromBody] ChangeEmailModel changeEmailModel)
+    {
+        changeEmailModel.Email = changeEmailModel.Email.ToLower();
+        try
+        {
+            userCredential =
+                    await client.SignInWithEmailAndPasswordAsync(User.FindFirst(ClaimTypes.Email).Value,
+                        changeEmailModel.Password);
+            UserCredential newUserCredentiall = userCredential;
+            newUserCredentiall.AuthCredential = EmailProvider.GetCredential(changeEmailModel.Email, changeEmailModel.Password);
+            await newUserCredentiall.User.LinkWithCredentialAsync(userCredential.AuthCredential);
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
 
+            QuerySnapshot snapshot = await db.Collection("Account").WhereEqualTo("Id", userCredential.User.Uid)
+                .GetSnapshotAsync();
+            Dictionary<string, object> update = new() { { "Email", changeEmailModel.Email } };
+            foreach (DocumentSnapshot document in snapshot.Documents)
+            {
+                await document.Reference.UpdateAsync(update);
+            }
+            ClaimsIdentity identity = new(User.Identity);
+            identity.RemoveClaim(identity.FindFirst(ClaimTypes.Email));
+            identity.AddClaim(new Claim(ClaimTypes.Email, changeEmailModel.Email));
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(identity));
+            return Ok("Success");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
     [HttpPost("ResetPassword")]
     public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordModel resetPassword)
     {

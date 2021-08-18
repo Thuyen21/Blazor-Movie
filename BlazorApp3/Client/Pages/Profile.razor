@@ -24,3 +24,29 @@
 <div>@content </div>
 
 
+<EditForm Model="@changeEmail" OnValidSubmit="ChangeEmail">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    <div>New Email</div>
+    <InputText  @bind-Value="@changeEmail.Email"/><br>
+    <div>Password</div>
+    <InputText  @bind-Value="@changeEmail.Password"/><br>
+    <button type="submit">Submit</button>
+</EditForm>
+
+ <button @onclick="ChangePass">Click here to send an Email to reset your password</button>
+@code{
+    ChangeEmailModel changeEmail = new ChangeEmailModel();
+
+
+    public async Task ChangeEmail()
+    {
+        content = await (await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail", changeEmail)).Content.ReadAsStringAsync();
+    }
+    public async Task ChangePass()
+    {
+        _navigationManager.NavigateTo("/ResetPassword");
+    }
+
+    
+}
