@@ -153,7 +153,7 @@ public class CustomerController : Controller
             foreach (DocumentSnapshot snapshotAsyncDocument in snapshotAsync.Documents)
             {
                 await snapshotAsyncDocument.Reference.UpdateAsync(
-                    new Dictionary<string, object> {
+                    new Dictionary<string, dynamic> {
                             {
                                 "Wallet", Convert.ToDouble(transaction.Amount) +
                                           snapshotAsyncDocument.ConvertTo<AccountManagementModel>().Wallet
@@ -234,7 +234,7 @@ public class CustomerController : Controller
             foreach (DocumentSnapshot snapshotAsyncDocument in snapshotAsync.Documents)
             {
                 await snapshotAsyncDocument.Reference.UpdateAsync(
-                    new Dictionary<string, object> {
+                    new Dictionary<string, dynamic> {
                             {
                                 "Wallet", Convert.ToDouble(transaction.Amount) +
                                           snapshotAsyncDocument.ConvertTo<AccountManagementModel>().Wallet
@@ -312,10 +312,10 @@ public class CustomerController : Controller
             {
                 return BadRequest("Not enough cash");
             }
-            await db.Collection("Buy").AddAsync(new Dictionary<string, object>() { { "MovieId", vip.Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow } });
+            await db.Collection("Buy").AddAsync(new Dictionary<string, dynamic>() { { "MovieId", vip.Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow } });
 
 
-            await (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].Reference.UpdateAsync(new Dictionary<string, object> { { "Wallet", (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>("Wallet") - 0.1 } });
+            await (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Wallet", (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>("Wallet") - 0.1 } });
         }
         else
         {
@@ -347,9 +347,9 @@ public class CustomerController : Controller
                 QuerySnapshot vipCheck = await db.Collection("Vip").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
                 if (vipCheck.Documents.Count == 0)
                 {
-                    await db.Collection("Vip").AddAsync(new Dictionary<string, object>() { { "User", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow.AddMonths(vip.Choose) } });
+                    await db.Collection("Vip").AddAsync(new Dictionary<string, dynamic>() { { "User", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow.AddMonths(vip.Choose) } });
                     await (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).
-                        Documents[0].Reference.UpdateAsync(new Dictionary<string, object>{{"Wallet", (await db.Collection("Account").
+                        Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic>{{"Wallet", (await db.Collection("Account").
                             WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>("Wallet") - minus} });
 
                 }
@@ -358,17 +358,17 @@ public class CustomerController : Controller
                     DateTime dateCheck = vipCheck.Documents[0].GetValue<DateTime>("Time");
                     if (dateCheck < DateTime.UtcNow)
                     {
-                        await vipCheck.Documents[0].Reference.UpdateAsync(new Dictionary<string, object> { { "Time", DateTime.UtcNow.AddMonths(vip.Choose) } });
+                        await vipCheck.Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Time", DateTime.UtcNow.AddMonths(vip.Choose) } });
                         await (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).
-                        Documents[0].Reference.UpdateAsync(new Dictionary<string, object>{{"Wallet", (await db.Collection("Account").
+                        Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic>{{"Wallet", (await db.Collection("Account").
                             WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>("Wallet") - minus} });
                     }
 
                     else
                     {
-                        await vipCheck.Documents[0].Reference.UpdateAsync(new Dictionary<string, object> { { "Time", dateCheck.AddMonths(vip.Choose) } });
+                        await vipCheck.Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Time", dateCheck.AddMonths(vip.Choose) } });
                         await (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).
-                        Documents[0].Reference.UpdateAsync(new Dictionary<string, object>{{"Wallet", (await db.Collection("Account").
+                        Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic>{{"Wallet", (await db.Collection("Account").
                             WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>("Wallet") - minus} });
                     }
                 }
@@ -454,7 +454,7 @@ public class CustomerController : Controller
         FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
         comment.Email = User.FindFirstValue(ClaimTypes.Email);
         DocumentReference commentUp = await db.Collection("Comment").AddAsync(comment);
-        await commentUp.UpdateAsync(new Dictionary<string, object> { { "Id", commentUp.Id } });
+        await commentUp.UpdateAsync(new Dictionary<string, dynamic> { { "Id", commentUp.Id } });
 
         return Ok("Commented");
     }
@@ -466,11 +466,11 @@ public class CustomerController : Controller
         {
             if (ac == "Like")
             {
-                await db.Collection("CommentAcction").AddAsync(new Dictionary<string, object>() { { "Action", "Like" }, { "CommentId", Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) } });
+                await db.Collection("CommentAcction").AddAsync(new Dictionary<string, dynamic>() { { "Action", "Like" }, { "CommentId", Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) } });
             }
             if (ac == "DisLike")
             {
-                await db.Collection("CommentAcction").AddAsync(new Dictionary<string, object>() { { "Action", "DisLike" }, { "CommentId", Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) } });
+                await db.Collection("CommentAcction").AddAsync(new Dictionary<string, dynamic>() { { "Action", "DisLike" }, { "CommentId", Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) } });
 
             }
         }
@@ -488,11 +488,11 @@ public class CustomerController : Controller
                 {
                     if (ac == "Like")
                     {
-                        await item.Reference.UpdateAsync(new Dictionary<string, object>() { { "Action", "Like" } });
+                        await item.Reference.UpdateAsync(new Dictionary<string, dynamic>() { { "Action", "Like" } });
                     }
                     if (ac == "DisLike")
                     {
-                        await item.Reference.UpdateAsync(new Dictionary<string, object>() { { "Action", "DisLike" } });
+                        await item.Reference.UpdateAsync(new Dictionary<string, dynamic>() { { "Action", "DisLike" } });
 
                     }
                 }

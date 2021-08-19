@@ -76,7 +76,7 @@ public class StudioController : Controller
             movie.PremiereDate = movie.PremiereDate.ToUniversalTime();
             movie.StudioId = User.FindFirstValue(ClaimTypes.Sid);
             DocumentReference MovieId = await collection.AddAsync(movie);
-            await MovieId.UpdateAsync(new Dictionary<string, object> { { "MovieId", MovieId.Id } });
+            await MovieId.UpdateAsync(new Dictionary<string, dynamic> { { "MovieId", MovieId.Id } });
             return Ok("You can go to edit this movie to upload movie and image");
         }
         catch (Exception ex)
@@ -115,7 +115,7 @@ public class StudioController : Controller
 
         movie.PremiereDate = movie.PremiereDate.ToUniversalTime();
 
-        Dictionary<string, object> dictionary = movie.GetType()
+        Dictionary<string, dynamic> dictionary = movie.GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public)
             .ToDictionary(prop => prop.Name, prop => prop.GetValue(movie, null));
 
@@ -289,12 +289,12 @@ public class StudioController : Controller
                 if (result.Prediction == "positive")
                 {
                     list[0] = list[0] + 1;
-                    await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Positive" } });
+                    await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Positive" } });
                 }
                 else
                 {
                     list[1] = list[1] + 1;
-                    await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Negative" } });
+                    await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Negative" } });
                 }
             }
             catch (Exception)
@@ -333,12 +333,12 @@ public class StudioController : Controller
                 if (result.Prediction == "positive")
                 {
                     list[0] = list[0] + 1;
-                    await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Positive" } });
+                    await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Positive" } });
                 }
                 else
                 {
                     list[1] = list[1] + 1;
-                    await item.Reference.UpdateAsync(new Dictionary<string, object> { { "Prediction", "Negative" } });
+                    await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Negative" } });
                 }
             }
             else
@@ -377,7 +377,7 @@ public class StudioController : Controller
             }
 
             await snapshotDocument.Reference.UpdateAsync(
-                new Dictionary<string, object> { { "Wallet", cashTest - Convert.ToDouble(dic["Cash"]) } });
+                new Dictionary<string, dynamic> { { "Wallet", cashTest - Convert.ToDouble(dic["Cash"]) } });
         }
         string clientId = "AUiGr3FOSHrsVSTbFwS_NFq8g-fGt1ovVj0LY9f0D260rprZgDB-VL8-Ww0Gwz4bsShhLz0YG8iawmjf";
         string secret = "EONxXLT9WLegeVtXtnvqfXCaGbDGrn2pyeLtB_ngG10Dq8Wu-Ay8JpmIvEGrH3fN4dA0dNhcPdTXjwgk";

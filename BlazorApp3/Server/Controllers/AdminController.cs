@@ -120,7 +120,7 @@ public class AdminController : Controller
             QuerySnapshot snapshot = await collection.GetSnapshotAsync();
 
 
-            Dictionary<string, object> update = new()
+            Dictionary<string, dynamic> update = new()
             {
                 { "Name", account.Name },
                 { "Role", account.Role },
@@ -255,7 +255,7 @@ public class AdminController : Controller
 
         movie.PremiereDate = movie.PremiereDate.ToUniversalTime();
 
-        Dictionary<string, object> dictionary = movie.GetType()
+        Dictionary<string, dynamic> dictionary = movie.GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public)
             .ToDictionary(prop => prop.Name, prop => prop.GetValue(movie, null));
 

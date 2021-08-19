@@ -125,7 +125,7 @@ public class UserController : Controller
 
             QuerySnapshot snapshot = await db.Collection("Account").WhereEqualTo("Id", userCredential.User.Uid)
                 .GetSnapshotAsync();
-            Dictionary<string, object> update = new() { { "Email", changeEmailModel.Email } };
+            Dictionary<string, dynamic> update = new() { { "Email", changeEmailModel.Email } };
             foreach (DocumentSnapshot document in snapshot.Documents)
             {
                 await document.Reference.UpdateAsync(update);
@@ -191,7 +191,7 @@ public class UserController : Controller
             FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
             QuerySnapshot snapshot = await db.Collection("Account")
                 .WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
-            Dictionary<string, object> update = new()
+            Dictionary<string, dynamic> update = new()
             {
                 { "Name", accountManagementModel.Name },
                 { "DateOfBirth", accountManagementModel.DateOfBirth.ToUniversalTime() }
