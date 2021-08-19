@@ -12,7 +12,7 @@ namespace BlazorApp3.Client.Pages
 
         protected MovieModel movie;
         protected string movieLink;
-        protected bool canWatch = false;
+        protected bool? canWatch;
         protected string Acomment;
         protected string content;
         protected List<CommentModel> commentList = new();
@@ -27,7 +27,7 @@ namespace BlazorApp3.Client.Pages
             movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Customer/Watch/{Id}");
             canWatch = await _httpClient.GetFromJsonAsync<bool>($"Customer/CanWatch/{Id}");
             commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}");
-            if (canWatch)
+            if (canWatch == true)
             {
                 char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
                 string token = new string(tokena);

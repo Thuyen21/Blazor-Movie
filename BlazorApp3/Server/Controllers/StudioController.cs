@@ -262,7 +262,7 @@ public class StudioController : Controller
         return await Task.FromResult(commentList);
     }
     [HttpGet("CommentStatus/{Id}/{check}")]
-    public async Task<ActionResult<List<int>>> CommentStatus(string Id, string check)
+    public async Task<ActionResult<Dictionary<string, dynamic>>> CommentStatus(string Id, string check)
     {
         FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
 
@@ -272,7 +272,7 @@ public class StudioController : Controller
         List<int> list = new();
         list.Add(0);
         list.Add(0);
-
+        List<CommentModel> commentList = new List<CommentModel>();
         foreach (DocumentSnapshot item in commentSnapshot.Documents)
         {
             CommentModel commentConvert = item.ConvertTo<CommentModel>();
@@ -290,11 +290,17 @@ public class StudioController : Controller
                 {
                     list[0] = list[0] + 1;
                     await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Positive" } });
+                    int like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
+                    int Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
+                    commentList.Add(new CommentModel() { Id = commentConvert.Id, Email = commentConvert.Email, MovieId = commentConvert.MovieId, Time = commentConvert.Time, CommentText = commentConvert.CommentText, Like = like, DisLike = Dislike });
                 }
                 else
                 {
                     list[1] = list[1] + 1;
                     await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Negative" } });
+                    int like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
+                    int Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
+                    commentList.Add(new CommentModel() { Id = commentConvert.Id, Email = commentConvert.Email, MovieId = commentConvert.MovieId, Time = commentConvert.Time, CommentText = commentConvert.CommentText, Like = like, DisLike = Dislike });
                 }
             }
             catch (Exception)
@@ -305,8 +311,10 @@ public class StudioController : Controller
 
 
         }
-
-        return list;
+        Dictionary<string, dynamic> dic = new();
+        dic.Add("CommentStatus", list);
+        dic.Add("CommentList", commentList);
+        return dic;
     }
     [HttpGet("CommentStatus/{Id}")]
     public async Task<ActionResult<List<int>>> CommentStatus(string Id)

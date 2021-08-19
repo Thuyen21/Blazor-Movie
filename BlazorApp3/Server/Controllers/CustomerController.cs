@@ -381,13 +381,17 @@ public class CustomerController : Controller
     {
         FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
         QuerySnapshot collectionCheckVip = await db.Collection("Vip").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).OrderByDescending("Time").Limit(1).GetSnapshotAsync();
-
+        
         if (collectionCheckVip.Documents.Count != 0)
 
         {
             if (collectionCheckVip.Documents[0].GetValue<DateTime>("Time") >= DateTime.UtcNow)
             {
-
+                QuerySnapshot collectionView = await db.Collection("View").WhereEqualTo("Id", Id).WhereEqualTo("Viewer", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
+                if(collectionView.Documents.Count == 0)
+                {
+                    await db.Collection("View").AddAsync(new Dictionary<string, dynamic>() { {"Id", Id },{ "Viewer", User.FindFirstValue(ClaimTypes.Sid) },{"time", DateTime.UtcNow } });
+                }
                 return await Task.FromResult(true);
             }
             else
@@ -399,6 +403,11 @@ public class CustomerController : Controller
                 }
                 else
                 {
+                    QuerySnapshot collectionView = await db.Collection("View").WhereEqualTo("Id", Id).WhereEqualTo("Viewer", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
+                    if (collectionView.Documents.Count == 0)
+                    {
+                        await db.Collection("View").AddAsync(new Dictionary<string, dynamic>() { { "Id", Id }, { "Viewer", User.FindFirstValue(ClaimTypes.Sid) }, { "time", DateTime.UtcNow } });
+                    }
                     return await Task.FromResult(true);
                 }
             }
@@ -413,6 +422,11 @@ public class CustomerController : Controller
             }
             else
             {
+                QuerySnapshot collectionView = await db.Collection("View").WhereEqualTo("Id", Id).WhereEqualTo("Viewer", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
+                if (collectionView.Documents.Count == 0)
+                {
+                    await db.Collection("View").AddAsync(new Dictionary<string, dynamic>() { { "Id", Id }, { "Viewer", User.FindFirstValue(ClaimTypes.Sid) }, { "time", DateTime.UtcNow } });
+                }
                 return await Task.FromResult(true);
             }
         }

@@ -4,16 +4,17 @@
 @using Firebase.Storage
 @if(movie == null || movieLink == null)
 {
-    @if(!canWatch)
+    @if(canWatch == null)
+    {
+        <div>Loadding</div>
+    }
+    else if(canWatch == false)
     {
         string linkVip = $"BuyVip/{Id}";
         <div>Need to buy</div>      
         <div><NavLink class="nav-link" href="@linkVip">Buy</NavLink></div>
     }
-    else
-    {
-        <div>Loadding</div>
-    }
+    
     
 }
 else
