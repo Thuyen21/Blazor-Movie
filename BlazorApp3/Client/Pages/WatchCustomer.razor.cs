@@ -16,7 +16,8 @@ namespace BlazorApp3.Client.Pages
         protected string Acomment;
         protected string content;
         protected List<CommentModel> commentList = new();
-        protected MyForm form = new MyForm();
+        
+        protected int index = 0;
         protected override async Task OnInitializedAsync()
         {
             if (Id == null)
@@ -26,7 +27,7 @@ namespace BlazorApp3.Client.Pages
 
             movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Customer/Watch/{Id}");
             canWatch = await _httpClient.GetFromJsonAsync<bool>($"Customer/CanWatch/{Id}");
-            commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}");
+            commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}");
             if (canWatch == true)
             {
                 char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
@@ -46,7 +47,8 @@ namespace BlazorApp3.Client.Pages
             CommentModel up = new CommentModel()
             { Time = DateTime.UtcNow, MovieId = Id, CommentText = Acomment };
             content = await (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up)).Content.ReadAsStringAsync();
-            commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}");
+            commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}");
+            
         }
 
         protected async Task AcDisLike(string Id)
@@ -61,9 +63,10 @@ namespace BlazorApp3.Client.Pages
             await OnInitializedAsync();
         }
 
-        protected class MyForm
+        protected async Task LoadMore()
         {
-            public string MyProperty { get; set; }
+            index++;
+            commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}"));
         }
     }
 }

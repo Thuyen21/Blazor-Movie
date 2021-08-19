@@ -14,7 +14,7 @@ namespace BlazorApp3.Server.Controllers;
 [Authorize(Roles = "Studio")]
 public class StudioController : Controller
 {
-    [HttpGet("Index/{searchString}/{sortOrder}")]
+    [HttpGet("Index/{searchString?}/{sortOrder?}")]
     public async Task<ActionResult<List<MovieModel>>> Index(string? searchString, string? sortOrder)
     {
         try

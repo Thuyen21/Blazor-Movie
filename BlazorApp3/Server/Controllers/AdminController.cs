@@ -37,7 +37,7 @@ public class AdminController : Controller
     private static readonly FirebaseAuthClient client = new(config);
     private static readonly FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
 
-    [HttpGet("AccountManagement/{searchString}/{sortOrder}")]
+    [HttpGet("AccountManagement/{searchString?}/{sortOrder?}")]
     public async Task<ActionResult<List<AccountManagementModel>>> AccountManagement(string? searchString, string? sortOrder)
     {
         List<AccountManagementModel> myFoo = new();
@@ -185,7 +185,7 @@ public class AdminController : Controller
             return BadRequest(ex.Message);
         }
     }
-    [HttpGet("Movie/{searchString}/{sortOrder}")]
+    [HttpGet("Movie/{searchString?}/{sortOrder?}")]
     public async Task<ActionResult<List<MovieModel>>> Movie(string? sortOrder, string? searchString)
     {
         FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");

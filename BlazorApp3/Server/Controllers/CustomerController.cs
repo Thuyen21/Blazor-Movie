@@ -9,10 +9,10 @@ using System.Text.RegularExpressions;
 namespace BlazorApp3.Server.Controllers;
 [ApiController]
 [Route("[controller]")]
-[Authorize(Roles = "Customer")]
+//[Authorize(Roles = "Customer")]
 public class CustomerController : Controller
 {
-    [HttpGet("Movie/{searchString}/{sortOrder}")]
+    [HttpGet("Movie/{searchString?}/{sortOrder?}")]
     public async Task<ActionResult<List<MovieModel>>> Movie(string? sortOrder, string? searchString)
     {
         try
@@ -431,12 +431,12 @@ public class CustomerController : Controller
             }
         }
     }
-    [HttpGet("Comment/{Id}")]
-    public async Task<ActionResult<List<CommentModel>>> Comment(string Id)
+    [HttpGet("Comment/{Id?}/{index:int:min(0)}")]
+    public async Task<ActionResult<List<CommentModel>>> Comment(string? Id, int index)
     {
         FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
 
-        Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time");
+        Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time").Offset(index * 5).Limit(5);
         QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
         List<CommentModel> commentList = new List<CommentModel>();
         StreamReader reader = new StreamReader(Path.GetFullPath(Path.Combine("wwwroot/Bad Words/base-list-of-bad-words_csv-file_2021_01_18.csv")));
