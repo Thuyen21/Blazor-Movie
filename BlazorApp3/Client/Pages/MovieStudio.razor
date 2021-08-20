@@ -3,7 +3,7 @@
 @attribute [Authorize(Roles ="Studio")]
 <input placeholder="Enter your text" @bind-value="@searchString" />
 
-    <button class="btn btn-primary" @onclick="OnInitializedAsync">Search</button>
+    <button class="btn btn-primary" @onclick="Search">Search</button>
 
 @if(movies == null)
 {
@@ -43,7 +43,7 @@ else
         }
         </tbody>
     </table>
-
+     <button @onclick="LoadMore">Click to load more</button>
     
 }
 

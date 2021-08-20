@@ -12,8 +12,8 @@ namespace BlazorApp3.Server.Controllers;
 //[Authorize(Roles = "Customer")]
 public class CustomerController : Controller
 {
-    [HttpGet("Movie/{searchString?}/{sortOrder?}")]
-    public async Task<ActionResult<List<MovieModel>>> Movie(string? sortOrder, string? searchString)
+    [HttpGet("Movie/{searchString?}/{sortOrder?}/{index:int:min(0)}")]
+    public async Task<ActionResult<List<MovieModel>>> Movie(string? sortOrder, string? searchString, int index)
     {
         try
         {
@@ -48,7 +48,7 @@ public class CustomerController : Controller
             }
 
             List<MovieModel> myFoo = new();
-
+            usersRef = usersRef.Offset(index * 5).Limit(5);
             QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
 
 

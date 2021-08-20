@@ -6,10 +6,6 @@ namespace BlazorApp3.Client.Pages
     public partial class MovieAdmin
     {
         protected List<MovieModel> movies = new();
-        protected string NameSort = "name";
-        protected string DateSort = "date";
-        protected string GenreSort = "genre";
-        protected string sortOrder = "Id";
         protected int index = 0;
         protected string? searchString { get; set; }
         protected bool isSearch = false;
@@ -23,7 +19,7 @@ namespace BlazorApp3.Client.Pages
             movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Admin/Movie/ /{sort}/{index}");
             isSearch = false;
             searchString = null;
-            sort = NameSort;
+            
         }
 
         protected async Task DateSortParm()
@@ -33,7 +29,7 @@ namespace BlazorApp3.Client.Pages
             movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Admin/Movie/ /{sort}/{index}");
             isSearch = false;
             searchString = null;
-            sort = DateSort;
+            
         }
 
         protected async Task GenreSortParm()
@@ -48,7 +44,7 @@ namespace BlazorApp3.Client.Pages
         protected override async Task OnInitializedAsync()
         {
             movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ / /{index}");
-            index++;
+            
         }
         protected async Task Search()
         {
@@ -69,6 +65,7 @@ namespace BlazorApp3.Client.Pages
         }
         protected async Task LoadMore()
         {
+            index++;
             if (isSearch)
             {
                 movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/{searchString}//{index}"));
@@ -81,7 +78,7 @@ namespace BlazorApp3.Client.Pages
             {
                 movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ / /{index}"));
             }
-            index++;
+            
         }
     }
 }

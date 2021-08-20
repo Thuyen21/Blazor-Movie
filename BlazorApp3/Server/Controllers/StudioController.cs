@@ -14,8 +14,8 @@ namespace BlazorApp3.Server.Controllers;
 [Authorize(Roles = "Studio")]
 public class StudioController : Controller
 {
-    [HttpGet("Index/{searchString?}/{sortOrder?}")]
-    public async Task<ActionResult<List<MovieModel>>> Index(string? searchString, string? sortOrder)
+    [HttpGet("Index/{searchString?}/{sortOrder?}/{index:int:min(0)}")]
+    public async Task<ActionResult<List<MovieModel>>> Index(string? searchString, string? sortOrder, int index)
     {
         try
         {
@@ -49,7 +49,7 @@ public class StudioController : Controller
             }
 
             List<MovieModel> myFoo = new();
-
+            usersRef = usersRef.Offset(index * 5).Limit(5);
             QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
 
 

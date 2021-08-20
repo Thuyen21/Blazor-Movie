@@ -7,54 +7,41 @@ namespace BlazorApp3.Client.Pages
     public partial class MovieCustomer
     {
         protected List<MovieModel> movies = new();
-        protected string NameSort = "name";
-        protected string DateSort = "date";
-        protected string GenreSort = "genre";
-        protected string sortOrder = "Id";
-        protected string searchString { get; set; }
-
+        protected string? searchString { get; set; }
+        protected bool isSearch = false;
         protected Dictionary<string, string> DicImageLink = new();
+        protected string sort = null;
+        protected int index = 0;
         protected async Task NameSortParm()
         {
-            sortOrder = NameSort;
-            NameSort = NameSort == "name" ? "nameDesc" : "name";
-            searchString = " ";
-            await OnInitializedAsync();
+            index = 0;
+            sort = sort == "name" ? "nameDesc" : "name";
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
+            isSearch = false;
+            searchString = null;
         }
 
         protected async Task DateSortParm()
         {
-            sortOrder = DateSort;
-            DateSort = DateSort == "date" ? "dateDesc" : "date";
-            searchString = " ";
-            await OnInitializedAsync();
+            index = 0;
+            sort = sort == "date" ? "dateDesc" : "date";
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
+            isSearch = false;
+            searchString = null;
         }
 
         protected async Task GenreSortParm()
         {
-            sortOrder = GenreSort;
-            GenreSort = GenreSort == "genre" ? "genreDesc" : "genre";
-            searchString = " ";
-            await OnInitializedAsync();
+            index = 0;
+            sort = sort == "genre" ? "genreDesc" : "genre";
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
+            isSearch = false;
+            searchString = null;
         }
 
         protected override async Task OnInitializedAsync()
         {
-            if (string.IsNullOrEmpty(searchString))
-            {
-                if (string.IsNullOrEmpty(sortOrder))
-                {
-                    movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>("Customer/Movie/ /{no}");
-                }
-                else
-                {
-                    movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sortOrder}");
-                }
-            }
-            else
-            {
-                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/{searchString}/{sortOrder}");
-            }
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}");
 
             char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
             string token = new string(tokena);
@@ -77,6 +64,41 @@ namespace BlazorApp3.Client.Pages
                     DicImageLink.Add(item.MovieId, null);
                 }
             }
+            
+        }
+        protected async Task Search()
+        {
+            index = 0;
+            if (searchString != null)
+            {
+                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/{searchString}/ /{index}");
+                isSearch = true;
+            }
+            else
+            {
+                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}");
+                isSearch = false;
+            }
+
+
+            sort = null;
+        }
+        protected async Task LoadMore()
+        {
+            index++;
+            if (isSearch)
+            {
+                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/{searchString}//{index}"));
+            }
+            else if (sort != null)
+            {
+                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}"));
+            }
+            else
+            {
+                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}"));
+            }
+            
         }
     }
 }

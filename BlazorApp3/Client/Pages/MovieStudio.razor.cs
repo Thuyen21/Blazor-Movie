@@ -6,53 +6,76 @@ namespace BlazorApp3.Client.Pages
     public partial class MovieStudio
     {
         protected List<MovieModel> movies = new();
-        protected string NameSort = "name";
-        protected string DateSort = "date";
-        protected string GenreSort = "genre";
-        protected string sortOrder = "Id";
-        protected string searchString { get; set; }
+        protected int index = 0;
+        protected string? searchString { get; set; }
+        protected bool isSearch = false;
+
+        protected string sort = null;
 
         protected async Task NameSortParm()
         {
-            sortOrder = NameSort;
-            NameSort = NameSort == "name" ? "nameDesc" : "name";
-            searchString = " ";
-            await OnInitializedAsync();
+            index = 0;
+            sort = sort == "name" ? "nameDesc" : "name";
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}");
+            isSearch = false;
+            searchString = null;
         }
 
         protected async Task DateSortParm()
         {
-            sortOrder = DateSort;
-            DateSort = DateSort == "date" ? "dateDesc" : "date";
-            searchString = " ";
-            await OnInitializedAsync();
+            index = 0;
+            sort = sort == "date" ? "dateDesc" : "date";
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}");
+            isSearch = false;
+            searchString = null;
         }
 
         protected async Task GenreSortParm()
         {
-            sortOrder = GenreSort;
-            GenreSort = GenreSort == "genre" ? "genreDesc" : "genre";
-            searchString = " ";
-            await OnInitializedAsync();
+            index = 0;
+            sort = sort == "genre" ? "genreDesc" : "genre";
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}");
+            isSearch = false;
+            searchString = null;
         }
 
         protected override async Task OnInitializedAsync()
         {
-            if (string.IsNullOrEmpty(searchString))
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}");
+        }
+        protected async Task Search()
+        {
+            index = 0;
+            if (searchString != null)
             {
-                if (string.IsNullOrEmpty(sortOrder))
-                {
-                    movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>("Studio/Index/ /{no}");
-                }
-                else
-                {
-                    movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sortOrder}");
-                }
+                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/{searchString}/ /{index}");
+                isSearch = true;
             }
             else
             {
-                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/{searchString}/{sortOrder}");
+                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}");
+                isSearch = false;
             }
+
+
+            sort = null;
+        }
+        protected async Task LoadMore()
+        {
+            index++;
+            if (isSearch)
+            {
+                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/{searchString}//{index}"));
+            }
+            else if (sort != null)
+            {
+                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}"));
+            }
+            else
+            {
+                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}"));
+            }
+
         }
     }
 }

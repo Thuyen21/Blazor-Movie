@@ -70,11 +70,12 @@ namespace BlazorApp3.Client.Pages
         protected override async Task OnInitializedAsync()
         {
             accs = await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/ / /{index}");
-            index++;
+            
         }
         protected async Task LoadMore()
         {
-            if(isSearch)
+            index++;
+            if (isSearch)
             {
                 accs.AddRange(await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/{searchString}//{index}"));
             }
@@ -86,7 +87,7 @@ namespace BlazorApp3.Client.Pages
             {
                 accs.AddRange(await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/ / /{index}"));
             }
-            index++;
+            
         }
     }
 }
