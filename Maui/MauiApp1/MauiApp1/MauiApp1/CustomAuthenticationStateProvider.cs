@@ -7,7 +7,8 @@ using System.Net.Http.Json;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-
+using System;
+using System.Net.Http;
 namespace MauiApp1
 {
     public class CustomAuthenticationStateProvider : AuthenticationStateProvider

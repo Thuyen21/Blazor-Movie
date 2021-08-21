@@ -3,7 +3,7 @@
 @attribute [Authorize(Roles ="Admin")]
 <input placeholder="Enter your text" @bind-value="@searchString" />
 
-    <button class="btn btn-primary" @onclick="OnInitializedAsync">Search</button>
+    <button class="btn btn-primary" @onclick="Search">Search</button>
 
 @if (accs == null)
 {
@@ -13,8 +13,6 @@
 }
 else
 {
-   
-
     <table class="table">
         <thead>
         <tr>
@@ -41,61 +39,11 @@ else
                  @{ var linkEdit = $"EditAccount/{acc.Id}"; var linkBan = $"BanAccount/{acc.Id}";}
                  <td><NavLink class="nav-link" href="@linkEdit">Edit</NavLink></td>
                  <td><NavLink class="nav-link" href="@linkBan">Ban</NavLink> </td>
-                    
-                    
             </tr>
         }
-        
-
         </tbody>
     </table>
+    <button @onclick="LoadMore">Click to load more</button>
 }
-@code{
-    [Parameter]
-        public List<AccountManagementModel> accs { get; set; } = new();
-        protected string NameSort = "name";
-        protected string DateSort = "date";
-        protected string EmailSort = "email";
-        protected string sortOrder = "Id";
-        protected string searchString { get; set; }
 
-        protected async Task NameSortParm()
-        {
-            sortOrder = NameSort;
-            NameSort = NameSort == "name" ? "nameDesc" : "name";
-            await OnInitializedAsync();
-        }
 
-        protected async Task DateSortParm()
-        {
-            sortOrder = DateSort;
-            DateSort = DateSort == "date" ? "dateDesc" : "date";
-            await OnInitializedAsync();
-        }
-
-        protected async Task EmailSortParm()
-        {
-            sortOrder = EmailSort;
-            EmailSort = EmailSort == "email" ? "emailDesc" : "email";
-            await OnInitializedAsync();
-        }
-
-        protected override async Task OnInitializedAsync()
-        {
-            if (string.IsNullOrEmpty(searchString))
-            {
-                if (string.IsNullOrEmpty(sortOrder))
-                {
-                    accs = await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>("admin/AccountManagement/ /{no}");
-                }
-                else
-                {
-                    accs = await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/ /{sortOrder}");
-                }
-            }
-            else
-            {
-                accs = await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/{searchString}/{sortOrder}");
-            }
-        }
-}

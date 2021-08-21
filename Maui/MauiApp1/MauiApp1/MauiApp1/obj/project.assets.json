@@ -3217,6 +3217,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -6302,6 +6303,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -9384,6 +9386,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -12466,6 +12469,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -15548,6 +15552,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -17815,6 +17820,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -19939,6 +19945,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -22060,6 +22067,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -24181,6 +24189,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -26302,6 +26311,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -28569,6 +28579,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -30693,6 +30704,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -32814,6 +32826,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -34935,6 +34948,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -37056,6 +37070,7 @@
           "Google.Apis.Drive.v3": "1.54.0.2397",
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
+          "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"

@@ -136,11 +136,51 @@
         "Asset": null,
         "Patterns": null
       },
+      "Deposit.js": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "Deposit.js"
+        },
+        "Patterns": null
+      },
       "index.html": {
         "Children": null,
         "Asset": {
           "ContentRootIndex": 0,
           "SubPath": "index.html"
+        },
+        "Patterns": null
+      },
+      "service-worker.js": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "service-worker.js"
+        },
+        "Patterns": null
+      },
+      "service-worker.published.js": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "service-worker.published.js"
+        },
+        "Patterns": null
+      },
+      "tBarScript.js": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "tBarScript.js"
+        },
+        "Patterns": null
+      },
+      "test.js": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "test.js"
         },
         "Patterns": null
       }

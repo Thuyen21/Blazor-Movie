@@ -8,7 +8,8 @@ using Microsoft.Maui.Controls.Xaml;
 using MauiApp1.Data;
 using Microsoft.AspNetCore.Components.Authorization;
 using MauiApp1.Services;
-
+using System;
+using System.Net.Http;
 [assembly: XamlCompilationAttribute(XamlCompilationOptions.Compile)]
 
 namespace MauiApp1

@@ -1,9 +1,10 @@
 ﻿@using Braintree
 <h3>DepositCustomer</h3>
+@inject IJSRuntime JS
 @page "/Deposit/{Code}"
 @page "/Deposit"
 
-@if(content == null)
+@*@if(content == null)
 {
     <div>Loadding</div>
 }
@@ -11,23 +12,48 @@ else
 {
     <div>@content</div>
 
-}
+}*@
+<div>@Code</div>
+<input type="number" step="0.01" min="0.01" @bind="cash"/>
+<button @onclick="Cash">Ok</button>
+
+<div id="dropin-container"></div>
+    <form id="payment-form" method="post">
+        <!-- Putting the empty container you plan to pass to
+        `braintree.dropin.create` inside a form will make layout and flow
+        easier to manage -->
+        <input type="submit" style="@divCSS"/>
+        <input type="hidden" id="nonce" name="nonce"/>
+        <input type="hidden" id="cash" name="cash"/>
+    </form>
+    <div id="paypal-button"></div>
 
 
-@code {
+@code{
     [Parameter]
-        public string Code { get; set; }
+    public string Code{get;set;}
+    private double cash = 0;
+    private string clientToken;
 
-        protected string content;
-        protected override async Task OnInitializedAsync()
+    protected string divCSS = "display: none;";
+        protected void DivCSS(string divCSS)
         {
-            if (Code == null)
-            {
-                _navigationManager.NavigateTo("/Customer/Deposit", true);
-            }
-            else
-            {
-                content = Code;
-            }
+            this.divCSS = divCSS;
         }
+
+    private async Task Cash()
+    {
+        try
+        {
+            clientToken = new string( await _httpClient.GetFromJsonAsync<char[]>("Customer/Deposit"));
+
+            await JS.InvokeVoidAsync("Deposit", clientToken, cash);
+            DivCSS("display: block;");
+        }
+        catch(Exception ex)
+        {
+            
+        }
+        
+    }
 }

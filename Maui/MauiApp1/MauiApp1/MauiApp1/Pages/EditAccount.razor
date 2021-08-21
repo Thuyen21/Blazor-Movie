@@ -1,5 +1,4 @@
-﻿  
-<h3>EditAccount</h3>
+﻿<h3>EditAccount</h3>
 @page "/EditAccount/{Id}"
 @attribute [Authorize(Roles ="Admin")]
 @if (acc == null)
@@ -30,25 +29,3 @@ else
 
 <div>@content</div>
 
-@code {
-    [Parameter]
-        public string Id { get; set; }
-
-        protected AccountManagementModel acc;
-        protected string content;
-        protected override async Task OnInitializedAsync()
-        {
-            if (Id == null)
-            {
-                _navigationManager.NavigateTo("/AdminAccountManagement");
-            }
-
-            acc = await _httpClient.GetFromJsonAsync<AccountManagementModel>($"Admin/EditAccount/{Id}");
-        }
-
-        protected async Task HandleValidSubmit()
-        {
-            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<AccountManagementModel>("Admin/EditAccount", acc);
-            content = await response.Content.ReadAsStringAsync();
-        }
-}
