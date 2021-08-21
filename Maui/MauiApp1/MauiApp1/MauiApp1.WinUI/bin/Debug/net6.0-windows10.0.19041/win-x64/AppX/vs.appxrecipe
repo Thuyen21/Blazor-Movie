@@ -29,29 +29,29 @@
     <AppXManifest Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\bin\Debug\net6.0-windows10.0.19041\win-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-08-21T09:47:40.832</Modified>
+      <Modified>2021-08-21T13:52:10.459</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\bin\Debug\net6.0-windows10.0.19041\win-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2021-08-21T09:20:34.987</Modified>
+      <Modified>2021-08-21T12:27:43.108</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\bin\Debug\net6.0-windows10.0.19041\win-x64\MauiApp1.WinUI.runtimeconfig.json">
       <PackagePath>MauiApp1.WinUI.runtimeconfig.json</PackagePath>
-      <Modified>2021-08-21T09:18:19.416</Modified>
+      <Modified>2021-08-21T12:27:42.782</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\bin\Debug\net6.0-windows10.0.19041\win-x64\MauiApp1.WinUI.dll">
       <PackagePath>MauiApp1.WinUI.dll</PackagePath>
-      <Modified>2021-08-21T09:47:39.208</Modified>
+      <Modified>2021-08-21T12:31:28.746</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\apphost.exe">
       <PackagePath>MauiApp1.WinUI.exe</PackagePath>
-      <Modified>2021-08-21T09:47:39.288</Modified>
+      <Modified>2021-08-21T12:31:28.761</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\bin\Debug\net6.0-windows10.0.19041\win-x64\MauiApp1.WinUI.deps.json">
       <PackagePath>MauiApp1.WinUI.deps.json</PackagePath>
-      <Modified>2021-08-21T09:18:19.394</Modified>
+      <Modified>2021-08-21T12:27:42.636</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Thuyen\.nuget\packages\microsoft.netcore.app.runtime.win-x64\6.0.0-preview.7.21377.19\runtimes\win-x64\lib\net6.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -1435,7 +1435,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\Shared\bin\Debug\net6.0\BlazorApp3.Shared.dll">
       <PackagePath>BlazorApp3.Shared.dll</PackagePath>
-      <Modified>2021-08-21T09:17:49.215</Modified>
+      <Modified>2021-08-21T12:27:28.913</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\Redist\Debug\x64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -1515,7 +1515,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1\wwwroot\index.html">
       <PackagePath>Assets\wwwroot\index.html</PackagePath>
-      <Modified>2021-08-21T09:01:25.509</Modified>
+      <Modified>2021-08-21T12:37:50.373</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1\wwwroot\service-worker.js">
       <PackagePath>Assets\wwwroot\service-worker.js</PackagePath>
@@ -1535,23 +1535,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\sp\Assets\appiconfgSplashScreen.scale-100.png">
       <PackagePath>Assets\appiconfgSplashScreen.scale-100.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.597</Modified>
+      <Modified>2021-08-21T12:27:39.259</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\sp\Assets\appiconfgSplashScreen.scale-125.png">
       <PackagePath>Assets\appiconfgSplashScreen.scale-125.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.613</Modified>
+      <Modified>2021-08-21T12:27:39.279</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\sp\Assets\appiconfgSplashScreen.scale-150.png">
       <PackagePath>Assets\appiconfgSplashScreen.scale-150.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.634</Modified>
+      <Modified>2021-08-21T12:27:39.304</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\sp\Assets\appiconfgSplashScreen.scale-200.png">
       <PackagePath>Assets\appiconfgSplashScreen.scale-200.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.667</Modified>
+      <Modified>2021-08-21T12:27:39.344</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\sp\Assets\appiconfgSplashScreen.scale-400.png">
       <PackagePath>Assets\appiconfgSplashScreen.scale-400.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.795</Modified>
+      <Modified>2021-08-21T12:27:39.494</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\f\OpenSans-Regular.ttf">
       <PackagePath>Assets\OpenSans-Regular.ttf</PackagePath>
@@ -1559,163 +1559,163 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconBadge.scale-100.png">
       <PackagePath>Assets\appiconBadge.scale-100.png</PackagePath>
-      <Modified>2021-08-21T08:58:46.115</Modified>
+      <Modified>2021-08-21T12:27:39.897</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconBadge.scale-125.png">
       <PackagePath>Assets\appiconBadge.scale-125.png</PackagePath>
-      <Modified>2021-08-21T08:58:46.117</Modified>
+      <Modified>2021-08-21T12:27:39.900</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconBadge.scale-150.png">
       <PackagePath>Assets\appiconBadge.scale-150.png</PackagePath>
-      <Modified>2021-08-21T08:58:46.119</Modified>
+      <Modified>2021-08-21T12:27:39.902</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconBadge.scale-200.png">
       <PackagePath>Assets\appiconBadge.scale-200.png</PackagePath>
-      <Modified>2021-08-21T08:58:46.121</Modified>
+      <Modified>2021-08-21T12:27:39.905</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconBadge.scale-400.png">
       <PackagePath>Assets\appiconBadge.scale-400.png</PackagePath>
-      <Modified>2021-08-21T08:58:46.123</Modified>
+      <Modified>2021-08-21T12:27:39.908</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconLargeTile.scale-100.png">
       <PackagePath>Assets\appiconLargeTile.scale-100.png</PackagePath>
-      <Modified>2021-08-21T08:58:46.006</Modified>
+      <Modified>2021-08-21T12:27:39.762</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconLargeTile.scale-125.png">
       <PackagePath>Assets\appiconLargeTile.scale-125.png</PackagePath>
-      <Modified>2021-08-21T08:58:46.017</Modified>
+      <Modified>2021-08-21T12:27:39.777</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconLargeTile.scale-150.png">
       <PackagePath>Assets\appiconLargeTile.scale-150.png</PackagePath>
-      <Modified>2021-08-21T08:58:46.028</Modified>
+      <Modified>2021-08-21T12:27:39.790</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconLargeTile.scale-200.png">
       <PackagePath>Assets\appiconLargeTile.scale-200.png</PackagePath>
-      <Modified>2021-08-21T08:58:46.045</Modified>
+      <Modified>2021-08-21T12:27:39.812</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconLargeTile.scale-400.png">
       <PackagePath>Assets\appiconLargeTile.scale-400.png</PackagePath>
-      <Modified>2021-08-21T08:58:46.113</Modified>
+      <Modified>2021-08-21T12:27:39.894</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconLogo.scale-100.png">
       <PackagePath>Assets\appiconLogo.scale-100.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.856</Modified>
+      <Modified>2021-08-21T12:27:39.568</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconLogo.scale-125.png">
       <PackagePath>Assets\appiconLogo.scale-125.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.858</Modified>
+      <Modified>2021-08-21T12:27:39.571</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconLogo.scale-150.png">
       <PackagePath>Assets\appiconLogo.scale-150.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.860</Modified>
+      <Modified>2021-08-21T12:27:39.573</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconLogo.scale-200.png">
       <PackagePath>Assets\appiconLogo.scale-200.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.863</Modified>
+      <Modified>2021-08-21T12:27:39.576</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconLogo.scale-400.png">
       <PackagePath>Assets\appiconLogo.scale-400.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.868</Modified>
+      <Modified>2021-08-21T12:27:39.581</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconMediumTile.scale-100.png">
       <PackagePath>Assets\appiconMediumTile.scale-100.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.903</Modified>
+      <Modified>2021-08-21T12:27:39.633</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconMediumTile.scale-125.png">
       <PackagePath>Assets\appiconMediumTile.scale-125.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.907</Modified>
+      <Modified>2021-08-21T12:27:39.638</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconMediumTile.scale-150.png">
       <PackagePath>Assets\appiconMediumTile.scale-150.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.912</Modified>
+      <Modified>2021-08-21T12:27:39.644</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconMediumTile.scale-200.png">
       <PackagePath>Assets\appiconMediumTile.scale-200.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.919</Modified>
+      <Modified>2021-08-21T12:27:39.653</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconMediumTile.scale-400.png">
       <PackagePath>Assets\appiconMediumTile.scale-400.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.936</Modified>
+      <Modified>2021-08-21T12:27:39.675</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconSmallTile.scale-100.png">
       <PackagePath>Assets\appiconSmallTile.scale-100.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.885</Modified>
+      <Modified>2021-08-21T12:27:39.605</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconSmallTile.scale-125.png">
       <PackagePath>Assets\appiconSmallTile.scale-125.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.887</Modified>
+      <Modified>2021-08-21T12:27:39.609</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconSmallTile.scale-150.png">
       <PackagePath>Assets\appiconSmallTile.scale-150.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.890</Modified>
+      <Modified>2021-08-21T12:27:39.613</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconSmallTile.scale-200.png">
       <PackagePath>Assets\appiconSmallTile.scale-200.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.893</Modified>
+      <Modified>2021-08-21T12:27:39.618</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconSmallTile.scale-400.png">
       <PackagePath>Assets\appiconSmallTile.scale-400.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.899</Modified>
+      <Modified>2021-08-21T12:27:39.627</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconStoreLogo.scale-100.png">
       <PackagePath>Assets\appiconStoreLogo.scale-100.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.870</Modified>
+      <Modified>2021-08-21T12:27:39.584</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconStoreLogo.scale-125.png">
       <PackagePath>Assets\appiconStoreLogo.scale-125.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.873</Modified>
+      <Modified>2021-08-21T12:27:39.588</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconStoreLogo.scale-150.png">
       <PackagePath>Assets\appiconStoreLogo.scale-150.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.875</Modified>
+      <Modified>2021-08-21T12:27:39.592</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconStoreLogo.scale-200.png">
       <PackagePath>Assets\appiconStoreLogo.scale-200.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.878</Modified>
+      <Modified>2021-08-21T12:27:39.596</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconStoreLogo.scale-400.png">
       <PackagePath>Assets\appiconStoreLogo.scale-400.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.882</Modified>
+      <Modified>2021-08-21T12:27:39.603</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconWideTile.scale-100.png">
       <PackagePath>Assets\appiconWideTile.scale-100.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.940</Modified>
+      <Modified>2021-08-21T12:27:39.681</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconWideTile.scale-125.png">
       <PackagePath>Assets\appiconWideTile.scale-125.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.946</Modified>
+      <Modified>2021-08-21T12:27:39.688</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconWideTile.scale-150.png">
       <PackagePath>Assets\appiconWideTile.scale-150.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.954</Modified>
+      <Modified>2021-08-21T12:27:39.697</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconWideTile.scale-200.png">
       <PackagePath>Assets\appiconWideTile.scale-200.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.966</Modified>
+      <Modified>2021-08-21T12:27:39.712</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\appiconWideTile.scale-400.png">
       <PackagePath>Assets\appiconWideTile.scale-400.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.999</Modified>
+      <Modified>2021-08-21T12:27:39.752</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\dotnet_bot.scale-100.png">
       <PackagePath>Assets\dotnet_bot.scale-100.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.902</Modified>
+      <Modified>2021-08-21T12:27:39.627</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\dotnet_bot.scale-125.png">
       <PackagePath>Assets\dotnet_bot.scale-125.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.932</Modified>
+      <Modified>2021-08-21T12:27:39.662</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\dotnet_bot.scale-150.png">
       <PackagePath>Assets\dotnet_bot.scale-150.png</PackagePath>
-      <Modified>2021-08-21T08:58:45.971</Modified>
+      <Modified>2021-08-21T12:27:39.709</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\dotnet_bot.scale-200.png">
       <PackagePath>Assets\dotnet_bot.scale-200.png</PackagePath>
-      <Modified>2021-08-21T08:58:46.033</Modified>
+      <Modified>2021-08-21T12:27:39.785</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\obj\Debug\net6.0-windows10.0.19041\win-x64\resizetizer\r\Assets\dotnet_bot.scale-400.png">
       <PackagePath>Assets\dotnet_bot.scale-400.png</PackagePath>
-      <Modified>2021-08-21T08:58:46.236</Modified>
+      <Modified>2021-08-21T12:27:40.026</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1.WinUI\Properties\launchSettings.json">
       <PackagePath>Properties\launchSettings.json</PackagePath>

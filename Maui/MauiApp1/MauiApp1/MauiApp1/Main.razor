@@ -13,7 +13,7 @@
 </CascadingAuthenticationState>*@
 
     <CascadingAuthenticationState>
-    <Router AppAssembly="@GetType().Assembly">
+    <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(NavMenu)"/>
             <FocusOnNavigate RouteData="@routeData" Selector="h1"/>

@@ -9,20 +9,29 @@ namespace BlazorApp3.Client.Pages
         [Parameter]
         public string Id { get; set; }
 
-        protected List<CommentModel> commentList = new();
-        protected List<int> commentStatus = new();
+        protected Dictionary<string, dynamic> commentList = new();
+        protected string view;
         protected string content;
+
+        protected DateTime start = DateTime.UtcNow;
+        protected DateTime end = DateTime.UtcNow;
+
+        protected List<int> commentStatus = new();
+
         protected override async Task OnInitializedAsync()
         {
             //commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Studio/Comment/{Id}");
-            commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}");
+            //commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}");
         }
 
         protected async Task Submit()
         {
-            content = "checking";
-            commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/check");
-            _navigationManager.NavigateTo($"/StatusStudio/{Id}");
+            commentStatus.Clear();
+            content = "Loading.....";
+            //commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/check");
+            commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/{start.ToString("MM dd yyyy")}/{end.ToString("MM dd yyyy")}");
+            view = new string (await _httpClient.GetFromJsonAsync<char[]>($"Studio/View/{Id}/{start.ToString("MM dd yyyy")}/{end.ToString("MM dd yyyy")}"));
+            content = "";
         }
     }
 }

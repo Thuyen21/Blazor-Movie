@@ -390,7 +390,7 @@ public class CustomerController : Controller
                 QuerySnapshot collectionView = await db.Collection("View").WhereEqualTo("Id", Id).WhereEqualTo("Viewer", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
                 if(collectionView.Documents.Count == 0)
                 {
-                    await db.Collection("View").AddAsync(new Dictionary<string, dynamic>() { {"Id", Id },{ "Viewer", User.FindFirstValue(ClaimTypes.Sid) },{"time", DateTime.UtcNow } });
+                    await db.Collection("View").AddAsync(new Dictionary<string, dynamic>() { {"Id", Id },{ "Viewer", User.FindFirstValue(ClaimTypes.Sid) },{"Time", DateTime.UtcNow } });
                 }
                 return await Task.FromResult(true);
             }
@@ -406,7 +406,7 @@ public class CustomerController : Controller
                     QuerySnapshot collectionView = await db.Collection("View").WhereEqualTo("Id", Id).WhereEqualTo("Viewer", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
                     if (collectionView.Documents.Count == 0)
                     {
-                        await db.Collection("View").AddAsync(new Dictionary<string, dynamic>() { { "Id", Id }, { "Viewer", User.FindFirstValue(ClaimTypes.Sid) }, { "time", DateTime.UtcNow } });
+                        await db.Collection("View").AddAsync(new Dictionary<string, dynamic>() { { "Id", Id }, { "Viewer", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow } });
                     }
                     return await Task.FromResult(true);
                 }
@@ -425,7 +425,7 @@ public class CustomerController : Controller
                 QuerySnapshot collectionView = await db.Collection("View").WhereEqualTo("Id", Id).WhereEqualTo("Viewer", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
                 if (collectionView.Documents.Count == 0)
                 {
-                    await db.Collection("View").AddAsync(new Dictionary<string, dynamic>() { { "Id", Id }, { "Viewer", User.FindFirstValue(ClaimTypes.Sid) }, { "time", DateTime.UtcNow } });
+                    await db.Collection("View").AddAsync(new Dictionary<string, dynamic>() { { "Id", Id }, { "Viewer", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow } });
                 }
                 return await Task.FromResult(true);
             }

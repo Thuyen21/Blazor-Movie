@@ -261,110 +261,85 @@ public class StudioController : Controller
 
         return await Task.FromResult(commentList);
     }
-    [HttpGet("CommentStatus/{Id}/{check}")]
-    public async Task<ActionResult<Dictionary<string, dynamic>>> CommentStatus(string Id, string check)
+    [HttpGet("View/{Id}/{Start}/{End}")]
+    public async Task<ActionResult<char[]>> View(string Id, string Start, string End)
     {
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
-
-        Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time");
-        QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
-
-        List<int> list = new();
-        list.Add(0);
-        list.Add(0);
-        List<CommentModel> commentList = new List<CommentModel>();
-        foreach (DocumentSnapshot item in commentSnapshot.Documents)
+        try
         {
-            CommentModel commentConvert = item.ConvertTo<CommentModel>();
+            DateTime StartDate = DateTime.Parse(Start).AddHours(12);
+            DateTime EndDate = DateTime.Parse(End).AddHours(-12);
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
 
-            try
-            {
-                //Load sample data
-                MLModel.ModelInput sampleData = new MLModel.ModelInput
-                {
-                    Review = commentConvert.CommentText
-                };
-                //Load model and predict output
-                MLModel.ModelOutput result = MLModel.Predict(sampleData);
-                if (result.Prediction == "positive")
-                {
-                    list[0] = list[0] + 1;
-                    await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Positive" } });
-                    int like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
-                    int Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
-                    commentList.Add(new CommentModel() { Id = commentConvert.Id, Email = commentConvert.Email, MovieId = commentConvert.MovieId, Time = commentConvert.Time, CommentText = commentConvert.CommentText, Like = like, DisLike = Dislike });
-                }
-                else
-                {
-                    list[1] = list[1] + 1;
-                    await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Negative" } });
-                    int like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
-                    int Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
-                    commentList.Add(new CommentModel() { Id = commentConvert.Id, Email = commentConvert.Email, MovieId = commentConvert.MovieId, Time = commentConvert.Time, CommentText = commentConvert.CommentText, Like = like, DisLike = Dislike });
-                }
-            }
-            catch (Exception)
-            {
+            Query view = db.Collection("View").WhereEqualTo("Id", Id).OrderByDescending("Time").WhereGreaterThanOrEqualTo("Time", StartDate.ToUniversalTime()).WhereLessThanOrEqualTo("Time", EndDate.ToUniversalTime());
+            QuerySnapshot viewSnapshot = await view.GetSnapshotAsync();
 
-            }
-
-
-
+            return viewSnapshot.Documents.Count.ToString().ToCharArray();
         }
-        Dictionary<string, dynamic> dic = new();
-        dic.Add("CommentStatus", list);
-        dic.Add("CommentList", commentList);
-        return dic;
+        catch(Exception ex)
+        {
+            return "0".ToCharArray();
+        }
+        
     }
-    [HttpGet("CommentStatus/{Id}")]
-    public async Task<ActionResult<List<int>>> CommentStatus(string Id)
+    [HttpGet("CommentStatus/{Id}/{Start}/{End}")]
+    public async Task<ActionResult<List<int>>> CommentStatus(string Id, string Start, string End)
     {
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
-
-        Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time");
-        QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
-
-        List<int> list = new();
-        list.Add(0);
-        list.Add(0);
-        MLModel.ModelInput sampleData = new MLModel.ModelInput();
-        foreach (DocumentSnapshot item in commentSnapshot.Documents)
+        try
         {
-            CommentModel commentConvert = item.ConvertTo<CommentModel>();
+            DateTime StartDate = DateTime.Parse(Start).AddHours(12);
+            DateTime EndDate = DateTime.Parse(End).AddHours(-12);
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
 
-            if (commentConvert.Prediction == null)
+            Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time").WhereGreaterThanOrEqualTo("Time", StartDate.ToUniversalTime()).WhereLessThanOrEqualTo("Time", EndDate.ToUniversalTime());
+            QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
+
+            List<int> list = new();
+            list.Add(0);
+            list.Add(0);
+
+            MLModel.ModelInput sampleData = new MLModel.ModelInput();
+            foreach (DocumentSnapshot item in commentSnapshot.Documents)
             {
-                //Load sample data
-                sampleData.Review = commentConvert.CommentText;
-                //Load model and predict output
-                MLModel.ModelOutput result = MLModel.Predict(sampleData);
-                if (result.Prediction == "positive")
+                CommentModel commentConvert = item.ConvertTo<CommentModel>();
+
+                if (commentConvert.Prediction == null)
                 {
-                    list[0] = list[0] + 1;
-                    await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Positive" } });
+                    //Load sample data
+                    sampleData.Review = commentConvert.CommentText;
+                    //Load model and predict output
+                    MLModel.ModelOutput result = MLModel.Predict(sampleData);
+                    if (result.Prediction == "positive")
+                    {
+                        list[0] = list[0] + 1;
+                        await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Positive" } });
+                    }
+                    else
+                    {
+                        list[1] = list[1] + 1;
+                        await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Negative" } });
+                    }
                 }
                 else
                 {
-                    list[1] = list[1] + 1;
-                    await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Negative" } });
+                    if (commentConvert.Prediction == "Positive")
+                    {
+                        list[0] = list[0] + 1;
+                    }
+                    else
+                    {
+                        list[1] = list[1] + 1;
+                    }
                 }
-            }
-            else
-            {
-                if (commentConvert.Prediction == "Positive")
-                {
-                    list[0] = list[0] + 1;
-                }
-                else
-                {
-                    list[1] = list[1] + 1;
-                }
+
             }
 
-
+            return list;
         }
-
-        return list;
+        catch(Exception ex)
+        {
+            return Ok();
+        }
+        
     }
     [HttpPost("Salary")]
     public async Task<ActionResult> Salary([FromBody] Dictionary<string, string> dic)
