@@ -1,6 +1,6 @@
 ﻿namespace BlazorApp3.Shared
 {
-    internal class DisableFormValueModelBindingAttribute
-    {
-    }
+	internal class DisableFormValueModelBindingAttribute
+	{
+	}
 }

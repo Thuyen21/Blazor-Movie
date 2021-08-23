@@ -13,55 +13,55 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
 {
-    options.ExpireTimeSpan = TimeSpan.FromHours(1);
+	options.ExpireTimeSpan = TimeSpan.FromHours(1);
 });
 builder.Services.Configure<FormOptions>(options =>
 {
-    options.ValueLengthLimit = int.MaxValue;
-    options.MultipartBodyLengthLimit = long.MaxValue; // <-- ! long.MaxValue
-    options.MultipartBoundaryLengthLimit = int.MaxValue;
-    options.MultipartHeadersCountLimit = int.MaxValue;
-    options.MultipartHeadersLengthLimit = int.MaxValue;
+	options.ValueLengthLimit = int.MaxValue;
+	options.MultipartBodyLengthLimit = long.MaxValue; // <-- ! long.MaxValue
+	options.MultipartBoundaryLengthLimit = int.MaxValue;
+	options.MultipartHeadersCountLimit = int.MaxValue;
+	options.MultipartHeadersLengthLimit = int.MaxValue;
 });
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("CorsPocliy", policy =>
-    {
-        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-    });
+	options.AddPolicy("CorsPocliy", policy =>
+	{
+		policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+	});
 });
 builder.Services.AddSingleton<Censor>();
 
 builder.WebHost.UseKestrel()
-    .UseQuic(options =>
-    {
-        options.Alpn = "h3-29";
-        options.IdleTimeout = TimeSpan.FromMinutes(1);
-    })
-    .ConfigureKestrel((context, options) =>
-    {
-        options.EnableAltSvc = true;
-        options.Listen(IPAddress.Any, 5001, listenOptions =>
-        {
-            // Use Http3
-            listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
-            listenOptions.UseHttps();
-        });
-    });
+	.UseQuic(options =>
+	{
+		options.Alpn = "h3-29";
+		options.IdleTimeout = TimeSpan.FromMinutes(1);
+	})
+	.ConfigureKestrel((context, options) =>
+	{
+		options.EnableAltSvc = true;
+		options.Listen(IPAddress.Any, 5001, listenOptions =>
+		{
+			// Use Http3
+			listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
+			listenOptions.UseHttps();
+		});
+	});
 
 WebApplication? app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
-    app.UseWebAssemblyDebugging();
+	app.UseDeveloperExceptionPage();
+	app.UseWebAssemblyDebugging();
 }
 else
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+	app.UseExceptionHandler("/Error");
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
 }
 
 app.UseHttpsRedirection();
