@@ -12,6 +12,11 @@ namespace BlazorApp3.Server.Controllers;
 //[Authorize(Roles = "Customer")]
 public class CustomerController : Controller
 {
+    Censor censor;
+    public CustomerController(Censor censor)
+    {
+        this.censor = censor;
+    }
     [HttpGet("Movie/{searchString?}/{sortOrder?}/{index:int:min(0)}")]
     public async Task<ActionResult<List<MovieModel>>> Movie(string? sortOrder, string? searchString, int index)
     {
@@ -439,16 +444,8 @@ public class CustomerController : Controller
         Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time").Offset(index * 5).Limit(5);
         QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
         List<CommentModel> commentList = new List<CommentModel>();
-        StreamReader reader = new StreamReader(Path.GetFullPath(Path.Combine("wwwroot/Bad Words/base-list-of-bad-words_csv-file_2021_01_18.csv")));
-        IList<string> censoredWords = new List<string>();
 
-        while (!reader.EndOfStream)
-        {
-            string line = reader.ReadLine();
-            string[] values = line.Split(',');
-            censoredWords.Add(values[0]);
-        }
-        Censor censor = new Censor(censoredWords);
+        
         foreach (DocumentSnapshot item in commentSnapshot.Documents)
         {
             CommentModel commentConvert = item.ConvertTo<CommentModel>();
@@ -465,12 +462,20 @@ public class CustomerController : Controller
     [HttpPost("Acomment")]
     public async Task<ActionResult> Acomment([FromBody] CommentModel comment)
     {
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
-        comment.Email = User.FindFirstValue(ClaimTypes.Email);
-        DocumentReference commentUp = await db.Collection("Comment").AddAsync(comment);
-        await commentUp.UpdateAsync(new Dictionary<string, dynamic> { { "Id", commentUp.Id } });
+        try
+        {
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+            comment.Email = User.FindFirstValue(ClaimTypes.Email);
+            DocumentReference commentUp = await db.Collection("Comment").AddAsync(comment);
+            await commentUp.UpdateAsync(new Dictionary<string, dynamic> { { "Id", commentUp.Id } });
 
-        return Ok("Commented");
+            return Ok("Commented");
+        }
+        catch(Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        
     }
     [HttpPost("Ac/{Id}")]
     public async Task<ActionResult> Ac([FromBody] string ac, string Id)
@@ -515,65 +520,6 @@ public class CustomerController : Controller
 
         }
         return Ok();
-    }
-}
-public class Censor
-{
-    public IList<string> CensoredWords { get; private set; }
-
-    public Censor(IEnumerable<string> censoredWords)
-    {
-        if (censoredWords == null)
-        {
-            throw new ArgumentNullException("censoredWords");
-        }
-
-        CensoredWords = new List<string>(censoredWords);
-    }
-
-    public string CensorText(string text)
-    {
-        if (text == null)
-        {
-            throw new ArgumentNullException("text");
-        }
-
-        string censoredText = text;
-
-        foreach (string censoredWord in CensoredWords)
-        {
-            string regularExpression = ToRegexPattern(censoredWord);
-
-            censoredText = Regex.Replace(censoredText, regularExpression, StarCensoredMatch,
-              RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
-        }
-
-        return censoredText;
-    }
-
-    private static string StarCensoredMatch(Match m)
-    {
-        string word = m.Captures[0].Value;
-
-        return new string('*', word.Length);
-    }
-
-    private string ToRegexPattern(string wildcardSearch)
-    {
-        string regexPattern = Regex.Escape(wildcardSearch);
-
-        regexPattern = regexPattern.Replace(@"\*", ".*?");
-        regexPattern = regexPattern.Replace(@"\?", ".");
-
-        if (regexPattern.StartsWith(".*?"))
-        {
-            regexPattern = regexPattern.Substring(3);
-            regexPattern = @"(^\b)*?" + regexPattern;
-        }
-
-        regexPattern = @"\b" + regexPattern + @"\b";
-
-        return regexPattern;
     }
 }
 
