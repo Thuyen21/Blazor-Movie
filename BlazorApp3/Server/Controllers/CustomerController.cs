@@ -445,7 +445,6 @@ public class CustomerController : Controller
         QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
         List<CommentModel> commentList = new List<CommentModel>();
 
-        
         foreach (DocumentSnapshot item in commentSnapshot.Documents)
         {
             CommentModel commentConvert = item.ConvertTo<CommentModel>();

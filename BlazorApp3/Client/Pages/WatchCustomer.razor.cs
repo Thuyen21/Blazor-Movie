@@ -47,20 +47,34 @@ namespace BlazorApp3.Client.Pages
             CommentModel up = new CommentModel()
             { Time = DateTime.UtcNow, MovieId = Id, CommentText = Acomment };
             content = await (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up)).Content.ReadAsStringAsync();
-            commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}");
+
+            
+            commentList.Clear();
+            for(int i = 0; i <= index; i++)
+            {
+                commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
+            }
             
         }
 
         protected async Task AcDisLike(string Id)
         {
             await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "DisLike");
-            await OnInitializedAsync();
+            commentList.Clear();
+            for (int i = 0; i <= index; i++)
+            {
+                commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
+            }
         }
 
         protected async Task AcLike(string Id)
         {
             await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "Like");
-            await OnInitializedAsync();
+            commentList.Clear();
+            for (int i = 0; i <= index; i++)
+            {
+                commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
+            }
         }
 
         protected async Task LoadMore()
