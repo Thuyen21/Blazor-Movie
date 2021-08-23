@@ -1,7 +1,20 @@
 ﻿<h3>SignUp</h3>
 @page "/signup"
 
-<button @onclick="Role">Sign Up as @role</button>
+@*<button @onclick="Role">Sign Up as @role</button>*@
+<a>Sign Up as </a>
+<a>Customer </a>
+<a>
+    <label class="switch">
+	<div>
+  		<input type="checkbox" @onclick="Role">        
+  		<span class="slider round"></span>
+	</div>     
+</label>
+</a>
+
+<a> Studio</a> 
+<a style = "visibility: hidden">@role> </a>
 
 <EditForm Model="@signUpModel" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator/>
@@ -9,7 +22,7 @@
     
     Email
     <InputText  @bind-Value="@signUpModel.Email"/><br>
-  Name  
+    Name  
     <InputText  @bind-Value="@signUpModel.Name"/><br>
     DateOfBirth
     <InputDate @bind-Value="@signUpModel.DateOfBirth"/><br>
