@@ -261,33 +261,70 @@ public class StudioController : Controller
 
 		return await Task.FromResult(commentList);
 	}
-	[HttpGet("View/{Id}/{Start}/{End}")]
-	public async Task<ActionResult<char[]>> View(string Id, string Start, string End)
-	{
+	//[HttpGet("View/{Id}/{Start}")]
+	//public async Task<ActionResult<char[]>> View(string Id, string Start)
+	//{
+	//	try
+	//	{
+	//		DateTime StartDate = DateTime.Parse(Start).AddHours(12);
+	//		DateTime EndDate = StartDate.AddDays(1);
+	//		FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
+	//		Query view = db.Collection("View").WhereEqualTo("Id", Id).OrderByDescending("Time").WhereGreaterThanOrEqualTo("Time", StartDate.ToUniversalTime()).WhereLessThanOrEqualTo("Time", EndDate.ToUniversalTime());
+	//		QuerySnapshot viewSnapshot = await view.GetSnapshotAsync();
+
+	//		return viewSnapshot.Documents.Count.ToString().ToCharArray();
+	//	}
+	//	catch (Exception)
+	//	{
+	//		return "0".ToCharArray();
+	//	}
+
+	//}
+	[HttpGet("PayCheck/{Id}/{Start}")]
+	public async Task<ActionResult<List<double>>> PayCheck(string Id, string Start)
+    {
+		var StartDate = DateTime.Parse(Start).AddHours(12).ToUniversalTime();
+		var EndDate = StartDate.AddDays(1);
+		FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
 		try
-		{
-			DateTime StartDate = DateTime.Parse(Start).AddHours(12);
-			DateTime EndDate = DateTime.Parse(End).AddHours(-12);
-			FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+        {
+			double viewCount = (await db.Collection("View").WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
+			if(viewCount ==  0)
+            {
+				double buy0 = (await db.Collection("Buy").WhereEqualTo("MovieId", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).Database.Collection(" ").GetSnapshotAsync()).Documents.Count;
+				double m0 = buy0 * 4.49;
+				List<double> result0 = new List<double>();
+				result0.Add(0);
+				result0.Add(buy0);
+				result0.Add(m0);
+				return result0;
+			}
+			double viewt = (await db.Collection("View").WhereEqualTo("Id", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
+			double buy = (await db.Collection("Buy").WhereEqualTo("MovieId", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).Database.Collection(" ").GetSnapshotAsync()).Documents.Count;
+			double vip = (await db.Collection("Vip").WhereGreaterThanOrEqualTo("Time", StartDate).GetSnapshotAsync()).Documents.Count;
+			double m = (vip / viewCount) * 0.26 * viewt + buy * 4.49;
+			List<double> result = new List<double>();
+			result.Add(viewt);
+			result.Add(buy);
+			result.Add(m);
 
-			Query view = db.Collection("View").WhereEqualTo("Id", Id).OrderByDescending("Time").WhereGreaterThanOrEqualTo("Time", StartDate.ToUniversalTime()).WhereLessThanOrEqualTo("Time", EndDate.ToUniversalTime());
-			QuerySnapshot viewSnapshot = await view.GetSnapshotAsync();
-
-			return viewSnapshot.Documents.Count.ToString().ToCharArray();
+			return result;
 		}
-		catch (Exception)
-		{
-			return "0".ToCharArray();
-		}
-
+		catch (Exception ex)
+        {
+			return BadRequest();
+        }
+		
 	}
-	[HttpGet("CommentStatus/{Id}/{Start}/{End}")]
-	public async Task<ActionResult<List<int>>> CommentStatus(string Id, string Start, string End)
+	[HttpGet("CommentStatus/{Id}/{Start}")]
+	public async Task<ActionResult<List<int>>> CommentStatus(string Id, string Start)
 	{
 		try
 		{
 			DateTime StartDate = DateTime.Parse(Start).AddHours(12);
-			DateTime EndDate = DateTime.Parse(End).AddHours(-12);
+			DateTime EndDate = StartDate.AddDays(1);
 			FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
 
 			Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time").WhereGreaterThanOrEqualTo("Time", StartDate.ToUniversalTime()).WhereLessThanOrEqualTo("Time", EndDate.ToUniversalTime());
@@ -401,4 +438,5 @@ public class StudioController : Controller
 		}
 
 	}
+	
 }
