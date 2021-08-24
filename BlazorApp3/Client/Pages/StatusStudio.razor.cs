@@ -8,15 +8,15 @@ namespace BlazorApp3.Client.Pages
 		[Parameter]
 		public string Id { get; set; }
 
-		
-		
+		protected Dictionary<string, dynamic> commentList = new();
+		protected string view;
 		protected string content;
 
 		protected DateTime start = DateTime.UtcNow;
 		protected DateTime end = DateTime.UtcNow;
 
-		protected List<int>? commentStatus = new();
-		List<Dictionary<string, string>>? fullStatus = new();
+		protected List<int> commentStatus = new();
+
 		protected override async Task OnInitializedAsync()
 		{
 			//commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Studio/Comment/{Id}");
@@ -25,44 +25,12 @@ namespace BlazorApp3.Client.Pages
 
 		protected async Task Submit()
 		{
-            fullStatus.Clear();
-            //commentStatus.Clear();
-            //content = "Loading.....";
-
-            //for(DateTime i = start; i <= end; i = i.AddDays(1.0))
-            //         {
-            //	content = i.ToString();
-            //}
-            //commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/check");
-            try
-            {
-                for (DateTime i = start.Date; i <= end.Date; i = i.AddDays(1))
-                {
-                    commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/{i.ToString("MM dd yyyy")}");
-
-
-                    List<double> getInfor = await _httpClient.GetFromJsonAsync<List<double>>($"Studio/PayCheck/{Id}/{i.ToString("MM dd yyyy")}");
-                    Dictionary<string, string> dic = new();
-                    dic.Add("Date", i.ToString());
-                    dic.Add("Positive", commentStatus[0].ToString());
-                    dic.Add("Negative", commentStatus[1].ToString());
-                    dic.Add("View", getInfor[0].ToString());
-                    dic.Add("Buy", getInfor[1].ToString());
-                    dic.Add("Money", getInfor[2].ToString());
-                    fullStatus.Add(dic);
-
-                    //content = i.ToString();
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                content = ex.Message;
-            }
-
-
-
-        }
+			commentStatus.Clear();
+			content = "Loading.....";
+			//commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/check");
+			commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/{start.ToString("MM dd yyyy")}/{end.ToString("MM dd yyyy")}");
+			view = new string(await _httpClient.GetFromJsonAsync<char[]>($"Studio/View/{Id}/{start.ToString("MM dd yyyy")}/{end.ToString("MM dd yyyy")}"));
+			content = "";
+		}
 	}
 }

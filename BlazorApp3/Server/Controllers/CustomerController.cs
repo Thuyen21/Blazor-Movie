@@ -318,7 +318,7 @@ public class CustomerController : Controller
 			await db.Collection("Buy").AddAsync(new Dictionary<string, dynamic>() { { "MovieId", vip.Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow } });
 
 
-			await (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Wallet", (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>("Wallet") - 4.99 } });
+			await (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Wallet", (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>("Wallet") - 0.1 } });
 		}
 		else
 		{
@@ -328,16 +328,16 @@ public class CustomerController : Controller
 				switch (vip.Choose)
 				{
 					case 1:
-						minus = 9.99;
+						minus = 0.99;
 						break;
 					case 3:
-						minus = 27.49;
+						minus = 2.79;
 						break;
 					case 6:
-						minus = 49.99;
+						minus = 5.59;
 						break;
 					case 12:
-						minus = 97.49;
+						minus = 10.99;
 						break;
 					default:
 						break;
@@ -406,7 +406,11 @@ public class CustomerController : Controller
 				}
 				else
 				{
-					
+					QuerySnapshot collectionView = await db.Collection("View").WhereEqualTo("Id", Id).WhereEqualTo("Viewer", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
+					if (collectionView.Documents.Count == 0)
+					{
+						await db.Collection("View").AddAsync(new Dictionary<string, dynamic>() { { "Id", Id }, { "Viewer", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow } });
+					}
 					return await Task.FromResult(true);
 				}
 			}
@@ -421,7 +425,11 @@ public class CustomerController : Controller
 			}
 			else
 			{
-				
+				QuerySnapshot collectionView = await db.Collection("View").WhereEqualTo("Id", Id).WhereEqualTo("Viewer", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
+				if (collectionView.Documents.Count == 0)
+				{
+					await db.Collection("View").AddAsync(new Dictionary<string, dynamic>() { { "Id", Id }, { "Viewer", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow } });
+				}
 				return await Task.FromResult(true);
 			}
 		}

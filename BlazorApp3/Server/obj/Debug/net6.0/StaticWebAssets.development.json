@@ -1,11 +1,11 @@
 {
   "ContentRoots": [
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Server\\wwwroot\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\blazor\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\service-worker\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\wwwroot\\"
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Server\\wwwroot\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\blazor\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\service-worker\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\wwwroot\\"
   ],
   "Root": {
     "Children": {
@@ -2289,155 +2289,11 @@
             },
             "Patterns": null
           },
-          "Microsoft.AspNetCore.Authentication.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Authentication.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Components.WebAssembly.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Text.Encoding.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Text.Encoding.dll.gz"
-            },
-            "Patterns": null
-          },
-          "BlazorApp3.Shared.pdb.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/BlazorApp3.Shared.pdb.gz"
-            },
-            "Patterns": null
-          },
-          "System.Private.Runtime.InteropServices.JavaScript.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Private.Runtime.InteropServices.JavaScript.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.IO.FileSystem.Primitives.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IO.FileSystem.Primitives.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Reflection.Metadata.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Reflection.Metadata.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Configuration.Json.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Configuration.Json.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Apis.Drive.v3.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Apis.Drive.v3.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Console.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Console.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Api.Gax.Grpc.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Api.Gax.Grpc.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Linq.Parallel.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Linq.Parallel.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.IO.FileSystem.AccessControl.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IO.FileSystem.AccessControl.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.DataProtection.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.DataProtection.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Diagnostics.FileVersionInfo.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Diagnostics.FileVersionInfo.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.IO.MemoryMappedFiles.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IO.MemoryMappedFiles.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Hosting.Server.Abstractions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll.gz"
-            },
-            "Patterns": null
-          },
           "System.Private.DataContractSerialization.dll.gz": {
             "Children": null,
             "Asset": {
               "ContentRootIndex": 1,
               "SubPath": "_framework/System.Private.DataContractSerialization.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Components.Authorization.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll.gz"
             },
             "Patterns": null
           },
@@ -2449,1851 +2305,11 @@
             },
             "Patterns": null
           },
-          "System.Reflection.Primitives.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Reflection.Primitives.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Data.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Data.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.AppContext.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.AppContext.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.FileProviders.Physical.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.FileProviders.Physical.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.IO.Compression.FileSystem.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IO.Compression.FileSystem.dll.gz"
-            },
-            "Patterns": null
-          },
-          "dotnet.wasm.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/dotnet.wasm.gz"
-            },
-            "Patterns": null
-          },
-          "System.Linq.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Linq.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Resources.Writer.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Resources.Writer.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.DependencyInjection.Abstractions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.DependencyInjection.Abstractions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Logging.Debug.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Logging.Debug.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.FileProviders.Abstractions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.FileProviders.Abstractions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.Quic.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.Quic.dll.gz"
-            },
-            "Patterns": null
-          },
-          "icudt_EFIGS.dat.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/icudt_EFIGS.dat.gz"
-            },
-            "Patterns": null
-          },
-          "Grpc.Core.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Grpc.Core.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Xml.XPath.XmlDocument.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Xml.XPath.XmlDocument.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Apis.Auth.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Apis.Auth.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.Serialization.Primitives.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.Serialization.Primitives.dll.gz"
-            },
-            "Patterns": null
-          },
-          "dotnet.timezones.blat.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/dotnet.timezones.blat.gz"
-            },
-            "Patterns": null
-          },
-          "BlazorApp3.Client.pdb.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/BlazorApp3.Client.pdb.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Components.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Components.dll.gz"
-            },
-            "Patterns": null
-          },
-          "icudt_no_CJK.dat.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/icudt_no_CJK.dat.gz"
-            },
-            "Patterns": null
-          },
-          "System.Security.Principal.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Security.Principal.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Cryptography.Internal.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Cryptography.Internal.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Hosting.Abstractions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Hosting.Abstractions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Private.CoreLib.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Private.CoreLib.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Http.Abstractions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Http.Abstractions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Reflection.Emit.Lightweight.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Reflection.Emit.Lightweight.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.WebHeaderCollection.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.WebHeaderCollection.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Security.Principal.Windows.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Security.Principal.Windows.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.Serialization.Formatters.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.Serialization.Formatters.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.JSInterop.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.JSInterop.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Server.Kestrel.Core.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.Core.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Grpc.Core.Api.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Grpc.Core.Api.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Logging.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Logging.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Web.HttpUtility.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Web.HttpUtility.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Reflection.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Reflection.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.Mail.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.Mail.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Xml.ReaderWriter.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Xml.ReaderWriter.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.CompilerServices.Unsafe.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.CompilerServices.Unsafe.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Win32.Registry.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Win32.Registry.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.Http.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.Http.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.IdentityModel.Protocols.OpenIdConnect.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Threading.Tasks.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Threading.Tasks.dll.gz"
-            },
-            "Patterns": null
-          },
-          "PayPalCheckoutSdk.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/PayPalCheckoutSdk.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.ServicePoint.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.ServicePoint.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Apis.Auth.PlatformServices.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Apis.Auth.PlatformServices.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.ValueTuple.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.ValueTuple.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Security.Cryptography.Encoding.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Security.Cryptography.Encoding.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Drawing.Primitives.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Drawing.Primitives.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Xml.Serialization.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Xml.Serialization.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Api.Gax.Rest.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Api.Gax.Rest.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Configuration.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Configuration.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.WebClient.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.WebClient.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Threading.Tasks.Dataflow.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Threading.Tasks.Dataflow.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Options.ConfigurationExtensions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Options.ConfigurationExtensions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Numerics.Vectors.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Numerics.Vectors.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.IdentityModel.Tokens.Jwt.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IdentityModel.Tokens.Jwt.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Authentication.Core.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Authentication.Core.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.WebEncoders.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.WebEncoders.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Xml.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Xml.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.HttpListener.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.HttpListener.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.dll.gz"
-            },
-            "Patterns": null
-          },
-          "BlazorApp3.Shared.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/BlazorApp3.Shared.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Api.Gax.Grpc.GrpcCore.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Api.Gax.Grpc.GrpcCore.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Reflection.Extensions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Reflection.Extensions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Globalization.Calendars.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Globalization.Calendars.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Globalization.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Globalization.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Security.Cryptography.X509Certificates.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Security.Cryptography.X509Certificates.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.VisualBasic.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.VisualBasic.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.IO.UnmanagedMemoryStream.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IO.UnmanagedMemoryStream.dll.gz"
-            },
-            "Patterns": null
-          },
-          "AspNetCore.Firebase.Authentication.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/AspNetCore.Firebase.Authentication.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.IO.FileSystem.Watcher.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IO.FileSystem.Watcher.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Resources.Reader.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Resources.Reader.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Threading.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Threading.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Security.Cryptography.Primitives.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Security.Cryptography.Primitives.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.InteropServices.RuntimeInformation.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.InteropServices.RuntimeInformation.dll.gz"
-            },
-            "Patterns": null
-          },
-          "icudt_CJK.dat.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/icudt_CJK.dat.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.Ping.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.Ping.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Reflection.Emit.ILGeneration.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Reflection.Emit.ILGeneration.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Threading.Timer.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Threading.Timer.dll.gz"
-            },
-            "Patterns": null
-          },
-          "dotnet.6.0.0-preview.7.21377.19.js.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 2,
-              "SubPath": "_framework/dotnet.6.0.0-preview.7.21377.19.js.gz"
-            },
-            "Patterns": null
-          },
-          "System.Buffers.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Buffers.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Security.Cryptography.Xml.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Security.Cryptography.Xml.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Numerics.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Numerics.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.Security.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.Security.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Components.Web.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Components.Web.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.VisualBasic.Core.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.VisualBasic.Core.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.Intrinsics.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.Intrinsics.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Windows.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Windows.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Configuration.EnvironmentVariables.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Configuration.EnvironmentVariables.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Collections.Specialized.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Collections.Specialized.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Win32.Primitives.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Win32.Primitives.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Server.Kestrel.Https.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.Https.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Security.SecureString.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Security.SecureString.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Configuration.CommandLine.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Configuration.CommandLine.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.Http.Json.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.Http.Json.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Core.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Core.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Server.Kestrel.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.IdentityModel.Protocols.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.IdentityModel.Protocols.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Diagnostics.DiagnosticSource.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Diagnostics.DiagnosticSource.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Diagnostics.Contracts.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Diagnostics.Contracts.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.ComponentModel.Primitives.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.ComponentModel.Primitives.dll.gz"
-            },
-            "Patterns": null
-          },
-          "PayPalHttp-Dotnet.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/PayPalHttp-Dotnet.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Authentication.JwtBearer.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Authentication.JwtBearer.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Apis.Core.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Apis.Core.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Diagnostics.Tracing.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Diagnostics.Tracing.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Api.CommonProtos.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Api.CommonProtos.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Cloud.Storage.V1.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Cloud.Storage.V1.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.IdentityModel.Tokens.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.IdentityModel.Tokens.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Logging.Abstractions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Logging.Abstractions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Routing.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Routing.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.FileSystemGlobbing.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.FileSystemGlobbing.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Linq.Expressions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Linq.Expressions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Resources.ResourceManager.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Resources.ResourceManager.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Server.IISIntegration.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Server.IISIntegration.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.Serialization.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.Serialization.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Dynamic.Runtime.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Dynamic.Runtime.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Data.DataSetExtensions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Data.DataSetExtensions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "netstandard.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/netstandard.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Configuration.Abstractions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Configuration.Abstractions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.NameResolution.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.NameResolution.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Primitives.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Primitives.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.InteropServices.WindowsRuntime.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.InteropServices.WindowsRuntime.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Security.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Security.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.NetworkInformation.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.NetworkInformation.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.ServiceModel.Web.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.ServiceModel.Web.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.ComponentModel.TypeConverter.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.ComponentModel.TypeConverter.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Components.Forms.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Components.Forms.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.ComponentModel.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.ComponentModel.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.WebUtilities.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.WebUtilities.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Diagnostics.Debug.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Diagnostics.Debug.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Authentication.OAuth.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Authentication.OAuth.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Diagnostics.StackTrace.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Diagnostics.StackTrace.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Options.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Options.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Xml.Linq.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Xml.Linq.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.ComponentModel.EventBasedAsync.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.ComponentModel.EventBasedAsync.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Xml.XmlDocument.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Xml.XmlDocument.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Logging.Configuration.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Logging.Configuration.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.WebSockets.Client.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.WebSockets.Client.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Metadata.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Metadata.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Diagnostics.Tools.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Diagnostics.Tools.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.IO.Compression.Brotli.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IO.Compression.Brotli.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Http.Features.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Http.Features.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.Loader.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.Loader.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Configuration.UserSecrets.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Configuration.UserSecrets.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Collections.Immutable.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Collections.Immutable.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Firebase.Storage.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Firebase.Storage.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Collections.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Collections.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Threading.Overlapped.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Threading.Overlapped.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Text.Encodings.Web.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Text.Encodings.Web.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Braintree.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Braintree.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Text.Json.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Text.Json.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.Sockets.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.Sockets.dll.gz"
-            },
-            "Patterns": null
-          },
-          "FirebaseAdmin.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/FirebaseAdmin.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Configuration.Binder.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Configuration.Binder.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Protobuf.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Protobuf.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Xml.XDocument.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Xml.XDocument.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.IO.Compression.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IO.Compression.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Apis.Storage.v1.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Apis.Storage.v1.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Threading.Thread.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Threading.Thread.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Reflection.DispatchProxy.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Reflection.DispatchProxy.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Security.Cryptography.Cng.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Security.Cryptography.Cng.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.IO.Pipes.AccessControl.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IO.Pipes.AccessControl.dll.gz"
-            },
-            "Patterns": null
-          },
-          "blazor.webassembly.js.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/blazor.webassembly.js.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.DependencyInjection.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.DependencyInjection.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.WebProxy.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.WebProxy.dll.gz"
-            },
-            "Patterns": null
-          },
-          "WindowsBase.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/WindowsBase.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Reflection.Emit.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Reflection.Emit.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.ComponentModel.DataAnnotations.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.ComponentModel.DataAnnotations.dll.gz"
-            },
-            "Patterns": null
-          },
-          "mscorlib.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/mscorlib.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Web.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Web.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Cloud.Firestore.V1.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Cloud.Firestore.V1.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.Numerics.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.Numerics.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Grpc.Auth.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Grpc.Auth.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.Serialization.Xml.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.Serialization.Xml.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Security.Cryptography.Algorithms.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Security.Cryptography.Algorithms.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Http.Extensions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Http.Extensions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Linq.Queryable.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Linq.Queryable.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Formats.Asn1.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Formats.Asn1.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.Primitives.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.Primitives.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Bcl.AsyncInterfaces.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Bcl.AsyncInterfaces.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.CompilerServices.VisualC.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.CompilerServices.VisualC.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Text.RegularExpressions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Text.RegularExpressions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Configuration.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Configuration.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.ComponentModel.Annotations.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.ComponentModel.Annotations.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.IO.Compression.ZipFile.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IO.Compression.ZipFile.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Cloud.Firestore.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Cloud.Firestore.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Transactions.Local.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Transactions.Local.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.JSInterop.WebAssembly.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.JSInterop.WebAssembly.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.ObjectModel.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.ObjectModel.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Routing.Abstractions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Routing.Abstractions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Xml.XmlSerializer.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Xml.XmlSerializer.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Firebase.Auth.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Firebase.Auth.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Http.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Http.dll.gz"
-            },
-            "Patterns": null
-          },
-          "BlazorApp3.Client.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/BlazorApp3.Client.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Logging.Console.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Logging.Console.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Api.Gax.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Api.Gax.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Text.Encoding.Extensions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Text.Encoding.Extensions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.IdentityModel.Logging.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.IdentityModel.Logging.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Globalization.Extensions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Globalization.Extensions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Private.Xml.Linq.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Private.Xml.Linq.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Threading.Channels.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Threading.Channels.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Diagnostics.Process.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Diagnostics.Process.dll.gz"
-            },
-            "Patterns": null
-          },
-          "icudt.dat.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/icudt.dat.gz"
-            },
-            "Patterns": null
-          },
-          "System.IO.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IO.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.DataProtection.Abstractions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.DataProtection.Abstractions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Threading.Tasks.Parallel.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Threading.Tasks.Parallel.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.Serialization.Json.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.Serialization.Json.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Private.Xml.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Private.Xml.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.HttpOverrides.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.HttpOverrides.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Private.Uri.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Private.Uri.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Linq.Async.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Linq.Async.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Security.Cryptography.Csp.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Security.Cryptography.Csp.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Diagnostics.TraceSource.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Diagnostics.TraceSource.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.ServiceProcess.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.ServiceProcess.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.InteropServices.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.InteropServices.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Hosting.Abstractions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Hosting.Abstractions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Xml.XPath.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Xml.XPath.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Collections.NonGeneric.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Collections.NonGeneric.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Security.Cryptography.OpenSsl.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Security.Cryptography.OpenSsl.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Google.Apis.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Google.Apis.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Security.Claims.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Security.Claims.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.Extensions.Configuration.FileExtensions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.Configuration.FileExtensions.dll.gz"
-            },
-            "Patterns": null
-          },
           "Microsoft.AspNetCore.Hosting.dll.gz": {
             "Children": null,
             "Asset": {
               "ContentRootIndex": 1,
               "SubPath": "_framework/Microsoft.AspNetCore.Hosting.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Authorization.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Authorization.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.IO.FileSystem.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IO.FileSystem.dll.gz"
             },
             "Patterns": null
           },
@@ -4305,115 +2321,19 @@
             },
             "Patterns": null
           },
-          "PayPalPayoutsSdk.dll.gz": {
+          "Microsoft.Extensions.ObjectPool.dll.gz": {
             "Children": null,
             "Asset": {
               "ContentRootIndex": 1,
-              "SubPath": "_framework/PayPalPayoutsSdk.dll.gz"
+              "SubPath": "_framework/Microsoft.Extensions.ObjectPool.dll.gz"
             },
             "Patterns": null
           },
-          "System.Transactions.dll.gz": {
+          "System.Runtime.Serialization.dll.gz": {
             "Children": null,
             "Asset": {
               "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Transactions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Threading.ThreadPool.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Threading.ThreadPool.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Security.AccessControl.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Security.AccessControl.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Drawing.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Drawing.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Diagnostics.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Diagnostics.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.IO.FileSystem.DriveInfo.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IO.FileSystem.DriveInfo.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Net.WebSockets.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.WebSockets.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Text.Encoding.CodePages.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Text.Encoding.CodePages.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.AspNetCore.Diagnostics.Abstractions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Diagnostics.Abstractions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Runtime.Handles.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Runtime.Handles.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Newtonsoft.Json.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Newtonsoft.Json.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Reactive.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Reactive.dll.gz"
-            },
-            "Patterns": null
-          },
-          "LiteDB.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/LiteDB.dll.gz"
+              "SubPath": "_framework/System.Runtime.Serialization.dll.gz"
             },
             "Patterns": null
           },
@@ -4425,6 +2345,294 @@
             },
             "Patterns": null
           },
+          "Microsoft.Extensions.Logging.Abstractions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Logging.Abstractions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Globalization.Calendars.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Globalization.Calendars.dll.gz"
+            },
+            "Patterns": null
+          },
+          "icudt.dat.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/icudt.dat.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Components.WebAssembly.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Resources.ResourceManager.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Resources.ResourceManager.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Firebase.Auth.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Firebase.Auth.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Xml.ReaderWriter.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Xml.ReaderWriter.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Security.Cryptography.Csp.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Security.Cryptography.Csp.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Hosting.Server.Abstractions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Hosting.Server.Abstractions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.NameResolution.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.NameResolution.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Reflection.Emit.Lightweight.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Reflection.Emit.Lightweight.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Cryptography.Internal.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Cryptography.Internal.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Configuration.EnvironmentVariables.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Configuration.EnvironmentVariables.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Xml.Linq.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Xml.Linq.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.DependencyInjection.Abstractions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.DependencyInjection.Abstractions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Security.Principal.Windows.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Security.Principal.Windows.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.Quic.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.Quic.dll.gz"
+            },
+            "Patterns": null
+          },
+          "icudt_CJK.dat.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/icudt_CJK.dat.gz"
+            },
+            "Patterns": null
+          },
+          "System.Security.SecureString.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Security.SecureString.dll.gz"
+            },
+            "Patterns": null
+          },
+          "PayPalHttp-Dotnet.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/PayPalHttp-Dotnet.dll.gz"
+            },
+            "Patterns": null
+          },
+          "netstandard.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/netstandard.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Runtime.InteropServices.RuntimeInformation.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Runtime.InteropServices.RuntimeInformation.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.WebClient.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.WebClient.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Hosting.Abstractions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Hosting.Abstractions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.ComponentModel.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.ComponentModel.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Braintree.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Braintree.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Diagnostics.TraceSource.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Diagnostics.TraceSource.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Runtime.CompilerServices.Unsafe.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Runtime.CompilerServices.Unsafe.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Apis.Auth.PlatformServices.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Apis.Auth.PlatformServices.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Threading.Timer.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Threading.Timer.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Runtime.InteropServices.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Runtime.InteropServices.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Authorization.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Authorization.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Linq.Parallel.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Linq.Parallel.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.IdentityModel.Tokens.Jwt.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IdentityModel.Tokens.Jwt.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.dll.gz"
+            },
+            "Patterns": null
+          },
           "Google.LongRunning.dll.gz": {
             "Children": null,
             "Asset": {
@@ -4433,27 +2641,139 @@
             },
             "Patterns": null
           },
-          "System.IO.Pipelines.dll.gz": {
+          "System.ValueTuple.dll.gz": {
             "Children": null,
             "Asset": {
               "ContentRootIndex": 1,
-              "SubPath": "_framework/System.IO.Pipelines.dll.gz"
+              "SubPath": "_framework/System.ValueTuple.dll.gz"
             },
             "Patterns": null
           },
-          "System.Net.Requests.dll.gz": {
+          "Microsoft.AspNetCore.WebUtilities.dll.gz": {
             "Children": null,
             "Asset": {
               "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Net.Requests.dll.gz"
+              "SubPath": "_framework/Microsoft.AspNetCore.WebUtilities.dll.gz"
             },
             "Patterns": null
           },
-          "Microsoft.Extensions.ObjectPool.dll.gz": {
+          "Microsoft.IdentityModel.Logging.dll.gz": {
             "Children": null,
             "Asset": {
               "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Extensions.ObjectPool.dll.gz"
+              "SubPath": "_framework/Microsoft.IdentityModel.Logging.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Components.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Components.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Grpc.Core.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Grpc.Core.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Web.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Web.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Grpc.Core.Api.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Grpc.Core.Api.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Runtime.CompilerServices.VisualC.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Runtime.CompilerServices.VisualC.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Console.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Console.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Diagnostics.Abstractions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Diagnostics.Abstractions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Components.Authorization.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Diagnostics.StackTrace.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Diagnostics.StackTrace.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Api.CommonProtos.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Api.CommonProtos.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Security.Cryptography.Primitives.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Security.Cryptography.Primitives.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Api.Gax.Rest.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Api.Gax.Rest.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Newtonsoft.Json.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Newtonsoft.Json.dll.gz"
             },
             "Patterns": null
           },
@@ -4465,67 +2785,35 @@
             },
             "Patterns": null
           },
-          "Microsoft.AspNetCore.Authentication.Abstractions.dll.gz": {
+          "Microsoft.VisualBasic.Core.dll.gz": {
             "Children": null,
             "Asset": {
               "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.AspNetCore.Authentication.Abstractions.dll.gz"
+              "SubPath": "_framework/Microsoft.VisualBasic.Core.dll.gz"
             },
             "Patterns": null
           },
-          "Microsoft.Net.Http.Headers.dll.gz": {
+          "System.ComponentModel.Primitives.dll.gz": {
             "Children": null,
             "Asset": {
               "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.Net.Http.Headers.dll.gz"
+              "SubPath": "_framework/System.ComponentModel.Primitives.dll.gz"
             },
             "Patterns": null
           },
-          "System.Threading.Tasks.Extensions.dll.gz": {
+          "Microsoft.IdentityModel.Protocols.dll.gz": {
             "Children": null,
             "Asset": {
               "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Threading.Tasks.Extensions.dll.gz"
+              "SubPath": "_framework/Microsoft.IdentityModel.Protocols.dll.gz"
             },
             "Patterns": null
           },
-          "System.Diagnostics.TextWriterTraceListener.dll.gz": {
+          "System.Threading.ThreadPool.dll.gz": {
             "Children": null,
             "Asset": {
               "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Diagnostics.TextWriterTraceListener.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Reflection.TypeExtensions.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Reflection.TypeExtensions.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Firebase.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Firebase.dll.gz"
-            },
-            "Patterns": null
-          },
-          "Microsoft.CSharp.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/Microsoft.CSharp.dll.gz"
-            },
-            "Patterns": null
-          },
-          "System.Collections.Concurrent.dll.gz": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 1,
-              "SubPath": "_framework/System.Collections.Concurrent.dll.gz"
+              "SubPath": "_framework/System.Threading.ThreadPool.dll.gz"
             },
             "Patterns": null
           },
@@ -4537,11 +2825,1723 @@
             },
             "Patterns": null
           },
+          "Microsoft.AspNetCore.Http.Features.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Http.Features.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.IO.FileSystem.AccessControl.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IO.FileSystem.AccessControl.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.Http.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.Http.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Linq.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Linq.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.IO.UnmanagedMemoryStream.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IO.UnmanagedMemoryStream.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Reflection.Extensions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Reflection.Extensions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Threading.Tasks.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Threading.Tasks.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Security.Principal.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Security.Principal.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.Requests.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.Requests.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Runtime.Loader.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Runtime.Loader.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Components.Web.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Components.Web.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Xml.XDocument.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Xml.XDocument.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.JSInterop.WebAssembly.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.JSInterop.WebAssembly.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Security.Cryptography.Algorithms.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Security.Cryptography.Algorithms.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Security.Cryptography.Xml.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Security.Cryptography.Xml.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.VisualBasic.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.VisualBasic.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Runtime.InteropServices.WindowsRuntime.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Runtime.InteropServices.WindowsRuntime.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Resources.Writer.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Resources.Writer.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.WebProxy.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.WebProxy.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.Security.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.Security.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.ComponentModel.DataAnnotations.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.ComponentModel.DataAnnotations.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Collections.Specialized.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Collections.Specialized.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Http.Abstractions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Http.Abstractions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Diagnostics.Process.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Diagnostics.Process.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Runtime.Intrinsics.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Runtime.Intrinsics.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Reflection.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Reflection.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Runtime.Serialization.Primitives.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Runtime.Serialization.Primitives.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Grpc.Auth.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Grpc.Auth.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Dynamic.Runtime.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Dynamic.Runtime.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.ServiceProcess.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.ServiceProcess.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.IO.Pipelines.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IO.Pipelines.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.Sockets.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.Sockets.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Apis.Drive.v3.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Apis.Drive.v3.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Authentication.JwtBearer.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Authentication.JwtBearer.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Authentication.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Authentication.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.FileProviders.Abstractions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.FileProviders.Abstractions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Text.Json.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Text.Json.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Logging.Console.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Logging.Console.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.IO.Compression.Brotli.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IO.Compression.Brotli.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Server.Kestrel.Https.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.Https.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Options.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Options.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Reflection.Metadata.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Reflection.Metadata.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Runtime.Handles.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Runtime.Handles.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Apis.Core.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Apis.Core.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Threading.Tasks.Parallel.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Threading.Tasks.Parallel.dll.gz"
+            },
+            "Patterns": null
+          },
+          "FirebaseAdmin.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/FirebaseAdmin.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.DataProtection.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.DataProtection.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.FileProviders.Physical.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.FileProviders.Physical.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Cloud.Storage.V1.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Cloud.Storage.V1.dll.gz"
+            },
+            "Patterns": null
+          },
+          "BlazorApp3.Shared.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/BlazorApp3.Shared.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Components.Forms.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Components.Forms.dll.gz"
+            },
+            "Patterns": null
+          },
+          "LiteDB.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/LiteDB.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Linq.Queryable.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Linq.Queryable.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Transactions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Transactions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Logging.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Logging.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Routing.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Routing.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Globalization.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Globalization.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Runtime.Serialization.Json.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Runtime.Serialization.Json.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.WebHeaderCollection.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.WebHeaderCollection.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.IO.Compression.FileSystem.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IO.Compression.FileSystem.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Diagnostics.TextWriterTraceListener.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Diagnostics.TextWriterTraceListener.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Win32.Registry.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Win32.Registry.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Private.Uri.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Private.Uri.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Authentication.Abstractions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Authentication.Abstractions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.ComponentModel.TypeConverter.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.ComponentModel.TypeConverter.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Apis.Auth.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Apis.Auth.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Collections.NonGeneric.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Collections.NonGeneric.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Configuration.CommandLine.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Configuration.CommandLine.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Transactions.Local.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Transactions.Local.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.ServicePoint.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.ServicePoint.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Configuration.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Configuration.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Web.HttpUtility.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Web.HttpUtility.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.WebEncoders.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.WebEncoders.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Api.Gax.Grpc.GrpcCore.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Api.Gax.Grpc.GrpcCore.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Security.Claims.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Security.Claims.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Configuration.Abstractions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Configuration.Abstractions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Net.Http.Headers.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Net.Http.Headers.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Win32.Primitives.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Win32.Primitives.dll.gz"
+            },
+            "Patterns": null
+          },
+          "dotnet.wasm.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/dotnet.wasm.gz"
+            },
+            "Patterns": null
+          },
+          "System.Drawing.Primitives.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Drawing.Primitives.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.Http.Json.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.Http.Json.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Authentication.OAuth.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Authentication.OAuth.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.DataProtection.Abstractions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.DataProtection.Abstractions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Configuration.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Configuration.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Private.Xml.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Private.Xml.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.HttpListener.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.HttpListener.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Reflection.Emit.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Reflection.Emit.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Buffers.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Buffers.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.Transport.Libuv.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.ObjectModel.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.ObjectModel.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Server.Kestrel.Core.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.Core.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.ServiceModel.Web.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.ServiceModel.Web.dll.gz"
+            },
+            "Patterns": null
+          },
+          "dotnet.6.0.0-preview.7.21377.19.js.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 2,
+              "SubPath": "_framework/dotnet.6.0.0-preview.7.21377.19.js.gz"
+            },
+            "Patterns": null
+          },
+          "System.IO.Compression.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IO.Compression.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.IO.FileSystem.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IO.FileSystem.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Authentication.Core.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Authentication.Core.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Xml.XmlDocument.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Xml.XmlDocument.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Formats.Asn1.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Formats.Asn1.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.ComponentModel.EventBasedAsync.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.ComponentModel.EventBasedAsync.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Primitives.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Primitives.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Apis.Storage.v1.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Apis.Storage.v1.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Configuration.Json.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Configuration.Json.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.ComponentModel.Annotations.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.ComponentModel.Annotations.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.IdentityModel.Tokens.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.IdentityModel.Tokens.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Collections.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Collections.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Logging.Configuration.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Logging.Configuration.dll.gz"
+            },
+            "Patterns": null
+          },
+          "blazor.webassembly.js.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/blazor.webassembly.js.gz"
+            },
+            "Patterns": null
+          },
+          "System.Runtime.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Runtime.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Reflection.Emit.ILGeneration.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Reflection.Emit.ILGeneration.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Windows.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Windows.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Security.Cryptography.Encoding.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Security.Cryptography.Encoding.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Runtime.Serialization.Xml.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Runtime.Serialization.Xml.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Diagnostics.Tools.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Diagnostics.Tools.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Diagnostics.FileVersionInfo.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Diagnostics.FileVersionInfo.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Bcl.AsyncInterfaces.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Bcl.AsyncInterfaces.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Server.Kestrel.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Server.Kestrel.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Metadata.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Metadata.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.WebSockets.Client.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.WebSockets.Client.dll.gz"
+            },
+            "Patterns": null
+          },
+          "icudt_no_CJK.dat.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/icudt_no_CJK.dat.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Http.Extensions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Http.Extensions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Threading.Tasks.Extensions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Threading.Tasks.Extensions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Data.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Data.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Security.Cryptography.Cng.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Security.Cryptography.Cng.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Runtime.Serialization.Formatters.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Runtime.Serialization.Formatters.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Logging.Debug.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Logging.Debug.dll.gz"
+            },
+            "Patterns": null
+          },
+          "mscorlib.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/mscorlib.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Reflection.Primitives.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Reflection.Primitives.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Reflection.DispatchProxy.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Reflection.DispatchProxy.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.FileSystemGlobbing.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.FileSystemGlobbing.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Runtime.Numerics.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Runtime.Numerics.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Private.Xml.Linq.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Private.Xml.Linq.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Linq.Expressions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Linq.Expressions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Security.Cryptography.X509Certificates.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Security.Cryptography.X509Certificates.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Xml.XmlSerializer.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Xml.XmlSerializer.dll.gz"
+            },
+            "Patterns": null
+          },
+          "BlazorApp3.Shared.pdb.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/BlazorApp3.Shared.pdb.gz"
+            },
+            "Patterns": null
+          },
+          "System.Resources.Reader.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Resources.Reader.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Configuration.Binder.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Configuration.Binder.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Collections.Concurrent.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Collections.Concurrent.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.IO.Compression.ZipFile.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IO.Compression.ZipFile.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Text.Encodings.Web.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Text.Encodings.Web.dll.gz"
+            },
+            "Patterns": null
+          },
+          "dotnet.timezones.blat.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/dotnet.timezones.blat.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Api.Gax.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Api.Gax.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Diagnostics.Contracts.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Diagnostics.Contracts.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Http.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Http.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Reflection.TypeExtensions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Reflection.TypeExtensions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Xml.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Xml.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Diagnostics.DiagnosticSource.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Diagnostics.DiagnosticSource.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Private.CoreLib.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Private.CoreLib.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Text.Encoding.Extensions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Text.Encoding.Extensions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Threading.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Threading.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Threading.Channels.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Threading.Channels.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Text.Encoding.CodePages.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Text.Encoding.CodePages.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Apis.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Apis.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.IO.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IO.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.WebSockets.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.WebSockets.dll.gz"
+            },
+            "Patterns": null
+          },
+          "PayPalCheckoutSdk.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/PayPalCheckoutSdk.dll.gz"
+            },
+            "Patterns": null
+          },
           "System.IO.Pipes.dll.gz": {
             "Children": null,
             "Asset": {
               "ContentRootIndex": 1,
               "SubPath": "_framework/System.IO.Pipes.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Xml.Serialization.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Xml.Serialization.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.Mail.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.Mail.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Numerics.Vectors.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Numerics.Vectors.dll.gz"
+            },
+            "Patterns": null
+          },
+          "AspNetCore.Firebase.Authentication.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/AspNetCore.Firebase.Authentication.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Diagnostics.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Diagnostics.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Threading.Overlapped.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Threading.Overlapped.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.NetworkInformation.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.NetworkInformation.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Globalization.Extensions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Globalization.Extensions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "icudt_EFIGS.dat.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/icudt_EFIGS.dat.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Configuration.UserSecrets.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Configuration.UserSecrets.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.IO.FileSystem.DriveInfo.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IO.FileSystem.DriveInfo.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Text.Encoding.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Text.Encoding.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.IO.FileSystem.Primitives.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IO.FileSystem.Primitives.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Diagnostics.Debug.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Diagnostics.Debug.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Xml.XPath.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Xml.XPath.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Security.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Security.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.Ping.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.Ping.dll.gz"
+            },
+            "Patterns": null
+          },
+          "WindowsBase.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/WindowsBase.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Reactive.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Reactive.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.IO.FileSystem.Watcher.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IO.FileSystem.Watcher.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Xml.XPath.XmlDocument.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Xml.XPath.XmlDocument.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Collections.Immutable.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Collections.Immutable.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Routing.Abstractions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Routing.Abstractions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Cloud.Firestore.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Cloud.Firestore.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.CSharp.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.CSharp.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Server.IISIntegration.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Server.IISIntegration.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.IO.Pipes.AccessControl.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IO.Pipes.AccessControl.dll.gz"
+            },
+            "Patterns": null
+          },
+          "PayPalPayoutsSdk.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/PayPalPayoutsSdk.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Text.RegularExpressions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Text.RegularExpressions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Numerics.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Numerics.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Protobuf.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Protobuf.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.JSInterop.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.JSInterop.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Threading.Thread.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Threading.Thread.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Data.DataSetExtensions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Data.DataSetExtensions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Threading.Tasks.Dataflow.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Threading.Tasks.Dataflow.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Firebase.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Firebase.dll.gz"
+            },
+            "Patterns": null
+          },
+          "BlazorApp3.Client.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/BlazorApp3.Client.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.IO.MemoryMappedFiles.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.IO.MemoryMappedFiles.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Drawing.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Drawing.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Security.Cryptography.OpenSsl.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Security.Cryptography.OpenSsl.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.HttpOverrides.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.HttpOverrides.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.AspNetCore.Hosting.Abstractions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.AspNetCore.Hosting.Abstractions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "BlazorApp3.Client.pdb.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/BlazorApp3.Client.pdb.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Api.Gax.Grpc.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Api.Gax.Grpc.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Diagnostics.Tracing.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Diagnostics.Tracing.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Google.Cloud.Firestore.V1.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Google.Cloud.Firestore.V1.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.AppContext.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.AppContext.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Configuration.FileExtensions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Configuration.FileExtensions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Core.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Core.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Security.AccessControl.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Security.AccessControl.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Firebase.Storage.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Firebase.Storage.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Linq.Async.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Linq.Async.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.Options.ConfigurationExtensions.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.Options.ConfigurationExtensions.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Net.Primitives.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Net.Primitives.dll.gz"
+            },
+            "Patterns": null
+          },
+          "System.Private.Runtime.InteropServices.JavaScript.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/System.Private.Runtime.InteropServices.JavaScript.dll.gz"
+            },
+            "Patterns": null
+          },
+          "Microsoft.Extensions.DependencyInjection.dll.gz": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 1,
+              "SubPath": "_framework/Microsoft.Extensions.DependencyInjection.dll.gz"
             },
             "Patterns": null
           }

@@ -32,22 +32,22 @@ builder.Services.AddCors(options =>
 });
 builder.Services.AddSingleton<Censor>();
 
-//builder.WebHost.UseKestrel()
-//	.UseQuic(options =>
-//	{
-//		options.Alpn = "h3-29";
-//		options.IdleTimeout = TimeSpan.FromMinutes(1);
-//	})
-//	.ConfigureKestrel((context, options) =>
-//	{
-//		options.EnableAltSvc = true;
-//		options.Listen(IPAddress.Any, 5001, listenOptions =>
-//		{
-//			// Use Http3
-//			listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
-//			listenOptions.UseHttps();
-//		});
-//	});
+builder.WebHost.UseKestrel()
+	.UseQuic(options =>
+	{
+		options.Alpn = "h3-29";
+		options.IdleTimeout = TimeSpan.FromMinutes(1);
+	})
+	.ConfigureKestrel((context, options) =>
+	{
+		options.EnableAltSvc = true;
+		options.Listen(IPAddress.Any, 5001, listenOptions =>
+		{
+			// Use Http3
+			listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
+			listenOptions.UseHttps();
+		});
+	});
 
 WebApplication? app = builder.Build();
 
