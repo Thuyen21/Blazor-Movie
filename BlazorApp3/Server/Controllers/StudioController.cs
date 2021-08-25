@@ -281,6 +281,23 @@ public class StudioController : Controller
 	//	}
 
 	//}
+	[HttpPost("SalaryMovie")]
+	public async Task<ActionResult> SalaryMovie([FromBody] List<string> infor)
+    {
+		var time = DateTime.Parse(infor[1]);
+		if(time.Month >= DateTime.UtcNow.Month)
+        {
+			return BadRequest("Not End Month");
+		}
+		var timeSalary = new DateTime(time.Year, time.Month, 1);
+		FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+		double viewCount = (await db.Collection("View").WhereGreaterThanOrEqualTo("Time", timeSalary).WhereLessThanOrEqualTo("Time", timeSalary.AddMonths(1).AddDays(-1)).GetSnapshotAsync()).Documents.Count;
+		double buy = (await db.Collection("Buy").WhereEqualTo("MovieId", infor[0]).WhereGreaterThanOrEqualTo("Time", timeSalary).WhereLessThanOrEqualTo("Time", timeSalary.AddMonths(1).AddDays(-1)).GetSnapshotAsync()).Documents.Count;
+		double viewt = (await db.Collection("View").WhereEqualTo("Id", infor[0]).WhereGreaterThanOrEqualTo("Time", timeSalary).WhereLessThanOrEqualTo("Time", timeSalary.AddMonths(1).AddDays(-1)).GetSnapshotAsync()).Documents.Count;
+		double vip = (await db.Collection("Vip").WhereGreaterThanOrEqualTo("Time", timeSalary).GetSnapshotAsync()).Documents.Count;
+
+		return Ok();
+    }
 	[HttpGet("PayCheck/{Id}/{Start}")]
 	public async Task<ActionResult<List<double>>> PayCheck(string Id, string Start)
     {
@@ -293,7 +310,7 @@ public class StudioController : Controller
 			double viewCount = (await db.Collection("View").WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
 			if(viewCount ==  0)
             {
-				double buy0 = (await db.Collection("Buy").WhereEqualTo("MovieId", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).Database.Collection(" ").GetSnapshotAsync()).Documents.Count;
+				double buy0 = (await db.Collection("Buy").WhereEqualTo("MovieId", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
 				double m0 = buy0 * 4.49;
 				List<double> result0 = new List<double>();
 				result0.Add(0);
@@ -302,7 +319,7 @@ public class StudioController : Controller
 				return result0;
 			}
 			double viewt = (await db.Collection("View").WhereEqualTo("Id", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
-			double buy = (await db.Collection("Buy").WhereEqualTo("MovieId", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).Database.Collection(" ").GetSnapshotAsync()).Documents.Count;
+			double buy = (await db.Collection("Buy").WhereEqualTo("MovieId", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
 			double vip = (await db.Collection("Vip").WhereGreaterThanOrEqualTo("Time", StartDate).GetSnapshotAsync()).Documents.Count;
 			double m = (vip / viewCount) * 0.26 * viewt + buy * 4.49;
 			List<double> result = new List<double>();

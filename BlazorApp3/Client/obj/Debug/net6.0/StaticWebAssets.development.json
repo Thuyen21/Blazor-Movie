@@ -205,6 +205,14 @@
         },
         "Patterns": null
       },
+      "UserAgent.js": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "UserAgent.js"
+        },
+        "Patterns": null
+      },
       "BlazorApp3.Client.styles.css": {
         "Children": null,
         "Asset": {

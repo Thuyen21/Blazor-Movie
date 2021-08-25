@@ -4768,6 +4768,14 @@
           "SubPath": "test.js"
         },
         "Patterns": null
+      },
+      "UserAgent.js": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 5,
+          "SubPath": "UserAgent.js"
+        },
+        "Patterns": null
       }
     },
     "Asset": null,

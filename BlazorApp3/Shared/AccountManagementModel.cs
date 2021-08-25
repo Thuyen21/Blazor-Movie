@@ -42,5 +42,8 @@ namespace BlazorApp3.Shared
 		[DisplayName("Wallet")]
 		[DataType(DataType.Text)]
 		public double Wallet { get; set; }
+
+		[FirestoreProperty]
+		public string? UserAgent { get; set; }
 	}
 }

@@ -41,7 +41,10 @@ namespace BlazorApp3.Client.Pages
 				}
 			}
 		}
-
+		protected async Task View()
+        {
+			canWatch = await _httpClient.GetFromJsonAsync<bool>($"Customer/CanWatch/{Id}");
+		}
 		protected async Task Com()
 		{
 			CommentModel up = new CommentModel()

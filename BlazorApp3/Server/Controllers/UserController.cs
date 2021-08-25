@@ -51,9 +51,11 @@ public class UserController : Controller
 		FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
 		Query usersRef = db.Collection("Account").WhereEqualTo("Id", user.Uid);
 		QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
+		
 		AccountManagementModel acc = new();
 		foreach (DocumentSnapshot document in snapshot.Documents)
 		{
+			await document.Reference.UpdateAsync("UserAgent", logIn.UserAgent);
 			acc = document.ConvertTo<AccountManagementModel>();
 		}
 

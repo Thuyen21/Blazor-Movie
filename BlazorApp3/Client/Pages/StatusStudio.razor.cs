@@ -12,7 +12,9 @@ namespace BlazorApp3.Client.Pages
 		
 		protected string content;
 
-		protected DateTime start = DateTime.UtcNow;
+        protected DateTime month = DateTime.UtcNow;
+
+        protected DateTime start = DateTime.UtcNow;
 		protected DateTime end = DateTime.UtcNow;
 
 		protected List<int>? commentStatus = new();
@@ -22,8 +24,13 @@ namespace BlazorApp3.Client.Pages
 			//commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Studio/Comment/{Id}");
 			//commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}");
 		}
+        protected async Task Salary()
+        { 
+            content =  await (await _httpClient.PostAsJsonAsync<List<string>>($"Studio/SalaryMovie", new List<string> { { Id },{month.ToString("MM dd yyyy") } })).Content.ReadAsStringAsync();
 
-		protected async Task Submit()
+        }
+
+        protected async Task Submit()
 		{
             fullStatus.Clear();
             //commentStatus.Clear();
