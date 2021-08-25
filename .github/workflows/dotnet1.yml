@@ -16,7 +16,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1.8.1
       with:
-        include-prerelease: 6.x
+        include-prerelease: 6.0.0-preview.7.*
     - name: Publish .NET Core Porject
       run: dotnet publish -c Release -o release --nologo
     - name: copy index.html to 404.html
