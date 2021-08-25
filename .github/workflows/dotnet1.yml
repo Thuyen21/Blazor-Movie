@@ -16,7 +16,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.x
+        dotnet-version: 6
     - name: Publish .NET Core Porject
       run: dotnet publish -c Release -o release --nologo
     - name: copy index.html to 404.html
