@@ -19,7 +19,7 @@ jobs:
         dotnet-version: 6
         
     -name: Publish .NET Core Porject
-    run: dotnet publish BlazorApp3.sln -c Release -o release -nologo
+    run: dotnet publish -c Release -o release --nologo
     
     -name: copy index.html to 404.html
     run: cd release/wwwwroot/index.html release/wwwwroot/404.html
