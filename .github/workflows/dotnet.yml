@@ -2,9 +2,9 @@ name: .NET
 
 on:
   push:
-    branches: [ Publish  ]
+    branches: [ main  ]
   pull_request:
-    branches: [ Publish  ]
+    branches: [ main  ]
 
 jobs:
   build:
@@ -14,10 +14,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1.2.3
+      uses: actions/setup-dotnet@1
       with:
         dotnet-version: 6
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Publish
-      run: dotnet publish BlazorApp3.sln -c Release -o release –nologo
+        
+    -name: Publish .NET Core Porject
+    run: dotnet publish BlazorApp3.sln -c Release -o release -nologo
+    
+    -name: copy index.html to 404.html
+    run: cd release/wwwwroot/index.html release/wwwwroot/404.html
+    
+    -name: Add .nojekyll file
+    run: touch release/wwwroot/.nojekyll
