@@ -2,9 +2,9 @@ name: .NET
 
 on:
   push:
-    branches: [ main ]
+    branches: [ Publish  ]
   pull_request:
-    branches: [ main ]
+    branches: [ Publish  ]
 
 jobs:
   build:
@@ -19,7 +19,5 @@ jobs:
         dotnet-version: 6
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    - name: Publish
+      run: dotnet publish BlazorApp3.sln -c Release -o release –nologo
