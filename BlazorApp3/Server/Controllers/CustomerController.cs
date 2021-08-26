@@ -379,6 +379,25 @@ public class CustomerController : Controller
 		}
 		return Ok("Success");
 	}
+	[HttpPost("UserAgent")]
+	public async Task<ActionResult> UserAgent([FromBody] string Device)
+    {
+		FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+		try
+        {
+			string check = (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<string>("UserAgent");
+			if (check != Device)
+			{
+				return BadRequest();
+			}
+			return Ok();
+		}
+        catch
+        {
+			return BadRequest();
+		}
+		
+    }
 	[HttpPost("View")]
 	public async Task<ActionResult> View([FromBody]string Id)
     {

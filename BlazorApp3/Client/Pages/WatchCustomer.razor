@@ -7,9 +7,10 @@
     @if(canWatch == null)
     {
         <div>Loadding</div>
-    }
+}
     else if(canWatch == false)
     {
+        
         string linkVip = $"BuyVip/{Id}";
         <div>Need to buy</div>      
         <div><NavLink class="nav-link" href="@linkVip">Buy</NavLink></div>
@@ -19,7 +20,15 @@
 }
 else
 {
-    <video src="@movieLink"  width="1280" height="720" controls @onclick="View"></video>
+        if(sameDevice)
+        {
+            <video src="@movieLink"  width="1280" height="720" controls @onclick="View"></video>
+        }
+        else
+        {
+            <div>You cannot watch in many Device at the same time Logout then Login to update your last Device</div> 
+        }
+    
 }
 @if (commentList != null)
 { 

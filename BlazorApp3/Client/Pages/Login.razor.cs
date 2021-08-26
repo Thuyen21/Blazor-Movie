@@ -1,7 +1,6 @@
 using BlazorApp3.Shared;
 using Microsoft.JSInterop;
 using System.Net.Http.Json;
-
 namespace BlazorApp3.Client.Pages
 {
 	public partial class Login
@@ -13,7 +12,10 @@ namespace BlazorApp3.Client.Pages
 		protected async Task HandleValidSubmit()
 		{
 			var remoteUserAgent = await JS.InvokeAsync<string>("getUserAgent");
-			login.UserAgent = remoteUserAgent;
+			
+
+            
+				login.UserAgent = remoteUserAgent;
 
 			HttpResponseMessage response = await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
 			content = await response.Content.ReadAsStringAsync();

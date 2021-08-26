@@ -1,6 +1,7 @@
 using BlazorApp3.Shared;
 using Firebase.Storage;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using System.Net.Http.Json;
 
 namespace BlazorApp3.Client.Pages
@@ -17,6 +18,8 @@ namespace BlazorApp3.Client.Pages
 		protected string content;
 		protected List<CommentModel> commentList = new();
 
+		private bool sameDevice = false;
+
 		protected int index = 0;
 		protected override async Task OnInitializedAsync()
 		{
@@ -27,8 +30,12 @@ namespace BlazorApp3.Client.Pages
 			}
 
 			movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Customer/Watch/{Id}");
-			canWatch = await _httpClient.GetFromJsonAsync<bool>($"Customer/CanWatch/{Id}");
+			
 			commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}");
+			
+			sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
+			
+			canWatch = await _httpClient.GetFromJsonAsync<bool>($"Customer/CanWatch/{Id}");
 			if (canWatch == true)
 			{
 				char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
@@ -46,6 +53,19 @@ namespace BlazorApp3.Client.Pages
         {
 			
 			await _httpClient.PostAsJsonAsync<string>("Customer/View", Id);
+
+			while(true)
+            {
+				sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
+				
+				if(!sameDevice)
+                {
+					StateHasChanged();
+				}
+				
+				await Task.Delay(150000);
+			}
+
 		}
 		protected async Task Com()
 		{
