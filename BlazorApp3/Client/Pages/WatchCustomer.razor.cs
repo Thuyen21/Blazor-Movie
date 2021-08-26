@@ -20,6 +20,7 @@ namespace BlazorApp3.Client.Pages
 		protected int index = 0;
 		protected override async Task OnInitializedAsync()
 		{
+			
 			if (Id == null)
 			{
 				_navigationManager.NavigateTo("/MovieAdmin");
@@ -43,7 +44,8 @@ namespace BlazorApp3.Client.Pages
 		}
 		protected async Task View()
         {
-			canWatch = await _httpClient.GetFromJsonAsync<bool>($"Customer/CanWatch/{Id}");
+			
+			await _httpClient.PostAsJsonAsync<string>("Customer/View", Id);
 		}
 		protected async Task Com()
 		{

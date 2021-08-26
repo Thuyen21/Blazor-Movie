@@ -55,7 +55,7 @@ namespace BlazorApp3.Client.Pages
                     dic.Add("Negative", commentStatus[1].ToString());
                     dic.Add("View", getInfor[0].ToString());
                     dic.Add("Buy", getInfor[1].ToString());
-                    dic.Add("Money", getInfor[2].ToString());
+                    
                     fullStatus.Add(dic);
 
                     //content = i.ToString();

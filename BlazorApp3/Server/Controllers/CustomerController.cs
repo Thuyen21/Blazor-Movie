@@ -379,6 +379,79 @@ public class CustomerController : Controller
 		}
 		return Ok("Success");
 	}
+	[HttpPost("View")]
+	public async Task<ActionResult> View([FromBody]string Id)
+    {
+		FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+		QuerySnapshot collectionView = await db.Collection("View").WhereEqualTo("Id", Id).WhereEqualTo("Viewer", User.FindFirstValue(ClaimTypes.Sid)).WhereGreaterThanOrEqualTo("Time", DateTime.UtcNow.AddHours(-0.5)).WhereLessThanOrEqualTo("Time", DateTime.UtcNow).GetSnapshotAsync();
+		if (collectionView.Documents.Count == 0)
+		{
+			var vip = (await db.Collection("Vip").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync());
+
+			var timeVip = vip.Documents[0].GetValue<DateTime>("Time");
+			if (timeVip < DateTime.UtcNow)
+			{
+				return BadRequest();
+			}
+			var time = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, timeVip.Day);
+			collectionView = await db.Collection("View").WhereGreaterThanOrEqualTo("Time", time.ToUniversalTime()).WhereLessThan("Time", time.AddMonths(1).ToUniversalTime()).GetSnapshotAsync();
+			await db.Collection("View").AddAsync(new Dictionary<string, dynamic>() { { "Id", Id }, { "Viewer", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow } });
+			List<string> movie = new();
+			foreach (var item in collectionView.Documents)
+			{
+				movie.Add(item.GetValue<string>("Id"));
+			}
+
+			double oldCash;
+			if (movie.Count == 0)
+			{
+				oldCash = 0;
+			}
+			else
+			{
+				oldCash = 8 / (movie.Count() * 1.0);
+			}
+
+			double newCash = 8 / (movie.Count() * 1.0 + 1.0);
+			var newUP = await db.Collection("Movie").WhereEqualTo("MovieId", Id).GetSnapshotAsync();
+			double newUPCash = 0;
+			try
+			{
+				newUPCash = newUP.Documents[0].GetValue<double>(time.ToString("MM yyyy"));
+			}
+			catch
+			{
+				newUPCash = 0;
+			}
+			await newUP.Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic> { { time.ToString("MM yyyy"), newUPCash + newCash } });
+
+			foreach (var item2 in movie)
+			{
+				var movieSnapshot = await db.Collection("Movie").WhereEqualTo("MovieId", item2).GetSnapshotAsync();
+				foreach (var item3 in movieSnapshot.Documents)
+				{
+					double updateCash = 0;
+					try
+					{
+						updateCash = item3.GetValue<double>(time.ToString("MM yyyy"));
+					}
+					catch
+					{
+						updateCash = 0;
+					}
+
+					await item3.Reference.UpdateAsync(new Dictionary<string, dynamic> { { time.ToString("MM yyyy"), updateCash - oldCash + newCash } });
+				}
+			}
+
+			return Ok();
+		}
+        else
+        {
+            return Ok();
+        }
+		
+    }
 	[HttpGet("CanWatch/{Id}")]
 	public async Task<ActionResult<bool>> CanWatch(string Id)
 	{
@@ -392,11 +465,7 @@ public class CustomerController : Controller
 			{
                 try
                 {
-					QuerySnapshot collectionView = await db.Collection("View").WhereEqualTo("Id", Id).WhereEqualTo("Viewer", User.FindFirstValue(ClaimTypes.Sid)).WhereGreaterThanOrEqualTo("Time", DateTime.UtcNow.AddHours(-0.5)).WhereLessThanOrEqualTo("Time", DateTime.UtcNow).GetSnapshotAsync();
-					if (collectionView.Documents.Count == 0)
-					{
-						await db.Collection("View").AddAsync(new Dictionary<string, dynamic>() { { "Id", Id }, { "Viewer", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow } });
-					}
+					
 					
 				}
 				catch (Exception ex)
