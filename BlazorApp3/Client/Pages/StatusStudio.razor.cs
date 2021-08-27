@@ -3,35 +3,35 @@ using System.Net.Http.Json;
 
 namespace BlazorApp3.Client.Pages
 {
-	public partial class StatusStudio
-	{
-		[Parameter]
-		public string Id { get; set; }
+    public partial class StatusStudio
+    {
+        [Parameter]
+        public string Id { get; set; }
 
-		
-		
-		protected string content;
+
+
+        protected string content;
 
         protected DateTime month = DateTime.UtcNow;
 
         protected DateTime start = DateTime.UtcNow;
-		protected DateTime end = DateTime.UtcNow;
+        protected DateTime end = DateTime.UtcNow;
 
-		protected List<int>? commentStatus = new();
-		List<Dictionary<string, string>>? fullStatus = new();
-		protected override async Task OnInitializedAsync()
-		{
-			//commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Studio/Comment/{Id}");
-			//commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}");
-		}
+        protected List<int>? commentStatus = new();
+        private readonly List<Dictionary<string, string>>? fullStatus = new();
+        protected override async Task OnInitializedAsync()
+        {
+            //commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Studio/Comment/{Id}");
+            //commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}");
+        }
         protected async Task Salary()
-        { 
-            content =  await (await _httpClient.PostAsJsonAsync<List<string>>($"Studio/SalaryMovie", new List<string> { { Id },{month.ToString("MM dd yyyy") } })).Content.ReadAsStringAsync();
+        {
+            content = await (await _httpClient.PostAsJsonAsync<List<string>>($"Studio/SalaryMovie", new List<string> { { Id }, { month.ToString("MM dd yyyy") } })).Content.ReadAsStringAsync();
 
         }
 
         protected async Task Submit()
-		{
+        {
             fullStatus.Clear();
             //commentStatus.Clear();
             //content = "Loading.....";
@@ -55,7 +55,7 @@ namespace BlazorApp3.Client.Pages
                     dic.Add("Negative", commentStatus[1].ToString());
                     dic.Add("View", getInfor[0].ToString());
                     dic.Add("Buy", getInfor[1].ToString());
-                    
+
                     fullStatus.Add(dic);
 
                     //content = i.ToString();
@@ -71,5 +71,5 @@ namespace BlazorApp3.Client.Pages
 
 
         }
-	}
+    }
 }
