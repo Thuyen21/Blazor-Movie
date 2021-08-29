@@ -315,7 +315,7 @@ public class StudioController : Controller
 
             return result;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             return BadRequest();
         }
@@ -380,6 +380,54 @@ public class StudioController : Controller
             return Ok();
         }
 
+    }
+    [HttpPost("SalaryMovie")]
+    public async Task<ActionResult> SalaryMovie([FromBody] List<string> ss)
+    {
+       
+        if(DateTime.Parse(ss[1]).Month > DateTime.UtcNow.Month - 1)
+        {
+            return BadRequest("Cant Salary In lower than month now -1");
+        }
+        try
+        {
+            ss[1] = DateTime.Parse(ss[1]).ToString("MM yyyy");
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+            var snapshot = await db.Collection("Movie").WhereEqualTo("MovieId", ss[0]).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
+            var cash = snapshot.Documents[0].GetValue<double>(ss[1]);
+            var updateCash = (await db.Collection("Account")
+                .WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid))
+                .GetSnapshotAsync());
+
+            foreach (var item in updateCash.Documents)
+            {
+                await item.Reference.UpdateAsync("Wallet", item.GetValue<double>("Wallet") + cash);
+            }
+            await snapshot.Documents[0].Reference.UpdateAsync(new Dictionary<string, object> { {ss[1], 0 } });
+            
+        }
+        catch
+        {
+
+        }
+        
+        return Ok("Done check your Wallet");
+    }
+    [HttpPost("Check")]
+    public async Task<ActionResult> Check([FromBody] List<string> ss)
+    {
+        try
+        {
+            ss[1] = DateTime.Parse(ss[1]).ToString("MM yyyy");
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+            var snapshot = (await db.Collection("Movie").WhereEqualTo("MovieId", ss[0]).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>(ss[1]);
+            return Ok($"Cash for {ss[1]} is {snapshot}");
+        }
+        catch(Exception ex)
+        {
+            return Ok($"Cash for {ss[1]} is 0");
+        }
+        
     }
     [HttpPost("Salary")]
     public async Task<ActionResult> Salary([FromBody] Dictionary<string, string> dic)

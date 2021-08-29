@@ -458,8 +458,27 @@ public class CustomerController : Controller
                     {
                         updateCash = 0;
                     }
+                    if(updateCash - oldCash + newCash >= 0)
+                    {
+                        await item3.Reference.UpdateAsync(new Dictionary<string, dynamic> { { time.ToString("MM yyyy"), updateCash - oldCash + newCash } });
 
-                    await item3.Reference.UpdateAsync(new Dictionary<string, dynamic> { { time.ToString("MM yyyy"), updateCash - oldCash + newCash } });
+                    }
+                    else
+                    {
+                        double hazz = 0;
+                        try
+                        {
+                            hazz = item3.GetValue<double>(time.AddMonths(1).ToString("MM yyyy"));
+                        }
+                        catch
+                        {
+                            hazz = 0;
+                        }
+                        double hazzz = hazz + updateCash - oldCash + newCash;
+                        await item3.Reference.UpdateAsync(new Dictionary<string, dynamic> { { time.ToString("MM yyyy"),  0} });
+                        await item3.Reference.UpdateAsync(new Dictionary<string, dynamic> { { time.AddMonths(1).ToString("MM yyyy"), hazzz } });
+                    }
+                    
                 }
             }
 

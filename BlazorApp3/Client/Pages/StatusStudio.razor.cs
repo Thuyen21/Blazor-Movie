@@ -13,7 +13,7 @@ namespace BlazorApp3.Client.Pages
         protected string content;
 
         protected DateTime month = DateTime.UtcNow;
-
+        protected DateTime check = DateTime.UtcNow;
         protected DateTime start = DateTime.UtcNow;
         protected DateTime end = DateTime.UtcNow;
 
@@ -29,12 +29,17 @@ namespace BlazorApp3.Client.Pages
             content = await (await _httpClient.PostAsJsonAsync<List<string>>($"Studio/SalaryMovie", new List<string> { { Id }, { month.ToString("MM dd yyyy") } })).Content.ReadAsStringAsync();
 
         }
+        protected async Task Check()
+        {
+            content = await (await _httpClient.PostAsJsonAsync<List<string>>($"Studio/Check", new List<string> { { Id }, { check.ToString("MM dd yyyy") } })).Content.ReadAsStringAsync();
+
+        }
 
         protected async Task Submit()
         {
             fullStatus.Clear();
             //commentStatus.Clear();
-            //content = "Loading.....";
+            content = "Loading.....";
 
             //for(DateTime i = start; i <= end; i = i.AddDays(1.0))
             //         {
@@ -58,7 +63,7 @@ namespace BlazorApp3.Client.Pages
 
                     fullStatus.Add(dic);
 
-                    //content = i.ToString();
+                    content = "";
                 }
 
 

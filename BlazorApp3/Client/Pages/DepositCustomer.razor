@@ -29,31 +29,4 @@ else
     <div id="paypal-button"></div>
 
 
-@code{
-    [Parameter]
-    public string Code{get;set;}
-    private double cash = 0;
-    private string clientToken;
 
-    protected string divCSS = "display: none;";
-        protected void DivCSS(string divCSS)
-        {
-            this.divCSS = divCSS;
-        }
-
-    private async Task Cash()
-    {
-        try
-        {
-            clientToken = new string( await _httpClient.GetFromJsonAsync<char[]>("Customer/Deposit"));
-
-            await JS.InvokeVoidAsync("Deposit", clientToken, cash);
-            DivCSS("display: block;");
-        }
-        catch(Exception ex)
-        {
-            
-        }
-        
-    }
-}

@@ -2,6 +2,9 @@
 @page "/WatchCustomer/{Id}"
 @attribute [Authorize(Roles ="Customer")]
 @using Firebase.Storage
+
+<Title value="Page title" /> 
+
 @if(movie == null || movieLink == null)
 {
     @if(canWatch == null)
