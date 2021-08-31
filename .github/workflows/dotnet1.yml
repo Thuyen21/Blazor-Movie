@@ -12,11 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2.*
+    - uses: actions/checkout@v2.x
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1.*
+      uses: actions/setup-dotnet@v1.x
       with:
-        dotnet-version: 6.*
+        dotnet-version: 6.x
         include-prerelease: true
     - name: Install wasm-tools
       run: dotnet workload install wasm-tools
