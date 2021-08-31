@@ -279,6 +279,10 @@
               "target": "Package",
               "version": "[6.0.0-preview.7.21378.6, )"
             },
+            "Microsoft.AspNetCore.Components.Web.Extensions": {
+              "target": "Package",
+              "version": "[5.0.0-preview9.20513.1, )"
+            },
             "PayPalCheckoutSdk": {
               "target": "Package",
               "version": "[1.0.3, )"

@@ -1,15 +1,36 @@
 {
   "ContentRoots": [
-    "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\"
+    "C:\\Users\\thuye\\.nuget\\packages\\microsoft.aspnetcore.components.web.extensions\\5.0.0-preview9.20513.1\\staticwebassets\\",
+    "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\"
   ],
   "Root": {
     "Children": {
+      "_content": {
+        "Children": {
+          "Microsoft.AspNetCore.Components.Web.Extensions": {
+            "Children": {
+              "headManager.js": {
+                "Children": null,
+                "Asset": {
+                  "ContentRootIndex": 0,
+                  "SubPath": "headManager.js"
+                },
+                "Patterns": null
+              }
+            },
+            "Asset": null,
+            "Patterns": null
+          }
+        },
+        "Asset": null,
+        "Patterns": null
+      },
       "css": {
         "Children": {
           "app.css": {
             "Children": null,
             "Asset": {
-              "ContentRootIndex": 0,
+              "ContentRootIndex": 1,
               "SubPath": "css/app.css"
             },
             "Patterns": null
@@ -19,7 +40,7 @@
               "bootstrap.min.css": {
                 "Children": null,
                 "Asset": {
-                  "ContentRootIndex": 0,
+                  "ContentRootIndex": 1,
                   "SubPath": "css/bootstrap/bootstrap.min.css"
                 },
                 "Patterns": null
@@ -27,7 +48,7 @@
               "bootstrap.min.css.map": {
                 "Children": null,
                 "Asset": {
-                  "ContentRootIndex": 0,
+                  "ContentRootIndex": 1,
                   "SubPath": "css/bootstrap/bootstrap.min.css.map"
                 },
                 "Patterns": null
@@ -41,7 +62,7 @@
               "FONT-LICENSE": {
                 "Children": null,
                 "Asset": {
-                  "ContentRootIndex": 0,
+                  "ContentRootIndex": 1,
                   "SubPath": "css/open-iconic/FONT-LICENSE"
                 },
                 "Patterns": null
@@ -53,7 +74,7 @@
                       "open-iconic-bootstrap.min.css": {
                         "Children": null,
                         "Asset": {
-                          "ContentRootIndex": 0,
+                          "ContentRootIndex": 1,
                           "SubPath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css"
                         },
                         "Patterns": null
@@ -67,7 +88,7 @@
                       "open-iconic.eot": {
                         "Children": null,
                         "Asset": {
-                          "ContentRootIndex": 0,
+                          "ContentRootIndex": 1,
                           "SubPath": "css/open-iconic/font/fonts/open-iconic.eot"
                         },
                         "Patterns": null
@@ -75,7 +96,7 @@
                       "open-iconic.otf": {
                         "Children": null,
                         "Asset": {
-                          "ContentRootIndex": 0,
+                          "ContentRootIndex": 1,
                           "SubPath": "css/open-iconic/font/fonts/open-iconic.otf"
                         },
                         "Patterns": null
@@ -83,7 +104,7 @@
                       "open-iconic.svg": {
                         "Children": null,
                         "Asset": {
-                          "ContentRootIndex": 0,
+                          "ContentRootIndex": 1,
                           "SubPath": "css/open-iconic/font/fonts/open-iconic.svg"
                         },
                         "Patterns": null
@@ -91,7 +112,7 @@
                       "open-iconic.ttf": {
                         "Children": null,
                         "Asset": {
-                          "ContentRootIndex": 0,
+                          "ContentRootIndex": 1,
                           "SubPath": "css/open-iconic/font/fonts/open-iconic.ttf"
                         },
                         "Patterns": null
@@ -99,7 +120,7 @@
                       "open-iconic.woff": {
                         "Children": null,
                         "Asset": {
-                          "ContentRootIndex": 0,
+                          "ContentRootIndex": 1,
                           "SubPath": "css/open-iconic/font/fonts/open-iconic.woff"
                         },
                         "Patterns": null
@@ -115,7 +136,7 @@
               "ICON-LICENSE": {
                 "Children": null,
                 "Asset": {
-                  "ContentRootIndex": 0,
+                  "ContentRootIndex": 1,
                   "SubPath": "css/open-iconic/ICON-LICENSE"
                 },
                 "Patterns": null
@@ -123,7 +144,7 @@
               "README.md": {
                 "Children": null,
                 "Asset": {
-                  "ContentRootIndex": 0,
+                  "ContentRootIndex": 1,
                   "SubPath": "css/open-iconic/README.md"
                 },
                 "Patterns": null
@@ -139,7 +160,7 @@
       "Deposit.js": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 0,
+          "ContentRootIndex": 1,
           "SubPath": "Deposit.js"
         },
         "Patterns": null
@@ -147,7 +168,7 @@
       "index.html": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 0,
+          "ContentRootIndex": 1,
           "SubPath": "index.html"
         },
         "Patterns": null
@@ -155,7 +176,7 @@
       "service-worker.js": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 0,
+          "ContentRootIndex": 1,
           "SubPath": "service-worker.js"
         },
         "Patterns": null
@@ -163,7 +184,7 @@
       "service-worker.published.js": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 0,
+          "ContentRootIndex": 1,
           "SubPath": "service-worker.published.js"
         },
         "Patterns": null
@@ -171,7 +192,7 @@
       "tBarScript.js": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 0,
+          "ContentRootIndex": 1,
           "SubPath": "tBarScript.js"
         },
         "Patterns": null
@@ -179,7 +200,7 @@
       "test.js": {
         "Children": null,
         "Asset": {
-          "ContentRootIndex": 0,
+          "ContentRootIndex": 1,
           "SubPath": "test.js"
         },
         "Patterns": null

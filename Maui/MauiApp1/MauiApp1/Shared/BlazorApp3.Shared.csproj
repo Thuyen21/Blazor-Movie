@@ -24,6 +24,7 @@
 		<PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
 		<PackageReference Include="Google.Cloud.Storage.V1" Version="3.5.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.0-preview.7.21378.6" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web.Extensions" Version="5.0.0-preview9.20513.1" />
 		<PackageReference Include="PayoutsSdk" Version="1.1.0" />
 		<PackageReference Include="PayPalCheckoutSdk" Version="1.0.3" />
 		<PackageReference Include="PayPalHttp" Version="1.0.0" />

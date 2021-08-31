@@ -1,7 +1,7 @@
 AssemblyName=MauiApp1.dll
 				AOTCompiler=
 				AOTOutputDirectory=obj\Debug\net6.0-maccatalyst\maccatalyst-x64\nativelibraries/aot-output/
-				CacheDirectory=D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\linker-cache
+				CacheDirectory=D:\Blazor Maui\Maui\MauiApp1\MauiApp1\MauiApp1\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\linker-cache
 				
 				Debug=true
 				DeploymentTarget=
@@ -175,7 +175,7 @@ FrameworkAssembly=System.Private.CoreLib
 				Interpreter=
 				IntermediateLinkDir=obj\Debug\net6.0-maccatalyst\maccatalyst-x64\linked\
 				InvariantGlobalization=true
-				ItemsDirectory=D:\Blazor Movie\Blazor-Movie-\Maui\MauiApp1\MauiApp1\MauiApp1\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\linker-items
+				ItemsDirectory=D:\Blazor Maui\Maui\MauiApp1\MauiApp1\MauiApp1\obj\Debug\net6.0-maccatalyst\maccatalyst-x64\linker-items
 				IsSimulatorBuild=
 				LibMonoLinkMode=dylib
 				LibXamarinLinkMode=dylib

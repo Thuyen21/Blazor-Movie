@@ -563,6 +563,25 @@
           "lib/net6.0/Microsoft.AspNetCore.Components.Web.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Components.Web.Extensions/5.0.0-preview9.20513.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "5.0.0-rc.2.20475.17",
+          "Microsoft.JSInterop": "5.0.0-rc.2.20475.17"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.dll": {}
+        },
+        "build": {
+          "buildTransitive/Microsoft.AspNetCore.Components.Web.Extensions.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.AspNetCore.Components.Web.Extensions.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Components.WebView/6.0.0-preview.7.21378.6": {
         "type": "package",
         "dependencies": {
@@ -3104,6 +3123,7 @@
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
           "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
+          "Microsoft.AspNetCore.Components.Web.Extensions": "5.0.0-preview9.20513.1",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -3630,6 +3650,25 @@
         },
         "runtime": {
           "lib/net6.0/Microsoft.AspNetCore.Components.Web.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.Web.Extensions/5.0.0-preview9.20513.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "5.0.0-rc.2.20475.17",
+          "Microsoft.JSInterop": "5.0.0-rc.2.20475.17"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.dll": {}
+        },
+        "build": {
+          "buildTransitive/Microsoft.AspNetCore.Components.Web.Extensions.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.AspNetCore.Components.Web.Extensions.props": {}
         }
       },
       "Microsoft.AspNetCore.Components.WebView/6.0.0-preview.7.21378.6": {
@@ -6350,6 +6389,7 @@
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
           "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
+          "Microsoft.AspNetCore.Components.Web.Extensions": "5.0.0-preview9.20513.1",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -6870,6 +6910,25 @@
         },
         "runtime": {
           "lib/net6.0/Microsoft.AspNetCore.Components.Web.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.Web.Extensions/5.0.0-preview9.20513.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "5.0.0-rc.2.20475.17",
+          "Microsoft.JSInterop": "5.0.0-rc.2.20475.17"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.dll": {}
+        },
+        "build": {
+          "buildTransitive/Microsoft.AspNetCore.Components.Web.Extensions.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.AspNetCore.Components.Web.Extensions.props": {}
         }
       },
       "Microsoft.AspNetCore.Components.WebView/6.0.0-preview.7.21378.6": {
@@ -9610,6 +9669,7 @@
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
           "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
+          "Microsoft.AspNetCore.Components.Web.Extensions": "5.0.0-preview9.20513.1",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -10136,6 +10196,25 @@
         },
         "runtime": {
           "lib/net6.0/Microsoft.AspNetCore.Components.Web.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.Web.Extensions/5.0.0-preview9.20513.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "5.0.0-rc.2.20475.17",
+          "Microsoft.JSInterop": "5.0.0-rc.2.20475.17"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.dll": {}
+        },
+        "build": {
+          "buildTransitive/Microsoft.AspNetCore.Components.Web.Extensions.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.AspNetCore.Components.Web.Extensions.props": {}
         }
       },
       "Microsoft.AspNetCore.Components.WebView/6.0.0-preview.7.21378.6": {
@@ -12876,6 +12955,7 @@
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
           "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
+          "Microsoft.AspNetCore.Components.Web.Extensions": "5.0.0-preview9.20513.1",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -13402,6 +13482,25 @@
         },
         "runtime": {
           "lib/net6.0/Microsoft.AspNetCore.Components.Web.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Components.Web.Extensions/5.0.0-preview9.20513.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "5.0.0-rc.2.20475.17",
+          "Microsoft.JSInterop": "5.0.0-rc.2.20475.17"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.dll": {}
+        },
+        "build": {
+          "buildTransitive/Microsoft.AspNetCore.Components.Web.Extensions.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.AspNetCore.Components.Web.Extensions.props": {}
         }
       },
       "Microsoft.AspNetCore.Components.WebView/6.0.0-preview.7.21378.6": {
@@ -16142,6 +16241,7 @@
           "Google.Cloud.Firestore": "2.4.0",
           "Google.Cloud.Storage.V1": "3.5.0",
           "Microsoft.AspNetCore.Components.Authorization": "6.0.0-preview.7.21378.6",
+          "Microsoft.AspNetCore.Components.Web.Extensions": "5.0.0-preview9.20513.1",
           "PayPalCheckoutSdk": "1.0.3",
           "PayPalHttp": "1.0.0",
           "PayoutsSdk": "1.1.0"
@@ -16834,6 +16934,26 @@
         "lib/net6.0/Microsoft.AspNetCore.Components.Web.xml",
         "microsoft.aspnetcore.components.web.6.0.0-preview.7.21378.6.nupkg.sha512",
         "microsoft.aspnetcore.components.web.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Components.Web.Extensions/5.0.0-preview9.20513.1": {
+      "sha512": "korwh3+VnsB2zJotdH4ErHU1ruXn4q7JQJoJdxKaxF1po4gtwwxBlTSzAqDHgkQWRwnOJ2RIlXCk1zfhYAzXHQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.components.web.extensions/5.0.0-preview9.20513.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "build/Microsoft.AspNetCore.Components.Web.Extensions.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Microsoft.AspNetCore.Components.Web.Extensions.props",
+        "buildTransitive/Microsoft.AspNetCore.Components.Web.Extensions.props",
+        "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.pdb",
+        "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.xml",
+        "microsoft.aspnetcore.components.web.extensions.5.0.0-preview9.20513.1.nupkg.sha512",
+        "microsoft.aspnetcore.components.web.extensions.nuspec",
+        "staticwebassets/headManager.js"
       ]
     },
     "Microsoft.AspNetCore.Components.WebView/6.0.0-preview.7.21378.6": {

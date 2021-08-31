@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HHvnG2Mp2yovN3kQMTzPzQQ1/tMV4P/GvW5fp/84Zd8=",
+  "Hash": "ohTOnDv2SVcF9SVIjnmlsLv18RqFUmFfUJ428zm5Nts=",
   "Source": "MauiApp1.WinUI",
   "BasePath": "/",
   "Mode": "Root",
@@ -9,10 +9,27 @@
   "DiscoveryPatterns": [],
   "Assets": [
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\app.css",
+      "Identity": "C:\\Users\\thuye\\.nuget\\packages\\microsoft.aspnetcore.components.web.extensions\\5.0.0-preview9.20513.1\\staticwebassets\\headManager.js",
+      "SourceId": "Microsoft.AspNetCore.Components.Web.Extensions",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\thuye\\.nuget\\packages\\microsoft.aspnetcore.components.web.extensions\\5.0.0-preview9.20513.1\\staticwebassets\\",
+      "BasePath": "_content/Microsoft.AspNetCore.Components.Web.Extensions",
+      "RelativePath": "headManager.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\thuye\\.nuget\\packages\\microsoft.aspnetcore.components.web.extensions\\5.0.0-preview9.20513.1\\staticwebassets\\headManager.js"
+    },
+    {
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\app.css",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/app.css",
       "AssetKind": "All",
@@ -26,10 +43,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\css\\app.css"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -43,10 +60,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -60,10 +77,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -77,10 +94,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -94,10 +111,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -111,10 +128,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -128,10 +145,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -145,10 +162,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -162,10 +179,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -179,10 +196,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -196,10 +213,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\css\\open-iconic\\ICON-LICENSE"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\README.md",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\css\\open-iconic\\README.md",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -213,10 +230,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\css\\open-iconic\\README.md"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\Deposit.js",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\Deposit.js",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "Deposit.js",
       "AssetKind": "All",
@@ -230,10 +247,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\Deposit.js"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\index.html",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\index.html",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "index.html",
       "AssetKind": "All",
@@ -247,10 +264,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\index.html"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\service-worker.js",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\service-worker.js",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "service-worker.js",
       "AssetKind": "All",
@@ -264,10 +281,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\service-worker.js"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\service-worker.published.js",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\service-worker.published.js",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "service-worker.published.js",
       "AssetKind": "All",
@@ -281,10 +298,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\service-worker.published.js"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\tBarScript.js",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\tBarScript.js",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "tBarScript.js",
       "AssetKind": "All",
@@ -298,10 +315,10 @@
       "OriginalItemSpec": "..\\MauiApp1\\wwwroot\\tBarScript.js"
     },
     {
-      "Identity": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\test.js",
+      "Identity": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1\\wwwroot\\test.js",
       "SourceId": "MauiApp1.WinUI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
+      "ContentRoot": "D:\\Blazor Maui\\Maui\\MauiApp1\\MauiApp1\\MauiApp1.WinUI\\wwwroot\\",
       "BasePath": "/",
       "RelativePath": "test.js",
       "AssetKind": "All",

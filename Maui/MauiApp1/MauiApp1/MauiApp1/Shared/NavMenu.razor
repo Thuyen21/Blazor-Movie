@@ -10,12 +10,7 @@
 </head>
 
 
-@*<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">Blazor Movies</a>
-    <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    </div>*@
+
 
 <div class="page">
     <main>
@@ -214,13 +209,7 @@
                         </NotAuthorized>
                     </AuthorizeView>
 
-                    @*<li>
-                        <a href="login">
-                            <i class='bx bx-log-in'></i>
-                            <span class="links_name">Login</span>
-                        </a>
-                        <span class="tooltip">Login</span>
-                    </li>*@
+                    
                 </ul>
             </div>
             <section class="home-section">
@@ -348,4 +337,15 @@
         }
 
     }
+    private bool collapseNavMenu = true;
+        private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+        private void ToggleNavMenu()
+        {
+            collapseNavMenu = !collapseNavMenu;
+        }
+
+        public void MenuChanged()
+        {
+            InvokeAsync(StateHasChanged);
+        }
     }
