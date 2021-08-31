@@ -2,72 +2,142 @@
 @inject IAccountService _accountService;
 @page "/login"
 @using MauiApp1.Services
-@*<EditForm Model="@login" OnValidSubmit="HandleValidSubmit">
-    <DataAnnotationsValidator/>
-    <ValidationSummary/>
-    Email
-    <InputText  @bind-Value="@login.Email" class="form-control"/>
-    Password
-    <InputText @bind-Value="@login.Password" class="form-control"/>
-    <button type="submit">Submit</button>
-    </EditForm>*@
+
+@*<button @onclick="@( () =>  DivCSS("display: block;"))" style="width:auto; margin:0; position: absolute;top: 50%;left: 50%;" class=" zoom2">Login</button>*@
+
+@*<div id="id01" class="modal" style="@divCSS">
+	<div class="modal-content animate" style="border-radius: 12px;">
+	<EditForm Model="@login" OnValidSubmit="HandleValidSubmit">
+	<DataAnnotationsValidator />
+	<ValidationSummary />
+	<div class="imgcontainer">
+	<span @onclick="@( () =>  DivCSS("display: none;"))" class="close" title="Close Modal">&times;</span>
+	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
+	</div>
+	<div class="container">
+	<label for="email"><b>Email</b></label>
+	<input type="text" @bind="@login.Email" placeholder="Enter Email" class="zoom" />
+	<label for="psw"><b>Password</b></label>
+	<input type="password" @bind="@login.Password" placeholder="Enter Password" class="zoom" />
+	<button type="submit" class="zoom">Login</button>
+	<label>
+	<input type="checkbox" checked="checked" name="remember"> Remember me
+	</label>
+	</div>
+	<div class="container" style="background-color:#f1f1f1">
+	<button type="button" @onclick="@(async () => await JS.InvokeVoidAsync("myFunction"))" class="cancelbtn">Cancel</button>
+	<span class="psw">Forgot <a href="ResetPassword">password?</a></span>
+	</div>
+	</EditForm>
+	</div>
+	</div>
+	<div>@content</div>*@
 
 
-@*<button @onclick="@(async () => await JS.InvokeVoidAsync("myFunction2"))" style="width:auto;">Login</button>*@
-<button @onclick="@( () =>  DivCSS("display: block;"))" style="width:auto; margin:0; position: absolute;top: 50%;left: 50%;" class=" zoom2">Login</button>
-
-<div id="id01" class="modal" style="@divCSS">
-
-    <div class="modal-content animate" style="border-radius: 12px;">
-        <EditForm Model="@login" OnValidSubmit="HandleValidSubmit">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
-
-            <div class="imgcontainer">
-                @*<span @onclick="@(async () => await JS.InvokeVoidAsync("myFunction"))" class="close" title="Close Modal">&times;</span>*@
-                <span @onclick="@( () =>  DivCSS("display: none;"))" class="close" title="Close Modal">&times;</span>
-                <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
-            </div>
-            <div class="container">
-                <label for="email"><b>Email</b></label>
-                @*<InputText type="text" @bind-Value="@login.Email" placeholder="Enter Email" name="email" />*@
-                 
-
-                <input type="text" @bind="@login.Email" placeholder="Enter Email" class="zoom"/>
-
-                <label for="psw"><b>Password</b></label>
-                @*<InputText type="password" @bind-Value="@login.Password" placeholder="Enter Password" name="psw" />*@
-                <input type="password" @bind="@login.Password" placeholder="Enter Password" class="zoom"/>
-
-                <button type="submit" class="zoom">Login</button>
-
-
-                <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                </label>
-            </div>
-
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" @onclick="@(async () => await JS.InvokeVoidAsync("myFunction"))" class="cancelbtn">Cancel</button>
-
-                @*<NavLink class="nav-link" href="ResetPassword"> ResetPassword </NavLink>*@
-                @*<button type="button" class="cancelbtn" ><a href="ResetPassword" > Fogot Password</a> </button>*@
-                <span class="psw">Forgot <a href="ResetPassword">password?</a></span>
-            </div>
-
-        </EditForm>
-    </div>
-</div>
-
-<div>@content</div>
 
 
 
 @code
 {
-        protected string divCSS = "display: none;";
-        protected void DivCSS(string divCSS)
+	protected string divCSS = "display: none;";
+	protected void DivCSS(string divCSS)
+	{
+		this.divCSS = divCSS;
+	}
+}
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<div class="container">
+		<input type="checkbox" id="flip">
+		<div class="cover">
+			<div class="front">
+				<img src="https://bvuvolunteers.org/wp-content/uploads/2021/03/coffee-and-keyboard.jpg" alt="">
+				<div class="text">
+					<span class="text-1">Every new friend is a <br> new adventure</span>
+					<span class="text-2">Let's get connected</span>
+				</div>
+			</div>
+			<div class="back">
+				<img class="backImg" src="https://bvuvolunteers.org/wp-content/uploads/2021/03/coffee-and-keyboard.jpg" alt="">
+				<div class="text">
+					<span class="text-1">Complete miles of journey <br> with one step</span>
+					<span class="text-2">Let's get started</span>
+				</div>
+			</div>
+		</div>
+		<div class="forms">
+			<div class="form-content">
+				<div class="login-form">
+					<div class="title">Login</div>
+					<form action="#">
+						<div class="input-boxes">
+							<EditForm Model="@login" OnValidSubmit="HandleValidSubmit">
+								<DataAnnotationsValidator />
+								<ValidationSummary />
+								<div class="input-box">
+									<i class="fas fa-envelope"></i>
+									<input type="text" @bind="@login.Email" placeholder="Enter your email" required>
+								</div>
+								<div class="input-box">
+									<i class="fas fa-lock"></i>
+									<input type="password" @bind="@login.Password" placeholder="Enter your password" required>
+								</div>
+								<div class="text"><a href="/ResetPassword">Forgot password?</a></div>
+								<div class="button input-box">
+									<input type="submit" value="Login">
+								</div>
+								<div class="input-box" style="visibility: hidden;">
+									<i class="fas fa-envelope"></i>
+								</div>
+								<div class="input-box" style="visibility: hidden;">
+									<i class="fas fa-envelope" style="visibility: hidden;"></i>
+								</div>
+								<div class="input-box" style="visibility: hidden;">
+									<i class="fas fa-envelope"></i>
+								</div>
+								<div class="text sign-up-text">Don't have an account? <a href="/SignUp"><label>Sigup now</label></a></div>
+								<div class="text sign-up-text">@content</div>
+							</EditForm>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+
+@code
+{
+protected LogInModel login = new LogInModel();
+        protected string content;
+
+
+        protected async Task HandleValidSubmit()
         {
-            this.divCSS = divCSS;
+            string? remoteUserAgent = await JS.InvokeAsync<string>("getUserAgent");
+
+
+
+            login.UserAgent = remoteUserAgent;
+
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
+            content = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+
+                //_navigationManager.NavigateTo("/", true);
+                _accountService.Login();
+                //new CustomAuthenticationStateProvider(_httpClient).Update();
+                //new NavMenu().MenuChanged();
+                _navigationManager.NavigateTo("/");
+            }
         }
 }

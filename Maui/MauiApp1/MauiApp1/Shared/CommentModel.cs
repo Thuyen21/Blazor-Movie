@@ -11,7 +11,7 @@ namespace BlazorApp3.Shared
 
         [DataType(DataType.Text)]
         [DisplayName("Id")]
-        public string Id { get; set; }
+        public string? Id { get; set; }
         [FirestoreProperty]
 
         [DataType(DataType.DateTime)]
@@ -22,7 +22,7 @@ namespace BlazorApp3.Shared
 
         [DataType(DataType.EmailAddress)]
         [DisplayName("Email")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
         [FirestoreProperty]
 
         [DataType(DataType.Text)]
@@ -39,6 +39,6 @@ namespace BlazorApp3.Shared
 
         public int DisLike { get; set; }
         [FirestoreProperty]
-        public string Prediction { get; set; }
+        public string? Prediction { get; set; }
     }
 }

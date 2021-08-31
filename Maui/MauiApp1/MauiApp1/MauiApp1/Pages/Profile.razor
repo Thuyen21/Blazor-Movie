@@ -51,6 +51,17 @@
     {
         _navigationManager.NavigateTo("/ResetPassword");
     }
+    protected AccountManagementModel accountManagementModel = new AccountManagementModel();
+        protected string content;
+        protected override async Task OnInitializedAsync()
+        {
+            accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");
+        }
 
+        protected async Task HandleValidSubmit()
+        {
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<AccountManagementModel>("user/EditProfile", accountManagementModel);
+            content = await response.Content.ReadAsStringAsync();
+        }
     
 }

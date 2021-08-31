@@ -16,5 +16,8 @@ namespace BlazorApp3.Shared
         [StringLength(50, MinimumLength = 7)]
         [PasswordPropertyText(false)]
         public string Password { get; set; }
+
+
+        public string? UserAgent { get; set; }
     }
 }
