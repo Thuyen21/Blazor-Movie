@@ -18,6 +18,8 @@ jobs:
       with:
         dotnet-version: '6.0.x'
         include-prerelease: true
+    - name: Install wasm-tools
+      run: dotnet workload install wasm-tools
     - name: Publish .NET Core Porject
       run: dotnet publish -c Release -o release --nologo
     - name: copy index.html to 404.html
