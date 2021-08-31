@@ -126,8 +126,10 @@ public class CustomerController : Controller
         return clientToken.ToCharArray();
     }
     [HttpPost("DoCard")]
-    public async Task<ActionResult> DoCard([FromForm] string nonce, [FromForm] string cash)
+    public async Task<ActionResult> DoCard([FromBody] List<string> d)
     {
+        string nonce = d[0];
+            string cash = d[1];
         TransactionRequest request = new()
         {
             Amount = Convert.ToDecimal(cash),
@@ -162,44 +164,44 @@ public class CustomerController : Controller
                                           snapshotAsyncDocument.ConvertTo<AccountManagementModel>().Wallet
                             }
                     });
-            }
-
-            ModelState.AddModelError(string.Empty, "Success!: " + transaction.Id);
-            string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
-
-            return Redirect($"{hostname}/Deposit/Success");
+            }          
+            return Ok("Success");
         }
         else if (result.Transaction != null)
         {
-            Braintree.Transaction transaction = result.Transaction;
+            //Braintree.Transaction transaction = result.Transaction;
 
-            ModelState.AddModelError(string.Empty, "Error processing transaction:");
-            ModelState.AddModelError(string.Empty, "  Status: " + transaction.Status);
-            ModelState.AddModelError(string.Empty, "  Code: " + transaction.ProcessorResponseCode);
-            ModelState.AddModelError(string.Empty, "  Text: " + transaction.ProcessorResponseText);
-            string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
+            //ModelState.AddModelError(string.Empty, "Error processing transaction:");
+            //ModelState.AddModelError(string.Empty, "  Status: " + transaction.Status);
+            //ModelState.AddModelError(string.Empty, "  Code: " + transaction.ProcessorResponseCode);
+            //ModelState.AddModelError(string.Empty, "  Text: " + transaction.ProcessorResponseText);
+            //string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
 
-            return Redirect($"{hostname}/Deposit/Error processing transaction");
+            //return Redirect($"{hostname}/Deposit/Error processing transaction");
+            return BadRequest("Error processing transaction");    
         }
         else
         {
             foreach (ValidationError error in result.Errors.DeepAll())
             {
-                ModelState.AddModelError(string.Empty, "Attribute: " + error.Attribute);
-                ModelState.AddModelError(string.Empty, "  Code: " + error.Code);
-                ModelState.AddModelError(string.Empty, "  Message: " + error.Message);
+                //ModelState.AddModelError(string.Empty, "Attribute: " + error.Attribute);
+                //ModelState.AddModelError(string.Empty, "  Code: " + error.Code);
+                //ModelState.AddModelError(string.Empty, "  Message: " + error.Message);
 
-                string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
+                //string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
 
-                return Redirect($"{hostname}/Deposit/{error.Message}");
+                //return Redirect($"{hostname}/Deposit/{error.Message}");
+                return BadRequest(error.Message);
             }
         }
 
-        return View();
+        return Ok();
     }
     [HttpPost("DoPayPal")]
-    public async Task<ActionResult> DoPaypal([FromForm] string nonce, [FromForm] string cash)
+    public async Task<ActionResult> DoPaypal([FromBody] List<string> d)
     {
+        string nonce = d[0];
+        string cash = d[1];
         BraintreeGateway gateway = new()
         {
             Environment = Braintree.Environment.SANDBOX,
@@ -245,37 +247,40 @@ public class CustomerController : Controller
                     });
             }
 
-            ModelState.AddModelError(string.Empty, "Success!: " + transaction.Id);
-            string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
+            //ModelState.AddModelError(string.Empty, "Success!: " + transaction.Id);
+            //string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
 
-            return Redirect($"{hostname}/Deposit/Success");
+            //return Redirect($"{hostname}/Deposit/Success");
+            return Ok("Success");
         }
         else if (result.Transaction != null)
         {
-            Braintree.Transaction transaction = result.Transaction;
+            //Braintree.Transaction transaction = result.Transaction;
 
-            ModelState.AddModelError(string.Empty, "Error processing transaction:");
-            ModelState.AddModelError(string.Empty, "  Status: " + transaction.Status);
-            ModelState.AddModelError(string.Empty, "  Code: " + transaction.ProcessorResponseCode);
-            ModelState.AddModelError(string.Empty, "  Text: " + transaction.ProcessorResponseText);
-            string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
+            //ModelState.AddModelError(string.Empty, "Error processing transaction:");
+            //ModelState.AddModelError(string.Empty, "  Status: " + transaction.Status);
+            //ModelState.AddModelError(string.Empty, "  Code: " + transaction.ProcessorResponseCode);
+            //ModelState.AddModelError(string.Empty, "  Text: " + transaction.ProcessorResponseText);
+            //string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
 
-            return Redirect($"{hostname}/Deposit/Error processing transaction");
+            //return Redirect($"{hostname}/Deposit/Error processing transaction");
+            return BadRequest("Error processing transaction");
         }
         else
         {
             foreach (ValidationError error in result.Errors.DeepAll())
             {
-                ModelState.AddModelError(string.Empty, "Attribute: " + error.Attribute);
-                ModelState.AddModelError(string.Empty, "  Code: " + error.Code);
-                ModelState.AddModelError(string.Empty, "  Message: " + error.Message);
-                string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
+                //ModelState.AddModelError(string.Empty, "Attribute: " + error.Attribute);
+                //ModelState.AddModelError(string.Empty, "  Code: " + error.Code);
+                //ModelState.AddModelError(string.Empty, "  Message: " + error.Message);
+                //string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
 
-                return Redirect($"{hostname}/Deposit/{error.Message}");
+                //return Redirect($"{hostname}/Deposit/{error.Message}");
+
+                return BadRequest(error.Message);
             }
         }
-
-        return View();
+        return Ok();
     }
     [HttpGet("VipCheck")]
     public async Task<ActionResult<char[]>> VipCheck()
