@@ -22,7 +22,13 @@ jobs:
       run: dotnet workload install wasm-tools
     - name: Publish .NET Core Porject
       run: dotnet publish -c Release -o release --nologo
-    - name: copy index.html to 404.html
-      run: cd release/wwwwroot/index.html release/wwwwroot/404.html
-    - name: Add .nojekyll file
-      run: touch release/wwwroot/.nojekyll
+    - name: Commit wwwroot to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: release/wwwroot
+#     - name: copy index.html to 404.html
+#       run: cd release/wwwwroot/index.html release/wwwwroot/404.html
+#     - name: Add .nojekyll file
+#       run: touch release/wwwroot/.nojekyll
