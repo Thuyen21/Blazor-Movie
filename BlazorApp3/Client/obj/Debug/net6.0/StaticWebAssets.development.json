@@ -1,12 +1,12 @@
 {
   "ContentRoots": [
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\wwwroot\\",
-    "C:\\Users\\thuye\\.nuget\\packages\\microsoft.aspnetcore.components.web.extensions\\5.0.0-preview9.20513.1\\staticwebassets\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\blazor\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
-    "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\service-worker\\"
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\wwwroot\\",
+    "C:\\Users\\Bpham\\.nuget\\packages\\microsoft.aspnetcore.components.web.extensions\\5.0.0-preview9.20513.1\\staticwebassets\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\blazor\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\bin\\Debug\\net6.0\\wwwroot\\",
+    "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Client\\obj\\Debug\\net6.0\\service-worker\\"
   ],
   "Root": {
     "Children": {
