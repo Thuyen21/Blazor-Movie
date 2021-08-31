@@ -8479,7 +8479,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Thuyen\\.nuget\\packages\\": {},
+    "C:\\Users\\thuye\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -8488,14 +8488,14 @@
       "projectUniqueName": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\Shared\\BlazorApp3.Shared.csproj",
       "projectName": "BlazorApp3.Shared",
       "projectPath": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\Shared\\BlazorApp3.Shared.csproj",
-      "packagesPath": "C:\\Users\\Thuyen\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\thuye\\.nuget\\packages\\",
       "outputPath": "D:\\Blazor Movie\\Blazor-Movie-\\Maui\\MauiApp1\\MauiApp1\\Shared\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Thuyen\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\thuye\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

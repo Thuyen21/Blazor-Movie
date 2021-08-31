@@ -1,0 +1,40 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2.*
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1.*
+      with:
+        dotnet-version: 6.*
+        include-prerelease: true
+    - name: Install wasm-tools
+      run: dotnet workload install wasm-tools
+      
+    - name: Publish .NET Core Porject
+      run: dotnet publish -c Release -o release --nologo
+      
+    - name: Change base-tag in index.html from / to Blazor-Movie-
+      run: sed -i 's/<base href="\/" \/>/<base href="\/Blazor-Movie-\/" \/>/g' release/wwwroot/index.html
+    - name: copy index.html to 404.html
+      run: cp release/wwwroot/index.html release/wwwroot/404.html
+      
+    - name: Add .nojekyll file
+      run: touch release/wwwroot/.nojekyll
+      
+    - name: Commit wwwroot to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: release/wwwroot

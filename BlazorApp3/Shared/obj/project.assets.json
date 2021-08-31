@@ -535,6 +535,25 @@
           "lib/net6.0/Microsoft.AspNetCore.Components.Authorization.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Components.Web.Extensions/5.0.0-preview9.20513.1": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "5.0.0-rc.2.20475.17",
+          "Microsoft.JSInterop": "5.0.0-rc.2.20475.17"
+        },
+        "compile": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.dll": {}
+        },
+        "build": {
+          "buildTransitive/Microsoft.AspNetCore.Components.Web.Extensions.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.AspNetCore.Components.Web.Extensions.props": {}
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/2.0.2": {
         "type": "package",
         "compile": {
@@ -1242,6 +1261,15 @@
         },
         "runtime": {
           "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll": {}
+        }
+      },
+      "Microsoft.JSInterop/5.0.0-rc.2.20475.17": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/Microsoft.JSInterop.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/Microsoft.JSInterop.dll": {}
         }
       },
       "Microsoft.Net.Http.Headers/2.0.2": {
@@ -3462,6 +3490,26 @@
         "microsoft.aspnetcore.components.authorization.nuspec"
       ]
     },
+    "Microsoft.AspNetCore.Components.Web.Extensions/5.0.0-preview9.20513.1": {
+      "sha512": "korwh3+VnsB2zJotdH4ErHU1ruXn4q7JQJoJdxKaxF1po4gtwwxBlTSzAqDHgkQWRwnOJ2RIlXCk1zfhYAzXHQ==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.components.web.extensions/5.0.0-preview9.20513.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "build/Microsoft.AspNetCore.Components.Web.Extensions.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Microsoft.AspNetCore.Components.Web.Extensions.props",
+        "buildTransitive/Microsoft.AspNetCore.Components.Web.Extensions.props",
+        "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.dll",
+        "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.pdb",
+        "lib/net5.0/Microsoft.AspNetCore.Components.Web.Extensions.xml",
+        "microsoft.aspnetcore.components.web.extensions.5.0.0-preview9.20513.1.nupkg.sha512",
+        "microsoft.aspnetcore.components.web.extensions.nuspec",
+        "staticwebassets/headManager.js"
+      ]
+    },
     "Microsoft.AspNetCore.Cryptography.Internal/2.0.2": {
       "sha512": "pCJyY7vC6YWY94ssKcgGzVFGsK/bk7RVEH/BxwHmc+T3t5VmXlBq7VvUmhLfk+P5Uc1l0hDIJX0ZJRLy9Sz1jg==",
       "type": "package",
@@ -4220,6 +4268,21 @@
         "lib/netstandard1.4/Microsoft.IdentityModel.Tokens.xml",
         "microsoft.identitymodel.tokens.5.1.4.nupkg.sha512",
         "microsoft.identitymodel.tokens.nuspec"
+      ]
+    },
+    "Microsoft.JSInterop/5.0.0-rc.2.20475.17": {
+      "sha512": "pR9B/i7b2wed4ms5ghAizgPEPX53xK9va3zFG5hzq1ayzzch/aB3ZrDx/HAfELyjuCX7BMd0lVH4ynl6Kd+F9w==",
+      "type": "package",
+      "path": "microsoft.jsinterop/5.0.0-rc.2.20475.17",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net5.0/Microsoft.JSInterop.dll",
+        "lib/net5.0/Microsoft.JSInterop.xml",
+        "microsoft.jsinterop.5.0.0-rc.2.20475.17.nupkg.sha512",
+        "microsoft.jsinterop.nuspec"
       ]
     },
     "Microsoft.Net.Http.Headers/2.0.2": {
@@ -8473,25 +8536,31 @@
       "Google.Cloud.Firestore >= 2.4.0",
       "Google.Cloud.Storage.V1 >= 3.5.0",
       "Microsoft.AspNetCore.Components.Authorization >= 6.0.0-preview.7.21378.6",
+      "Microsoft.AspNetCore.Components.Web.Extensions >= 5.0.0-preview9.20513.1",
       "PayPalCheckoutSdk >= 1.0.3",
       "PayPalHttp >= 1.0.0",
       "PayoutsSdk >= 1.1.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Bpham\\.nuget\\packages\\": {}
+    "C:\\Users\\thuye\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
+      "projectUniqueName": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
       "projectName": "BlazorApp3.Shared",
-      "projectPath": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
-      "packagesPath": "C:\\Users\\Bpham\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\Blazor-Movie-\\BlazorApp3\\Shared\\obj\\",
+      "projectPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\BlazorApp3.Shared.csproj",
+      "packagesPath": "C:\\Users\\thuye\\.nuget\\packages\\",
+      "outputPath": "D:\\Blazor Movie\\Blazor-Movie-\\BlazorApp3\\Shared\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Bpham\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\thuye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8500,7 +8569,6 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://aka.ms/maui-preview/index.json": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8558,6 +8626,10 @@
           "Microsoft.AspNetCore.Components.Authorization": {
             "target": "Package",
             "version": "[6.0.0-preview.7.21378.6, )"
+          },
+          "Microsoft.AspNetCore.Components.Web.Extensions": {
+            "target": "Package",
+            "version": "[5.0.0-preview9.20513.1, )"
           },
           "PayPalCheckoutSdk": {
             "target": "Package",

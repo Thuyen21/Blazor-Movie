@@ -16,280 +16,282 @@ public class UserController : Controller
 {
 
 
-	private static readonly FirebaseAuthConfig config = new()
-	{
-		ApiKey = "AIzaSyAqCxl98i68Te5_xy3vgMcAEoF5qiBKE9o",
-		AuthDomain = "movie2-e3c7b.firebaseapp.com",
-		Providers = new FirebaseAuthProvider[] {
+    private static readonly FirebaseAuthConfig config = new()
+    {
+        ApiKey = "AIzaSyAqCxl98i68Te5_xy3vgMcAEoF5qiBKE9o",
+        AuthDomain = "movie2-e3c7b.firebaseapp.com",
+        Providers = new FirebaseAuthProvider[] {
                 // Add and configure individual providers
 
                 new EmailProvider()
 
                 // ...
             }
-	};
+    };
 
-	private static readonly FirebaseAuthClient client = new(config);
+    private static readonly FirebaseAuthClient client = new(config);
 
-	private static UserCredential userCredential;
+    private static UserCredential userCredential;
 
-	[HttpPost("login")]
-	public async Task<ActionResult> LogIn([FromBody] LogInModel logIn)
-	{
+    [HttpPost("login")]
+    public async Task<ActionResult> LogIn([FromBody] LogInModel logIn)
+    {
 
-		try
-		{
-			userCredential = await client.SignInWithEmailAndPasswordAsync(logIn.Email, logIn.Password);
+        try
+        {
+            userCredential = await client.SignInWithEmailAndPasswordAsync(logIn.Email, logIn.Password);
 
-		}
-		catch (FirebaseAuthHttpException ex)
-		{
-			return BadRequest(ex.Reason.ToString());
-		}
+        }
+        catch (FirebaseAuthHttpException ex)
+        {
+            return BadRequest(ex.Reason.ToString());
+        }
 
-		User user = userCredential.User;
-		FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
-		Query usersRef = db.Collection("Account").WhereEqualTo("Id", user.Uid);
-		QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
-		AccountManagementModel acc = new();
-		foreach (DocumentSnapshot document in snapshot.Documents)
-		{
-			acc = document.ConvertTo<AccountManagementModel>();
-		}
+        User user = userCredential.User;
+        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+        Query usersRef = db.Collection("Account").WhereEqualTo("Id", user.Uid);
+        QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
 
-
-		ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
-				new Claim(ClaimTypes.Email, logIn.Email),
-					new Claim(ClaimTypes.Sid, user.Uid),
-					new Claim(ClaimTypes.Name, acc.Name),
-					new Claim(ClaimTypes.Role, acc.Role),
-					new Claim(ClaimTypes.DateOfBirth, acc.DateOfBirth.ToShortDateString()),
-					new Claim("Token", await user.GetIdTokenAsync(true))
-
-			}, "serverAuth");
-		//create claimsPrincipal
-		ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-		//Sign In User
-		await HttpContext.SignInAsync(claimsPrincipal);
-
-		return Ok();
-	}
-
-	[HttpGet("Logout")]
-
-	public async Task<ActionResult> LogOut()
-	{
-		await HttpContext.SignOutAsync();
-		return Ok();
-	}
-
-	[HttpGet("GetCurrentUser")]
-	public async Task<ActionResult<AccountManagementModel>> GetCurrentUser()
-	{
-		//var logInModel = new LogInModel();
-		//if (User.Identity.IsAuthenticated) logInModel.Email = User.FindFirstValue(ClaimTypes.Name);
-		//return await Task.FromResult(logInModel);
-		AccountManagementModel acc = new();
-		if (User.Identity.IsAuthenticated)
-		{
-			string Id = User.FindFirst(ClaimTypes.Sid).Value;
-			FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
-
-			Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
-
-			QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
+        AccountManagementModel acc = new();
+        foreach (DocumentSnapshot document in snapshot.Documents)
+        {
+            await document.Reference.UpdateAsync("UserAgent", logIn.UserAgent);
+            acc = document.ConvertTo<AccountManagementModel>();
+        }
 
 
-			foreach (DocumentSnapshot VARIABLE in snapshot.Documents)
-			{
-				acc = VARIABLE.ConvertTo<AccountManagementModel>();
-			}
-		}
+        ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
+                new Claim(ClaimTypes.Email, logIn.Email),
+                    new Claim(ClaimTypes.Sid, user.Uid),
+                    new Claim(ClaimTypes.Name, acc.Name),
+                    new Claim(ClaimTypes.Role, acc.Role),
+                    new Claim(ClaimTypes.DateOfBirth, acc.DateOfBirth.ToShortDateString()),
+                    new Claim("Token", await user.GetIdTokenAsync(true))
 
-		return await Task.FromResult(acc);
+            }, "serverAuth");
+        //create claimsPrincipal
+        ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+        //Sign In User
+        await HttpContext.SignInAsync(claimsPrincipal);
 
-	}
-	[HttpPost("ChangeEmail")]
-	public async Task<ActionResult> ChangeEmail([FromBody] ChangeEmailModel changeEmailModel)
-	{
-		changeEmailModel.Email = changeEmailModel.Email.ToLower();
-		try
-		{
-			userCredential =
-					await client.SignInWithEmailAndPasswordAsync(User.FindFirst(ClaimTypes.Email).Value,
-						changeEmailModel.Password);
-			UserCredential newUserCredentiall = userCredential;
-			newUserCredentiall.AuthCredential = EmailProvider.GetCredential(changeEmailModel.Email, changeEmailModel.Password);
-			await newUserCredentiall.User.LinkWithCredentialAsync(userCredential.AuthCredential);
-			FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+        return Ok();
+    }
 
-			QuerySnapshot snapshot = await db.Collection("Account").WhereEqualTo("Id", userCredential.User.Uid)
-				.GetSnapshotAsync();
-			Dictionary<string, dynamic> update = new() { { "Email", changeEmailModel.Email } };
-			foreach (DocumentSnapshot document in snapshot.Documents)
-			{
-				await document.Reference.UpdateAsync(update);
-			}
-			ClaimsIdentity identity = new(User.Identity);
-			identity.RemoveClaim(identity.FindFirst(ClaimTypes.Email));
-			identity.AddClaim(new Claim(ClaimTypes.Email, changeEmailModel.Email));
-			await HttpContext.SignInAsync(
-				CookieAuthenticationDefaults.AuthenticationScheme,
-				new ClaimsPrincipal(identity));
-			return Ok("Success");
-		}
-		catch (Exception ex)
-		{
-			return BadRequest(ex.Message);
-		}
-	}
-	[HttpPost("ResetPassword")]
-	public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordModel resetPassword)
-	{
+    [HttpGet("Logout")]
 
-		try
-		{
-			await client.ResetEmailPasswordAsync(resetPassword.Email);
-			return Ok("An email has sent, Check your Email, please.");
-		}
-		catch (FirebaseAuthHttpException ex)
-		{
-			return BadRequest(ex.Reason.ToString());
-		}
-	}
-	[Authorize]
-	[HttpGet("Profile")]
-	public async Task<ActionResult<AccountManagementModel>> Profile()
-	{
-		AccountManagementModel acc = new();
-		if (User.Identity.IsAuthenticated)
-		{
-			string Id = User.FindFirst(ClaimTypes.Sid).Value;
-			FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+    public async Task<ActionResult> LogOut()
+    {
+        await HttpContext.SignOutAsync();
+        return Ok();
+    }
 
-			Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
+    [HttpGet("GetCurrentUser")]
+    public async Task<ActionResult<AccountManagementModel>> GetCurrentUser()
+    {
+        //var logInModel = new LogInModel();
+        //if (User.Identity.IsAuthenticated) logInModel.Email = User.FindFirstValue(ClaimTypes.Name);
+        //return await Task.FromResult(logInModel);
+        AccountManagementModel acc = new();
+        if (User.Identity.IsAuthenticated)
+        {
+            string Id = User.FindFirst(ClaimTypes.Sid).Value;
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
 
-			QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
+            Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
+
+            QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
 
 
-			foreach (DocumentSnapshot VARIABLE in snapshot.Documents)
-			{
-				acc = VARIABLE.ConvertTo<AccountManagementModel>();
-			}
-		}
+            foreach (DocumentSnapshot VARIABLE in snapshot.Documents)
+            {
+                acc = VARIABLE.ConvertTo<AccountManagementModel>();
+            }
+        }
 
-		return await Task.FromResult(acc);
+        return await Task.FromResult(acc);
 
-	}
-	[Authorize]
-	[HttpPost("EditProfile")]
-	public async Task<ActionResult> EditProfile([FromBody] AccountManagementModel accountManagementModel)
-	{
+    }
+    [HttpPost("ChangeEmail")]
+    public async Task<ActionResult> ChangeEmail([FromBody] ChangeEmailModel changeEmailModel)
+    {
+        changeEmailModel.Email = changeEmailModel.Email.ToLower();
+        try
+        {
+            userCredential =
+                    await client.SignInWithEmailAndPasswordAsync(User.FindFirst(ClaimTypes.Email).Value,
+                        changeEmailModel.Password);
+            UserCredential newUserCredentiall = userCredential;
+            newUserCredentiall.AuthCredential = EmailProvider.GetCredential(changeEmailModel.Email, changeEmailModel.Password);
+            await newUserCredentiall.User.LinkWithCredentialAsync(userCredential.AuthCredential);
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
 
-		try
-		{
-			FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
-			QuerySnapshot snapshot = await db.Collection("Account")
-				.WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
-			Dictionary<string, dynamic> update = new()
-			{
-				{ "Name", accountManagementModel.Name },
-				{ "DateOfBirth", accountManagementModel.DateOfBirth.ToUniversalTime() }
-			};
+            QuerySnapshot snapshot = await db.Collection("Account").WhereEqualTo("Id", userCredential.User.Uid)
+                .GetSnapshotAsync();
+            Dictionary<string, dynamic> update = new() { { "Email", changeEmailModel.Email } };
+            foreach (DocumentSnapshot document in snapshot.Documents)
+            {
+                await document.Reference.UpdateAsync(update);
+            }
+            ClaimsIdentity identity = new(User.Identity);
+            identity.RemoveClaim(identity.FindFirst(ClaimTypes.Email));
+            identity.AddClaim(new Claim(ClaimTypes.Email, changeEmailModel.Email));
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(identity));
+            return Ok("Success");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+    [HttpPost("ResetPassword")]
+    public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordModel resetPassword)
+    {
 
+        try
+        {
+            await client.ResetEmailPasswordAsync(resetPassword.Email);
+            return Ok("An email has sent, Check your Email, please.");
+        }
+        catch (FirebaseAuthHttpException ex)
+        {
+            return BadRequest(ex.Reason.ToString());
+        }
+    }
+    [Authorize]
+    [HttpGet("Profile")]
+    public async Task<ActionResult<AccountManagementModel>> Profile()
+    {
+        AccountManagementModel acc = new();
+        if (User.Identity.IsAuthenticated)
+        {
+            string Id = User.FindFirst(ClaimTypes.Sid).Value;
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
 
-			foreach (DocumentSnapshot document in snapshot.Documents)
-			{
-				await document.Reference.UpdateAsync(update);
-			}
+            Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
 
-
-			return Ok("Success");
-		}
-		catch (Exception ex)
-		{
-			return BadRequest(ex);
-		}
-	}
-	[HttpPost("SignUp")]
-	public async Task<ActionResult> SignUp([FromBody] SignUpModel signUpModel)
-	{
-		if (signUpModel.Role == "Customer" || signUpModel.Role == "Studio")
-		{
-
-		}
-		else
-		{
-			return BadRequest("Check role");
-		}
-		if (signUpModel.ConfirmPassword != signUpModel.Password)
-		{
-			return BadRequest("Password and Confirm Password are different");
-		}
-		signUpModel.Email = signUpModel.Email.ToLower();
-		try
-		{
-			//var authProvider = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyA1sc-XyNBvPFAs3ZwkcU6BBV9vbsJrUL0"));
-			//var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(signUp.Email,signUp.Password,signUp.Name);
-
-			try
-			{
-				userCredential =
-					await client.CreateUserWithEmailAndPasswordAsync(signUpModel.Email, signUpModel.Password, signUpModel.Name);
-			}
-			catch (FirebaseAuthException ex)
-			{
-
-				return BadRequest(ex.Reason.ToString());
-			}
-
-			User user = userCredential.User;
-			FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
-			CollectionReference docRef = db.Collection("Account");
-
-			AccountManagementModel account = new()
-			{
-				DateOfBirth = signUpModel.DateOfBirth.ToUniversalTime(),
-				Email = signUpModel.Email,
-				Id = user.Uid,
-				Name = signUpModel.Name,
-				Role = signUpModel.Role,
-				Wallet = 0.0
-			};
+            QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
 
 
-			await docRef.AddAsync(account);
-			ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
-				new Claim(ClaimTypes.Email, account.Email),
-					new Claim(ClaimTypes.Sid, user.Uid),
-					new Claim(ClaimTypes.Name, account.Name),
-					new Claim(ClaimTypes.Role, account.Role),
-					new Claim(ClaimTypes.DateOfBirth, account.DateOfBirth.ToString()),
-					new Claim("Token", await user.GetIdTokenAsync())
-			}, "serverAuth");
-			//create claimsPrincipal
-			ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-			//Sign In User
-			await HttpContext.SignInAsync(claimsPrincipal);
+            foreach (DocumentSnapshot VARIABLE in snapshot.Documents)
+            {
+                acc = VARIABLE.ConvertTo<AccountManagementModel>();
+            }
+        }
 
-			return Ok();
-		}
-		catch (Exception ex)
-		{
-			return BadRequest(ex.Message);
-		}
-	}
+        return await Task.FromResult(acc);
 
-	[HttpGet("GetToken")]
-	public async Task<ActionResult<char[]>> GetToken()
-	{
+    }
+    [Authorize]
+    [HttpPost("EditProfile")]
+    public async Task<ActionResult> EditProfile([FromBody] AccountManagementModel accountManagementModel)
+    {
 
-		string token = User.FindFirstValue("Token");
-		char[] ch = new char[token.Length];
-		for (int i = 0; i < token.Length; i++)
-		{
-			ch[i] = token[i];
-		}
-		return await Task.FromResult(ch);
-	}
+        try
+        {
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+            QuerySnapshot snapshot = await db.Collection("Account")
+                .WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
+            Dictionary<string, dynamic> update = new()
+            {
+                { "Name", accountManagementModel.Name },
+                { "DateOfBirth", accountManagementModel.DateOfBirth.ToUniversalTime() }
+            };
+
+
+            foreach (DocumentSnapshot document in snapshot.Documents)
+            {
+                await document.Reference.UpdateAsync(update);
+            }
+
+
+            return Ok("Success");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex);
+        }
+    }
+    [HttpPost("SignUp")]
+    public async Task<ActionResult> SignUp([FromBody] SignUpModel signUpModel)
+    {
+        if (signUpModel.Role == "Customer" || signUpModel.Role == "Studio")
+        {
+
+        }
+        else
+        {
+            return BadRequest("Check role");
+        }
+        if (signUpModel.ConfirmPassword != signUpModel.Password)
+        {
+            return BadRequest("Password and Confirm Password are different");
+        }
+        signUpModel.Email = signUpModel.Email.ToLower();
+        try
+        {
+            //var authProvider = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyA1sc-XyNBvPFAs3ZwkcU6BBV9vbsJrUL0"));
+            //var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(signUp.Email,signUp.Password,signUp.Name);
+
+            try
+            {
+                userCredential =
+                    await client.CreateUserWithEmailAndPasswordAsync(signUpModel.Email, signUpModel.Password, signUpModel.Name);
+            }
+            catch (FirebaseAuthException ex)
+            {
+
+                return BadRequest(ex.Reason.ToString());
+            }
+
+            User user = userCredential.User;
+            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+            CollectionReference docRef = db.Collection("Account");
+
+            AccountManagementModel account = new()
+            {
+                DateOfBirth = signUpModel.DateOfBirth.ToUniversalTime(),
+                Email = signUpModel.Email,
+                Id = user.Uid,
+                Name = signUpModel.Name,
+                Role = signUpModel.Role,
+                Wallet = 0.0
+            };
+
+
+            await docRef.AddAsync(account);
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
+                new Claim(ClaimTypes.Email, account.Email),
+                    new Claim(ClaimTypes.Sid, user.Uid),
+                    new Claim(ClaimTypes.Name, account.Name),
+                    new Claim(ClaimTypes.Role, account.Role),
+                    new Claim(ClaimTypes.DateOfBirth, account.DateOfBirth.ToString()),
+                    new Claim("Token", await user.GetIdTokenAsync())
+            }, "serverAuth");
+            //create claimsPrincipal
+            ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+            //Sign In User
+            await HttpContext.SignInAsync(claimsPrincipal);
+
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+    [HttpGet("GetToken")]
+    public async Task<ActionResult<char[]>> GetToken()
+    {
+
+        string token = User.FindFirstValue("Token");
+        char[] ch = new char[token.Length];
+        for (int i = 0; i < token.Length; i++)
+        {
+            ch[i] = token[i];
+        }
+        return await Task.FromResult(ch);
+    }
 }

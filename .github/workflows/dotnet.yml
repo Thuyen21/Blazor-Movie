@@ -1,0 +1,28 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main  ]
+  pull_request:
+    branches: [ main  ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@1
+      with:
+        dotnet-version: 6
+        
+    -name: Publish .NET Core Porject
+    run: dotnet publish -c Release -o release --nologo
+    
+    -name: copy index.html to 404.html
+    run: cd release/wwwwroot/index.html release/wwwwroot/404.html
+    
+    -name: Add .nojekyll file
+    run: touch release/wwwroot/.nojekyll

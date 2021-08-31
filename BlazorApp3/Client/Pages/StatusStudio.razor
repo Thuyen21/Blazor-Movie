@@ -20,17 +20,34 @@ else
 
 
 }*@
+<div>Request to salary</div>
+<input type="month" @bind="month" />
+<button @onclick="Salary">Salary</button>
 
-<input type="datetime" @bind="start" />
-    <input type="datetime" @bind="end" />
+<div>Cash Check</div>
+<input type="month" @bind="check" />
+<button @onclick="Check">Check</button>
+
+
+<div>Dashboard</div>
+<input type="date" @bind="start" />
+    <input type="date" @bind="end" />
 
     <button @onclick="Submit">Submit</button>
     <div>@content</div>
 
-    @if(commentStatus.Count > 1)
+@*    @if(commentStatus.Count > 1)
 {
     <div>Positive: @commentStatus[0]</div>
-
 <div>Negative: @commentStatus[1]</div>
-<div>View: @view</div>
+}*@
+
+@foreach(var status in fullStatus)
+{
+    <div>Date: @status["Date"]</div>
+    <div>Positive: @status["Positive"]</div>
+    <div>Negative: @status["Negative"]</div>
+    <div>View: @status["View"]</div>
+    <div>Buy: @status["Buy"]</div>
+    
 }

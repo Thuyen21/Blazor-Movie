@@ -4,55 +4,55 @@ using Microsoft.ML.Data;
 
 namespace BlazorApp3.Server
 {
-	public partial class MLModel
-	{
-		/// <summary>
-		/// model input class for MLModel.
-		/// </summary>
-		#region model input class
-		public class ModelInput
-		{
-			[ColumnName(@"review")]
-			public string Review { get; set; }
+    public partial class MLModel
+    {
+        /// <summary>
+        /// model input class for MLModel.
+        /// </summary>
+        #region model input class
+        public class ModelInput
+        {
+            [ColumnName(@"review")]
+            public string Review { get; set; }
 
-			[ColumnName(@"sentiment")]
-			public string Sentiment { get; set; }
+            [ColumnName(@"sentiment")]
+            public string Sentiment { get; set; }
 
-		}
+        }
 
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// model output class for MLModel.
-		/// </summary>
-		#region model output class
-		public class ModelOutput
-		{
-			[ColumnName("PredictedLabel")]
-			public string Prediction { get; set; }
+        /// <summary>
+        /// model output class for MLModel.
+        /// </summary>
+        #region model output class
+        public class ModelOutput
+        {
+            [ColumnName("PredictedLabel")]
+            public string Prediction { get; set; }
 
-			public float[] Score { get; set; }
-		}
+            public float[] Score { get; set; }
+        }
 
-		#endregion
+        #endregion
 
-		private static readonly string MLNetModelPath = Path.GetFullPath("MLModel.zip");
+        private static readonly string MLNetModelPath = Path.GetFullPath("MLModel.zip");
 
-		/// <summary>
-		/// Use this method to predict on <see cref="ModelInput"/>.
-		/// </summary>
-		/// <param name="input">model input.</param>
-		/// <returns><seealso cref=" ModelOutput"/></returns>
-		public static ModelOutput Predict(ModelInput input)
-		{
-			MLContext mlContext = new MLContext();
+        /// <summary>
+        /// Use this method to predict on <see cref="ModelInput"/>.
+        /// </summary>
+        /// <param name="input">model input.</param>
+        /// <returns><seealso cref=" ModelOutput"/></returns>
+        public static ModelOutput Predict(ModelInput input)
+        {
+            MLContext mlContext = new MLContext();
 
-			// Load model & create prediction engine
-			ITransformer mlModel = mlContext.Model.Load(MLNetModelPath, out DataViewSchema modelInputSchema);
-			PredictionEngine<ModelInput, ModelOutput> predEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
+            // Load model & create prediction engine
+            ITransformer mlModel = mlContext.Model.Load(MLNetModelPath, out DataViewSchema modelInputSchema);
+            PredictionEngine<ModelInput, ModelOutput> predEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
 
-			ModelOutput result = predEngine.Predict(input);
-			return result;
-		}
-	}
+            ModelOutput result = predEngine.Predict(input);
+            return result;
+        }
+    }
 }
