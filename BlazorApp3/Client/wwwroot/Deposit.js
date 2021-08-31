@@ -1,4 +1,4 @@
-﻿function Deposit(clientToken, cash) {
+﻿function Deposit(dotNetHelper, clientToken, cash) {
     
     var form = document.getElementById('payment-form');
     braintree.dropin.create({
@@ -9,10 +9,14 @@
             (event) => {
                 event.preventDefault();
                 dropinInstance.requestPaymentMethod().then((payload) => {
-                    document.getElementById('nonce').value = payload.nonce;
-                    document.getElementById('cash').value = cash;
-                    form.action = 'Customer/DoCard';
-                    form.submit();
+                    //document.getElementById('nonce').value = payload.nonce;
+                    //document.getElementById('cash').value = cash;
+                    //form.action = 'Customer/DoCard';
+                    //form.submit();
+
+                    
+                    return dotNetHelper.invokeMethodAsync('Test', String(payload.nonce), String(cash), 'DoCard');
+
                 }).catch((error) => { throw error; });
             });
     }).catch((error) => {
@@ -43,10 +47,12 @@
             onApprove: function (data, actions) {
                 return paypalCheckoutInstance.tokenizePayment(data).then(function (payload) {
                     // Submit `payload.nonce` to your server
-                    document.getElementById('nonce').value = payload.nonce;
-                    document.getElementById('cash').value = cash;
-                    form.action = 'Customer/DoPayPal';
-                    form.submit();
+                    //document.getElementById('nonce').value = payload.nonce;
+                    //document.getElementById('cash').value = cash;
+                    //form.action = 'Customer/DoPayPal';
+                    //form.submit();
+
+                    return dotNetHelper.invokeMethodAsync('Test', String(payload.nonce), String(cash), 'DoCard');
                 });
             },
             onCancel: function (data) {
