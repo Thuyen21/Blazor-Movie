@@ -34,11 +34,13 @@ namespace BlazorApp3.Shared
         [DataType(DataType.Text)]
         [DisplayName("CommentText")]
         public string CommentText { get; set; }
-
-        public int Like { get; set; }
-
-        public int DisLike { get; set; }
+        [FirestoreProperty]
+        public ulong Like { get; set; }
+        [FirestoreProperty]
+        public ulong DisLike { get; set; }
         [FirestoreProperty]
         public string? Prediction { get; set; }
+
+        public string? Is { get; set; }
     }
 }

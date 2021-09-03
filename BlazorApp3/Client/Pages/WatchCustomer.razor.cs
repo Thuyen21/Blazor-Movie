@@ -74,32 +74,44 @@ namespace BlazorApp3.Client.Pages
             content = await (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up)).Content.ReadAsStringAsync();
 
 
-            commentList.Clear();
+            List<CommentModel> commentListTemp = new();
+
             for (int i = 0; i <= index; i++)
             {
-                commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
+                commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
             }
-
+            commentList.Clear();
+            commentList = commentListTemp;
+            StateHasChanged();
         }
 
         protected async Task AcDisLike(string Id)
         {
             await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "DisLike");
-            commentList.Clear();
+            List<CommentModel> commentListTemp = new();
+
             for (int i = 0; i <= index; i++)
             {
-                commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
+                commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{this.Id}/{i}"));
             }
+            commentList.Clear();
+            commentList = commentListTemp;
+            StateHasChanged();
         }
 
         protected async Task AcLike(string Id)
         {
             await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "Like");
-            commentList.Clear();
+            List<CommentModel> commentListTemp = new();
+
             for (int i = 0; i <= index; i++)
             {
-                commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
+                commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{this.Id}/{i}"));
             }
+            commentList.Clear();
+            commentList = commentListTemp;
+
+            StateHasChanged();
         }
 
         protected async Task LoadMore()

@@ -254,9 +254,10 @@ public class StudioController : Controller
         foreach (DocumentSnapshot item in commentSnapshot.Documents)
         {
             CommentModel commentConvert = item.ConvertTo<CommentModel>();
-            int like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
-            int Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
-            commentList.Add(new CommentModel() { Id = commentConvert.Id, Email = commentConvert.Email, MovieId = commentConvert.MovieId, Time = commentConvert.Time, CommentText = commentConvert.CommentText, Like = like, DisLike = Dislike });
+            //int like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
+            //int Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
+            //commentList.Add(new CommentModel() { Id = commentConvert.Id, Email = commentConvert.Email, MovieId = commentConvert.MovieId, Time = commentConvert.Time, CommentText = commentConvert.CommentText, Like = like, DisLike = Dislike });
+            commentList.Add(commentConvert);
         }
 
         return await Task.FromResult(commentList);
@@ -315,7 +316,7 @@ public class StudioController : Controller
 
             return result;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             return BadRequest();
         }
@@ -384,8 +385,8 @@ public class StudioController : Controller
     [HttpPost("SalaryMovie")]
     public async Task<ActionResult> SalaryMovie([FromBody] List<string> ss)
     {
-       
-        if(DateTime.Parse(ss[1]).Month > DateTime.UtcNow.Month - 1)
+
+        if (DateTime.Parse(ss[1]).Month > DateTime.UtcNow.Month - 1)
         {
             return BadRequest("Cant Salary In lower than month now -1");
         }
@@ -395,22 +396,22 @@ public class StudioController : Controller
             FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
             var snapshot = await db.Collection("Movie").WhereEqualTo("MovieId", ss[0]).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
             var cash = snapshot.Documents[0].GetValue<double>(ss[1]);
-            var updateCash = (await db.Collection("Account")
+            QuerySnapshot? updateCash = (await db.Collection("Account")
                 .WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid))
                 .GetSnapshotAsync());
 
-            foreach (var item in updateCash.Documents)
+            foreach (DocumentSnapshot? item in updateCash.Documents)
             {
                 await item.Reference.UpdateAsync("Wallet", item.GetValue<double>("Wallet") + cash);
             }
-            await snapshot.Documents[0].Reference.UpdateAsync(new Dictionary<string, object> { {ss[1], 0 } });
-            
+            await snapshot.Documents[0].Reference.UpdateAsync(new Dictionary<string, object> { { ss[1], 0 } });
+
         }
         catch
         {
 
         }
-        
+
         return Ok("Done check your Wallet");
     }
     [HttpPost("Check")]
@@ -423,11 +424,11 @@ public class StudioController : Controller
             var snapshot = (await db.Collection("Movie").WhereEqualTo("MovieId", ss[0]).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>(ss[1]);
             return Ok($"Cash for {ss[1]} is {snapshot}");
         }
-        catch(Exception ex)
+        catch (Exception)
         {
             return Ok($"Cash for {ss[1]} is 0");
         }
-        
+
     }
     [HttpPost("Salary")]
     public async Task<ActionResult> Salary([FromBody] Dictionary<string, string> dic)

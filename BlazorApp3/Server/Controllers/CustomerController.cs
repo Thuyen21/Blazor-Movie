@@ -129,7 +129,7 @@ public class CustomerController : Controller
     public async Task<ActionResult> DoCard([FromBody] List<string> d)
     {
         string nonce = d[0];
-            string cash = d[1];
+        string cash = d[1];
         TransactionRequest request = new()
         {
             Amount = Convert.ToDecimal(cash),
@@ -164,7 +164,7 @@ public class CustomerController : Controller
                                           snapshotAsyncDocument.ConvertTo<AccountManagementModel>().Wallet
                             }
                     });
-            }          
+            }
             return Ok("Success");
         }
         else if (result.Transaction != null)
@@ -178,7 +178,7 @@ public class CustomerController : Controller
             //string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
 
             //return Redirect($"{hostname}/Deposit/Error processing transaction");
-            return BadRequest("Error processing transaction");    
+            return BadRequest("Error processing transaction");
         }
         else
         {
@@ -463,7 +463,7 @@ public class CustomerController : Controller
                     {
                         updateCash = 0;
                     }
-                    if(updateCash - oldCash + newCash >= 0)
+                    if (updateCash - oldCash + newCash >= 0)
                     {
                         await item3.Reference.UpdateAsync(new Dictionary<string, dynamic> { { time.ToString("MM yyyy"), updateCash - oldCash + newCash } });
 
@@ -480,10 +480,10 @@ public class CustomerController : Controller
                             hazz = 0;
                         }
                         double hazzz = hazz + updateCash - oldCash + newCash;
-                        await item3.Reference.UpdateAsync(new Dictionary<string, dynamic> { { time.ToString("MM yyyy"),  0} });
+                        await item3.Reference.UpdateAsync(new Dictionary<string, dynamic> { { time.ToString("MM yyyy"), 0 } });
                         await item3.Reference.UpdateAsync(new Dictionary<string, dynamic> { { time.AddMonths(1).ToString("MM yyyy"), hazzz } });
                     }
-                    
+
                 }
             }
 
@@ -555,18 +555,25 @@ public class CustomerController : Controller
         Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time").Offset(index * 5).Limit(5);
         QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
         List<CommentModel> commentList = new List<CommentModel>();
-
+        string? user = User.FindFirstValue(ClaimTypes.Sid);
         foreach (DocumentSnapshot item in commentSnapshot.Documents)
         {
             CommentModel commentConvert = item.ConvertTo<CommentModel>();
-            int like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
-            int Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
-            commentList.Add(new CommentModel() { Id = commentConvert.Id, Email = commentConvert.Email, MovieId = commentConvert.MovieId, Time = commentConvert.Time, CommentText = censor.CensorText(commentConvert.CommentText), Like = like, DisLike = Dislike });
+            //int like = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "Like").GetSnapshotAsync()).Documents.Count;
+            //int Dislike = (await db.Collection("CommentAcction").WhereEqualTo("CommentId", item.Id).WhereEqualTo("Action", "DisLike").GetSnapshotAsync()).Documents.Count;
+            //commentList.Add(new CommentModel() { Id = commentConvert.Id, Email = commentConvert.Email, MovieId = commentConvert.MovieId, Time = commentConvert.Time, CommentText = censor.CensorText(commentConvert.CommentText), Like = like, DisLike = Dislike });
+            commentConvert.CommentText = censor.CensorText(commentConvert.CommentText);
+            QuerySnapshot? temp = await db.Collection("CommentAcction").WhereEqualTo("User", user).WhereEqualTo("CommentId", commentConvert.Id).GetSnapshotAsync();
+            if (temp.Documents.Count != 0)
+            {
+                commentConvert.Is = temp.Documents[0].GetValue<string>("Action");
+            }
+            else
+            {
+                commentConvert.Is = "No";
+            }
+            commentList.Add(commentConvert);
         }
-
-
-
-
         return await Task.FromResult(commentList);
     }
     [HttpPost("Acomment")]
@@ -596,11 +603,16 @@ public class CustomerController : Controller
             if (ac == "Like")
             {
                 await db.Collection("CommentAcction").AddAsync(new Dictionary<string, dynamic>() { { "Action", "Like" }, { "CommentId", Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) } });
+
+                QuerySnapshot? temp = await db.Collection("Comment").WhereEqualTo("Id", Id).GetSnapshotAsync();
+                await temp.Documents[0].Reference.UpdateAsync("Like", temp.Documents[0].ConvertTo<CommentModel>().Like + 1);
+
             }
             if (ac == "DisLike")
             {
                 await db.Collection("CommentAcction").AddAsync(new Dictionary<string, dynamic>() { { "Action", "DisLike" }, { "CommentId", Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) } });
-
+                QuerySnapshot? temp = await db.Collection("Comment").WhereEqualTo("Id", Id).GetSnapshotAsync();
+                await temp.Documents[0].Reference.UpdateAsync("DisLike", temp.Documents[0].ConvertTo<CommentModel>().DisLike + 1);
             }
         }
         else
@@ -612,16 +624,32 @@ public class CustomerController : Controller
                 if (item.GetValue<string>("Action") == ac)
                 {
                     await item.Reference.DeleteAsync();
+                    QuerySnapshot? temp = await db.Collection("Comment").WhereEqualTo("Id", Id).GetSnapshotAsync();
+                    if (ac == "Like")
+                    {
+                        await temp.Documents[0].Reference.UpdateAsync("Like", temp.Documents[0].ConvertTo<CommentModel>().Like - 1);
+                    }
+                    else
+                    {
+                        await temp.Documents[0].Reference.UpdateAsync("DisLike", temp.Documents[0].ConvertTo<CommentModel>().DisLike - 1);
+                    }
+
                 }
                 else
                 {
                     if (ac == "Like")
                     {
                         await item.Reference.UpdateAsync(new Dictionary<string, dynamic>() { { "Action", "Like" } });
+                        QuerySnapshot? temp = await db.Collection("Comment").WhereEqualTo("Id", Id).GetSnapshotAsync();
+                        await temp.Documents[0].Reference.UpdateAsync("Like", temp.Documents[0].ConvertTo<CommentModel>().Like + 1);
+                        await temp.Documents[0].Reference.UpdateAsync("DisLike", temp.Documents[0].ConvertTo<CommentModel>().DisLike - 1);
                     }
                     if (ac == "DisLike")
                     {
                         await item.Reference.UpdateAsync(new Dictionary<string, dynamic>() { { "Action", "DisLike" } });
+                        QuerySnapshot? temp = await db.Collection("Comment").WhereEqualTo("Id", Id).GetSnapshotAsync();
+                        await temp.Documents[0].Reference.UpdateAsync("Like", temp.Documents[0].ConvertTo<CommentModel>().Like - 1);
+                        await temp.Documents[0].Reference.UpdateAsync("DisLike", temp.Documents[0].ConvertTo<CommentModel>().DisLike + 1);
 
                     }
                 }
