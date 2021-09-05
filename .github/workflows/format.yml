@@ -22,7 +22,7 @@ jobs:
       run: dotnet tool install -g dotnet-format --version "7.0.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
 
     - name: Formating
-      run: dotnet format --no-restore --verbosity diag --include
+      run: dotnet format --no-restore --verbosity diag
     - name: Commit files
       if: steps.format.outputs.has-changes == 'true'
       run: |
