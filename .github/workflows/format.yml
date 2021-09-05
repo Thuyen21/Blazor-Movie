@@ -22,9 +22,17 @@ jobs:
       run: dotnet tool install -g dotnet-format --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
     - name: Install wasm-tools
       run: dotnet workload install wasm-tools
-
+      
     - name: Formating
       run: dotnet format --no-restore
+      
+    - name: Install maui
+      run: |
+        dotnet tool install -g redth.net.maui.check
+        maui-check
+    - name: Formating
+      run: dotnet format --no-restore --folder Maui
+
     - name: Commit files
       if: steps.format.outputs.has-changes == 'true'
       run: |
