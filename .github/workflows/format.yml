@@ -20,8 +20,9 @@ jobs:
         include-prerelease: true
     - name: Install format
       run: dotnet tool install -g dotnet-format --version "7.0.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
-    -name: Install wasm-tools
+    - name: Install wasm-tools
       run: dotnet workload install wasm-tools
+
     - name: Formating
       run: dotnet format --no-restore --verbosity diag
     - name: Commit files
