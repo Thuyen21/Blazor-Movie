@@ -394,8 +394,8 @@ public class StudioController : Controller
         {
             ss[1] = DateTime.Parse(ss[1]).ToString("MM yyyy");
             FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
-            var snapshot = await db.Collection("Movie").WhereEqualTo("MovieId", ss[0]).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
-            var cash = snapshot.Documents[0].GetValue<double>(ss[1]);
+            QuerySnapshot? snapshot = await db.Collection("Movie").WhereEqualTo("MovieId", ss[0]).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
+            double cash = snapshot.Documents[0].GetValue<double>(ss[1]);
             QuerySnapshot? updateCash = (await db.Collection("Account")
                 .WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid))
                 .GetSnapshotAsync());
@@ -421,7 +421,7 @@ public class StudioController : Controller
         {
             ss[1] = DateTime.Parse(ss[1]).ToString("MM yyyy");
             FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
-            var snapshot = (await db.Collection("Movie").WhereEqualTo("MovieId", ss[0]).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>(ss[1]);
+            double snapshot = (await db.Collection("Movie").WhereEqualTo("MovieId", ss[0]).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>(ss[1]);
             return Ok($"Cash for {ss[1]} is {snapshot}");
         }
         catch (Exception)

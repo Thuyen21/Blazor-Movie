@@ -39,16 +39,16 @@ public class AdminController : Controller
 
     [HttpGet("AccountManagement/{searchString?}/{sortOrder?}/{index:int:min(0)}")]
     public async Task<ActionResult<List<AccountManagementModel>>> AccountManagement(string? searchString, string? sortOrder, int index)
-    {
+    {          
         List<AccountManagementModel> myFoo = new();
-
+             
         Query usersRef = db.Collection("Account");
 
         if (!string.IsNullOrWhiteSpace(searchString))
         {
             usersRef = usersRef.OrderBy("Email").StartAt(searchString).EndAt(searchString + "~");
         }
-
+           
         switch (sortOrder)
         {
             case "name":

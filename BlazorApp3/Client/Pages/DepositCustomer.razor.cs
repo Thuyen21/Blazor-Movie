@@ -1,8 +1,5 @@
 using Microsoft.JSInterop;
-using System;
-using System.Collections.Generic;
 using System.Net.Http.Json;
-using System.Threading.Tasks;
 
 namespace BlazorApp3.Client.Pages
 {
