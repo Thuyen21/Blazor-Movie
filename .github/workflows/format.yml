@@ -18,10 +18,10 @@ jobs:
       with:
         dotnet-version: 6.x
         include-prerelease: true
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.x
+#     - name: Setup .NET
+#       uses: actions/setup-dotnet@v1
+#       with:
+#         dotnet-version: 5.x
     - name: Install format
       run: dotnet tool install -g dotnet-format --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
     - name: Install wasm-tools
@@ -30,12 +30,12 @@ jobs:
     - name: Formating
       run: dotnet format --no-restore
       
-    - name: Install maui
-      run: |
-        dotnet tool install -g redth.net.maui.check
-        maui-check
-    - name: Formating
-      run: dotnet format --no-restore --folder Maui
+#     - name: Install maui
+#       run: |
+#         dotnet tool install -g redth.net.maui.check
+#         maui-check
+#     - name: Formating
+#       run: dotnet format --no-restore --folder Maui
 
     - name: Commit files
       if: steps.format.outputs.has-changes == 'true'
