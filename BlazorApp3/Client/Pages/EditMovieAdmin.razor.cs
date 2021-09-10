@@ -105,7 +105,7 @@ namespace BlazorApp3.Client.Pages
                 {
                     content = "More 500MB use the other method upload";
                 }
-                
+
             }
             else
             {
