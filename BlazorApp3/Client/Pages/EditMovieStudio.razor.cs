@@ -58,7 +58,14 @@ namespace BlazorApp3.Client.Pages
                 {
                     content = e.Percentage.ToString();
                 };
-                await task;
+                try
+                {
+                    await task;
+                }
+                catch
+                {
+                    content = "More 500MB use the other method upload";
+                }
             }
             else
             {
@@ -88,7 +95,14 @@ namespace BlazorApp3.Client.Pages
                 {
                     content = e.Percentage.ToString();
                 };
-                await task;
+                try
+                {
+                    await task;
+                }
+                catch
+                {
+                    content = "More 500MB use the other method upload";
+                }
             }
             else
             {
