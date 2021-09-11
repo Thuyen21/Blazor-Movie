@@ -36,7 +36,7 @@ jobs:
     - name: Install maui
       run: |
          dotnet tool install -g redth.net.maui.check
-         maui-check -f -n
+         maui-check -f -n  --no-cache  --force-dotnet
     - name: Install dependencies
       run: dotnet restore \Maui\MauiApp1\MauiApp1.sln
     - name: Test with the dotnet CLI
