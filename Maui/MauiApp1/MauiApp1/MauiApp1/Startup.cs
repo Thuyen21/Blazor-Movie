@@ -1,13 +1,81 @@
-﻿using Microsoft.AspNetCore.Components.WebView.Maui;
+﻿
+/* Unmerged change from project 'MauiApp1.WinUI (net6.0-windows10.0.19041)'
+Before:
+using Microsoft.AspNetCore.Components.WebView.Maui;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
-using Microsoft.Maui.Controls.Compatibility;
+After:
+using MauiApp1.Data;
+using MauiApp1.Services;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.WebView.Maui;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui;
+*/
+
+/* Unmerged change from project 'MauiApp1 (net6.0-android)'
+Before:
+using Microsoft.AspNetCore.Components.WebView.Maui;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui;
+using Microsoft.Maui.Hosting;
+After:
+using MauiApp1.Data;
+using MauiApp1.Services;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.WebView.Maui;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui;
+*/
+
+/* Unmerged change from project 'MauiApp1 (net6.0-maccatalyst)'
+Before:
+using Microsoft.AspNetCore.Components.WebView.Maui;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui;
+using Microsoft.Maui.Hosting;
+After:
+using MauiApp1.Data;
+using MauiApp1.Services;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.WebView.Maui;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui;
+*/
+using MauiApp1.Data;
+using MauiApp1.Services;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.WebView.Maui;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Controls.Xaml;
-using MauiApp1.Data;
+using
+/* Unmerged change from project 'MauiApp1.WinUI (net6.0-windows10.0.19041)'
+Before:
 using Microsoft.AspNetCore.Components.Authorization;
 using MauiApp1.Services;
+After:
+using Microsoft.Maui.Hosting;
+*/
+
+/* Unmerged change from project 'MauiApp1 (net6.0-android)'
+Before:
+using Microsoft.AspNetCore.Components.Authorization;
+using MauiApp1.Services;
+After:
+using Microsoft.Maui.Hosting;
+*/
+
+/* Unmerged change from project 'MauiApp1 (net6.0-maccatalyst)'
+Before:
+using Microsoft.AspNetCore.Components.Authorization;
+using MauiApp1.Services;
+After:
+using Microsoft.Maui.Hosting;
+*/
+Microsoft.Maui.Hosting;
 using System;
 using System.Net.Http;
 [assembly: XamlCompilationAttribute(XamlCompilationOptions.Compile)]

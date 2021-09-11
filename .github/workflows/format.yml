@@ -33,12 +33,12 @@ jobs:
     - name: Formating
       run: dotnet format --no-restore
       
-#     - name: Install maui
-#       run: |
-#         dotnet tool install -g redth.net.maui.check
-#         maui-check
-#     - name: Formating
-#       run: dotnet format --no-restore --folder Maui
+     - name: Install maui
+       run: |
+         dotnet tool install -g redth.net.maui.check
+         maui-check
+     - name: Formating
+       run: dotnet format --no-restore --folder Maui
 
     - name: Commit files
       if: steps.format.outputs.has-changes == 'true'

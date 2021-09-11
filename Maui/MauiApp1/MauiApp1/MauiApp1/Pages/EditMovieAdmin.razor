@@ -53,9 +53,8 @@ else
 
     
 
-@code
-{
-[Parameter]
+@code{
+    [Parameter]
         public string Id { get; set; }
 
         protected MovieModel movie;
@@ -107,7 +106,14 @@ else
                 {
                     content = e.Percentage.ToString();
                 };
-                await task;
+                try
+                {
+                    await task;
+                }
+                catch
+                {
+                    content = "More 500MB use the other method upload";
+                }
             }
             else
             {
@@ -137,7 +143,15 @@ else
                 {
                     content = e.Percentage.ToString();
                 };
-                await task;
+                try
+                {
+                    await task;
+                }
+                catch
+                {
+                    content = "More 500MB use the other method upload";
+                }
+
             }
             else
             {

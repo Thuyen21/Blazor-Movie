@@ -7,6 +7,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<style>
+	@Css
+</style>
+
 <body>
 	<div class="container">
 		<input type="checkbox" id="flip">
@@ -85,9 +89,8 @@
 
 <div>@content</div>
 
-@code
-{
-private string role = "Customer";
+@code{
+	private string role = "Customer";
         private void Role()
         {
             if (role == "Customer")
@@ -115,4 +118,5 @@ private string role = "Customer";
                 content = await response.Content.ReadAsStringAsync();
             }
         }
+		public string Css = "body { font-family: Arial, Helvetica, sans-serif; } .form-gap { padding-top: 10%; } .container { } .out-panel-body { box-shadow: 0 5px 10px rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; } .panel-default { border-color: #fff; } .input-box { display: flex; align-items: center; height: 50px; width: 100%; margin: 10px 0; position: relative; } .input-boxes { margin-top: 30px; } .input-boxes .button-input { color: #fff; background: #7d2ae8; border-radius: 6px; padding: 3%; cursor: pointer; transition: all 0.4s ease; }";
 }

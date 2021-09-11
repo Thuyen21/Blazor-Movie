@@ -1,7 +1,6 @@
 ﻿@using Braintree
 <h3>DepositCustomer</h3>
 @inject IJSRuntime JS
-@page "/Deposit/{Code}"
 @page "/Deposit"
 
 @*@if(content == null)
@@ -13,7 +12,7 @@ else
     <div>@content</div>
 
 }*@
-<div>@Code</div>
+<div>@content</div>
 <input type="number" step="0.01" min="0.01" @bind="cash"/>
 <button @onclick="Cash">Ok</button>
 
@@ -30,11 +29,8 @@ else
 
 
 
-    @code
-{
-    [Parameter]
-        public string Code { get; set; }
-
+    @code{
+        private string content;
         private double cash = 0;
         private string clientToken;
         protected string divCSS = "display: none;";
@@ -42,17 +38,26 @@ else
         {
             this.divCSS = divCSS;
         }
-
+        private DotNetObjectReference<DepositCustomer> objRef;
         private async Task Cash()
         {
             try
             {
-                clientToken = new string (await _httpClient.GetFromJsonAsync<char[]>("Customer/Deposit"));
-                await JS.InvokeVoidAsync("Deposit", clientToken, cash);
+                clientToken = new string(await _httpClient.GetFromJsonAsync<char[]>("Customer/Deposit"));
+
+                objRef = DotNetObjectReference.Create(this);
+                await JS.InvokeVoidAsync("Deposit", objRef, clientToken, cash);
                 DivCSS("display: block;");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
+        }
+
+        [JSInvokable]
+        public async Task Test(string test, string test2, string test3)
+        {
+            content = await (await _httpClient.PostAsJsonAsync<List<string>>($"Customer/{test3}", new List<string>() { test, test2 })).Content.ReadAsStringAsync();
+            StateHasChanged();
         }
     }

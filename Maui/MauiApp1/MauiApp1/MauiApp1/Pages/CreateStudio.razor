@@ -16,9 +16,8 @@
 </EditForm>
 <div>@content</div>
 
-@code
-{
-protected MovieModel movie = new();
+@code{
+    protected MovieModel movie = new();
         protected string content;
         protected async Task HandleValidSubmit()
         {

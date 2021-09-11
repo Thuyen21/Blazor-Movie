@@ -3,6 +3,8 @@
 @attribute [Authorize(Roles ="Customer")]
 @using Firebase.Storage
 
+<Title value="Page title" /> 
+
 @if(movie == null || movieLink == null)
 {
     @if(canWatch == null)
@@ -37,7 +39,7 @@ else
     {
         var local = commentList[i].Id;
         <div>Email: @commentList[i].Email, comment: @commentList[i].CommentText, Time: @commentList[i].Time</div>
-        <div>Like = @commentList[i].Like, Dislike = @commentList[i].DisLike  </div>
+        <div>Like = @commentList[i].Like, Dislike = @commentList[i].DisLike, Is: @commentList[i].Is  </div>
         
         <button @onclick="@(async () => await AcLike(local))" >Like</button>
         <button @onclick="@(async () => await AcDisLike(local))" >DisLike</button>
@@ -54,9 +56,8 @@ else
 <div>@content</div>
 
 
-@code
-{
-[Parameter]
+@code{
+    [Parameter]
         public string Id { get; set; }
 
         protected MovieModel movie;
@@ -122,32 +123,44 @@ else
             content = await (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up)).Content.ReadAsStringAsync();
 
 
-            commentList.Clear();
+            List<CommentModel> commentListTemp = new();
+
             for (int i = 0; i <= index; i++)
             {
-                commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
+                commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
             }
-
+            commentList.Clear();
+            commentList = commentListTemp;
+            StateHasChanged();
         }
 
         protected async Task AcDisLike(string Id)
         {
             await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "DisLike");
-            commentList.Clear();
+            List<CommentModel> commentListTemp = new();
+
             for (int i = 0; i <= index; i++)
             {
-                commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
+                commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{this.Id}/{i}"));
             }
+            commentList.Clear();
+            commentList = commentListTemp;
+            StateHasChanged();
         }
 
         protected async Task AcLike(string Id)
         {
             await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "Like");
-            commentList.Clear();
+            List<CommentModel> commentListTemp = new();
+
             for (int i = 0; i <= index; i++)
             {
-                commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
+                commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{this.Id}/{i}"));
             }
+            commentList.Clear();
+            commentList = commentListTemp;
+
+            StateHasChanged();
         }
 
         protected async Task LoadMore()
