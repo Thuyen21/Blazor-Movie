@@ -315,12 +315,12 @@ nav .search-box .bx-search {
 @media (max-width: 1240px) {
     .home-section {
         width: calc(100% - 60px);
-        left: 60px;
+        /*left: 60px;*/
     }
 
         .home-section nav {
             width: calc(100% - 60px);
-            left: 60px;
+            /*left: 60px;*/
         }
 }
 
@@ -330,7 +330,7 @@ nav .search-box .bx-search {
     }
 
         .home-content .sales-boxes .box {
-            /*width: 100%;*/
+            width: 100%;
             overflow-x: scroll;
             margin-bottom: 30px;
         }

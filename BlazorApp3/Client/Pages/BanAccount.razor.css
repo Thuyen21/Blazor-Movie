@@ -1,0 +1,80 @@
+﻿
+
+#hideMe {
+    -webkit-animation: cssAnimation 5s forwards;
+    animation: cssAnimation 5s forwards;
+}
+
+@keyframes cssAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes cssAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-gap {
+    padding-top: 10%;
+}
+
+.container {
+}
+
+.out-panel-body {
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.panel-default {
+    border-color: #fff;
+}
+
+.input-box {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    margin: 10px 0;
+    position: relative;
+}
+
+.input-boxes {
+    margin-top: 30px;
+}
+
+    .input-boxes .button-input {
+        color: #fff;
+        background: #7d2ae8;
+        border-radius: 6px;
+        padding: 3%;
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }
+
+

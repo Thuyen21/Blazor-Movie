@@ -208,7 +208,7 @@ nav .search-box .bx-search {
 
     /* left box */
     .home-content .sales-boxes .recent-sales {
-        width: 200%;
+        width: 1200px;
         background: #fff;
         padding: 20px 30px;
         margin: 0 20px;
@@ -315,12 +315,12 @@ nav .search-box .bx-search {
 @media (max-width: 1240px) {
     .home-section {
         width: calc(100% - 60px);
-        left: 60px;
+        /*left: 60px;*/
     }
 
         .home-section nav {
             width: calc(100% - 60px);
-            left: 60px;
+            /*left: 60px;*/
         }
 }
 

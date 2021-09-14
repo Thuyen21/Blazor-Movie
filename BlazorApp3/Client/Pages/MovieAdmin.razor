@@ -1,48 +1,48 @@
 ﻿@page "/MovieAdmin"
-@attribute [Authorize(Roles ="Admin")]
+@attribute [Authorize(Roles = "Admin")]
 @*<input placeholder="Enter your text" @bind-value="@searchString" />
 
-    <button class="btn btn-primary" @onclick="OnInitializedAsync">Search</button>
+	<button class="btn btn-primary" @onclick="OnInitializedAsync">Search</button>
 
-@if(movies == null)
-{
-    <div>Loading</div>
-}
-else
-{
-    <table class="table">
-        <thead>
-        <tr>
-            <th>MovieId</th>
-           
-            <th>StudioId</th>
-            <th><button class="btn btn-primary" @onclick="GenreSortParm">MovieGenre</button></th>
-            <th><button class="btn btn-primary" @onclick="NameSortParm">MovieName</button></th>
-             <th><button class="btn btn-primary" @onclick="DateSortParm">PremiereDate</button></th>
-            <th></th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in movies)
-        {
-            <tr>
-                <td>@item.MovieId</td>
-                
-                <td>@item.StudioId</td>
-                <td>@item.MovieGenre</td>
-                 <td>@item.MovieName</td>
-                 <td>@item.PremiereDate.ToShortDateString()</td>
-                 @{ var linkEdit = $"EditMovieAdmin/{item.MovieId}"; var linkBan = $"DeleteMovieAdmin/{item.MovieId}";}
-                 <td><NavLink class="nav-link" href="@linkEdit">Edit</NavLink></td>
-                 <td><NavLink class="nav-link" href="@linkBan">Delete</NavLink> </td>
-            </tr>
-        }
-        </tbody>
-    </table>
-    <button @onclick="LoadMore">Click to load more</button>
-    
-}*@
+	@if(movies == null)
+	{
+	<div>Loading</div>
+	}
+	else
+	{
+	<table class="table">
+	<thead>
+	<tr>
+	<th>MovieId</th>
+
+	<th>StudioId</th>
+	<th><button class="btn btn-primary" @onclick="GenreSortParm">MovieGenre</button></th>
+	<th><button class="btn btn-primary" @onclick="NameSortParm">MovieName</button></th>
+	<th><button class="btn btn-primary" @onclick="DateSortParm">PremiereDate</button></th>
+	<th></th>
+	<th></th>
+	</tr>
+	</thead>
+	<tbody>
+	@foreach (var item in movies)
+	{
+	<tr>
+	<td>@item.MovieId</td>
+
+	<td>@item.StudioId</td>
+	<td>@item.MovieGenre</td>
+	<td>@item.MovieName</td>
+	<td>@item.PremiereDate.ToShortDateString()</td>
+	@{ var linkEdit = $"EditMovieAdmin/{item.MovieId}"; var linkBan = $"DeleteMovieAdmin/{item.MovieId}";}
+	<td><NavLink class="nav-link" href="@linkEdit">Edit</NavLink></td>
+	<td><NavLink class="nav-link" href="@linkBan">Delete</NavLink> </td>
+	</tr>
+	}
+	</tbody>
+	</table>
+	<button @onclick="LoadMore">Click to load more</button>
+
+	}*@
 
 <head>
 	<meta charset="UTF-8">
@@ -140,8 +140,8 @@ else
 								</div>
 							</ul>
 						</div>
-						
-						
+
+
 						<div class="sales-details">
 							<ul class="details">
 								<li class="topic">Movie ID</li>
@@ -159,17 +159,17 @@ else
 								}
 							</ul>
 							<ul class="details">
-								<li class="topic"><i class='bx bx-user'></i> Movie Genre</li>
+								<li class="topic"><i class='bx bx-user'></i> Genre</li>
 								@foreach (var item in movies)
 								{
 									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 200px; margin-right: 10px;"><a href="#">@item.MovieGenre</a></li>
 								}
 							</ul>
 							<ul class="details">
-								<li class="topic"><i class='bx bx-network-chart'></i> Movie Name</li>
+								<li class="topic"><i class='bx bx-network-chart'></i> Name</li>
 								@foreach (var item in movies)
 								{
-									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 100px; margin-right: 10px;"><a href="#">@item.MovieName</a></li>
+									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 200px; margin-right: 10px;"><a href="#">@item.MovieName</a></li>
 								}
 							</ul>
 							<ul class="details">
@@ -184,10 +184,12 @@ else
 								@foreach (var item in movies)
 								{
 									<li>
-										@{ var linkEdit = $"EditMovieAdmin/{item.MovieId}"; var linkBan = $"DeleteMovieAdmin/{item.MovieId}";}
+										@{
+											var linkEdit = $"EditMovieAdmin/{item.MovieId}"; var linkBan = $"DeleteMovieAdmin/{item.MovieId}";
+										}
 										<div class="button">
 											<a href="@linkEdit" style="margin-right:5px">Edit</a>
-											<a href="@linkBan" style="margin-left:5px">Ban</a>
+											<a href="@linkBan" style="margin-left:5px">Delete</a>
 										</div>
 									</li>
 								}
@@ -199,7 +201,8 @@ else
 					</div>
 				</div>
 			</div>
-		}@* Here is end else*@
+		}
+		@* Here is end else*@
 
 	</section>
 

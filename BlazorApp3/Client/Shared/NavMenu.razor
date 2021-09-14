@@ -161,7 +161,7 @@
                                     @*<img src="profile.jpg" alt="profileImg">*@
                                     <i class='bx bxs-user-check'></i>
                                     <div class="name_job">
-                                        <div class="links_name">
+                                        <div class="links_name" style="overflow: hidden; text-overflow: ellipsis; max-width: 170px;">
                                             @context.User.Identity.Name
                                         </div>
                                         <div class="links_name">
@@ -176,9 +176,9 @@
                             <li>
                                 <a href="logout">
                                     <i class='bx bx-log-out'></i>
-                                    <span class="links_name">logout</span>
+                                    <span class="links_name">Logout</span>
                                 </a>
-                                <span class="tooltip">logout</span>
+                                <span class="tooltip">Logout</span>
                             </li>                            
                         </Authorized>
                         <NotAuthorized>                            
@@ -197,13 +197,15 @@
                                 <span class="tooltip">Registration</span>
                             </li>
                             <li class="profile">
+                                <a href="login">
                                 <div class="profile-details">
                                     @*<img src="profile.jpg" alt="profileImg">*@
                                     <i class='bx bxs-user-x'></i>
                                     <div class="name_job">
-                                        <div class="name">You are not logged in</div>                                        
+                                        <div class="links_name">You are not logged in</div>                                        
                                     </div>
                                 </div>
+                                </a>
                                 @*<i class='bx bx-log-out' id="log_out" href="logout"></i>*@
                             </li>
                         </NotAuthorized>
