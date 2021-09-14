@@ -23,7 +23,9 @@ namespace BlazorApp3.Client.Pages
 
         protected async Task HandleValidSubmit()
         {
-            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<AccountManagementModel>("Admin/EditAccount", acc);
+            AccountManagementModel accNew = acc;
+            accNew.DateOfBirth = accNew.DateOfBirth.ToUniversalTime().AddDays(1);
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<AccountManagementModel>("Admin/EditAccount", accNew);
             content = await response.Content.ReadAsStringAsync();
         }
     }

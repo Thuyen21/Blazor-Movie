@@ -120,8 +120,8 @@ else
 						<InputFile OnChange="OnChooseImageFile" />
 
 
-						<div>If your upload more 500MB click this button</div>
-						<button type="submit" @onclick="@Upload">Upload</button>
+						<div>If your upload more 500MB Up in the under form </div>
+						
 						<div>@mp</div>
 						<div>@ip</div>
 					</div>
@@ -133,5 +133,28 @@ else
 </body>
 
 
-    
+    <div class="row">
+    <div class="col-md-4">
+		
+        <form action="@linkUp" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger">If it is not a movie or image correct MIME it will not be uploaded.</div>
+           
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label">Image</label>
+                <input id="ImageFileUp" name="ImageFileUp" class="form-control" type="file"/>
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieFile" class="control-label">Movie</label>
+                <input id="MovieFileUp" name="MovieFileUp" class="form-control" type="file"/>
+                <span asp-validation-for="MovieFile" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary"/>
+            </div>
+        </form>
+        <span id="spnMessage"></span>
+    </div>
+</div>
 

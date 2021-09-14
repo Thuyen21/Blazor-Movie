@@ -17,6 +17,8 @@ namespace BlazorApp3.Client.Pages
         protected string content;
         protected string mp;
         protected string ip;
+        public string linkUp;
+
         protected override async Task OnInitializedAsync()
         {
             if (Id == null)
@@ -25,6 +27,7 @@ namespace BlazorApp3.Client.Pages
             }
 
             movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
+            linkUp = $"/Admin/MovieUpload/{movie.MovieId}/{movie.StudioId}";
         }
 
         protected async Task HandleValidSubmit()

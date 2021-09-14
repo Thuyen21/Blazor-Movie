@@ -196,7 +196,7 @@ public class UserController : Controller
             Dictionary<string, dynamic> update = new()
             {
                 { "Name", accountManagementModel.Name },
-                { "DateOfBirth", accountManagementModel.DateOfBirth.ToUniversalTime() }
+                { "DateOfBirth", accountManagementModel.DateOfBirth.AddDays(1).ToUniversalTime() }
             };
 
 
@@ -251,7 +251,7 @@ public class UserController : Controller
 
             AccountManagementModel account = new()
             {
-                DateOfBirth = signUpModel.DateOfBirth.ToUniversalTime(),
+                DateOfBirth = signUpModel.DateOfBirth.AddDays(1).ToUniversalTime(),
                 Email = signUpModel.Email,
                 Id = user.Uid,
                 Name = signUpModel.Name,
