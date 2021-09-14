@@ -15,6 +15,7 @@ namespace BlazorApp3.Client.Pages
         protected IBrowserFile movieFile;
         protected IBrowserFile imageFile;
         protected string content;
+        public string linkUp;
         protected override async Task OnInitializedAsync()
         {
             if (Id == null)
@@ -23,6 +24,7 @@ namespace BlazorApp3.Client.Pages
             }
 
             movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
+            linkUp = $"/Studio/MovieUpload/{movie.MovieId}/{movie.StudioId}";
         }
 
         protected async Task HandleValidSubmit()
