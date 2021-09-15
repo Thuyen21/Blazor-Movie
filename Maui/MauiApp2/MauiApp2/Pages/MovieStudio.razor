@@ -1,0 +1,123 @@
+﻿<h3>MovieStudio</h3>
+@page "/MovieStudio"
+@attribute [Authorize(Roles ="Studio")]
+<input placeholder="Enter your text" @bind-value="@searchString" />
+
+    <button class="btn btn-primary" @onclick="Search">Search</button>
+
+@if(movies == null)
+{
+    <div>Loading</div>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>MovieId</th>
+           
+            <th>StudioId</th>
+            <th><button class="btn btn-primary" @onclick="GenreSortParm">MovieGenre</button></th>
+            <th><button class="btn btn-primary" @onclick="NameSortParm">MovieName</button></th>
+             <th><button class="btn btn-primary" @onclick="DateSortParm">PremiereDate</button></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in movies)
+        {
+            <tr>
+                <td>@item.MovieId</td>
+                
+                <td>@item.StudioId</td>
+                <td>@item.MovieGenre</td>
+                 <td>@item.MovieName</td>
+                 <td>@item.PremiereDate.ToShortDateString()</td>
+                    @{ var linkEdit = $"EditMovieStudio/{item.MovieId}"; var linkBan = $"DeleteMovieStudio/{item.MovieId}";var linkStatus = $"StatusStudio/{item.MovieId}";}
+                    <td><NavLink class="nav-link" href="@linkEdit">Edit</NavLink></td>
+                 <td><NavLink class="nav-link" href="@linkBan">Delete</NavLink> </td>
+                 <td><NavLink class="nav-link" href="@linkStatus">Status</NavLink> </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+     <button @onclick="LoadMore">Click to load more</button>
+    
+}
+
+@code{
+    protected List<MovieModel> movies = new();
+        protected int index = 0;
+        protected string? searchString { get; set; }
+        protected bool isSearch = false;
+
+        protected string sort = null;
+
+        protected async Task NameSortParm()
+        {
+            index = 0;
+            sort = sort == "name" ? "nameDesc" : "name";
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}");
+            isSearch = false;
+            searchString = null;
+        }
+
+        protected async Task DateSortParm()
+        {
+            index = 0;
+            sort = sort == "date" ? "dateDesc" : "date";
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}");
+            isSearch = false;
+            searchString = null;
+        }
+
+        protected async Task GenreSortParm()
+        {
+            index = 0;
+            sort = sort == "genre" ? "genreDesc" : "genre";
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}");
+            isSearch = false;
+            searchString = null;
+        }
+
+        protected override async Task OnInitializedAsync()
+        {
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}");
+        }
+        protected async Task Search()
+        {
+            index = 0;
+            if (searchString != null)
+            {
+                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/{searchString}/ /{index}");
+                isSearch = true;
+            }
+            else
+            {
+                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}");
+                isSearch = false;
+            }
+
+
+            sort = null;
+        }
+        protected async Task LoadMore()
+        {
+            index++;
+            if (isSearch)
+            {
+                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/{searchString}//{index}"));
+            }
+            else if (sort != null)
+            {
+                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}"));
+            }
+            else
+            {
+                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}"));
+            }
+
+        }
+}

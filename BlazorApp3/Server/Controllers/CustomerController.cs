@@ -1,13 +1,14 @@
 ﻿using BlazorApp3.Shared;
 using Braintree;
 using Google.Cloud.Firestore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
 namespace BlazorApp3.Server.Controllers;
 [ApiController]
 [Route("[controller]")]
-//[Authorize(Roles = "Customer")]
+[Authorize(Roles = "Customer")]
 public class CustomerController : Controller
 {
     private readonly Censor censor;

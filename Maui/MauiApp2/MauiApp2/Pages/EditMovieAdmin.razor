@@ -1,0 +1,275 @@
+﻿
+@page "/EditMovieAdmin/{Id}"
+
+@using System.IO
+@using Firebase.Storage
+@attribute [Authorize(Roles ="Admin")]
+
+@*<div></div>
+
+@if (movie == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    MovieId
+    <InputText  @bind-Value="@movie.MovieId"/><br>
+    StudioId
+    <InputText  @bind-Value="@movie.StudioId"/><br>
+    MovieGenre
+    <InputText  @bind-Value="@movie.MovieGenre"/><br>
+    MovieName
+    <InputText  @bind-Value="@movie.MovieName"/><br>
+    PremiereDate
+    <InputDate  @bind-Value="@movie.PremiereDate"/><br>
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+<div>@content</div>
+
+<div>After pick a file it auto Upload. If it is not a movie or image correct MIME it will not be uploaded.</div>
+<div>Movie Up</div>
+<InputFile OnChange="OnChooseMovieFile" />
+
+<div>Image Up</div>
+<InputFile OnChange="OnChooseImageFile" />
+
+
+<div>If your upload more 500MB click this button</div>
+<button type="submit" @onclick="@Upload">Upload</button>
+    
+}
+
+<div>@mp</div>
+<div>@ip</div>*@
+
+
+
+<head>
+	<meta charset="UTF-8">
+	<!-- Fontawesome CDN Link -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="container">
+		<input type="checkbox" id="flip">
+		@if (movie == null)
+		{
+			<p>
+				<em>Loading...</em>
+			</p>
+		}
+		else
+		{
+			<div class="forms">
+				<div class="form-content">
+					<div class="login-form">
+						<div class="title">Replace any data of ID </div>
+						<div class="title">@movie.MovieId</div>
+						<div>@content</div>
+						
+						<form action="#">
+							<div class="input-boxes">
+								<EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
+									<DataAnnotationsValidator />
+									<ValidationSummary />
+									<div class="input-box">
+										<i class="fas fa-envelope"></i>
+										<input type="text" placeholder="@movie.MovieId" style="pointer-events:none" @bind="@movie.MovieId">
+										<a>Movie ID</a>
+									</div>
+									<div class="input-box">
+										<i class="fas fa-lock"></i>
+										<input type="text" placeholder="@movie.StudioId"  style="pointer-events:none" @bind="@movie.StudioId" >
+										<a>Studio ID</a>
+									</div>
+									<div class="input-box">
+										<i class="fas fa-user"></i>
+										<input type="text" placeholder="Replace movie genre"  @bind="@movie.MovieGenre" required>
+										<a>Movie genre</a>
+									</div>
+									<div class="input-box">
+										<i class="fas fa-money-check"></i>
+										<input type="text" placeholder="Replace movie name" @bind="@movie.MovieName" required>
+										<a>Movie name</a>
+									</div>
+									<div class="input-box">
+										<i class="far fa-calendar-alt"></i>
+										<input type="date" placeholder="Premiere Date" @bind="@movie.PremiereDate"  required>
+										<a>Pre Date</a>
+									</div>									
+									<div class="button input-box">
+										<input type="submit" value="Confirm">
+									</div>
+								</EditForm>
+							</div>
+						</form>
+						<div>After pick a file it auto Upload. If it is not a movie or image correct MIME it will not be uploaded.</div>
+						<div>Movie Up</div>
+						<InputFile OnChange="OnChooseMovieFile" />
+
+						<div>Image Up</div>
+						<InputFile OnChange="OnChooseImageFile" />
+
+
+						<div>If your upload more 500MB Up in the under form </div>
+						
+						<div>@mp</div>
+						<div>@ip</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+    <div class="col-md-4">
+		
+        <form action="@linkUp" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger">If it is not a movie or image correct MIME it will not be uploaded.</div>
+           
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label">Image</label>
+                <input id="ImageFileUp" name="ImageFileUp" class="form-control" type="file"/>
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieFile" class="control-label">Movie</label>
+                <input id="MovieFileUp" name="MovieFileUp" class="form-control" type="file"/>
+                <span asp-validation-for="MovieFile" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary"/>
+            </div>
+        </form>
+        <span id="spnMessage"></span>
+    </div>
+</div>
+		} @*end else*@
+
+	</div>
+</body>
+
+
+    
+
+@code{
+	[Parameter]
+        public string Id { get; set; }
+
+        protected MovieModel movie;
+        protected IBrowserFile movieFile;
+        protected IBrowserFile imageFile;
+        protected string content;
+        protected string mp;
+        protected string ip;
+        public string linkUp;
+
+        protected override async Task OnInitializedAsync()
+        {
+            if (Id == null)
+            {
+                _navigationManager.NavigateTo("/MovieAdmin");
+            }
+
+            movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
+            linkUp = $"/Admin/MovieUpload/{movie.MovieId}/{movie.StudioId}";
+        }
+
+        protected async Task HandleValidSubmit()
+        {
+            MovieModel moviePost = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
+            movie.StudioId = moviePost.StudioId;
+            movie.MovieId = moviePost.MovieId;
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<MovieModel>("Admin/EditMovie", movie);
+            content = await response.Content.ReadAsStringAsync();
+        }
+
+        protected async Task OnChooseMovieFile(InputFileChangeEventArgs e)
+        {
+            List<string> list = new List<string>
+            {
+                "video/x-msvideo",
+                "video/mp4",
+                "video/mpeg",
+                "video/ogg",
+                "video/mp2t",
+                "video/webm",
+                "video/3gpp",
+                "video/3gpp2",
+                "video/x-matroska"
+            };
+            if (list.Contains(e.File.ContentType))
+            {
+                movieFile = e.File;
+                char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+                string token = new string(tokena);
+                FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").PutAsync(movieFile.OpenReadStream(long.MaxValue));
+                task.Progress.ProgressChanged += async (s, e) =>
+                {
+                    content = e.Percentage.ToString();
+                };
+                try
+                {
+                    await task;
+                }
+                catch
+                {
+                    content = "More 500MB use the other method upload";
+                }
+            }
+            else
+            {
+                content = "Incorrect MIME";
+            }
+        }
+
+        protected async Task OnChooseImageFile(InputFileChangeEventArgs e)
+        {
+            List<string> list = new List<string>
+            {
+                "image/bmp",
+                "image/gif",
+                "image/jpeg",
+                "image/png",
+                "image/svg+xml",
+                "image/tiff",
+                "image/webp"
+            };
+            if (list.Contains(e.File.ContentType))
+            {
+                imageFile = (e.File);
+                char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+                string token = new string(tokena);
+                FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Image").PutAsync(imageFile.OpenReadStream(long.MaxValue));
+                task.Progress.ProgressChanged += async (s, e) =>
+                {
+                    content = e.Percentage.ToString();
+                };
+                try
+                {
+                    await task;
+                }
+                catch
+                {
+                    content = "More 500MB use the other method upload";
+                }
+
+            }
+            else
+            {
+                content = "Incorrect MIME";
+            }
+        }
+
+        public async Task Upload()
+        {
+            _navigationManager.NavigateTo($"/admin/MovieUpload/{Id}", true);
+        }
+}

@@ -1,6 +1,7 @@
 ﻿<h3>Profile</h3>
 @attribute [Authorize]
 @page "/profile"
+@using BlazorApp3.Shared
 
 @inject IAccountService _accountService;
 <EditForm Model="@accountManagementModel" OnValidSubmit="HandleValidSubmit">

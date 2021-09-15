@@ -1,14 +1,19 @@
-﻿using BlazorApp3.Server;
+using BlazorApp3.Server;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using System.Net;
 
 WebApplicationBuilder? builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
 Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<Censor>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
 {
     options.ExpireTimeSpan = TimeSpan.FromHours(1);
@@ -21,6 +26,7 @@ builder.Services.Configure<FormOptions>(options =>
     options.MultipartHeadersCountLimit = int.MaxValue;
     options.MultipartHeadersLengthLimit = int.MaxValue;
 });
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPocliy", policy =>
@@ -28,31 +34,11 @@ builder.Services.AddCors(options =>
         policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
     });
 });
-builder.Services.AddSingleton<Censor>();
-
-//builder.WebHost.UseKestrel()
-//	.UseQuic(options =>
-//	{
-//		options.Alpn = "h3-29";
-//		options.IdleTimeout = TimeSpan.FromMinutes(1);
-//	})
-//	.ConfigureKestrel((context, options) =>
-//	{
-//		options.EnableAltSvc = true;
-//		options.Listen(IPAddress.Any, 5001, listenOptions =>
-//		{
-//			// Use Http3
-//			listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
-//			listenOptions.UseHttps();
-//		});
-//	});
-
 WebApplication? app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseDeveloperExceptionPage();
     app.UseWebAssemblyDebugging();
 }
 else

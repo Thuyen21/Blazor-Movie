@@ -1,0 +1,69 @@
+﻿<h3>BuyVip</h3>
+
+@page "/BuyVip"
+@page "/BuyVip/{movieId}"
+
+<EditForm Model="@vip" OnValidSubmit="@Buy">
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+   <InputRadioGroup @bind-Value="@vip.Choose">
+       @if(movieId != null)
+        {
+            <InputRadio Value="0" /><div>Only this movie</div><br />
+        }
+	 <InputRadio checker Value="1" /><div>1 month </div><br />
+	<InputRadio Value="3" /><div>3 month</div> <br />
+    <InputRadio Value="6" /><div>6 month</div> <br />
+    <InputRadio Value="12" /><div>12 month</div> <br />
+    
+   </InputRadioGroup>
+   <button type="submit">Buy</button>
+  </EditForm>
+
+
+  <div>@content</div>
+  <div>You are Choosing @vip.Choose</div>
+  @if(content == "Success" && movieId != null)
+{
+    string linkWatch = $"WatchCustomer/{movieId}";
+    
+    <div><NavLink class="nav-link" href="@linkWatch">Watch</NavLink></div>
+}
+@if(vipStatus == null)
+{
+    <div>Loadding</div>
+
+}
+else
+{
+    <div>@vipStatus</div>
+}
+
+
+
+@code{
+[Parameter]
+        public string movieId { get; set; }
+
+        protected VipModel vip = new VipModel()
+        { Choose = 1 };
+        protected string vipStatus;
+        protected string content;
+        protected override async Task OnInitializedAsync()
+        {
+            if (movieId != null)
+            {
+                vip.Id = movieId;
+                vip.Choose = 0;
+            }
+
+            vipStatus = new string(await _httpClient.GetFromJsonAsync<char[]>("Customer/VipCheck"));
+        }
+
+        protected async Task Buy()
+        {
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<VipModel>("Customer/BuyVip", vip);
+            content = await response.Content.ReadAsStringAsync();
+            await OnInitializedAsync();
+        }
+}
