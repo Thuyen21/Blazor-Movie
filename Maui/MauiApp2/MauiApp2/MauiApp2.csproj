@@ -8,7 +8,8 @@
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
-
+		<MauiVersion>6.0.100-rc.2.2000</MauiVersion>
+		
 		<!-- Display name -->
 		<ApplicationTitle>MauiApp2</ApplicationTitle>
 
