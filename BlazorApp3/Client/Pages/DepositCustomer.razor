@@ -2,6 +2,7 @@
 <h3>DepositCustomer</h3>
 @inject IJSRuntime JS
 @page "/Deposit"
+@attribute [Authorize(Roles ="Customer")]
 
 @*@if(content == null)
 {
@@ -12,9 +13,18 @@ else
     <div>@content</div>
 
 }*@
-<div>@content</div>
-<input type="number" step="0.01" min="0.01" @bind="cash"/>
-<button @onclick="Cash">Ok</button>
+
+@if(string.IsNullOrEmpty(content))
+{
+    if(!doneCash)
+    {
+        <input type="number" step="0.01" min="0.01" @bind="cash"/>
+        <button @onclick="Cash">Ok</button>
+}
+    else
+    {
+        <div>Deposit @cash</div>
+    }
 
 <div id="dropin-container"></div>
     <form id="payment-form" method="post">
@@ -26,6 +36,48 @@ else
         <input type="hidden" id="cash" name="cash"/>
     </form>
     <div id="paypal-button"></div>
-
-
-
+}
+else
+{
+    <div>@content</div>
+    <button @onclick="Recharge">Recharge</button>
+}
+    @code{
+    private string content;
+        private double cash = 0;
+        private string clientToken;
+        private string divCSS = "display: none;";
+        private void DivCSS(string divCSS)
+        {
+            this.divCSS = divCSS;
+        }
+        private DotNetObjectReference<DepositCustomer> objRef;
+        private bool doneCash = false;
+        private async Task Recharge()
+        {
+        content = null;
+        doneCash = false;
+        cash = 0;
+        DivCSS("display: none;");
+    }
+    private async Task Cash()
+        {
+            try
+            {
+                doneCash = true;
+                clientToken = new string(await _httpClient.GetFromJsonAsync<char[]>("Customer/Deposit"));
+                objRef = DotNetObjectReference.Create(this);
+                await JS.InvokeVoidAsync("Deposit", objRef, clientToken, cash);
+                DivCSS("display: block;");
+            }
+            catch (Exception)
+            {
+            }
+        }
+        [JSInvokable]
+        public async Task Test(string test, string test2, string test3)
+        {
+            content = await (await _httpClient.PostAsJsonAsync<List<string>>($"Customer/{test3}", new List<string>() { test, test2 })).Content.ReadAsStringAsync();
+            StateHasChanged();
+        }
+}

@@ -2,7 +2,6 @@
 @inject IAccountService _accountService;
 @page "/login"
 @using BlazorApp3.Client.Services
-
 @*<button @onclick="@( () =>  DivCSS("display: block;"))" style="width:auto; margin:0; position: absolute;top: 50%;left: 50%;" class=" zoom2">Login</button>*@
 
 @*<div id="id01" class="modal" style="@divCSS">
@@ -37,14 +36,7 @@
 
 
 
-@code
-{
-	protected string divCSS = "display: none;";
-	protected void DivCSS(string divCSS)
-	{
-		this.divCSS = divCSS;
-	}
-}
+
 
 <head>
 	<meta charset="UTF-8">
@@ -114,3 +106,25 @@
 </body>
 
 
+@code
+{
+	protected string divCSS = "display: none;";
+	protected void DivCSS(string divCSS)
+	{
+		this.divCSS = divCSS;
+	}
+	private readonly LogInModel login = new LogInModel();
+        private string content;
+        private async Task HandleValidSubmit()
+        {
+            string? remoteUserAgent = await JS.InvokeAsync<string>("getUserAgent");
+            login.UserAgent = remoteUserAgent;
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
+            content = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                _accountService.Login();
+                _navigationManager.NavigateTo("/");
+            }
+        }
+}

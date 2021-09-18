@@ -1,5 +1,5 @@
 ﻿<h3>StudioUpload</h3>
-
+@attribute [Authorize(Roles ="Studio")]
 @page "/CreateStudio"
 
 <EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
@@ -16,3 +16,17 @@
 </EditForm>
 <div>@content</div>
 
+@code{
+    private readonly MovieModel movie = new();
+        private string? content;
+        private async Task HandleValidSubmit()
+        {
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<MovieModel>("Studio/Upload", movie);
+            content = await response.Content.ReadAsStringAsync();
+        }
+
+        protected override async Task OnInitializedAsync()
+        {
+            movie.PremiereDate = DateTime.Now;
+        }
+}

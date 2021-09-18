@@ -93,3 +93,25 @@ else
 	</div>
 </body>
 
+@code{
+[Parameter]
+        public string Id { get; set; }
+        private AccountManagementModel acc;
+        private string content;
+        protected override async Task OnInitializedAsync()
+        {
+            if (Id == null)
+            {
+                _navigationManager.NavigateTo("/AdminAccountManagement");
+            }
+            acc = await _httpClient.GetFromJsonAsync<AccountManagementModel>($"Admin/EditAccount/{Id}");
+        }
+
+        private async Task HandleValidSubmit()
+        {
+            AccountManagementModel accNew = acc;
+            accNew.DateOfBirth = accNew.DateOfBirth.ToUniversalTime().AddDays(1);
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<AccountManagementModel>("Admin/EditAccount", accNew);
+            content = await response.Content.ReadAsStringAsync();
+        }
+}

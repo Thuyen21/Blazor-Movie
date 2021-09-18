@@ -5,6 +5,7 @@
 @using Microsoft.AspNetCore.Components.Web
 @using Microsoft.AspNetCore.Components.Web.Virtualization
 @using Microsoft.AspNetCore.Components.WebAssembly.Http
+@using Microsoft.AspNetCore.Components.WebAssembly.Services
 @using Microsoft.JSInterop
 @using BlazorApp3.Client
 @using BlazorApp3.Client.Shared
@@ -18,3 +19,6 @@
 @inject ILogger<Error> Logger
 @using BlazorApp3.Client.Services
 @inject IJSRuntime JS
+@using System.Reflection
+@inject LazyAssemblyLoader AssemblyLoader
+@using BlazorApp3.Shared

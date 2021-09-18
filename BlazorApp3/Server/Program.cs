@@ -1,8 +1,6 @@
 using BlazorApp3.Server;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
-using System.Net;
 
 WebApplicationBuilder? builder = WebApplication.CreateBuilder(args);
 

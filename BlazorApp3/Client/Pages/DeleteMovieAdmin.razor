@@ -1,9 +1,6 @@
 ﻿<h3>DeleteMovieAdmin</h3>
 @page "/DeleteMovieAdmin/{Id}"
 @attribute [Authorize(Roles ="Admin")]
-
-
-
 @if (movie == null)
 {
     <p>
@@ -28,9 +25,24 @@ else
 
     <button type="submit">Delete</button>
 </EditForm>
-
-
-
 <div>@content</div>
 }
-
+@code{
+[Parameter]
+        public string Id { get; set; }
+        private MovieModel movie;
+        private string content;
+        protected override async Task OnInitializedAsync()
+        {
+            if (Id == null)
+            {
+                _navigationManager.NavigateTo("/MovieAdmin");
+            }
+            movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
+        }
+        private async Task HandleValidSubmit()
+        {
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<MovieModel>("Admin/DeleteMovie", movie);
+            content = await response.Content.ReadAsStringAsync();
+        }
+}

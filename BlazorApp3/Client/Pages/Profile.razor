@@ -40,8 +40,6 @@
  <button @onclick="ChangePass">Click here to send an Email to reset your password</button>
 @code{
     ChangeEmailModel changeEmail = new ChangeEmailModel();
-
-
     public async Task ChangeEmail()
     {
         content = await (await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail", changeEmail)).Content.ReadAsStringAsync();
@@ -52,6 +50,16 @@
     {
         _navigationManager.NavigateTo("/ResetPassword");
     }
+    private AccountManagementModel accountManagementModel = new AccountManagementModel();
+        private string content;
+        protected override async Task OnInitializedAsync()
+        {
+            accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");
+        }
 
-    
+        private async Task HandleValidSubmit()
+        {
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<AccountManagementModel>("user/EditProfile", accountManagementModel);
+            content = await response.Content.ReadAsStringAsync();
+        }
 }
