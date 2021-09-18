@@ -87,8 +87,12 @@
 	  <Content Include="Pages\MovieAdmin.razor.css" />
 	  <Content Include="Pages\ResetPassword.razor.css" />
 	  <Content Include="Pages\SignUp.razor.css" />
-	  <Content Include="Shared\MainLayout.razor.css" />
-	  <Content Include="Shared\NavMenu.razor.css" />
+	  <Content Include="Shared\MainLayout.razor.css">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Shared\NavMenu.razor.css">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 
 	<ItemGroup>

@@ -24,8 +24,8 @@ jobs:
 #         dotnet-version: 5.x
     - name: Install format
       run: dotnet tool install -g dotnet-format --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
-    - name: Install wasm-tools
-      run: dotnet workload install wasm-tools
+#    - name: Install wasm-tools
+#      run: dotnet workload install wasm-tools
     - name: Install dependencies
       run: dotnet restore
     - name: Test with the dotnet CLI

@@ -28,7 +28,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="6.0.0-rc.1.21452.15" />
 		<PackageReference Include="PayoutsSdk" Version="1.1.0" />
 		<PackageReference Include="PayPalCheckoutSdk" Version="1.0.3" />
-		<PackageReference Include="PayPalHttp" Version="1.0.0" />
+		<PackageReference Include="PayPalHttp" Version="1.0.1" />
 	</ItemGroup>
 	
   <ItemGroup>

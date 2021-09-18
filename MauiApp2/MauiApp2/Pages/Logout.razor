@@ -1,0 +1,23 @@
+﻿<h3>logout</h3>
+@inject IAccountService _accountService;
+
+@page "/logout"
+
+@*@attribute [Authorize(Roles = "Studio, Admin")]*@
+
+@code{
+    [CascadingParameter]
+        public Error Error { get; set; }
+
+        protected override async Task OnInitializedAsync()
+        {
+            HttpResponseMessage response = await _httpClient.GetAsync("user/Logout");
+            string content = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException($"Reason: {response.ReasonPhrase}, Message: {content}");
+            }
+            _accountService.Logout();
+            _navigationManager.NavigateTo("/");
+        }
+}
