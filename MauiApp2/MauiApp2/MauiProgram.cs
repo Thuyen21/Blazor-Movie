@@ -8,6 +8,7 @@ using Microsoft.Maui;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
 using System;
+using System.Net;
 using System.Net.Http;
 
 namespace MauiApp2
@@ -32,9 +33,7 @@ namespace MauiApp2
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
             builder.Logging.SetMinimumLevel(LogLevel.Debug);
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://movie213.herokuapp.com/"),/*DefaultVersionPolicy = HttpVersionPolicy.RequestVersionOrHigher,*/ /*DefaultRequestVersion = Version.Parse("3.0")*/ });
-
-
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://movie213.herokuapp.com/")/*, DefaultRequestVersion = HttpVersion.Version30, DefaultVersionPolicy = HttpVersionPolicy.RequestVersionExact*/ });
             return builder.Build();
         }
     }

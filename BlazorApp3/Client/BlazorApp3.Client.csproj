@@ -16,6 +16,7 @@
 	  <RunAOTCompilation>true</RunAOTCompilation>
 	  <InvariantGlobalization>true</InvariantGlobalization>
 	  <TypeScriptJSXEmit>preserve</TypeScriptJSXEmit>
+
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -52,5 +53,8 @@
   <ItemGroup>
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
-
+  
+	<ItemGroup>
+  <RuntimeHostConfigurationOption Include="System.Net.SocketsHttpHandler.Http3Support" Value="true" />
+</ItemGroup>
 </Project>

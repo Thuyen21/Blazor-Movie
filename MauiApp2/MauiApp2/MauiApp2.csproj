@@ -8,6 +8,9 @@
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+		
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
 		<!--<MauiVersion>6.0.100-rc.2.2000</MauiVersion>-->
 		
 		<!-- Display name -->

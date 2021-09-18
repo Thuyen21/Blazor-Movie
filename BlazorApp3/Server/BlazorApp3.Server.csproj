@@ -24,6 +24,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
+	
+	<PropertyGroup>
+		<EnablePreviewFeatures>True</EnablePreviewFeatures>
+	</PropertyGroup>
 
   <ItemGroup>
 	  <PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
