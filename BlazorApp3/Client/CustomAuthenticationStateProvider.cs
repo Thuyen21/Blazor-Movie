@@ -22,14 +22,11 @@ namespace BlazorApp3.Client
             {
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
-
-
                     new Claim(ClaimTypes.Name, user.Email),
                     new Claim(ClaimTypes.Role, user.Role),
                     new Claim(ClaimTypes.Email, user.Email)
                 }, "serverAuth");
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-
                 return new AuthenticationState(claimsPrincipal);
             }
 

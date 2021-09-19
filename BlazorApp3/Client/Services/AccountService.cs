@@ -21,6 +21,7 @@ namespace BlazorApp3.Client.Services
             (_authenticationStateProvider as CustomAuthenticationStateProvider).Update();
             return true;
         }
+
     }
 }
 

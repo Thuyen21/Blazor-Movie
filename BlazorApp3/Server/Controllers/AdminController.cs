@@ -283,7 +283,11 @@ public class AdminController : Controller
 
         return View(movie);
     }
-
+    [HttpGet("Done")]
+    public async Task<ActionResult> Done()
+    {
+        return View();
+    }
     [HttpPost("MovieUpload/{MovieId}/{StudioId}")]
     [RequestSizeLimit(long.MaxValue)]
     [RequestFormLimits(MultipartBodyLengthLimit = long.MaxValue)]
@@ -381,8 +385,8 @@ public class AdminController : Controller
 
 
         string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
-
-        return Redirect(hostname + "/EditMovieAdmin/" + MovieId);
+        string redirect = hostname + "/Admin/Done";
+        return Redirect(redirect);
     }
     [HttpPost("DeleteMovie")]
 

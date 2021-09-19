@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
+		<PackageReference Include="Braintree" Version="5.9.0" />
+		<PackageReference Include="FirebaseAdmin" Version="2.2.0" />
+		<PackageReference Include="FirebaseAuthentication.net" Version="4.0.0-alpha.2" />
+		<PackageReference Include="FirebaseDatabase.net" Version="4.0.6" />
+		<PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
+		<PackageReference Include="Google.Apis.Drive.v3" Version="1.55.0.2397" />
+		<PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
+		<PackageReference Include="Google.Cloud.Storage.V1" Version="3.5.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.0-rc.1.21452.15" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="6.0.0-rc.1.21452.15" />
+		<PackageReference Include="PayoutsSdk" Version="1.1.0" />
+		<PackageReference Include="PayPalCheckoutSdk" Version="1.0.3" />
+		<PackageReference Include="PayPalHttp" Version="1.0.1" />
+	</ItemGroup>
+	
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+</Project>
