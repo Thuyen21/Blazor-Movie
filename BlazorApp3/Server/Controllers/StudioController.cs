@@ -125,7 +125,11 @@ public class StudioController : Controller
         }
         return Ok("Success");
     }
-
+    [HttpGet("Done")]
+    public async Task<ActionResult> Done()
+    {
+        return View();
+    }
     [HttpGet("MovieUpload/{MovieId}")]
     public async Task<ActionResult> MovieUpload(string MovieId)
     {
@@ -145,8 +149,9 @@ public class StudioController : Controller
     [HttpPost("MovieUpload/{MovieId}/{StudioId}")]
     [RequestSizeLimit(long.MaxValue)]
     [RequestFormLimits(MultipartBodyLengthLimit = long.MaxValue)]
-    public async Task<ActionResult> MovieUpload(string StudioId, string MovieId, IFormFile ImageFileUp, IFormFile MovieFileUp)
+    public async Task<ActionResult> MovieUpload(string StudioId, string MovieId, IFormFile ImageFileUp,  IFormFile MovieFileUp)
     {
+        StudioId = User.FindFirstValue(ClaimTypes.Sid);
         if (ImageFileUp == null)
         {
 
@@ -237,10 +242,9 @@ public class StudioController : Controller
 
         }
 
-
         string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
-
-        return Redirect(hostname + "/EditMovieStudio/" + MovieId);
+        string redirect = hostname + "/Studio/Done";
+        return Redirect(redirect);
     }
     [HttpGet("Comment/{Id}")]
     public async Task<ActionResult<List<CommentModel>>> Comment(string Id)

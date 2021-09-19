@@ -15,8 +15,8 @@
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 	  <RunAOTCompilation>true</RunAOTCompilation>
 	  <InvariantGlobalization>true</InvariantGlobalization>
-	  <TypeScriptJSXEmit>preserve</TypeScriptJSXEmit>
-
+	  <TypeScriptJSXEmit>none</TypeScriptJSXEmit>
+	  <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

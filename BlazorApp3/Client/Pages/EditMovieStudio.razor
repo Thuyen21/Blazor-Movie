@@ -12,7 +12,15 @@
 }
 else
 {
-    <EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
+    
+
+if(more)
+    {
+        <iframe src="@linkIframe" height="400" width="600"></iframe>
+}
+    else
+    {   
+        <EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator/>
     <ValidationSummary/>
     MovieId
@@ -40,41 +48,21 @@ else
 
 
 <div>If your upload more 500MB click this button</div>
-<button type="submit" @onclick="@Upload">Upload</button>
- <div class="row">
-    <div class="col-md-4">
-        <form action="@linkUp" enctype="multipart/form-data" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger">If it is not a movie or image correct MIME it will not be uploaded.</div>
-           
-            <div class="form-group">
-                <label asp-for="ImageFile" class="control-label">Image</label>
-                <input id="ImageFileUp" name="ImageFileUp" class="form-control" type="file"/>
-                <span asp-validation-for="ImageFile" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MovieFile" class="control-label">Movie</label>
-                <input id="MovieFileUp" name="MovieFileUp" class="form-control" type="file"/>
-                <span asp-validation-for="MovieFile" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary"/>
-            </div>
-        </form>
-        <span id="spnMessage"></span>
-    </div>
-</div>   
+        <button type="submit" @onclick="@Upload">Upload</button>
+    }
 }
 
 
 @code{
-[Parameter]
+    [Parameter]
         public string Id { get; set; }
         private MovieModel movie;
         private IBrowserFile movieFile;
         private IBrowserFile imageFile;
         private string content;
         private string linkUp;
+        private string linkIframe;
+        private bool more = false;
         protected override async Task OnInitializedAsync()
         {
             if (Id == null)
@@ -82,7 +70,9 @@ else
                 _navigationManager.NavigateTo("/MovieStudio");
             }
             movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
-            linkUp = $"/Studio/MovieUpload/{movie.MovieId}/{movie.StudioId}";
+            linkUp = $"/Studio/MovieUpload/{movie.MovieId}";
+
+            linkIframe = $"{_httpClient.BaseAddress}Studio/MovieUpload/{Id}";
         }
 
         private async Task HandleValidSubmit()
@@ -171,6 +161,6 @@ else
         }
         private async Task Upload()
         {
-            _navigationManager.NavigateTo($"/Studio/MovieUpload/{Id}", true);
-        }
+        more = true;
+    }
 }

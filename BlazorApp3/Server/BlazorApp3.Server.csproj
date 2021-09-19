@@ -11,6 +11,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
+	<InvariantGlobalization>true</InvariantGlobalization>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>404d066b-161c-4408-89b2-cf108843fdf8</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
