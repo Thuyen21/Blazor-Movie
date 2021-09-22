@@ -25,6 +25,10 @@
 
 		<!-- Required for C# Hot Reload -->
 		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
+		<TargetFramework>net6.0-windows13.6</TargetFramework>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<AnalysisLevel>6.0</AnalysisLevel>
+		<SignAssembly>True</SignAssembly>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -96,6 +100,10 @@
 	  <Content Include="Shared\NavMenu.razor.css">
 	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0-experimental1" />
 	</ItemGroup>
 
 	<ItemGroup>

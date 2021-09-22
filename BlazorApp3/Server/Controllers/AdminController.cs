@@ -256,9 +256,11 @@ public class AdminController : Controller
 
         movie.PremiereDate = movie.PremiereDate.ToUniversalTime();
 
+#pragma warning disable CS8619 // Nullability of reference types in value of type 'Dictionary<string, object?>' doesn't match target type 'Dictionary<string, dynamic>'.
         Dictionary<string, dynamic> dictionary = movie.GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public)
             .ToDictionary(prop => prop.Name, prop => prop.GetValue(movie, null));
+#pragma warning restore CS8619 // Nullability of reference types in value of type 'Dictionary<string, object?>' doesn't match target type 'Dictionary<string, dynamic>'.
 
         foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
         {
@@ -284,7 +286,9 @@ public class AdminController : Controller
         return View(movie);
     }
     [HttpGet("Done")]
+#pragma warning disable CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
     public async Task<ActionResult> Done()
+#pragma warning restore CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
     {
         return View();
     }

@@ -28,6 +28,9 @@
 	
 	<PropertyGroup>
 		<EnablePreviewFeatures>True</EnablePreviewFeatures>
+		<AnalysisLevel>6.0</AnalysisLevel>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<SignAssembly>True</SignAssembly>
 	</PropertyGroup>
 
   <ItemGroup>
@@ -48,7 +51,7 @@
 	  <PackageReference Include="Microsoft.ML.FastTree" Version="1.6.0" />
 	  <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
 	  <PackageReference Include="PayoutsSdk" Version="1.1.0" />
-	  <PackageReference Include="PayPalCheckoutSdk" Version="1.0.3" />
+	  <PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
 	  <PackageReference Include="PayPalHttp" Version="1.0.1" />
   </ItemGroup>
 

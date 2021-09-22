@@ -31,7 +31,9 @@ public class UserController : Controller
 
     private static readonly FirebaseAuthClient client = new(config);
 
+#pragma warning disable CS8618 // Non-nullable field 'userCredential' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
     private static UserCredential userCredential;
+#pragma warning restore CS8618 // Non-nullable field 'userCredential' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
 
     [HttpPost("login")]
     public async Task<ActionResult> LogIn([FromBody] LogInModel logIn)
@@ -92,9 +94,13 @@ public class UserController : Controller
         //if (User.Identity.IsAuthenticated) logInModel.Email = User.FindFirstValue(ClaimTypes.Name);
         //return await Task.FromResult(logInModel);
         AccountManagementModel acc = new();
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         if (User.Identity.IsAuthenticated)
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             string Id = User.FindFirst(ClaimTypes.Sid).Value;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
 
             Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
@@ -118,7 +124,9 @@ public class UserController : Controller
         try
         {
             userCredential =
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     await client.SignInWithEmailAndPasswordAsync(User.FindFirst(ClaimTypes.Email).Value,
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                         changeEmailModel.Password);
             UserCredential newUserCredentiall = userCredential;
             newUserCredentiall.AuthCredential = EmailProvider.GetCredential(changeEmailModel.Email, changeEmailModel.Password);
@@ -164,9 +172,13 @@ public class UserController : Controller
     public async Task<ActionResult<AccountManagementModel>> Profile()
     {
         AccountManagementModel acc = new();
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         if (User.Identity.IsAuthenticated)
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             string Id = User.FindFirst(ClaimTypes.Sid).Value;
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
 
             Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);

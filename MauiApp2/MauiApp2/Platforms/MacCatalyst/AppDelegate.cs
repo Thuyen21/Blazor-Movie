@@ -1,5 +1,4 @@
-﻿using Foundation;
-using Microsoft.Maui;
+﻿using Microsoft.Maui;
 
 namespace MauiApp2.Platforms.MacCatalyst
 {
