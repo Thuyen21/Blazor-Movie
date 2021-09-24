@@ -117,6 +117,7 @@ public class UserController : Controller
         return await Task.FromResult(acc);
 
     }
+    [Authorize]
     [HttpPost("ChangeEmail")]
     public async Task<ActionResult> ChangeEmail([FromBody] ChangeEmailModel changeEmailModel)
     {
@@ -295,6 +296,7 @@ public class UserController : Controller
     }
 
     [HttpGet("GetToken")]
+    [Authorize]
     public async Task<ActionResult<char[]>> GetToken()
     {
 

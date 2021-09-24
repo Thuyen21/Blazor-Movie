@@ -3,8 +3,24 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using System.Net;
+using System.Security.Authentication;
 
 WebApplicationBuilder? builder = WebApplication.CreateBuilder(args);
+//builder.WebHost.UseUrls().UseKestrel().UseQuic().ConfigureKestrel((context, options) =>
+//{
+//    options.ConfigureEndpointDefaults(listenOptions =>
+//    {
+//        // Use HTTP/3
+//        listenOptions.Protocols = HttpProtocols.Http3;
+//        listenOptions.UseHttps();
+//    });
+//    options.ConfigureEndpointDefaults(listenOptions =>
+//    {
+//        // Use HTTP/3
+//        listenOptions.Protocols = HttpProtocols.Http2;
+//        listenOptions.UseHttps();
+//    });
+//});
 
 // Add services to the container.
 string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
@@ -25,13 +41,13 @@ builder.Services.Configure<FormOptions>(options =>
     options.MultipartHeadersLengthLimit = int.MaxValue;
 });
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("CorsPocliy", policy =>
-//    {
-//        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-//    });
-//});
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPocliy", policy =>
+    {
+        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
 
 WebApplication? app = builder.Build();
 
@@ -39,15 +55,23 @@ WebApplication? app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
+    app.UseForwardedHeaders();
 }
 else
 {
     app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseForwardedHeaders();
     app.UseHsts();
 }
 
 app.UseHttpsRedirection();
+
+app.Use((context, next) =>
+{
+    context.Response.Headers.AltSvc = "h3=\":443\"";
+    return next(context);
+});
 
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
@@ -61,5 +85,13 @@ app.UseCors("CorsPocliy");
 app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
+try
+{
+    app.Run();
+}
+catch (Exception ex)
+{
 
-app.Run();
+    Console.WriteLine(ex.Message);
+}
+

@@ -13,14 +13,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-	  <InvariantGlobalization>true</InvariantGlobalization>
-	  <ImplicitUsings>enable</ImplicitUsings>
-	  
-	  <RunAOTCompilation>true</RunAOTCompilation>
-	  <TypeScriptJSXEmit>none</TypeScriptJSXEmit>
-	  <SignAssembly>True</SignAssembly>
-	  <AnalysisLevel>6.0</AnalysisLevel>
-	  <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+	<InvariantGlobalization>true</InvariantGlobalization>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<RunAOTCompilation>true</RunAOTCompilation>
+	<TypeScriptJSXEmit>none</TypeScriptJSXEmit>
+	<SignAssembly>true</SignAssembly>
+	<AnalysisLevel>6.0</AnalysisLevel>
+	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
