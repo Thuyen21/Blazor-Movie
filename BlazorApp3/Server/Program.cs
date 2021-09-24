@@ -2,25 +2,23 @@ using BlazorApp3.Server;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using System.Net;
-using System.Security.Authentication;
 
 WebApplicationBuilder? builder = WebApplication.CreateBuilder(args);
-//builder.WebHost.UseUrls().UseKestrel().UseQuic().ConfigureKestrel((context, options) =>
-//{
-//    options.ConfigureEndpointDefaults(listenOptions =>
-//    {
-//        // Use HTTP/3
-//        listenOptions.Protocols = HttpProtocols.Http3;
-//        listenOptions.UseHttps();
-//    });
-//    options.ConfigureEndpointDefaults(listenOptions =>
-//    {
-//        // Use HTTP/3
-//        listenOptions.Protocols = HttpProtocols.Http2;
-//        listenOptions.UseHttps();
-//    });
-//});
+builder.WebHost.UseUrls().UseKestrel().UseQuic().ConfigureKestrel((context, options) =>
+{
+    options.ConfigureEndpointDefaults(listenOptions =>
+    {
+        // Use HTTP/3
+        listenOptions.Protocols = HttpProtocols.Http3;
+        listenOptions.UseHttps();
+    });
+    options.ConfigureEndpointDefaults(listenOptions =>
+    {
+        // Use HTTP/2
+        listenOptions.Protocols = HttpProtocols.Http2;
+        listenOptions.UseHttps();
+    });
+});
 
 // Add services to the container.
 string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
@@ -85,13 +83,6 @@ app.UseCors("CorsPocliy");
 app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
-try
-{
-    app.Run();
-}
-catch (Exception ex)
-{
 
-    Console.WriteLine(ex.Message);
-}
+app.Run();
 
