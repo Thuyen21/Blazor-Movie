@@ -13,10 +13,11 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-	  <RunAOTCompilation>true</RunAOTCompilation>
 	  <InvariantGlobalization>true</InvariantGlobalization>
-	  <TypeScriptJSXEmit>none</TypeScriptJSXEmit>
 	  <ImplicitUsings>enable</ImplicitUsings>
+	  
+	  <RunAOTCompilation>true</RunAOTCompilation>
+	  <TypeScriptJSXEmit>none</TypeScriptJSXEmit>
 	  <SignAssembly>True</SignAssembly>
 	  <AnalysisLevel>6.0</AnalysisLevel>
 	  <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
