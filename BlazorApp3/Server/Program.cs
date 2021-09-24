@@ -2,15 +2,27 @@ using BlazorApp3.Server;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
-using System.Net;
 
 WebApplicationBuilder? builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseUrls().UseKestrel().UseQuic().ConfigureKestrel((context, options) =>
+{
+    options.ConfigureEndpointDefaults(listenOptions =>
+    {
+        // Use HTTP/3
+        listenOptions.Protocols = HttpProtocols.Http3;
+        listenOptions.UseHttps();
+    });
+    options.ConfigureEndpointDefaults(listenOptions =>
+    {
+        // Use HTTP/2
+        listenOptions.Protocols = HttpProtocols.Http2;
+        listenOptions.UseHttps();
+    });
+});
 
 // Add services to the container.
 string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
 Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
-
-
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<Censor>();
@@ -27,13 +39,13 @@ builder.Services.Configure<FormOptions>(options =>
     options.MultipartHeadersLengthLimit = int.MaxValue;
 });
 
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy("CorsPocliy", policy =>
-//    {
-//        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-//    });
-//});
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPocliy", policy =>
+    {
+        policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+    });
+});
 
 WebApplication? app = builder.Build();
 
@@ -51,6 +63,12 @@ else
 
 app.UseHttpsRedirection();
 
+app.Use((context, next) =>
+{
+    context.Response.Headers.AltSvc = "h3=\":443\"";
+    return next(context);
+});
+
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 
@@ -65,3 +83,4 @@ app.MapControllers();
 app.MapFallbackToFile("index.html");
 
 app.Run();
+

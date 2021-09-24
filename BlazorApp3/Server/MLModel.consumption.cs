@@ -13,10 +13,14 @@ namespace BlazorApp3.Server
         public class ModelInput
         {
             [ColumnName(@"review")]
+#pragma warning disable CS8618 // Non-nullable property 'Review' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
             public string Review { get; set; }
+#pragma warning restore CS8618 // Non-nullable property 'Review' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
 
             [ColumnName(@"sentiment")]
+#pragma warning disable CS8618 // Non-nullable property 'Sentiment' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
             public string Sentiment { get; set; }
+#pragma warning restore CS8618 // Non-nullable property 'Sentiment' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
 
         }
 
@@ -29,9 +33,13 @@ namespace BlazorApp3.Server
         public class ModelOutput
         {
             [ColumnName("PredictedLabel")]
+#pragma warning disable CS8618 // Non-nullable property 'Prediction' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
             public string Prediction { get; set; }
+#pragma warning restore CS8618 // Non-nullable property 'Prediction' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
 
+#pragma warning disable CS8618 // Non-nullable property 'Score' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
             public float[] Score { get; set; }
+#pragma warning restore CS8618 // Non-nullable property 'Score' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
         }
 
         #endregion

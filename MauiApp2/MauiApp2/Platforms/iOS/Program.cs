@@ -1,6 +1,4 @@
-﻿using UIKit;
-
-namespace MauiApp2.Platforms.iOS
+﻿namespace MauiApp2.Platforms.iOS
 {
     public class Program
     {

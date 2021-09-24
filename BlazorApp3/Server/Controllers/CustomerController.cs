@@ -111,7 +111,9 @@ public class CustomerController : Controller
     //    return View();
     //}
     [HttpGet("Deposit")]
+#pragma warning disable CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
     public async Task<ActionResult<char[]>> Deposit()
+#pragma warning restore CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
     {
 
         string clientToken;
@@ -405,7 +407,9 @@ public class CustomerController : Controller
 
     }
     [HttpPost("View")]
+#pragma warning disable CS0114 // 'CustomerController.View(string)' hides inherited member 'Controller.View(string?)'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword.
     public async Task<ActionResult> View([FromBody] string Id)
+#pragma warning restore CS0114 // 'CustomerController.View(string)' hides inherited member 'Controller.View(string?)'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword.
     {
         FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
         QuerySnapshot collectionView = await db.Collection("View").WhereEqualTo("Id", Id).WhereEqualTo("Viewer", User.FindFirstValue(ClaimTypes.Sid)).WhereGreaterThanOrEqualTo("Time", DateTime.UtcNow.AddHours(-0.5)).WhereLessThanOrEqualTo("Time", DateTime.UtcNow).GetSnapshotAsync();

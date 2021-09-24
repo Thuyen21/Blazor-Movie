@@ -1,7 +1,5 @@
-﻿using Android.App;
-using Android.Runtime;
+﻿using Android.Runtime;
 using Microsoft.Maui;
-using System;
 
 namespace MauiApp2.Platforms.Android
 {

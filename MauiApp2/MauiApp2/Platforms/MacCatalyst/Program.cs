@@ -1,6 +1,4 @@
-﻿using UIKit;
-
-namespace MauiApp2.Platforms.MacCatalyst
+﻿namespace MauiApp2.Platforms.MacCatalyst
 {
     public class Program
     {

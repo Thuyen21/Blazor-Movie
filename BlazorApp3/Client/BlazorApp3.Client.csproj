@@ -13,10 +13,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-	  <RunAOTCompilation>true</RunAOTCompilation>
-	  <InvariantGlobalization>true</InvariantGlobalization>
-	  <TypeScriptJSXEmit>none</TypeScriptJSXEmit>
-	  <ImplicitUsings>enable</ImplicitUsings>
+	<InvariantGlobalization>true</InvariantGlobalization>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<RunAOTCompilation>true</RunAOTCompilation>
+	<TypeScriptJSXEmit>none</TypeScriptJSXEmit>
+	<SignAssembly>true</SignAssembly>
+	<AnalysisLevel>6.0</AnalysisLevel>
+	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -42,7 +45,7 @@
 	  <PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
 	  <PackageReference Include="Google.Cloud.Storage.V1" Version="3.5.0" />
 	  <PackageReference Include="PayoutsSdk" Version="1.1.0" />
-	  <PackageReference Include="PayPalCheckoutSdk" Version="1.0.3" />
+	  <PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
 	  <PackageReference Include="PayPalHttp" Version="1.0.1" />
   </ItemGroup>
 
