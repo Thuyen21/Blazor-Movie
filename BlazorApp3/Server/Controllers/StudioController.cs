@@ -14,12 +14,17 @@ namespace BlazorApp3.Server.Controllers;
 [Authorize(Roles = "Studio")]
 public class StudioController : Controller
 {
+    private readonly FirestoreDb db;
+    public StudioController(FirestoreDb db)
+    {
+        this.db = db;
+    }
     [HttpGet("Index/{searchString?}/{sortOrder?}/{index:int:min(0)}")]
     public async Task<ActionResult<List<MovieModel>>> Index(string? searchString, string? sortOrder, int index)
     {
         try
         {
-            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
             Query usersRef = db.Collection("Movie").WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid));
             if (!string.IsNullOrWhiteSpace(searchString))
             {
@@ -69,7 +74,6 @@ public class StudioController : Controller
     [HttpPost("Upload")]
     public async Task<ActionResult> Upload([FromBody] MovieModel movie)
     {
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
         CollectionReference collection = db.Collection("Movie");
         try
         {
@@ -88,7 +92,7 @@ public class StudioController : Controller
     [HttpGet("EditMovie/{Id}")]
     public async Task<ActionResult<MovieModel>> EditMovie(string Id)
     {
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", Id).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid));
 
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
@@ -111,7 +115,7 @@ public class StudioController : Controller
     [HttpPost("EditMovie")]
     public async Task<ActionResult> EditMovie([FromBody] MovieModel movie)
     {
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
 
@@ -139,7 +143,7 @@ public class StudioController : Controller
     [HttpGet("MovieUpload/{MovieId}")]
     public async Task<ActionResult> MovieUpload(string MovieId)
     {
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", MovieId).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid));
 
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
@@ -255,7 +259,7 @@ public class StudioController : Controller
     [HttpGet("Comment/{Id}")]
     public async Task<ActionResult<List<CommentModel>>> Comment(string Id)
     {
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
 
         Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time");
         QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
@@ -279,7 +283,7 @@ public class StudioController : Controller
     //	{
     //		DateTime StartDate = DateTime.Parse(Start).AddHours(12);
     //		DateTime EndDate = StartDate.AddDays(1);
-    //		FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+    //		
 
     //		Query view = db.Collection("View").WhereEqualTo("Id", Id).OrderByDescending("Time").WhereGreaterThanOrEqualTo("Time", StartDate.ToUniversalTime()).WhereLessThanOrEqualTo("Time", EndDate.ToUniversalTime());
     //		QuerySnapshot viewSnapshot = await view.GetSnapshotAsync();
@@ -298,7 +302,7 @@ public class StudioController : Controller
     {
         DateTime StartDate = DateTime.Parse(Start).AddHours(12).ToUniversalTime();
         DateTime EndDate = StartDate.AddDays(1);
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
 
         try
         {
@@ -339,7 +343,7 @@ public class StudioController : Controller
         {
             DateTime StartDate = DateTime.Parse(Start).AddHours(12);
             DateTime EndDate = StartDate.AddDays(1);
-            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
 
             Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time").WhereGreaterThanOrEqualTo("Time", StartDate.ToUniversalTime()).WhereLessThanOrEqualTo("Time", EndDate.ToUniversalTime());
             QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
@@ -403,7 +407,7 @@ public class StudioController : Controller
         try
         {
             ss[1] = DateTime.Parse(ss[1]).ToString("MM yyyy");
-            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
             QuerySnapshot? snapshot = await db.Collection("Movie").WhereEqualTo("MovieId", ss[0]).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
             double cash = snapshot.Documents[0].GetValue<double>(ss[1]);
             QuerySnapshot? updateCash = (await db.Collection("Account")
@@ -430,7 +434,7 @@ public class StudioController : Controller
         try
         {
             ss[1] = DateTime.Parse(ss[1]).ToString("MM yyyy");
-            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
             double snapshot = (await db.Collection("Movie").WhereEqualTo("MovieId", ss[0]).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>(ss[1]);
             return Ok($"Cash for {ss[1]} is {snapshot}");
         }
@@ -443,7 +447,7 @@ public class StudioController : Controller
     [HttpPost("Salary")]
     public async Task<ActionResult> Salary([FromBody] Dictionary<string, string> dic)
     {
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
         QuerySnapshot snapshot = await db.Collection("Account")
             .WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid))
             .GetSnapshotAsync();

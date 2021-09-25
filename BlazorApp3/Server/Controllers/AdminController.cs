@@ -1,6 +1,5 @@
 ﻿using BlazorApp3.Shared;
 using Firebase.Auth;
-using Firebase.Auth.Providers;
 using Firebase.Storage;
 using FirebaseAdmin;
 using FirebaseAdmin.Auth;
@@ -18,25 +17,14 @@ namespace BlazorApp3.Server.Controllers;
 public class AdminController : Controller
 {
     private readonly IWebHostEnvironment env;
-    public AdminController(IWebHostEnvironment env)
+    private readonly FirestoreDb db;
+    private readonly FirebaseAuthClient client;
+    public AdminController(IWebHostEnvironment env, FirestoreDb db, FirebaseAuthClient client)
     {
         this.env = env;
+        this.db = db;
+        this.client = client;
     }
-    private static readonly FirebaseAuthConfig config = new()
-    {
-        ApiKey = "AIzaSyAqCxl98i68Te5_xy3vgMcAEoF5qiBKE9o",
-        AuthDomain = "movie2-e3c7b.firebaseapp.com",
-        Providers = new FirebaseAuthProvider[] {
-                // Add and configure individual providers
-
-                new EmailProvider()
-
-                // ...
-            }
-    };
-
-    private static readonly FirebaseAuthClient client = new(config);
-    private static readonly FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
 
     [HttpGet("AccountManagement/{searchString?}/{sortOrder?}/{index:int:min(0)}")]
     public async Task<ActionResult<List<AccountManagementModel>>> AccountManagement(string? searchString, string? sortOrder, int index)
@@ -189,7 +177,7 @@ public class AdminController : Controller
     [HttpGet("Movie/{searchString?}/{sortOrder?}/{index:int:min(0)}")]
     public async Task<ActionResult<List<MovieModel>>> Movie(string? sortOrder, string? searchString, int index)
     {
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
 
         Query usersRef = db.Collection("Movie");
         if (!string.IsNullOrWhiteSpace(searchString))
@@ -234,7 +222,7 @@ public class AdminController : Controller
     [HttpGet("EditMovie/{Id}")]
     public async Task<ActionResult<MovieModel>> EditMovie(string Id)
     {
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", Id);
 
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
@@ -250,7 +238,7 @@ public class AdminController : Controller
     [HttpPost("EditMovie")]
     public async Task<ActionResult> EditMoviePost([FromBody] MovieModel movie)
     {
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
 
@@ -272,7 +260,7 @@ public class AdminController : Controller
     [HttpGet("MovieUpload/{MovieId}")]
     public async Task<ActionResult> MovieUpload(string MovieId)
     {
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", MovieId);
 
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
@@ -396,7 +384,7 @@ public class AdminController : Controller
 
     public async Task<ActionResult> DeleteMovie([FromBody] MovieModel movie)
     {
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
 
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
