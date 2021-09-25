@@ -23,7 +23,7 @@ public class CustomerController : Controller
     {
         try
         {
-            
+
 
             Query usersRef = db.Collection("Movie");
             if (!string.IsNullOrWhiteSpace(searchString))
@@ -74,7 +74,7 @@ public class CustomerController : Controller
     [HttpGet("Watch/{Id}")]
     public async Task<ActionResult<MovieModel>> Watch(string Id)
     {
-        
+
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", Id);
 
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
@@ -154,7 +154,7 @@ public class CustomerController : Controller
         if (result.IsSuccess())
         {
             Braintree.Transaction transaction = result.Target;
-            
+
             Query usersRef = db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid));
 
             QuerySnapshot snapshotAsync = await usersRef.GetSnapshotAsync();
@@ -235,7 +235,7 @@ public class CustomerController : Controller
         if (result.IsSuccess())
         {
             Braintree.Transaction transaction = result.Target;
-            
+
             Query usersRef = db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid));
 
             QuerySnapshot snapshotAsync = await usersRef.GetSnapshotAsync();
@@ -290,7 +290,7 @@ public class CustomerController : Controller
     [HttpGet("VipCheck")]
     public async Task<ActionResult<char[]>> VipCheck()
     {
-        
+
         QuerySnapshot vipCheck = await db.Collection("Vip").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
         if (vipCheck.Documents.Count == 0)
         {
@@ -316,7 +316,7 @@ public class CustomerController : Controller
     [HttpPost("BuyVip")]
     public async Task<ActionResult> BuyVip([FromBody] VipModel vip)
     {
-        
+
         CollectionReference collection = db.Collection("Buy");
         if (vip.Choose == 0 && vip.Id != null)
         {
@@ -392,7 +392,7 @@ public class CustomerController : Controller
     [HttpPost("UserAgent")]
     public async Task<ActionResult> UserAgent([FromBody] string Device)
     {
-        
+
         try
         {
             string check = (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<string>("UserAgent");
@@ -413,7 +413,7 @@ public class CustomerController : Controller
     public async Task<ActionResult> View([FromBody] string Id)
 #pragma warning restore CS0114 // 'CustomerController.View(string)' hides inherited member 'Controller.View(string?)'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword.
     {
-        
+
         QuerySnapshot collectionView = await db.Collection("View").WhereEqualTo("Id", Id).WhereEqualTo("Viewer", User.FindFirstValue(ClaimTypes.Sid)).WhereGreaterThanOrEqualTo("Time", DateTime.UtcNow.AddHours(-0.5)).WhereLessThanOrEqualTo("Time", DateTime.UtcNow).GetSnapshotAsync();
         if (collectionView.Documents.Count == 0)
         {
@@ -505,7 +505,7 @@ public class CustomerController : Controller
     [HttpGet("CanWatch/{Id}")]
     public async Task<ActionResult<bool>> CanWatch(string Id)
     {
-        
+
         QuerySnapshot collectionCheckVip = await db.Collection("Vip").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).OrderByDescending("Time").Limit(1).GetSnapshotAsync();
 
         if (collectionCheckVip.Documents.Count != 0)
@@ -557,7 +557,7 @@ public class CustomerController : Controller
     [HttpGet("Comment/{Id?}/{index:int:min(0)}")]
     public async Task<ActionResult<List<CommentModel>>> Comment(string? Id, int index)
     {
-        
+
 
         Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time").Offset(index * 5).Limit(5);
         QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
@@ -588,7 +588,7 @@ public class CustomerController : Controller
     {
         try
         {
-            
+
             comment.Email = User.FindFirstValue(ClaimTypes.Email);
             DocumentReference commentUp = await db.Collection("Comment").AddAsync(comment);
             await commentUp.UpdateAsync(new Dictionary<string, dynamic> { { "Id", commentUp.Id } });
@@ -604,7 +604,7 @@ public class CustomerController : Controller
     [HttpPost("Ac/{Id}")]
     public async Task<ActionResult> Ac([FromBody] string ac, string Id)
     {
-        
+
         if ((await db.Collection("CommentAcction").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).WhereEqualTo("CommentId", Id).GetSnapshotAsync()).Documents.Count == 0)
         {
             if (ac == "Like")

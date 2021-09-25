@@ -1,6 +1,5 @@
 ﻿using BlazorApp3.Shared;
 using Firebase.Auth;
-using Firebase.Auth.Providers;
 using Firebase.Storage;
 using FirebaseAdmin;
 using FirebaseAdmin.Auth;
@@ -178,7 +177,7 @@ public class AdminController : Controller
     [HttpGet("Movie/{searchString?}/{sortOrder?}/{index:int:min(0)}")]
     public async Task<ActionResult<List<MovieModel>>> Movie(string? sortOrder, string? searchString, int index)
     {
-        
+
 
         Query usersRef = db.Collection("Movie");
         if (!string.IsNullOrWhiteSpace(searchString))
@@ -223,7 +222,7 @@ public class AdminController : Controller
     [HttpGet("EditMovie/{Id}")]
     public async Task<ActionResult<MovieModel>> EditMovie(string Id)
     {
-        
+
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", Id);
 
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
@@ -239,7 +238,7 @@ public class AdminController : Controller
     [HttpPost("EditMovie")]
     public async Task<ActionResult> EditMoviePost([FromBody] MovieModel movie)
     {
-        
+
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
 
@@ -261,7 +260,7 @@ public class AdminController : Controller
     [HttpGet("MovieUpload/{MovieId}")]
     public async Task<ActionResult> MovieUpload(string MovieId)
     {
-        
+
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", MovieId);
 
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
@@ -385,7 +384,7 @@ public class AdminController : Controller
 
     public async Task<ActionResult> DeleteMovie([FromBody] MovieModel movie)
     {
-        
+
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
 
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();

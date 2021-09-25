@@ -40,7 +40,7 @@ public class UserController : Controller
         }
 
         User user = userCredential.User;
-        
+
         Query usersRef = db.Collection("Account").WhereEqualTo("Id", user.Uid);
         QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
 
@@ -91,7 +91,7 @@ public class UserController : Controller
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
             string Id = User.FindFirst(ClaimTypes.Sid).Value;
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
-            
+
 
             Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
 
@@ -122,7 +122,7 @@ public class UserController : Controller
             UserCredential newUserCredentiall = userCredential;
             newUserCredentiall.AuthCredential = EmailProvider.GetCredential(changeEmailModel.Email, changeEmailModel.Password);
             await newUserCredentiall.User.LinkWithCredentialAsync(userCredential.AuthCredential);
-            
+
 
             QuerySnapshot snapshot = await db.Collection("Account").WhereEqualTo("Id", userCredential.User.Uid)
                 .GetSnapshotAsync();
@@ -170,7 +170,7 @@ public class UserController : Controller
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
             string Id = User.FindFirst(ClaimTypes.Sid).Value;
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
-            
+
 
             Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
 
@@ -193,7 +193,7 @@ public class UserController : Controller
 
         try
         {
-            
+
             QuerySnapshot snapshot = await db.Collection("Account")
                 .WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
             Dictionary<string, dynamic> update = new()
@@ -249,7 +249,7 @@ public class UserController : Controller
             }
 
             User user = userCredential.User;
-            
+
             CollectionReference docRef = db.Collection("Account");
 
             AccountManagementModel account = new()
