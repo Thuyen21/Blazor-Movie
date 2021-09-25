@@ -15,25 +15,15 @@ namespace BlazorApp3.Server.Controllers;
 public class UserController : Controller
 {
 
-
-    private static readonly FirebaseAuthConfig config = new()
+    private readonly FirestoreDb db;
+    private readonly FirebaseAuthClient client;
+    public UserController(FirestoreDb db, FirebaseAuthClient client)
     {
-        ApiKey = "AIzaSyAqCxl98i68Te5_xy3vgMcAEoF5qiBKE9o",
-        AuthDomain = "movie2-e3c7b.firebaseapp.com",
-        Providers = new FirebaseAuthProvider[] {
-                // Add and configure individual providers
+        this.db = db;
+        this.client = client;
+    }
 
-                new EmailProvider()
-
-                // ...
-            }
-    };
-
-    private static readonly FirebaseAuthClient client = new(config);
-
-#pragma warning disable CS8618 // Non-nullable field 'userCredential' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
     private static UserCredential userCredential;
-#pragma warning restore CS8618 // Non-nullable field 'userCredential' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
 
     [HttpPost("login")]
     public async Task<ActionResult> LogIn([FromBody] LogInModel logIn)
@@ -50,7 +40,7 @@ public class UserController : Controller
         }
 
         User user = userCredential.User;
-        FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+        
         Query usersRef = db.Collection("Account").WhereEqualTo("Id", user.Uid);
         QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
 
@@ -101,7 +91,7 @@ public class UserController : Controller
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
             string Id = User.FindFirst(ClaimTypes.Sid).Value;
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
-            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+            
 
             Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
 
@@ -132,7 +122,7 @@ public class UserController : Controller
             UserCredential newUserCredentiall = userCredential;
             newUserCredentiall.AuthCredential = EmailProvider.GetCredential(changeEmailModel.Email, changeEmailModel.Password);
             await newUserCredentiall.User.LinkWithCredentialAsync(userCredential.AuthCredential);
-            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+            
 
             QuerySnapshot snapshot = await db.Collection("Account").WhereEqualTo("Id", userCredential.User.Uid)
                 .GetSnapshotAsync();
@@ -180,7 +170,7 @@ public class UserController : Controller
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
             string Id = User.FindFirst(ClaimTypes.Sid).Value;
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
-            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+            
 
             Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
 
@@ -203,7 +193,7 @@ public class UserController : Controller
 
         try
         {
-            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+            
             QuerySnapshot snapshot = await db.Collection("Account")
                 .WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
             Dictionary<string, dynamic> update = new()
@@ -259,7 +249,7 @@ public class UserController : Controller
             }
 
             User user = userCredential.User;
-            FirestoreDb db = FirestoreDb.Create("movie2-e3c7b");
+            
             CollectionReference docRef = db.Collection("Account");
 
             AccountManagementModel account = new()

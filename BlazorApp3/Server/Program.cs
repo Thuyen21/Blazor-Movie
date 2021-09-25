@@ -1,4 +1,7 @@
 using BlazorApp3.Server;
+using Firebase.Auth;
+using Firebase.Auth.Providers;
+using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -23,6 +26,10 @@ builder.WebHost.UseUrls().UseKestrel().UseQuic().ConfigureKestrel((context, opti
 // Add services to the container.
 string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
 Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", path);
+
+builder.Services.AddSingleton(sp => FirestoreDb.Create("movie2-e3c7b"));
+
+builder.Services.AddSingleton(sp => new FirebaseAuthClient(new FirebaseAuthConfig() {ApiKey = "AIzaSyAqCxl98i68Te5_xy3vgMcAEoF5qiBKE9o",AuthDomain = "movie2-e3c7b.firebaseapp.com", Providers = new FirebaseAuthProvider[] { new EmailProvider() } }));
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<Censor>();
