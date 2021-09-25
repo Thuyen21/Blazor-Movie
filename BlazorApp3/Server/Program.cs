@@ -4,7 +4,6 @@ using Firebase.Auth.Providers;
 using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 WebApplicationBuilder? builder = WebApplication.CreateBuilder(args);
 //builder.WebHost.UseUrls().UseKestrel().UseQuic().ConfigureKestrel((context, options) =>
