@@ -7,27 +7,19 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 WebApplicationBuilder? builder = WebApplication.CreateBuilder(args);
-builder.WebHost.UseUrls().UseKestrel().UseQuic().ConfigureKestrel((context, options) =>
-{
-    options.ConfigureEndpointDefaults(listenOptions =>
-    {
-        // Use HTTP/3
-        listenOptions.Protocols = HttpProtocols.Http3;
-        listenOptions.UseHttps();
-    });
-    options.ConfigureEndpointDefaults(listenOptions =>
-    {
-        // Use HTTP/2
-        listenOptions.Protocols = HttpProtocols.Http2;
-        listenOptions.UseHttps();
-    });
-});
+//builder.WebHost.UseUrls().UseKestrel().UseQuic().ConfigureKestrel((context, options) =>
+//{
+//    options.ConfigureEndpointDefaults(listenOptions =>
+//    {
+//        // Use HTTP/3
+//        listenOptions.Protocols = HttpProtocols.Http1AndHttp2AndHttp3;
+//        listenOptions.UseHttps();
+//    });
+//});
 
 // Add services to the container.
 Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json")));
-
 builder.Services.AddSingleton(sp => FirestoreDb.Create("movie2-e3c7b"));
-
 builder.Services.AddSingleton(sp => new FirebaseAuthClient(new FirebaseAuthConfig() { ApiKey = "AIzaSyAqCxl98i68Te5_xy3vgMcAEoF5qiBKE9o", AuthDomain = "movie2-e3c7b.firebaseapp.com", Providers = new FirebaseAuthProvider[] { new EmailProvider() } }));
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
