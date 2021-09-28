@@ -11,19 +11,25 @@ namespace BlazorApp3.Shared
         [Key]
         [DataType(DataType.Text)]
         [DisplayName("Id")]
+#pragma warning disable CS8618 // Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
         public string Id { get; set; }
+#pragma warning restore CS8618 // Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
 
         [FirestoreProperty]
         [Required]
         [EmailAddress]
         [DisplayName("Email")]
+#pragma warning disable CS8618 // Non-nullable property 'Email' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
         public string Email { get; set; }
+#pragma warning restore CS8618 // Non-nullable property 'Email' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
 
         [FirestoreProperty]
         [Required]
         [DisplayName("Name")]
         [DataType(DataType.Text)]
+#pragma warning disable CS8618 // Non-nullable property 'Name' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
         public string Name { get; set; }
+#pragma warning restore CS8618 // Non-nullable property 'Name' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
 
         [FirestoreProperty]
         [Required]
@@ -36,7 +42,9 @@ namespace BlazorApp3.Shared
         [Required]
         [DisplayName("Role")]
         [DataType(DataType.Text)]
+#pragma warning disable CS8618 // Non-nullable property 'Role' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
         public string Role { get; set; }
+#pragma warning restore CS8618 // Non-nullable property 'Role' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
 
         [FirestoreProperty]
         [DisplayName("Wallet")]

@@ -2,70 +2,69 @@ name: .NET
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
-
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 6.x
-        include-prerelease: true
- #   - name: Setup .NET
-#      uses: actions/setup-dotnet@v1
-#      with:
-#         dotnet-version: 5.x
-    - name: Install format
-      run: dotnet tool install -g dotnet-format --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
-    - name: Install tools
-      run: |
-        dotnet workload install wasm-tools maui
-    - name: Install dependencies
-      run: dotnet restore BlazorApp3.sln
-    - name: Test with the dotnet CLI
-      run: dotnet test BlazorApp3.sln
-    - name: Formating
-      run: dotnet format --no-restore BlazorApp3.sln
-    - name: Install dependencies
-      run: dotnet restore MauiApp2.sln
-#    - name: Test with the dotnet CLI
-#      run: dotnet test MauiApp2.sln
-    - name: Formating
-      run: dotnet format --no-restore MauiApp2.sln
-      
-#    - name: Install maui
-#      run: |
- #        dotnet tool install -g redth.net.maui.check
- #        maui-check -f -n  --no-cache  --force-dotnet
-  #  - name: Install dependencies
-   #   run: dotnet restore \Maui\MauiApp1\MauiApp1.sln
-    #- name: Test with the dotnet CLI
-   #   run: dotnet test \Maui\MauiApp1\MauiApp1.sln -f windows
-   # - name: Formating
-    #  run: dotnet format --no-restore --folder \Maui\MauiApp1\MauiApp1.sln
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.x
+          include-prerelease: true
+      #   - name: Setup .NET
+      #      uses: actions/setup-dotnet@v1
+      #      with:
+      #         dotnet-version: 5.x
+      - name: Install format
+        run: dotnet tool install -g dotnet-format --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
+      - name: Install tools
+        run: |
+          dotnet workload install wasm-tools maui android-aot ios maccatalyst macos tvos
+      #    - name: Install dependencies
+      #      run: dotnet restore BlazorApp3.sln
+      - name: Test with the dotnet CLI
+        run: dotnet test BlazorApp3.sln
+      - name: Formating
+        run: dotnet format --no-restore BlazorApp3.sln
+      #    - name: Install dependencies
+      #      run: dotnet restore MauiApp2.sln
+      #    - name: Test with the dotnet CLI
+      #      run: dotnet test MauiApp2.sln
+      - name: Formating
+        run: dotnet format --no-restore MauiApp2.sln
 
-    - name: Commit files
-      if: steps.format.outputs.has-changes == 'true'
-      run: |
-        git config --local user.name "github-actions[bot]"
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git commit -a -m 'Automated dotnet-format update'
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
-      with:
-        title: '[housekeeping] Automated PR to fix formatting errors'
-        body: |
-          Automated PR to fix formatting errors
-        committer: GitHub <noreply@github.com>
-        author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>, Thuyen21, baopngch18183
-        labels: t/housekeeping ♻︎
-        assignees: Thuyen21, baopngch18183
-        reviewers: Thuyen21, baopngch18183
-        branch: housekeeping/fix-codeformatting
+      #    - name: Install maui
+      #      run: |
+      #        dotnet tool install -g redth.net.maui.check
+      #        maui-check -f -n  --no-cache  --force-dotnet
+      #  - name: Install dependencies
+      #   run: dotnet restore \Maui\MauiApp1\MauiApp1.sln
+      #- name: Test with the dotnet CLI
+      #   run: dotnet test \Maui\MauiApp1\MauiApp1.sln -f windows
+      # - name: Formating
+      #  run: dotnet format --no-restore --folder \Maui\MauiApp1\MauiApp1.sln
+
+      - name: Commit files
+        if: steps.format.outputs.has-changes == 'true'
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git commit -a -m 'Automated dotnet-format update'
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: "[housekeeping] Automated PR to fix formatting errors"
+          body: |
+            Automated PR to fix formatting errors
+          committer: GitHub <noreply@github.com>
+          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          labels: t/housekeeping ♻︎
+          assignees: Thuyen21, baopngch18183
+          reviewers: Thuyen21, baopngch18183
+          branch: housekeeping/fix-codeformatting
