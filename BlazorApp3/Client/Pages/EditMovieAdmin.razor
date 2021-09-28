@@ -112,10 +112,6 @@
 
         protected override async Task OnInitializedAsync()
         {
-            if (Id == null)
-            {
-                _navigationManager.NavigateTo("/MovieAdmin");
-            }
             movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
             linkIframe = $"{_httpClient.BaseAddress}Admin/MovieUpload/{Id}";
         }

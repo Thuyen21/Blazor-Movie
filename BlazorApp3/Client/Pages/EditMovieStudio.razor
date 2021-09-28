@@ -161,13 +161,8 @@ if(more)
         private bool more = false;
         protected override async Task OnInitializedAsync()
         {
-            if (Id == null)
-            {
-                _navigationManager.NavigateTo("/MovieStudio");
-            }
             movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
             linkUp = $"/Studio/MovieUpload/{movie.MovieId}";
-
             linkIframe = $"{_httpClient.BaseAddress}Studio/MovieUpload/{Id}";
         }
 

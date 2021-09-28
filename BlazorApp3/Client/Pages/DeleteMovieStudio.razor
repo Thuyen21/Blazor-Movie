@@ -1,6 +1,6 @@
 ﻿<h3>DeleteMovieAdmin</h3>
-@page "/DeleteMovieAdmin/{Id}"
-@attribute [Authorize(Roles ="Admin")]
+@page "/DeleteMovieStudio/{Id}"
+@attribute [Authorize(Roles ="Studio")]
 @if (movie == null)
 {
     <p>
@@ -34,11 +34,11 @@ else
         private string content;
         protected override async Task OnInitializedAsync()
         {
-            movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
+            movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
         }
         private async Task HandleValidSubmit()
         {
-            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<MovieModel>("Admin/DeleteMovie", movie);
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<MovieModel>("Studio/DeleteMovie", movie);
             content = await response.Content.ReadAsStringAsync();
         }
 }
