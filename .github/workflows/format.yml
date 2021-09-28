@@ -25,7 +25,7 @@ jobs:
         run: dotnet tool install -g dotnet-format --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
       - name: Install tools
         run: |
-          dotnet workload install wasm-tools maui
+          dotnet workload install wasm-tools maui android-aot ios maccatalyst macos tvos
       #    - name: Install dependencies
       #      run: dotnet restore BlazorApp3.sln
       - name: Test with the dotnet CLI
