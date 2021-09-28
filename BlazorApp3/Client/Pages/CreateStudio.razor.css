@@ -32,14 +32,21 @@ img {
 }
 
 .container {
-    width: 100%;
+    position: relative;
+    max-width: 850px;
+    width: 550px;
+    background: #e7f0f8;
+    padding: 40px 30px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    perspective: 2700px;
+    border-radius: 12px;
 }
 
 a {
     text-decoration: none;
 }
 
-input, button, textarea, select {
+input,textarea, select {
     font-family: var(--font);
     font-size: 1.4rem;
     font-weight: 300;
@@ -47,12 +54,17 @@ input, button, textarea, select {
     border: 0;
     margin: 0;
     padding: 0;
-    border-radius: 0;
+    border-radius: 12px;
     -webkit-appearance: none;
 }
 
 button {
+    color: #fff;
+    background: #7d2ae8;
+    border-radius: 6px;
+    padding: 0;
     cursor: pointer;
+    transition: all 0.4s ease;
 }
 
 .login-form {
@@ -62,6 +74,17 @@ button {
 }
 
     .login-form input {
+        padding: 1.5rem;
+        border: 1px solid #eee;
+        color: #333;
+        border-radius: 4px;
+        margin-bottom: 1.5rem;
+        display: block;
+        width: 100%;
+        transition: border 0.25s linear;
+        font-weight: normal;
+    }
+    .login-form textarea {
         padding: 1.5rem;
         border: 1px solid #eee;
         color: #333;
@@ -91,7 +114,7 @@ button {
         padding: 1.5rem;
         border-radius: 4px;
         color: white;
-        background-color: var(--primary);
+        /*background-color: var(--primary);*/
         text-transform: uppercase;
     }
 

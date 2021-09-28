@@ -2,7 +2,7 @@
 @attribute [Authorize(Roles = "Studio")]
 @page "/CreateStudio"
 
-<EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
+@*<EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
     MovieGenre
@@ -11,13 +11,14 @@
     <InputText @bind-Value="@movie.MovieName" /><br>
     PremiereDate
     <InputDate @bind-Value="@movie.PremiereDate" /><br>
-
+    MoviesDescription
+    <InputText @bind-Value="@movie.MoviesDescription" /><br>
     <button type="submit">Submit</button>
 </EditForm>
 <div>@content</div>
+*@
 
-
-@*<head>
+<head>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossOrigin="anonymous" />
 </head>
@@ -26,17 +27,19 @@
         <EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
             <DataAnnotationsValidator />
             <ValidationSummary />
-            <a style="font-weight: 900;">Gender </a>
+            <a style="font-weight: 600;">Gender </a>
             <input type="text" placeholder="Type gender of movie" @bind="@movie.MovieGenre"/>
-            <a style="font-weight: 900;">Name </a>
+            <a style="font-weight: 600;">Name </a>
             <input type="text" placeholder="Type name of movie" @bind="@movie.MovieName"/>
-            <a style="font-weight: 900;">Premiere Date</a>
+            <a style="font-weight: 600;">Description</a>
+            <textarea style="outline:1px;" rows="9" cols="70" type="text" placeholder="Type description of movie" @bind="@movie.MoviesDescription"/>
+            <a style="font-weight: 600;">Premiere Date</a>
             <input type="date"  @bind="@movie.PremiereDate" />
             <button>Submit</button>
         </EditForm>
         <div>@content</div>
     </form>
-</div>*@
+</div>
  
 
 
