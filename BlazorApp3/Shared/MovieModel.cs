@@ -35,5 +35,13 @@ namespace BlazorApp3.Shared
         [DisplayName("Premiere date")]
         [DataType(DataType.Date)]
         public DateTime PremiereDate { get; set; }
+
+#pragma warning restore CS8618 // Non-nullable property 'MoviesDescription' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
+
+        [FirestoreProperty]
+        [Required]
+        [DisplayName("Description")]
+        [DataType(DataType.Text)]
+        public string MoviesDescription { get; set; }
     }
 }
