@@ -394,20 +394,37 @@ public class AdminController : Controller
             movie = snapshotDocument.ConvertTo<MovieModel>();
 
 
-            Task delete = new FirebaseStorage("movie2-e3c7b.appspot.com",
+            try
+            {
+                Task delete = new FirebaseStorage("movie2-e3c7b.appspot.com",
                     new FirebaseStorageOptions
                     {
                         AuthTokenAsyncFactory = async () => await Task.FromResult(User.FindFirstValue("Token"))
                     }).Child(movie.StudioId).Child(movie.MovieId).Child("Image")
                 .DeleteAsync();
-            await delete;
-            delete = new FirebaseStorage("movie2-e3c7b.appspot.com",
+                await delete;
+            }
+            catch
+            {
+
+
+            }
+
+            try
+            {
+                Task delete = new FirebaseStorage("movie2-e3c7b.appspot.com",
                     new FirebaseStorageOptions
                     {
                         AuthTokenAsyncFactory = async () => await Task.FromResult(User.FindFirstValue("Token"))
                     }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie")
                 .DeleteAsync();
-            await delete;
+                await delete;
+            }
+            catch
+            {
+
+
+            }
             await snapshotDocument.Reference.DeleteAsync();
             return Ok("Success");
         }

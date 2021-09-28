@@ -504,5 +504,54 @@ public class StudioController : Controller
         }
 
     }
+    [HttpPost("DeleteMovie")]
 
+    public async Task<ActionResult> DeleteMovie([FromBody] MovieModel movie)
+    {
+
+        Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid));
+
+        QuerySnapshot snapshot = await collection.GetSnapshotAsync();
+
+        foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
+        {
+            movie = snapshotDocument.ConvertTo<MovieModel>();
+
+            try
+            {
+                Task delete = new FirebaseStorage("movie2-e3c7b.appspot.com",
+                    new FirebaseStorageOptions
+                    {
+                        AuthTokenAsyncFactory = async () => await Task.FromResult(User.FindFirstValue("Token"))
+                    }).Child(movie.StudioId).Child(movie.MovieId).Child("Image")
+                .DeleteAsync();
+                await delete;
+            }
+            catch 
+            {
+
+                
+            }
+
+            try
+            {
+                Task delete = new FirebaseStorage("movie2-e3c7b.appspot.com",
+                    new FirebaseStorageOptions
+                    {
+                        AuthTokenAsyncFactory = async () => await Task.FromResult(User.FindFirstValue("Token"))
+                    }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie")
+                .DeleteAsync();
+                await delete;
+            }
+            catch
+            {
+
+                
+            }
+            
+            await snapshotDocument.Reference.DeleteAsync();
+            return Ok("Success");
+        }
+        return BadRequest("Not success");
+    }
 }
