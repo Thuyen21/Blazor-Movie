@@ -26,7 +26,7 @@ jobs:
       run: dotnet tool install -g dotnet-format --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
     - name: Install tools
       run: |
-        dotnet workload install wasm-tools maui android-aot ios maccatalyst macos tvos
+        dotnet workload install wasm-tools maui
     - name: Install dependencies
       run: dotnet restore BlazorApp3.sln
     - name: Test with the dotnet CLI
@@ -64,7 +64,7 @@ jobs:
         body: |
           Automated PR to fix formatting errors
         committer: GitHub <noreply@github.com>
-        author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+        author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>, Thuyen21, baopngch18183
         labels: t/housekeeping ♻︎
         assignees: Thuyen21, baopngch18183
         reviewers: Thuyen21, baopngch18183

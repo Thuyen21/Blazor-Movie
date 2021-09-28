@@ -527,10 +527,10 @@ public class StudioController : Controller
                 .DeleteAsync();
                 await delete;
             }
-            catch 
+            catch
             {
 
-                
+
             }
 
             try
@@ -546,9 +546,9 @@ public class StudioController : Controller
             catch
             {
 
-                
+
             }
-            
+
             await snapshotDocument.Reference.DeleteAsync();
             return Ok("Success");
         }
