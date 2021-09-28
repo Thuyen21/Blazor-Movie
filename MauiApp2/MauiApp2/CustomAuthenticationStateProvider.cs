@@ -1,7 +1,7 @@
-﻿using BlazorApp3.Shared;
+using BlazorApp3.Shared;
 using System.Net.Http.Json;
 using System.Security.Claims;
-
+using Microsoft.AspNetCore.Components.Authorization;
 namespace MauiApp2
 {
     public class CustomAuthenticationStateProvider : AuthenticationStateProvider
