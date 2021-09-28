@@ -1,7 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Components.Authorization;
-
-namespace MauiApp2.Services
+﻿namespace MauiApp2.Services
 {
     public class AccountService : IAccountService
     {
