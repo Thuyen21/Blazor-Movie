@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: self-hosted
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -26,15 +26,15 @@ jobs:
       run: dotnet tool install -g dotnet-format --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
     - name: Install tools
       run: |
-        dotnet workload install wasm-tools maui android-aot ios maccatalyst macos tvos
-    - name: Install dependencies
-      run: dotnet restore BlazorApp3.sln
+        dotnet workload install wasm-tools maui
+#    - name: Install dependencies
+#      run: dotnet restore BlazorApp3.sln
     - name: Test with the dotnet CLI
       run: dotnet test BlazorApp3.sln
     - name: Formating
       run: dotnet format --no-restore BlazorApp3.sln
-    - name: Install dependencies
-      run: dotnet restore MauiApp2.sln
+#    - name: Install dependencies
+#      run: dotnet restore MauiApp2.sln
 #    - name: Test with the dotnet CLI
 #      run: dotnet test MauiApp2.sln
     - name: Formating
