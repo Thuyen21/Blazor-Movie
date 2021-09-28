@@ -5,53 +5,6 @@
 @using Firebase.Storage
 @attribute [Authorize(Roles ="Admin")]
 
-@*<div></div>
-
-@if (movie == null)
-{
-    <p>
-        <em>Loading...</em>
-    </p>
-}
-else
-{
-    <EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
-    <DataAnnotationsValidator/>
-    <ValidationSummary/>
-    MovieId
-    <InputText  @bind-Value="@movie.MovieId"/><br>
-    StudioId
-    <InputText  @bind-Value="@movie.StudioId"/><br>
-    MovieGenre
-    <InputText  @bind-Value="@movie.MovieGenre"/><br>
-    MovieName
-    <InputText  @bind-Value="@movie.MovieName"/><br>
-    PremiereDate
-    <InputDate  @bind-Value="@movie.PremiereDate"/><br>
-
-    <button type="submit">Submit</button>
-</EditForm>
-
-<div>@content</div>
-
-<div>After pick a file it auto Upload. If it is not a movie or image correct MIME it will not be uploaded.</div>
-<div>Movie Up</div>
-<InputFile OnChange="OnChooseMovieFile" />
-
-<div>Image Up</div>
-<InputFile OnChange="OnChooseImageFile" />
-
-
-<div>If your upload more 500MB click this button</div>
-<button type="submit" @onclick="@Upload">Upload</button>
-    
-}
-
-<div>@mp</div>
-<div>@ip</div>*@
-
-
-
 <head>
 	<meta charset="UTF-8">
 	<!-- Fontawesome CDN Link -->
@@ -113,7 +66,14 @@ else
 										<i class="far fa-calendar-alt"></i>
 										<input type="date" placeholder="Premiere Date" @bind="@movie.PremiereDate"  required>
 										<a>Pre Date</a>
-									</div>									
+									</div>	
+                                    
+                                    <div class="input-box">
+										<i class="far fa-calendar-alt"></i>
+										<input type="text" placeholder="Premiere Date" @bind="@movie.MoviesDescription"  required>
+										<a>MoviesDescription</a>
+									</div>	
+
 									<div class="button input-box">
 										<input type="submit" value="Confirm">
 									</div>
@@ -159,10 +119,6 @@ else
 
         protected override async Task OnInitializedAsync()
         {
-            if (Id == null)
-            {
-                _navigationManager.NavigateTo("/MovieAdmin");
-            }
             movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
             linkIframe = $"{_httpClient.BaseAddress}Admin/MovieUpload/{Id}";
         }

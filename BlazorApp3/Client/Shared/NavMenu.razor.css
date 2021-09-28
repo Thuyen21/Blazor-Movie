@@ -351,9 +351,9 @@
 
     .sidebar {
         height: 100vh;
-        position: sticky;
+        /*position: sticky;*/
         top: 0;
-        width: 250px;
+        /*width: 250px;*/
     }
 
     .top-row {
