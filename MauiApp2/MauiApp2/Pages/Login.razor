@@ -1,42 +1,7 @@
 ﻿@inject IJSRuntime JS
 @inject IAccountService _accountService;
 @page "/login"
-@using MauiApp2.Services
-@*<button @onclick="@( () =>  DivCSS("display: block;"))" style="width:auto; margin:0; position: absolute;top: 50%;left: 50%;" class=" zoom2">Login</button>*@
-
-@*<div id="id01" class="modal" style="@divCSS">
-	<div class="modal-content animate" style="border-radius: 12px;">
-	<EditForm Model="@login" OnValidSubmit="HandleValidSubmit">
-	<DataAnnotationsValidator />
-	<ValidationSummary />
-	<div class="imgcontainer">
-	<span @onclick="@( () =>  DivCSS("display: none;"))" class="close" title="Close Modal">&times;</span>
-	<img src="https://www.w3schools.com/howto/img_avatar2.png" alt="Avatar" class="avatar">
-	</div>
-	<div class="container">
-	<label for="email"><b>Email</b></label>
-	<input type="text" @bind="@login.Email" placeholder="Enter Email" class="zoom" />
-	<label for="psw"><b>Password</b></label>
-	<input type="password" @bind="@login.Password" placeholder="Enter Password" class="zoom" />
-	<button type="submit" class="zoom">Login</button>
-	<label>
-	<input type="checkbox" checked="checked" name="remember"> Remember me
-	</label>
-	</div>
-	<div class="container" style="background-color:#f1f1f1">
-	<button type="button" @onclick="@(async () => await JS.InvokeVoidAsync("myFunction"))" class="cancelbtn">Cancel</button>
-	<span class="psw">Forgot <a href="ResetPassword">password?</a></span>
-	</div>
-	</EditForm>
-	</div>
-	</div>
-	<div>@content</div>*@
-
-
-
-
-
-
+@using BlazorApp3.Client.Services
 
 <head>
 	<meta charset="UTF-8">

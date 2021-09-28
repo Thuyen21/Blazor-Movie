@@ -4,6 +4,7 @@
 @attribute [Authorize(Roles ="Studio")]
 @page "/EditMovieStudio/{Id}"
 
+@*<div></div>
 @if (movie == null)
 {
     <p>
@@ -50,7 +51,109 @@ if(more)
 <div>If your upload more 500MB click this button</div>
         <button type="submit" @onclick="@Upload">Upload</button>
     }
-}
+}*@
+
+
+<head>
+	<meta charset="UTF-8">
+	<!-- Fontawesome CDN Link -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="container">
+		<input type="checkbox" id="flip">
+		@if (movie == null)
+		{
+			<p>
+				<em>Loading...</em>
+			</p>
+		}
+		else
+		{
+            if(more)
+    {
+        <iframe src="@linkIframe" height="400" width="600"></iframe>
+        }
+            else
+            {
+                
+            
+            <div class="forms">
+				<div class="form-content">
+					<div class="login-form">
+						<div class="title">Replace any data of ID: </div>
+						<div class="title">@movie.MovieId</div>
+						<div>@content</div>
+						
+						<form action="#">
+							<div class="input-boxes">
+								<EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
+									<DataAnnotationsValidator />
+									<ValidationSummary />
+									<div class="input-box">
+										<i class="fas fa-envelope"></i>
+										<input type="text" placeholder="@movie.MovieId" style="pointer-events:none" @bind="@movie.MovieId">
+										<a>Movie ID</a>
+									</div>
+									<div class="input-box">
+										<i class="fas fa-lock"></i>
+										<input type="text" placeholder="@movie.StudioId"  style="pointer-events:none" @bind="@movie.StudioId" >
+										<a>Studio ID</a>
+									</div>
+									<div class="input-box">
+										<i class="fas fa-user"></i>
+										<input type="text" placeholder="Replace movie genre"  @bind="@movie.MovieGenre" required>
+										<a>Movie genre</a>
+									</div>
+									<div class="input-box">
+										<i class="fas fa-money-check"></i>
+										<input type="text" placeholder="Replace movie name" @bind="@movie.MovieName" required>
+										<a>Movie name</a>
+									</div>
+									<div class="input-box">
+										<i class="far fa-calendar-alt"></i>
+										<input type="date" placeholder="Premiere Date" @bind="@movie.PremiereDate"  required>
+										<a>Pre Date</a>
+									</div>		
+                                    
+                                    <div class="input-box">
+										<i class="far fa-calendar-alt"></i>
+										<input type="text" placeholder="Movies Description" @bind="@movie.MoviesDescription"  required>
+										<a>MoviesDescription</a>
+									</div>	
+
+									<div class="button input-box">
+										<input type="submit" value="Confirm">
+									</div>
+								</EditForm>
+							</div>
+						</form>
+						<div>After pick a file it auto Upload. If it is not a movie or image correct MIME it will not be uploaded.</div>
+						<div>Movie Up</div>
+						<InputFile OnChange="OnChooseMovieFile" />
+
+						<div>Image Up</div>
+						<InputFile OnChange="OnChooseImageFile" />
+
+
+						<div>If your upload more 500MB click this button</div>
+                        <button class="btn btn-primary" type="submit" @onclick="@Upload">Upload</button>
+						
+						@*<div>@mp</div>
+						<div>@ip</div>*@
+					</div>
+				</div>
+			</div>
+
+            }
+		} @*end else*@
+
+	</div>
+</body>
+
+
+
 
 
 @code{
@@ -65,13 +168,8 @@ if(more)
         private bool more = false;
         protected override async Task OnInitializedAsync()
         {
-            if (Id == null)
-            {
-                _navigationManager.NavigateTo("/MovieStudio");
-            }
             movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
             linkUp = $"/Studio/MovieUpload/{movie.MovieId}";
-
             linkIframe = $"{_httpClient.BaseAddress}Studio/MovieUpload/{Id}";
         }
 
