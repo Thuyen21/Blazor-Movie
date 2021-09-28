@@ -8,10 +8,10 @@ namespace BlazorApp3.Shared
     public class MovieModel
     {
 #pragma warning disable CS8618 // Non-nullable property 'MovieId' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
-        [FirestoreProperty] public string MovieId { get; set; }
+        [FirestoreProperty] public string? MovieId { get; set; }
 #pragma warning restore CS8618 // Non-nullable property 'MovieId' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
 #pragma warning disable CS8618 // Non-nullable property 'StudioId' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
-        [FirestoreProperty] public string StudioId { get; set; }
+        [FirestoreProperty] public string? StudioId { get; set; }
 #pragma warning restore CS8618 // Non-nullable property 'StudioId' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
 
         [FirestoreProperty]
