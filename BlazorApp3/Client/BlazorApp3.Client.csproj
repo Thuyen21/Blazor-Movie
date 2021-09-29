@@ -22,7 +22,7 @@
 	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 	<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
 	<VersionSuffix>-RC1.3</VersionSuffix>
-	  <VersionPrefix>2021.9.29.1046</VersionPrefix>
+	  <VersionPrefix>2021.9.29.1051</VersionPrefix>
 	<Version>$(VersionPrefix)-$(VersionSuffix)</Version>
   </PropertyGroup>
 
