@@ -21,6 +21,7 @@
 	<AnalysisLevel>6.0</AnalysisLevel>
 	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 	<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
+	<Version>1.0.0.1-RC1.3</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
