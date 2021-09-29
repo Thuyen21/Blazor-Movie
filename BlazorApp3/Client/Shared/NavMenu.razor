@@ -219,7 +219,10 @@
                 <div class="text">@Body</div>
 
             </section>
-
+            <div class="text-center" style="margin-top: 10px; margin-bottom: 30px;">
+    Created by Me <br/>
+    Version @typeof(Program).Assembly.GetName().Version.ToString()
+</div>
 
 
         
@@ -337,7 +340,7 @@
         {
             await JS.InvokeVoidAsync("NavMenu");
         }
-
+        
     }
     private bool collapseNavMenu = true;
         private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
