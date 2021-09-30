@@ -1,3 +1,4 @@
+using BlazorApp3.Shared;
 namespace MauiApp2.Data
 {
     public class WeatherForecastService
