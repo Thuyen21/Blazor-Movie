@@ -1,7 +1,7 @@
+using BlazorApp3.Shared;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using BlazorApp3.Shared;
 namespace MauiApp2.Data
 {
     public class WeatherForecastService

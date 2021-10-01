@@ -1,5 +1,4 @@
-﻿using MauiApp2;
-using Microsoft.AspNetCore.Components.Authorization;
+﻿using Microsoft.AspNetCore.Components.Authorization;
 
 namespace MauiApp2.Services
 {

@@ -27,6 +27,7 @@
 
 		<!-- Required for C# Hot Reload -->
 		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
+		<AnalysisLevel>6.0</AnalysisLevel>
 	</PropertyGroup>
 
 	<ItemGroup>
