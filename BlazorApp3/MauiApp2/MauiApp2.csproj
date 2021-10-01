@@ -11,6 +11,9 @@
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
 		<SignAssembly>true</SignAssembly>
+		<Version>1.5</Version>
+		<AssemblyVersion>1.5.*</AssemblyVersion>
+		<Deterministic>false</Deterministic>
 		
 		<!-- Display name -->
 		<ApplicationTitle>MauiApp2</ApplicationTitle>
