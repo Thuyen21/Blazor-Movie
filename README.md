@@ -34,7 +34,7 @@ This project was built on .NET 6
 Install global workloads
 
 ```dotnetcli
-dotnet workload install maui wasm-tools
+dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
 ```
 
 Build and launch Visual Studio using global workloads
