@@ -28,8 +28,8 @@ jobs:
           dotnet workload install wasm-tools maui android-aot ios maccatalyst macos tvos
       #    - name: Install dependencies
       #      run: dotnet restore BlazorApp3.sln
-      - name: Test with the dotnet CLI
-        run: dotnet test BlazorApp3.sln
+      #- name: Test with the dotnet CLI
+        #run: dotnet test BlazorApp3.sln
       - name: Formating
         run: dotnet format --no-restore BlazorApp3.sln
       #    - name: Install dependencies
