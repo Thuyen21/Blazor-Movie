@@ -7,6 +7,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
+using System;
+using System.Net.Http;
 
 namespace MauiApp2
 {
@@ -14,7 +16,7 @@ namespace MauiApp2
     {
         public static MauiApp CreateMauiApp()
         {
-            MauiAppBuilder builder = MauiApp.CreateBuilder();
+            var builder = MauiApp.CreateBuilder();
             builder
                 .RegisterBlazorMauiWebView()
                 .UseMauiApp<App>()
@@ -25,12 +27,12 @@ namespace MauiApp2
 
             builder.Services.AddBlazorWebView();
             builder.Services.AddSingleton<WeatherForecastService>();
+            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://movie213.herokuapp.com/") });
             builder.Services.AddOptions();
             builder.Services.AddAuthorizationCore();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
-            builder.Logging.SetMinimumLevel(LogLevel.Debug);
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://movie213.herokuapp.com/")/*, DefaultRequestVersion = HttpVersion.Version30, DefaultVersionPolicy = HttpVersionPolicy.RequestVersionExact*/ });
+
             return builder.Build();
         }
     }

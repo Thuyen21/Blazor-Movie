@@ -1,5 +1,4 @@
-﻿
-namespace MauiApp2.Services
+﻿namespace MauiApp2.Services
 {
     public interface IAccountService
     {

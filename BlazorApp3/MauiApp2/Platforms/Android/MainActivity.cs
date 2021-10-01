@@ -1,4 +1,5 @@
-﻿using Android.Content.PM;
+﻿using Android.App;
+using Android.Content.PM;
 using Microsoft.Maui;
 
 namespace MauiApp2.Platforms.Android

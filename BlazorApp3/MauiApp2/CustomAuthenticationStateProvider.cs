@@ -1,7 +1,9 @@
 ﻿using BlazorApp3.Shared;
 using Microsoft.AspNetCore.Components.Authorization;
+using System.Net.Http;
 using System.Net.Http.Json;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace MauiApp2
 {
@@ -16,20 +18,21 @@ namespace MauiApp2
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             AccountManagementModel user = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/GetCurrentUser");
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
             if (user.Email != null)
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
             {
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
-
-
                     new Claim(ClaimTypes.Name, user.Email),
                     new Claim(ClaimTypes.Role, user.Role),
                     new Claim(ClaimTypes.Email, user.Email)
                 }, "serverAuth");
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-
                 return new AuthenticationState(claimsPrincipal);
             }
 

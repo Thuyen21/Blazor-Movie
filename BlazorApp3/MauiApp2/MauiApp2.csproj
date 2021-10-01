@@ -2,16 +2,15 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-ios;net6.0-android;net6.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks> 
+		 <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks> 
 		<OutputType>Exe</OutputType>
 		<RootNamespace>MauiApp2</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
-		
-		<Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<!--<MauiVersion>6.0.100-rc.2.2000</MauiVersion>-->
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
+		<SignAssembly>true</SignAssembly>
 		
 		<!-- Display name -->
 		<ApplicationTitle>MauiApp2</ApplicationTitle>
@@ -25,10 +24,6 @@
 
 		<!-- Required for C# Hot Reload -->
 		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
-		<TargetFramework>net6.0-windows13.6</TargetFramework>
-		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-		<AnalysisLevel>6.0</AnalysisLevel>
-		<SignAssembly>True</SignAssembly>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -58,52 +53,8 @@
 		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-android|AnyCPU'">
-	  <PlatformTarget>AnyCPU</PlatformTarget>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-android|AnyCPU'">
-	  <PlatformTarget>AnyCPU</PlatformTarget>
-	</PropertyGroup>
-
 	<ItemGroup>
 		<Content Remove="Properties\launchSettings.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiCss Remove="Pages\AdminAccountManagement.razor.css" />
-	  <MauiCss Remove="Pages\BanAccount.razor.css" />
-	  <MauiCss Remove="Pages\Contact.razor.css" />
-	  <MauiCss Remove="Pages\EditAccount.razor.css" />
-	  <MauiCss Remove="Pages\EditMovieAdmin.razor.css" />
-	  <MauiCss Remove="Pages\Login.razor.css" />
-	  <MauiCss Remove="Pages\MovieAdmin.razor.css" />
-	  <MauiCss Remove="Pages\ResetPassword.razor.css" />
-	  <MauiCss Remove="Pages\SignUp.razor.css" />
-	  <MauiCss Remove="Shared\MainLayout.razor.css" />
-	  <MauiCss Remove="Shared\NavMenu.razor.css" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Include="Pages\AdminAccountManagement.razor.css" />
-	  <Content Include="Pages\BanAccount.razor.css" />
-	  <Content Include="Pages\Contact.razor.css" />
-	  <Content Include="Pages\EditAccount.razor.css" />
-	  <Content Include="Pages\EditMovieAdmin.razor.css" />
-	  <Content Include="Pages\Login.razor.css" />
-	  <Content Include="Pages\MovieAdmin.razor.css" />
-	  <Content Include="Pages\ResetPassword.razor.css" />
-	  <Content Include="Pages\SignUp.razor.css" />
-	  <Content Include="Shared\MainLayout.razor.css">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="Shared\NavMenu.razor.css">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </Content>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0-experimental1" />
 	</ItemGroup>
 
 	<ItemGroup>
