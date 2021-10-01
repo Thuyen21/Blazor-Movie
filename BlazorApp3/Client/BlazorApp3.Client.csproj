@@ -21,8 +21,8 @@
 	<AnalysisLevel>6.0</AnalysisLevel>
 	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 	<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
-	  <Version>1.5</Version>
-	  <AssemblyVersion>1.5.*</AssemblyVersion>
+	  <Version>2.0</Version>
+	  <AssemblyVersion>2.0.*</AssemblyVersion>
 	  <Deterministic>false</Deterministic>
 	
   </PropertyGroup>

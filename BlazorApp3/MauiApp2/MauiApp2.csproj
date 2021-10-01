@@ -11,8 +11,8 @@
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
 		<SignAssembly>true</SignAssembly>
-		<Version>1.5</Version>
-		<AssemblyVersion>1.5.*</AssemblyVersion>
+		<Version>2.0</Version>
+		<AssemblyVersion>2.0.*</AssemblyVersion>
 		<Deterministic>false</Deterministic>
 		
 		<!-- Display name -->
@@ -22,8 +22,8 @@
 		<ApplicationId>com.companyname.MauiApp2</ApplicationId>
 
 		<!-- Versions -->
-		<ApplicationVersion>1.0</ApplicationVersion>
-		<AndroidVersionCode>1</AndroidVersionCode>
+		<ApplicationVersion>2.0</ApplicationVersion>
+		<AndroidVersionCode>2</AndroidVersionCode>
 
 		<!-- Required for C# Hot Reload -->
 		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
