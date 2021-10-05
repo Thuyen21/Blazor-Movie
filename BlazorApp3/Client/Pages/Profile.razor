@@ -4,62 +4,208 @@
 @using BlazorApp3.Shared
 
 @inject IAccountService _accountService;
-<EditForm Model="@accountManagementModel" OnValidSubmit="HandleValidSubmit">
-    <DataAnnotationsValidator/>
-    <ValidationSummary/>
+@*<EditForm Model="@accountManagementModel" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
     Id
-    <InputText  @bind-Value="@accountManagementModel.Id"/><br>
+    <InputText @bind-Value="@accountManagementModel.Id" /><br>
     Email
-    <InputText  @bind-Value="@accountManagementModel.Email"/><br>
+    <InputText @bind-Value="@accountManagementModel.Email" /><br>
     Wallet
-    <InputNumber  @bind-Value="@accountManagementModel.Wallet"/><br>
+    <InputNumber @bind-Value="@accountManagementModel.Wallet" /><br>
     Role
-    <InputText  @bind-Value="@accountManagementModel.Role"/><br>
+    <InputText @bind-Value="@accountManagementModel.Role" /><br>
     Name
-    <InputText  @bind-Value="@accountManagementModel.Name"/><br>
+    <InputText @bind-Value="@accountManagementModel.Name" /><br>
     DateOfBirth
-    <InputDate @bind-Value="@accountManagementModel.DateOfBirth"/><br>
-    
+    <InputDate @bind-Value="@accountManagementModel.DateOfBirth" /><br>
+
 
     <button type="submit">Submit</button>
 </EditForm>
+
+
 
 <div>@content </div>
 
 
+
 <EditForm Model="@changeEmail" OnValidSubmit="ChangeEmail">
-    <DataAnnotationsValidator/>
-    <ValidationSummary/>
+    <DataAnnotationsValidator />
+    <ValidationSummary />
     <div>New Email</div>
-    <InputText  @bind-Value="@changeEmail.Email"/><br>
-    <div>Password</div>
-    <InputText  @bind-Value="@changeEmail.Password"/><br>
+    <InputText @bind-Value="@changeEmail.Email" /><br>
+padding-topop>Password</div>
+    <InputText @bind-Value="@changeEmail.Password" /><br>
     <button type="submit">Submit</button>
 </EditForm>
 
- <button @onclick="ChangePass">Click here to send an Email to reset your password</button>
-@code{
+<button @onclick="ChangePass">Click here to send an Email to reset your password</button>*@
+
+@*----------------------------------------------------------------------------------------------------*@
+<head>
+	<meta charset="utf-8">
+	<title>account setting or edit profile - Bootdey.com</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	@*<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>*@
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	@*<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>*@
+</head>
+<body>
+    <div class="container">
+		<div class="row gutters">
+			<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+				<div class="card h-100">
+					<div class="card-body">
+						<div class="account-settings">
+							<div class="user-profile">
+								<div class="user-avatar">
+									<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin"  style="border-radius:75%">
+								</div>
+								<h5 class="user-name">@accountManagementModel.Name</h5>
+								<h6 class="user-email">@accountManagementModel.Email</h6>
+							</div>
+							<div class="about">
+								<h5>@accountManagementModel.Role</h5>
+								<p style="font-weight: 300">@accountManagementModel.Id</p>
+								<p>@accountManagementModel.Wallet</p>
+								<p id="hideMe">@content</p>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+				<div class="card h-100">
+					<div class="card-body">
+						<EditForm Model="@accountManagementModel" OnValidSubmit="HandleValidSubmit">
+								<DataAnnotationsValidator />
+								<ValidationSummary />
+						<div class="row gutters">							
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<h6 class="mb-2 text-primary">Personal Details</h6>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label>Full Name</label>
+									<input type="text" class="form-control" placeholder="@accountManagementModel.Name" 
+										@bind="@accountManagementModel.Name">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label>Email</label>
+									<input type="email" class="form-control" placeholder="@accountManagementModel.Email" 
+										@bind="@accountManagementModel.Email">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label for="phone">Date of Birth</label>
+									<input type="date" class="form-control" placeholder="@accountManagementModel.DateOfBirth" 
+										@bind="@accountManagementModel.DateOfBirth">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label><span style="color:red">Wallet</span></label>
+									<input type="text" class="form-control" placeholder="@accountManagementModel.Wallet" style="pointer-events:none" 
+										@bind="@accountManagementModel.Wallet">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label><span style="color:red">Role</span></label>
+									<input type="text" class="form-control" placeholder="@accountManagementModel.Role" style="pointer-events:none" 
+										@bind="@accountManagementModel.Role">
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label><span style="color:red">ID</span></label>
+									<input type="text" class="form-control" placeholder="@accountManagementModel.Id" style="pointer-events:none" 
+										@bind="@accountManagementModel.Id">
+								</div>
+							</div>
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="text-left">NOTE: You can't edit field has <span style="color:red">RED</span> color.</div>
+								<div class="text-right">
+									<button type="submit" class="btn btn-primary"  style="width:83px">Confirm</button>
+								</div>
+							</div>
+							
+						</div>
+						</EditForm>
+						<EditForm Model="@changeEmail" OnValidSubmit="ChangeEmail">
+							<DataAnnotationsValidator />
+							<ValidationSummary />
+						<div class="row gutters">
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<h6 class="mt-3 mb-2 text-primary">New Email</h6>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label for="Street">New Email</label>
+									<input type="text" class="form-control" placeholder="Enter new email address" 
+										@bind="@changeEmail.Email" >
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+								<div class="form-group">
+									<label for="ciTy">Password</label>
+									<input type="password" class="form-control" placeholder="Enter new password" 
+										@bind="@changeEmail.Password">
+								</div>
+							</div>
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="text-right">
+									<button type="submit" class="btn btn-primary"  style="width:83px">Confirm</button>
+								</div>
+							</div>
+						</div>
+						</EditForm>
+						<div class="row gutters" style="padding-top: 10px">
+							<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+								<div class="text-right">
+									<label>Fogot Password? </label>
+									<button type="submit" class="btn btn-danger" style="width:83px" @onclick="ChangePass">Reset</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+
+
+
+@*----------------------------------------------------------------------------------------------------*@
+
+@code {
     ChangeEmailModel changeEmail = new ChangeEmailModel();
     public async Task ChangeEmail()
     {
         content = await (await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail", changeEmail)).Content.ReadAsStringAsync();
-         _accountService.Login();
-         _navigationManager.NavigateTo("/Profile");
+        _accountService.Login();
+        _navigationManager.NavigateTo("/Profile");
     }
     public async Task ChangePass()
     {
         _navigationManager.NavigateTo("/ResetPassword");
     }
     private AccountManagementModel accountManagementModel = new AccountManagementModel();
-        private string content;
-        protected override async Task OnInitializedAsync()
-        {
-            accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");
-        }
+    private string content;
+    protected override async Task OnInitializedAsync()
+    {
+        accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");
+    }
 
-        private async Task HandleValidSubmit()
-        {
-            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<AccountManagementModel>("user/EditProfile", accountManagementModel);
-            content = await response.Content.ReadAsStringAsync();
-        }
+    private async Task HandleValidSubmit()
+    {
+        HttpResponseMessage response = await _httpClient.PostAsJsonAsync<AccountManagementModel>("user/EditProfile", accountManagementModel);
+        content = await response.Content.ReadAsStringAsync();
+    }
 }

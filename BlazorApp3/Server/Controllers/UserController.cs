@@ -23,7 +23,7 @@ public class UserController : Controller
         this.client = client;
     }
 
-    private static UserCredential userCredential;
+    private static UserCredential? userCredential;
 
     [HttpPost("login")]
     public async Task<ActionResult> LogIn([FromBody] LogInModel logIn)
