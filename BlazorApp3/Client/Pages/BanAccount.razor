@@ -1,31 +1,6 @@
 ﻿@attribute [Authorize(Roles = "Admin")]
 @page "/BanAccount/{Id}"
 
-@*<div></div>
-	@if (acc == null)
-	{
-	<div>Loading</div>
-	}
-	else
-	{
-	<div>Id:</div>
-	<div>@acc.Id</div>
-	<div>Email:</div>
-	<div>@acc.Email</div>
-	<div>Name:</div>
-	<div>@acc.Name</div>
-	<div>DateOfBirth:</div>
-	<div>@acc.DateOfBirth.ToShortDateString()</div>
-	<div>Role:</div>
-	<div>@acc.Role</div>
-	<div>Wallet:</div>
-	<div>@acc.Wallet</div>
-	}
-
-
-	<button class="btn btn-primary" @onclick="Ban">Ban</button>
-
-	<button class="btn btn-primary" @onclick="UnBan">UnBan</button>*@
 
 <head>
 	<meta charset="UTF-8">

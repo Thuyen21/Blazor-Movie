@@ -23,7 +23,7 @@ public class UserController : Controller
         this.client = client;
     }
 
-    private static UserCredential userCredential;
+    private static UserCredential? userCredential;
 
     [HttpPost("login")]
     public async Task<ActionResult> LogIn([FromBody] LogInModel logIn)
@@ -297,5 +297,11 @@ public class UserController : Controller
             ch[i] = token[i];
         }
         return await Task.FromResult(ch);
+    }
+    [HttpPost("feedback")]
+    public async Task<ActionResult> Feedback([FromBody] FeedbackMessageModel feedback)
+    {
+        await db.Collection("Feedback").AddAsync(feedback);
+        return Ok("Done");
     }
 }

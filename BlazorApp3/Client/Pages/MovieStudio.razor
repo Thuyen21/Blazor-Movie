@@ -1,6 +1,6 @@
 ﻿@page "/MovieStudio"
 @attribute [Authorize(Roles = "Studio")]
-
+@using Firebase.Storage
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -82,7 +82,7 @@ else
             {
                 <div class="col">
                     <div class="card h-100">
-                        <img src="https://mdbootstrap.com/img/new/standard/city/044.jpg" class="card-img-top" alt="..." />
+                        <img src="@DicImageLink[item.MovieId]" class="card-img-top" alt="..." />
                         <div class="card-body">
                             <h1 class="card-title">@item.MovieName</h1>
                             <p class="card-text">                                
@@ -124,6 +124,7 @@ else
     private string? searchString { get; set; }
     private bool isSearch = false;
     private string sort = null;
+    private readonly Dictionary<string, string> DicImageLink = new();
     private async Task NameSortParm()
     {
         index = 0;
@@ -154,6 +155,27 @@ else
     protected override async Task OnInitializedAsync()
     {
         movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}");
+        char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+            string token = new string(tokena);
+            foreach (MovieModel item in movies)
+            {
+                try
+                {
+                    string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
+                    if (!DicImageLink.ContainsKey(item.MovieId))
+                    {
+                        DicImageLink.Add(item.MovieId, ImageLink);
+                    }
+                    else
+                    {
+                        DicImageLink[item.MovieId] = ImageLink;
+                    }
+                }
+                catch
+                {
+                    DicImageLink.Add(item.MovieId, null);
+                }
+            }
     }
     private async Task Search()
     {

@@ -15,7 +15,7 @@ namespace MauiApp2
     {
         public static MauiApp CreateMauiApp()
         {
-            var builder = MauiApp.CreateBuilder();
+            MauiAppBuilder builder = MauiApp.CreateBuilder();
             builder
                 .RegisterBlazorMauiWebView()
                 .UseMauiApp<App>()
