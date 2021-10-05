@@ -4,43 +4,6 @@
 @using BlazorApp3.Shared
 
 @inject IAccountService _accountService;
-@*<EditForm Model="@accountManagementModel" OnValidSubmit="HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    Id
-    <InputText @bind-Value="@accountManagementModel.Id" /><br>
-    Email
-    <InputText @bind-Value="@accountManagementModel.Email" /><br>
-    Wallet
-    <InputNumber @bind-Value="@accountManagementModel.Wallet" /><br>
-    Role
-    <InputText @bind-Value="@accountManagementModel.Role" /><br>
-    Name
-    <InputText @bind-Value="@accountManagementModel.Name" /><br>
-    DateOfBirth
-    <InputDate @bind-Value="@accountManagementModel.DateOfBirth" /><br>
-
-
-    <button type="submit">Submit</button>
-</EditForm>
-
-
-
-<div>@content </div>
-
-
-
-<EditForm Model="@changeEmail" OnValidSubmit="ChangeEmail">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <div>New Email</div>
-    <InputText @bind-Value="@changeEmail.Email" /><br>
-padding-topop>Password</div>
-    <InputText @bind-Value="@changeEmail.Password" /><br>
-    <button type="submit">Submit</button>
-</EditForm>
-
-<button @onclick="ChangePass">Click here to send an Email to reset your password</button>*@
 
 @*----------------------------------------------------------------------------------------------------*@
 <head>
