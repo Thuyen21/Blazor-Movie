@@ -436,7 +436,7 @@ public class AdminController : Controller
     {
         index--;
         List<FeedbackMessageModel> myFoo = new();
-        Query usersRef = db.Collection("Feedback");   
+        Query usersRef = db.Collection("Feedback");
         usersRef = usersRef.Offset(index * 5).Limit(5);
         QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
         foreach (DocumentSnapshot document in snapshot.Documents)
