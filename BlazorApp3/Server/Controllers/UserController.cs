@@ -298,4 +298,10 @@ public class UserController : Controller
         }
         return await Task.FromResult(ch);
     }
+    [HttpPost("feedback")]
+    public async Task<ActionResult> Feedback([FromBody] FeedbackMessageModel feedback)
+    {
+        await db.Collection("Feedback").AddAsync(feedback);
+        return Ok("Done");
+    }
 }
