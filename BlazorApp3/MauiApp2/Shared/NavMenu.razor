@@ -96,8 +96,15 @@
                                     <i class='bx bx-movie'></i>
                                     <span class="links_name">Movie Management</span>
                                 </a>
-                                <span class="tooltip">Movie Managementt</span>
-                            </li>                            
+                                <span class="tooltip">Movie Management</span>
+                            </li>      
+                            <li>
+                                <a href="ReadFeedBack">
+                                    <i class='bx bx-movie'></i>
+                                    <span class="links_name">Read Feed Back</span>
+                                </a>
+                                <span class="tooltip">Read Feed Back</span>
+                            </li>  
                         </Authorized>
                     </AuthorizeView>
                     <AuthorizeView Roles="Customer">
@@ -217,7 +224,7 @@
             <section class="home-section">
                 @*<div class="text">Dashboard Movie Brazor</div>*@
                 <div class="text">@Body</div>
-
+                
             </section>
             <div style="text-align: center">@GetType().Assembly.GetName().Version.ToString()</div>
         @*<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">

@@ -21,8 +21,8 @@
 	<AnalysisLevel>6.0</AnalysisLevel>
 	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 	<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
-	  <Version>1.5</Version>
-	  <AssemblyVersion>1.5.*</AssemblyVersion>
+	  <Version>2.0</Version>
+	  <AssemblyVersion>2.0.*</AssemblyVersion>
 	  <Deterministic>false</Deterministic>
 	
   </PropertyGroup>
@@ -36,10 +36,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.0-rc.1.21452.15" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="6.0.0-rc.1.21452.15" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-rc.1.21452.15" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-rc.1.21452.15" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.0-rtm.21509.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="6.0.0-rtm.21509.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-rtm.21509.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-rtm.21509.1" PrivateAssets="all" />
 	  <PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
 	  <PackageReference Include="Braintree" Version="5.9.0" />
 	  <PackageReference Include="FirebaseAdmin" Version="2.2.0" />
@@ -49,7 +49,7 @@
 	  <PackageReference Include="Google.Apis.Drive.v3" Version="1.55.0.2453" />
 	  <PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
 	  <PackageReference Include="Google.Cloud.Storage.V1" Version="3.5.0" />
-	  <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0-rc.1.21451.13" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0-rtm.21508.16" />
 	  <PackageReference Include="PayoutsSdk" Version="1.1.1" />
 	  <PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
 	  <PackageReference Include="PayPalHttp" Version="1.0.1" />
