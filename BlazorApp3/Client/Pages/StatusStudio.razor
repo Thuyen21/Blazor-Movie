@@ -1,13 +1,13 @@
 ﻿<h3>StatusStudio</h3>
-@attribute [Authorize(Roles ="Studio")]
+@attribute [Authorize(Roles = "Studio")]
 @page "/StatusStudio/{Id}"
 
 @*@if(commentStatus.Count < 1)
-{
+    {
     <div>loadding</div>
-}
-else
-{
+    }
+    else
+    {
     <input type="datetime" @bind="start" />
     <input type="datetime" @bind="end" />
 
@@ -16,10 +16,10 @@ else
 
     @*<div>Positive: @commentStatus[0]</div>
 
-<div>Negative: @commentStatus[1]</div>
+    <div>Negative: @commentStatus[1]</div>
 
 
-}*@
+    }*@
 <div>Request to salary</div>
 <input type="month" @bind="month" />
 <button @onclick="Salary">Salary</button>
@@ -31,80 +31,82 @@ else
 
 <div>Dashboard</div>
 <input type="date" @bind="start" />
-    <input type="date" @bind="end" />
+<input type="date" @bind="end" />
 
-    <button @onclick="Submit">Submit</button>
-    <div>@content</div>
+<button @onclick="Submit">Submit</button>
+<div>@content</div>
 
-@*    @if(commentStatus.Count > 1)
-{
+@* @if(commentStatus.Count > 1)
+    {
     <div>Positive: @commentStatus[0]</div>
-<div>Negative: @commentStatus[1]</div>
-}*@
+    <div>Negative: @commentStatus[1]</div>
+    }*@
 
-@foreach(var status in fullStatus)
+@foreach (var status in fullStatus)
 {
     <div>Date: @status["Date"]</div>
     <div>Positive: @status["Positive"]</div>
     <div>Negative: @status["Negative"]</div>
     <div>View: @status["View"]</div>
     <div>Buy: @status["Buy"]</div>
-    
+
 }
-@code{
-[Parameter]
-        public string Id { get; set; }
-        private string content;
-        private DateTime month = DateTime.UtcNow;
-        private DateTime check = DateTime.UtcNow;
-        private DateTime start = DateTime.UtcNow;
-        private DateTime end = DateTime.UtcNow;
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    private string content;
+    private DateTime month = DateTime.UtcNow;
+    private DateTime check = DateTime.UtcNow;
+    private DateTime start = DateTime.UtcNow;
+    private DateTime end = DateTime.UtcNow;
 
-        private List<int>? commentStatus = new();
-        private readonly List<Dictionary<string, string>>? fullStatus = new();
-        private async Task Salary()
-        {
-            content = await (await _httpClient.PostAsJsonAsync<List<string>>($"Studio/SalaryMovie", new List<string> { { Id }, { month.ToString("MM dd yyyy") } })).Content.ReadAsStringAsync();
+    private List<int>? commentStatus = new();
+    private readonly List<Dictionary<string, string>>? fullStatus = new();
+    private async Task Salary()
+    {
+        content = await (await _httpClient.PostAsJsonAsync<List<string>>($"Studio/SalaryMovie", new List<string> { { Id }, {
+month.ToString("MM-dd-yyyy") } })).Content.ReadAsStringAsync();
 
-        }
-        private async Task Check()
-        {
-            content = await (await _httpClient.PostAsJsonAsync<List<string>>($"Studio/Check", new List<string> { { Id }, { check.ToString("MM dd yyyy") } })).Content.ReadAsStringAsync();
-        }
-        private async Task Submit()
-        {
-            fullStatus.Clear();
-            //commentStatus.Clear();
-            content = "Loading.....";
+    }
+    private async Task Check()
+    {
+        content = await (await _httpClient.PostAsJsonAsync<List<string>>($"Studio/Check", new List<string> { { Id }, {
+check.ToString("MM-dd-yyyy") } })).Content.ReadAsStringAsync();
+    }
+    private async Task Submit()
+    {
+        fullStatus.Clear();
+        //commentStatus.Clear();
+        content = "Loading.....";
 
-            //for(DateTime i = start; i <= end; i = i.AddDays(1.0))
-            //         {
-            //	content = i.ToString();
-            //}
-            //commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/check");
-            try
+        //for(DateTime i = start; i <= end; i = i.AddDays(1.0))
+        // {
+        // content = i.ToString();
+        //}
+        //commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/check");
+        try
+        {
+            for (DateTime i = start.Date; i <= end.Date; i = i.AddDays(1))
             {
-                for (DateTime i = start.Date; i <= end.Date; i = i.AddDays(1))
-                {
-                    commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/{i.ToString("MM dd yyyy")}");
+                commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/{i.ToString("MM-dd-yyyy")}");
 
 
-                    List<double> getInfor = await _httpClient.GetFromJsonAsync<List<double>>($"Studio/PayCheck/{Id}/{i.ToString("MM dd yyyy")}");
-                    Dictionary<string, string> dic = new();
-                    dic.Add("Date", i.ToString());
-                    dic.Add("Positive", commentStatus[0].ToString());
-                    dic.Add("Negative", commentStatus[1].ToString());
-                    dic.Add("View", getInfor[0].ToString());
-                    dic.Add("Buy", getInfor[1].ToString());
+                List<double> getInfor = await _httpClient.GetFromJsonAsync<List<double>>($"Studio/PayCheck/{Id}/{i.ToString("MM-dd-yyyy")}");
+                Dictionary<string, string> dic = new();
+                dic.Add("Date", i.ToString());
+                dic.Add("Positive", commentStatus[0].ToString());
+                dic.Add("Negative", commentStatus[1].ToString());
+                dic.Add("View", getInfor[0].ToString());
+                dic.Add("Buy", getInfor[1].ToString());
 
-                    fullStatus.Add(dic);
+                fullStatus.Add(dic);
 
-                    content = "";
-                }
-            }
-            catch (Exception ex)
-            {
-                content = ex.Message;
+                content = "";
             }
         }
+        catch (Exception ex)
+        {
+            content = ex.Message;
+        }
+    }
 }

@@ -1,143 +1,146 @@
-﻿
-:root {
-    --primary: #08aeea;
-    --secondary: #13D2B8;
-    --purple: #bd93f9;
-    --pink: #ff6bcb;
-    --blue: #8be9fd;
-    --gray: #333;
-    --font: "Poppins", sans-serif;
-    --gradient: linear-gradient(40deg, #ff6ec4, #7873f5);
-    --shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+﻿:root {
+  --primary: #08aeea;
+  --secondary: #13d2b8;
+  --purple: #bd93f9;
+  --pink: #ff6bcb;
+  --blue: #8be9fd;
+  --gray: #333;
+  --font: "Poppins", sans-serif;
+  --gradient: linear-gradient(40deg, #ff6ec4, #7873f5);
+  --shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
 }
 
-*, *:before, *:after {
-    box-sizing: border-box;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body {
-    font-family: var(--font);
-    font-size: 1.4rem;
-    overflow-x: hidden;
-    font-weight: 300;
+  font-family: var(--font);
+  font-size: 1.4rem;
+  overflow-x: hidden;
+  font-weight: 300;
 }
 
 img {
-    display: block;
-    max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 .container {
-    position: relative;
-    max-width: 850px;
-    width: 550px;
-    background: #e7f0f8;
-    padding: 40px 30px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    perspective: 2700px;
-    border-radius: 12px;
+  position: relative;
+  max-width: 850px;
+  width: 550px;
+  background: #e7f0f8;
+  padding: 40px 30px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  perspective: 2700px;
+  border-radius: 12px;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-input,textarea, select {
-    font-family: var(--font);
-    font-size: 1.4rem;
-    font-weight: 300;
-    outline: none;
-    border: 0;
-    margin: 0;
-    padding: 0;
-    border-radius: 12px;
-    -webkit-appearance: none;
+input,
+textarea,
+select {
+  font-family: var(--font);
+  font-size: 1.4rem;
+  font-weight: 300;
+  outline: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 12px;
+  -webkit-appearance: none;
 }
 
 button {
-    color: #fff;
-    background: #7d2ae8;
-    border-radius: 6px;
-    padding: 0;
-    cursor: pointer;
-    transition: all 0.4s ease;
+  color: #fff;
+  background: #7d2ae8;
+  border-radius: 6px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.4s ease;
 }
 
 .login-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 1.5rem;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1.5rem;
 }
 
-    .login-form input {
-        padding: 1.5rem;
-        border: 1px solid #eee;
-        color: #333;
-        border-radius: 4px;
-        margin-bottom: 1.5rem;
-        display: block;
-        width: 100%;
-        transition: border 0.25s linear;
-        font-weight: normal;
-    }
-    .login-form textarea {
-        padding: 1.5rem;
-        border: 1px solid #eee;
-        color: #333;
-        border-radius: 4px;
-        margin-bottom: 1.5rem;
-        display: block;
-        width: 100%;
-        transition: border 0.25s linear;
-        font-weight: normal;
-    }
+.login-form input {
+  padding: 1.5rem;
+  border: 1px solid #eee;
+  color: #333;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  display: block;
+  width: 100%;
+  transition: border 0.25s linear;
+  font-weight: normal;
+}
+.login-form textarea {
+  padding: 1.5rem;
+  border: 1px solid #eee;
+  color: #333;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  display: block;
+  width: 100%;
+  transition: border 0.25s linear;
+  font-weight: normal;
+}
 
-        .login-form input:focus {
-            border-color: var(--primary);
-        }
+.login-form input:focus {
+  border-color: var(--primary);
+}
 
-    .login-form .forgot {
-        display: inline-block;
-        text-transform: uppercase;
-        color: #333;
-        font-size: 1.2rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-    }
+.login-form .forgot {
+  display: inline-block;
+  text-transform: uppercase;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
 
-    .login-form button {
-        width: 100%;
-        padding: 1.5rem;
-        border-radius: 4px;
-        color: white;
-        /*background-color: var(--primary);*/
-        text-transform: uppercase;
-    }
+.login-form button {
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 4px;
+  color: white;
+  /*background-color: var(--primary);*/
+  text-transform: uppercase;
+}
 
-    .login-form .input-icon {
-        position: relative;
-    }
+.login-form .input-icon {
+  position: relative;
+}
 
-        .login-form .input-icon input {
-            padding-right: 4rem;
-        }
+.login-form .input-icon input {
+  padding-right: 4rem;
+}
 
-        .login-form .input-icon i {
-            position: absolute;
-            top: 50%;
-            right: 1.5rem;
-            transform: translateY(-50%);
-            color: #ccc;
-            cursor: pointer;
-        }
+.login-form .input-icon i {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
+  color: #ccc;
+  cursor: pointer;
+}
 
-@media (max-width:200px) {
-    .container .login-form {
-        width: 100%;
-        margin-bottom: 30px;
-    }
+@media (max-width: 200px) {
+  .container .login-form {
+    width: 100%;
+    margin-bottom: 30px;
+  }
 }

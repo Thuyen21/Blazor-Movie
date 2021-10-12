@@ -13,18 +13,18 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-	<InvariantGlobalization>true</InvariantGlobalization>
-	<ImplicitUsings>enable</ImplicitUsings>
-	<RunAOTCompilation>true</RunAOTCompilation>
-	<TypeScriptJSXEmit>none</TypeScriptJSXEmit>
-	<SignAssembly>true</SignAssembly>
-	<AnalysisLevel>6.0</AnalysisLevel>
-	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-	<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
-	  <Version>2.0</Version>
-	  <AssemblyVersion>2.0.*</AssemblyVersion>
-	  <Deterministic>false</Deterministic>
-	
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RunAOTCompilation>true</RunAOTCompilation>
+    <TypeScriptJSXEmit>none</TypeScriptJSXEmit>
+    <SignAssembly>true</SignAssembly>
+    <AnalysisLevel>6.0</AnalysisLevel>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
+    <Version>2.0</Version>
+    <AssemblyVersion>2.0.*</AssemblyVersion>
+    <Deterministic>false</Deterministic>
+
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -40,19 +40,19 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="6.0.0-rc.2.21470.37" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-rc.2.21470.37" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-rc.2.21470.37" PrivateAssets="all" />
-	  <PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
-	  <PackageReference Include="Braintree" Version="5.9.0" />
-	  <PackageReference Include="FirebaseAdmin" Version="2.2.0" />
-	  <PackageReference Include="FirebaseAuthentication.net" Version="4.0.0-alpha.2" />
-	  <PackageReference Include="FirebaseDatabase.net" Version="4.0.6" />
-	  <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
-	  <PackageReference Include="Google.Apis.Drive.v3" Version="1.55.0.2453" />
-	  <PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
-	  <PackageReference Include="Google.Cloud.Storage.V1" Version="3.5.0" />
-	  <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0-rc.2.21470.23" />
-	  <PackageReference Include="PayoutsSdk" Version="1.1.1" />
-	  <PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
-	  <PackageReference Include="PayPalHttp" Version="1.0.1" />
+    <PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
+    <PackageReference Include="Braintree" Version="5.9.0" />
+    <PackageReference Include="FirebaseAdmin" Version="2.2.0" />
+    <PackageReference Include="FirebaseAuthentication.net" Version="4.0.0-alpha.2" />
+    <PackageReference Include="FirebaseDatabase.net" Version="4.0.6" />
+    <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
+    <PackageReference Include="Google.Apis.Drive.v3" Version="1.55.0.2453" />
+    <PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
+    <PackageReference Include="Google.Cloud.Storage.V1" Version="3.5.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0-rc.2.21470.23" />
+    <PackageReference Include="PayoutsSdk" Version="1.1.1" />
+    <PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
+    <PackageReference Include="PayPalHttp" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,8 +62,8 @@
   <ItemGroup>
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
-  
-	<ItemGroup>
-  <RuntimeHostConfigurationOption Include="System.Net.SocketsHttpHandler.Http3Support" Value="true" />
-</ItemGroup>
+
+  <ItemGroup>
+    <RuntimeHostConfigurationOption Include="System.Net.SocketsHttpHandler.Http3Support" Value="true" />
+  </ItemGroup>
 </Project>

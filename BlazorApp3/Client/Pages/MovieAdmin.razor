@@ -147,7 +147,10 @@
 								<li class="topic">Movie ID</li>
 								@foreach (var item in movies)
 								{
-									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;"><a href="#">@item.MovieId</a></li>
+									<li
+								style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;">
+										<a href="#">@item.MovieId</a>
+									</li>
 								}
 
 							</ul>
@@ -155,28 +158,40 @@
 								<li class="topic"><i class='bx bx-mail-send'></i> Studio ID</li>
 								@foreach (var item in movies)
 								{
-									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 200px; margin-right: 10px;"><a href="#">@item.StudioId</a></li>
+									<li
+								style="overflow: hidden; text-overflow: ellipsis; max-width: 200px; margin-right: 10px;">
+										<a href="#">@item.StudioId</a>
+									</li>
 								}
 							</ul>
 							<ul class="details">
 								<li class="topic"><i class='bx bx-user'></i> Genre</li>
 								@foreach (var item in movies)
 								{
-									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 200px; margin-right: 10px;"><a href="#">@item.MovieGenre</a></li>
+									<li
+								style="overflow: hidden; text-overflow: ellipsis; max-width: 200px; margin-right: 10px;">
+										<a href="#">@item.MovieGenre</a>
+									</li>
 								}
 							</ul>
 							<ul class="details">
 								<li class="topic"><i class='bx bx-network-chart'></i> Name</li>
 								@foreach (var item in movies)
 								{
-									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 200px; margin-right: 10px;"><a href="#">@item.MovieName</a></li>
+									<li
+								style="overflow: hidden; text-overflow: ellipsis; max-width: 200px; margin-right: 10px;">
+										<a href="#">@item.MovieName</a>
+									</li>
 								}
 							</ul>
 							<ul class="details">
 								<li class="topic"><i class='bx bx-calendar'></i> Premiere Date</li>
 								@foreach (var item in movies)
 								{
-									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;"><a href="#">@item.PremiereDate.ToShortDateString()</a></li>
+									<li
+								style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;">
+										<a href="#">@item.PremiereDate.ToShortDateString()</a>
+									</li>
 								}
 							</ul>
 							<ul class="details">
@@ -185,7 +200,8 @@
 								{
 									<li>
 										@{
-											var linkEdit = $"EditMovieAdmin/{item.MovieId}"; var linkBan = $"DeleteMovieAdmin/{item.MovieId}";
+											var linkEdit = $"EditMovieAdmin/{item.MovieId}"; var linkBan =
+					$"DeleteMovieAdmin/{item.MovieId}";
 										}
 										<div class="button">
 											<a href="@linkEdit" style="margin-right:5px">Edit</a>
@@ -211,72 +227,72 @@
 
 
 
-@code{
+@code {
 	private List<MovieModel> movies = new();
-        private int index = 0;
-        private string? searchString { get; set; }
-        private bool isSearch = false;
-        private string sort = null;
-        private async Task NameSortParm()
-        {
-            index = 0;
-            sort = sort == "name" ? "nameDesc" : "name";
-            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Admin/Movie/ /{sort}/{index}");
-            isSearch = false;
-            searchString = null;
-        }
+	private int index = 0;
+	private string? searchString { get; set; }
+	private bool isSearch = false;
+	private string sort = null;
+	private async Task NameSortParm()
+	{
+		index = 0;
+		sort = sort == "name" ? "nameDesc" : "name";
+		movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Admin/Movie/ /{sort}/{index}");
+		isSearch = false;
+		searchString = null;
+	}
 
-        private async Task DateSortParm()
-        {
-            index = 0;
-            sort = sort == "date" ? "dateDesc" : "date";
-            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Admin/Movie/ /{sort}/{index}");
-            isSearch = false;
-            searchString = null;
-        }
-        private async Task GenreSortParm()
-        {
-            index = 0;
-            sort = sort == "genre" ? "genreDesc" : "genre";
-            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Admin/Movie/ /{sort}/{index}");
-            isSearch = false;
-            searchString = null;
-        }
+	private async Task DateSortParm()
+	{
+		index = 0;
+		sort = sort == "date" ? "dateDesc" : "date";
+		movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Admin/Movie/ /{sort}/{index}");
+		isSearch = false;
+		searchString = null;
+	}
+	private async Task GenreSortParm()
+	{
+		index = 0;
+		sort = sort == "genre" ? "genreDesc" : "genre";
+		movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Admin/Movie/ /{sort}/{index}");
+		isSearch = false;
+		searchString = null;
+	}
 
-        protected override async Task OnInitializedAsync()
-        {
-            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ / /{index}");
-        }
-        private async Task Search()
-        {
-            index = 0;
-            if (searchString != null)
-            {
-                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/{searchString}/ /{index}");
-                isSearch = true;
-            }
-            else
-            {
-                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ / /{index}");
-                isSearch = false;
-            }
-            sort = null;
-        }
-        private async Task LoadMore()
-        {
-            index++;
-            if (isSearch)
-            {
-                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/{searchString}//{index}"));
-            }
-            else if (sort != null)
-            {
-                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ /{sort}/{index}"));
-            }
-            else
-            {
-                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ / /{index}"));
-            }
+	protected override async Task OnInitializedAsync()
+	{
+		movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ / /{index}");
+	}
+	private async Task Search()
+	{
+		index = 0;
+		if (searchString != null)
+		{
+			movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/{searchString}/ /{index}");
+			isSearch = true;
+		}
+		else
+		{
+			movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ / /{index}");
+			isSearch = false;
+		}
+		sort = null;
+	}
+	private async Task LoadMore()
+	{
+		index++;
+		if (isSearch)
+		{
+			movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/{searchString}//{index}"));
+		}
+		else if (sort != null)
+		{
+			movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ /{sort}/{index}"));
+		}
+		else
+		{
+			movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ / /{index}"));
+		}
 
-        }
+	}
 }

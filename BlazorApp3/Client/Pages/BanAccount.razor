@@ -29,8 +29,10 @@
 							<div class="panel-body">
 								<div class="input-box">
 									<div class="input-group">
-										@*<span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>*@
-										<input placeholder="@acc.Id" class="form-control" type="email" style="pointer-events: none;">
+										@*<span class="input-group-addon"><i class="glyphicon glyphicon-envelope
+											color-blue"></i></span>*@
+										<input placeholder="@acc.Id" class="form-control" type="email"
+										style="pointer-events: none;">
 									</div>
 								</div>
 								<div class="input-boxes">
@@ -50,23 +52,23 @@
 		</div>
 	}
 </div>
-@code{
-[Parameter]
-        public string Id { get; set; }
-        private AccountManagementModel acc;
-        private string content;
-        protected override async Task OnInitializedAsync()
-        {
-            acc = await _httpClient.GetFromJsonAsync<AccountManagementModel>($"Admin/EditAccount/{Id}");
-        }
-        private async Task Ban()
-        {
-            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<string>("Admin/Ban", acc.Id);
-            content = await response.Content.ReadAsStringAsync();
-        }
-        private async Task UnBan()
-        {
-            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<string>("Admin/UnBan", acc.Id);
-            content = await response.Content.ReadAsStringAsync();
-        }
+@code {
+	[Parameter]
+	public string Id { get; set; }
+	private AccountManagementModel acc;
+	private string content;
+	protected override async Task OnInitializedAsync()
+	{
+		acc = await _httpClient.GetFromJsonAsync<AccountManagementModel>($"Admin/EditAccount/{Id}");
+	}
+	private async Task Ban()
+	{
+		HttpResponseMessage response = await _httpClient.PostAsJsonAsync<string>("Admin/Ban", acc.Id);
+		content = await response.Content.ReadAsStringAsync();
+	}
+	private async Task UnBan()
+	{
+		HttpResponseMessage response = await _httpClient.PostAsJsonAsync<string>("Admin/UnBan", acc.Id);
+		content = await response.Content.ReadAsStringAsync();
+	}
 }

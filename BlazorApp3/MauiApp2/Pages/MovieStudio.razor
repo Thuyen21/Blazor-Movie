@@ -1,9 +1,10 @@
 ﻿@page "/MovieStudio"
 @attribute [Authorize(Roles = "Studio")]
 @using Firebase.Storage
+
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 
@@ -60,7 +61,8 @@ else
         <td>@item.MovieName</td>
         <td>@item.PremiereDate.ToShortDateString()</td>
         @{
-        var linkEdit = $"EditMovieStudio/{item.MovieId}"; var linkBan = $"DeleteMovieStudio/{item.MovieId}"; var linkStatus = $"StatusStudio/{item.MovieId}";
+        var linkEdit = $"EditMovieStudio/{item.MovieId}"; var linkBan = $"DeleteMovieStudio/{item.MovieId}"; var linkStatus =
+        $"StatusStudio/{item.MovieId}";
         }
         <td><NavLink class="nav-link" href="@linkEdit">Edit</NavLink></td>
         <td><NavLink class="nav-link" href="@linkBan">Delete</NavLink> </td>
@@ -85,7 +87,7 @@ else
                         <img src="@DicImageLink[item.MovieId]" class="card-img-top" alt="..." />
                         <div class="card-body">
                             <h1 class="card-title">@item.MovieName</h1>
-                            <p class="card-text">                                
+                            <p class="card-text">
                                 @item.MoviesDescription
                             </p>
                             <h5 class="card-text">Gender: @item.MovieGenre</h5>
@@ -93,7 +95,8 @@ else
                         </div>
                         <div class="card-footer">
                             @{
-                                var linkEdit = $"EditMovieStudio/{item.MovieId}"; var linkBan = $"DeleteMovieStudio/{item.MovieId}"; var linkStatus = $"StatusStudio/{item.MovieId}";
+                                var linkEdit = $"EditMovieStudio/{item.MovieId}"; var linkBan = $"DeleteMovieStudio/{item.MovieId}";
+                                var linkStatus = $"StatusStudio/{item.MovieId}";
                             }
                             <a href="@linkEdit" class="btn btn-primary">Edit</a>
                             <a href="@linkBan" class="btn btn-danger">Delete</a>
@@ -156,26 +159,31 @@ else
     {
         movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}");
         char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
-            string token = new string(tokena);
-            foreach (MovieModel item in movies)
+        string token = new string(tokena);
+        foreach (MovieModel item in movies)
+        {
+            try
             {
-                try
+                string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions
                 {
-                    string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
-                    if (!DicImageLink.ContainsKey(item.MovieId))
-                    {
-                        DicImageLink.Add(item.MovieId, ImageLink);
-                    }
-                    else
-                    {
-                        DicImageLink[item.MovieId] = ImageLink;
-                    }
+                    AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)),
+                    ThrowOnCancel = true,
+                    HttpClientTimeout = TimeSpan.FromHours(2)
+                }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
+                if (!DicImageLink.ContainsKey(item.MovieId))
+                {
+                    DicImageLink.Add(item.MovieId, ImageLink);
                 }
-                catch
+                else
                 {
-                    DicImageLink.Add(item.MovieId, null);
+                    DicImageLink[item.MovieId] = ImageLink;
                 }
             }
+            catch
+            {
+                DicImageLink.Add(item.MovieId, null);
+            }
+        }
     }
     private async Task Search()
     {

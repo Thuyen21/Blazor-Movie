@@ -42,6 +42,6 @@ namespace BlazorApp3.Shared
         [Required]
         [DisplayName("Description")]
         [DataType(DataType.Text)]
-        public string MoviesDescription { get; set; }
+        public string? MoviesDescription { get; set; }
     }
 }
