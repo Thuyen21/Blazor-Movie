@@ -46,9 +46,9 @@
 	  <PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
 	  <PackageReference Include="Google.Cloud.Storage.V1" Version="3.5.0" />
 	  
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0-rtm.21509.1" />
-	  <PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.0-rtm.21509.1" />
-	  <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0-rtm.21508.16" />	
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0-rc.2.21470.37" />
+	  <PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.0-rc.2.21470.37" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0-rc.2.21470.23" />	
 	  
 	  <PackageReference Include="Microsoft.ML" Version="1.6.0" />
 	  <PackageReference Include="Microsoft.ML.FastTree" Version="1.6.0" />
