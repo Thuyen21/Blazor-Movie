@@ -21,8 +21,7 @@ jobs:
       #      uses: actions/setup-dotnet@v1
       #      with:
       #         dotnet-version: 5.x
-      - name: Dotnet Restore
-        run: dotnet restore
+
       - name: Install format
         run: dotnet tool install -g dotnet-format --version "7.0.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
       - name: Install tools
@@ -32,6 +31,8 @@ jobs:
       #      run: dotnet restore BlazorApp3.sln
       #- name: Test with the dotnet CLI
       #run: dotnet test BlazorApp3.sln
+      - name: Dotnet Restore
+        run: dotnet restore
       - name: Formating
         run: dotnet format analyzers --no-restore BlazorApp3.sln
       #    - name: Install dependencies
