@@ -18,6 +18,10 @@ namespace MauiApp2
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
         {
+            try
+            {
+
+            
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             AccountManagementModel user = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/GetCurrentUser");
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
@@ -35,7 +39,12 @@ namespace MauiApp2
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 return new AuthenticationState(claimsPrincipal);
             }
+            }
+            catch
+            {
 
+
+            }
             return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
 
         }
