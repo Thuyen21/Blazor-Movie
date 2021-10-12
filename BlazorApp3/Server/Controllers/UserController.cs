@@ -68,7 +68,7 @@ public class UserController : Controller
 
         return Ok();
     }
-
+    [Authorize]
     [HttpGet("Logout")]
 
     public async Task<ActionResult> LogOut()
@@ -76,7 +76,7 @@ public class UserController : Controller
         await HttpContext.SignOutAsync();
         return Ok();
     }
-
+    [Authorize]
     [HttpGet("GetCurrentUser")]
     public async Task<ActionResult<AccountManagementModel>> GetCurrentUser()
     {

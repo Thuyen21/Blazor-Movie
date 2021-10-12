@@ -12,6 +12,7 @@ This project was built on .NET 6
 
 ## Current News
 
+- October 10, 2021 - [.NET Blazor Movie RC.2.0 Preview](https://github.com/Thuyen21/Blazor-Movie-/tree/RC.2.0-Preview)
 - October 1, 2021 - [.NET Blazor Movie RC 1.5](https://github.com/Thuyen21/Blazor-Movie-/tree/Version)
 - September 29, 2021 - [.NET Blazor Movie RC 1.4 UI Update](https://github.com/Thuyen21/Blazor-Movie-/tree/baopngch18183/UI-rc1.4)
 - September 28, 2021 - [.NET Blazor Movie RC 1.3](https://github.com/Thuyen21/Blazor-Movie-/tree/RC_1.3)

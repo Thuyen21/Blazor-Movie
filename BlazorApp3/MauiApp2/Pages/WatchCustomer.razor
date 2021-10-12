@@ -1,49 +1,51 @@
 ﻿<h3>WatchCustomer</h3>
 @page "/WatchCustomer/{Id}"
-@attribute [Authorize(Roles ="Customer")]
+@attribute [Authorize(Roles = "Customer")]
 @using Firebase.Storage
 
 
 <PageTitle> test</PageTitle>
 
-@if(movie == null || movieLink == null)
+@if (movie == null || movieLink == null)
 {
-    @if(canWatch == null)
+    @if (canWatch == null)
     {
         <div>Loadding</div>
-}
-    else if(canWatch == false)
-    {
-        
-        string linkVip = $"BuyVip/{Id}";
-        <div>Need to buy</div>      
-        <div><NavLink class="nav-link" href="@linkVip">Buy</NavLink></div>
     }
-    
-    
+    else if (canWatch == false)
+    {
+
+        string linkVip = $"BuyVip/{Id}";
+        <div>Need to buy</div>
+        <div>
+            <NavLink class="nav-link" href="@linkVip">Buy</NavLink>
+        </div>
+    }
+
+
 }
 else
 {
-        if(sameDevice)
-        {
-            <video src="@movieLink"  width="1280" height="720" controls @onclick="View"></video>
-        }
-        else
-        {
-            <div>You cannot watch in many Device at the same time Logout then Login to update your last Device</div> 
-        }
-    
+    if (sameDevice)
+    {
+        <video src="@movieLink" width="1280" height="720" controls @onclick="View"></video>
+    }
+    else
+    {
+        <div>You cannot watch in many Device at the same time Logout then Login to update your last Device</div>
+    }
+
 }
 @if (commentList != null)
-{ 
-    for(int i = 0;i < commentList.Count(); i++)
+{
+    for (int i = 0; i < commentList.Count(); i++)
     {
         var local = commentList[i].Id;
         <div>Email: @commentList[i].Email, comment: @commentList[i].CommentText, Time: @commentList[i].Time</div>
-        <div>Like = @commentList[i].Like, Dislike = @commentList[i].DisLike, Is: @commentList[i].Is  </div>
-        
-        <button @onclick="@(async () => await AcLike(local))" >Like</button>
-        <button @onclick="@(async () => await AcDisLike(local))" >DisLike</button>
+        <div>Like = @commentList[i].Like, Dislike = @commentList[i].DisLike, Is: @commentList[i].Is </div>
+
+        <button @onclick="@(async () => await AcLike(local))">Like</button>
+        <button @onclick="@(async () => await AcDisLike(local))">DisLike</button>
     }
 }
 
@@ -51,116 +53,125 @@ else
 
 <input type="text" @bind=@Acomment>
 
-<button @onclick="@Com" >Comment</button>
+<button @onclick="@Com">Comment</button>
 
 
 <div>@content</div>
 
 
-@code{
-[Parameter]
-        public string Id { get; set; }
+@code {
+    [Parameter]
+    public string Id { get; set; }
 
-        private MovieModel movie;
-        private string movieLink;
-        private bool? canWatch;
-        private string Acomment;
-        private string content;
-        private List<CommentModel> commentList = new();
+    private MovieModel movie;
+    private string movieLink;
+    private bool? canWatch;
+    private string Acomment;
+    private string content;
+    private List<CommentModel> commentList = new();
 
-        private bool sameDevice = false;
+    private bool sameDevice = false;
 
-        private int index = 0;
-        protected override async Task OnInitializedAsync()
+    private int index = 0;
+    protected override async Task OnInitializedAsync()
+    {
+
+        movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Customer/Watch/{Id}");
+
+        commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}");
+
+        sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await
+        JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
+
+        canWatch = await _httpClient.GetFromJsonAsync<bool>($"Customer/CanWatch/{Id}");
+        if (canWatch == true)
         {
-
-            movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Customer/Watch/{Id}");
-
-            commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}");
-
-            sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
-
-            canWatch = await _httpClient.GetFromJsonAsync<bool>($"Customer/CanWatch/{Id}");
-            if (canWatch == true)
+            char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+            string token = new string(tokena);
+            try
             {
-                char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
-                string token = new string(tokena);
-                try
+                movieLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions
                 {
-                    movieLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").GetDownloadUrlAsync();
-                }
-                catch
-                {
-                }
+                    AuthTokenAsyncFactory =
+                async () => await Task.FromResult(await Task.FromResult(token)),
+                    ThrowOnCancel = true,
+                    HttpClientTimeout =
+                TimeSpan.FromHours(2)
+                }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").GetDownloadUrlAsync();
             }
-        }
-        private async Task View()
-        {
-
-            await _httpClient.PostAsJsonAsync<string>("Customer/View", Id);
-
-            while (true)
+            catch
             {
-                sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
-
-                if (!sameDevice)
-                {
-                    StateHasChanged();
-                }
-
-                await Task.Delay(150000);
             }
-
         }
-        private async Task Com()
-        {
-            CommentModel up = new CommentModel()
-            { Time = DateTime.UtcNow, MovieId = Id, CommentText = Acomment };
-            content = await (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up)).Content.ReadAsStringAsync();
-            List<CommentModel> commentListTemp = new();
+    }
+    private async Task View()
+    {
 
-            for (int i = 0; i <= index; i++)
+        await _httpClient.PostAsJsonAsync<string>("Customer/View", Id);
+
+        while (true)
+        {
+            sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await
+            JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
+
+            if (!sameDevice)
             {
-                commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
+                StateHasChanged();
             }
-            commentList.Clear();
-            commentList = commentListTemp;
-            StateHasChanged();
+
+            await Task.Delay(150000);
         }
 
-        private async Task AcDisLike(string Id)
+    }
+    private async Task Com()
+    {
+        CommentModel up = new CommentModel()
+        { Time = DateTime.UtcNow, MovieId = Id, CommentText = Acomment };
+        content = await (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up)).Content.ReadAsStringAsync();
+        List<CommentModel> commentListTemp = new();
+
+        for (int i = 0; i <= index; i++)
         {
-            await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "DisLike");
-            List<CommentModel> commentListTemp = new();
-
-            for (int i = 0; i <= index; i++)
-            {
-                commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{this.Id}/{i}"));
-            }
-            commentList.Clear();
-            commentList = commentListTemp;
-            StateHasChanged();
+            commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
         }
+        commentList.Clear();
+        commentList = commentListTemp;
+        StateHasChanged();
+    }
 
-        private async Task AcLike(string Id)
+    private async Task AcDisLike(string Id)
+    {
+        await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "DisLike");
+        List<CommentModel> commentListTemp = new();
+
+        for (int i = 0; i <= index; i++)
         {
-            await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "Like");
-            List<CommentModel> commentListTemp = new();
-
-            for (int i = 0; i <= index; i++)
-            {
-                commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{this.Id}/{i}"));
-            }
-            commentList.Clear();
-            commentList = commentListTemp;
-
-            StateHasChanged();
+            commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{this.Id}/{i}"));
         }
+        commentList.Clear();
+        commentList = commentListTemp;
+        StateHasChanged();
+    }
 
-        private async Task LoadMore()
+    private async Task AcLike(string Id)
+    {
+        await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "Like");
+        List<CommentModel> commentListTemp = new();
+
+        for (int i = 0; i <= index; i++)
         {
-            index++;
-            commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}"));
-
+            commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{this.Id}/{i}"));
         }
+        commentList.Clear();
+        commentList = commentListTemp;
+
+        StateHasChanged();
+    }
+
+    private async Task LoadMore()
+    {
+        index++;
+        commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}"));
+
+    }
 }

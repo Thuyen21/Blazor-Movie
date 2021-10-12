@@ -14,13 +14,13 @@
     MoviesDescription
     <InputText @bind-Value="@movie.MoviesDescription" /><br>
     <button type="submit">Submit</button>
-</EditForm>
-<div>@content</div>
+    </EditForm>
+    <div>@content</div>
 *@
 
 <head>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossOrigin="anonymous" />
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossOrigin="anonymous" />
 </head>
 <div class="container">
     <form class="login-form" autocomplete="off" action="#">
@@ -28,19 +28,20 @@
             <DataAnnotationsValidator />
             <ValidationSummary />
             <a style="font-weight: 600;">Gender </a>
-            <input type="text" placeholder="Type gender of movie" @bind="@movie.MovieGenre"/>
+            <input type="text" placeholder="Type gender of movie" @bind="@movie.MovieGenre" />
             <a style="font-weight: 600;">Name </a>
-            <input type="text" placeholder="Type name of movie" @bind="@movie.MovieName"/>
+            <input type="text" placeholder="Type name of movie" @bind="@movie.MovieName" />
             <a style="font-weight: 600;">Description</a>
-            <textarea style="outline:1px;" rows="9" cols="70" type="text" placeholder="Type description of movie" @bind="@movie.MoviesDescription"/>
+            <textarea style="outline:1px;" rows="9" cols="70" type="text" placeholder="Type description of movie"
+                @bind="@movie.MoviesDescription" />
             <a style="font-weight: 600;">Premiere Date</a>
-            <input type="date"  @bind="@movie.PremiereDate" />
+            <input type="date" @bind="@movie.PremiereDate" />
             <button>Submit</button>
         </EditForm>
         <div>@content</div>
     </form>
 </div>
- 
+
 
 
 

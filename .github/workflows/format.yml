@@ -22,22 +22,22 @@ jobs:
       #      with:
       #         dotnet-version: 5.x
       - name: Install format
-        run: dotnet tool install -g dotnet-format --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
+        run: dotnet tool install -g dotnet-format --version "7.0.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
       - name: Install tools
         run: |
           dotnet workload install wasm-tools maui android-aot ios maccatalyst macos tvos
       #    - name: Install dependencies
       #      run: dotnet restore BlazorApp3.sln
       #- name: Test with the dotnet CLI
-        #run: dotnet test BlazorApp3.sln
+      #run: dotnet test BlazorApp3.sln
       - name: Formating
-        run: dotnet format --no-restore BlazorApp3.sln
+        run: dotnet format analyzers --no-restore BlazorApp3.sln
       #    - name: Install dependencies
       #      run: dotnet restore MauiApp2.sln
       #    - name: Test with the dotnet CLI
       #      run: dotnet test MauiApp2.sln
-#      - name: Formating
-#        run: dotnet format --no-restore MauiApp2.sln
+      #      - name: Formating
+      #        run: dotnet format --no-restore MauiApp2.sln
 
       #    - name: Install maui
       #      run: |

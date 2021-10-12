@@ -2,8 +2,6 @@
 @inject IAccountService _accountService;
 @page "/login"
 
-@using MauiApp2.Services
-
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="style.css">
@@ -23,7 +21,8 @@
 				</div>
 			</div>
 			<div class="back">
-				<img class="backImg" src="https://bvuvolunteers.org/wp-content/uploads/2021/03/coffee-and-keyboard.jpg" alt="">
+				<img class="backImg" src="https://bvuvolunteers.org/wp-content/uploads/2021/03/coffee-and-keyboard.jpg"
+					alt="">
 				<div class="text">
 					<span class="text-1">Complete miles of journey <br> with one step</span>
 					<span class="text-2">Let's get started</span>
@@ -45,7 +44,8 @@
 								</div>
 								<div class="input-box">
 									<i class="fas fa-lock"></i>
-									<input type="password" @bind="@login.Password" placeholder="Enter your password" required>
+									<input type="password" @bind="@login.Password" placeholder="Enter your password"
+										required>
 								</div>
 								<div class="text"><a href="/ResetPassword">Forgot password?</a></div>
 								<div class="button input-box">
@@ -60,7 +60,8 @@
 								<div class="input-box" style="visibility: hidden;">
 									<i class="fas fa-envelope"></i>
 								</div>
-								<div class="text sign-up-text">Don't have an account? <a href="/SignUp"><label>Sigup now</label></a></div>
+								<div class="text sign-up-text">Don't have an account? <a href="/SignUp"><label>Sigup
+											now</label></a></div>
 								<div class="text sign-up-text">@content</div>
 							</EditForm>
 						</div>
@@ -80,17 +81,17 @@
 		this.divCSS = divCSS;
 	}
 	private readonly LogInModel login = new LogInModel();
-        private string content;
-        private async Task HandleValidSubmit()
-        {
-            string? remoteUserAgent = await JS.InvokeAsync<string>("getUserAgent");
-            login.UserAgent = remoteUserAgent;
-            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
-            content = await response.Content.ReadAsStringAsync();
-            if (response.IsSuccessStatusCode)
-            {
-                _accountService.Login();
-                _navigationManager.NavigateTo("/");
-            }
-        }
+	private string content;
+	private async Task HandleValidSubmit()
+	{
+		string? remoteUserAgent = await JS.InvokeAsync<string>("getUserAgent");
+		login.UserAgent = remoteUserAgent;
+		HttpResponseMessage response = await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
+		content = await response.Content.ReadAsStringAsync();
+		if (response.IsSuccessStatusCode)
+		{
+			_accountService.Login();
+			_navigationManager.NavigateTo("/");
+		}
+	}
 }

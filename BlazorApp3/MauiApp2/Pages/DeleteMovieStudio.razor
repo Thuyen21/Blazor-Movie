@@ -1,44 +1,126 @@
-﻿<h3>DeleteMovieAdmin</h3>
-@page "/DeleteMovieStudio/{Id}"
-@attribute [Authorize(Roles ="Studio")]
-@if (movie == null)
-{
+﻿@page "/DeleteMovieStudio/{Id}"
+@attribute [Authorize(Roles = "Studio")]
+
+@*@if (movie == null)
+    {
     <p>
-        <em>Loading...</em>
+    <em>Loading...</em>
     </p>
-}
-else
-{
+    }
+    else
+    {
     <EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
-    <DataAnnotationsValidator/>
-    <ValidationSummary/> 
+    <DataAnnotationsValidator />
+    <ValidationSummary />
     MovieId
-    <InputText   @bind-Value="@movie.MovieId" /><br>
+    <InputText @bind-Value="@movie.MovieId" /><br>
     StudioId
-    <InputText  @bind-Value="@movie.StudioId"/><br>
+    <InputText @bind-Value="@movie.StudioId" /><br>
     MovieGenre
-    <InputText  @bind-Value="@movie.MovieGenre"/><br>
+    <InputText @bind-Value="@movie.MovieGenre" /><br>
     MovieName
-    <InputText  @bind-Value="@movie.MovieName"/><br>
+    <InputText @bind-Value="@movie.MovieName" /><br>
     PremiereDate
-    <InputDate  @bind-Value="@movie.PremiereDate"/><br>
+    <InputDate @bind-Value="@movie.PremiereDate" /><br>
 
     <button type="submit">Delete</button>
-</EditForm>
-<div>@content</div>
-}
-@code{
-[Parameter]
-        public string Id { get; set; }
-        private MovieModel movie;
-        private string content;
-        protected override async Task OnInitializedAsync()
-        {
-            movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
-        }
-        private async Task HandleValidSubmit()
-        {
-            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<MovieModel>("Studio/DeleteMovie", movie);
-            content = await response.Content.ReadAsStringAsync();
-        }
+    </EditForm>
+    <div>@content</div>
+    }*@
+
+<head>
+    <meta charset="utf-8">
+    <title>Studio Delete Movie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script> -->
+</head>
+<body>
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+                <div class="d-table-cell align-middle">
+
+                    <div class="text-center mt-4">
+                        <h1 class="h2">Getting Delete Movie</h1>
+                        <p class="lead">
+                            Start delete the movie has the information in the box below.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="m-sm-4">
+                                @if (movie == null)
+                                {
+                                    <p>
+                                        <em>Loading...</em>
+                                    </p>
+                                }
+                                else
+                                {
+                                    <EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
+                                        <DataAnnotationsValidator />
+                                        <ValidationSummary />
+                                        <div>@content</div>
+                                        <div class="form-group">
+                                            <label>Movie ID</label>
+                                            <input class="form-control form-control-lg" type="text" @bind="@movie.MovieId"
+                                               placeholder="@movie.MovieId" style="pointer-events: none;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Studio ID</label>
+                                            <input class="form-control form-control-lg" type="text" @bind="@movie.StudioId"
+                                               placeholder="@movie.StudioId" style="pointer-events: none;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Genre</label>
+                                            <input class="form-control form-control-lg" type="text" @bind="@movie.MovieGenre"
+                                               placeholder="@movie.MovieGenre" style="pointer-events: none;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input class="form-control form-control-lg" type="text" @bind="@movie.MovieName"
+                                               placeholder="@movie.MovieName" style="pointer-events: none;">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Pre Date</label>
+                                            <input class="form-control form-control-lg" type="date" @bind="@movie.PremiereDate"
+                                               placeholder="@movie.PremiereDate" style="pointer-events: none;">
+                                        </div>
+                                        <div class="text-center mt-3">
+                                            <button type="submit" class="btn btn-lg btn-danger">Delete</button>
+                                        </div>
+                                    </EditForm>
+                                } @*end else*@
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    private MovieModel movie;
+    private string content;
+    protected override async Task OnInitializedAsync()
+    {
+        movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
+    }
+    private async Task HandleValidSubmit()
+    {
+        HttpResponseMessage response = await _httpClient.PostAsJsonAsync<MovieModel>("Studio/DeleteMovie", movie);
+        content = await response.Content.ReadAsStringAsync();
+    }
 }

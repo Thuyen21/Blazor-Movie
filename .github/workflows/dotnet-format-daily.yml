@@ -27,7 +27,7 @@
 #           action: "fix"
 #           #only-changed-files: true # only works for PRs
 #           workspace: "BlazorApp3.sln"
-    
+
 #       - name: Commit files for BlazorApp3
 #         if: steps.format.outputs.has-changes == 'true'
 #         run: |
