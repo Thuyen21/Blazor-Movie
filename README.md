@@ -12,6 +12,7 @@ This project was built on .NET 6
 
 ## Current News
 
+- October 13, 2021 - [.NET Blazor Movie RC.2.0](https://github.com/Thuyen21/Blazor-Movie-/tree/RC.2.0)
 - October 10, 2021 - [.NET Blazor Movie RC.2.0 Preview](https://github.com/Thuyen21/Blazor-Movie-/tree/RC.2.0-Preview)
 - October 1, 2021 - [.NET Blazor Movie RC 1.5](https://github.com/Thuyen21/Blazor-Movie-/tree/Version)
 - September 29, 2021 - [.NET Blazor Movie RC 1.4 UI Update](https://github.com/Thuyen21/Blazor-Movie-/tree/baopngch18183/UI-rc1.4)
@@ -25,8 +26,15 @@ This project was built on .NET 6
 ### Requirements
 
 - [Install .NET6](https://dotnet.microsoft.com/download/dotnet/6.0)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
 
 ### Running
+
+#### Visual Studio 2022
+
+First thing’s first, install Visual Studio 2022 and install the .NET WebAssembly build tools, select the optional component in the Visual Studio installer.
+
+For Maui development check .NET MAUI (preview) under the Mobile Development with .NET workload, and check the Universal Windows Platform development workload. Then, install the [Windows App SDK Single-project MSIX extension](https://marketplace.visualstudio.com/items?itemName=ProjectReunion.MicrosoftSingleProjectMSIXPackagingToolsDev17)
 
 #### .NET 6
 
@@ -35,7 +43,7 @@ This project was built on .NET 6
 Install global workloads
 
 ```dotnetcli
-dotnet workload install maui wasm-tools
+dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
 ```
 
 Build and launch Visual Studio using global workloads
