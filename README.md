@@ -25,8 +25,15 @@ This project was built on .NET 6
 ### Requirements
 
 - [Install .NET6](https://dotnet.microsoft.com/download/dotnet/6.0)
+- [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
 
 ### Running
+
+#### Visual Studio 2022
+
+First thing’s first, install Visual Studio 2022 and install the .NET WebAssembly build tools, select the optional component in the Visual Studio installer, and check .NET MAUI (preview) under the Mobile Development with .NET workload, and check the Universal Windows Platform development workload.
+
+Now, install the [Windows App SDK Single-project MSIX extension](https://marketplace.visualstudio.com/items?itemName=ProjectReunion.MicrosoftSingleProjectMSIXPackagingToolsDev17)
 
 #### .NET 6
 
