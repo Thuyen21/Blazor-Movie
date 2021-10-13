@@ -62,85 +62,82 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<MauiCss Remove="Pages\AdminAccountManagement.razor.css" />
-		<MauiCss Remove="Pages\BanAccount.razor.css" />
-		<MauiCss Remove="Pages\Contact.razor.css" />
-		<MauiCss Remove="Pages\CreateStudio.razor.css" />
-		<MauiCss Remove="Pages\DeleteMovieAdmin.razor.css" />
-		<MauiCss Remove="Pages\DeleteMovieStudio.razor.css" />
-		<MauiCss Remove="Pages\EditAccount.razor.css" />
-		<MauiCss Remove="Pages\EditMovieAdmin.razor.css" />
-		<MauiCss Remove="Pages\EditMovieStudio.razor.css" />
-		<MauiCss Remove="Pages\Login.razor.css" />
-		<MauiCss Remove="Pages\MovieAdmin.razor.css" />
-		<MauiCss Remove="Pages\MovieStudio.razor.css" />
-		<MauiCss Remove="Pages\Profile.razor.css" />
-		<MauiCss Remove="Pages\ResetPassword.razor.css" />
-		<MauiCss Remove="Pages\SignUp.razor.css" />
-		<MauiCss Remove="Shared\MainLayout.razor.css" />
-		<MauiCss Remove="Shared\NavMenu.razor.css" />
+	  <MauiCss Remove="Pages\AdminAccountManagement.razor.css" />
+	  <MauiCss Remove="Pages\BanAccount.razor.css" />
+	  <MauiCss Remove="Pages\Contact.razor.css" />
+	  <MauiCss Remove="Pages\CreateStudio.razor.css" />
+	  <MauiCss Remove="Pages\DeleteMovieAdmin.razor.css" />
+	  <MauiCss Remove="Pages\DeleteMovieStudio.razor.css" />
+	  <MauiCss Remove="Pages\EditAccount.razor.css" />
+	  <MauiCss Remove="Pages\EditMovieAdmin.razor.css" />
+	  <MauiCss Remove="Pages\EditMovieStudio.razor.css" />
+	  <MauiCss Remove="Pages\Login.razor.css" />
+	  <MauiCss Remove="Pages\MovieAdmin.razor.css" />
+	  <MauiCss Remove="Pages\MovieStudio.razor.css" />
+	  <MauiCss Remove="Pages\Profile.razor.css" />
+	  <MauiCss Remove="Pages\ResetPassword.razor.css" />
+	  <MauiCss Remove="Pages\SignUp.razor.css" />
+	  <MauiCss Remove="Shared\MainLayout.razor.css" />
+	  <MauiCss Remove="Shared\NavMenu.razor.css" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Include="Pages\AdminAccountManagement.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Pages\BanAccount.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Pages\Contact.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Pages\CreateStudio.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Pages\DeleteMovieAdmin.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Pages\DeleteMovieStudio.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Pages\EditAccount.razor.css" />
-		<Content Include="Pages\EditMovieAdmin.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Pages\EditMovieStudio.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Pages\Login.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Pages\MovieAdmin.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Pages\MovieStudio.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Pages\Profile.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Pages\ResetPassword.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Pages\SignUp.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Shared\MainLayout.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-		<Content Include="Shared\NavMenu.razor.css">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
+	  <Content Include="Pages\AdminAccountManagement.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Pages\BanAccount.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Pages\Contact.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Pages\CreateStudio.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Pages\DeleteMovieAdmin.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Pages\DeleteMovieStudio.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Pages\EditAccount.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Pages\EditMovieAdmin.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Pages\EditMovieStudio.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Pages\Login.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Pages\MovieAdmin.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Pages\MovieStudio.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Pages\Profile.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Pages\ResetPassword.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Pages\SignUp.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Shared\MainLayout.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Shared\NavMenu.razor.css">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Shared\BlazorApp3.Shared.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<Content Update="Shared\NavMenu.razor">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
 
 </Project>
