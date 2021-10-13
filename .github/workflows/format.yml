@@ -33,8 +33,6 @@ jobs:
       #run: dotnet test BlazorApp3.sln
       - name: Dotnet Restore
         run: dotnet restore
-      - name: Dotnet Test
-        run: dotnet test
       - name: Formating
         run: dotnet format analyzers --no-restore BlazorApp3.sln
       #    - name: Install dependencies
