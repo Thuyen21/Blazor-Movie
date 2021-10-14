@@ -84,7 +84,7 @@
 	private string content;
 	private async Task HandleValidSubmit()
 	{
-		string? remoteUserAgent = await JS.InvokeAsync<string>("getUserAgent");
+		string remoteUserAgent = await JS.InvokeAsync<string>("getUserAgent");
 		login.UserAgent = remoteUserAgent;
 		HttpResponseMessage response = await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
 		content = await response.Content.ReadAsStringAsync();
