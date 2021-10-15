@@ -62,7 +62,7 @@
 								</div>
 								<div class="text sign-up-text">Don't have an account? <a href="/SignUp"><label>Sigup
 											now</label></a></div>
-								<div class="text sign-up-text">@content</div>
+								<h1 class="text sign-up-text">@content</h1>
 							</EditForm>
 						</div>
 					</form>
@@ -84,8 +84,17 @@
 	private string content;
 	private async Task HandleValidSubmit()
 	{
-		string? remoteUserAgent = await JS.InvokeAsync<string>("getUserAgent");
-		login.UserAgent = remoteUserAgent;
+		try
+		{
+			string? remoteUserAgent = await JS.InvokeAsync<string>("getUserAgent");
+			login.UserAgent = remoteUserAgent;
+		}
+		catch
+		{
+			content = "Turn Off AdBlock";
+			return;
+		}
+		
 		HttpResponseMessage response = await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
 		content = await response.Content.ReadAsStringAsync();
 		if (response.IsSuccessStatusCode)
@@ -93,5 +102,7 @@
 			_accountService.Login();
 			_navigationManager.NavigateTo("/");
 		}
+		
+		
 	}
 }

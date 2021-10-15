@@ -32,7 +32,7 @@ else
     }
     else
     {
-        <div>You cannot watch in many Device at the same time Logout then Login to update your last Device</div>
+        <div>@check</div>
     }
 
 }
@@ -68,6 +68,7 @@ else
     private bool? canWatch;
     private string Acomment;
     private string content;
+    private string check;
     private List<CommentModel> commentList = new();
 
     private bool sameDevice = false;
@@ -111,11 +112,21 @@ else
 
         while (true)
         {
-            sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await
-            JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
+            try
+            {
+                sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await
+                JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
+            }
+            catch
+            {
+                check = "Turn off AdBlock";
+                return;
+            }
+            
 
             if (!sameDevice)
             {
+                check = "You cannot watch in many Device at the same time Logout then Login to update your last Device";
                 StateHasChanged();
             }
 
