@@ -10,7 +10,12 @@
 </head>
 
 <body>
+			@if (showAlert)
+{
+    <MudAlert Severity="Severity.Error" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
 	<div class="container">
+
 		<input type="checkbox" id="flip">
 		<div class="cover">
 			<div class="front">
@@ -62,7 +67,6 @@
 								</div>
 								<div class="text sign-up-text">Don't have an account? <a href="/SignUp"><label>Sigup
 											now</label></a></div>
-								<h1 class="text sign-up-text">@content</h1>
 							</EditForm>
 						</div>
 					</form>
@@ -72,16 +76,20 @@
 	</div>
 </body>
 
-
 @code
 {
+	private bool showAlert = false;
 	protected string divCSS = "display: none;";
 	protected void DivCSS(string divCSS)
 	{
 		this.divCSS = divCSS;
 	}
+	private void CloseAlert()
+	{
+		showAlert = !showAlert;
+	}
 	private readonly LogInModel login = new LogInModel();
-	private string content;
+	private string? content;
 	private async Task HandleValidSubmit()
 	{
 		try
@@ -92,9 +100,10 @@
 		catch
 		{
 			content = "Turn Off AdBlock";
+			showAlert = !showAlert;
 			return;
 		}
-		
+
 		HttpResponseMessage response = await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
 		content = await response.Content.ReadAsStringAsync();
 		if (response.IsSuccessStatusCode)
@@ -102,7 +111,11 @@
 			_accountService.Login();
 			_navigationManager.NavigateTo("/");
 		}
-		
+		else
+		{
+			showAlert = !showAlert;
+		}
+
 		
 	}
 }
