@@ -13,7 +13,7 @@
 		<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
 		<SignAssembly>true</SignAssembly>
 		<Version>2.0</Version>
-		<AssemblyVersion>2.0.*</AssemblyVersion>
+		<AssemblyVersion>2.0.1.*</AssemblyVersion>
 		<Deterministic>false</Deterministic>
 
 		<!-- Display name -->
