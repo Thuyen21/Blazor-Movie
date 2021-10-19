@@ -6,6 +6,11 @@
 
 <PageTitle> test</PageTitle>
 
+@if (showAlert)
+{
+    <MudAlert Severity="Severity.Error" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@check</MudAlert>
+}
+
 @if (movie == null || movieLink == null)
 {
     @if (canWatch == null)
@@ -70,9 +75,12 @@ else
     private string content;
     private string check;
     private List<CommentModel> commentList = new();
-
+    private bool showAlert = false;
     private bool sameDevice = false;
-
+    private void CloseAlert()
+	{
+		showAlert = !showAlert;
+	}
     private int index = 0;
     protected override async Task OnInitializedAsync()
     {
@@ -99,13 +107,26 @@ else
         });
         char[] tokena = { };
 
+
         var tokenaTask = Task.Run(async () =>
         {
-           tokena =  await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+           tokena   =  await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
             
         });
         string token = new string(tokena);       
-        await Task.WhenAll(movieTask, commentTask, sameDeviceTask, canWatchTask, tokenaTask);
+        
+
+        try
+            {
+                await Task.WhenAll(movieTask, commentTask, sameDeviceTask, canWatchTask, tokenaTask);
+            }
+            catch
+            {
+                check = "Turn off AdBlock";
+                showAlert = true;
+                return;
+            }
+
 
         if (canWatch == true)
         {
@@ -142,6 +163,7 @@ else
             catch
             {
                 check = "Turn off AdBlock";
+                showAlert = true;
                 return;
             }
             
@@ -149,6 +171,7 @@ else
             if (!sameDevice)
             {
                 check = "You cannot watch in many Device at the same time Logout then Login to update your last Device";
+                showAlert = true;
                 StateHasChanged();
             }
 

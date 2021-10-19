@@ -44,13 +44,25 @@
 
 @foreach (var status in fullStatus)
 {
+    
+        double[] data = {Double.Parse(status["Positive"]), Double.Parse(status["Negative"])} ;
+        string[] labels = { "Positive", "Negative" };
+    
     <div>Date: @status["Date"]</div>
     <div>Positive: @status["Positive"]</div>
     <div>Negative: @status["Negative"]</div>
     <div>View: @status["View"]</div>
     <div>Buy: @status["Buy"]</div>
+   
+    <MudPaper Class="pa-4">
+    <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px" InputData="@data" InputLabels="@labels"></MudChart>
+</MudPaper>
 
 }
+
+
+
+
 @code {
     [Parameter]
     public string Id { get; set; }
@@ -59,7 +71,6 @@
     private DateTime check = DateTime.UtcNow;
     private DateTime start = DateTime.UtcNow;
     private DateTime end = DateTime.UtcNow;
-
     private List<int>? commentStatus = new();
     private readonly List<Dictionary<string, string>>? fullStatus = new();
     private async Task Salary()
