@@ -6,10 +6,11 @@
 
 <PageTitle> test</PageTitle>
 
-@if (showAlert)
+	@if (showAlert)
 {
-    <MudAlert Severity="Severity.Error" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@check</MudAlert>
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
 }
+
 
 @if (movie == null || movieLink == null)
 {
@@ -26,8 +27,6 @@
             <NavLink class="nav-link" href="@linkVip">Buy</NavLink>
         </div>
     }
-
-
 }
 else
 {
@@ -35,11 +34,6 @@ else
     {
         <video src="@movieLink" width="1280" height="720" controls @onclick="View"></video>
     }
-    else
-    {
-        <div>@check</div>
-    }
-
 }
 @if (commentList != null)
 {
@@ -61,7 +55,6 @@ else
 <button @onclick="@Com">Comment</button>
 
 
-<div>@content</div>
 
 
 @code {
@@ -73,14 +66,14 @@ else
     private bool? canWatch;
     private string Acomment;
     private string content;
-    private string check;
     private List<CommentModel> commentList = new();
     private bool showAlert = false;
+    private Severity severity;
     private bool sameDevice = false;
     private void CloseAlert()
-	{
-		showAlert = !showAlert;
-	}
+    {
+        showAlert = false;
+    }
     private int index = 0;
     protected override async Task OnInitializedAsync()
     {
@@ -110,26 +103,27 @@ else
 
         var tokenaTask = Task.Run(async () =>
         {
-           tokena   =  await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
-            
+            tokena   =  await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+
         });
         string token = new string(tokena);       
-        
+
 
         try
-            {
-                await Task.WhenAll(movieTask, commentTask, sameDeviceTask, canWatchTask, tokenaTask);
-            }
-            catch
-            {
-                check = "Turn off AdBlock";
-                showAlert = true;
-                return;
-            }
+        {
+            await Task.WhenAll(movieTask, commentTask, sameDeviceTask, canWatchTask, tokenaTask);
+        }
+        catch
+        {
+            content = "Turn off AdBlock";
+            severity = Severity.Error;
+            showAlert = true;
+            return;
+        }
 
         if (canWatch == true)
         {
-            
+
             try
             {
                 movieLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions
@@ -144,6 +138,8 @@ else
             catch(Exception ex)
             {
                 content = ex.Message;
+                severity = Severity.Error;
+                showAlert = true;
             }
         }
     }
@@ -161,16 +157,19 @@ else
             }
             catch
             {
-                check = "Turn off AdBlock";
+                content = "Turn off AdBlock";
                 showAlert = true;
+                severity = Severity.Error;
+                StateHasChanged();
                 return;
             }
-            
+
 
             if (!sameDevice)
             {
-                check = "You cannot watch in many Device at the same time Logout then Login to update your last Device";
+                content = "You cannot watch in many Device at the same time Logout then Login to update your last Device";
                 showAlert = true;
+                severity = Severity.Error;
                 StateHasChanged();
             }
 
@@ -182,7 +181,17 @@ else
     {
         CommentModel up = new CommentModel()
         { Time = DateTime.UtcNow, MovieId = Id, CommentText = Acomment };
-        content = await (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up)).Content.ReadAsStringAsync();
+        var response = (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up));
+        content = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+        {
+            severity = Severity.Success;
+        }
+        else
+        {
+            severity = Severity.Error;
+        }
+        showAlert = true;
         List<CommentModel> commentListTemp = new();
 
         for (int i = 0; i <= index; i++)

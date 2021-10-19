@@ -10,10 +10,7 @@
 </head>
 
 <body>
-			@if (showAlert)
-{
-    <MudAlert Severity="Severity.Error" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
-}
+
 	<div class="container">
 
 		<input type="checkbox" id="flip">
@@ -67,6 +64,10 @@
 								</div>
 								<div class="text sign-up-text">Don't have an account? <a href="/SignUp"><label>Sigup
 											now</label></a></div>
+						@if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
 							</EditForm>
 						</div>
 					</form>
@@ -78,16 +79,18 @@
 
 @code
 {
-	private bool showAlert = false;
+	
 	protected string divCSS = "display: none;";
 	protected void DivCSS(string divCSS)
 	{
 		this.divCSS = divCSS;
 	}
-	private void CloseAlert()
-	{
-		showAlert = !showAlert;
-	}
+   private bool showAlert = false;
+    private Severity severity;
+    private void CloseAlert()
+    {
+        showAlert = false;
+    }
 	private readonly LogInModel login = new LogInModel();
 	private string? content;
 	private async Task HandleValidSubmit()
@@ -100,22 +103,26 @@
 		catch
 		{
 			content = "Turn Off AdBlock";
-			showAlert = !showAlert;
+			severity = Severity.Error;
+			showAlert = true;
 			return;
 		}
 
 		HttpResponseMessage response = await _httpClient.PostAsJsonAsync<LogInModel>("user/login", login);
-		content = await response.Content.ReadAsStringAsync();
+		
 		if (response.IsSuccessStatusCode)
 		{
+			content = await response.Content.ReadAsStringAsync();
+            severity = Severity.Success;
+			showAlert = true;
 			_accountService.Login();
 			_navigationManager.NavigateTo("/");
 		}
 		else
 		{
-			showAlert = !showAlert;
+			content = await response.Content.ReadAsStringAsync();
+			severity = Severity.Error;
+			showAlert = true;
 		}
-
-		
 	}
 }

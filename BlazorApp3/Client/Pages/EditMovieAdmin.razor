@@ -35,7 +35,10 @@
 					<div class="login-form">
 						<div class="title">Replace any data of ID </div>
 						<div class="title">@movie.MovieId</div>
-						<div>@content</div>
+							@if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
 						
 						<form action="#">
 							<div class="input-boxes">
@@ -116,7 +119,12 @@
     private string ip;
     private bool more = false;
     private string linkIframe;
-
+        private bool showAlert = false;
+    private Severity severity;
+    private void CloseAlert()
+    {
+        showAlert = false;
+    }
     protected override async Task OnInitializedAsync()
     {
         movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
@@ -130,6 +138,15 @@
         movie.MovieId = moviePost.MovieId;
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync<MovieModel>("Admin/EditMovie", movie);
         content = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+        {
+            severity = Severity.Success;
+        }
+        else
+        {
+            severity = Severity.Error;
+        }
+        showAlert = true;
     }
 
     private async Task OnChooseMovieFile(InputFileChangeEventArgs e)
@@ -154,7 +171,9 @@
             FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").PutAsync(movieFile.OpenReadStream(long.MaxValue));
             task.Progress.ProgressChanged += (s, e) =>
             {
-                mp = e.Percentage.ToString();
+                content = e.Percentage.ToString();
+                severity = Severity.Info;
+                    showAlert = true;
             };
             try
             {
@@ -163,11 +182,15 @@
             catch
             {
                 content = "More 500MB use the other method upload";
+                severity = Severity.Error;
+                showAlert = true;
             }
         }
         else
         {
             content = "Incorrect MIME";
+            severity = Severity.Error;
+                showAlert = true;
         }
     }
     private async Task OnChooseImageFile(InputFileChangeEventArgs e)
@@ -190,7 +213,9 @@
             FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Image").PutAsync(imageFile.OpenReadStream(long.MaxValue));
             task.Progress.ProgressChanged += (s, e) =>
             {
-                ip = e.Percentage.ToString();
+                content = e.Percentage.ToString();
+                severity = Severity.Info;
+                    showAlert = true;
             };
             try
             {
@@ -199,11 +224,15 @@
             catch
             {
                 content = "More 500MB use the other method upload";
+                severity = Severity.Error;
+                showAlert = true;
             }
         }
         else
         {
             content = "Incorrect MIME";
+            severity = Severity.Error;
+                showAlert = true;
         }
     }
     private void Upload()

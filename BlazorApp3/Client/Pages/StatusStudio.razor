@@ -34,7 +34,10 @@
 <input type="date" @bind="end" />
 
 <button @onclick="Submit">Submit</button>
-<div>@content</div>
+	@if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
 
 @* @if(commentStatus.Count > 1)
     {
@@ -73,22 +76,32 @@
     private DateTime end = DateTime.UtcNow;
     private List<int>? commentStatus = new();
     private readonly List<Dictionary<string, string>>? fullStatus = new();
+        private bool showAlert = false;
+    private Severity severity = Severity.Info;
+    private void CloseAlert()
+    {
+        showAlert = false;
+    }
     private async Task Salary()
     {
         content = await (await _httpClient.PostAsJsonAsync<List<string>>($"Studio/SalaryMovie", new List<string> { { Id }, {
 month.ToString("MM-dd-yyyy") } })).Content.ReadAsStringAsync();
+     showAlert = true;
 
     }
     private async Task Check()
     {
         content = await (await _httpClient.PostAsJsonAsync<List<string>>($"Studio/Check", new List<string> { { Id }, {
 check.ToString("MM-dd-yyyy") } })).Content.ReadAsStringAsync();
+ showAlert = true;
+
     }
     private async Task Submit()
     {
         fullStatus.Clear();
         //commentStatus.Clear();
         content = "Loading.....";
+         showAlert = true;
 
         //for(DateTime i = start; i <= end; i = i.AddDays(1.0))
         // {
@@ -117,10 +130,14 @@ check.ToString("MM-dd-yyyy") } })).Content.ReadAsStringAsync();
                 StateHasChanged();
               });
               content = "";
+               showAlert = false;
+
         }
         catch (Exception ex)
         {
             content = ex.Message;
+             showAlert = true;
+
         }
     }
 }

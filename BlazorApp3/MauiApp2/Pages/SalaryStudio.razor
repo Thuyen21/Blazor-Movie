@@ -3,6 +3,12 @@
 
 @attribute [Authorize(Roles = "Studio")]
 @using System.Text.RegularExpressions
+
+	@if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
+
 <div>Email</div>
 <input @bind="@Email" type="email" required>
 <div>Email Confirm</div>
@@ -27,6 +33,12 @@
     private string EmailConfirm;
     private double Cash;
     private string content;
+    private bool showAlert = false;
+    private Severity severity;
+    private void CloseAlert()
+    {
+        showAlert = false;
+    }
     private async Task Submit()
     {
         try
@@ -36,17 +48,32 @@
         catch
         {
             content = "Not Email";
+            severity = Severity.Error;
+            showAlert = true;
             return;
         }
         if (Email != EmailConfirm)
         {
             content = "Check your email";
+            severity = Severity.Error;
+            showAlert = true;
         }
         else
         {
-            content = await (await _httpClient.PostAsJsonAsync<Dictionary<string, string>>("Studio/Salary", new Dictionary<string,
+            var response = await _httpClient.PostAsJsonAsync<Dictionary<string, string>>("Studio/Salary", new Dictionary<string,
             string>()
-{{"Email", Email}, {"Cash", Cash.ToString()}})).Content.ReadAsStringAsync();
+{{"Email", Email}, {"Cash", Cash.ToString()}});
+            content = await response.Content.ReadAsStringAsync();
+            
+        if (response.IsSuccessStatusCode)
+        {
+            severity = Severity.Success;
+        }
+        else
+        {
+            severity = Severity.Error;
+        }
+        showAlert = true;
         }
     }
 }
