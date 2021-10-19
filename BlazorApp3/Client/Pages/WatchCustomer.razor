@@ -64,7 +64,7 @@ else
     public string Id { get; set; }
 
     private MovieModel movie;
-    private string movieLink;
+    private string? movieLink = null;
     private bool? canWatch;
     private string Acomment;
     private string content;
@@ -77,18 +77,39 @@ else
     protected override async Task OnInitializedAsync()
     {
 
-        movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Customer/Watch/{Id}");
+        var movieTask = Task.Run(async () =>
+        {
+            movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Customer/Watch/{Id}");
+        });
 
-        commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}");
+        var commentTask = Task.Run(async () =>
+        {
+            commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}");
+        });
 
-        sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await
-        JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
+        var sameDeviceTask = Task.Run(async () =>
+        {
+            sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
+        });
 
-        canWatch = await _httpClient.GetFromJsonAsync<bool>($"Customer/CanWatch/{Id}");
+        var canWatchTask = Task.Run(async () =>
+        {
+            canWatch = await _httpClient.GetFromJsonAsync<bool>($"Customer/CanWatch/{Id}");
+            Console.WriteLine("Done");
+        });
+        char[] tokena = { };
+
+        var tokenaTask = Task.Run(async () =>
+        {
+           tokena =  await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+            
+        });
+        string token = new string(tokena);       
+        await Task.WhenAll(movieTask, commentTask, sameDeviceTask, canWatchTask, tokenaTask);
+
         if (canWatch == true)
         {
-            char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
-            string token = new string(tokena);
+            
             try
             {
                 movieLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions
@@ -100,8 +121,9 @@ else
                 TimeSpan.FromHours(2)
                 }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").GetDownloadUrlAsync();
             }
-            catch
+            catch(Exception ex)
             {
+                content = ex.Message;
             }
         }
     }
