@@ -5,19 +5,20 @@
 
 @*@attribute [Authorize(Roles = "Studio, Admin")]*@
 
-@code {
+@code{
     [CascadingParameter]
-    public Error Error { get; set; }
+        public Error Error { get; set; }
 
-    protected override async Task OnInitializedAsync()
-    {
-        HttpResponseMessage response = await _httpClient.GetAsync("user/Logout");
-        string content = await response.Content.ReadAsStringAsync();
-        if (!response.IsSuccessStatusCode)
+        protected override async Task OnInitializedAsync()
         {
-            throw new ApplicationException($"Reason: {response.ReasonPhrase}, Message: {content}");
+            HttpResponseMessage response = await _httpClient.GetAsync("user/Logout");
+            string content = await response.Content.ReadAsStringAsync();
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new ApplicationException($"Reason: {response.ReasonPhrase}, Message: {content}");
+            }
+
+            _accountService.Logout();
+            _navigationManager.NavigateTo("/");
         }
-        _accountService.Logout();
-        _navigationManager.NavigateTo("/");
-    }
 }

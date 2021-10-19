@@ -29,100 +29,46 @@ public class AdminController : Controller
     [HttpGet("AccountManagement/{searchString?}/{sortOrder?}/{index:int:min(0)}")]
     public async Task<ActionResult<List<AccountManagementModel>>> AccountManagement(string? searchString, string? sortOrder, int index)
     {
-        List<AccountManagementModel> myFoo = new();
-
-        Query usersRef = db.Collection("Account");
-
-        if (!string.IsNullOrWhiteSpace(searchString))
-        {
-            usersRef = usersRef.OrderBy("Email").StartAt(searchString).EndAt(searchString + "~");
-        }
-
-        switch (sortOrder)
-        {
-            case "name":
-                usersRef = usersRef.OrderBy("Name");
-                break;
-            case "nameDesc":
-                usersRef = usersRef.OrderByDescending("Name");
-                break;
-            case "date":
-                usersRef = usersRef.OrderBy("DateOfBirth");
-                break;
-            case "dateDesc":
-                usersRef = usersRef.OrderByDescending("DateOfBirth");
-                break;
-            case "email":
-                usersRef = usersRef.OrderBy("Email");
-                break;
-            case "emailDesc":
-                usersRef = usersRef.OrderByDescending("Email");
-                break;
-        }
-        usersRef = usersRef.Offset(index * 5).Limit(5);
-        QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
-        foreach (DocumentSnapshot document in snapshot.Documents)
-        {
-            AccountManagementModel convert = document.ConvertTo<AccountManagementModel>();
-
-
-            myFoo.Add(convert);
-        }
-        return await Task.FromResult(myFoo);
-    }
-    [HttpGet("EditAccount/{Id}")]
-    public async Task<ActionResult<AccountManagementModel>> EditAccount(string Id)
-    {
-        Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
-
-        QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
-
-        AccountManagementModel account = new();
-
-        foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
-        {
-            account = snapshotDocument.ConvertTo<AccountManagementModel>();
-        }
-
-
-        return await Task.FromResult(account);
-    }
-    [HttpPost("EditAccount")]
-    public async Task<ActionResult<AccountManagementModel>> EditAccount([FromBody] AccountManagementModel account)
-    {
-        if (account.Role == "Admin" || account.Role == "Studio" || account.Role == "Customer" ||
-            account.Role == "Admin")
-        {
-        }
-
-        else
-
-        {
-
-            return BadRequest("Don't edit role");
-        }
-
         try
         {
-            Query collection = db.Collection("Account").WhereEqualTo("Id", account.Id);
+            List<AccountManagementModel> myFoo = new();
 
-            QuerySnapshot snapshot = await collection.GetSnapshotAsync();
+            Query usersRef = db.Collection("Account");
 
-
-            Dictionary<string, dynamic> update = new()
+            if (!string.IsNullOrWhiteSpace(searchString))
             {
-                { "Name", account.Name },
-                { "Role", account.Role },
-                { "DateOfBirth", account.DateOfBirth.ToUniversalTime() }
-            };
-
-            foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
-            {
-                await snapshotDocument.Reference.UpdateAsync(update);
+                usersRef = usersRef.OrderBy("Email").StartAt(searchString).EndAt(searchString + "~");
             }
 
-
-            return Ok("Success");
+            switch (sortOrder)
+            {
+                case "name":
+                    usersRef = usersRef.OrderBy("Name");
+                    break;
+                case "nameDesc":
+                    usersRef = usersRef.OrderByDescending("Name");
+                    break;
+                case "date":
+                    usersRef = usersRef.OrderBy("DateOfBirth");
+                    break;
+                case "dateDesc":
+                    usersRef = usersRef.OrderByDescending("DateOfBirth");
+                    break;
+                case "email":
+                    usersRef = usersRef.OrderBy("Email");
+                    break;
+                case "emailDesc":
+                    usersRef = usersRef.OrderByDescending("Email");
+                    break;
+            }
+            usersRef = usersRef.Offset(index * 5).Limit(5);
+            QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
+            foreach (DocumentSnapshot document in snapshot.Documents)
+            {
+                AccountManagementModel convert = document.ConvertTo<AccountManagementModel>();
+                myFoo.Add(convert);
+            }
+            return await Task.FromResult(Ok(myFoo));
         }
         catch (Exception ex)
         {
@@ -130,21 +76,67 @@ public class AdminController : Controller
             return BadRequest(ex.Message);
         }
 
-
+    }
+    [HttpGet("EditAccount/{Id}")]
+    public async Task<ActionResult<AccountManagementModel>> EditAccount(string Id)
+    {
+        try
+        {
+            Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
+            QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
+            AccountManagementModel account = new();
+            foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
+            {
+                account = snapshotDocument.ConvertTo<AccountManagementModel>();
+            }
+            return await Task.FromResult(Ok(account));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+    [HttpPost("EditAccount")]
+    public async Task<ActionResult<AccountManagementModel>> EditAccount([FromBody] AccountManagementModel account)
+    {
+        try
+        {
+            if (account.Role == "Admin" || account.Role == "Studio" || account.Role == "Customer" ||
+            account.Role == "Admin")
+            {
+            }
+            else
+            {
+                return BadRequest("Don't edit role");
+            }
+            Query collection = db.Collection("Account").WhereEqualTo("Id", account.Id);
+            QuerySnapshot snapshot = await collection.GetSnapshotAsync();
+            Dictionary<string, dynamic> update = new()
+            {
+                { "Name", account.Name },
+                { "Role", account.Role },
+                { "DateOfBirth", account.DateOfBirth.ToUniversalTime() }
+            };
+            Parallel.ForEach(snapshot.Documents, async snapshotDocument =>
+            {
+                await snapshotDocument.Reference.UpdateAsync(update);
+            });
+            return Ok("Success");
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
     [HttpPost("Ban")]
     public async Task<ActionResult> Ban([FromBody] string Id)
     {
         try
         {
-
             string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
-
             FirebaseApp.Create(new AppOptions { Credential = GoogleCredential.FromFile(path) });
-
             UserRecordArgs userRecordArgs = new UserRecordArgs() { Uid = Id, Disabled = true };
             await FirebaseAuth.DefaultInstance.UpdateUserAsync(userRecordArgs);
-
             FirebaseApp.DefaultInstance.Delete();
             return Ok("Success");
         }
@@ -158,14 +150,10 @@ public class AdminController : Controller
     {
         try
         {
-
             string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
-
             FirebaseApp.Create(new AppOptions { Credential = GoogleCredential.FromFile(path) });
-
             UserRecordArgs userRecordArgs = new UserRecordArgs() { Uid = Id, Disabled = false };
             await FirebaseAuth.DefaultInstance.UpdateUserAsync(userRecordArgs);
-
             FirebaseApp.DefaultInstance.Delete();
             return Ok("Success");
         }
@@ -177,100 +165,104 @@ public class AdminController : Controller
     [HttpGet("Movie/{searchString?}/{sortOrder?}/{index:int:min(0)}")]
     public async Task<ActionResult<List<MovieModel>>> Movie(string? sortOrder, string? searchString, int index)
     {
-
-
-        Query usersRef = db.Collection("Movie");
-        if (!string.IsNullOrWhiteSpace(searchString))
+        try
         {
-            usersRef = usersRef.OrderBy("MovieName").StartAt(searchString).EndAt(searchString + "~");
+            Query usersRef = db.Collection("Movie");
+            if (!string.IsNullOrWhiteSpace(searchString))
+            {
+                usersRef = usersRef.OrderBy("MovieName").StartAt(searchString).EndAt(searchString + "~");
+            }
+            switch (sortOrder)
+            {
+                case "name":
+                    usersRef = usersRef.OrderBy("MovieName");
+                    break;
+                case "nameDesc":
+                    usersRef = usersRef.OrderByDescending("MovieName");
+                    break;
+                case "date":
+                    usersRef = usersRef.OrderBy("PremiereDate");
+                    break;
+                case "dateDesc":
+                    usersRef = usersRef.OrderByDescending("PremiereDate");
+                    break;
+                case "genre":
+                    usersRef = usersRef.OrderBy("MovieGenre");
+                    break;
+                case "genreDesc":
+                    usersRef = usersRef.OrderByDescending("MovieGenre");
+                    break;
+            }
+            List<MovieModel> myFoo = new();
+            usersRef = usersRef.Offset(index * 5).Limit(5);
+            QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
+            foreach (DocumentSnapshot document in snapshot.Documents)
+            {
+                myFoo.Add(document.ConvertTo<MovieModel>());
+            }
+            return await Task.FromResult(Ok(myFoo));
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
         }
 
-        switch (sortOrder)
-        {
-            case "name":
-                usersRef = usersRef.OrderBy("MovieName");
-                break;
-            case "nameDesc":
-                usersRef = usersRef.OrderByDescending("MovieName");
-                break;
-            case "date":
-                usersRef = usersRef.OrderBy("PremiereDate");
-                break;
-            case "dateDesc":
-                usersRef = usersRef.OrderByDescending("PremiereDate");
-                break;
-            case "genre":
-                usersRef = usersRef.OrderBy("MovieGenre");
-                break;
-            case "genreDesc":
-                usersRef = usersRef.OrderByDescending("MovieGenre");
-                break;
-        }
-
-        List<MovieModel> myFoo = new();
-        usersRef = usersRef.Offset(index * 5).Limit(5);
-        QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
-
-
-        foreach (DocumentSnapshot document in snapshot.Documents)
-        {
-            myFoo.Add(document.ConvertTo<MovieModel>());
-        }
-
-        return await Task.FromResult(myFoo);
     }
     [HttpGet("EditMovie/{Id}")]
     public async Task<ActionResult<MovieModel>> EditMovie(string Id)
     {
-
-        Query collection = db.Collection("Movie").WhereEqualTo("MovieId", Id);
-
-        QuerySnapshot snapshot = await collection.GetSnapshotAsync();
-        MovieModel movie = new();
-
-        foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
+        try
         {
-            movie = snapshotDocument.ConvertTo<MovieModel>();
+            Query collection = db.Collection("Movie").WhereEqualTo("MovieId", Id);
+            QuerySnapshot snapshot = await collection.GetSnapshotAsync();
+            MovieModel movie = new();
+            foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
+            {
+                movie = snapshotDocument.ConvertTo<MovieModel>();
+            }
+            return await Task.FromResult(Ok(movie));
         }
-
-        return await Task.FromResult(movie);
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
     [HttpPost("EditMovie")]
     public async Task<ActionResult> EditMoviePost([FromBody] MovieModel movie)
     {
-
-        Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
-        QuerySnapshot snapshot = await collection.GetSnapshotAsync();
-
-        movie.PremiereDate = movie.PremiereDate.ToUniversalTime();
-
-#pragma warning disable CS8619 // Nullability of reference types in value of type 'Dictionary<string, object?>' doesn't match target type 'Dictionary<string, dynamic>'.
-        Dictionary<string, dynamic> dictionary = movie.GetType()
-            .GetProperties(BindingFlags.Instance | BindingFlags.Public)
-            .ToDictionary(prop => prop.Name, prop => prop.GetValue(movie, null));
-#pragma warning restore CS8619 // Nullability of reference types in value of type 'Dictionary<string, object?>' doesn't match target type 'Dictionary<string, dynamic>'.
-
-        foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
+        try
         {
-            await snapshotDocument.Reference.UpdateAsync(dictionary);
+            Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
+            QuerySnapshot snapshot = await collection.GetSnapshotAsync();
+            movie.PremiereDate = movie.PremiereDate.ToUniversalTime();
+#pragma warning disable CS8619 // Nullability of reference types in value of type 'Dictionary<string, object?>' doesn't match target type 'Dictionary<string, dynamic>'.
+            Dictionary<string, dynamic> dictionary = movie.GetType()
+                .GetProperties(BindingFlags.Instance | BindingFlags.Public)
+                .ToDictionary(prop => prop.Name, prop => prop.GetValue(movie, null));
+#pragma warning restore CS8619 // Nullability of reference types in value of type 'Dictionary<string, object?>' doesn't match target type 'Dictionary<string, dynamic>'.
+            Parallel.ForEach(snapshot.Documents, async snapshotDocument =>
+            {
+                await snapshotDocument.Reference.UpdateAsync(dictionary);
+            });
+            return Ok("Success");
         }
-        return Ok("Success");
+        catch (Exception ex)
+        {
+
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpGet("MovieUpload/{MovieId}")]
     public async Task<ActionResult> MovieUpload(string MovieId)
     {
-
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", MovieId);
-
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
         MovieModel movie = new();
-
         foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
         {
             movie = snapshotDocument.ConvertTo<MovieModel>();
         }
-
         return View(movie);
     }
     [HttpGet("Done")]
@@ -285,11 +277,7 @@ public class AdminController : Controller
     [RequestFormLimits(MultipartBodyLengthLimit = long.MaxValue)]
     public async Task<ActionResult> MovieUpload(string StudioId, string MovieId, IFormFile ImageFileUp, IFormFile MovieFileUp)
     {
-        if (ImageFileUp == null)
-        {
-
-        }
-        else
+        if (ImageFileUp != null)
         {
             List<string> list = new List<string>
                 {
@@ -305,8 +293,6 @@ public class AdminController : Controller
             {
                 using Stream fileStream = ImageFileUp.OpenReadStream();
                 {
-
-
                     FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com",
                             new FirebaseStorageOptions
                             {
@@ -315,25 +301,13 @@ public class AdminController : Controller
                                 HttpClientTimeout = TimeSpan.FromHours(2)
                             }).Child(StudioId).Child(MovieId).Child("Image")
                         .PutAsync(fileStream);
-
-
-                    task.Progress.ProgressChanged += (s, e) =>
-                    {
-
-                    };
-
                     await task;
 
                     fileStream.Close();
                 }
             }
-
         }
-        if (MovieFileUp == null)
-        {
-
-        }
-        else
+        if (MovieFileUp != null)
         {
             List<string> list = new List<string>
                 {
@@ -347,7 +321,6 @@ public class AdminController : Controller
                     "video/3gpp2",
                     "video/x-matroska"
                 };
-
             if (list.Contains(MovieFileUp.ContentType))
             {
                 using Stream fileStream = MovieFileUp.OpenReadStream();
@@ -374,8 +347,6 @@ public class AdminController : Controller
             }
 
         }
-
-
         string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
         string redirect = hostname + "/Admin/Done";
         return Redirect(redirect);
@@ -384,16 +355,11 @@ public class AdminController : Controller
 
     public async Task<ActionResult> DeleteMovie([FromBody] MovieModel movie)
     {
-
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
-
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
-
         foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
         {
             movie = snapshotDocument.ConvertTo<MovieModel>();
-
-
             try
             {
                 Task delete = new FirebaseStorage("movie2-e3c7b.appspot.com",
@@ -444,7 +410,7 @@ public class AdminController : Controller
             FeedbackMessageModel convert = document.ConvertTo<FeedbackMessageModel>();
             myFoo.Add(convert);
         }
-        return await Task.FromResult(myFoo);
+        return await Task.FromResult(Ok(myFoo));
     }
 
 }

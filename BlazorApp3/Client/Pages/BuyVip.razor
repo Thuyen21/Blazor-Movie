@@ -83,47 +83,51 @@ else
 {
     <div>@vipStatus</div>
 }
-
-
-
-
-
-@code {
+@code{
     [Parameter]
-    public string movieId { get; set; }
-    private readonly VipModel vip = new VipModel()
+        public string movieId { get; set; }
+
+        private readonly VipModel vip = new VipModel()
         { Choose = 1 };
-    private string vipStatus;
-    private string content;
-    private bool showAlert = false;
-    private Severity severity;
-    private void CloseAlert()
-    {
-        showAlert = false;
-    }
-    protected override async Task OnInitializedAsync()
-    {
-        if (movieId != null)
+        private string vipStatus;
+        private string content;
+        private bool showAlert = false;
+        private Severity severity;
+        private void CloseAlert()
         {
-            vip.Id = movieId;
-            vip.Choose = 0;
+            showAlert = false;
         }
-        vipStatus = new string(await _httpClient.GetFromJsonAsync<char[]>("Customer/VipCheck"));
-    }
-    private async Task Buy()
-    {
-        HttpResponseMessage response = await _httpClient.PostAsJsonAsync<VipModel>("Customer/BuyVip", vip);
-        content = await response.Content.ReadAsStringAsync();
-        if (response.IsSuccessStatusCode)
+
+        protected override async Task OnInitializedAsync()
         {
-            severity = Severity.Success;
+            if (movieId != null)
+            {
+                vip.Id = movieId;
+                vip.Choose = 0;
+            }
+
+            vipStatus = new string(await _httpClient.GetFromJsonAsync<char[]>("Customer/VipCheck"));
         }
-        else
+
+        private async Task Buy()
         {
-            severity = Severity.Error;
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<VipModel>("Customer/BuyVip", vip);
+            content = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                severity = Severity.Success;
+            }
+            else
+            {
+                severity = Severity.Error;
+            }
+
+            showAlert = true;
+            vipStatus = new string(await _httpClient.GetFromJsonAsync<char[]>("Customer/VipCheck"));
+            StateHasChanged();
         }
-        showAlert = true;
-        vipStatus = new string(await _httpClient.GetFromJsonAsync<char[]>("Customer/VipCheck"));
-        StateHasChanged();
-    }
 }
+
+
+
+

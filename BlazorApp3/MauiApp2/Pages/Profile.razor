@@ -163,54 +163,69 @@
 
 @*----------------------------------------------------------------------------------------------------*@
 
-@code {
-	ChangeEmailModel changeEmail = new ChangeEmailModel();
-	   private bool showAlert = false;
-    private Severity severity;
-    private void CloseAlert()
-    {
-        showAlert = false;
-    }
-	public async Task ChangeEmail()
-	{
-		var response = await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail", changeEmail);
-		content = await response.Content.ReadAsStringAsync();
-
-		if(response.IsSuccessStatusCode)
-		{
-			_accountService.Login();
-			severity = Severity.Success;
-		}
-		else
-		{
-			severity = Severity.Error;
-		}
-		showAlert = true;
-	}
-	public async Task ChangePass()
-	{
-		_navigationManager.NavigateTo("/ResetPassword");
-	}
-	private AccountManagementModel accountManagementModel = new AccountManagementModel();
-	private string? content;
-	protected override async Task OnInitializedAsync()
-	{
-		accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");
-	}
-
-	private async Task HandleValidSubmit()
-	{
-		HttpResponseMessage response = await _httpClient.PostAsJsonAsync<AccountManagementModel>("user/EditProfile",
-		accountManagementModel);
-		content = await response.Content.ReadAsStringAsync();
-		if (response.IsSuccessStatusCode)
+@code{
+private readonly ChangeEmailModel changeEmail = new ChangeEmailModel();
+        private bool showAlert = false;
+        private Severity severity;
+        private void CloseAlert()
         {
-            severity = Severity.Success;
+            showAlert = false;
         }
-        else
+
+        private async Task ChangeEmail()
         {
-            severity = Severity.Error;
+            HttpResponseMessage? response = await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail", changeEmail);
+            content = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                severity = Severity.Success;
+                showAlert = true;
+                _accountService.Login();
+                _navigationManager.NavigateTo("/Profile");
+            }
+            else
+            {
+                severity = Severity.Error;
+            }
+
+            showAlert = true;
+            HttpResponseMessage? r = await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail", changeEmail);
+            if (r.IsSuccessStatusCode)
+            {
+                _accountService.Login();
+                _navigationManager.NavigateTo("/Profile");
+            }
+            else
+            {
+                content = await r.Content.ReadAsStringAsync();
+            }
         }
-        showAlert = true;
-	}
+
+        private async Task ChangePass()
+        {
+            _navigationManager.NavigateTo("/ResetPassword");
+        }
+
+        private AccountManagementModel accountManagementModel = new AccountManagementModel();
+        private string? content;
+        protected override async Task OnInitializedAsync()
+        {
+            accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");
+        }
+
+        private async Task HandleValidSubmit()
+        {
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<AccountManagementModel>("user/EditProfile", accountManagementModel);
+            content = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                severity = Severity.Success;
+            }
+            else
+            {
+                severity = Severity.Error;
+            }
+
+            showAlert = true;
+        }
 }

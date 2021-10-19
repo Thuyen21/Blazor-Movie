@@ -151,14 +151,10 @@ if(more)
 
 	</div>
 </body>
-
-
-
-
-
 @code{
-    [Parameter]
+	        [Parameter]
         public string Id { get; set; }
+
         private MovieModel movie;
         private IBrowserFile movieFile;
         private IBrowserFile imageFile;
@@ -166,12 +162,13 @@ if(more)
         private string linkUp;
         private string linkIframe;
         private bool more = false;
-            private bool showAlert = false;
-    private Severity severity;
-    private void CloseAlert()
-    {
-        showAlert = false;
-    }
+        private bool showAlert = false;
+        private Severity severity;
+        private void CloseAlert()
+        {
+            showAlert = false;
+        }
+
         protected override async Task OnInitializedAsync()
         {
             movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
@@ -186,31 +183,21 @@ if(more)
             movie.MovieId = moviePost.MovieId;
             HttpResponseMessage response = await _httpClient.PostAsJsonAsync<MovieModel>("Studio/EditMovie", movie);
             content = await response.Content.ReadAsStringAsync();
-                  if (response.IsSuccessStatusCode)
-        {
-            severity = Severity.Success;
-        }
-        else
-        {
-            severity = Severity.Error;
-        }
-        showAlert = true;
+            if (response.IsSuccessStatusCode)
+            {
+                severity = Severity.Success;
+            }
+            else
+            {
+                severity = Severity.Error;
+            }
+
+            showAlert = true;
         }
 
         private async Task OnChooseMovieFile(InputFileChangeEventArgs e)
         {
-            List<string> list = new List<string>
-            {
-                "video/x-msvideo",
-                "video/mp4",
-                "video/mpeg",
-                "video/ogg",
-                "video/mp2t",
-                "video/webm",
-                "video/3gpp",
-                "video/3gpp2",
-                "video/x-matroska"
-            };
+            List<string> list = new List<string> { "video/x-msvideo", "video/mp4", "video/mpeg", "video/ogg", "video/mp2t", "video/webm", "video/3gpp", "video/3gpp2", "video/x-matroska" };
             if (list.Contains(e.File.ContentType))
             {
                 movieFile = e.File;
@@ -231,29 +218,20 @@ if(more)
                 {
                     content = "More 500MB use the other method upload";
                     severity = Severity.Error;
- showAlert = true;
+                    showAlert = true;
                 }
             }
             else
             {
                 content = "Incorrect MIME";
                 severity = Severity.Error;
- showAlert = true;
+                showAlert = true;
             }
         }
 
         private async Task OnChooseImageFile(InputFileChangeEventArgs e)
         {
-            List<string> list = new List<string>
-            {
-                "image/bmp",
-                "image/gif",
-                "image/jpeg",
-                "image/png",
-                "image/svg+xml",
-                "image/tiff",
-                "image/webp"
-            };
+            List<string> list = new List<string> { "image/bmp", "image/gif", "image/jpeg", "image/png", "image/svg+xml", "image/tiff", "image/webp" };
             if (list.Contains(e.File.ContentType))
             {
                 imageFile = (e.File);
@@ -274,18 +252,23 @@ if(more)
                 {
                     content = "More 500MB use the other method upload";
                     severity = Severity.Error;
- showAlert = true;
+                    showAlert = true;
                 }
             }
             else
             {
                 content = "Incorrect MIME";
                 severity = Severity.Error;
- showAlert = true;
+                showAlert = true;
             }
         }
+
         private async Task Upload()
         {
-        more = true;
-    }
+            more = true;
+        }
 }
+
+
+
+

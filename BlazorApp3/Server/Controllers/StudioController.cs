@@ -24,13 +24,11 @@ public class StudioController : Controller
     {
         try
         {
-
             Query usersRef = db.Collection("Movie").WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid));
             if (!string.IsNullOrWhiteSpace(searchString))
             {
                 usersRef = usersRef.OrderBy("MovieName").StartAt(searchString).EndAt(searchString + "~");
             }
-
             switch (sortOrder)
             {
                 case "name":
@@ -52,12 +50,9 @@ public class StudioController : Controller
                     usersRef = usersRef.OrderByDescending("MovieGenre");
                     break;
             }
-
             List<MovieModel> myFoo = new();
             usersRef = usersRef.Offset(index * 5).Limit(5);
             QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
-
-
             foreach (DocumentSnapshot document in snapshot.Documents)
             {
                 myFoo.Add(document.ConvertTo<MovieModel>());
@@ -92,19 +87,14 @@ public class StudioController : Controller
     [HttpGet("EditMovie/{Id}")]
     public async Task<ActionResult<MovieModel>> EditMovie(string Id)
     {
-
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", Id).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid));
-
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
         MovieModel movie = new();
 
         if (snapshot.Documents.Count < 1)
         {
-#pragma warning disable CS8603 // Possible null reference return.
-            return null;
-#pragma warning restore CS8603 // Possible null reference return.
+            return new MovieModel();
         }
-
         foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
         {
             movie = snapshotDocument.ConvertTo<MovieModel>();
@@ -115,22 +105,20 @@ public class StudioController : Controller
     [HttpPost("EditMovie")]
     public async Task<ActionResult> EditMovie([FromBody] MovieModel movie)
     {
-
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
-
         movie.PremiereDate = movie.PremiereDate.ToUniversalTime();
-
 #pragma warning disable CS8619 // Nullability of reference types in value of type 'Dictionary<string, object?>' doesn't match target type 'Dictionary<string, dynamic>'.
         Dictionary<string, dynamic> dictionary = movie.GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public)
             .ToDictionary(prop => prop.Name, prop => prop.GetValue(movie, null));
 #pragma warning restore CS8619 // Nullability of reference types in value of type 'Dictionary<string, object?>' doesn't match target type 'Dictionary<string, dynamic>'.
 
-        foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
+        Parallel.ForEach(snapshot.Documents, async snapshotDocument =>
         {
             await snapshotDocument.Reference.UpdateAsync(dictionary);
-        }
+        });
+
         return Ok("Success");
     }
     [HttpGet("Done")]
@@ -143,17 +131,13 @@ public class StudioController : Controller
     [HttpGet("MovieUpload/{MovieId}")]
     public async Task<ActionResult> MovieUpload(string MovieId)
     {
-
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", MovieId).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid));
-
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
         MovieModel movie = new();
-
         foreach (DocumentSnapshot snapshotDocument in snapshot.Documents)
         {
             movie = snapshotDocument.ConvertTo<MovieModel>();
         }
-
         return View(movie);
     }
     [HttpPost("MovieUpload/{MovieId}/{StudioId}")]
@@ -162,11 +146,7 @@ public class StudioController : Controller
     public async Task<ActionResult> MovieUpload(string StudioId, string MovieId, IFormFile ImageFileUp, IFormFile MovieFileUp)
     {
         StudioId = User.FindFirstValue(ClaimTypes.Sid);
-        if (ImageFileUp == null)
-        {
-
-        }
-        else
+        if (ImageFileUp != null)
         {
             List<string> list = new List<string>
                 {
@@ -206,11 +186,7 @@ public class StudioController : Controller
             }
 
         }
-        if (MovieFileUp == null)
-        {
-
-        }
-        else
+        if (MovieFileUp != null)
         {
             List<string> list = new List<string>
                 {
@@ -251,7 +227,6 @@ public class StudioController : Controller
             }
 
         }
-
         string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
         string redirect = hostname + "/Studio/Done";
         return Redirect(redirect);
@@ -259,8 +234,6 @@ public class StudioController : Controller
     [HttpGet("Comment/{Id}")]
     public async Task<ActionResult<List<CommentModel>>> Comment(string Id)
     {
-
-
         Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time");
         QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
         List<CommentModel> commentList = new List<CommentModel>();
@@ -302,8 +275,6 @@ public class StudioController : Controller
     {
         DateTime StartDate = DateTime.Parse(Start).AddHours(12).ToUniversalTime();
         DateTime EndDate = StartDate.AddDays(1);
-
-
         try
         {
             double viewCount = (await db.Collection("View").WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
@@ -321,6 +292,7 @@ public class StudioController : Controller
             double viewt = (await db.Collection("View").WhereEqualTo("Id", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
             double buy = (await db.Collection("Buy").WhereEqualTo("MovieId", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
             double vip = (await db.Collection("Vip").WhereGreaterThanOrEqualTo("Time", StartDate).GetSnapshotAsync()).Documents.Count;
+
             List<double> result = new List<double>
             {
                 viewt,

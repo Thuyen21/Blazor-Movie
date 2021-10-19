@@ -107,38 +107,37 @@
         </div>
     </div>
 </body>
+@code{
+[Parameter]
+        public string Id { get; set; }
 
-
-
-
-
-@code {
-    [Parameter]
-    public string Id { get; set; }
-    private MovieModel movie;
-    private string content;
+        private MovieModel movie;
+        private string content;
         private bool showAlert = false;
-    private Severity severity;
-    private void CloseAlert()
-    {
-        showAlert = false;
-    }
-    protected override async Task OnInitializedAsync()
-    {
-        movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
-    }
-    private async Task HandleValidSubmit()
-    {
-        HttpResponseMessage response = await _httpClient.PostAsJsonAsync<MovieModel>("Studio/DeleteMovie", movie);
-        content = await response.Content.ReadAsStringAsync();
-                if (response.IsSuccessStatusCode)
+        private Severity severity;
+        private void CloseAlert()
         {
-            severity = Severity.Success;
+            showAlert = false;
         }
-        else
+
+        protected override async Task OnInitializedAsync()
         {
-            severity = Severity.Error;
+            movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
         }
-        showAlert = true;
-    }
+
+        private async Task HandleValidSubmit()
+        {
+            HttpResponseMessage response = await _httpClient.PostAsJsonAsync<MovieModel>("Studio/DeleteMovie", movie);
+            content = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                severity = Severity.Success;
+            }
+            else
+            {
+                severity = Severity.Error;
+            }
+
+            showAlert = true;
+        }
 }
