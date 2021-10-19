@@ -90,6 +90,7 @@ else
             movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Customer/Watch/{Id}");
         });
 
+
         var commentTask = Task.Run(async () =>
         {
             commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}");
@@ -106,7 +107,6 @@ else
             Console.WriteLine("Done");
         });
         char[] tokena = { };
-
 
         var tokenaTask = Task.Run(async () =>
         {
@@ -126,7 +126,6 @@ else
                 showAlert = true;
                 return;
             }
-
 
         if (canWatch == true)
         {
