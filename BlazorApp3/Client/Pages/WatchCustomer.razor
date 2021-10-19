@@ -218,17 +218,6 @@ else
 
         var tokenaTask = Task.Run(async () =>
         {
-<<<<<<< HEAD
-            tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
-
-        });
-        string token = new string(tokena);
-        await Task.WhenAll(movieTask, commentTask, sameDeviceTask, canWatchTask, tokenaTask);
-
-        if (canWatch == true)
-        {
-
-=======
             tokena   =  await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
 
         });
@@ -249,7 +238,6 @@ else
 
         if (canWatch == true)
         {
->>>>>>> 3ca3eec24d4204da857bbc7b33e8054e548137d8
             try
             {
                 movieLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions
@@ -307,10 +295,6 @@ else
     private async Task Com()
     {
         CommentModel up = new CommentModel()
-<<<<<<< HEAD
-            { Time = DateTime.UtcNow, MovieId = Id, CommentText = Acomment };
-        content = await (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up)).Content.ReadAsStringAsync();
-=======
         { Time = DateTime.UtcNow, MovieId = Id, CommentText = Acomment };
         var response = (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up));
         content = await response.Content.ReadAsStringAsync();
@@ -323,7 +307,7 @@ else
             severity = Severity.Error;
         }
         showAlert = true;
->>>>>>> 3ca3eec24d4204da857bbc7b33e8054e548137d8
+
         List<CommentModel> commentListTemp = new();
 
         for (int i = 0; i <= index; i++)
