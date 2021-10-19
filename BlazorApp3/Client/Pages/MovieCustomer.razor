@@ -225,8 +225,7 @@ else
         {
             tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
         });
-        await Task.WhenAll(moviesTask, tokenaTask);
-
+         await Task.WhenAll(moviesTask, tokenaTask);
         string token = new string(tokena);
         foreach (MovieModel item in movies)
         {

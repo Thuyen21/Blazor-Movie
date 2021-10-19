@@ -90,10 +90,19 @@
 
 </body>
 
-<div>@content</div>
+	@if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
 
 @code {
 	private string role = "Customer";
+	  private bool showAlert = false;
+    private Severity severity;
+    private void CloseAlert()
+    {
+        showAlert = false;
+    }
 	private void Role()
 	{
 		if (role == "Customer")
@@ -112,13 +121,18 @@
 	{
 		signUpModel.Role = role;
 		HttpResponseMessage response = await _httpClient.PostAsJsonAsync<SignUpModel>("user/signUp", signUpModel);
+		content = await response.Content.ReadAsStringAsync();
 		if (response.IsSuccessStatusCode)
 		{
+			severity = Severity.Success;
+			showAlert = true;
 			_navigationManager.NavigateTo("/", true);
 		}
 		else
 		{
-			content = await response.Content.ReadAsStringAsync();
+			severity = Severity.Error;
+			showAlert = true;
 		}
+		
 	}
 }

@@ -6,6 +6,12 @@
 
 <PageTitle> test</PageTitle>
 
+	@if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
+
+
 @if (movie == null || movieLink == null)
 {
     @if (canWatch == null)
@@ -21,8 +27,6 @@
             <NavLink class="nav-link" href="@linkVip">Buy</NavLink>
         </div>
     }
-
-
 }
 else
 {
@@ -30,11 +34,6 @@ else
     {
         <video src="@movieLink" width="1280" height="720" controls @onclick="View"></video>
     }
-    else
-    {
-        <div>You cannot watch in many Device at the same time Logout then Login to update your last Device</div>
-    }
-
 }
 @if (commentList != null)
 {
@@ -56,7 +55,6 @@ else
 <button @onclick="@Com">Comment</button>
 
 
-<div>@content</div>
 
 
 @code {
@@ -64,30 +62,68 @@ else
     public string Id { get; set; }
 
     private MovieModel movie;
-    private string movieLink;
+    private string? movieLink = null;
     private bool? canWatch;
     private string Acomment;
     private string content;
     private List<CommentModel> commentList = new();
-
+    private bool showAlert = false;
+    private Severity severity;
     private bool sameDevice = false;
-
+    private void CloseAlert()
+    {
+        showAlert = false;
+    }
     private int index = 0;
     protected override async Task OnInitializedAsync()
     {
 
-        movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Customer/Watch/{Id}");
+        var movieTask = Task.Run(async () =>
+        {
+            movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Customer/Watch/{Id}");
+        });
 
-        commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}");
 
-        sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await
-        JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
+        var commentTask = Task.Run(async () =>
+        {
+            commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}");
+        });
 
-        canWatch = await _httpClient.GetFromJsonAsync<bool>($"Customer/CanWatch/{Id}");
+        var sameDeviceTask = Task.Run(async () =>
+        {
+            sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
+        });
+
+        var canWatchTask = Task.Run(async () =>
+        {
+            canWatch = await _httpClient.GetFromJsonAsync<bool>($"Customer/CanWatch/{Id}");
+            Console.WriteLine("Done");
+        });
+        char[] tokena = { };
+
+        var tokenaTask = Task.Run(async () =>
+        {
+            tokena   =  await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+
+        });
+        string token = new string(tokena);       
+
+
+        try
+        {
+            await Task.WhenAll(movieTask, commentTask, sameDeviceTask, canWatchTask, tokenaTask);
+        }
+        catch
+        {
+            content = "Turn off AdBlock";
+            severity = Severity.Error;
+            showAlert = true;
+            return;
+        }
+
         if (canWatch == true)
         {
-            char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
-            string token = new string(tokena);
+
             try
             {
                 movieLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions
@@ -99,8 +135,11 @@ else
                 TimeSpan.FromHours(2)
                 }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").GetDownloadUrlAsync();
             }
-            catch
+            catch(Exception ex)
             {
+                content = ex.Message;
+                severity = Severity.Error;
+                showAlert = true;
             }
         }
     }
@@ -111,11 +150,26 @@ else
 
         while (true)
         {
-            sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await
-            JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
+            try
+            {
+                sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await
+                JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
+            }
+            catch
+            {
+                content = "Turn off AdBlock";
+                showAlert = true;
+                severity = Severity.Error;
+                StateHasChanged();
+                return;
+            }
+
 
             if (!sameDevice)
             {
+                content = "You cannot watch in many Device at the same time Logout then Login to update your last Device";
+                showAlert = true;
+                severity = Severity.Error;
                 StateHasChanged();
             }
 
@@ -127,7 +181,17 @@ else
     {
         CommentModel up = new CommentModel()
         { Time = DateTime.UtcNow, MovieId = Id, CommentText = Acomment };
-        content = await (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up)).Content.ReadAsStringAsync();
+        var response = (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up));
+        content = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+        {
+            severity = Severity.Success;
+        }
+        else
+        {
+            severity = Severity.Error;
+        }
+        showAlert = true;
         List<CommentModel> commentListTemp = new();
 
         for (int i = 0; i <= index; i++)
