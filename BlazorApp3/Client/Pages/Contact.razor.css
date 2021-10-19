@@ -117,19 +117,19 @@ body {
   margin-top: 12px;
 }
 
-.right-side .button input[type="button"] {
-  color: #fff;
-  font-size: 18px;
-  outline: none;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  background: #3e2093;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    .right-side .button input[type="submit"] {
+        color: #fff;
+        font-size: 18px;
+        outline: none;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        background: #3e2093;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
 
-.button input[type="button"]:hover {
+.button input[type="submit"]:hover {
   background: #5029bc;
 }
 

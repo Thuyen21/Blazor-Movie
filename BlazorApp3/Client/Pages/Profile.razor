@@ -173,19 +173,34 @@
     }
 	public async Task ChangeEmail()
 	{
+
 		var response = await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail", changeEmail);
 		content = await response.Content.ReadAsStringAsync();
 
 		if(response.IsSuccessStatusCode)
 		{
+      severity = Severity.Success;
+      showAlert = true;
 			_accountService.Login();
-			severity = Severity.Success;
+      _navigationManager.NavigateTo("/Profile");
 		}
 		else
 		{
 			severity = Severity.Error;
 		}
 		showAlert = true;
+
+		var r = await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail", changeEmail);
+
+		if(r.IsSuccessStatusCode)
+		{
+			_accountService.Login();
+			_navigationManager.NavigateTo("/Profile");
+		}
+		else
+		{
+			content = await r.Content.ReadAsStringAsync();
+		}
 	}
 	public async Task ChangePass()
 	{
