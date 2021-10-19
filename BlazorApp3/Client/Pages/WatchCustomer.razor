@@ -234,7 +234,6 @@ else
 
         if (canWatch == true)
         {
-
             try
             {
                 movieLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions
@@ -251,6 +250,7 @@ else
                 content = ex.Message;
                 severity = Severity.Error;
                 showAlert = true;
+
             }
         }
     }

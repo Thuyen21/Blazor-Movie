@@ -173,7 +173,6 @@
     }
 	public async Task ChangeEmail()
 	{
-
 		var response = await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail", changeEmail);
 		content = await response.Content.ReadAsStringAsync();
 
@@ -189,7 +188,6 @@
 			severity = Severity.Error;
 		}
 		showAlert = true;
-
 		var r = await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail", changeEmail);
 
 		if(r.IsSuccessStatusCode)
