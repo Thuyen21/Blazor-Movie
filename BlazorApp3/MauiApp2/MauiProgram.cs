@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Components.WebView.Maui;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
+using MudBlazor.Services;
 using System;
 using System.Net.Http;
 
@@ -30,6 +31,7 @@ namespace MauiApp2
             builder.Services.AddAuthorizationCore();
             builder.Services.AddScoped<IAccountService, AccountService>();
             builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+            builder.Services.AddMudServices();
 
             return builder.Build();
         }

@@ -57,7 +57,10 @@
           <div class="button">
             <input type="submit" value="Send Now">
           </div>
-          <div>@content</div>
+          	@if (showAlert)
+{
+    <MudAlert Severity="Severity.Success" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
 
         </EditForm>
       </div>
@@ -67,9 +70,15 @@
 </body>
 @code {
   private FeedbackMessageModel feedbackMessageModel = new();
-  private string content = "";
+  private string? content;
+   private bool showAlert = false;
+    private void CloseAlert()
+    {
+        showAlert = false;
+    }
   protected async Task SendFeedbackMessage()
   {
     content = await (await _httpClient.PostAsJsonAsync("user/feedback", feedbackMessageModel)).Content.ReadAsStringAsync();
+    showAlert = true;
   }
 }
