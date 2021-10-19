@@ -163,10 +163,18 @@
 	ChangeEmailModel changeEmail = new ChangeEmailModel();
 	public async Task ChangeEmail()
 	{
-		content = await (await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail",
-		changeEmail)).Content.ReadAsStringAsync();
-		_accountService.Login();
-		_navigationManager.NavigateTo("/Profile");
+		var r = await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail", changeEmail);
+
+		if(r.IsSuccessStatusCode)
+		{
+			_accountService.Login();
+			_navigationManager.NavigateTo("/Profile");
+		}
+		else
+		{
+			content = await r.Content.ReadAsStringAsync();
+		}
+
 	}
 	public async Task ChangePass()
 	{
