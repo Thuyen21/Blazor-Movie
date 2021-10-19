@@ -110,6 +110,7 @@ else
                                             <p class="text-gray mb-3"><i class="icofont-list"></i> ORDER #25102589748 <i
                                                     class="icofont-clock-time ml-2"></i> Mon, Nov 12, 6:26 PM</p>*@
                                             <p class="text-dark">@commentList[i].CommentText</p>
+                                            @{var local = commentList[i].Id;}
                                             <button @onclick="@(async () => await AcLike(local))">Like</button>
                                             <button @onclick="@(async () => await AcDisLike(local))">DisLike</button>
                                             <hr>
