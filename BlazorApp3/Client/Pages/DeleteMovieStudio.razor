@@ -63,7 +63,10 @@
                                     <EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
                                         <DataAnnotationsValidator />
                                         <ValidationSummary />
-                                        <div>@content</div>
+                                        	@if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
                                         <div class="form-group">
                                             <label>Movie ID</label>
                                             <input class="form-control form-control-lg" type="text" @bind="@movie.MovieId"
@@ -114,6 +117,12 @@
     public string Id { get; set; }
     private MovieModel movie;
     private string content;
+        private bool showAlert = false;
+    private Severity severity;
+    private void CloseAlert()
+    {
+        showAlert = false;
+    }
     protected override async Task OnInitializedAsync()
     {
         movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
@@ -122,5 +131,14 @@
     {
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync<MovieModel>("Studio/DeleteMovie", movie);
         content = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+        {
+            severity = Severity.Success;
+        }
+        else
+        {
+            severity = Severity.Error;
+        }
+        showAlert = true;
     }
 }

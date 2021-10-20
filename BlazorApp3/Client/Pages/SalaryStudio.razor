@@ -3,13 +3,19 @@
 
 @attribute [Authorize(Roles = "Studio")]
 @using System.Text.RegularExpressions
-<div>Email</div>
+
+	@if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
+
+@*<div>Email</div>
 <input @bind="@Email" type="email" required>
 <div>Email Confirm</div>
 <input @bind="@EmailConfirm" type="email" required>
 <div>Cash</div>
 <input type="number" step="0.01" @bind="@Cash" required>
-<button @onclick="Submit">Submit</button>
+<button @onclick="Submit">Submit</button>*@
 
 @*<InputText @bind-Value="@Email"/>
     <div>Email Confirm</div>
@@ -19,7 +25,72 @@
 
     <button @onclick="Submit">Submit</button>*@
 
-<div>@content</div>
+@*<div>@content</div>*@
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="Favicon.png">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <title>Laravel</title>
+</head>
+
+<body>
+
+  <main class="login-form">
+    <div class="cotainer">
+      <div class="row justify-content-center">
+        <div class="col-md">
+          <div class="card">
+            <div class="card-header">Salary Studio</div>
+            <div class="card-body">
+              <form action="" method="">
+                  <div class="form-group row">
+                  <label class="col-md-4 col-form-label text-md-right">Email</label>
+                  <div class="col-md-6">
+                    <input type="text" @bind="@Email" class="form-control" required autofocus>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label text-md-right">Confirm Email</label>
+                  <div class="col-md-6">
+                    <input type="text" class="form-control" @bind="@EmailConfirm" required>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-md-4 col-form-label text-md-right">Cash</label>
+                  <div class="col-md-6">
+                    <input type="number" class="form-control" step="0.01" @bind="@Cash" required>
+                  </div>
+                </div>
+                <div class="col-md-6 offset-md-4">
+                  <button type="submit" class="btn btn-primary" @onclick="Submit">
+                    Submit
+                  </button>                  
+                </div>
+              </form>
+                
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    
+    </div>
+
+  </main>
+
+</body>
+
+
+
 
 
 @code {
@@ -27,6 +98,12 @@
     private string EmailConfirm;
     private double Cash;
     private string content;
+    private bool showAlert = false;
+    private Severity severity;
+    private void CloseAlert()
+    {
+        showAlert = false;
+    }
     private async Task Submit()
     {
         try
@@ -36,17 +113,32 @@
         catch
         {
             content = "Not Email";
+            severity = Severity.Error;
+            showAlert = true;
             return;
         }
         if (Email != EmailConfirm)
         {
             content = "Check your email";
+            severity = Severity.Error;
+            showAlert = true;
         }
         else
         {
-            content = await (await _httpClient.PostAsJsonAsync<Dictionary<string, string>>("Studio/Salary", new Dictionary<string,
+            var response = await _httpClient.PostAsJsonAsync<Dictionary<string, string>>("Studio/Salary", new Dictionary<string,
             string>()
-{{"Email", Email}, {"Cash", Cash.ToString()}})).Content.ReadAsStringAsync();
+{{"Email", Email}, {"Cash", Cash.ToString()}});
+            content = await response.Content.ReadAsStringAsync();
+            
+        if (response.IsSuccessStatusCode)
+        {
+            severity = Severity.Success;
+        }
+        else
+        {
+            severity = Severity.Error;
+        }
+        showAlert = true;
         }
     }
 }

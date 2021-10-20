@@ -3,7 +3,10 @@
 @page "/BuyVip"
 @page "/BuyVip/{movieId}"
 @attribute [Authorize(Roles = "Customer")]
-
+	@if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
 <EditForm Model="@vip" OnValidSubmit="@Buy">
     <DataAnnotationsValidator />
     <ValidationSummary />
@@ -11,7 +14,9 @@
         @if (movieId != null)
         {
             <InputRadio Value="0" />
-            <div>Only this movie</div><br />
+            <div>Only this movie</div>
+
+            <br />
         }
         <InputRadio checker Value="1" />
         <div>1 month </div><br />
@@ -25,8 +30,44 @@
     <button type="submit">Buy</button>
 </EditForm>
 
+@*<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <EditForm Model="@vip" OnValidSubmit="@Buy">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <InputRadioGroup @bind-Value="@vip.Choose">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    @if (movieId != null)
+                    {
+                        <InputRadio Value="0" />
+                        <label>Only this movie</label>
+                    }
+                    <InputRadio checker Value="1" />
+                    <label>1 month </label>
+                    <InputRadio Value="3" />
+                    <label>3 month</label> 
+                    <InputRadio Value="6" />
+                    <label>6 month</label> 
+                    <InputRadio Value="12" />
+                    <label>12 month</label> 
+                </div>
+            </InputRadioGroup>
+            <button type="submit">Buy</button>
+        </EditForm>
+    </div>
+</div>*@
+
+
 <div>@content</div>
+
 <div>You are Choosing @vip.Choose</div>
+
 @if (content == "Success" && movieId != null)
 {
     string linkWatch = $"WatchCustomer/{movieId}";
@@ -42,13 +83,24 @@ else
 {
     <div>@vipStatus</div>
 }
+
+
+
+
+
 @code {
     [Parameter]
     public string movieId { get; set; }
     private readonly VipModel vip = new VipModel()
-    { Choose = 1 };
+        { Choose = 1 };
     private string vipStatus;
     private string content;
+    private bool showAlert = false;
+    private Severity severity;
+    private void CloseAlert()
+    {
+        showAlert = false;
+    }
     protected override async Task OnInitializedAsync()
     {
         if (movieId != null)
@@ -62,6 +114,16 @@ else
     {
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync<VipModel>("Customer/BuyVip", vip);
         content = await response.Content.ReadAsStringAsync();
-        await OnInitializedAsync();
+        if (response.IsSuccessStatusCode)
+        {
+            severity = Severity.Success;
+        }
+        else
+        {
+            severity = Severity.Error;
+        }
+        showAlert = true;
+        vipStatus = new string(await _httpClient.GetFromJsonAsync<char[]>("Customer/VipCheck"));
+        StateHasChanged();
     }
 }

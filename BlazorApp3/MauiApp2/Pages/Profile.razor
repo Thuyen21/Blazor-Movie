@@ -35,7 +35,11 @@
 								<h5>@accountManagementModel.Role</h5>
 								<p style="font-weight: 300">@accountManagementModel.Id</p>
 								<p>@accountManagementModel.Wallet</p>
-								<p id="hideMe">@content</p>
+									@if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
+
 							</div>
 						</div>
 					</div>
@@ -161,19 +165,34 @@
 
 @code {
 	ChangeEmailModel changeEmail = new ChangeEmailModel();
+	   private bool showAlert = false;
+    private Severity severity;
+    private void CloseAlert()
+    {
+        showAlert = false;
+    }
 	public async Task ChangeEmail()
 	{
-		content = await (await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail",
-		changeEmail)).Content.ReadAsStringAsync();
-		_accountService.Login();
-		_navigationManager.NavigateTo("/Profile");
+		var response = await _httpClient.PostAsJsonAsync<ChangeEmailModel>("User/ChangeEmail", changeEmail);
+		content = await response.Content.ReadAsStringAsync();
+
+		if(response.IsSuccessStatusCode)
+		{
+			_accountService.Login();
+			severity = Severity.Success;
+		}
+		else
+		{
+			severity = Severity.Error;
+		}
+		showAlert = true;
 	}
 	public async Task ChangePass()
 	{
 		_navigationManager.NavigateTo("/ResetPassword");
 	}
 	private AccountManagementModel accountManagementModel = new AccountManagementModel();
-	private string content;
+	private string? content;
 	protected override async Task OnInitializedAsync()
 	{
 		accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");
@@ -184,5 +203,14 @@
 		HttpResponseMessage response = await _httpClient.PostAsJsonAsync<AccountManagementModel>("user/EditProfile",
 		accountManagementModel);
 		content = await response.Content.ReadAsStringAsync();
+		if (response.IsSuccessStatusCode)
+        {
+            severity = Severity.Success;
+        }
+        else
+        {
+            severity = Severity.Error;
+        }
+        showAlert = true;
 	}
 }

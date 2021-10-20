@@ -34,7 +34,10 @@
 <input type="date" @bind="end" />
 
 <button @onclick="Submit">Submit</button>
-<div>@content</div>
+	@if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
 
 @* @if(commentStatus.Count > 1)
     {
@@ -44,13 +47,25 @@
 
 @foreach (var status in fullStatus)
 {
+    
+        double[] data = {Double.Parse(status["Positive"]), Double.Parse(status["Negative"])} ;
+        string[] labels = { "Positive", "Negative" };
+    
     <div>Date: @status["Date"]</div>
     <div>Positive: @status["Positive"]</div>
     <div>Negative: @status["Negative"]</div>
     <div>View: @status["View"]</div>
     <div>Buy: @status["Buy"]</div>
+   
+    <MudPaper Class="pa-4">
+    <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px" InputData="@data" InputLabels="@labels"></MudChart>
+</MudPaper>
 
 }
+
+
+
+
 @code {
     [Parameter]
     public string Id { get; set; }
@@ -59,25 +74,34 @@
     private DateTime check = DateTime.UtcNow;
     private DateTime start = DateTime.UtcNow;
     private DateTime end = DateTime.UtcNow;
-
     private List<int>? commentStatus = new();
     private readonly List<Dictionary<string, string>>? fullStatus = new();
+        private bool showAlert = false;
+    private Severity severity = Severity.Info;
+    private void CloseAlert()
+    {
+        showAlert = false;
+    }
     private async Task Salary()
     {
         content = await (await _httpClient.PostAsJsonAsync<List<string>>($"Studio/SalaryMovie", new List<string> { { Id }, {
 month.ToString("MM-dd-yyyy") } })).Content.ReadAsStringAsync();
+     showAlert = true;
 
     }
     private async Task Check()
     {
         content = await (await _httpClient.PostAsJsonAsync<List<string>>($"Studio/Check", new List<string> { { Id }, {
 check.ToString("MM-dd-yyyy") } })).Content.ReadAsStringAsync();
+ showAlert = true;
+
     }
     private async Task Submit()
     {
         fullStatus.Clear();
         //commentStatus.Clear();
         content = "Loading.....";
+         showAlert = true;
 
         //for(DateTime i = start; i <= end; i = i.AddDays(1.0))
         // {
@@ -106,10 +130,13 @@ check.ToString("MM-dd-yyyy") } })).Content.ReadAsStringAsync();
                 StateHasChanged();
               });
               content = "";
+               showAlert = false;
         }
         catch (Exception ex)
         {
             content = ex.Message;
+             showAlert = true;
+
         }
     }
 }

@@ -79,8 +79,8 @@ else
     [JSInvokable]
     public async Task Test(string test, string test2, string test3)
     {
-        content = await (await _httpClient.PostAsJsonAsync<List<string>>($"Customer/{test3}", new List<string>() { test, test2
-})).Content.ReadAsStringAsync();
+        var response = await _httpClient.PostAsJsonAsync<List<string>>($"Customer/{test3}", new List<string>() { test, test2 });
+        content = await response.Content.ReadAsStringAsync();
         StateHasChanged();
     }
 }

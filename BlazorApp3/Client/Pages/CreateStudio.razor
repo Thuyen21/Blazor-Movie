@@ -38,25 +38,36 @@
             <input type="date" @bind="@movie.PremiereDate" />
             <button>Submit</button>
         </EditForm>
-        <div>@content</div>
+        	@if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
     </form>
 </div>
-
-
-
-
-
-
-
 
 
 @code {
     private readonly MovieModel movie = new();
     private string? content;
+        private bool showAlert = false;
+    private Severity severity;
+    private void CloseAlert()
+    {
+        showAlert = false;
+    }
     private async Task HandleValidSubmit()
     {
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync<MovieModel>("Studio/Upload", movie);
         content = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+        {
+            severity = Severity.Success;
+        }
+        else
+        {
+            severity = Severity.Error;
+        }
+        showAlert = true;
     }
 
     protected override async Task OnInitializedAsync()

@@ -156,9 +156,18 @@ else
     }
 
     protected override async Task OnInitializedAsync()
-    {
-        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}");
-        char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+    {   
+        var moviesTask = Task.Run(async () =>
+        {
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}");
+        });
+        char[] tokena = { };
+        var tokenaTask = Task.Run(async () =>
+        {
+            tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+        });
+         await Task.WhenAll(moviesTask, tokenaTask);
+
         string token = new string(tokena);
         foreach (MovieModel item in movies)
         {
