@@ -175,112 +175,110 @@ else
     </div>
 </body>
 
+@code{
+            private List<MovieModel> movies = new();
+        private string? searchString { get; set; }
 
-
-
-
-
-@code {
-    private List<MovieModel> movies = new();
-    private string? searchString { get; set; }
-    private bool isSearch = false;
-    private readonly Dictionary<string, string> DicImageLink = new();
-    private string sort = null;
-    private int index = 0;
-    private async Task NameSortParm()
-    {
-        index = 0;
-        sort = sort == "name" ? "nameDesc" : "name";
-        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
-        isSearch = false;
-        searchString = null;
-    }
-
-    private async Task DateSortParm()
-    {
-        index = 0;
-        sort = sort == "date" ? "dateDesc" : "date";
-        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
-        isSearch = false;
-        searchString = null;
-    }
-
-    private async Task GenreSortParm()
-    {
-        index = 0;
-        sort = sort == "genre" ? "genreDesc" : "genre";
-        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
-        isSearch = false;
-        searchString = null;
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        var moviesTask = Task.Run(async () =>
+        private bool isSearch = false;
+        private readonly Dictionary<string, string> DicImageLink = new();
+        private string sort = null;
+        private int index = 0;
+        private async Task NameSortParm()
         {
-            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}");
-        });
-        char[] tokena = { };
-        var tokenaTask = Task.Run(async () =>
-        {
-            tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
-        });
-         await Task.WhenAll(moviesTask, tokenaTask);
-        string token = new string(tokena);
-        foreach (MovieModel item in movies)
-        {
-            try
-            {
-                string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions
-                    {
-                        AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)),
-                        ThrowOnCancel = true,
-                        HttpClientTimeout = TimeSpan.FromHours(2)
-                    }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
-                if (!DicImageLink.ContainsKey(item.MovieId))
-                {
-                    DicImageLink.Add(item.MovieId, ImageLink);
-                }
-                else
-                {
-                    DicImageLink[item.MovieId] = ImageLink;
-                }
-            }
-            catch
-            {
-                DicImageLink.Add(item.MovieId, null);
-            }
-        }
-    }
-    private async Task Search()
-    {
-        index = 0;
-        if (searchString != null)
-        {
-            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/{searchString}/ /{index}");
-            isSearch = true;
-        }
-        else
-        {
-            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}");
+            index = 0;
+            sort = sort == "name" ? "nameDesc" : "name";
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
             isSearch = false;
+            searchString = null;
         }
-        sort = null;
-    }
-    private async Task LoadMore()
-    {
-        index++;
-        if (isSearch)
+
+        private async Task DateSortParm()
         {
-            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/{searchString}//{index}"));
+            index = 0;
+            sort = sort == "date" ? "dateDesc" : "date";
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
+            isSearch = false;
+            searchString = null;
         }
-        else if (sort != null)
+
+        private async Task GenreSortParm()
         {
-            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}"));
+            index = 0;
+            sort = sort == "genre" ? "genreDesc" : "genre";
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
+            isSearch = false;
+            searchString = null;
         }
-        else
+
+        protected override async Task OnInitializedAsync()
         {
-            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}"));
+            Task? moviesTask = Task.Run(async () =>
+            {
+                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}");
+            });
+            char[] tokena = { };
+            Task? tokenaTask = Task.Run(async () =>
+            {
+                tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+            });
+            await Task.WhenAll(moviesTask, tokenaTask);
+            string token = new string(tokena);
+            foreach (MovieModel item in movies)
+            {
+                try
+                {
+                    string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
+                    if (!DicImageLink.ContainsKey(item.MovieId))
+                    {
+                        DicImageLink.Add(item.MovieId, ImageLink);
+                    }
+                    else
+                    {
+                        DicImageLink[item.MovieId] = ImageLink;
+                    }
+                }
+                catch
+                {
+                    DicImageLink.Add(item.MovieId, null);
+                }
+            }
         }
-    }
+
+        private async Task Search()
+        {
+            index = 0;
+            if (searchString != null)
+            {
+                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/{searchString}/ /{index}");
+                isSearch = true;
+            }
+            else
+            {
+                movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}");
+                isSearch = false;
+            }
+
+            sort = null;
+        }
+
+        private async Task LoadMore()
+        {
+            index++;
+            if (isSearch)
+            {
+                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/{searchString}//{index}"));
+            }
+            else if (sort != null)
+            {
+                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}"));
+            }
+            else
+            {
+                movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}"));
+            }
+        }
 }
+
+
+
+

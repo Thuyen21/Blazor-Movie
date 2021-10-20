@@ -28,30 +28,23 @@ public class UserController : Controller
     [HttpPost("login")]
     public async Task<ActionResult> LogIn([FromBody] LogInModel logIn)
     {
-
         try
         {
             userCredential = await client.SignInWithEmailAndPasswordAsync(logIn.Email, logIn.Password);
-
         }
         catch (FirebaseAuthHttpException ex)
         {
             return BadRequest(ex.Reason.ToString());
         }
-
         User user = userCredential.User;
-
         Query usersRef = db.Collection("Account").WhereEqualTo("Id", user.Uid);
         QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
-
         AccountManagementModel acc = new();
         foreach (DocumentSnapshot document in snapshot.Documents)
         {
             await document.Reference.UpdateAsync("UserAgent", logIn.UserAgent);
             acc = document.ConvertTo<AccountManagementModel>();
         }
-
-
         ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
                 new Claim(ClaimTypes.Email, logIn.Email),
                     new Claim(ClaimTypes.Sid, user.Uid),
@@ -65,12 +58,10 @@ public class UserController : Controller
         ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
         //Sign In User
         await HttpContext.SignInAsync(claimsPrincipal);
-
         return Ok();
     }
     [Authorize]
     [HttpGet("Logout")]
-
     public async Task<ActionResult> LogOut()
     {
         await HttpContext.SignOutAsync();
@@ -91,21 +82,14 @@ public class UserController : Controller
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
             string Id = User.FindFirst(ClaimTypes.Sid).Value;
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
-
-
             Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
-
             QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
-
-
             foreach (DocumentSnapshot VARIABLE in snapshot.Documents)
             {
                 acc = VARIABLE.ConvertTo<AccountManagementModel>();
             }
         }
-
         return await Task.FromResult(acc);
-
     }
     [Authorize]
     [HttpPost("ChangeEmail")]
@@ -122,8 +106,6 @@ public class UserController : Controller
             UserCredential newUserCredentiall = userCredential;
             newUserCredentiall.AuthCredential = EmailProvider.GetCredential(changeEmailModel.Email, changeEmailModel.Password);
             await newUserCredentiall.User.LinkWithCredentialAsync(userCredential.AuthCredential);
-
-
             QuerySnapshot snapshot = await db.Collection("Account").WhereEqualTo("Id", userCredential.User.Uid)
                 .GetSnapshotAsync();
             Dictionary<string, dynamic> update = new() { { "Email", changeEmailModel.Email } };
@@ -147,7 +129,6 @@ public class UserController : Controller
     [HttpPost("ResetPassword")]
     public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordModel resetPassword)
     {
-
         try
         {
             await client.ResetEmailPasswordAsync(resetPassword.Email);
@@ -170,30 +151,21 @@ public class UserController : Controller
 #pragma warning disable CS8602 // Dereference of a possibly null reference.
             string Id = User.FindFirst(ClaimTypes.Sid).Value;
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
-
-
             Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
-
             QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
-
-
             foreach (DocumentSnapshot VARIABLE in snapshot.Documents)
             {
                 acc = VARIABLE.ConvertTo<AccountManagementModel>();
             }
         }
-
         return await Task.FromResult(acc);
-
     }
     [Authorize]
     [HttpPost("EditProfile")]
     public async Task<ActionResult> EditProfile([FromBody] AccountManagementModel accountManagementModel)
     {
-
         try
         {
-
             QuerySnapshot snapshot = await db.Collection("Account")
                 .WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
             Dictionary<string, dynamic> update = new()
@@ -201,13 +173,10 @@ public class UserController : Controller
                 { "Name", accountManagementModel.Name },
                 { "DateOfBirth", accountManagementModel.DateOfBirth.AddDays(1).ToUniversalTime() }
             };
-
-
             foreach (DocumentSnapshot document in snapshot.Documents)
             {
                 await document.Reference.UpdateAsync(update);
             }
-
 
             return Ok("Success");
         }
