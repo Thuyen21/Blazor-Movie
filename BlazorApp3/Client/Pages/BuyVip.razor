@@ -83,6 +83,7 @@ else
 {
     <div>@vipStatus</div>
 }
+
 @code{
     [Parameter]
         public string movieId { get; set; }
@@ -126,8 +127,3 @@ else
             vipStatus = new string(await _httpClient.GetFromJsonAsync<char[]>("Customer/VipCheck"));
             StateHasChanged();
         }
-}
-
-
-
-
