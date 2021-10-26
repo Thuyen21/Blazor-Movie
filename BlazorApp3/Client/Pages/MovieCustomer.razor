@@ -226,6 +226,8 @@ else
         //FIX
         Parallel.ForEach(movies, async item => 
         {
+            DicImageLink.Add(item.MovieId, null);
+                    
             try
             {
                 string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
@@ -242,8 +244,7 @@ else
                 }
                 catch
                 {
-                    DicImageLink.Add(item.MovieId, null);
-                    StateHasChanged();
+                    
                 }
         });
         }
