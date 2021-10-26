@@ -278,24 +278,24 @@ public class UserController : Controller
     public async Task<ActionResult<List<MovieModel>>> Trending()
     {
         List<MovieModel> movies = new();
-        
-            var viewRef = await db.Collection("View").OrderBy("Time").StartAt(DateTime.Now.AddDays(-1).ToUniversalTime()).EndAt(DateTime.Now.ToUniversalTime()).GetSnapshotAsync();
-            Dictionary<string, double> view = new();
-            foreach (var item in viewRef.Documents)
+
+        QuerySnapshot? viewRef = await db.Collection("View").OrderBy("Time").StartAt(DateTime.Now.AddDays(-1).ToUniversalTime()).EndAt(DateTime.Now.ToUniversalTime()).GetSnapshotAsync();
+        Dictionary<string, double> view = new();
+        foreach (DocumentSnapshot? item in viewRef.Documents)
+        {
+
+            if (view.ContainsKey(item.GetValue<string>("Id")))
             {
-                
-                if(view.ContainsKey(item.GetValue<string>("Id")))
-                {
-                    view[item.GetValue<string>("Id")] = view[item.GetValue<string>("Id")] + 1;
-                }
-                else
-                {
-                view.Add(item.GetValue<string>("Id"), 1);
-                }
+                view[item.GetValue<string>("Id")] = view[item.GetValue<string>("Id")] + 1;
             }
+            else
+            {
+                view.Add(item.GetValue<string>("Id"), 1);
+            }
+        }
         view = view.OrderBy(key => key.Value).ToDictionary(item => item.Key, item => item.Value);
-            
-        if(view.Count > 10)
+
+        if (view.Count > 10)
         {
             for (int i = 0; i <= 10; i++)
             {
@@ -306,14 +306,14 @@ public class UserController : Controller
                 catch
                 {
 
-                    
+
                 }
-          }
+            }
         }
         else
         {
-                foreach (var item in view)
-                {
+            foreach (KeyValuePair<string, double> item in view)
+            {
                 try
                 {
                     movies.Add((await db.Collection("Movie").WhereEqualTo("MovieId", item.Key).GetSnapshotAsync()).Documents[0].ConvertTo<MovieModel>());
@@ -321,12 +321,12 @@ public class UserController : Controller
                 catch
                 {
 
-                   
+
                 }
-                }   
+            }
         }
-            return await Task.FromResult(movies);
-        
+        return await Task.FromResult(movies);
+
     }
     //ENDFIX
 }
