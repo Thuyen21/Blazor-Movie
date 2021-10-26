@@ -273,4 +273,35 @@ public class UserController : Controller
         await db.Collection("Feedback").AddAsync(feedback);
         return Ok("Done");
     }
+    //FIXING
+    [HttpGet("Trending")]
+    public async Task<ActionResult<List<MovieModel>>> Trending()
+    {
+        List<MovieModel> movies = new();
+        
+            var viewRef = await db.Collection("View").OrderBy("Time").StartAt(DateTime.Now.AddDays(-1).ToUniversalTime()).EndAt(DateTime.Now.ToUniversalTime()).GetSnapshotAsync();
+            Dictionary<string, double> view = new();
+            foreach (var item in viewRef.Documents)
+            {
+                
+                if(view.ContainsKey(item.GetValue<string>("Viewer")))
+                {
+                    view[item.GetValue<string>("Viewer")] = view[item.GetValue<string>("Viewer")] + 1;
+                }
+                else
+                {
+                view.Add(item.GetValue<string>("Viewer"), 1);
+                }
+            }
+            //Query usersRef = db.Collection("Movie");
+            //usersRef = usersRef.Offset(index * 5).Limit(5);
+            //QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
+            //foreach (DocumentSnapshot document in snapshot.Documents)
+            //{
+            //    movies.Add(document.ConvertTo<MovieModel>());
+            //}
+            return movies;
+        
+    }
+    //ENDFIX
 }

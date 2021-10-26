@@ -4,14 +4,14 @@
 @using Firebase.Storage
 
 
-<PageTitle> test</PageTitle>
+<PageTitle>Xem phim</PageTitle>
 
 	@if (showAlert)
 {
     <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
 }
 
-
+@*<div></div>
 @if (movie == null || movieLink == null)
 {
     @if (canWatch == null)
@@ -30,36 +30,34 @@
 }
 else
 {
-    
-        if (sameDevice)
+
+    if (sameDevice)
     {
         <video src="@movieLink" width="1280" height="720" controls @onplay="View"></video>
     }
-    
-    
-}
+}*@
 
 @*<div></div>
 
-@if (commentList != null)
-{
+    @if (commentList != null)
+    {
     for (int i = 0; i < commentList.Count(); i++)
     {
-        var local = commentList[i].Id;
-        <div>Email: @commentList[i].Email, comment: @commentList[i].CommentText, Time: @commentList[i].Time</div>
-        <div>Like = @commentList[i].Like, Dislike = @commentList[i].DisLike, Is: @commentList[i].Is </div>
+    var local = commentList[i].Id;
+    <div>Email: @commentList[i].Email, comment: @commentList[i].CommentText, Time: @commentList[i].Time</div>
+    <div>Like = @commentList[i].Like, Dislike = @commentList[i].DisLike, Is: @commentList[i].Is </div>
 
-        <button @onclick="@(async () => await AcLike(local))">Like</button>
-        <button @onclick="@(async () => await AcDisLike(local))">DisLike</button>
+    <button @onclick="@(async () => await AcLike(local))">Like</button>
+    <button @onclick="@(async () => await AcDisLike(local))">DisLike</button>
     }
-}
+    }
 
-<button @onclick="LoadMore">Click to load more </button>
+    <button @onclick="LoadMore">Click to load more </button>
 
-<input type="text" @bind=@Acomment>
+    <input type="text" @bind=@Acomment>
 
-<button @onclick="@Com">Comment</button>
-<div>@content</div>*@
+    <button @onclick="@Com">Comment</button>
+    <div>@content</div>*@
 
 <head>
     <meta charset="utf-8">
@@ -71,15 +69,88 @@ else
     <link rel="stylesheet" href="https://allyoucan.cloud/cdn/icofont/1.0.1/icofont.css"
           integrity="sha384-jbCTJB16Q17718YM9U22iJkhuGbS0Gd2LjaWb4YJEZToOPmnKDjySVa323U+W7Fv" crossorigin="anonymous">
 
+
+    @if (movie == null || movieLink == null)
+    {
+        @if (canWatch == null)
+        {
+            <div>Loadding</div>
+        }
+        else if (canWatch == false)
+        {
+            string linkVip = $"BuyVip/{Id}";
+            <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100" style="margin: 15px;">
+                <div class="bg-white card mb-4 order-list shadow-sm">
+                    <h4 class="font-weight-bold mt-0 mb-4 d-flex justify-content-center" style="padding: 1%;">You need buy VIP package or only this Movie</h4>
+                    <div class="d-flex justify-content-center" style="margin: 1%">
+                        <NavLink class="btn btn-primary" href="@linkVip">Buy</NavLink>
+                    </div>
+                </div>   
+            </div>
+                   
+        }
+    }
+    else
+    {
+
+        if (sameDevice)
+        {
+            @*<video src="@movieLink" width="1280" height="720" controls @onplay="View"></video>*@
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="project-info-box mt-0 shadow-sm">
+                            <h5>Movie Overview</h5>
+                            <p class="mb-0">
+                                @movie.MoviesDescription   <!-- FIX -->
+                            </p>
+                        </div><!-- / project-info-box -->
+
+                        <div class="project-info-box shadow-sm">
+                            <p><b>Name:</b> @movie.MovieName</p>  <!-- FIX -->
+                            <p><b>Date:</b> @movie.PremiereDate.ToShortDateString()</p> <!-- FIX -->
+                        </div><!-- / project-info-box -->
+
+                        <div class="project-info-box mt-0 mb-0">
+
+                        </div><!-- / project-info-box -->
+                    </div><!-- / column -->
+
+            <div class="col-md-7">
+                        <div class="embed-responsive embed-responsive-16by9 shadow-sm">
+                            <video width="640" height="360" controls="" class="rounded">
+                                <source src="@movieLink"
+                                type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="project-info-box shadow-sm">
+                            <p><b>Genre:</b> @movie.MovieGenre</p>  <!-- FIX -->
+                        </div><!-- / project-info-box -->
+            </div><!-- / column -->
+        </div>
+            </div>
+        }
+    }
+
     <div class="container">
         <div class="row">
-
             <div class="col-md">
                 <div class="osahan-account-page-right shadow-sm bg-white p-4 h-100">
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane  fade  active show" id="orders" role="tabpanel"
                              aria-labelledby="orders-tab">
                             <h4 class="font-weight-bold mt-0 mb-4">Comments</h4>
+
+                            <div class="bg-white card mb-4 order-list shadow-sm">
+                                <div class="input-group" style="margin-right: 5%">
+                                    <textarea type="text" class="form-control rounded" placeholder="Your comment"
+                                              aria-label="Comment" aria-describedby="search-addon" @bind=@Acomment></textarea>
+                                </div>
+                                <div class="d-flex flex-row-reverse" style="margin: 1%">
+                                    <button type="button" class="btn btn-primary" @onclick="@Com">Comment</button>
+                                    <div class="d-flex justify-content-center">@content</div>
+                                </div>
+                            </div>
 
                             @if (commentList != null)
                             {
@@ -108,8 +179,8 @@ else
                                                     @{
                                                         var local = commentList[i].Id;
                                                     }
-                                                    <button @onclick="@(async () => await AcLike(local))">Like</button>
-                                                    <button @onclick="@(async () => await AcDisLike(local))">DisLike</button>
+                                                    @*<button @onclick="@(async () => await AcLike(local))">Like</button>
+                                                        <button @onclick="@(async () => await AcDisLike(local))">DisLike</button>*@
                                                     <hr>
 
                                                     <div class="float-right">
@@ -140,18 +211,7 @@ else
                                 } @*end for*@
                             } @*end if comment*@
 
-                            <div class="bg-white card mb-4 order-list shadow-sm">
-                                <div class="input-group" style="margin-right: 5%">
-                                    <textarea type="text" class="form-control rounded" placeholder="Comment"
-                                              aria-label="Comment" aria-describedby="search-addon" @bind=@Acomment></textarea>
-                                </div>
-                                <div class="d-flex flex-row-reverse" style="margin: 1%">
-                                    <button type="button" class="btn btn-primary" @onclick="@Com">Comment</button>
-                                    <div class="d-flex justify-content-center">@content</div>
-                                </div>
 
-
-                            </div>
 
                             <a class="text-center w-100 d-block mt-4 font-weight-bold" style="font-size:13px" href="#">See more Comments</a>
                         </div>
@@ -163,173 +223,173 @@ else
 </body>
 
 
-@code{
+@code {
     [Parameter]
-        public string Id { get; set; }
+    public string Id { get; set; }
 
-        private MovieModel movie;
-        private string? movieLink = null;
-        private bool? canWatch;
-        private string Acomment;
-        private string content;
-        private List<CommentModel> commentList = new();
-        private bool showAlert = false;
-        private Severity severity;
-        private bool sameDevice = false;
-        private bool firstPlay = true;
-        private void CloseAlert()
+    private MovieModel movie;
+    private string? movieLink = null;
+    private bool? canWatch;
+    private string Acomment;
+    private string content;
+    private List<CommentModel> commentList = new();
+    private bool showAlert = false;
+    private Severity severity;
+    private bool sameDevice = false;
+    private bool firstPlay = true;
+    private void CloseAlert()
+    {
+        showAlert = false;
+    }
+
+    private int index = 0;
+    protected override async Task OnInitializedAsync()
+    {
+        Task? movieTask = Task.Run(async () =>
         {
-            showAlert = false;
+            movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Customer/Watch/{Id}");
+        });
+        Task? commentTask = Task.Run(async () =>
+        {
+            commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}");
+        });
+        Task? sameDeviceTask = Task.Run(async () =>
+        {
+            sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
+        });
+        Task? canWatchTask = Task.Run(async () =>
+        {
+            canWatch = await _httpClient.GetFromJsonAsync<bool>($"Customer/CanWatch/{Id}");
+            Console.WriteLine("Done");
+        });
+        char[] tokena = { };
+        Task? tokenaTask = Task.Run(async () =>
+        {
+            tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+        });
+        string token = new string(tokena);
+        try
+        {
+            await Task.WhenAll(movieTask, commentTask, sameDeviceTask, canWatchTask, tokenaTask);
+        }
+        catch
+        {
+            content = "Turn off AdBlock";
+            severity = Severity.Error;
+            showAlert = true;
+            return;
         }
 
-        private int index = 0;
-        protected override async Task OnInitializedAsync()
+        if (canWatch == true)
         {
-            Task? movieTask = Task.Run(async () =>
-            {
-                movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Customer/Watch/{Id}");
-            });
-            Task? commentTask = Task.Run(async () =>
-            {
-                commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}");
-            });
-            Task? sameDeviceTask = Task.Run(async () =>
-            {
-                sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
-            });
-            Task? canWatchTask = Task.Run(async () =>
-            {
-                canWatch = await _httpClient.GetFromJsonAsync<bool>($"Customer/CanWatch/{Id}");
-                Console.WriteLine("Done");
-            });
-            char[] tokena = { };
-            Task? tokenaTask = Task.Run(async () =>
-            {
-                tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
-            });
-            string token = new string(tokena);
             try
             {
-                await Task.WhenAll(movieTask, commentTask, sameDeviceTask, canWatchTask, tokenaTask);
+                movieLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").GetDownloadUrlAsync();
+            }
+            catch (Exception ex)
+            {
+                content = "This studio's movie file contains a mistake."; //FIX
+                severity = Severity.Error;
+                showAlert = true;
+            }
+        }
+    }
+
+    private async Task View()
+    {
+        if (firstPlay)
+        {
+            await _httpClient.PostAsJsonAsync<string>("Customer/View", Id);
+            firstPlay = false;
+        }
+
+        while (true)
+        {
+            try
+            {
+                sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
             }
             catch
             {
                 content = "Turn off AdBlock";
-                severity = Severity.Error;
                 showAlert = true;
+                severity = Severity.Error;
+                StateHasChanged();
                 return;
             }
 
-            if (canWatch == true)
+            if (!sameDevice)
             {
-                try
-                {
-                    movieLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").GetDownloadUrlAsync();
-                }
-                catch (Exception ex)
-                {
-                    content = ex.Message;
-                    severity = Severity.Error;
-                    showAlert = true;
-                }
-            }
-        }
-
-        private async Task View()
-        {
-            if (firstPlay)
-            {
-                await _httpClient.PostAsJsonAsync<string>("Customer/View", Id);
-                firstPlay = false;
-            }
-
-            while (true)
-            {
-                try
-                {
-                    sameDevice = (await _httpClient.PostAsJsonAsync<string>("Customer/UserAgent", await JS.InvokeAsync<string>("getUserAgent"))).IsSuccessStatusCode;
-                }
-                catch
-                {
-                    content = "Turn off AdBlock";
-                    showAlert = true;
-                    severity = Severity.Error;
-                    StateHasChanged();
-                    return;
-                }
-
-                if (!sameDevice)
-                {
-                    content = "You cannot watch in many Device at the same time Logout then Login to update your last Device";
-                    showAlert = true;
-                    severity = Severity.Error;
-                    StateHasChanged();
-                }
-
-                await Task.Delay(60000);
-            }
-        }
-
-        private async Task Com()
-        {
-            CommentModel up = new CommentModel()
-            { Time = DateTime.UtcNow, MovieId = Id, CommentText = Acomment };
-            HttpResponseMessage? response = (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up));
-            content = await response.Content.ReadAsStringAsync();
-            if (response.IsSuccessStatusCode)
-            {
-                severity = Severity.Success;
-            }
-            else
-            {
+                content = "You cannot watch in many Device at the same time Logout then Login to update your last Device";
+                showAlert = true;
                 severity = Severity.Error;
+                StateHasChanged();
             }
 
-            showAlert = true;
-            List<CommentModel> commentListTemp = new();
-            for (int i = 0; i <= index; i++)
-            {
-                commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
-            }
-
-            commentList.Clear();
-            commentList = commentListTemp;
-            StateHasChanged();
+            await Task.Delay(60000);
         }
+    }
 
-        private async Task AcDisLike(string Id)
+    private async Task Com()
+    {
+        CommentModel up = new CommentModel()
+            { Time = DateTime.UtcNow, MovieId = Id, CommentText = Acomment };
+        HttpResponseMessage? response = (await _httpClient.PostAsJsonAsync<CommentModel>("Customer/Acomment", up));
+        content = await response.Content.ReadAsStringAsync();
+        if (response.IsSuccessStatusCode)
         {
-            await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "DisLike");
-            List<CommentModel> commentListTemp = new();
-            for (int i = 0; i <= index; i++)
-            {
-                commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{this.Id}/{i}"));
-            }
-
-            commentList.Clear();
-            commentList = commentListTemp;
-            StateHasChanged();
+            severity = Severity.Success;
         }
-
-        private async Task AcLike(string Id)
+        else
         {
-            await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "Like");
-            List<CommentModel> commentListTemp = new();
-            for (int i = 0; i <= index; i++)
-            {
-                commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{this.Id}/{i}"));
-            }
-
-            commentList.Clear();
-            commentList = commentListTemp;
-            StateHasChanged();
+            severity = Severity.Error;
         }
 
-        private async Task LoadMore()
+        showAlert = true;
+        List<CommentModel> commentListTemp = new();
+        for (int i = 0; i <= index; i++)
         {
-            index++;
-            commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}"));
+            commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
         }
+
+        commentList.Clear();
+        commentList = commentListTemp;
+        StateHasChanged();
+    }
+
+    private async Task AcDisLike(string Id)
+    {
+        await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "DisLike");
+        List<CommentModel> commentListTemp = new();
+        for (int i = 0; i <= index; i++)
+        {
+            commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{this.Id}/{i}"));
+        }
+
+        commentList.Clear();
+        commentList = commentListTemp;
+        StateHasChanged();
+    }
+
+    private async Task AcLike(string Id)
+    {
+        await _httpClient.PostAsJsonAsync<string>($"Customer/ac/{Id}", "Like");
+        List<CommentModel> commentListTemp = new();
+        for (int i = 0; i <= index; i++)
+        {
+            commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{this.Id}/{i}"));
+        }
+
+        commentList.Clear();
+        commentList = commentListTemp;
+        StateHasChanged();
+    }
+
+    private async Task LoadMore()
+    {
+        index++;
+        commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}"));
+    }
 }
 
 

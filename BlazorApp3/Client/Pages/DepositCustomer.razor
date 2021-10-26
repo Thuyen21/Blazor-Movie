@@ -1,4 +1,5 @@
 ﻿@using Braintree
+<PageTitle>Deposit</PageTitle>
 <h3>DepositCustomer</h3>
 <h3>If you cann't paypal turn your ad block off</h3>
 
@@ -44,6 +45,11 @@ else
     <div>@content</div>
     <button @onclick="Recharge">Recharge</button>
 }
+
+
+
+
+
 @code{
        private string content;
         private double cash = 0;
