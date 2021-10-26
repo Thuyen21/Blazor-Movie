@@ -2,14 +2,14 @@
 using Microsoft.ML;
 using Microsoft.ML.Data;
 
-namespace BlazorApp3.Server
+namespace BlazorApp3_Server
 {
     public partial class MLModel
     {
         public static ITransformer RetrainPipeline(MLContext context, IDataView trainData)
         {
-            IEstimator<ITransformer> pipeline = BuildPipeline(context);
-            ITransformer model = pipeline.Fit(trainData);
+            IEstimator<ITransformer>? pipeline = BuildPipeline(context);
+            ITransformer? model = pipeline.Fit(trainData);
 
             return model;
         }
@@ -22,11 +22,11 @@ namespace BlazorApp3.Server
         public static IEstimator<ITransformer> BuildPipeline(MLContext mlContext)
         {
             // Data process configuration with pipeline data transformations
-            EstimatorChain<Microsoft.ML.Transforms.KeyToValueMappingTransformer> pipeline = mlContext.Transforms.Text.FeaturizeText(@"review", @"review")
+            EstimatorChain<Microsoft.ML.Transforms.KeyToValueMappingTransformer>? pipeline = mlContext.Transforms.Text.FeaturizeText(@"review", @"review")
                                     .Append(mlContext.Transforms.Concatenate(@"Features", @"review"))
                                     .Append(mlContext.Transforms.Conversion.MapValueToKey(@"sentiment", @"sentiment"))
                                     .Append(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"))
-                                    .Append(mlContext.MulticlassClassification.Trainers.LbfgsMaximumEntropy(l1Regularization: 0.173907802080232F, l2Regularization: 1.16733385262508F, labelColumnName: @"sentiment", featureColumnName: @"Features"))
+                                    .Append(mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator: mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(l1Regularization: 0.261935435761415F, l2Regularization: 3.39950587500088F, labelColumnName: @"sentiment", featureColumnName: @"Features"), labelColumnName: @"sentiment"))
                                     .Append(mlContext.Transforms.Conversion.MapKeyToValue(@"PredictedLabel", @"PredictedLabel"));
 
             return pipeline;
