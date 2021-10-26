@@ -273,4 +273,60 @@ public class UserController : Controller
         await db.Collection("Feedback").AddAsync(feedback);
         return Ok("Done");
     }
+    //FIXING
+    [HttpGet("Trending")]
+    public async Task<ActionResult<List<MovieModel>>> Trending()
+    {
+        List<MovieModel> movies = new();
+        
+            var viewRef = await db.Collection("View").OrderBy("Time").StartAt(DateTime.Now.AddDays(-1).ToUniversalTime()).EndAt(DateTime.Now.ToUniversalTime()).GetSnapshotAsync();
+            Dictionary<string, double> view = new();
+            foreach (var item in viewRef.Documents)
+            {
+                
+                if(view.ContainsKey(item.GetValue<string>("Id")))
+                {
+                    view[item.GetValue<string>("Id")] = view[item.GetValue<string>("Id")] + 1;
+                }
+                else
+                {
+                view.Add(item.GetValue<string>("Id"), 1);
+                }
+            }
+        view = view.OrderBy(key => key.Value).ToDictionary(item => item.Key, item => item.Value);
+            
+        if(view.Count > 10)
+        {
+            for (int i = 0; i <= 10; i++)
+            {
+                try
+                {
+                    movies.Add((await db.Collection("Movie").WhereEqualTo("MovieId", view.ElementAt(i).Key).GetSnapshotAsync()).Documents[0].ConvertTo<MovieModel>());
+                }
+                catch
+                {
+
+                    
+                }
+          }
+        }
+        else
+        {
+                foreach (var item in view)
+                {
+                try
+                {
+                    movies.Add((await db.Collection("Movie").WhereEqualTo("MovieId", item.Key).GetSnapshotAsync()).Documents[0].ConvertTo<MovieModel>());
+                }
+                catch
+                {
+
+                   
+                }
+                }   
+        }
+            return await Task.FromResult(movies);
+        
+    }
+    //ENDFIX
 }

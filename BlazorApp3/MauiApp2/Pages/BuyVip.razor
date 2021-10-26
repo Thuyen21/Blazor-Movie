@@ -3,6 +3,7 @@
 @page "/BuyVip"
 @page "/BuyVip/{movieId}"
 @attribute [Authorize(Roles = "Customer")]
+<PageTitle>VIP package</PageTitle>
 	@if (showAlert)
 {
     <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
@@ -83,6 +84,7 @@ else
 {
     <div>@vipStatus</div>
 }
+
 @code{
     [Parameter]
         public string movieId { get; set; }
@@ -127,7 +129,3 @@ else
             StateHasChanged();
         }
 }
-
-
-
-

@@ -2,24 +2,7 @@
 @attribute [Authorize(Roles = "Admin")]
 @page "/ReadFeedBack"
 
-@*<div></div>
-@if (feedbacks.Count == 0)
-{
-    <div>loading</div>
-}
-else
-{
-    @foreach (var item in feedbacks)
-    {
-        <div>@item.Name</div>
-        <div>@item.Email</div>
-        <div>@item.Message</div>
-    }
-}
-
-<div class="button" style="margin:10px" @onclick="LoadMore">
-    <a style="cursor: pointer;">Load More</a>
-</div>*@
+<PageTitle>Admin - Feedbacks</PageTitle>
 
 <head>
     <meta charset="utf-8">
