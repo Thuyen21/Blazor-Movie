@@ -223,7 +223,7 @@ else
         });
         await Task.WhenAll(moviesTask, tokenaTask);
         string token = new string(tokena);
-        //FIX
+        
         Parallel.ForEach(movies, async item => 
         {
             DicImageLink.Add(item.MovieId, null);
@@ -248,7 +248,7 @@ else
                 }
         });
         }
-        //ENDFIX
+        
         private async Task Search()
         {
             index = 0;

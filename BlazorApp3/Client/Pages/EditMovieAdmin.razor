@@ -12,6 +12,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    @if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
 	<div class="container">
 		<input type="checkbox" id="flip">
 		@if (movie == null)
@@ -24,7 +28,7 @@
 		{
             if(more)
     {
-        <iframe src="@linkIframe" height="400" width="600"></iframe>
+        <iframe src="@linkIframe" height="800" width="1200"></iframe>
         }
             else
             {
@@ -187,7 +191,7 @@
 
         private async Task OnChooseImageFile(InputFileChangeEventArgs e)
         {
-            List<string> list = new List<string> { "image/bmp", "image/gif", "image/jpeg", "image/png", "image/svg+xml", "image/tiff", "image/webp" };
+            List<string> list = new List<string> { "image/bmp", "image/gif","image/jpg", "image/jpeg", "image/png", "image/svg+xml", "image/tiff", "image/webp" };
             if (list.Contains(e.File.ContentType))
             {
                 imageFile = (e.File);

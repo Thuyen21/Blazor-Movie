@@ -284,23 +284,48 @@ public class UserController : Controller
             foreach (var item in viewRef.Documents)
             {
                 
-                if(view.ContainsKey(item.GetValue<string>("Viewer")))
+                if(view.ContainsKey(item.GetValue<string>("Id")))
                 {
-                    view[item.GetValue<string>("Viewer")] = view[item.GetValue<string>("Viewer")] + 1;
+                    view[item.GetValue<string>("Id")] = view[item.GetValue<string>("Id")] + 1;
                 }
                 else
                 {
-                view.Add(item.GetValue<string>("Viewer"), 1);
+                view.Add(item.GetValue<string>("Id"), 1);
                 }
             }
-            //Query usersRef = db.Collection("Movie");
-            //usersRef = usersRef.Offset(index * 5).Limit(5);
-            //QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
-            //foreach (DocumentSnapshot document in snapshot.Documents)
-            //{
-            //    movies.Add(document.ConvertTo<MovieModel>());
-            //}
-            return movies;
+        view = view.OrderBy(key => key.Value).ToDictionary(item => item.Key, item => item.Value);
+            
+        if(view.Count > 10)
+        {
+            for (int i = 0; i <= 10; i++)
+            {
+                try
+                {
+                    movies.Add((await db.Collection("Movie").WhereEqualTo("MovieId", view.ElementAt(i).Key).GetSnapshotAsync()).Documents[0].ConvertTo<MovieModel>());
+                }
+                catch
+                {
+
+                    
+                }
+          }
+        }
+        else
+        {
+                foreach (var item in view)
+                {
+                try
+                {
+                    movies.Add((await db.Collection("Movie").WhereEqualTo("MovieId", item.Key).GetSnapshotAsync()).Documents[0].ConvertTo<MovieModel>());
+                }
+                catch
+                {
+
+                   
+                }
+                }   
+        }
+            return await Task.FromResult(movies);
         
     }
     //ENDFIX
