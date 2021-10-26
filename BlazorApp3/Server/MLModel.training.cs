@@ -32,7 +32,7 @@ namespace BlazorApp3_Server
                                     .Append(mlContext.Transforms.Concatenate(@"Features", @"review"))      
                                     .Append(mlContext.Transforms.Conversion.MapValueToKey(@"sentiment", @"sentiment"))      
                                     .Append(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"))      
-                                    .Append(mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator:mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(l1Regularization:0.16710455975436F,l2Regularization:1384.63728327653F,labelColumnName:@"sentiment",featureColumnName:@"Features"), labelColumnName: @"sentiment"))      
+                                    .Append(mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator:mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(l1Regularization:0.261935435761415F,l2Regularization:3.39950587500088F,labelColumnName:@"sentiment",featureColumnName:@"Features"), labelColumnName: @"sentiment"))      
                                     .Append(mlContext.Transforms.Conversion.MapKeyToValue(@"PredictedLabel", @"PredictedLabel"));
 
             return pipeline;
