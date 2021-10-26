@@ -2,6 +2,8 @@
 @attribute [Authorize(Roles = "Studio")]
 @page "/CreateStudio"
 
+<PageTitle>Create Movie</PageTitle>
+
 @*<EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
@@ -44,7 +46,6 @@
 }
     </form>
 </div>
-
 
 @code{
         private readonly MovieModel movie = new();

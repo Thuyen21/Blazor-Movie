@@ -1,34 +1,6 @@
 ﻿@page "/EditAccount/{Id}"
 @attribute [Authorize(Roles = "Admin")]
-
-@*<div>@content</div>
-	@if (acc == null)
-	{
-	<p>
-	<em>Loading...</em>
-	</p>
-	}
-	else
-	{
-	<EditForm Model="@acc" OnValidSubmit="@HandleValidSubmit">
-	<DataAnnotationsValidator />
-	<ValidationSummary />
-	Email
-	<InputText @bind-Value="@acc.Email" />
-	Name
-	<InputText @bind-Value="@acc.Name" />
-	Role
-	<InputText @bind-Value="@acc.Role" />
-	DateOfBirth
-	<InputDate @bind-Value="@acc.DateOfBirth" />
-	Wallet
-	<InputNumber @bind-Value="@acc.Wallet" />
-
-	<button type="submit">Submit</button>
-	</EditForm>
-	}*@
-
-
+<PageTitle>Admin - Edit Account</PageTitle>
 
 <head>
 	<meta charset="UTF-8">
