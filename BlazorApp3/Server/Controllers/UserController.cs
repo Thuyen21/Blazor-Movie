@@ -279,6 +279,7 @@ public class UserController : Controller
     {
         List<MovieModel> movies = new();
 
+
         QuerySnapshot? viewRef = await db.Collection("View").OrderBy("Time").StartAt(DateTime.Now.AddDays(-1).ToUniversalTime()).EndAt(DateTime.Now.ToUniversalTime()).GetSnapshotAsync();
         Dictionary<string, double> view = new();
         foreach (DocumentSnapshot? item in viewRef.Documents)
@@ -296,6 +297,7 @@ public class UserController : Controller
         view = view.OrderBy(key => key.Value).ToDictionary(item => item.Key, item => item.Value);
 
         if (view.Count > 10)
+
         {
             for (int i = 0; i <= 10; i++)
             {
@@ -307,6 +309,7 @@ public class UserController : Controller
                 {
 
 
+
                 }
             }
         }
@@ -314,6 +317,7 @@ public class UserController : Controller
         {
             foreach (KeyValuePair<string, double> item in view)
             {
+
                 try
                 {
                     movies.Add((await db.Collection("Movie").WhereEqualTo("MovieId", item.Key).GetSnapshotAsync()).Documents[0].ConvertTo<MovieModel>());
@@ -322,10 +326,12 @@ public class UserController : Controller
                 {
 
 
+
                 }
             }
         }
         return await Task.FromResult(movies);
+
 
     }
     //ENDFIX
