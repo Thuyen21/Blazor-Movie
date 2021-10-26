@@ -11,53 +11,6 @@
     <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
 }
 
-@*<div></div>
-    @if (movie == null || movieLink == null)
-    {
-    @if (canWatch == null)
-    {
-    <div>Loadding</div>
-    }
-    else if (canWatch == false)
-    {
-
-    string linkVip = $"BuyVip/{Id}";
-    <div>Need to buy</div>
-    <div>
-    <NavLink class="nav-link" href="@linkVip">Buy</NavLink>
-    </div>
-    }
-    }
-    else
-    {
-
-    if (sameDevice)
-    {
-    <video src="@movieLink" width="1280" height="720" controls @onplay="View"></video>
-    }
-    }*@
-
-@*<div></div>
-
-    @if (commentList != null)
-    {
-    for (int i = 0; i < commentList.Count(); i++)
-    {
-    var local = commentList[i].Id;
-    <div>Email: @commentList[i].Email, comment: @commentList[i].CommentText, Time: @commentList[i].Time</div>
-    <div>Like = @commentList[i].Like, Dislike = @commentList[i].DisLike, Is: @commentList[i].Is </div>
-
-    <button @onclick="@(async () => await AcLike(local))">Like</button>
-    <button @onclick="@(async () => await AcDisLike(local))">DisLike</button>
-    }
-    }
-
-    <button @onclick="LoadMore">Click to load more </button>
-
-    <input type="text" @bind=@Acomment>
-
-    <button @onclick="@Com">Comment</button>
-    <div>@content</div>*@
 
 <head>
     <meta charset="utf-8">
@@ -85,9 +38,9 @@
                     <div class="d-flex justify-content-center" style="margin: 1%">
                         <NavLink class="btn btn-primary" href="@linkVip">Buy</NavLink>
                     </div>
-                </div>
+                </div>   
             </div>
-
+                   
         }
     }
     else
@@ -103,17 +56,18 @@
                             <h5>Movie Overview</h5>
                             <p class="mb-0">
                                 @movie.MoviesDescription   <!-- FIX -->
-                    </p>
+                            </p>
                         </div><!-- / project-info-box -->
 
-                <div class="project-info-box shadow-sm">
+                        <div class="project-info-box shadow-sm">
                             <p><b>Name:</b> @movie.MovieName</p>  <!-- FIX -->
-                    <p><b>Date:</b> @movie.PremiereDate.ToShortDateString()</p> <!-- FIX -->
-                </div><!-- / project-info-box -->
-
-                <div class="project-info-box mt-0 mb-0">
+                            <p><b>Date:</b> @movie.PremiereDate.ToShortDateString()</p> <!-- FIX -->
                         </div><!-- / project-info-box -->
-            </div><!-- / column -->
+
+                        <div class="project-info-box mt-0 mb-0">
+
+                        </div><!-- / project-info-box -->
+                    </div><!-- / column -->
 
             <div class="col-md-7">
                         <div class="embed-responsive embed-responsive-16by9 shadow-sm">
@@ -124,7 +78,7 @@
                         </div>
                         <div class="project-info-box shadow-sm">
                             <p><b>Genre:</b> @movie.MovieGenre</p>  <!-- FIX -->
-                </div><!-- / project-info-box -->
+                        </div><!-- / project-info-box -->
             </div><!-- / column -->
         </div>
             </div>
@@ -147,14 +101,7 @@
                                 </div>
                                 <div class="d-flex flex-row-reverse" style="margin: 1%">
                                     <button type="button" class="btn btn-primary" @onclick="@Com">Comment</button>
-                                    @*<div class="d-flex justify-content-center">@content</div>*@
-                                    @if (showAlert)
-                                    {
-                                        <div class="d-flex justify-content-start">
-                                            <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
-                                        </div>
-                                        
-                                    }
+                                    <div class="d-flex justify-content-center">@content</div>
                                 </div>
                             </div>
 
