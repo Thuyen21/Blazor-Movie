@@ -11,7 +11,7 @@ This project was built on .NET 6
 - [.NET MAUI documentation](https://docs.microsoft.com/dotnet/maui)
 
 ## Current News
-
+- October 26, 2021 - [.NET Blazor Movie RC.2.1](https://github.com/Thuyen21/Blazor-Movie-/tree/RC.2.1)
 - October 13, 2021 - [.NET Blazor Movie RC.2.0](https://github.com/Thuyen21/Blazor-Movie-/tree/RC.2.0-Hotfix)
 - October 1, 2021 - [.NET Blazor Movie RC 1.5](https://github.com/Thuyen21/Blazor-Movie-/tree/Version)
 - September 29, 2021 - [.NET Blazor Movie RC 1.4 UI Update](https://github.com/Thuyen21/Blazor-Movie-/tree/baopngch18183/UI-rc1.4)
