@@ -1,5 +1,4 @@
-﻿
-namespace BlazorApp3.Client.Services
+﻿namespace RazorClassLibrary1.Services
 {
     public interface IAccountService
     {

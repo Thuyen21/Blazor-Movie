@@ -7,8 +7,8 @@
 @using Microsoft.AspNetCore.Components.WebAssembly.Http
 @using Microsoft.AspNetCore.Components.WebAssembly.Services
 @using Microsoft.JSInterop
-@using BlazorApp3.Client
-@using BlazorApp3.Client.Shared
+@using RazorClassLibrary1
+@using RazorClassLibrary1.Shared
 @inject NavigationManager _navigationManager
 @inject HttpClient _httpClient
 @using Microsoft.AspNetCore.Components.Authorization
@@ -17,9 +17,8 @@
 @using System.Security.Claims
 @using Microsoft.AspNetCore.Authorization
 @inject ILogger<Error> Logger
-@using BlazorApp3.Client.Services
+@using RazorClassLibrary1.Services
 @inject IJSRuntime JS
 @using System.Reflection
-@inject LazyAssemblyLoader AssemblyLoader
 @using BlazorApp3.Shared
 @using MudBlazor
