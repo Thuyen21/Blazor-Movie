@@ -39,6 +39,12 @@ For Maui development check .NET MAUI (preview) under the Mobile Development with
 
 ##### Compile with globally installed `dotnet`
 
+Clear Nuget 
+
+```dotnetcli
+dotnet nuget locals all --clear
+```
+
 Install global workloads
 
 ```dotnetcli

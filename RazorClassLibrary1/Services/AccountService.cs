@@ -1,7 +1,7 @@
-﻿
-using Microsoft.AspNetCore.Components.Authorization;
+﻿using Microsoft.AspNetCore.Components.Authorization;
+using RazorClassLibrary1;
 
-namespace BlazorApp3.Client.Services
+namespace RazorClassLibrary1.Services
 {
     public class AccountService : IAccountService
     {
