@@ -1,9 +1,8 @@
-﻿namespace RazorClassLibrary1.Services
+﻿namespace RazorClassLibrary1.Services;
+
+public interface IAccountService
 {
-    public interface IAccountService
-    {
-        bool Login();
-        bool Logout();
-    }
+    bool Login();
+    bool Logout();
 }
 
