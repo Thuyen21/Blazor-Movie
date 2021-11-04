@@ -21,10 +21,6 @@
     <AnalysisLevel>6.0</AnalysisLevel>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
     <UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
-    <Version>2.1</Version>
-    <AssemblyVersion>2.1.0.*</AssemblyVersion>
-    <Deterministic>false</Deterministic>
-
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -58,7 +54,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\RazorClassLibrary1\RazorClassLibrary1.csproj" />
   </ItemGroup>
-
+	
   <ItemGroup>
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
