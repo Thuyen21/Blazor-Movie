@@ -7,9 +7,13 @@ namespace MovieClient.Pages;
 public partial class StatusStudio
 {
     [Parameter]
+#pragma warning disable CS8618 // Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
     public string Id { get; set; }
+#pragma warning restore CS8618 // Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
 
+#pragma warning disable CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
     private string content;
+#pragma warning restore CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
     private DateTime month = DateTime.UtcNow;
     private DateTime check = DateTime.UtcNow;
     private DateTime start = DateTime.UtcNow;
@@ -35,9 +39,13 @@ public partial class StatusStudio
         showAlert = true;
     }
 
+#pragma warning disable CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
     private async Task Submit()
+#pragma warning restore CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
     {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
         fullStatus.Clear();
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         //commentStatus.Clear();
         content = "Loading.....";
         showAlert = true;
@@ -57,12 +65,18 @@ public partial class StatusStudio
             Parallel.ForEach(dateToCheck, async date =>
             {
                 commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/{date.ToString("MM-dd-yyyy")}");
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 List<double> getInfor = await _httpClient.GetFromJsonAsync<List<double>>($"Studio/PayCheck/{Id}/{date.ToString("MM-dd-yyyy")}");
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
                 Dictionary<string, string> dic = new();
                 dic.Add("Date", date.ToString());
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 dic.Add("Positive", commentStatus[0].ToString());
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 dic.Add("Negative", commentStatus[1].ToString());
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 dic.Add("View", getInfor[0].ToString());
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 dic.Add("Buy", getInfor[1].ToString());
                 fullStatus.Add(dic);
                 StateHasChanged();

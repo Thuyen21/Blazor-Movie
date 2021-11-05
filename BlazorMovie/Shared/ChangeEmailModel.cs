@@ -1,25 +1,25 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace BlazorMovie.Shared
+namespace BlazorMovie.Shared;
+
+public class ChangeEmailModel
 {
-    public class ChangeEmailModel
-    {
-        [Required]
-        [DataType(DataType.EmailAddress)]
-        [DisplayName("Email")]
-        [EmailAddress]
+    [Required]
+    [DataType(DataType.EmailAddress)]
+    [DisplayName("Email")]
+    [EmailAddress]
 #pragma warning disable CS8618 // Non-nullable property 'Email' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
-        public string Email { get; set; }
+    public string Email { get; set; }
 #pragma warning restore CS8618 // Non-nullable property 'Email' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
 
-        [Required]
-        [DisplayName("Password")]
-        [DataType(DataType.Password)]
-        [StringLength(50, MinimumLength = 7)]
-        [PasswordPropertyText]
+    [Required]
+    [DisplayName("Password")]
+    [DataType(DataType.Password)]
+    [StringLength(50, MinimumLength = 7)]
+    [PasswordPropertyText]
 #pragma warning disable CS8618 // Non-nullable property 'Password' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
-        public string Password { get; set; }
+    public string Password { get; set; }
 #pragma warning restore CS8618 // Non-nullable property 'Password' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
-    }
 }
+

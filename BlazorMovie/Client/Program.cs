@@ -1,10 +1,9 @@
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using BlazorMovie.Client;
-using MovieClient.Services;
-using Microsoft.AspNetCore.Components.Authorization;
-using MudBlazor.Services;
 using MovieClient;
+using MovieClient.Services;
+using MudBlazor.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<BlazorMovie.Client.App>("#app");

@@ -10,13 +10,21 @@ namespace MovieClient.Pages;
 public partial class WatchCustomer
 {
     [Parameter]
+#pragma warning disable CS8618 // Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
     public string Id { get; set; }
+#pragma warning restore CS8618 // Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
 
+#pragma warning disable CS8618 // Non-nullable field 'movie' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
     private MovieModel movie;
+#pragma warning restore CS8618 // Non-nullable field 'movie' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
     private string? movieLink = null;
     private bool? canWatch;
+#pragma warning disable CS8618 // Non-nullable field 'Acomment' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
     private string Acomment;
+#pragma warning restore CS8618 // Non-nullable field 'Acomment' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
+#pragma warning disable CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
     private string content;
+#pragma warning restore CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
     private List<CommentModel> commentList = new();
     private bool showAlert = false;
     private Severity severity;
@@ -32,11 +40,15 @@ public partial class WatchCustomer
     {
         Task? movieTask = Task.Run(async () =>
         {
+#pragma warning disable CS8601 // Possible null reference assignment.
             movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Customer/Watch/{Id}");
+#pragma warning restore CS8601 // Possible null reference assignment.
         });
         Task? commentTask = Task.Run(async () =>
         {
+#pragma warning disable CS8601 // Possible null reference assignment.
             commentList = await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}");
+#pragma warning restore CS8601 // Possible null reference assignment.
         });
         Task? sameDeviceTask = Task.Run(async () =>
         {
@@ -50,7 +62,9 @@ public partial class WatchCustomer
         char[] tokena = { };
         Task? tokenaTask = Task.Run(async () =>
         {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
         });
         string token = new string(tokena);
         try
@@ -134,7 +148,9 @@ public partial class WatchCustomer
         List<CommentModel> commentListTemp = new();
         for (int i = 0; i <= index; i++)
         {
+#pragma warning disable CS8604 // Possible null reference argument for parameter 'collection' in 'void List<CommentModel>.AddRange(IEnumerable<CommentModel> collection)'.
             commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{i}"));
+#pragma warning restore CS8604 // Possible null reference argument for parameter 'collection' in 'void List<CommentModel>.AddRange(IEnumerable<CommentModel> collection)'.
         }
 
         commentList.Clear();
@@ -148,7 +164,9 @@ public partial class WatchCustomer
         List<CommentModel> commentListTemp = new();
         for (int i = 0; i <= index; i++)
         {
+#pragma warning disable CS8604 // Possible null reference argument for parameter 'collection' in 'void List<CommentModel>.AddRange(IEnumerable<CommentModel> collection)'.
             commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{this.Id}/{i}"));
+#pragma warning restore CS8604 // Possible null reference argument for parameter 'collection' in 'void List<CommentModel>.AddRange(IEnumerable<CommentModel> collection)'.
         }
 
         commentList.Clear();
@@ -162,7 +180,9 @@ public partial class WatchCustomer
         List<CommentModel> commentListTemp = new();
         for (int i = 0; i <= index; i++)
         {
+#pragma warning disable CS8604 // Possible null reference argument for parameter 'collection' in 'void List<CommentModel>.AddRange(IEnumerable<CommentModel> collection)'.
             commentListTemp.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{this.Id}/{i}"));
+#pragma warning restore CS8604 // Possible null reference argument for parameter 'collection' in 'void List<CommentModel>.AddRange(IEnumerable<CommentModel> collection)'.
         }
 
         commentList.Clear();
@@ -173,6 +193,8 @@ public partial class WatchCustomer
     private async Task LoadMore()
     {
         index++;
+#pragma warning disable CS8604 // Possible null reference argument for parameter 'collection' in 'void List<CommentModel>.AddRange(IEnumerable<CommentModel> collection)'.
         commentList.AddRange(await _httpClient.GetFromJsonAsync<List<CommentModel>>($"Customer/Comment/{Id}/{index}"));
+#pragma warning restore CS8604 // Possible null reference argument for parameter 'collection' in 'void List<CommentModel>.AddRange(IEnumerable<CommentModel> collection)'.
     }
 }

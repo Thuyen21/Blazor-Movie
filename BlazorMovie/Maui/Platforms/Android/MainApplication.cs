@@ -1,8 +1,8 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.Runtime;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
+using System;
 
 namespace Maui.Platforms.Android
 {
@@ -14,6 +14,9 @@ namespace Maui.Platforms.Android
         {
         }
 
-        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+        protected override MauiApp CreateMauiApp()
+        {
+            return MauiProgram.CreateMauiApp();
+        }
     }
 }

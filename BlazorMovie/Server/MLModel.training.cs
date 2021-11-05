@@ -23,11 +23,11 @@ public partial class MLModel
     {
         // Data process configuration with pipeline data transformations
         EstimatorChain<Microsoft.ML.Transforms.KeyToValueMappingTransformer>? pipeline = mlContext.Transforms.Text.FeaturizeText(@"review", @"review")
-                                .Append(mlContext.Transforms.Concatenate(@"Features", @"review"))
-                                .Append(mlContext.Transforms.Conversion.MapValueToKey(@"sentiment", @"sentiment"))
-                                .Append(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"))
-                                .Append(mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator: mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(l1Regularization: 0.261935435761415F, l2Regularization: 3.39950587500088F, labelColumnName: @"sentiment", featureColumnName: @"Features"), labelColumnName: @"sentiment"))
-                                .Append(mlContext.Transforms.Conversion.MapKeyToValue(@"PredictedLabel", @"PredictedLabel"));
+                                    .Append(mlContext.Transforms.Concatenate(@"Features", @"review"))
+                                    .Append(mlContext.Transforms.Conversion.MapValueToKey(@"sentiment", @"sentiment"))
+                                    .Append(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"))
+                                    .Append(mlContext.MulticlassClassification.Trainers.OneVersusAll(binaryEstimator: mlContext.BinaryClassification.Trainers.LbfgsLogisticRegression(l1Regularization: 6.55994832115708F, l2Regularization: 0.229061489537167F, labelColumnName: @"sentiment", featureColumnName: @"Features"), labelColumnName: @"sentiment"))
+                                    .Append(mlContext.Transforms.Conversion.MapKeyToValue(@"PredictedLabel", @"PredictedLabel"));
 
         return pipeline;
     }

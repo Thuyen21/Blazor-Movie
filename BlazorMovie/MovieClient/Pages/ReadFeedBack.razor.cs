@@ -11,7 +11,9 @@ public partial class ReadFeedBack
     {
         try
         {
+#pragma warning disable CS8604 // Possible null reference argument for parameter 'collection' in 'void List<FeedbackMessageModel>.AddRange(IEnumerable<FeedbackMessageModel> collection)'.
             feedbacks.AddRange(await _httpClient.GetFromJsonAsync<List<FeedbackMessageModel>>($"admin/ReadFeedBack/{index}"));
+#pragma warning restore CS8604 // Possible null reference argument for parameter 'collection' in 'void List<FeedbackMessageModel>.AddRange(IEnumerable<FeedbackMessageModel> collection)'.
         }
         catch (Exception ex)
         {
@@ -22,7 +24,9 @@ public partial class ReadFeedBack
     private async Task LoadMore()
     {
         index++;
+#pragma warning disable CS8604 // Possible null reference argument for parameter 'collection' in 'void List<FeedbackMessageModel>.AddRange(IEnumerable<FeedbackMessageModel> collection)'.
         feedbacks.AddRange(await _httpClient.GetFromJsonAsync<List<FeedbackMessageModel>>($"admin/ReadFeedBack/{index}"));
+#pragma warning restore CS8604 // Possible null reference argument for parameter 'collection' in 'void List<FeedbackMessageModel>.AddRange(IEnumerable<FeedbackMessageModel> collection)'.
     }
 
 }

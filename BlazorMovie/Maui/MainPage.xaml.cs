@@ -1,13 +1,12 @@
-﻿using System;
-using Microsoft.Maui.Controls;
+﻿using Microsoft.Maui.Controls;
 
 namespace Maui
 {
-	public partial class MainPage : ContentPage
-	{
-		public MainPage()
-		{
-			InitializeComponent();
-		}
-	}
+    public partial class MainPage : ContentPage
+    {
+        public MainPage()
+        {
+            InitializeComponent();
+        }
+    }
 }

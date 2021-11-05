@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
-using MovieClient;
 
 namespace MovieClient.Services;
 

@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BlazorMovie.Shared
+namespace BlazorMovie.Shared;
+
+public class VipModel
 {
-    public class VipModel
-    {
-        public string? Id { get; set; }
-        [Required]
-        public int Choose { get; set; }
-    }
+    public string? Id { get; set; }
+    [Required]
+    public int Choose { get; set; }
 }
+

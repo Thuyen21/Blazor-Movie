@@ -8,12 +8,18 @@ namespace MovieClient.Pages;
 public partial class BuyVip
 {
     [Parameter]
+#pragma warning disable CS8618 // Non-nullable property 'movieId' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
     public string movieId { get; set; }
+#pragma warning restore CS8618 // Non-nullable property 'movieId' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
 
     private readonly VipModel vip = new VipModel()
     { Choose = 1 };
+#pragma warning disable CS8618 // Non-nullable field 'vipStatus' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
     private string vipStatus;
+#pragma warning restore CS8618 // Non-nullable field 'vipStatus' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
+#pragma warning disable CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
     private string content;
+#pragma warning restore CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
     private bool showAlert = false;
     private Severity severity;
     private void CloseAlert()
