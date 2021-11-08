@@ -1,68 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
-
-/* Unmerged change from project 'BlazorMovie.Maui (net6.0-android)'
-Before:
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui;
-using Microsoft.Maui.Hosting;
-After:
-using Microsoft.Extensions.Components.WebView.Maui;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui;
-*/
-
-/* Unmerged change from project 'BlazorMovie.Maui (net6.0-windows10.0.19041)'
-Before:
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui;
-using Microsoft.Maui.Hosting;
-After:
-using Microsoft.Extensions.Components.WebView.Maui;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui;
-*/
-
-/* Unmerged change from project 'BlazorMovie.Maui (net6.0-maccatalyst)'
-Before:
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui;
-using Microsoft.Maui.Hosting;
-After:
-using Microsoft.Extensions.Components.WebView.Maui;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui;
-*/
 using Microsoft.AspNetCore.Components.WebView.Maui;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Maui.Controls.Hosting;
 using Microsoft.Maui.Hosting;
-
-/* Unmerged change from project 'BlazorMovie.Maui (net6.0-android)'
-Before:
-using BlazorMovie.Shared;
-using System.Net.Http;
-After:
-using Microsoft.Maui.Hosting;
-using MovieClient;
-*/
-
-/* Unmerged change from project 'BlazorMovie.Maui (net6.0-windows10.0.19041)'
-Before:
-using BlazorMovie.Shared;
-using System.Net.Http;
-After:
-using Microsoft.Maui.Hosting;
-using MovieClient;
-*/
-
-/* Unmerged change from project 'BlazorMovie.Maui (net6.0-maccatalyst)'
-Before:
-using BlazorMovie.Shared;
-using System.Net.Http;
-After:
-using Microsoft.Maui.Hosting;
-using MovieClient;
-*/
 using MovieClient;
 using MovieClient.Services;
 using MudBlazor.Services;
