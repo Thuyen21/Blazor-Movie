@@ -22,9 +22,9 @@
 		<PackageReference Include="Google.Apis.Drive.v3" Version="1.55.0.2481" />
 		<PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
 		<PackageReference Include="Google.Cloud.Storage.V1" Version="3.6.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0-rc.2.21480.10" />
-		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.0-rc.2.21480.10" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0-rc.2.21480.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0" />
 		<PackageReference Include="Microsoft.ML" Version="1.7.0-preview.final" />
 		<PackageReference Include="Microsoft.ML.FastTree" Version="1.7.0-preview.final" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
