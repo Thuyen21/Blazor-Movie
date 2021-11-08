@@ -22,7 +22,7 @@
 	  <PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
 	  <PackageReference Include="Google.Cloud.Storage.V1" Version="3.6.0" />
 
-	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0-rc.2.21480.10" />
+	  <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0" />
 	  <PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.0" />
 	  <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0-rc.2.21480.5" />
 
