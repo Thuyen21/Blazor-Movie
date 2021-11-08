@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace Maui.Platforms.iOS
+namespace Maui
 {
     public class Program
     {

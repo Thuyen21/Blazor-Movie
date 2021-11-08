@@ -4,11 +4,11 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-  		<SignAssembly>true</SignAssembly>
-		<AnalysisLevel>6.0</AnalysisLevel>
-		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-		<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
+	  <SignAssembly>true</SignAssembly>
+	  <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+	  <UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
   </PropertyGroup>
+
 	<ItemGroup>
 		<PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
 		<PackageReference Include="Braintree" Version="5.9.0" />
@@ -29,6 +29,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-rc.2.21480.10" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-rc.2.21480.10" PrivateAssets="all" />
 	</ItemGroup>
+	
   <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
