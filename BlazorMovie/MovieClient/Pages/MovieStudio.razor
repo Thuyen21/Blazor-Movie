@@ -85,7 +85,15 @@ else
             {
                 <div class="col">
                     <div class="card h-100">
-                        <img src="@DicImageLink[item.MovieId]" class="card-img-top" alt="..." />
+                        @if(DicImageLink.ContainsKey(item.MovieId))
+                        {
+                            <img src="@DicImageLink[item.MovieId]" class="card-img-top" alt="..." />
+                        }
+                        else
+                        {
+                            <img class="card-img-top" alt="..." />
+                        }
+                        
                         <div class="card-body">
                             <h1 class="card-title">@item.MovieName</h1>
                             <p class="card-text">
