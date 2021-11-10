@@ -26,7 +26,8 @@ This project was built on .NET 6
 #### Visual Studio 2022
 
 First thing’s first, install Visual Studio 2022 and install the .NET WebAssembly build tools, select the optional component in the Visual Studio installer.
-![Untitled](https://user-images.githubusercontent.com/65522631/141134369-04332b8d-6de6-428b-8e6f-3db506c82dc9.png)
+![Untitled](https://user-images.githubusercontent.com/65522631/141151945-2180827c-a9d7-4cdb-976c-e94ae05ae391.png)
+
 
 For Maui development check .NET MAUI (preview) under the Mobile Development with .NET workload, and check the Universal Windows Platform development workload. Then, install the [Windows App SDK Single-project MSIX extension](https://marketplace.visualstudio.com/items?itemName=ProjectReunion.MicrosoftSingleProjectMSIXPackagingToolsDev17)
 ![Untitled](https://user-images.githubusercontent.com/65522631/141134629-db279f1b-510c-4739-8fac-0a0ab38247fb.png)
