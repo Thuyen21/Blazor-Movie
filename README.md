@@ -26,18 +26,26 @@ This project was built on .NET 6
 #### Visual Studio 2022
 
 First thing’s first, install Visual Studio 2022 and install the .NET WebAssembly build tools, select the optional component in the Visual Studio installer.
+![Untitled](https://user-images.githubusercontent.com/65522631/141134369-04332b8d-6de6-428b-8e6f-3db506c82dc9.png)
 
 For Maui development check .NET MAUI (preview) under the Mobile Development with .NET workload, and check the Universal Windows Platform development workload. Then, install the [Windows App SDK Single-project MSIX extension](https://marketplace.visualstudio.com/items?itemName=ProjectReunion.MicrosoftSingleProjectMSIXPackagingToolsDev17)
+![Untitled](https://user-images.githubusercontent.com/65522631/141134629-db279f1b-510c-4739-8fac-0a0ab38247fb.png)
 
-#### .NET 6
+For Maui Run
+
+![Screenshot 2021-11-10 215220](https://user-images.githubusercontent.com/65522631/141135723-4ae08096-20cb-47f8-b85f-8a0f43cf3933.png)
+
+Choose Window, Android, macOS, IOS
+
+![Screenshot 2021-11-10 215407](https://user-images.githubusercontent.com/65522631/141136014-5b7d58d4-b354-41ca-85af-2a1a7def3d56.png)
+
+For Blazor Run
+
+![Screenshot 2021-11-10 215328](https://user-images.githubusercontent.com/65522631/141135873-7ecd3d4b-a51c-497f-b053-f3bde979e48d.png)
+
+#### .NET 6 Cli user
 
 ##### Compile with globally installed `dotnet`
-
-Clear Nuget 
-
-```dotnetcli
-dotnet nuget locals all --clear
-```
 
 Install global workloads
 
