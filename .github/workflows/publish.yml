@@ -1,4 +1,4 @@
-name: Format
+name: Dev Publish
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
           dotnet-version: 6.x
           include-prerelease: true
       - name: Install tools
-        run: dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
+        run: dotnet workload install wasm-tools
       - name: publish
         run: |
           dotnet publish ~/BlazorMovie/Server/BlazorMovie.Server.csproj -o publish
