@@ -23,7 +23,7 @@ jobs:
         run: dotnet workload install wasm-tools
       - name: publish
         run: |
-          dotnet publish ~/BlazorMovie/Server/BlazorMovie.Server.csproj -o publish
+          dotnet publish BlazorMovie/Server/BlazorMovie.Server.csproj -o publish
       - name: Commit files
         if: steps.format.outputs.has-changes == 'true'
         run: |
