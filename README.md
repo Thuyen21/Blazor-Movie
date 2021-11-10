@@ -1,6 +1,6 @@
 # .NET Blazor Movie
 
-[![Build Status](https://github.com/Thuyen21/Blazor-Movie-/actions/workflows/format.yml/badge.svg)](https://github.com/Thuyen21/Blazor-Movie-/actions/workflows/format.yml/badge.svg)
+[![Build Status](https://github.com/Thuyen21/Blazor-Movie-/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Thuyen21/Blazor-Movie-/actions/workflows/dotnet.yml/badge.svg)
 
 This project was built on .NET 6
 
