@@ -11,14 +11,8 @@ This project was built on .NET 6
 - [.NET MAUI documentation](https://docs.microsoft.com/dotnet/maui)
 
 ## Current News
-- October 26, 2021 - [.NET Blazor Movie RC.2.1](https://github.com/Thuyen21/Blazor-Movie-/tree/RC.2.1)
-- October 13, 2021 - [.NET Blazor Movie RC.2.0](https://github.com/Thuyen21/Blazor-Movie-/tree/RC.2.0-Hotfix)
-- October 1, 2021 - [.NET Blazor Movie RC 1.5](https://github.com/Thuyen21/Blazor-Movie-/tree/Version)
-- September 29, 2021 - [.NET Blazor Movie RC 1.4 UI Update](https://github.com/Thuyen21/Blazor-Movie-/tree/baopngch18183/UI-rc1.4)
-- September 28, 2021 - [.NET Blazor Movie RC 1.3](https://github.com/Thuyen21/Blazor-Movie-/tree/RC_1.3)
-- September 25, 2021 - [.NET Blazor Movie RC 1.2](https://github.com/Thuyen21/Blazor-Movie-/tree/rc.1.2)
-- September 24, 2021 - [.NET Blazor Movie RC 1.1](https://github.com/Thuyen21/Blazor-Movie-/tree/RC1.1)
-- September 18, 2021 - [.NET Blazor Movie RC 1](https://github.com/Thuyen21/Blazor-Movie-/tree/Rc1/)
+- November 11, 2021 - [.NET Blazor Movie 1.0](https://github.com/Thuyen21/Blazor-Movie-/tree/1.1)
+- November 9, 2021 - [.NET Blazor Movie 1.0](https://github.com/Thuyen21/Blazor-Movie-/tree/1.0)
 
 ## Contributor Guide
 
@@ -54,18 +48,18 @@ dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
 Build and launch Visual Studio using global workloads
 
 ```dotnetcli
-dotnet tool restore
-dotnet build BlazorApp3.sln
+dotnet tool restore BlazorMovie.sln
+dotnet build BlazorMovie.sln
 ```
 
 Release project
 
 ```dotnetcli
-dotnet release BlazorApp3.sln
+dotnet release BlazorMovie.sln
 ```
 
 Run project
 
 ```dotnetcli
-dotnet BlazorApp3.Server.dll
+dotnet BlazorMovie.Server.dll
 ```
