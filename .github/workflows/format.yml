@@ -1,74 +1,28 @@
-name: Format
+# This is a basic workflow to help you get started with Actions
 
+name: CI
+
+# Controls when the workflow will run
 on:
+  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches: 
-      - main
+    branches: [main]
 
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  # This workflow contains a single job called "build"
   build:
-    runs-on: windows-2022
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 6.x
-          include-prerelease: true
-      #   - name: Setup .NET
-      #      uses: actions/setup-dotnet@v1
-      #      with:
-      #         dotnet-version: 5.x
-
-      - name: Install format
-        run: dotnet tool install -g dotnet-format --version "7.0.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
-      - name: Install tools
-        run: dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
-      #    - name: Install dependencies
-      #      run: dotnet restore BlazorApp3.sln
-      #- name: Test with the dotnet CLI
-      #run: dotnet test BlazorApp3.sln
-      - name: Dotnet Restore
-        run: dotnet restore
-      - name: Formating
-        run: dotnet format analyzers --no-restore
-      #    - name: Install dependencies
-      #      run: dotnet restore MauiApp2.sln
-      #    - name: Test with the dotnet CLI
-      #      run: dotnet test MauiApp2.sln
-      #      - name: Formating
-      #        run: dotnet format --no-restore MauiApp2.sln
-
-      #    - name: Install maui
-      #      run: |
-      #        dotnet tool install -g redth.net.maui.check
-      #        maui-check -f -n  --no-cache  --force-dotnet
-      #  - name: Install dependencies
-      #   run: dotnet restore \Maui\MauiApp1\MauiApp1.sln
-      #- name: Test with the dotnet CLI
-      #   run: dotnet test \Maui\MauiApp1\MauiApp1.sln -f windows
-      # - name: Formating
-      #  run: dotnet format --no-restore --folder \Maui\MauiApp1\MauiApp1.sln
-
-      - name: Commit files
-        if: steps.format.outputs.has-changes == 'true'
-        run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -a -m 'Automated dotnet-format update'
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        with:
-          title: "[housekeeping] Automated PR to fix formatting errors"
-          body: |
-            Automated PR to fix formatting errors
-          committer: GitHub <noreply@github.com>
-          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
-          labels: t/housekeeping ♻︎
-          assignees: Thuyen21, baopngch18183
-          reviewers: Thuyen21, baopngch18183
-          branch: housekeeping/fix-codeformatting
+      - name: Run Parasoft dotTEST
+  # You may pin to the exact commit or the version.
+  # uses: parasoft/run-dottest-action@79dcd265dfb8934d60521c672b9d0d97b141af20
+  uses: parasoft/run-dottest-action@1.2.3
