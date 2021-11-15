@@ -1,6 +1,6 @@
 # .NET Blazor Movie
 
-[![Build Status](https://github.com/Thuyen21/Blazor-Movie-/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Thuyen21/Blazor-Movie-/actions/workflows/dotnet.yml/badge.svg)
+[![.NET](https://github.com/Thuyen21/Blazor-Movie-/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/Thuyen21/Blazor-Movie-/actions/workflows/dotnet.yml)
 
 This project was built on .NET 6
 
@@ -11,7 +11,7 @@ This project was built on .NET 6
 - [.NET MAUI documentation](https://docs.microsoft.com/dotnet/maui)
 
 ## Current News
-- November 11, 2021 - [.NET Blazor Movie 1.0](https://github.com/Thuyen21/Blazor-Movie-/tree/1.1)
+- November 11, 2021 - [.NET Blazor Movie 1.1](https://github.com/Thuyen21/Blazor-Movie-/tree/1.1)
 - November 9, 2021 - [.NET Blazor Movie 1.0](https://github.com/Thuyen21/Blazor-Movie-/tree/1.0)
 
 ## Contributor Guide
@@ -72,3 +72,5 @@ Run project
 ```dotnetcli
 dotnet BlazorMovie.Server.dll
 ```
+
+![Alt](https://repobeats.axiom.co/api/embed/76100e07b36834c17ad226d024ec31e65ad00081.svg "Repobeats analytics image")
