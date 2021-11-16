@@ -4,54 +4,55 @@
 @page "/BuyVip/{movieId}"
 @attribute [Authorize(Roles = "Customer")]
 <PageTitle>VIP package</PageTitle>
-@*	@if (showAlert)
-{
-    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
-}
-<EditForm Model="@vip" OnValidSubmit="@Buy">
+@* @if (showAlert)
+    {
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center"
+    ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+    }
+    <EditForm Model="@vip" OnValidSubmit="@Buy">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <InputRadioGroup @bind-Value="@vip.Choose">
-        @if (movieId != null)
-        {
-            <InputRadio Value="0" />
-            <div>Only this movie</div>
+    @if (movieId != null)
+    {
+    <InputRadio Value="0" />
+    <div>Only this movie</div>
 
-            <br />
-        }
-        <InputRadio checker Value="1" />
-        <div>1 month </div><br />
-        <InputRadio Value="3" />
-        <div>3 month</div> <br />
-        <InputRadio Value="6" />
-        <div>6 month</div> <br />
-        <InputRadio Value="12" />
-        <div>12 month</div> <br />
+    <br />
+    }
+    <InputRadio checker Value="1" />
+    <div>1 month </div><br />
+    <InputRadio Value="3" />
+    <div>3 month</div> <br />
+    <InputRadio Value="6" />
+    <div>6 month</div> <br />
+    <InputRadio Value="12" />
+    <div>12 month</div> <br />
     </InputRadioGroup>
     <button type="submit">Buy</button>
-</EditForm>
+    </EditForm>
 
 
 
-<div>@content</div>
+    <div>@content</div>
 
-<div>You are Choosing @vip.Choose</div>
+    <div>You are Choosing @vip.Choose</div>
 
-@if (content == "Success" && movieId != null)
-{
+    @if (content == "Success" && movieId != null)
+    {
     string linkWatch = $"WatchCustomer/{movieId}";
     <div>
-        <NavLink class="nav-link" href="@linkWatch">Watch</NavLink>
+    <NavLink class="nav-link" href="@linkWatch">Watch</NavLink>
     </div>
-}
-@if (vipStatus == null)
-{
+    }
+    @if (vipStatus == null)
+    {
     <div>Loadding</div>
-}
-else
-{
+    }
+    else
+    {
     <div>@vipStatus</div>
-}*@
+    }*@
 
 <body>
     <main class="login-form">
@@ -76,7 +77,8 @@ else
                                     }
                                     else
                                     {
-                                        <div class="col text-md-right">Your VIP time: <span class="badge badge-danger">@vipStatus</span></div>
+                                        <div class="col text-md-right">Your VIP time: <span
+                                            class="badge badge-danger">@vipStatus</span></div>
                                     }
                                 </div>
                             </div>
@@ -88,16 +90,26 @@ else
                                         <div class="row" style="margin:5px">
                                             @if (movieId != null)
                                             {
-                                                <div class="col-sm">Only this movie <InputRadio Value="0" /></div>
+                                                <div class="col-sm">Only this movie
+                                                    <InputRadio Value="0" />
+                                                </div>
                                             }
 
-                                            <div class="col-sm">1 month <InputRadio checker Value="1" /> </div>
+                                            <div class="col-sm">1 month
+                                                <InputRadio checker Value="1" />
+                                            </div>
 
-                                            <div class="col-sm">3 month <InputRadio Value="3" /></div>
+                                            <div class="col-sm">3 month
+                                                <InputRadio Value="3" />
+                                            </div>
 
-                                            <div class="col-sm">6 month <InputRadio Value="6" /></div>
+                                            <div class="col-sm">6 month
+                                                <InputRadio Value="6" />
+                                            </div>
 
-                                            <div class="col-sm">12 month <InputRadio Value="12" /></div>
+                                            <div class="col-sm">12 month
+                                                <InputRadio Value="12" />
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md align-self-center" style="margin:5px">
@@ -105,13 +117,16 @@ else
                                                     Submit
                                                 </button>
                                             </div>
-                                            <div class="col-md align-self-center font-weight-bold text-md-right" style="margin:5px">You are Choosing @vip.Choose</div>
+                                            <div class="col-md align-self-center font-weight-bold text-md-right"
+                                                style="margin:5px">You are Choosing @vip.Choose</div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md" style="margin:5px">
                                                 @if (showAlert)
                                                 {
-                                                    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+                                                    <MudAlert Severity="severity" Variant="Variant.Filled"
+                                                    ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true"
+                                                    CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
                                                 }
                                             </div>
                                         </div>
@@ -139,7 +154,8 @@ else
                                         <input type="date" class="form-control">
                                     </div>
                                     <div class="col-md-3">
-                                        <button class="btn btn-primary" style="margin: 5px; height:38px; width: 88px">Check</button>
+                                        <button class="btn btn-primary"
+                                            style="margin: 5px; height:38px; width: 88px">Check</button>
                                     </div>
                                 </div>
                             </div>
