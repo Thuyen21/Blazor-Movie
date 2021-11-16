@@ -67,7 +67,7 @@ public partial class MovieCustomer
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
         });
         await Task.WhenAll(moviesTask, tokenaTask);
-         token = new string(tokena);
+        token = new string(tokena);
         await LoadImg();
     }
     private async Task LoadImg()
@@ -89,7 +89,7 @@ public partial class MovieCustomer
             }
         });
     }
-        private async Task Search()
+    private async Task Search()
     {
         index = 0;
         if (searchString != null)

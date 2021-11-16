@@ -41,4 +41,15 @@ public partial class Home
             }
         });
     }
+    private string getLink(int index)
+    {
+        try
+        {
+            return DicImageLink.ElementAt(index).Value;
+        }
+        catch
+        {
+            return "https://via.placeholder.com/768x512/FFA07A/000000";
+        }
+    }
 }

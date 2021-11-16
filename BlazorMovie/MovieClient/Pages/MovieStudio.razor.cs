@@ -78,7 +78,7 @@ public partial class MovieStudio
             {
                 if (!DicImageLink.ContainsKey(item.MovieId))
                 {
-                    string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true}).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
+                    string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
                     DicImageLink.Add(item.MovieId, ImageLink);
 
                     StateHasChanged();
@@ -86,7 +86,7 @@ public partial class MovieStudio
             }
             catch
             {
-               
+
             }
         });
     }
