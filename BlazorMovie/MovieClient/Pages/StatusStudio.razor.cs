@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
-using System.Collections.Concurrent;
 using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
@@ -20,7 +19,7 @@ public partial class StatusStudio
     private DateTime start = DateTime.UtcNow;
     private DateTime end = DateTime.UtcNow;
     private List<int>? commentStatus = new();
-    private ConcurrentBag<Dictionary<string, string>>? fullStatus = new();
+    private readonly List<Dictionary<string, string>>? fullStatus = new();
     private bool showAlert = false;
     private readonly Severity severity = Severity.Info;
     private void CloseAlert()
@@ -62,7 +61,7 @@ public partial class StatusStudio
             {
                 dateToCheck.Add(i);
             }
-             
+
             Parallel.ForEach(dateToCheck, async date =>
             {
                 commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/{date.ToString("MM-dd-yyyy")}");
@@ -80,8 +79,7 @@ public partial class StatusStudio
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
                 dic.Add("Buy", getInfor[1].ToString());
                 fullStatus.Add(dic);
-
-                await InvokeAsync(() => StateHasChanged());
+                StateHasChanged();
             });
             content = "";
             showAlert = false;

@@ -24,7 +24,6 @@ public partial class MovieCustomer
 #pragma warning restore CS8601 // Possible null reference assignment.
         isSearch = false;
         searchString = null;
-        await LoadImg();
     }
 
     private async Task DateSortParm()
@@ -36,7 +35,6 @@ public partial class MovieCustomer
 #pragma warning restore CS8601 // Possible null reference assignment.
         isSearch = false;
         searchString = null;
-        await LoadImg();
     }
 
     private async Task GenreSortParm()
@@ -48,9 +46,8 @@ public partial class MovieCustomer
 #pragma warning restore CS8601 // Possible null reference assignment.
         isSearch = false;
         searchString = null;
-        await LoadImg();
     }
-    private string token;
+
     protected override async Task OnInitializedAsync()
     {
         Task? moviesTask = Task.Run(async () =>
@@ -67,29 +64,35 @@ public partial class MovieCustomer
 #pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
         });
         await Task.WhenAll(moviesTask, tokenaTask);
-         token = new string(tokena);
-        await LoadImg();
-    }
-    private async Task LoadImg()
-    {
+        string token = new string(tokena);
         Parallel.ForEach(movies, async item =>
         {
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
+#pragma warning disable CS8604 // Possible null reference argument for parameter 'key' in 'void Dictionary<string, string>.Add(string key, string value)'.
+            DicImageLink.Add(item.MovieId, null);
+#pragma warning restore CS8604 // Possible null reference argument for parameter 'key' in 'void Dictionary<string, string>.Add(string key, string value)'.
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
             try
             {
+                string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
                 if (!DicImageLink.ContainsKey(item.MovieId))
                 {
-                    string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
                     DicImageLink.Add(item.MovieId, ImageLink);
                     StateHasChanged();
                 }
-
+                else
+                {
+                    DicImageLink[item.MovieId] = ImageLink;
+                    StateHasChanged();
+                }
             }
             catch
             {
             }
         });
     }
-        private async Task Search()
+
+    private async Task Search()
     {
         index = 0;
         if (searchString != null)
@@ -110,7 +113,6 @@ public partial class MovieCustomer
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         sort = null;
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
-        await LoadImg();
     }
 
     private async Task LoadMore()
@@ -134,6 +136,5 @@ public partial class MovieCustomer
             movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}"));
 #pragma warning restore CS8604 // Possible null reference argument for parameter 'collection' in 'void List<MovieModel>.AddRange(IEnumerable<MovieModel> collection)'.
         }
-        await LoadImg();
     }
 }

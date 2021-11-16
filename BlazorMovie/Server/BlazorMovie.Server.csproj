@@ -19,14 +19,14 @@
 		<PackageReference Include="FirebaseAuthentication.net" Version="4.0.0-alpha.2" />
 		<PackageReference Include="FirebaseDatabase.net" Version="4.0.6" />
 		<PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
-		<PackageReference Include="Google.Apis.Drive.v3" Version="1.55.0.2502" />
+		<PackageReference Include="Google.Apis.Drive.v3" Version="1.55.0.2481" />
 		<PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
 		<PackageReference Include="Google.Cloud.Storage.V1" Version="3.6.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0" />
-		<PackageReference Include="Microsoft.ML" Version="1.7.0" />
-		<PackageReference Include="Microsoft.ML.FastTree" Version="1.7.0" />
+		<PackageReference Include="Microsoft.ML" Version="1.7.0-preview.final" />
+		<PackageReference Include="Microsoft.ML.FastTree" Version="1.7.0-preview.final" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
 		<PackageReference Include="PayoutsSdk" Version="1.1.1" />
 		<PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />

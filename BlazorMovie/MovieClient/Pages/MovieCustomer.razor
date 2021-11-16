@@ -94,15 +94,7 @@ else
                 {
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="card">
-                            @if(DicImageLink.ContainsKey(item.MovieId))
-                        {
                             <img class="card-img-top" src="@DicImageLink[item.MovieId]" alt="Unsplash" style="width=320px; height: 280px"> 
-                        }
-                        else
-                        {
-                            <img class="card-img-top" alt="Unsplash" style="width=320px; height: 280px" />
-                        }
-                            
                             <div class="card-header px-4 pt-4">
                                 <div class="card-actions float-right">
                                     <div class="dropdown show">
