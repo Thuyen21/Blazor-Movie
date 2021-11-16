@@ -18,7 +18,7 @@
             </div>
             <div class="back">
                 <img class="backImg" src="https://bvuvolunteers.org/wp-content/uploads/2021/03/coffee-and-keyboard.jpg"
-                     alt="">
+                    alt="">
                 <div class="text">
                     <span class="text-1">Complete miles of journey <br> with one step</span>
                     <span class="text-2">Let's get started</span>
@@ -41,7 +41,7 @@
                                 <div class="input-box">
                                     <i class="fas fa-lock"></i>
                                     <input type="password" @bind="@login.Password" placeholder="Enter your password"
-                                           required>
+                                        required>
                                 </div>
                                 <div class="text"><a href="/ResetPassword">Forgot password?</a></div>
                                 <div class="button input-box">
@@ -66,7 +66,9 @@
                                 </div>
                                 @if (showAlert)
                                 {
-                                    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+                                    <MudAlert Severity="severity" Variant="Variant.Filled"
+                                    ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true"
+                                    CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
                                 }
                             </EditForm>
                         </div>
@@ -76,4 +78,3 @@
         </div>
     </div>
 </body>
-

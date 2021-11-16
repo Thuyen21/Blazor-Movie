@@ -10,7 +10,7 @@
 	}
 	else
 	{
-	
+
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<div class="panel panel-default">
@@ -34,10 +34,12 @@
 								</div>
 								<div>
 									<div id='container'>
-	@if (showAlert)
-{
-    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
-}
+										@if (showAlert)
+										{
+											<MudAlert Severity="severity" Variant="Variant.Filled"
+										ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true"
+										CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+										}
 									</div>
 								</div>
 							</div>
@@ -48,4 +50,3 @@
 		</div>
 	}
 </div>
-

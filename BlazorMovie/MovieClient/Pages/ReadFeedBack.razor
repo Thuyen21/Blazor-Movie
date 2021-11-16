@@ -1,5 +1,4 @@
-﻿
-@attribute [Authorize(Roles = "Admin")]
+﻿@attribute [Authorize(Roles = "Admin")]
 @page "/ReadFeedBack"
 
 <PageTitle>Admin - Feedbacks</PageTitle>
@@ -11,7 +10,7 @@
             <div class="offer-dedicated-body-left">
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade active show" id="pills-reviews" role="tabpanel"
-                         aria-labelledby="pills-reviews-tab">
+                        aria-labelledby="pills-reviews-tab">
                         <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
                             <a href="#" class="btn btn-outline-primary btn-sm float-right">Reviews</a>
                             <h5 class="mb-1">All Feedback and Reviews</h5>
@@ -27,8 +26,8 @@
                                         <div class="media">
                                             <a href="#">
                                                 <img alt="Generic placeholder image"
-                                             src="http://bootdey.com/img/Content/avatar/avatar1.png"
-                                             class="mr-3 rounded-pill">
+                                            src="http://bootdey.com/img/Content/avatar/avatar1.png"
+                                            class="mr-3 rounded-pill">
                                             </a>
                                             <div class="media-body">
                                                 <div class="reviews-members-header">
@@ -38,7 +37,7 @@
                                                         <a href="#"><i class="icofont-ui-rating active"></i></a>
                                                         <a href="#"><i class="icofont-ui-rating active"></i></a>
                                                         <a href="#"><i class="icofont-ui-rating"></i></a>
-                                                    </span>*@
+                                                        </span>*@
                                                     <h6 class="mb-1"><a class="text-black" href="#">@item.Name</a></h6>
                                                     <p class="text-gray">@item.Email</p>
                                                 </div>
@@ -48,34 +47,35 @@
                                                     </p>
                                                 </div>
                                                 <div class="reviews-members-footer">
-                                                    <a class="total-like" href="#"><i class="icofont-thumbs-up"></i>Like</a> 
-                                                    <a class="total-like" href="#"><i class="icofont-thumbs-down"></i>Dislike</a>
+                                                    <a class="total-like" href="#"><i class="icofont-thumbs-up"></i>Like</a>
+                                                    <a class="total-like" href="#"><i
+                                                    class="icofont-thumbs-down"></i>Dislike</a>
                                                     @*<span class="total-like-user-main ml-2" dir="rtl">
                                                         <a data-toggle="tooltip" data-placement="top" title="" href="#"
-                                                   data-original-title="Gurdeep Osahan">
-                                                            <img alt="Generic placeholder image"
-                                                         src="http://bootdey.com/img/Content/avatar/avatar5.png"
-                                                         class="total-like-user rounded-pill">
+                                                        data-original-title="Gurdeep Osahan">
+                                                        <img alt="Generic placeholder image"
+                                                        src="http://bootdey.com/img/Content/avatar/avatar5.png"
+                                                        class="total-like-user rounded-pill">
                                                         </a>
                                                         <a data-toggle="tooltip" data-placement="top" title="" href="#"
-                                                   data-original-title="Gurdeep Singh">
-                                                            <img alt="Generic placeholder image"
-                                                         src="http://bootdey.com/img/Content/avatar/avatar2.png"
-                                                         class="total-like-user rounded-pill">
+                                                        data-original-title="Gurdeep Singh">
+                                                        <img alt="Generic placeholder image"
+                                                        src="http://bootdey.com/img/Content/avatar/avatar2.png"
+                                                        class="total-like-user rounded-pill">
                                                         </a>
                                                         <a data-toggle="tooltip" data-placement="top" title="" href="#"
-                                                   data-original-title="Askbootstrap">
-                                                            <img alt="Generic placeholder image"
-                                                         src="http://bootdey.com/img/Content/avatar/avatar3.png"
-                                                         class="total-like-user rounded-pill">
+                                                        data-original-title="Askbootstrap">
+                                                        <img alt="Generic placeholder image"
+                                                        src="http://bootdey.com/img/Content/avatar/avatar3.png"
+                                                        class="total-like-user rounded-pill">
                                                         </a>
                                                         <a data-toggle="tooltip" data-placement="top" title="" href="#"
-                                                   data-original-title="Osahan">
-                                                            <img alt="Generic placeholder image"
-                                                         src="http://bootdey.com/img/Content/avatar/avatar4.png"
-                                                         class="total-like-user rounded-pill">
+                                                        data-original-title="Osahan">
+                                                        <img alt="Generic placeholder image"
+                                                        src="http://bootdey.com/img/Content/avatar/avatar4.png"
+                                                        class="total-like-user rounded-pill">
                                                         </a>
-                                                    </span>*@
+                                                        </span>*@
                                                 </div>
                                             </div>
                                         </div>
@@ -84,7 +84,8 @@
                                 }
                             }
                             <hr>
-                            <a class="text-center w-100 d-block mt-4 font-weight-bold" style="cursor: pointer;" @onclick="LoadMore">See more Feedbacks</a>
+                            <a class="text-center w-100 d-block mt-4 font-weight-bold" style="cursor: pointer;"
+                                @onclick="LoadMore">See more Feedbacks</a>
                         </div>
                     </div>
                 </div>
@@ -92,22 +93,3 @@
         </div>
     </div>
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

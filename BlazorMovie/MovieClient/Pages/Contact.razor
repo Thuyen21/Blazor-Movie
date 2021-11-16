@@ -55,10 +55,11 @@
           <div class="button">
             <input type="submit" value="Send Now">
           </div>
-          	@if (showAlert)
-{
-    <MudAlert Severity="Severity.Success" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
-}
+          @if (showAlert)
+          {
+            <MudAlert Severity="Severity.Success" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center"
+            ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+          }
 
         </EditForm>
       </div>
@@ -66,4 +67,3 @@
   </div>
 
 </body>
-

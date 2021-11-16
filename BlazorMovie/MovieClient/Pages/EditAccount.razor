@@ -19,10 +19,11 @@
 					<div class="login-form">
 						<div class="title">Replace any data of ID </div>
 						<div class="title">@acc.Id</div>
-							@if (showAlert)
-{
-    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
-}
+						@if (showAlert)
+						{
+							<MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center"
+						ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+						}
 
 						<form action="#">
 							<div class="input-boxes">
@@ -63,4 +64,3 @@
 
 	</div>
 </body>
-

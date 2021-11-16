@@ -37,10 +37,10 @@
             <input type="date" @bind="@movie.PremiereDate" />
             <button>Submit</button>
         </EditForm>
-        	@if (showAlert)
-{
-    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
-}
+        @if (showAlert)
+        {
+            <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center"
+            ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+        }
     </form>
 </div>
-

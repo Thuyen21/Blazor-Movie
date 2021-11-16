@@ -98,7 +98,10 @@
 								<li class="topic">ID</li>
 								@foreach (var acc in accs)
 								{
-									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;"><a href="#">@acc.Id</a></li>
+									<li
+								style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;">
+										<a href="#">@acc.Id</a>
+									</li>
 								}
 
 							</ul>
@@ -106,35 +109,50 @@
 								<li class="topic"><i class='bx bx-mail-send'></i> Email</li>
 								@foreach (var acc in accs)
 								{
-									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 200px; margin-right: 10px;"><a href="#">@acc.Email</a></li>
+									<li
+								style="overflow: hidden; text-overflow: ellipsis; max-width: 200px; margin-right: 10px;">
+										<a href="#">@acc.Email</a>
+									</li>
 								}
 							</ul>
 							<ul class="details">
 								<li class="topic"><i class='bx bx-user'></i> Name</li>
 								@foreach (var acc in accs)
 								{
-									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 200px; margin-right: 10px;"><a href="#">@acc.Name</a></li>
+									<li
+								style="overflow: hidden; text-overflow: ellipsis; max-width: 200px; margin-right: 10px;">
+										<a href="#">@acc.Name</a>
+									</li>
 								}
 							</ul>
 							<ul class="details">
 								<li class="topic"><i class='bx bx-network-chart'></i> Role</li>
 								@foreach (var acc in accs)
 								{
-									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 100px; margin-right: 10px;"><a href="#">@acc.Role</a></li>
+									<li
+								style="overflow: hidden; text-overflow: ellipsis; max-width: 100px; margin-right: 10px;">
+										<a href="#">@acc.Role</a>
+									</li>
 								}
 							</ul>
 							<ul class="details">
 								<li class="topic"><i class='bx bx-calendar'></i> DOB</li>
 								@foreach (var acc in accs)
 								{
-									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;"><a href="#">@acc.DateOfBirth.ToShortDateString()</a></li>
+									<li
+								style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;">
+										<a href="#">@acc.DateOfBirth.ToShortDateString()</a>
+									</li>
 								}
 							</ul>
 							<ul class="details">
 								<li class="topic"><i class='bx bx-wallet'></i> Wallet</li>
 								@foreach (var acc in accs)
 								{
-									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;"><a href="#">@acc.Wallet</a></li>
+									<li
+								style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;">
+										<a href="#">@acc.Wallet</a>
+									</li>
 								}
 
 							</ul>
@@ -166,7 +184,3 @@
 	</section>
 
 </body>
-
-
-
-

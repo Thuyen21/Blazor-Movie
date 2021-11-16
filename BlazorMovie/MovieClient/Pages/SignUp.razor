@@ -84,8 +84,8 @@
 
 </body>
 
-	@if (showAlert)
+@if (showAlert)
 {
-    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+	<MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center"
+	ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
 }
-
