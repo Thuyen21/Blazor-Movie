@@ -1,0 +1,32 @@
+name: Dev Publish
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-2022
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.x
+          include-prerelease: true
+      #- name: Install tools
+       # run: dotnet workload install wasm-tools
+     # - name: publish
+        run: |
+       #   dotnet publish BlazorMovie/Server/BlazorMovie.Server.csproj -o publish
+    #  - name: Commit files
+      #  if: steps.format.outputs.has-changes == 'true'
+     #   run: |
+     #     git config --local user.name "github-actions[bot]"
+      #    git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        #  git commit -a -m 'publish dev lastest'

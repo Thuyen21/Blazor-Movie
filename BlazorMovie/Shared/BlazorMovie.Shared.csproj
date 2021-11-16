@@ -16,13 +16,13 @@
 		<PackageReference Include="FirebaseAuthentication.net" Version="4.0.0-alpha.2" />
 		<PackageReference Include="FirebaseDatabase.net" Version="4.0.6" />
 		<PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
-		<PackageReference Include="Google.Apis.Drive.v3" Version="1.55.0.2481" />
+		<PackageReference Include="Google.Apis.Drive.v3" Version="1.55.0.2502" />
 		<PackageReference Include="Google.Cloud.Firestore" Version="2.4.0" />
 		<PackageReference Include="Google.Cloud.Storage.V1" Version="3.6.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0" />
-		<PackageReference Include="MudBlazor" Version="5.2.0" />
+		<PackageReference Include="MudBlazor" Version="6.0.2" />
 		<PackageReference Include="PayoutsSdk" Version="1.1.1" />
 		<PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
 		<PackageReference Include="PayPalHttp" Version="1.0.1" />
