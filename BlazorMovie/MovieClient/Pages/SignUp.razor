@@ -1,11 +1,5 @@
 ﻿@page "/signup"
 <PageTitle>Register</PageTitle>
-<head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
 
 <body>
 	<div class="container">
@@ -90,8 +84,8 @@
 
 </body>
 
-	@if (showAlert)
+@if (showAlert)
 {
-    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+	<MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center"
+	ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
 }
-

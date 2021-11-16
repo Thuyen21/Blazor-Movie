@@ -1,43 +1,42 @@
 ﻿@*@inherits ErrorBoundary
-@if (CurrentException is null)
-{
+    @if (CurrentException is null)
+    {
     @ChildContent
-}
-else if (ErrorContent is not null)
-{
+    }
+    else if (ErrorContent is not null)
+    {
     @ErrorContent(CurrentException)
-}
-else
-{
+    }
+    else
+    {
     <div style="background-color: yellow; border: 2px dashed black; white-space: pre; font-family: consolas, monospace;">
-        @foreach (var exception in receivedExceptions)
-        {
-            <div class="received-exception" style="background-color: rgba(255,255,255,0.3); margin: 0.5rem; padding: 0.5rem;">
-                @exception.Message
-            </div>
-        }
+    @foreach (var exception in receivedExceptions)
+    {
+    <div class="received-exception" style="background-color: rgba(255,255,255,0.3); margin: 0.5rem; padding: 0.5rem;">
+    @exception.Message
     </div>
-}
+    }
+    </div>
+    }
 
-@code {
+    @code {
     List<Exception> receivedExceptions = new();
 
     protected override Task OnErrorAsync(Exception exception)
     {
-        receivedExceptions.Add(exception);
-        return base.OnErrorAsync(exception);
+    receivedExceptions.Add(exception);
+    return base.OnErrorAsync(exception);
     }
 
     public new void Recover()
     {
-        receivedExceptions.Clear();
-        base.Recover();
+    receivedExceptions.Clear();
+    base.Recover();
     }
-}*@
+    }*@
 @using Microsoft.Extensions.Logging
 @inject ILogger<Error> Logger
 
 <CascadingValue Value=this>
     @ChildContent
 </CascadingValue>
-

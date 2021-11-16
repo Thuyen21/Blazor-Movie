@@ -24,16 +24,6 @@
 
     }*@
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="Favicon.png">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-</head>
 
 @*<div>Request to salary</div>
     <input type="month" @bind="month" />
@@ -49,9 +39,10 @@
     <input type="date" @bind="end" />
 
     <button @onclick="Submit">Submit</button>*@
-	@*@if (showAlert)
+@*@if (showAlert)
     {
-    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center"
+    ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
     }*@
 
 @* @if(commentStatus.Count > 1)
@@ -61,7 +52,7 @@
     }*@
 
 @*@foreach (var status in fullStatus)
-{
+    {
 
     double[] data = { Double.Parse(status["Positive"]), Double.Parse(status["Negative"]) };
     string[] labels = { "Positive", "Negative" };
@@ -74,18 +65,18 @@
     <div>View: @status["View"]</div>
     <div>Buy: @status["Buy"]</div>
     <MudContainer>
-        <div>
-            <MudPaper Class="pa-4">
-                <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px" InputData="@data" InputLabels="@labels"></MudChart>
-            </MudPaper>
-        </div>
-        <div>
-            <MudPaper Class="pa-4">
-                <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px" InputData="@datas" InputLabels="@labelss"></MudChart>
-            </MudPaper>
-        </div>
+    <div>
+    <MudPaper Class="pa-4">
+    <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px" InputData="@data" InputLabels="@labels"></MudChart>
+    </MudPaper>
+    </div>
+    <div>
+    <MudPaper Class="pa-4">
+    <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px" InputData="@datas" InputLabels="@labelss"></MudChart>
+    </MudPaper>
+    </div>
     </MudContainer>
-}*@
+    }*@
 
 
 
@@ -106,7 +97,8 @@
                                         <input type="date" @bind="month" class="form-control">
                                     </div>
                                     <div class="col-md-3">
-                                        <button @onclick="Salary" class="btn btn-primary" style="margin: 5px; height:38px; width: 88px">Request</button>
+                                        <button @onclick="Salary" class="btn btn-primary"
+                                            style="margin: 5px; height:38px; width: 88px">Request</button>
                                     </div>
                                 </div>
 
@@ -116,13 +108,16 @@
                                         <input type="date" @bind="check" class="form-control">
                                     </div>
                                     <div class="col-md-3">
-                                        <button @onclick="Check" class="btn btn-primary" style="margin: 5px; height:38px; width: 88px">Check</button>
+                                        <button @onclick="Check" class="btn btn-primary"
+                                            style="margin: 5px; height:38px; width: 88px">Check</button>
                                     </div>
                                 </div>
                                 <div class="col-md-6 offset-md-4">
                                     @if (showAlert)
                                     {
-                                        <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+                                        <MudAlert Severity="severity" Variant="Variant.Filled"
+                                        ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true"
+                                        CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
                                     }
                                 </div>
                             </div>
@@ -146,7 +141,8 @@
                                         <input type="date" @bind="end" class="form-control">
                                     </div>
                                     <div class="col-md-3">
-                                        <button @onclick="Submit" class="btn btn-primary" style="margin: 5px; height:38px; width: 88px">Check</button>
+                                        <button @onclick="Submit" class="btn btn-primary"
+                                            style="margin: 5px; height:38px; width: 88px">Check</button>
                                     </div>
                                 </div>
                             </div>
@@ -174,12 +170,14 @@
                                     <div class="row">
                                         <div class="col-sm">
                                             <MudPaper Class="pa-4">
-                                                <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px" InputData="@data" InputLabels="@labels"></MudChart>
+                                                <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px"
+                                                InputData="@data" InputLabels="@labels"></MudChart>
                                             </MudPaper>
                                         </div>
                                         <div class="col-sm">
                                             <MudPaper Class="pa-4">
-                                                <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px" InputData="@datas" InputLabels="@labelss"></MudChart>
+                                                <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px"
+                                                InputData="@datas" InputLabels="@labelss"></MudChart>
                                             </MudPaper>
                                         </div>
                                     </div>
@@ -192,7 +190,3 @@
         </div>
     </main>
 </body>
-
-
-
-

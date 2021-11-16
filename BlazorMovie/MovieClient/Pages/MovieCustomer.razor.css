@@ -1,55 +1,55 @@
 ﻿body {
-    margin-top: 20px;
-    background-color: #fff;
+  margin-top: 20px;
+  background-color: #fff;
 }
 
 .card-subtitle,
 .card-title {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .card-title {
-    font-size: 1.875rem;
-    color: #495057;
+  font-size: 1.875rem;
+  color: #495057;
 }
 
 .card {
-    margin-bottom: 24px;
-    box-shadow: 0 0 0.875rem 0 rgba(33, 37, 41, .05);
+  margin-bottom: 24px;
+  box-shadow: 0 0 0.875rem 0 rgba(33, 37, 41, 0.05);
 }
 
 .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: initial;
-    border: 0 solid transparent;
-    border-radius: .25rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: initial;
+  border: 0 solid transparent;
+  border-radius: 0.25rem;
 }
 
 .card-body {
-    flex: 1 1 auto;
-    padding: 1.25rem;
+  flex: 1 1 auto;
+  padding: 1.25rem;
 }
 
 .card-header:first-child {
-    border-radius: .25rem .25rem 0 0;
+  border-radius: 0.25rem 0.25rem 0 0;
 }
 
 .card-header {
-    border-bottom-width: 1px;
+  border-bottom-width: 1px;
 }
 
 .pb-0 {
-    padding-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .card-header {
-    padding: 1rem 1.25rem;
-    margin-bottom: 0;
-    background-color: #fff;
-    border-bottom: 0 solid transparent;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0;
+  background-color: #fff;
+  border-bottom: 0 solid transparent;
 }
