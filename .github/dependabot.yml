@@ -6,21 +6,17 @@ updates:
       interval: "daily"
     labels:
       - "nuget"
+      
   - package-ecosystem: "github-actions"
-
     directory: "/"
     schedule:
       interval: "daily"
     labels:
       - "github-actions"
-    pull-request-branch-name:
-      separator: "-"
-
+      
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
     labels:
       - "npm"
-    pull-request-branch-name:
-      separator: "-"
