@@ -324,7 +324,7 @@ public class StudioController : Controller
             list.Add(0);
             list.Add(0);
 
-            MLModel.ModelInput sampleData = new MLModel.ModelInput();
+            MLModel1.ModelInput sampleData = new MLModel1.ModelInput();
             foreach (DocumentSnapshot item in commentSnapshot.Documents)
             {
                 CommentModel commentConvert = item.ConvertTo<CommentModel>();
@@ -334,7 +334,7 @@ public class StudioController : Controller
                     //Load sample data
                     sampleData.Review = commentConvert.CommentText;
                     //Load model and predict output
-                    MLModel.ModelOutput result = MLModel.Predict(sampleData);
+                    MLModel1.ModelOutput result = MLModel1.Predict(sampleData);
                     if (result.Prediction == "positive")
                     {
                         list[0] = list[0] + 1;
