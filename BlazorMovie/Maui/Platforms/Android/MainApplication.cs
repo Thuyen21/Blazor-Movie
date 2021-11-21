@@ -4,8 +4,8 @@ using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 using System;
 
-namespace Maui
-{
+namespace Maui;
+
     [Application]
     public class MainApplication : MauiApplication
     {
@@ -19,4 +19,3 @@ namespace Maui
             return MauiProgram.CreateMauiApp();
         }
     }
-}

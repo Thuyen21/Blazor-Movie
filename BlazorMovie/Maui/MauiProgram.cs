@@ -9,8 +9,8 @@ using MudBlazor.Services;
 using System;
 using System.Net.Http;
 
-namespace Maui
-{
+namespace Maui;
+
     public static class MauiProgram
     {
         public static MauiApp CreateMauiApp()
@@ -35,4 +35,3 @@ namespace Maui
             return builder.Build();
         }
     }
-}

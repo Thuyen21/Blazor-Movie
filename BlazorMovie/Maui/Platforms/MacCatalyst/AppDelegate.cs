@@ -2,8 +2,8 @@
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace Maui
-{
+namespace Maui;
+
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate
     {
@@ -12,4 +12,3 @@ namespace Maui
             return MauiProgram.CreateMauiApp();
         }
     }
-}

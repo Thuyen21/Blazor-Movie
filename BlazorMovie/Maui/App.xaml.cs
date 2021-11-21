@@ -1,7 +1,7 @@
 ﻿using Application = Microsoft.Maui.Controls.Application;
 
-namespace Maui
-{
+namespace Maui;
+
     public partial class App : Application
     {
         public App()
@@ -11,4 +11,4 @@ namespace Maui
             MainPage = new MainPage();
         }
     }
-}
+

@@ -2,8 +2,8 @@
 using Microsoft.ML;
 using Microsoft.ML.Data;
 
-namespace BlazorMovie.Server
-{
+namespace BlazorMovie.Server;
+
     public partial class MLModel1
     {
         public static ITransformer RetrainPipeline(MLContext context, IDataView trainData)
@@ -32,4 +32,4 @@ namespace BlazorMovie.Server
             return pipeline;
         }
     }
-}
+
