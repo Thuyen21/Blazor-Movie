@@ -15,40 +15,17 @@ jobs:
         with:
           dotnet-version: 6.x
           include-prerelease: true
-      #   - name: Setup .NET
-      #      uses: actions/setup-dotnet@v1
-      #      with:
-      #         dotnet-version: 5.x
 
       - name: Install format
         run: dotnet tool install -g dotnet-format --version "7.0.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
+
       - name: Install tools
         run: dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
-      #    - name: Install dependencies
-      #      run: dotnet restore BlazorApp3.sln
-      #- name: Test with the dotnet CLI
-      #run: dotnet test BlazorApp3.sln
-      - name: Dotnet Restore
-        run: dotnet restore
+
+      # - name: Dotnet Restore
+      #   run: dotnet restore
       - name: Formating
         run: dotnet format analyzers --no-restore
-      #    - name: Install dependencies
-      #      run: dotnet restore MauiApp2.sln
-      #    - name: Test with the dotnet CLI
-      #      run: dotnet test MauiApp2.sln
-      #      - name: Formating
-      #        run: dotnet format --no-restore MauiApp2.sln
-
-      #    - name: Install maui
-      #      run: |
-      #        dotnet tool install -g redth.net.maui.check
-      #        maui-check -f -n  --no-cache  --force-dotnet
-      #  - name: Install dependencies
-      #   run: dotnet restore \Maui\MauiApp1\MauiApp1.sln
-      #- name: Test with the dotnet CLI
-      #   run: dotnet test \Maui\MauiApp1\MauiApp1.sln -f windows
-      # - name: Formating
-      #  run: dotnet format --no-restore --folder \Maui\MauiApp1\MauiApp1.sln
 
       - name: Commit files
         if: steps.format.outputs.has-changes == 'true'
@@ -56,6 +33,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git commit -a -m 'Automated dotnet-format update'
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
