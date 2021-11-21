@@ -6,15 +6,14 @@ updates:
       interval: "daily"
     labels:
       - "nuget"
-
+      
   - package-ecosystem: "github-actions"
-    # Files stored in `app` directory
     directory: "/"
     schedule:
       interval: "daily"
     labels:
       - "github-actions"
-
+      
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
