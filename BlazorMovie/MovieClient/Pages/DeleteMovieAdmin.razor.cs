@@ -8,16 +8,10 @@ namespace MovieClient.Pages;
 public partial class DeleteMovieAdmin
 {
     [Parameter]
-#pragma warning disable CS8618 // Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
-    public string Id { get; set; }
-#pragma warning restore CS8618 // Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
+    public string? Id { get; set; }
 
-#pragma warning disable CS8618 // Non-nullable field 'movie' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private MovieModel movie;
-#pragma warning restore CS8618 // Non-nullable field 'movie' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-#pragma warning disable CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private string content;
-#pragma warning restore CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
+    private MovieModel? movie;
+    private string? content;
     private bool showAlert = false;
     private Severity severity;
     private void CloseAlert()
@@ -27,9 +21,7 @@ public partial class DeleteMovieAdmin
 
     protected override async Task OnInitializedAsync()
     {
-#pragma warning disable CS8601 // Possible null reference assignment.
         movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
-#pragma warning restore CS8601 // Possible null reference assignment.
     }
 
     private async Task HandleValidSubmit()

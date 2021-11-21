@@ -27,17 +27,13 @@ public class CommentModel
 
     [DataType(DataType.Text)]
     [DisplayName("MovieId")]
-#pragma warning disable CS8618 // Non-nullable property 'MovieId' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
-    public string MovieId { get; set; }
-#pragma warning restore CS8618 // Non-nullable property 'MovieId' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
+    public string? MovieId { get; set; }
 
     [FirestoreProperty]
 
     [DataType(DataType.Text)]
     [DisplayName("CommentText")]
-#pragma warning disable CS8618 // Non-nullable property 'CommentText' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
-    public string CommentText { get; set; }
-#pragma warning restore CS8618 // Non-nullable property 'CommentText' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
+    public string? CommentText { get; set; }
     [FirestoreProperty]
     public ulong Like { get; set; }
     [FirestoreProperty]

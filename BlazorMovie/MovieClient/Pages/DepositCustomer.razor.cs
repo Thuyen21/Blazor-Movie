@@ -5,33 +5,25 @@ namespace MovieClient.Pages;
 
 public partial class DepositCustomer
 {
-#pragma warning disable CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private string content;
-#pragma warning restore CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
+    private string? content;
+
     private double cash = 0;
-#pragma warning disable CS8618 // Non-nullable field 'clientToken' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private string clientToken;
-#pragma warning restore CS8618 // Non-nullable field 'clientToken' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
+    private string? clientToken;
     private string divCSS = "display: none;";
     private void DivCSS(string divCSS)
     {
         this.divCSS = divCSS;
     }
 
-#pragma warning disable CS8618 // Non-nullable field 'objRef' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private DotNetObjectReference<DepositCustomer> objRef;
-#pragma warning restore CS8618 // Non-nullable field 'objRef' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
+    private DotNetObjectReference<DepositCustomer>? objRef;
     private bool doneCash = false;
-#pragma warning disable CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
-    private async Task Recharge()
-#pragma warning restore CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
+    private Task Recharge()
     {
-#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         content = null;
-#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         doneCash = false;
         cash = 0;
         DivCSS("display: none;");
+        return Task.CompletedTask;
     }
 
     private async Task Cash()

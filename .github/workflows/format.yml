@@ -25,7 +25,8 @@ jobs:
       # - name: Dotnet Restore
       #   run: dotnet restore
       - name: Formating
-        run: dotnet format analyzers --no-restore
+        run: |
+          dotnet format --no-restore --include-generated -v diag
 
       - name: Commit files
         if: steps.format.outputs.has-changes == 'true'

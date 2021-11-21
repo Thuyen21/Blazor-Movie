@@ -16,10 +16,10 @@ namespace BlazorMovie.Server
         public class ModelInput
         {
             [ColumnName(@"review")]
-            public string Review { get; set; }
+            public string? Review { get; set; }
 
             [ColumnName(@"sentiment")]
-            public string Sentiment { get; set; }
+            public string? Sentiment { get; set; }
 
         }
 
@@ -32,9 +32,9 @@ namespace BlazorMovie.Server
         public class ModelOutput
         {
             [ColumnName("PredictedLabel")]
-            public string Prediction { get; set; }
+            public string? Prediction { get; set; }
 
-            public float[] Score { get; set; }
+            public float[]? Score { get; set; }
         }
 
         #endregion
