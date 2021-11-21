@@ -4,32 +4,32 @@ using Microsoft.ML.Data;
 
 namespace BlazorMovie.Server;
 
-    public partial class MLModel1
+public partial class MLModel1
+{
+    public static ITransformer RetrainPipeline(MLContext context, IDataView trainData)
     {
-        public static ITransformer RetrainPipeline(MLContext context, IDataView trainData)
-        {
-            IEstimator<ITransformer>? pipeline = BuildPipeline(context);
-            ITransformer? model = pipeline.Fit(trainData);
+        IEstimator<ITransformer>? pipeline = BuildPipeline(context);
+        ITransformer? model = pipeline.Fit(trainData);
 
-            return model;
-        }
-
-        /// <summary>
-        /// build the pipeline that is used from model builder. Use this function to retrain model.
-        /// </summary>
-        /// <param name="mlContext"></param>
-        /// <returns></returns>
-        public static IEstimator<ITransformer> BuildPipeline(MLContext mlContext)
-        {
-            // Data process configuration with pipeline data transformations
-            EstimatorChain<Microsoft.ML.Transforms.KeyToValueMappingTransformer>? pipeline = mlContext.Transforms.Text.FeaturizeText(@"review", @"review")
-                                    .Append(mlContext.Transforms.Concatenate(@"Features", @"review"))
-                                    .Append(mlContext.Transforms.Conversion.MapValueToKey(@"sentiment", @"sentiment"))
-                                    .Append(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"))
-                                    .Append(mlContext.MulticlassClassification.Trainers.LbfgsMaximumEntropy(l1Regularization: 0.139222632141601F, l2Regularization: 3.89737628835335F, labelColumnName: @"sentiment", featureColumnName: @"Features"))
-                                    .Append(mlContext.Transforms.Conversion.MapKeyToValue(@"PredictedLabel", @"PredictedLabel"));
-
-            return pipeline;
-        }
+        return model;
     }
+
+    /// <summary>
+    /// build the pipeline that is used from model builder. Use this function to retrain model.
+    /// </summary>
+    /// <param name="mlContext"></param>
+    /// <returns></returns>
+    public static IEstimator<ITransformer> BuildPipeline(MLContext mlContext)
+    {
+        // Data process configuration with pipeline data transformations
+        EstimatorChain<Microsoft.ML.Transforms.KeyToValueMappingTransformer>? pipeline = mlContext.Transforms.Text.FeaturizeText(@"review", @"review")
+                                .Append(mlContext.Transforms.Concatenate(@"Features", @"review"))
+                                .Append(mlContext.Transforms.Conversion.MapValueToKey(@"sentiment", @"sentiment"))
+                                .Append(mlContext.Transforms.NormalizeMinMax(@"Features", @"Features"))
+                                .Append(mlContext.MulticlassClassification.Trainers.LbfgsMaximumEntropy(l1Regularization: 0.139222632141601F, l2Regularization: 3.89737628835335F, labelColumnName: @"sentiment", featureColumnName: @"Features"))
+                                .Append(mlContext.Transforms.Conversion.MapKeyToValue(@"PredictedLabel", @"PredictedLabel"));
+
+        return pipeline;
+    }
+}
 
