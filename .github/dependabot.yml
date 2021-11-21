@@ -6,8 +6,7 @@ updates:
       interval: "daily"
     labels:
       - "nuget"
-    reviewers:
-      - "Thuyen21"
+
   - package-ecosystem: "github-actions"
     # Files stored in `app` directory
     directory: "/"
@@ -15,13 +14,10 @@ updates:
       interval: "daily"
     labels:
       - "github-actions"
-    pull-request-branch-name:
-      separator: "-"
+
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "daily"
     labels:
       - "npm"
-    pull-request-branch-name:
-      separator: "-"
