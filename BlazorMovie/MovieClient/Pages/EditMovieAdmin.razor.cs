@@ -10,36 +10,16 @@ namespace MovieClient.Pages;
 public partial class EditMovieAdmin
 {
     [Parameter]
-#pragma warning disable CS8618 // Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
-    public string Id { get; set; }
-#pragma warning restore CS8618 // Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
+    public string? Id { get; set; }
 
-#pragma warning disable CS8618 // Non-nullable field 'movie' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private MovieModel movie;
-#pragma warning restore CS8618 // Non-nullable field 'movie' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-#pragma warning disable CS8618 // Non-nullable field 'movieFile' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private IBrowserFile movieFile;
-#pragma warning restore CS8618 // Non-nullable field 'movieFile' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-#pragma warning disable CS8618 // Non-nullable field 'imageFile' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private IBrowserFile imageFile;
-#pragma warning restore CS8618 // Non-nullable field 'imageFile' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-#pragma warning disable CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private string content;
-#pragma warning restore CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-#pragma warning disable CS0649 // Field 'EditMovieAdmin.mp' is never assigned to, and will always have its default value null
-#pragma warning disable CS8618 // Non-nullable field 'mp' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private readonly string mp;
-#pragma warning restore CS8618 // Non-nullable field 'mp' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-#pragma warning restore CS0649 // Field 'EditMovieAdmin.mp' is never assigned to, and will always have its default value null
-#pragma warning disable CS0649 // Field 'EditMovieAdmin.ip' is never assigned to, and will always have its default value null
-#pragma warning disable CS8618 // Non-nullable field 'ip' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private readonly string ip;
-#pragma warning restore CS8618 // Non-nullable field 'ip' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-#pragma warning restore CS0649 // Field 'EditMovieAdmin.ip' is never assigned to, and will always have its default value null
+    private MovieModel? movie;
+    private IBrowserFile? movieFile;
+    private IBrowserFile? imageFile;
+    private string? content;
+    private readonly string? mp;
+    private readonly string? ip;
     private bool more = false;
-#pragma warning disable CS8618 // Non-nullable field 'linkIframe' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private string linkIframe;
-#pragma warning restore CS8618 // Non-nullable field 'linkIframe' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
+    private string? linkIframe;
     private bool showAlert = false;
     private Severity severity;
     private void CloseAlert()
@@ -49,9 +29,7 @@ public partial class EditMovieAdmin
 
     protected override async Task OnInitializedAsync()
     {
-#pragma warning disable CS8601 // Possible null reference assignment.
         movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
-#pragma warning restore CS8601 // Possible null reference assignment.
         linkIframe = $"{_httpClient.BaseAddress}Admin/MovieUpload/{Id}";
     }
 

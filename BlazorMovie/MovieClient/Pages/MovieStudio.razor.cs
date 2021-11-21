@@ -38,7 +38,7 @@ public partial class MovieStudio
         searchString = null;
         await LoadImg();
     }
-    private string token;
+    private string? token;
     private async Task GenreSortParm()
     {
         index = 0;
@@ -70,7 +70,7 @@ public partial class MovieStudio
         token = new string(tokena);
         await LoadImg();
     }
-    private async Task LoadImg()
+    private Task LoadImg()
     {
         Parallel.ForEach(movies, async item =>
         {
@@ -89,7 +89,9 @@ public partial class MovieStudio
 
             }
         });
+        return Task.CompletedTask;
     }
+
     private async Task Search()
     {
         index = 0;

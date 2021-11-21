@@ -28,9 +28,7 @@ public partial class SignUp
 
     private readonly SignUpModel signUpModel = new()
     { DateOfBirth = DateTime.Now };
-#pragma warning disable CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private string content;
-#pragma warning restore CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
+    private string? content;
     protected async Task HandleValidSubmit()
     {
         signUpModel.Role = role;

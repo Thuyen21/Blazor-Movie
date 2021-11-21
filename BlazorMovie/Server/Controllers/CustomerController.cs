@@ -398,9 +398,7 @@ public class CustomerController : Controller
 
     }
     [HttpPost("View")]
-#pragma warning disable CS0114 // 'CustomerController.View(string)' hides inherited member 'Controller.View(string?)'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword.
     public async Task<ActionResult> View([FromBody] string Id)
-#pragma warning restore CS0114 // 'CustomerController.View(string)' hides inherited member 'Controller.View(string?)'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword.
     {
         QuerySnapshot collectionView = await db.Collection("View").WhereEqualTo("Id", Id).WhereEqualTo("Viewer", User.FindFirstValue(ClaimTypes.Sid)).WhereGreaterThanOrEqualTo("Time", DateTime.UtcNow.AddHours(-0.5)).WhereLessThanOrEqualTo("Time", DateTime.UtcNow).GetSnapshotAsync();
         if (collectionView.Documents.Count == 0)

@@ -50,7 +50,7 @@ public partial class MovieCustomer
         searchString = null;
         await LoadImg();
     }
-    private string token;
+    private string? token;
     protected override async Task OnInitializedAsync()
     {
         Task? moviesTask = Task.Run(async () =>
@@ -70,7 +70,7 @@ public partial class MovieCustomer
         token = new string(tokena);
         await LoadImg();
     }
-    private async Task LoadImg()
+    private Task LoadImg()
     {
         Parallel.ForEach(movies, async item =>
         {
@@ -88,7 +88,9 @@ public partial class MovieCustomer
             {
             }
         });
+        return Task.CompletedTask;
     }
+
     private async Task Search()
     {
         index = 0;

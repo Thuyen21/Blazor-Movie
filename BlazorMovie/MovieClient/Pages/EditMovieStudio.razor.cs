@@ -10,28 +10,13 @@ namespace MovieClient.Pages;
 public partial class EditMovieStudio
 {
     [Parameter]
-#pragma warning disable CS8618 // Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
-    public string Id { get; set; }
-#pragma warning restore CS8618 // Non-nullable property 'Id' must contain a non-null value when exiting constructor. Consider declaring the property as nullable.
-
-#pragma warning disable CS8618 // Non-nullable field 'movie' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private MovieModel movie;
-#pragma warning restore CS8618 // Non-nullable field 'movie' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-#pragma warning disable CS8618 // Non-nullable field 'movieFile' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private IBrowserFile movieFile;
-#pragma warning restore CS8618 // Non-nullable field 'movieFile' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-#pragma warning disable CS8618 // Non-nullable field 'imageFile' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private IBrowserFile imageFile;
-#pragma warning restore CS8618 // Non-nullable field 'imageFile' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-#pragma warning disable CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private string content;
-#pragma warning restore CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-#pragma warning disable CS8618 // Non-nullable field 'linkUp' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private string linkUp;
-#pragma warning restore CS8618 // Non-nullable field 'linkUp' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-#pragma warning disable CS8618 // Non-nullable field 'linkIframe' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private string linkIframe;
-#pragma warning restore CS8618 // Non-nullable field 'linkIframe' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
+    public string? Id { get; set; }
+    private MovieModel? movie;
+    private IBrowserFile? movieFile;
+    private IBrowserFile? imageFile;
+    private string? content;
+    private string? linkUp;
+    private string? linkIframe;
     private bool more = false;
     private bool showAlert = false;
     private Severity severity;

@@ -5,16 +5,10 @@ namespace MovieClient.Pages;
 
 public partial class SalaryStudio
 {
-#pragma warning disable CS8618 // Non-nullable field 'Email' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private string Email;
-#pragma warning restore CS8618 // Non-nullable field 'Email' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-#pragma warning disable CS8618 // Non-nullable field 'EmailConfirm' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private string EmailConfirm;
-#pragma warning restore CS8618 // Non-nullable field 'EmailConfirm' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
+    private string? Email;
+    private string? EmailConfirm;
     private double Cash;
-#pragma warning disable CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
-    private string content;
-#pragma warning restore CS8618 // Non-nullable field 'content' must contain a non-null value when exiting constructor. Consider declaring the field as nullable.
+    private string? content;
     private bool showAlert = false;
     private Severity severity;
     private void CloseAlert()
