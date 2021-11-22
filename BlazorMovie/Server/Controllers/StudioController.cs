@@ -108,11 +108,9 @@ public class StudioController : Controller
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
         movie.PremiereDate = movie.PremiereDate.ToUniversalTime();
-#pragma warning disable CS8619 // Nullability of reference types in value of type 'Dictionary<string, object?>' doesn't match target type 'Dictionary<string, dynamic>'.
         Dictionary<string, dynamic> dictionary = movie.GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public)
             .ToDictionary(prop => prop.Name, prop => prop.GetValue(movie, null));
-#pragma warning restore CS8619 // Nullability of reference types in value of type 'Dictionary<string, object?>' doesn't match target type 'Dictionary<string, dynamic>'.
 
         Parallel.ForEach(snapshot.Documents, async snapshotDocument =>
         {
