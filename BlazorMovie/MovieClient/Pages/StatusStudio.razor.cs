@@ -35,7 +35,7 @@ public partial class StatusStudio
         showAlert = true;
     }
 
-    private async Task Submit()
+    private Task Submit()
     {
         fullStatus.Clear();
         //commentStatus.Clear();
@@ -76,5 +76,7 @@ public partial class StatusStudio
             content = ex.Message;
             showAlert = true;
         }
+
+        return Task.CompletedTask;
     }
 }

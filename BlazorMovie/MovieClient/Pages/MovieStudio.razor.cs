@@ -11,7 +11,7 @@ public partial class MovieStudio
     private string? searchString { get; set; }
 
     private bool isSearch = false;
-    private string sort = null;
+    private string? sort = null;
     private readonly Dictionary<string, string> DicImageLink = new();
     private async Task NameSortParm()
     {

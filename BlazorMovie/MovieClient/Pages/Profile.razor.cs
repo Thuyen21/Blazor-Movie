@@ -43,9 +43,10 @@ public partial class Profile
         }
     }
 
-    private async Task ChangePass()
+    private Task ChangePass()
     {
         _navigationManager.NavigateTo("/ResetPassword");
+        return Task.CompletedTask;
     }
 
     private AccountManagementModel accountManagementModel = new AccountManagementModel();

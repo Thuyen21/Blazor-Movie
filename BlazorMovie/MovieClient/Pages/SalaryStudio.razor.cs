@@ -33,7 +33,7 @@ public partial class SalaryStudio
     }
     private async Task Submit()
     {
-        if(isMail(Email))
+        if (isMail(Email))
         {
             if (Email != EmailConfirm)
             {
@@ -57,6 +57,6 @@ public partial class SalaryStudio
 
                 showAlert = true;
             }
-        }       
+        }
     }
 }

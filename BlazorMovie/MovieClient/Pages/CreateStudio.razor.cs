@@ -31,8 +31,9 @@ public partial class CreateStudio
         showAlert = true;
     }
 
-    protected override async Task OnInitializedAsync()
+    protected override Task OnInitializedAsync()
     {
         movie.PremiereDate = DateTime.Now;
+        return Task.CompletedTask;
     }
 }

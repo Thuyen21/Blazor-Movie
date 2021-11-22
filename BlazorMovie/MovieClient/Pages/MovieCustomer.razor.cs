@@ -11,7 +11,7 @@ public partial class MovieCustomer
 
     private bool isSearch = false;
     private readonly Dictionary<string, string> DicImageLink = new();
-    private string sort = null;
+    private string? sort = null;
     private int index = 0;
     private async Task NameSortParm()
     {
