@@ -48,6 +48,6 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           labels: t/housekeeping ♻︎
-          assignees: Thuyen21, baopngch18183
-          reviewers: Thuyen21, baopngch18183
+          assignees: Thuyen21
+          reviewers: Thuyen21
           branch: housekeeping/fix-codeformatting
