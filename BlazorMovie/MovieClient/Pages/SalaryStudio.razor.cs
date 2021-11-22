@@ -15,42 +15,48 @@ public partial class SalaryStudio
     {
         showAlert = false;
     }
-
-    private async Task Submit()
+    private bool isMail(string Email)
     {
         try
         {
             System.Net.Mail.MailAddress addr = new System.Net.Mail.MailAddress(Email);
+            return true;
         }
         catch
         {
             content = "Not Email";
             severity = Severity.Error;
             showAlert = true;
-            return;
+            return false;
         }
 
-        if (Email != EmailConfirm)
+    }
+    private async Task Submit()
+    {
+        if(isMail(Email))
         {
-            content = "Check your email";
-            severity = Severity.Error;
-            showAlert = true;
-        }
-        else
-        {
-            HttpResponseMessage? response = await _httpClient.PostAsJsonAsync("Studio/Salary", new Dictionary<string, string>()
-                {{"Email", Email}, {"Cash", Cash.ToString()}});
-            content = await response.Content.ReadAsStringAsync();
-            if (response.IsSuccessStatusCode)
+            if (Email != EmailConfirm)
             {
-                severity = Severity.Success;
+                content = "Check your email";
+                severity = Severity.Error;
+                showAlert = true;
             }
             else
             {
-                severity = Severity.Error;
-            }
+                HttpResponseMessage? response = await _httpClient.PostAsJsonAsync("Studio/Salary", new Dictionary<string, string>()
+                {{"Email", Email}, {"Cash", Cash.ToString()}});
+                content = await response.Content.ReadAsStringAsync();
+                if (response.IsSuccessStatusCode)
+                {
+                    severity = Severity.Success;
+                }
+                else
+                {
+                    severity = Severity.Error;
+                }
 
-            showAlert = true;
-        }
+                showAlert = true;
+            }
+        }       
     }
 }

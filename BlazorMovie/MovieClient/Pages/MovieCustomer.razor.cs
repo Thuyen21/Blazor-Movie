@@ -11,17 +11,13 @@ public partial class MovieCustomer
 
     private bool isSearch = false;
     private readonly Dictionary<string, string> DicImageLink = new();
-#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
     private string sort = null;
-#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
     private int index = 0;
     private async Task NameSortParm()
     {
         index = 0;
         sort = sort == "name" ? "nameDesc" : "name";
-#pragma warning disable CS8601 // Possible null reference assignment.
         movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
-#pragma warning restore CS8601 // Possible null reference assignment.
         isSearch = false;
         searchString = null;
         await LoadImg();
@@ -31,9 +27,7 @@ public partial class MovieCustomer
     {
         index = 0;
         sort = sort == "date" ? "dateDesc" : "date";
-#pragma warning disable CS8601 // Possible null reference assignment.
         movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
-#pragma warning restore CS8601 // Possible null reference assignment.
         isSearch = false;
         searchString = null;
         await LoadImg();
@@ -43,9 +37,7 @@ public partial class MovieCustomer
     {
         index = 0;
         sort = sort == "genre" ? "genreDesc" : "genre";
-#pragma warning disable CS8601 // Possible null reference assignment.
         movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
-#pragma warning restore CS8601 // Possible null reference assignment.
         isSearch = false;
         searchString = null;
         await LoadImg();
@@ -55,16 +47,12 @@ public partial class MovieCustomer
     {
         Task? moviesTask = Task.Run(async () =>
         {
-#pragma warning disable CS8601 // Possible null reference assignment.
             movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}");
-#pragma warning restore CS8601 // Possible null reference assignment.
         });
         char[] tokena = { };
         Task? tokenaTask = Task.Run(async () =>
         {
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
         });
         await Task.WhenAll(moviesTask, tokenaTask);
         token = new string(tokena);
@@ -96,22 +84,16 @@ public partial class MovieCustomer
         index = 0;
         if (searchString != null)
         {
-#pragma warning disable CS8601 // Possible null reference assignment.
             movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/{searchString}/ /{index}");
-#pragma warning restore CS8601 // Possible null reference assignment.
             isSearch = true;
         }
         else
         {
-#pragma warning disable CS8601 // Possible null reference assignment.
             movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}");
-#pragma warning restore CS8601 // Possible null reference assignment.
             isSearch = false;
         }
 
-#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
         sort = null;
-#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
         await LoadImg();
     }
 
@@ -120,21 +102,15 @@ public partial class MovieCustomer
         index++;
         if (isSearch)
         {
-#pragma warning disable CS8604 // Possible null reference argument for parameter 'collection' in 'void List<MovieModel>.AddRange(IEnumerable<MovieModel> collection)'.
             movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/{searchString}//{index}"));
-#pragma warning restore CS8604 // Possible null reference argument for parameter 'collection' in 'void List<MovieModel>.AddRange(IEnumerable<MovieModel> collection)'.
         }
         else if (sort != null)
         {
-#pragma warning disable CS8604 // Possible null reference argument for parameter 'collection' in 'void List<MovieModel>.AddRange(IEnumerable<MovieModel> collection)'.
             movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}"));
-#pragma warning restore CS8604 // Possible null reference argument for parameter 'collection' in 'void List<MovieModel>.AddRange(IEnumerable<MovieModel> collection)'.
         }
         else
         {
-#pragma warning disable CS8604 // Possible null reference argument for parameter 'collection' in 'void List<MovieModel>.AddRange(IEnumerable<MovieModel> collection)'.
             movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}"));
-#pragma warning restore CS8604 // Possible null reference argument for parameter 'collection' in 'void List<MovieModel>.AddRange(IEnumerable<MovieModel> collection)'.
         }
         await LoadImg();
     }

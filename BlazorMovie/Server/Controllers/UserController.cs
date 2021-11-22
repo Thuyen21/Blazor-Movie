@@ -75,13 +75,9 @@ public class UserController : Controller
         //if (User.Identity.IsAuthenticated) logInModel.Email = User.FindFirstValue(ClaimTypes.Name);
         //return await Task.FromResult(logInModel);
         AccountManagementModel acc = new();
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
         if (User.Identity.IsAuthenticated)
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
         {
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
             string Id = User.FindFirst(ClaimTypes.Sid).Value;
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
             Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
             QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
             foreach (DocumentSnapshot VARIABLE in snapshot.Documents)
@@ -99,9 +95,7 @@ public class UserController : Controller
         try
         {
             userCredential =
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     await client.SignInWithEmailAndPasswordAsync(User.FindFirst(ClaimTypes.Email).Value,
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
                         changeEmailModel.Password);
             UserCredential newUserCredentiall = userCredential;
             newUserCredentiall.AuthCredential = EmailProvider.GetCredential(changeEmailModel.Email, changeEmailModel.Password);
@@ -144,13 +138,9 @@ public class UserController : Controller
     public async Task<ActionResult<AccountManagementModel>> Profile()
     {
         AccountManagementModel acc = new();
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
         if (User.Identity.IsAuthenticated)
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
         {
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
             string Id = User.FindFirst(ClaimTypes.Sid).Value;
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
             Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
             QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
             foreach (DocumentSnapshot VARIABLE in snapshot.Documents)

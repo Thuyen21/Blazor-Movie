@@ -235,11 +235,9 @@ public class AdminController : Controller
             Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
             QuerySnapshot snapshot = await collection.GetSnapshotAsync();
             movie.PremiereDate = movie.PremiereDate.ToUniversalTime();
-#pragma warning disable CS8619 // Nullability of reference types in value of type 'Dictionary<string, object?>' doesn't match target type 'Dictionary<string, dynamic>'.
             Dictionary<string, dynamic> dictionary = movie.GetType()
                 .GetProperties(BindingFlags.Instance | BindingFlags.Public)
                 .ToDictionary(prop => prop.Name, prop => prop.GetValue(movie, null));
-#pragma warning restore CS8619 // Nullability of reference types in value of type 'Dictionary<string, object?>' doesn't match target type 'Dictionary<string, dynamic>'.
             Parallel.ForEach(snapshot.Documents, async snapshotDocument =>
             {
                 await snapshotDocument.Reference.UpdateAsync(dictionary);
@@ -266,9 +264,7 @@ public class AdminController : Controller
         return View(movie);
     }
     [HttpGet("Done")]
-#pragma warning disable CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
     public async Task<ActionResult> Done()
-#pragma warning restore CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
     {
         return View();
     }
