@@ -120,9 +120,9 @@ public class StudioController : Controller
         return Ok("Success");
     }
     [HttpGet("Done")]
-    public Task<ActionResult> Done()
+    public async Task<ActionResult> Done()
     {
-        return Task.FromResult(View());
+        return await Task.FromResult(View());
     }
     [HttpGet("MovieUpload/{MovieId}")]
     public async Task<ActionResult> MovieUpload(string MovieId)

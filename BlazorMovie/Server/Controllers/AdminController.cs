@@ -264,9 +264,9 @@ public class AdminController : Controller
         return View(movie);
     }
     [HttpGet("Done")]
-    public Task<ActionResult> Done()
+    public ActionResult Done()
     {
-        return Task.FromResult(View());
+        return View();
     }
     [HttpPost("MovieUpload/{MovieId}/{StudioId}")]
     [RequestSizeLimit(long.MaxValue)]

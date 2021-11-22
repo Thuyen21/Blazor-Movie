@@ -103,7 +103,7 @@ public class CustomerController : Controller
     //    return View();
     //}
     [HttpGet("Deposit")]
-    public Task<ActionResult<char[]>> Deposit()
+    public async Task<ActionResult<char[]>> Deposit()
     {
         try
         {
@@ -116,11 +116,11 @@ public class CustomerController : Controller
                 PrivateKey = "b12f9762c30b546c29e5172fd3729c0d"
             };
             clientToken = gateway.ClientToken.Generate();
-            return Task.FromResult(Ok(clientToken.ToCharArray()));
+            return await Task.FromResult(Ok(clientToken.ToCharArray()));
         }
         catch (Exception ex)
         {
-            return Task.FromResult(BadRequest(ex.Message));
+            return await Task.FromResult(BadRequest(ex.Message));
         }
     }
     [HttpPost("DoCard")]
