@@ -98,7 +98,6 @@ public partial class EditMovieStudio
                 content = e.Percentage.ToString();
                 severity = Severity.Info;
                 showAlert = true;
-                return global::System.Threading.Tasks.Task.CompletedTask;
             };
             try
             {
