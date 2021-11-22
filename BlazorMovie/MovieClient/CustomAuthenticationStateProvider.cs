@@ -20,13 +20,9 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
         {
 
 
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             AccountManagementModel user = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/GetCurrentUser");
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
 
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
             if (user.Email != null)
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
             {
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {

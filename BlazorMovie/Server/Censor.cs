@@ -10,12 +10,8 @@ public class Censor
         StreamReader reader = new StreamReader(Path.GetFullPath(Path.Combine("wwwroot/Bad Words/base-list-of-bad-words_csv-file_2021_01_18.csv")));
         while (!reader.EndOfStream)
         {
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             string line = reader.ReadLine();
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
             string[] values = line.Split(',');
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
             CensoredWords.Add(values[0]);
         }
     }

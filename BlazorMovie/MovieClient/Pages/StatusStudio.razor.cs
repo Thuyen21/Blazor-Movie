@@ -61,18 +61,12 @@ public partial class StatusStudio
             Parallel.ForEach(dateToCheck, async date =>
             {
                 commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/{date.ToString("MM-dd-yyyy")}");
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                 List<double> getInfor = await _httpClient.GetFromJsonAsync<List<double>>($"Studio/PayCheck/{Id}/{date.ToString("MM-dd-yyyy")}");
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
                 Dictionary<string, string> dic = new();
                 dic.Add("Date", date.ToString());
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 dic.Add("Positive", commentStatus[0].ToString());
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 dic.Add("Negative", commentStatus[1].ToString());
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
                 dic.Add("View", getInfor[0].ToString());
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
                 dic.Add("Buy", getInfor[1].ToString());
                 fullStatus.Add(dic);
 

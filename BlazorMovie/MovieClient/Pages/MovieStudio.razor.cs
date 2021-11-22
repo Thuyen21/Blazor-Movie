@@ -62,9 +62,7 @@ public partial class MovieStudio
         char[] tokena = { };
         Task? tokenaTask = Task.Run(async () =>
         {
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
         });
         await Task.WhenAll(moviesTask, tokenaTask);
         token = new string(tokena);

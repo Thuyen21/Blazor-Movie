@@ -35,12 +35,9 @@ public partial class EditMovieAdmin
 
     private async Task HandleValidSubmit()
     {
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+
         MovieModel moviePost = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
         movie.StudioId = moviePost.StudioId;
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
         movie.MovieId = moviePost.MovieId;
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync("Admin/EditMovie", movie);
         content = await response.Content.ReadAsStringAsync();
@@ -62,9 +59,7 @@ public partial class EditMovieAdmin
         if (list.Contains(e.File.ContentType))
         {
             movieFile = e.File;
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
             char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             string token = new string(tokena);
             FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").PutAsync(movieFile.OpenReadStream(long.MaxValue));
             task.Progress.ProgressChanged += (s, e) =>
@@ -98,9 +93,8 @@ public partial class EditMovieAdmin
         if (list.Contains(e.File.ContentType))
         {
             imageFile = e.File;
-#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+
             char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
-#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
             string token = new string(tokena);
             FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Image").PutAsync(imageFile.OpenReadStream(long.MaxValue));
             task.Progress.ProgressChanged += (s, e) =>
