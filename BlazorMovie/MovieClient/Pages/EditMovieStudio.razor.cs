@@ -60,7 +60,8 @@ public partial class EditMovieStudio
             char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
             string token = new string(tokena);
             FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").PutAsync(movieFile.OpenReadStream(long.MaxValue));
-            task.Progress.ProgressChanged += (s, e) => {
+            task.Progress.ProgressChanged += (s, e) =>
+            {
                 content = e.Percentage.ToString();
                 severity = Severity.Info;
                 showAlert = true;
@@ -93,7 +94,7 @@ public partial class EditMovieStudio
             char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
             string token = new string(tokena);
             FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Image").PutAsync(imageFile.OpenReadStream(long.MaxValue));
-            task.Progress.ProgressChanged += async (s, e) => {
+            task.Progress.ProgressChanged += (s, e) => {
                 content = e.Percentage.ToString();
                 severity = Severity.Info;
                 showAlert = true;
