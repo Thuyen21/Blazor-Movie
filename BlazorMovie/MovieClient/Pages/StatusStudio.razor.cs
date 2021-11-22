@@ -35,13 +35,9 @@ public partial class StatusStudio
         showAlert = true;
     }
 
-#pragma warning disable CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
     private async Task Submit()
-#pragma warning restore CS1998 // This async method lacks 'await' operators and will run synchronously. Consider using the 'await' operator to await non-blocking API calls, or 'await Task.Run(...)' to do CPU-bound work on a background thread.
     {
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
         fullStatus.Clear();
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
         //commentStatus.Clear();
         content = "Loading.....";
         showAlert = true;

@@ -27,12 +27,8 @@ public partial class EditMovieStudio
 
     protected override async Task OnInitializedAsync()
     {
-#pragma warning disable CS8601 // Possible null reference assignment.
         movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
-#pragma warning restore CS8601 // Possible null reference assignment.
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
         linkUp = $"/Studio/MovieUpload/{movie.MovieId}";
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
         linkIframe = $"{_httpClient.BaseAddress}Studio/MovieUpload/{Id}";
     }
 
