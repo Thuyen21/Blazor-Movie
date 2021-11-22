@@ -10,7 +10,7 @@ public partial class AdminAccountManagement
     private string? searchString { get; set; }
 
     private bool isSearch = false;
-    private string sort = null;
+    private string? sort = null;
     private async Task NameSortParm()
     {
         index = 0;

@@ -10,7 +10,7 @@ public partial class MovieAdmin
     private string? searchString { get; set; }
 
     private bool isSearch = false;
-    private string sort = null;
+    private string? sort = null;
     private async Task NameSortParm()
     {
         index = 0;
@@ -39,7 +39,7 @@ public partial class MovieAdmin
     }
 
     protected override async Task OnInitializedAsync()
-   {
+    {
         movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ / /{index}");
     }
 
