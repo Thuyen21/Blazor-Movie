@@ -31,7 +31,7 @@ public partial class EditMovieStudio
     {
         movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
         linkUp = $"/Studio/MovieUpload/{movie.MovieId}";
-        linkIframe = $"{_httpClient.BaseAddress}Studio/MovieUpload/{Id}";
+        linkIframe = $"{_httpClient.BaseAddress}Studio/MovieUpload/{movie.MovieId}";
     }
 
     private async Task HandleValidSubmit()

@@ -2,6 +2,12 @@
 @attribute [Authorize(Roles = "Admin")]
 <PageTitle>Admin - Edit Account</PageTitle>
 
+<head>
+	<meta charset="UTF-8">
+	<!-- Fontawesome CDN Link -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
 <body>
 	<div class="container">
@@ -19,11 +25,10 @@
 					<div class="login-form">
 						<div class="title">Replace any data of ID </div>
 						<div class="title">@acc.Id</div>
-						@if (showAlert)
-						{
-							<MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center"
-						ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
-						}
+							@if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
 
 						<form action="#">
 							<div class="input-boxes">
@@ -64,3 +69,4 @@
 
 	</div>
 </body>
+
