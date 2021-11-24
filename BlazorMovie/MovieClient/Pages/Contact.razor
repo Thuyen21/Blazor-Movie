@@ -10,7 +10,11 @@
 
 <PageTitle>Contact Us</PageTitle>
 
-
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
 <body>
   <div class="container">
@@ -55,11 +59,10 @@
           <div class="button">
             <input type="submit" value="Send Now">
           </div>
-          @if (showAlert)
-          {
-            <MudAlert Severity="Severity.Success" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center"
-            ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
-          }
+          	@if (showAlert)
+{
+    <MudAlert Severity="Severity.Success" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
 
         </EditForm>
       </div>
@@ -67,3 +70,4 @@
   </div>
 
 </body>
+

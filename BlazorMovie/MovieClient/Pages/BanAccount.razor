@@ -2,7 +2,15 @@
 @page "/BanAccount/{Id}"
 
 <PageTitle>Ban Account</PageTitle>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+</head>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<div class="form-gap"></div>
 <div class="container">
 	@if (acc == null)
 	{
@@ -10,7 +18,7 @@
 	}
 	else
 	{
-
+	
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<div class="panel panel-default">
@@ -34,12 +42,10 @@
 								</div>
 								<div>
 									<div id='container'>
-										@if (showAlert)
-										{
-											<MudAlert Severity="severity" Variant="Variant.Filled"
-										ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true"
-										CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
-										}
+	@if (showAlert)
+{
+    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+}
 									</div>
 								</div>
 							</div>
@@ -50,3 +56,4 @@
 		</div>
 	}
 </div>
+
