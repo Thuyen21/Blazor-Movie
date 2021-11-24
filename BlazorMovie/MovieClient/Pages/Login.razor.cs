@@ -43,7 +43,7 @@ public partial class Login
             content = await response.Content.ReadAsStringAsync();
             severity = Severity.Success;
             showAlert = true;
-            _accountService.Login();
+            _accountService.checkAuthentication();
             _navigationManager.NavigateTo("/");
         }
         else

@@ -17,7 +17,7 @@ public partial class Logout
             throw new ApplicationException($"Reason: {response.ReasonPhrase}, Message: {content}");
         }
 
-        _accountService.Logout();
+        _accountService.checkAuthentication();
         _navigationManager.NavigateTo("/");
     }
 }

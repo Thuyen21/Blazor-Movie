@@ -28,7 +28,7 @@ public static class MauiProgram
         builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://movie213.herokuapp.com/") });
         builder.Services.AddOptions();
         builder.Services.AddAuthorizationCore();
-        builder.Services.AddScoped<IAccountService, AccountService>();
+        builder.Services.AddScoped<AccountService>();
         builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
         builder.Services.AddMudServices();
 
