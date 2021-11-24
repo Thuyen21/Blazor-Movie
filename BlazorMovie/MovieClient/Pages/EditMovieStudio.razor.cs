@@ -61,24 +61,24 @@ public partial class EditMovieStudio
             movieFile = e.File;
             char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken")!;
             string token = new string(tokena);
-            
-                FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").PutAsync(movieFile.OpenReadStream(long.MaxValue));
-                task.Progress.ProgressChanged += (s, e) =>
-                {
-                    mp = e.Percentage.ToString() + "%";
-                    StateHasChanged();
-                };
-                try
-                {
-                    await task;
-                }
-                catch
-                {
-                    content = "More 500MB use the other method upload";
-                    severity = Severity.Error;
-                    showAlert = true;
-                }
-            
+
+            FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").PutAsync(movieFile.OpenReadStream(long.MaxValue));
+            task.Progress.ProgressChanged += (s, e) =>
+            {
+                mp = e.Percentage.ToString() + "%";
+                StateHasChanged();
+            };
+            try
+            {
+                await task;
+            }
+            catch
+            {
+                content = "More 500MB use the other method upload";
+                severity = Severity.Error;
+                showAlert = true;
+            }
+
         }
         else
         {
@@ -97,7 +97,7 @@ public partial class EditMovieStudio
             char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
             string token = new string(tokena);
             FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Image").PutAsync(imageFile.OpenReadStream(long.MaxValue));
-            task.Progress.ProgressChanged += (s, e) => 
+            task.Progress.ProgressChanged += (s, e) =>
             {
                 ip = e.Percentage.ToString() + "%";
                 StateHasChanged();

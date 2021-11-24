@@ -33,7 +33,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
         }
         catch
         {
-            
+
         }
         return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
     }
