@@ -2,25 +2,17 @@
 
 namespace MovieClient.Services;
 
-public class AccountService : IAccountService
+public class AccountService
 {
-    private readonly AuthenticationStateProvider _authenticationStateProvider;
+    private readonly AuthenticationStateProvider authenticationStateProvider;
     public AccountService(AuthenticationStateProvider authenticationStateProvider)
     {
-        _authenticationStateProvider = authenticationStateProvider;
+        this.authenticationStateProvider = authenticationStateProvider;
     }
-    public bool Login()
+    public void checkAuthentication()
     {
-        (_authenticationStateProvider as CustomAuthenticationStateProvider).Update();
-        return true;
+        (authenticationStateProvider as CustomAuthenticationStateProvider).Update();
     }
-
-    public bool Logout()
-    {
-        (_authenticationStateProvider as CustomAuthenticationStateProvider).Update();
-        return true;
-    }
-
 }
 
 

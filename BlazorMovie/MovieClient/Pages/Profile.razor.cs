@@ -22,7 +22,7 @@ public partial class Profile
         {
             severity = Severity.Success;
             showAlert = true;
-            _accountService.Login();
+            _accountService.checkAuthentication();
             _navigationManager.NavigateTo("/Profile");
         }
         else
@@ -34,7 +34,7 @@ public partial class Profile
         HttpResponseMessage? r = await _httpClient.PostAsJsonAsync("User/ChangeEmail", changeEmail);
         if (r.IsSuccessStatusCode)
         {
-            _accountService.Login();
+            _accountService.checkAuthentication();
             _navigationManager.NavigateTo("/Profile");
         }
         else

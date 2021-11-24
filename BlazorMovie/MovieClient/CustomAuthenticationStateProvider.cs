@@ -18,10 +18,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
     {
         try
         {
-
-
             AccountManagementModel user = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/GetCurrentUser");
-
             if (user.Email != null)
             {
 
@@ -36,11 +33,9 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
         }
         catch
         {
-
-
+            
         }
         return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
-
     }
     public void Update()
     {

@@ -149,7 +149,9 @@
                         </div>
                     </div>
                 </div>
-                @foreach (var status in fullStatus)
+                @try
+                {
+                    foreach (var status in fullStatus)
                 {
                     double[] data = { Double.Parse(status["Positive"]), Double.Parse(status["Negative"]) };
                     string[] labels = { "Positive", "Negative" };
@@ -186,6 +188,12 @@
                         </div>
                     </div>
                 }
+                }
+                catch
+                {
+                    
+                }
+                
             </div>
         </div>
     </main>
