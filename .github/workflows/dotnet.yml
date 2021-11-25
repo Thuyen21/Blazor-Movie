@@ -23,7 +23,7 @@ jobs:
           java-version: "11"
       - name: Install tools
         run: |
-          dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
+          dotnet workload install android ios maccatalyst tvos macos maui wasm-tools android-aot
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
