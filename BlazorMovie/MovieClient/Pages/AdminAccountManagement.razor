@@ -20,7 +20,7 @@
 			@*<div></div><div></div>*@
 		</nav>
 		<div class="home-content">
-			<div class="overview-boxes">
+			@*<div class="overview-boxes">
 				<div class="box">
 					<div class="right-side">
 						<div class="box-topic">Total Order</div>
@@ -65,7 +65,7 @@
 					</div>
 					<i class='bx bxs-cart-download cart four'></i>
 				</div>
-			</div>
+			</div>*@
 		</div>
 		@if (accs == null)
 		{
@@ -99,14 +99,14 @@
 
 
 						<div class="sales-details">
-							<ul class="details">
+							@*<ul class="details">
 								<li class="topic">ID</li>
 								@foreach (var acc in accs)
 								{
 									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;"><a href="#">@acc.Id</a></li>
 								}
 
-							</ul>
+							</ul>*@
 							<ul class="details">
 								<li class="topic"><i class='bx bx-mail-send'></i> Email</li>
 								@foreach (var acc in accs)

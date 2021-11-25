@@ -4,56 +4,6 @@
 @page "/BuyVip/{movieId}"
 @attribute [Authorize(Roles = "Customer")]
 <PageTitle>VIP package</PageTitle>
-@*	@if (showAlert)
-{
-    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
-}
-<EditForm Model="@vip" OnValidSubmit="@Buy">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    <InputRadioGroup @bind-Value="@vip.Choose">
-        @if (movieId != null)
-        {
-            <InputRadio Value="0" />
-            <div>Only this movie</div>
-
-            <br />
-        }
-        <InputRadio checker Value="1" />
-        <div>1 month </div><br />
-        <InputRadio Value="3" />
-        <div>3 month</div> <br />
-        <InputRadio Value="6" />
-        <div>6 month</div> <br />
-        <InputRadio Value="12" />
-        <div>12 month</div> <br />
-    </InputRadioGroup>
-    <button type="submit">Buy</button>
-</EditForm>
-
-
-
-<div>@content</div>
-
-<div>You are Choosing @vip.Choose</div>
-
-@if (content == "Success" && movieId != null)
-{
-    string linkWatch = $"WatchCustomer/{movieId}";
-    <div>
-        <NavLink class="nav-link" href="@linkWatch">Watch</NavLink>
-    </div>
-}
-@if (vipStatus == null)
-{
-    <div>Loadding</div>
-}
-else
-{
-    <div>@vipStatus</div>
-}*@
-
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

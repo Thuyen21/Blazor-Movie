@@ -2,58 +2,6 @@
 @page "/MovieCustomer"
 @using Firebase.Storage
 @attribute [Authorize(Roles = "Customer")]
-@*<input placeholder="Enter your text" @bind-value="@searchString" />
-
-<button class="btn btn-primary" @onclick="Search">Search</button>
-
-@if (movies == null)
-{
-    <div>Loading</div>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Movie Image Link</th>
-                <th>MovieId</th>
-
-                <th>StudioId</th>
-                <th><button class="btn btn-primary" @onclick="GenreSortParm">MovieGenre</button></th>
-                <th><button class="btn btn-primary" @onclick="NameSortParm">MovieName</button></th>
-                <th><button class="btn btn-primary" @onclick="DateSortParm">PremiereDate</button></th>
-                <th></th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in movies)
-            {
-                <tr>
-                    <td><img src="@DicImageLink[item.MovieId]" width="100" height="100"></td>
-
-                    <td>@item.MovieId</td>
-
-                    <td>@item.StudioId</td>
-                    <td>@item.MovieGenre</td>
-                    <td>@item.MovieName</td>
-                    <td>@item.PremiereDate.ToShortDateString()</td>
-                    @{
-                        var linkWatch = $"WatchCustomer/{item.MovieId}";
-                    }
-                    <td>
-                        <NavLink class="nav-link" href="@linkWatch">Watch</NavLink>
-                    </td>
-
-                </tr>
-            }
-        </tbody>
-    </table>
-    <button @onclick="LoadMore">Click to load more</button>
-
-}
-*@
-
 <PageTitle>Movie</PageTitle>
 
 <head>
@@ -68,13 +16,13 @@ else
     <div class="container p-0">
 
         <button @onclick="GenreSortParm" class="btn btn-primary float-right mt-n1" style="margin: 3%; width: 117px">
-            <i class="fas fa-plus"></i>Movie Genre
+            Movie Genre
         </button>
         <button @onclick="NameSortParm" class="btn btn-primary float-right mt-n1" style="margin: 3%; width: 117px">
-            <i class="fas fa-plus"></i>Movie Name
+            Movie Name
         </button>
         <button @onclick="DateSortParm" class="btn btn-primary float-right mt-n1" style="margin: 3%; width: 117px">
-            <i class="fas fa-plus"></i>Movie Date
+            Movie Date
         </button>
         <h1 class="h3 mb-3">Projects Movie</h1>
         <div class="input-group mb-3" style="margin-right: 5%">
@@ -105,8 +53,8 @@ else
                             
                             <div class="card-header px-4 pt-4">
                                 <div class="card-actions float-right">
-                                    <div class="dropdown show">
-                                        <a href="#" data-toggle="dropdown" data-display="static">
+                                    <div class="dropdown show" style="height=25%">
+                                        <a data-toggle="dropdown" data-display="static">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                          stroke-linejoin="round" class="feather feather-more-horizontal align-middle">
@@ -123,23 +71,14 @@ else
                                         </div>
                                     </div>
                                 </div>
-                                <h2 class="card-title mb-0">@item.MovieName</h2>
+                                <h2 class="card-title mb-0" style="display: -webkit-box; max-width: 200px; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">@item.MovieName</h2>
                                 <div class="badge bg-warning my-2">@item.MovieGenre movie</div>
                             </div>
                             <div class="card-body px-4 pt-2">
-                                <p>
+                                <p style="display: -webkit-box; max-width: 200px; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">
                                     [MOVIE DESCRIPTION]
-                                    Nam pretium turpis et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet
-                                    iaculis, ipsum. Sed aliquam
-                                    ultrices mauris.
+                                    @item.MoviesDescription
                                 </p>
-
-                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="rounded-circle mr-1"
-                             alt="Avatar" width="28" height="28">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="rounded-circle mr-1"
-                             alt="Avatar" width="28" height="28">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="rounded-circle mr-1"
-                             alt="Avatar" width="28" height="28">
                              <h5 style="font-weight: 200; font-size: .775rem; justify-content:center">Public since: @item.PremiereDate.ToShortDateString()</h5>
                                 
                             </div>
@@ -178,7 +117,7 @@ else
             } @*end else*@
 
         </div>
-         <a class="text-center w-100 d-block mt-4 font-weight-bold" style="cursor: pointer;" @onclick="LoadMore">See more Feedbacks</a>
+         <a class="text-center w-100 d-block mt-4 font-weight-bold" style="cursor: pointer;" @onclick="LoadMore">See more...</a>
 
     </div>
 </body>

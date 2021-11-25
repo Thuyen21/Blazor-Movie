@@ -1,28 +1,11 @@
-﻿<h3>StudioCreateMovie</h3>
+﻿
 @attribute [Authorize(Roles = "Studio")]
 @page "/CreateStudio"
 
 <PageTitle>Create Movie</PageTitle>
-
-@*<EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
-    MovieGenre
-    <InputText @bind-Value="@movie.MovieGenre" /><br>
-    MovieName
-    <InputText @bind-Value="@movie.MovieName" /><br>
-    PremiereDate
-    <InputDate @bind-Value="@movie.PremiereDate" /><br>
-    MoviesDescription
-    <InputText @bind-Value="@movie.MoviesDescription" /><br>
-    <button type="submit">Submit</button>
-    </EditForm>
-    <div>@content</div>
-*@
-
 <head>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossOrigin="anonymous" />
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossOrigin="anonymous" />
 </head>
 <div class="container">
     <form class="login-form" autocomplete="off" action="#">
@@ -35,15 +18,16 @@
             <input type="text" placeholder="Type name of movie" @bind="@movie.MovieName" />
             <a style="font-weight: 600;">Description</a>
             <textarea style="outline:1px;" rows="9" cols="70" type="text" placeholder="Type description of movie"
-                @bind="@movie.MoviesDescription" />
+                      @bind="@movie.MoviesDescription" />
             <a style="font-weight: 600;">Premiere Date</a>
             <input type="date" @bind="@movie.PremiereDate" />
             <button>Submit</button>
         </EditForm>
-        	@if (showAlert)
-{
-    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
-}
+        @if (showAlert)
+        {
+            <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+        }
+
     </form>
 </div>
 

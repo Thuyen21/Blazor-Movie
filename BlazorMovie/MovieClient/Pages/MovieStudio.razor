@@ -37,41 +37,6 @@
 }
 else
 {
-    @*<table class="table">
-        <thead>
-        <tr>
-        <th>MovieId</th>
-
-        <th>StudioId</th>
-        <th><button class="btn btn-primary" @onclick="GenreSortParm">MovieGenre</button></th>
-        <th><button class="btn btn-primary" @onclick="NameSortParm">MovieName</button></th>
-        <th><button class="btn btn-primary" @onclick="DateSortParm">PremiereDate</button></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var item in movies)
-        {
-        <tr>
-        <td>@item.MovieId</td>
-
-        <td>@item.StudioId</td>
-        <td>@item.MovieGenre</td>
-        <td>@item.MovieName</td>
-        <td>@item.PremiereDate.ToShortDateString()</td>
-        @{
-        var linkEdit = $"EditMovieStudio/{item.MovieId}"; var linkBan = $"DeleteMovieStudio/{item.MovieId}"; var linkStatus =
-        $"StatusStudio/{item.MovieId}";
-        }
-        <td><NavLink class="nav-link" href="@linkEdit">Edit</NavLink></td>
-        <td><NavLink class="nav-link" href="@linkBan">Delete</NavLink> </td>
-        <td><NavLink class="nav-link" href="@linkStatus">Status</NavLink> </td>
-        </tr>
-        }
-        </tbody>
-        </table>*@
     <div class=container>
         <button class="btn btn-primary" @onclick="GenreSortParm">MovieGenre</button>
         <button class="btn btn-primary" @onclick="NameSortParm">MovieName</button>
@@ -87,16 +52,16 @@ else
                     <div class="card h-100">
                         @if(DicImageLink.ContainsKey(item.MovieId))
                         {
-                            <img src="@DicImageLink[item.MovieId]" class="card-img-top" alt="..." />
+                            <img src="@DicImageLink[item.MovieId]" class="card-img-top" alt="..." style="width=320px; height: 280px"/>
                         }
                         else
                         {
-                            <img class="card-img-top" alt="..." />
+                            <img class="card-img-top" alt="..." style="width=320px; height: 280px"/>
                         }
                         
                         <div class="card-body">
-                            <h1 class="card-title">@item.MovieName</h1>
-                            <p class="card-text">
+                            <h1 class="card-title" style="display: -webkit-box; max-width: 200px; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">@item.MovieName</h1>
+                            <p class="card-text" style="display: -webkit-box; max-width: 200px; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">
                                 @item.MoviesDescription
                             </p>
                             <h5 class="card-text">Gender: @item.MovieGenre</h5>

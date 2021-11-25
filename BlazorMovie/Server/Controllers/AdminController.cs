@@ -344,7 +344,7 @@ public class AdminController : Controller
 
         }
         string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
-        string redirect = hostname + "/Admin/Done";
+        string redirect = hostname;
         return Redirect(redirect);
     }
     [HttpPost("DeleteMovie")]
