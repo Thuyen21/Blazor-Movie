@@ -4,12 +4,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-	  <UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
-	  <SignAssembly>true</SignAssembly>
-	  <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-	  <Version>3.0</Version>
-	  <AssemblyVersion>3.0.0.*</AssemblyVersion>
-	  <Deterministic>false</Deterministic>
+    <UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
+	<SignAssembly>true</SignAssembly>
+	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+	<Version>3.3</Version>
+	<AssemblyVersion>3.3.1.*</AssemblyVersion>
+	<Deterministic>false</Deterministic>
+	<AnalysisLevel>preview</AnalysisLevel>
   </PropertyGroup>
 
 

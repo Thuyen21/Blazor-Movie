@@ -1,14 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TypeScriptTarget>ESNext</TypeScriptTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TypeScriptTarget>ESNext</TypeScriptTarget>
+  </PropertyGroup>
+
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-	  <RunAOTCompilation>true</RunAOTCompilation>
-	  <SignAssembly>true</SignAssembly>
-	  <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-	  <UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
+	<RunAOTCompilation>true</RunAOTCompilation>
+	<ImplicitUsings>enable</ImplicitUsings>
+	<SignAssembly>true</SignAssembly>
+	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+	<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
+	<PlatformTarget>AnyCPU</PlatformTarget>
+	<AnalysisLevel>preview</AnalysisLevel>
   </PropertyGroup>
 
   <ItemGroup>
