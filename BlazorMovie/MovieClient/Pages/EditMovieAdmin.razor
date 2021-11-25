@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
     @*    @if (showAlert)
         {
@@ -27,9 +28,34 @@
         {
             if (more)
             {
-                <div class="iframe">
-                    <iframe src="@linkIframe" height="800" width="1200"></iframe>
+                <div class="container" style="width=720px; height=480px">
+    <div class="row">
+        <div class="col-md-4">
+            <form action="@(_httpClient.BaseAddress)Admin/MovieUpload/@movie.MovieId/@movie.StudioId" enctype="multipart/form-data" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger">
+                    If it is not a movie or image correct MIME it
+                    will not be uploaded.
                 </div>
+
+                <div class="form-group">
+                    <label asp-for="ImageFile" class="control-label">Image</label>
+                    <input id="ImageFileUp" name="ImageFileUp" class="form-control" type="file" />
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="MovieFile" class="control-label">Movie</label>
+                    <input id="MovieFileUp" name="MovieFileUp" class="form-control" type="file" />
+                    <span asp-validation-for="MovieFile" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+            <span id="spnMessage"></span>
+        </div>
+    </div>
+</div>
                 
             }
             else
@@ -96,10 +122,8 @@
                             <div>Image Up</div>
                             <InputFile OnChange="OnChooseImageFile" />
 
-
-                            <div>If your upload more 500MB click this button</div>
                             <div class="button input-box">
-                                <input type="submit" @onclick="@Upload" value="Upload">
+                                <input type="submit" @onclick="@Upload" value="For app version no limited if web version click this button for upload file more then 500MB">
                             </div>
                             @*<button type="submit" @onclick="@Upload">Upload</button>*@
 
