@@ -2,8 +2,6 @@
 @page "/MovieCustomer"
 @using Firebase.Storage
 @attribute [Authorize(Roles = "Customer")]
-
-
 <PageTitle>Movie</PageTitle>
 
 <head>
@@ -18,13 +16,13 @@
     <div class="container p-0">
 
         <button @onclick="GenreSortParm" class="btn btn-primary float-right mt-n1" style="margin: 3%; width: 117px">
-            Movie Genre
+            <i class="fas fa-plus"></i>Movie Genre
         </button>
         <button @onclick="NameSortParm" class="btn btn-primary float-right mt-n1" style="margin: 3%; width: 117px">
-            Movie Name
+            <i class="fas fa-plus"></i>Movie Name
         </button>
         <button @onclick="DateSortParm" class="btn btn-primary float-right mt-n1" style="margin: 3%; width: 117px">
-            Movie Date
+            <i class="fas fa-plus"></i>Movie Date
         </button>
         <h1 class="h3 mb-3">Projects Movie</h1>
         <div class="input-group mb-3" style="margin-right: 5%">
