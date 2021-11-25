@@ -12,7 +12,7 @@ This project was built on .NET 6
 
 ## Current News
 
-- November 16, 2021 - [.NET Blazor Movie 1.3](https://github.com/Thuyen21/Blazor-Movie-/tree/1.3)
+- November 25, 2021 - [.NET Blazor Movie 1.3](https://github.com/Thuyen21/Blazor-Movie-/tree/1.3)
 - November 16, 2021 - [.NET Blazor Movie 1.2](https://github.com/Thuyen21/Blazor-Movie-/tree/1.2)
 - November 11, 2021 - [.NET Blazor Movie 1.1](https://github.com/Thuyen21/Blazor-Movie-/tree/1.1)
 - November 9, 2021 - [.NET Blazor Movie 1.0](https://github.com/Thuyen21/Blazor-Movie-/tree/1.0)
