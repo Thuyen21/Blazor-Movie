@@ -5,4 +5,4 @@ WORKDIR /app
 
 COPY . .
 
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet BlazorApp3.Server.dll
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet BlazorMovie.Server.dll
