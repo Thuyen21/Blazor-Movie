@@ -24,7 +24,7 @@ jobs:
         run: dotnet tool install -g dotnet-format --version "7.0.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
 
       - name: Install tools
-        run: dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
+        run: dotnet workload install android ios maccatalyst tvos macos maui wasm-tools android-aot
 
       # - name: Dotnet Restore
       #   run: dotnet restore
