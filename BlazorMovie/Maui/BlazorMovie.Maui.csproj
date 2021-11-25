@@ -14,8 +14,7 @@
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
 		<SignAssembly>True</SignAssembly>
 		<AnalysisLevel>preview</AnalysisLevel>
-		<AotAssemblies>true</AotAssemblies>
-		<RunAOTCompilation>true</RunAOTCompilation>
+
 		
 		<!-- Display name -->
 		<ApplicationTitle>Maui</ApplicationTitle>

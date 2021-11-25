@@ -20,7 +20,6 @@
 	<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
 	<PlatformTarget>AnyCPU</PlatformTarget>
 	<AnalysisLevel>preview</AnalysisLevel>
-	<AotAssemblies>true</AotAssemblies>
   </PropertyGroup>
 
   <ItemGroup>

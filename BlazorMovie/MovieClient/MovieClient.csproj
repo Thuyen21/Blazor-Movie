@@ -11,8 +11,6 @@
 	<AssemblyVersion>3.3.1.*</AssemblyVersion>
 	<Deterministic>false</Deterministic>
 	<AnalysisLevel>preview</AnalysisLevel>
-	<AotAssemblies>true</AotAssemblies>
-	<RunAOTCompilation>true</RunAOTCompilation>
   </PropertyGroup>
 
 
