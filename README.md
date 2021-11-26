@@ -53,7 +53,7 @@ For Blazor Run
 Install global workloads
 
 ```dotnetcli
-dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
+dotnet workload restore BlazorMovie.sln
 ```
 
 Build and launch Visual Studio using global workloads
