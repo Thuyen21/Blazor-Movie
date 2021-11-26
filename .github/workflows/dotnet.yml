@@ -11,7 +11,8 @@ jobs:
     uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
     with:
       username: crt
-      token: crt
+    secrets:
+      envPAT: ${{ secrets.envPAT }}
   build:
     needs: setup
     runs-on: windows-2022
