@@ -15,7 +15,6 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: |
-            ~/
             C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
           key: ${{ runner.os }}-dotnet-6.0.100
           restore-keys: |
