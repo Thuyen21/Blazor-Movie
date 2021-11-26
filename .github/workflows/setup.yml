@@ -1,0 +1,33 @@
+name: setup
+
+jobs:
+  setup:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/cache@v2
+        with:
+          path: |
+            C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
+          key: ${{ runner.os }}-dotnet-6.0.100
+          restore-keys: |
+            ${{ runner.os }}-dotnet-6.0.100
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0.x"
+          include-prerelease: true
+
+      - uses: actions/setup-java@v2
+        with:
+          distribution: "adopt"
+          java-version: "11"
+          check-latest: true
+
+      - name: Install tools
+        run: |
+          dotnet workload restore
+        # dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
+      - name: Restore dependencies
+        run: dotnet restore

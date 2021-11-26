@@ -7,75 +7,12 @@ on:
     branches: [main]
 
 jobs:
-  setup:
-    runs-on: windows-2022
-    steps:
-      - uses: actions/checkout@main
-      - uses: actions/cache@v2
-        with:
-          path: |
-            C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
-          key: ${{ runner.os }}-dotnet-6.0.100
-          restore-keys: |
-            ${{ runner.os }}-dotnet-6.0.100
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: "6.0.x"
-          include-prerelease: true
-
-      - uses: actions/setup-java@v2
-        with:
-          distribution: "adopt"
-          java-version: "11"
-          check-latest: true
-
-      - name: Install tools
-        run: |
-          dotnet workload restore
-        # dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
-      - name: Restore dependencies
-        run: dotnet restore
-
   build:
     needs: setup
     runs-on: windows-2022
     steps:
-      - uses: actions/checkout@main
+      - uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@main
       # - name: Build
       #   run: dotnet build --no-restore
       - name: Test
         run: dotnet test --no-restore
-
-  format:
-    needs: setup
-    runs-on: windows-2022
-    steps:
-      - uses: actions/checkout@main
-      - name: Install format
-        run: dotnet tool install -g dotnet-format --version "7.0.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
-
-      - name: Formating
-        run: |
-          dotnet format --no-restore --include-generated -v diag
-
-      - name: Commit files
-        if: steps.format.outputs.has-changes == 'true'
-        run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -a -m 'Automated dotnet-format update'
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@main
-        with:
-          title: "[housekeeping] Automated PR to fix formatting errors"
-          body: |
-            Automated PR to fix formatting errors
-          committer: GitHub <noreply@github.com>
-          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
-          labels: t/housekeeping ♻︎
-          assignees: Thuyen21
-          reviewers: Thuyen21
-          branch: housekeeping/fix-codeformatting
