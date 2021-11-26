@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: windows-2022
     steps:
-      - uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
+      - uses: ./.github/actions/setup@test-action
         with:
           username: ${{ inputs.username }}
           token: ${{ secrets.envPAT }}
