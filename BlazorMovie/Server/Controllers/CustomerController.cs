@@ -312,7 +312,7 @@ public class CustomerController : Controller
             {
                 return BadRequest("Not enough cash");
             }
-            if((await db.Collection("Buy").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).WhereEqualTo("MovieId", vip.Id).GetSnapshotAsync()).Documents.Count > 0)
+            if ((await db.Collection("Buy").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).WhereEqualTo("MovieId", vip.Id).GetSnapshotAsync()).Documents.Count > 0)
             {
                 return BadRequest("Already buy this movie");
             }
@@ -322,7 +322,7 @@ public class CustomerController : Controller
             Task addMoneyMovie = Task.Run(async () =>
             {
                 var snap = await db.Collection("Movie").WhereEqualTo("MovieId", vip.Id).GetSnapshotAsync();
-               await  snap.Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic> { { DateTime.UtcNow.ToString("MM yyyy"), snap.Documents[0].GetValue<double>(DateTime.UtcNow.ToString("MM yyyy")) + 4 } });
+                await snap.Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic> { { DateTime.UtcNow.ToString("MM yyyy"), snap.Documents[0].GetValue<double>(DateTime.UtcNow.ToString("MM yyyy")) + 4 } });
             });
             await Task.WhenAll(buyTask, cashTask, addMoneyMovie);
         }
