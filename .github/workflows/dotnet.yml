@@ -9,7 +9,7 @@ on:
 jobs:
   setup:
     runs-on: windows-2022
-        steps:
+      steps:
       - uses: actions/checkout@main
       - uses: actions/cache@v2
         with:
@@ -52,7 +52,7 @@ jobs:
     steps:
       - name: Install format
         run: dotnet tool install -g dotnet-format --version "7.0.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
-        
+
       - name: Formating
         run: |
           dotnet format --no-restore --include-generated -v diag
