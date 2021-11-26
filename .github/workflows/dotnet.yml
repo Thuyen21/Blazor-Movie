@@ -9,7 +9,7 @@ on:
 jobs:
   setup:
     runs-on: windows-2022
-      steps:
+    steps:
       - uses: actions/checkout@main
       - uses: actions/cache@v2
         with:
@@ -46,6 +46,7 @@ jobs:
       #   run: dotnet build --no-restore
       - name: Test
         run: dotnet test --no-restore
+        
   format:
     needs: setup
     runs-on: windows-2022
