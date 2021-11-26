@@ -18,10 +18,6 @@ jobs:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@main
-      - uses: Thuyen21/Blazor-Movie-@test-action
-        with:
-          username: ${{ inputs.username }}
-          token: ${{ secrets.envPAT }}
       # - name: Build
       #   run: dotnet build --no-restore
       - name: Test
