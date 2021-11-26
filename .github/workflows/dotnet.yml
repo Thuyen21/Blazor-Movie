@@ -13,12 +13,14 @@ jobs:
       username: crt
     secrets:
       envPAT: ${{ secrets.envPAT }}
-  build:
-    needs: setup
-    runs-on: windows-2022
     steps:
       - uses: actions/checkout@main
-      # - name: Build
-      #   run: dotnet build --no-restore
-      - name: Test
-        run: dotnet test --no-restore
+  # build:
+  #   needs: setup
+  #   runs-on: windows-2022
+  #   steps:
+  #     - uses: actions/checkout@main
+  #     # - name: Build
+  #     #   run: dotnet build --no-restore
+  #     - name: Test
+  #       run: dotnet test --no-restore
