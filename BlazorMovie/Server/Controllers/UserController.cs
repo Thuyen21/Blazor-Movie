@@ -32,9 +32,9 @@ public class UserController : Controller
         {
             userCredential = await client.SignInWithEmailAndPasswordAsync(logIn.Email, logIn.Password);
         }
-        catch (FirebaseAuthHttpException ex)
+        catch
         {
-            return BadRequest(ex.Reason.ToString());
+            return BadRequest("Wrong email or password");
         }
         User user = userCredential.User;
         Query usersRef = db.Collection("Account").WhereEqualTo("Id", user.Uid);
