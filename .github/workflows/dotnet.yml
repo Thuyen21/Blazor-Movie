@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@main
-      - uses: ./.github/workflows/setup.yml@test-action
+      - uses: Thuyen21/Blazor-Movie-@test-action
         with:
           username: ${{ inputs.username }}
           token: ${{ secrets.envPAT }}
