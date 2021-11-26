@@ -1,4 +1,5 @@
 name: setup
+on: [push, pull_request]
 
 jobs:
   setup:
