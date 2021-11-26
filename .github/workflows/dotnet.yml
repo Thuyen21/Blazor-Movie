@@ -24,9 +24,10 @@ jobs:
           java-version: "11"
           check-latest: true
 
-      # - name: Install tools
-      #   run: |
-      #     dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
+       - name: Install tools
+         run: |
+           dotnet workload install wasm-tools 
+          #  android ios maccatalyst tvos macos maui
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
