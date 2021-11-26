@@ -8,9 +8,9 @@ on:
 
 jobs:
   build:
-    uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
     runs-on: windows-2022
     steps:
+      - uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
       # - name: Build
       #   run: dotnet build --no-restore
       - name: Test
