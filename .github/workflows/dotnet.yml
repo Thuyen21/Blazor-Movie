@@ -10,6 +10,7 @@ jobs:
   call-setup:
     uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
   build:
+    runs-on: windows-2022
     steps:
       # - name: Build
       #   run: dotnet build --no-restore
