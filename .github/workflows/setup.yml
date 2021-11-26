@@ -1,13 +1,9 @@
 name: setup
 on:
-  workflow_call:
-    inputs:
-      username:
-        required: true
-        type: string
-    secrets:
-      envPAT:
-        required: true
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   setup:
@@ -40,3 +36,5 @@ jobs:
         # dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
       - name: Restore dependencies
         run: dotnet restore
+  build:
+    uses: Thuyen21/Blazor-Movie-/.github/workflows/dotnet.yml@test-action

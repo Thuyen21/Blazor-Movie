@@ -1,30 +1,13 @@
 name: .NET
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  workflow_call:
 
 jobs:
-  setup:
-    uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
-    with:
-      username: crt
-    secrets:
-      envPAT: ${{ secrets.envPAT }}
-
   build:
     needs: setup
     runs-on: windows-2022
-    
     steps:
-      uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
-      with:
-        username: crt
-      secrets:
-        envPAT: ${{ secrets.envPAT }}
-      - uses: actions/checkout@main
       # - name: Build
       #   run: dotnet build --no-restore
       - name: Test
