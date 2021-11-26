@@ -12,6 +12,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.nuget/packages
+            C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
@@ -27,7 +36,7 @@ jobs:
       - name: Install tools
         run: |
           dotnet workload restore
-        #  android ios maccatalyst tvos macos maui wasm-tools
+        # dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
       - name: Restore dependencies
         run: dotnet restore
       # - name: Build
