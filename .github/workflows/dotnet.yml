@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-    runs-on: windows-2022
     uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@main
     steps:
       # - name: Build
