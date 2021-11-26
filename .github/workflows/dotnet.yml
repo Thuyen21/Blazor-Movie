@@ -8,7 +8,7 @@ on:
 
 jobs:
   call-setup:
-    uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@main
+    uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
   build:
     steps:
       # - name: Build
