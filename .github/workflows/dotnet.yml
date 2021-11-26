@@ -19,8 +19,10 @@ jobs:
           include-prerelease: true
       - uses: actions/setup-java@v2
         with:
-          distribution: "temurin"
+          distribution: "adopt"
           java-version: "11"
+          check-latest: true
+
       - name: Install tools
         run: |
           dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
