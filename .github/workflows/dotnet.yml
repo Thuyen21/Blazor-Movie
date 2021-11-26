@@ -8,7 +8,7 @@ on:
 
 jobs:
   setup:
-    - uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
+    uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
       with:
         username: ${{ inputs.username }}
         token: ${{ secrets.token }}
