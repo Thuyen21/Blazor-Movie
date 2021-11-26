@@ -9,12 +9,22 @@ jobs:
     runs-on: windows-2022
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@main
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
+          key: ${{ runner.os }}-dotnet-6.0.100
+          restore-keys: |
+            ${{ runner.os }}-dotnet-6.0.100
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 6.x
+          dotnet-version: "6.0.x"
           include-prerelease: true
+
       - uses: actions/setup-java@v2
         with:
           distribution: "adopt"
@@ -25,10 +35,11 @@ jobs:
         run: dotnet tool install -g dotnet-format --version "7.0.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
 
       - name: Install tools
-        run: dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
+        run: dotnet workload restore
 
-      # - name: Dotnet Restore
-      #   run: dotnet restore
+      - name: Dotnet Restore
+        run: dotnet restore
+
       - name: Formating
         run: |
           dotnet format --no-restore --include-generated -v diag
@@ -41,7 +52,7 @@ jobs:
           git commit -a -m 'Automated dotnet-format update'
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@main
         with:
           title: "[housekeeping] Automated PR to fix formatting errors"
           body: |
