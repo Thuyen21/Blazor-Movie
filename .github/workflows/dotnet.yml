@@ -18,9 +18,9 @@ jobs:
             ~/
             $env:LocalAppData\Microsoft\dotnet
           #   C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
-          key: ${{ runner.os }}-dotnet
+          key: ${{ runner.os }}-dotnet-6.0.100
           restore-keys: |
-            ${{ runner.os }}-dotnet
+            ${{ runner.os }}-dotnet-6.0.100
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
