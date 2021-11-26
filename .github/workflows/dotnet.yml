@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@main
-      - uses: ./.github/actions/setup.yml
+      - uses: ./.github/workflows/setup.yml
         with:
           username: ${{ inputs.username }}
           token: ${{ secrets.envPAT }}
