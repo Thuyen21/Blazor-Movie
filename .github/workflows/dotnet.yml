@@ -10,6 +10,7 @@ jobs:
   build:
     runs-on: windows-2022
     steps:
+      - uses: actions/checkout@main
       - uses: ./.github/actions/setup.yml
         with:
           username: ${{ inputs.username }}
