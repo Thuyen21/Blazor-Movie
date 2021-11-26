@@ -36,7 +36,7 @@ jobs:
       - name: Install tools
         run: |
           dotnet workload restore
-     #     dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
+         # dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
       - name: Restore dependencies
         run: dotnet restore
        - name: Build
