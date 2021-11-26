@@ -7,9 +7,8 @@ on:
     branches: [main]
 
 jobs:
-  call-setup:
-    uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
   build:
+    uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
     runs-on: windows-2022
     steps:
       # - name: Build
