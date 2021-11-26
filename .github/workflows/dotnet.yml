@@ -7,8 +7,9 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  call-setup:
     uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@main
+  build:
     steps:
       # - name: Build
       #   run: dotnet build --no-restore
