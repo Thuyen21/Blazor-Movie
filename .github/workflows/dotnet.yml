@@ -16,7 +16,8 @@ jobs:
         with:
           path: |
             ~/
-            C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
+            $env:LocalAppData\Microsoft\dotnet
+          #   C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
           key: ${{ runner.os }}-dotnet
           restore-keys: |
             ${{ runner.os }}-dotnet
@@ -36,10 +37,10 @@ jobs:
       - name: Install tools
         run: |
           dotnet workload restore
-         # dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
+        # dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
       - name: Restore dependencies
         run: dotnet restore
-       - name: Build
-         run: dotnet build --no-restore
+      - name: Build
+        run: dotnet build --no-restore
       - name: Test
         run: dotnet test --no-restore
