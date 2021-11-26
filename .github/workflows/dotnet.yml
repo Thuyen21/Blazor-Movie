@@ -10,7 +10,7 @@ jobs:
   setup:
     uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
     with:
-      username: ${{ inputs.username }}
+      username: crt1
       token: ${{ secrets.token }}
   build:
     needs: setup
