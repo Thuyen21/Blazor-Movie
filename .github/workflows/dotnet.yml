@@ -7,7 +7,10 @@ on:
     branches: [main]
 
 jobs:
+  setup:
+    uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
   build:
+    needs: setup
     runs-on: windows-2022
     steps:
       - uses: actions/checkout@main
