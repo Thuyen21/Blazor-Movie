@@ -11,6 +11,9 @@ jobs:
     runs-on: windows-2022
     steps:
       - uses: Thuyen21/Blazor-Movie-/.github/workflows/setup.yml@test-action
+        with:
+          username: ${{ inputs.username }}
+          token: ${{ secrets.token }}
       # - name: Build
       #   run: dotnet build --no-restore
       - name: Test
