@@ -13,11 +13,11 @@ public partial class NavMenu
                 await JS.InvokeVoidAsync("NavMenu");
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            
+
         }
-        
+
     }
 
     private bool collapseNavMenu = true;
