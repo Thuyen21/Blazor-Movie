@@ -7,8 +7,8 @@
     <UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
 	<SignAssembly>true</SignAssembly>
 	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-	<Version>3.3</Version>
-	<AssemblyVersion>3.3.1.*</AssemblyVersion>
+	<Version>3.5</Version>
+	<AssemblyVersion>3.5.0.*</AssemblyVersion>
 	<Deterministic>false</Deterministic>
 	<AnalysisLevel>preview</AnalysisLevel>
   </PropertyGroup>
