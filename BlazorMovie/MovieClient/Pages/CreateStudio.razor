@@ -12,16 +12,16 @@
         <EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
             <DataAnnotationsValidator />
             <ValidationSummary />
-            <a style="font-weight: 600;">Gender </a>
+            <a style="font-weight: 500;">Gender </a>
             <input type="text" placeholder="Type gender of movie" @bind="@movie.MovieGenre" />
-            <a style="font-weight: 600;">Name </a>
+            <a style="font-weight: 500;">Name </a>
             <input type="text" placeholder="Type name of movie" @bind="@movie.MovieName" />
-            <a style="font-weight: 600;">Description</a>
+            <a style="font-weight: 500;">Description</a>
             <textarea style="outline:1px;" rows="9" cols="70" type="text" placeholder="Type description of movie"
                       @bind="@movie.MoviesDescription" />
             <a style="font-weight: 600;">Premiere Date</a>
             <input type="date" @bind="@movie.PremiereDate" />
-            <button>Submit</button>
+            <button class="button">Submit</button>
         </EditForm>
         @if (showAlert)
         {

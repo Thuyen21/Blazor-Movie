@@ -61,10 +61,10 @@ select {
   -webkit-appearance: none;
 }
 
-button {
+.button {
   color: #fff;
   background: #7d2ae8;
-  border-radius: 6px;
+  border-radius: 12px;
   padding: 0;
   cursor: pointer;
   transition: all 0.4s ease;
@@ -73,11 +73,11 @@ button {
 .login-form {
   max-width: 400px;
   margin: 0 auto;
-  padding: 1.5rem;
+  padding: -1.5rem;
 }
 
 .login-form input {
-  padding: 1.5rem;
+  padding: 0.8rem;
   border: 1px solid #eee;
   color: #333;
   border-radius: 4px;
@@ -114,7 +114,7 @@ button {
 
 .login-form button {
   width: 100%;
-  padding: 1.5rem;
+  padding: 0.8rem;
   border-radius: 4px;
   color: white;
   /*background-color: var(--primary);*/

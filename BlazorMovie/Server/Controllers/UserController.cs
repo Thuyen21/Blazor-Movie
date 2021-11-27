@@ -71,9 +71,6 @@ public class UserController : Controller
     [HttpGet("GetCurrentUser")]
     public async Task<ActionResult<AccountManagementModel>> GetCurrentUser()
     {
-        //var logInModel = new LogInModel();
-        //if (User.Identity.IsAuthenticated) logInModel.Email = User.FindFirstValue(ClaimTypes.Name);
-        //return await Task.FromResult(logInModel);
         AccountManagementModel acc = new();
         if (User.Identity.IsAuthenticated)
         {

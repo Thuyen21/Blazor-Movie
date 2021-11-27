@@ -6,10 +6,18 @@ public partial class NavMenu
 {
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
+        try
         {
-            await JS.InvokeVoidAsync("NavMenu");
+            if (firstRender)
+            {
+                await JS.InvokeVoidAsync("NavMenu");
+            }
         }
+        catch (Exception ex)
+        {
+            
+        }
+        
     }
 
     private bool collapseNavMenu = true;
