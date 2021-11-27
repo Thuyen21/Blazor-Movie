@@ -308,13 +308,23 @@ public class CustomerController : Controller
         if (vip.Choose == 0 && vip.Id != null)
         {
             if ((await db.Collection("Account").
-                        WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>("Wallet") < 0.1)
+                        WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>("Wallet") < 4.99)
             {
                 return BadRequest("Not enough cash");
             }
+            if ((await db.Collection("Buy").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).WhereEqualTo("MovieId", vip.Id).GetSnapshotAsync()).Documents.Count > 0)
+            {
+                return BadRequest("Already buy this movie");
+            }
             Task<DocumentReference>? buyTask = Task.Run(async () => await db.Collection("Buy").AddAsync(new Dictionary<string, dynamic>() { { "MovieId", vip.Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow } }));
+
             Task<WriteResult>? cashTask = Task.Run(async () => await (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Wallet", (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>("Wallet") - 4.99 } }));
-            await Task.WhenAll(buyTask, cashTask);
+            Task addMoneyMovie = Task.Run(async () =>
+            {
+                var snap = await db.Collection("Movie").WhereEqualTo("MovieId", vip.Id).GetSnapshotAsync();
+                await snap.Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic> { { DateTime.UtcNow.ToString("MM yyyy"), snap.Documents[0].GetValue<double>(DateTime.UtcNow.ToString("MM yyyy")) + 4 } });
+            });
+            await Task.WhenAll(buyTask, cashTask, addMoneyMovie);
         }
         else
         {
