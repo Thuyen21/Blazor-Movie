@@ -3,17 +3,17 @@
 function NavMenu() {
     var sidebar = document.querySelector(".sidebar");
     var closeBtn = document.querySelector("#btn");
-    var searchBtn = document.querySelector(".bx-search");
+    //var searchBtn = document.querySelector(".bx-search");
 
     closeBtn.addEventListener("click", (e) => {
         sidebar.classList.toggle("open");
         menuBtnChange();//calling the function(optional)
     });
 
-    searchBtn.addEventListener("click", (e) => { // Sidebar open when you click on the search iocn
-        sidebar.classList.toggle("open");
-        menuBtnChange(); //calling the function(optional)
-    });
+    //searchBtn.addEventListener("click", (e) => { // Sidebar open when you click on the search iocn
+    //    sidebar.classList.toggle("open");
+    //    menuBtnChange(); //calling the function(optional)
+    //});
 
     // following are the code to change sidebar button(optional)
     function menuBtnChange() {

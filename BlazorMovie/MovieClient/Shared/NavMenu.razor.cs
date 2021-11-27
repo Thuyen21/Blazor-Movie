@@ -15,7 +15,6 @@ public partial class NavMenu
         }
         catch (Exception ex)
         {
-
             
         }
         
