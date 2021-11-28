@@ -28,41 +28,41 @@
         {
             if (more)
             {
-                
-                    <div class="row">
-                        <div class="col-md">
-                            <form action="@(_httpClient.BaseAddress)Admin/MovieUpload/@movie.MovieId/@movie.StudioId" enctype="multipart/form-data" method="post">
-                                <div asp-validation-summary="ModelOnly" class="text-danger">
-                                    If it is not a movie or image correct MIME it
-                                    will not be uploaded.
-                                </div>
 
-                                <div class="form-group">
-                                    <label asp-for="ImageFile" class="control-label">Image</label>
-                                    <input id="ImageFileUp" name="ImageFileUp" class="form-control" type="file" />
-                                    <span asp-validation-for="ImageFile" class="text-danger"></span>
-                                </div>
+                <div class="row">
+                    <div class="col-md">
+                        <form action="@(_httpClient.BaseAddress)Admin/MovieUpload/@movie.MovieId/@movie.StudioId" enctype="multipart/form-data" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger">
+                                If it is not a movie or image correct MIME it
+                                will not be uploaded.
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="ImageFile" class="control-label">Image</label>
+                                <input id="ImageFileUp" name="ImageFileUp" class="form-control" type="file" />
+                                <span asp-validation-for="ImageFile" class="text-danger"></span>
+                            </div>
 
 
-                               @* <div class="iframe">
-                                    <iframe src="@linkIframe"></iframe>
+                            @* <div class="iframe">
+                                <iframe src="@linkIframe"></iframe>
                                 </div>*@
 
 
-                                <div class="form-group">
-                                    <label asp-for="MovieFile" class="control-label">Movie</label>
-                                    <input id="MovieFileUp" name="MovieFileUp" class="form-control" type="file" />
-                                    <span asp-validation-for="MovieFile" class="text-danger"></span>
-                                </div>
+                            <div class="form-group">
+                                <label asp-for="MovieFile" class="control-label">Movie</label>
+                                <input id="MovieFileUp" name="MovieFileUp" class="form-control" type="file" />
+                                <span asp-validation-for="MovieFile" class="text-danger"></span>
+                            </div>
 
-                                <div class="form-group">
-                                    <input type="submit" value="Save" class="btn btn-primary" />
-                                </div>
-                            </form>
-                            <span id="spnMessage"></span>
-                        </div>
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                        </form>
+                        <span id="spnMessage"></span>
                     </div>
-               
+                </div>
+
 
             }
             else
@@ -123,19 +123,36 @@
                                 </div>
                             </form>
                             <div>After pick a file it auto Upload. If it is not a movie or image correct MIME it will not be uploaded.</div>
-                            <div>Movie Up</div>
-                            <InputFile OnChange="OnChooseMovieFile" />
+                            @*<div>Movie Up</div>*@
+                            <InputFile id="fileMovieInput" hidden OnChange="OnChooseMovieFile" />
+                            <MudButton HtmlTag="label"
+                               Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               StartIcon="@Icons.Filled.CloudUpload"
+                               for="fileMovieInput">
+                                Upload Movie File
+                            </MudButton>
 
-                            <div>Image Up</div>
-                            <InputFile OnChange="OnChooseImageFile" />
-
+                            @*<div>Image Up</div>*@
+                            <InputFile id="filePictureInput" hidden OnChange="OnChooseImageFile" />
+                            <MudButton HtmlTag="label"
+                               Variant="Variant.Filled"
+                               Color="Color.Secondary"
+                               Icon="@Icons.Filled.Image"
+                               for="filePictureInput">
+                                Upload Picture File
+                            </MudButton>
                             <div class="button input-box">
-                                <input type="submit" @onclick="@Upload" value="For app version no limited if web version click this button for upload file more then 500MB">
+                                <MudChip Color="Color.Primary">Movie @mp</MudChip>
+                                <MudChip Color="Color.Secondary">Picture @ip</MudChip>
                             </div>
-                            @*<button type="submit" @onclick="@Upload">Upload</button>*@
-
-                            <div>@mp</div>
-                            <div>@ip</div>
+                         
+                            
+                            <div>For app version no limited if web version click this button for upload file more then 500MB</div> 
+                            <div class="button input-box">
+                                <input type="submit" @onclick="@Upload" value="Upload Movie High Capacity">
+                            </div>
+                            @*<button type="submit" @onclick="@Upload">Upload Movie High Capacity</button>*@
                         </div>
                     </div>
                 </div>
