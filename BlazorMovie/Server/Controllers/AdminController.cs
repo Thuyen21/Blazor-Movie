@@ -19,11 +19,13 @@ public class AdminController : Controller
     private readonly IWebHostEnvironment env;
     private readonly FirestoreDb db;
     private readonly FirebaseAuthClient client;
-    public AdminController(IWebHostEnvironment env, FirestoreDb db, FirebaseAuthClient client)
+    private readonly FirebaseAuthConfig config;
+    public AdminController(IWebHostEnvironment env, FirestoreDb db, FirebaseAuthConfig config)
     {
         this.env = env;
         this.db = db;
-        this.client = client;
+        this.config = config;
+        this.client = new FirebaseAuthClient(config);
     }
 
     [HttpGet("AccountManagement/{searchString?}/{sortOrder?}/{index:int:min(0)}")]
