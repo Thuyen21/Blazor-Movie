@@ -17,10 +17,12 @@ public class UserController : Controller
 
     private readonly FirestoreDb db;
     private readonly FirebaseAuthClient client;
-    public UserController(FirestoreDb db, FirebaseAuthClient client)
+    private readonly FirebaseAuthConfig config;
+    public UserController(FirestoreDb db, FirebaseAuthConfig config)
     {
         this.db = db;
-        this.client = client;
+        this.client = new FirebaseAuthClient(config);
+        this.config = config;
     }
 
     private static UserCredential? userCredential;
@@ -36,6 +38,7 @@ public class UserController : Controller
         {
             return BadRequest("Wrong email or password");
         }
+        
         User user = userCredential.User;
         Query usersRef = db.Collection("Account").WhereEqualTo("Id", user.Uid);
         QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
@@ -51,7 +54,7 @@ public class UserController : Controller
                     new Claim(ClaimTypes.Name, acc.Name),
                     new Claim(ClaimTypes.Role, acc.Role),
                     new Claim(ClaimTypes.DateOfBirth, acc.DateOfBirth.ToShortDateString()),
-                    new Claim("Token", await user.GetIdTokenAsync(true))
+                    new Claim("Token", await client.User.GetIdTokenAsync(true))
 
             }, "serverAuth");
         //create claimsPrincipal
@@ -64,6 +67,7 @@ public class UserController : Controller
     [HttpGet("Logout")]
     public async Task<ActionResult> LogOut()
     {
+        await client.SignOutAsync();
         await HttpContext.SignOutAsync();
         return Ok();
     }

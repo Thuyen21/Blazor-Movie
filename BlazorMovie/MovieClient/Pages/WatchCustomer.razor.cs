@@ -52,10 +52,11 @@ public partial class WatchCustomer
         {
             tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
         });
-        string token = new string(tokena);
+        
         try
         {
             await Task.WhenAll(movieTask, commentTask, sameDeviceTask, canWatchTask, tokenaTask);
+            
         }
         catch
         {
@@ -64,16 +65,17 @@ public partial class WatchCustomer
             showAlert = true;
             return;
         }
+        string token = new string(tokena);
 
         if (canWatch == true)
         {
             try
             {
-                movieLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").GetDownloadUrlAsync();
+                movieLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(token), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").GetDownloadUrlAsync();
             }
             catch (Exception)
             {
-                content = "This studio's movie file contains a mistake.";
+                content = "This studio's movie file contains a mistake. ";
                 severity = Severity.Error;
                 showAlert = true;
             }
