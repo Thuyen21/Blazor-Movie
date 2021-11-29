@@ -110,17 +110,34 @@
                                 </div>
                             </form>
                             <div>After pick a file it auto Upload. If it is not a movie or image correct MIME it will not be uploaded.</div>
-                            <div>Movie Up</div>
-                            <InputFile OnChange="OnChooseMovieFile" />
+                            @*<div>Movie Up</div>*@
+                            <InputFile id="fileMovieInput" hidden OnChange="OnChooseMovieFile" />
+                            <MudButton HtmlTag="label"
+                               Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               StartIcon="@Icons.Filled.CloudUpload"
+                               for="fileMovieInput">
+                                Upload Movie File
+                            </MudButton>
 
-                            <div>Image Up</div>
-                            <InputFile OnChange="OnChooseImageFile" />
-
-
-                            <div>If your upload more 500MB click this button</div>
-                            @*<button class="btn btn-primary" type="submit" @onclick="@Upload">Upload</button>*@
+                            @*<div>Image Up</div>*@
+                            <InputFile id="filePictureInput" hidden OnChange="OnChooseImageFile" />
+                            <MudButton HtmlTag="label"
+                               Variant="Variant.Filled"
+                               Color="Color.Secondary"
+                               Icon="@Icons.Filled.Image"
+                               for="filePictureInput">
+                                Upload Picture File
+                            </MudButton>
                             <div class="button input-box">
-                                <input type="submit" value="For app version no limited if web version click this button for upload file more then 500MB" @onclick="@Upload">
+                                <MudChip Color="Color.Primary">Movie @mp</MudChip>
+                                <MudChip Color="Color.Secondary">Picture @ip</MudChip>
+                            </div>
+                         
+                            
+                            <div>For app version no limited if web version click this button for upload file more then 500MB</div> 
+                            <div class="button input-box">
+                                <input type="submit" @onclick="@Upload" value="Upload Movie High Capacity">
                             </div>
                         </div>
                     </div>
