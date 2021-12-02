@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-2022
 
     steps:
-      - uses: actions/checkout@2.4.0
+      - uses: actions/checkout@v2.4.0
 
       - uses: actions/cache@v2.1.7
         with:
