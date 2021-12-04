@@ -9,7 +9,6 @@ public partial class MovieStudio
     private List<MovieModel> movies = new();
     private int index = 0;
     private string? searchString { get; set; }
-
     private bool isSearch = false;
     private string? sort = null;
     private readonly Dictionary<string, string> DicImageLink = new();
@@ -42,7 +41,6 @@ public partial class MovieStudio
         searchString = null;
         await LoadImg();
     }
-
     protected override async Task OnInitializedAsync()
     {
         Task? moviesTask = Task.Run(async () =>

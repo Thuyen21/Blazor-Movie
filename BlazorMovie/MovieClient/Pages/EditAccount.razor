@@ -25,9 +25,9 @@
 					<div class="login-form">
 						<div class="title">Replace any data of ID </div>
 						<div class="title">@acc.Id</div>
-							@if (showAlert)
+							@if (alertService.showAlert)
 {
-    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+    <MudAlert Severity="alertService.severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => alertService.CloseAlert())">@alertService.content</MudAlert>
 }
 
 						

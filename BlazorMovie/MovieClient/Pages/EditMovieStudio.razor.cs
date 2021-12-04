@@ -2,6 +2,7 @@ using BlazorMovie.Shared;
 using Firebase.Storage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using MovieClient.Services;
 using MudBlazor;
 using System.Net.Http.Json;
 
@@ -14,24 +15,13 @@ public partial class EditMovieStudio
     private MovieModel? movie;
     private IBrowserFile? movieFile;
     private IBrowserFile? imageFile;
-    private string? content;
-    private string? linkUp;
-    private string? linkIframe;
-    private bool more = false;
-    private bool showAlert = false;
-    private Severity severity;
     private string? mp;
     private string? ip;
-    private void CloseAlert()
-    {
-        showAlert = false;
-    }
-
+    private ShowAlertService alertService = new();
+    private bool more = false;
     protected override async Task OnInitializedAsync()
     {
         movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
-        linkUp = $"/Studio/MovieUpload/{movie.MovieId}";
-        linkIframe = $"{_httpClient.BaseAddress}Studio/MovieUpload/{movie.MovieId}";
     }
 
     private async Task HandleValidSubmit()
@@ -40,17 +30,7 @@ public partial class EditMovieStudio
         movie.StudioId = moviePost.StudioId;
         movie.MovieId = moviePost.MovieId;
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync("Studio/EditMovie", movie);
-        content = await response.Content.ReadAsStringAsync();
-        if (response.IsSuccessStatusCode)
-        {
-            severity = Severity.Success;
-        }
-        else
-        {
-            severity = Severity.Error;
-        }
-
-        showAlert = true;
+        alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
     }
 
     private async Task OnChooseMovieFile(InputFileChangeEventArgs e)
@@ -74,17 +54,13 @@ public partial class EditMovieStudio
             }
             catch
             {
-                content = "More 500MB use the other method upload";
-                severity = Severity.Error;
-                showAlert = true;
+                alertService.ShowAlert(Severity.Error, "More 500MB use the other method upload");
             }
 
         }
         else
         {
-            content = "Incorrect MIME";
-            severity = Severity.Error;
-            showAlert = true;
+            alertService.ShowAlert(Severity.Error, "Incorrect MIME");
         }
     }
 
@@ -108,22 +84,17 @@ public partial class EditMovieStudio
             }
             catch
             {
-                content = "More 500MB use the other method upload";
-                severity = Severity.Error;
-                showAlert = true;
+                alertService.ShowAlert(Severity.Error, "More 500MB use the other method upload");
             }
         }
         else
         {
-            content = "Incorrect MIME";
-            severity = Severity.Error;
-            showAlert = true;
+            alertService.ShowAlert(Severity.Error, "Incorrect MIME");
         }
     }
 
-    private Task Upload()
+    private void Upload()
     {
         more = true;
-        return Task.CompletedTask;
     }
 }

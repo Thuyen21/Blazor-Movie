@@ -1,5 +1,4 @@
-﻿@inject IJSRuntime JS
-@inject AccountService _accountService;
+﻿@inject AccountService _accountService
 @page "/login"
 <PageTitle>MovieTV - Sign in or Register</PageTitle>
 
@@ -64,11 +63,11 @@
                                         </label>
                                     </a>
                                 </div>
-                                @if (showAlert)
+                                @if (alertService.showAlert)
                                 {
-                                    <MudAlert Severity="severity" Variant="Variant.Filled"
+                                    <MudAlert Severity="alertService.severity" Variant="Variant.Filled"
                                     ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true"
-                                    CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+                                    CloseIconClicked="(() => alertService.CloseAlert())">@alertService.content</MudAlert>
                                 }
                             </EditForm>
                         </div>

@@ -8,7 +8,6 @@ public partial class MovieCustomer
 {
     private List<MovieModel> movies = new();
     private string? searchString { get; set; }
-
     private bool isSearch = false;
     private readonly Dictionary<string, string> DicImageLink = new();
     private string? sort = null;
@@ -70,7 +69,6 @@ public partial class MovieCustomer
                     DicImageLink.Add(item.MovieId, ImageLink);
                     StateHasChanged();
                 }
-
             }
             catch
             {

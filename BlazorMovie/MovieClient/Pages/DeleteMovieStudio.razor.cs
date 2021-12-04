@@ -1,5 +1,6 @@
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Components;
+using MovieClient.Services;
 using MudBlazor;
 using System.Net.Http.Json;
 
@@ -11,14 +12,7 @@ public partial class DeleteMovieStudio
     public string? Id { get; set; }
 
     private MovieModel? movie;
-    private string? content;
-    private bool showAlert = false;
-    private Severity severity;
-    private void CloseAlert()
-    {
-        showAlert = false;
-    }
-
+    private ShowAlertService alertService = new();
     protected override async Task OnInitializedAsync()
     {
         movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
@@ -27,16 +21,6 @@ public partial class DeleteMovieStudio
     private async Task HandleValidSubmit()
     {
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync("Studio/DeleteMovie", movie);
-        content = await response.Content.ReadAsStringAsync();
-        if (response.IsSuccessStatusCode)
-        {
-            severity = Severity.Success;
-        }
-        else
-        {
-            severity = Severity.Error;
-        }
-
-        showAlert = true;
+        alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
     }
 }

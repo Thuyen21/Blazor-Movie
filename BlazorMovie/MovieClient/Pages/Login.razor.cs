@@ -1,5 +1,6 @@
 using BlazorMovie.Shared;
 using Microsoft.JSInterop;
+using MovieClient.Services;
 using MudBlazor;
 using System.Net.Http.Json;
 
@@ -7,21 +8,8 @@ namespace MovieClient.Pages;
 
 public partial class Login
 {
-    private string divCSS = "display: none;";
-    private void DivCSS(string divCSS)
-    {
-        this.divCSS = divCSS;
-    }
-
-    private bool showAlert = false;
-    private Severity severity;
-    private void CloseAlert()
-    {
-        showAlert = false;
-    }
-
     private readonly LogInModel login = new LogInModel();
-    private string? content;
+    private ShowAlertService alertService = new();
     private async Task HandleValidSubmit()
     {
         try
@@ -31,26 +19,20 @@ public partial class Login
         }
         catch
         {
-            content = "Turn Off AdBlock";
-            severity = Severity.Error;
-            showAlert = true;
+            alertService.ShowAlert(Severity.Error, "Turn Off AdBlock");
             return;
         }
 
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync("user/login", login);
         if (response.IsSuccessStatusCode)
         {
-            content = await response.Content.ReadAsStringAsync();
-            severity = Severity.Success;
-            showAlert = true;
+            alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
             _accountService.checkAuthentication();
             _navigationManager.NavigateTo("/");
         }
         else
         {
-            content = await response.Content.ReadAsStringAsync();
-            severity = Severity.Error;
-            showAlert = true;
+            alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
         }
     }
 }

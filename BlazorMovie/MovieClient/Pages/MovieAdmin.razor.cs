@@ -5,10 +5,9 @@ namespace MovieClient.Pages;
 
 public partial class MovieAdmin
 {
-    private List<MovieModel> movies = new();
+    private List<MovieModel> ?movies = new();
     private int index = 0;
     private string? searchString { get; set; }
-
     private bool isSearch = false;
     private string? sort = null;
     private async Task NameSortParm()
@@ -42,7 +41,6 @@ public partial class MovieAdmin
     {
         movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ / /{index}");
     }
-
     private async Task Search()
     {
         index = 0;

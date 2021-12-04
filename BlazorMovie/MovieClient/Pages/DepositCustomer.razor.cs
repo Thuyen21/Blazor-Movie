@@ -14,7 +14,6 @@ public partial class DepositCustomer
     {
         this.divCSS = divCSS;
     }
-
     private DotNetObjectReference<DepositCustomer>? objRef;
     private bool doneCash = false;
     private Task Recharge()
@@ -25,7 +24,6 @@ public partial class DepositCustomer
         DivCSS("display: none;");
         return Task.CompletedTask;
     }
-
     private async Task Cash()
     {
         try

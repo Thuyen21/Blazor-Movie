@@ -2,6 +2,7 @@ using BlazorMovie.Shared;
 using Firebase.Storage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
+using MovieClient.Services;
 using MudBlazor;
 using System.Net.Http.Json;
 
@@ -16,17 +17,10 @@ public partial class WatchCustomer
     private string? movieLink = null;
     private bool? canWatch;
     private string? Acomment;
-    private string? content;
     private List<CommentModel> commentList = new();
-    private bool showAlert = false;
-    private Severity severity;
     private bool sameDevice = false;
     private bool firstPlay = true;
-    private void CloseAlert()
-    {
-        showAlert = false;
-    }
-
+    private ShowAlertService alertService = new();
     private int index = 0;
     protected override async Task OnInitializedAsync()
     {
@@ -60,9 +54,7 @@ public partial class WatchCustomer
         }
         catch
         {
-            content = "Turn off AdBlock";
-            severity = Severity.Error;
-            showAlert = true;
+            alertService.ShowAlert(Severity.Error, "Turn off AdBlock");
             return;
         }
         string token = new string(tokena);
@@ -75,13 +67,10 @@ public partial class WatchCustomer
             }
             catch (Exception)
             {
-                content = "This studio's movie file contains a mistake. ";
-                severity = Severity.Error;
-                showAlert = true;
+                alertService.ShowAlert(Severity.Error, "This studio's movie file contains a mistake.");
             }
         }
     }
-
     private async Task View()
     {
         if (firstPlay)
@@ -98,21 +87,16 @@ public partial class WatchCustomer
             }
             catch
             {
-                content = "Turn off AdBlock";
-                showAlert = true;
-                severity = Severity.Error;
+                alertService.ShowAlert(Severity.Error, "Turn off AdBlock");
                 StateHasChanged();
                 return;
             }
 
             if (!sameDevice)
             {
-                content = "You cannot watch in many Device at the same time Logout then Login to update your last Device";
-                showAlert = true;
-                severity = Severity.Error;
+                alertService.ShowAlert(Severity.Error, "You cannot watch in many Device at the same time Logout then Login to update your last Device");
                 StateHasChanged();
             }
-
             await Task.Delay(60000);
         }
     }
@@ -122,17 +106,7 @@ public partial class WatchCustomer
         CommentModel up = new CommentModel()
         { Time = DateTime.UtcNow, MovieId = Id, CommentText = Acomment };
         HttpResponseMessage? response = await _httpClient.PostAsJsonAsync("Customer/Acomment", up);
-        content = await response.Content.ReadAsStringAsync();
-        if (response.IsSuccessStatusCode)
-        {
-            severity = Severity.Success;
-        }
-        else
-        {
-            severity = Severity.Error;
-        }
-
-        showAlert = true;
+        alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
         List<CommentModel> commentListTemp = new();
         for (int i = 0; i <= index; i++)
         {

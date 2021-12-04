@@ -37,15 +37,9 @@ public partial class StatusStudio
 
     private Task Submit()
     {
-        fullStatus.Clear();
-        //commentStatus.Clear();
+        fullStatus!.Clear();
         content = "Loading.....";
         showAlert = true;
-        //for(DateTime i = start; i <= end; i = i.AddDays(1.0))
-        // {
-        // content = i.ToString();
-        //}
-        //commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/check");
         try
         {
             List<DateTime> dateToCheck = new();

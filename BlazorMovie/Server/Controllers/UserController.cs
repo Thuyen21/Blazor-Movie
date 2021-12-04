@@ -191,12 +191,9 @@ public class UserController : Controller
         {
             return BadRequest("Password and Confirm Password are different");
         }
-        signUpModel.Email = signUpModel.Email.ToLower();
+        signUpModel.Email = signUpModel.Email!.ToLower();
         try
         {
-            //var authProvider = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyA1sc-XyNBvPFAs3ZwkcU6BBV9vbsJrUL0"));
-            //var auth = await authProvider.CreateUserWithEmailAndPasswordAsync(signUp.Email,signUp.Password,signUp.Name);
-
             try
             {
                 userCredential =
@@ -207,11 +204,8 @@ public class UserController : Controller
 
                 return BadRequest(ex.Reason.ToString());
             }
-
             User user = userCredential.User;
-
             CollectionReference docRef = db.Collection("Account");
-
             AccountManagementModel account = new()
             {
                 DateOfBirth = signUpModel.DateOfBirth.AddDays(1).ToUniversalTime(),
@@ -221,8 +215,6 @@ public class UserController : Controller
                 Role = signUpModel.Role,
                 Wallet = 0.0
             };
-
-
             await docRef.AddAsync(account);
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
                 new Claim(ClaimTypes.Email, account.Email),
@@ -232,11 +224,8 @@ public class UserController : Controller
                     new Claim(ClaimTypes.DateOfBirth, account.DateOfBirth.ToString()),
                     new Claim("Token", await user.GetIdTokenAsync())
             }, "serverAuth");
-            //create claimsPrincipal
             ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-            //Sign In User
             await HttpContext.SignInAsync(claimsPrincipal);
-
             return Ok();
         }
         catch (Exception ex)

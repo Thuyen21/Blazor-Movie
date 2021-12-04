@@ -35,13 +35,15 @@ public partial class Home
     }
     private string getLink(int index)
     {
+        List<string> img = new() { "D3D3D3", "FFB6C1", "87CEFA", "B0C4DE", "20B2AA", "FFA07A" };
+        var random = new Random();
         try
         {
             return DicImageLink.ElementAt(index).Value;
         }
         catch
         {
-            return "https://via.placeholder.com/768x512/FFA07A/000000";
+            return $"https://via.placeholder.com/768x512/{img[random.Next(img.Count)]}/000000";
         }
     }
 }
