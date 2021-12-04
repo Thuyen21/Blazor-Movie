@@ -21,7 +21,7 @@ public class UserController : Controller
     public UserController(FirestoreDb db, FirebaseAuthConfig config)
     {
         this.db = db;
-        this.client = new FirebaseAuthClient(config);
+        client = new FirebaseAuthClient(config);
         this.config = config;
     }
 
@@ -38,7 +38,7 @@ public class UserController : Controller
         {
             return BadRequest("Wrong email or password");
         }
-        
+
         User user = userCredential.User;
         Query usersRef = db.Collection("Account").WhereEqualTo("Id", user.Uid);
         QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();

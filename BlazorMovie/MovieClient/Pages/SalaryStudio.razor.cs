@@ -9,7 +9,7 @@ public partial class SalaryStudio
     private string? Email;
     private string? EmailConfirm;
     private double Cash;
-    private ShowAlertService alertService = new();
+    private readonly ShowAlertService alertService = new();
     private bool isMail(string Email)
     {
         try

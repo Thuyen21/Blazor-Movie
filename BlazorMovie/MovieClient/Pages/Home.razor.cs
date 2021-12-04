@@ -10,7 +10,7 @@ public partial class Home
     private readonly Dictionary<string, string> DicImageLink = new();
     protected override async Task OnInitializedAsync()
     {
-        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>("user/Trending");
+        movies = (await _httpClient.GetFromJsonAsync<List<MovieModel>>("user/Trending"))!;
         Parallel.ForEach(movies, async item =>
         {
             DicImageLink.Add(item.MovieId, null);

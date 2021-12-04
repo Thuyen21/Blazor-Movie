@@ -8,14 +8,13 @@ public partial class AdminAccountManagement
     private List<AccountManagementModel> accs { get; set; } = new();
     private int index = 0;
     private string? searchString { get; set; }
-
     private bool isSearch = false;
     private string? sort = null;
     private async Task NameSortParm()
     {
         index = 0;
         sort = sort == "name" ? "nameDesc" : "name";
-        accs = await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"Admin/AccountManagement/ /{sort}/{index}");
+        accs = (await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"Admin/AccountManagement/ /{sort}/{index}"))!;
         isSearch = false;
         searchString = null;
     }
@@ -24,7 +23,7 @@ public partial class AdminAccountManagement
     {
         index = 0;
         sort = sort == "date" ? "dateDesc" : "date";
-        accs = await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"Admin/AccountManagement/ /{sort}/{index}");
+        accs = (await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"Admin/AccountManagement/ /{sort}/{index}"))!;
         isSearch = false;
         searchString = null;
     }
@@ -33,7 +32,7 @@ public partial class AdminAccountManagement
     {
         index = 0;
         sort = sort == "email" ? "emailDesc" : "email";
-        accs = await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"Admin/AccountManagement/ /{sort}/{index}");
+        accs = (await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"Admin/AccountManagement/ /{sort}/{index}"))!;
         isSearch = false;
         searchString = null;
     }
@@ -43,12 +42,12 @@ public partial class AdminAccountManagement
         index = 0;
         if (searchString != null)
         {
-            accs = await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/{searchString}/ /{index}");
+            accs = (await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/{searchString}/ /{index}"))!;
             isSearch = true;
         }
         else
         {
-            accs = await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/ / /{index}");
+            accs = (await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/ / /{index}"))!;
             isSearch = false;
         }
 
@@ -57,7 +56,7 @@ public partial class AdminAccountManagement
 
     protected override async Task OnInitializedAsync()
     {
-        accs = await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/ / /{index}");
+        accs = (await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/ / /{index}"))!;
     }
 
     private async Task LoadMore()
@@ -65,15 +64,15 @@ public partial class AdminAccountManagement
         index++;
         if (isSearch)
         {
-            accs.AddRange(await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/{searchString}//{index}"));
+            accs.AddRange((await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/{searchString}//{index}"))!);
         }
         else if (sort != null)
         {
-            accs.AddRange(await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/ /{sort}/{index}"));
+            accs.AddRange((await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/ /{sort}/{index}"))!);
         }
         else
         {
-            accs.AddRange(await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/ / /{index}"));
+            accs.AddRange((await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/ / /{index}"))!);
         }
     }
 }

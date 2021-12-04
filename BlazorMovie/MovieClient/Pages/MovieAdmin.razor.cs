@@ -5,7 +5,7 @@ namespace MovieClient.Pages;
 
 public partial class MovieAdmin
 {
-    private List<MovieModel> ?movies = new();
+    private List<MovieModel>? movies = new();
     private int index = 0;
     private string? searchString { get; set; }
     private bool isSearch = false;

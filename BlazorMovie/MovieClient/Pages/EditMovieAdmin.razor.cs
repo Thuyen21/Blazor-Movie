@@ -13,22 +13,22 @@ public partial class EditMovieAdmin
     [Parameter]
     public string? Id { get; set; }
 
-    private MovieModel? movie;
+    private MovieModel movie = new();
     private IBrowserFile? movieFile;
     private IBrowserFile? imageFile;
     private string? mp;
     private string? ip;
     private bool more = false;
-    private ShowAlertService alertService = new();
+    private readonly ShowAlertService alertService = new();
     protected override async Task OnInitializedAsync()
     {
-        movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
+        movie = (await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}"))!;
     }
 
     private async Task HandleValidSubmit()
     {
 
-        MovieModel moviePost = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
+        MovieModel moviePost = (await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}"))!;
         movie.StudioId = moviePost.StudioId;
         movie.MovieId = moviePost.MovieId;
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync("Admin/EditMovie", movie);
@@ -41,7 +41,7 @@ public partial class EditMovieAdmin
         if (list.Contains(e.File.ContentType))
         {
             movieFile = e.File;
-            char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+            char[] tokena = (await _httpClient.GetFromJsonAsync<char[]>("User/GetToken"))!;
             string token = new string(tokena);
             FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").PutAsync(movieFile.OpenReadStream(long.MaxValue));
             task.Progress.ProgressChanged += (s, e) =>
@@ -72,7 +72,7 @@ public partial class EditMovieAdmin
         {
             imageFile = e.File;
 
-            char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+            char[] tokena = (await _httpClient.GetFromJsonAsync<char[]>("User/GetToken"))!;
             string token = new string(tokena);
 
             FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Image").PutAsync(imageFile.OpenReadStream(long.MaxValue));

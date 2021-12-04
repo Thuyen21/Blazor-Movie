@@ -1,7 +1,6 @@
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Components;
 using MovieClient.Services;
-using MudBlazor;
 using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
@@ -14,7 +13,7 @@ public partial class BuyVip
     private readonly VipModel vip = new VipModel()
     { Choose = 1 };
     private string? vipStatus;
-    private ShowAlertService alertService = new();
+    private readonly ShowAlertService alertService = new();
 
     protected override async Task OnInitializedAsync()
     {

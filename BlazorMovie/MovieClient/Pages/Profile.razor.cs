@@ -1,6 +1,5 @@
 using BlazorMovie.Shared;
 using MovieClient.Services;
-using MudBlazor;
 using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
@@ -8,7 +7,7 @@ namespace MovieClient.Pages;
 public partial class Profile
 {
     private readonly ChangeEmailModel changeEmail = new ChangeEmailModel();
-    private ShowAlertService alertService = new();
+    private readonly ShowAlertService alertService = new();
     private AccountManagementModel accountManagementModel = new AccountManagementModel();
     private async Task ChangeEmail()
     {
@@ -24,7 +23,7 @@ public partial class Profile
         return Task.CompletedTask;
     }
 
-    
+
     protected override async Task OnInitializedAsync()
     {
         accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");

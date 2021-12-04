@@ -1,7 +1,6 @@
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Components;
 using MovieClient.Services;
-using MudBlazor;
 using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
@@ -11,11 +10,11 @@ public partial class EditAccount
     [Parameter]
     public string? Id { get; set; }
 
-    private AccountManagementModel? acc;
-    private ShowAlertService alertService = new();
+    private AccountManagementModel acc = new();
+    private readonly ShowAlertService alertService = new();
     protected override async Task OnInitializedAsync()
     {
-        acc = await _httpClient.GetFromJsonAsync<AccountManagementModel>($"Admin/EditAccount/{Id}");
+        acc = (await _httpClient.GetFromJsonAsync<AccountManagementModel>($"Admin/EditAccount/{Id}"))!;
     }
 
     private async Task HandleValidSubmit()

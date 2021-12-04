@@ -1,9 +1,4 @@
 ﻿using MudBlazor;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MovieClient.Services;
 
@@ -27,7 +22,7 @@ public class ShowAlertService
     {
         this.severity = severity;
         this.content = content;
-        this.showAlert = true;
+        showAlert = true;
     }
     public void ShowAlert(bool? severity, string content)
     {
@@ -44,7 +39,7 @@ public class ShowAlertService
             this.severity = Severity.Error;
         }
         this.content = content;
-        this.showAlert = true;
+        showAlert = true;
     }
 }
 

@@ -20,7 +20,7 @@ public partial class WatchCustomer
     private List<CommentModel> commentList = new();
     private bool sameDevice = false;
     private bool firstPlay = true;
-    private ShowAlertService alertService = new();
+    private readonly ShowAlertService alertService = new();
     private int index = 0;
     protected override async Task OnInitializedAsync()
     {
@@ -46,11 +46,11 @@ public partial class WatchCustomer
         {
             tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
         });
-        
+
         try
         {
             await Task.WhenAll(movieTask, commentTask, sameDeviceTask, canWatchTask, tokenaTask);
-            
+
         }
         catch
         {

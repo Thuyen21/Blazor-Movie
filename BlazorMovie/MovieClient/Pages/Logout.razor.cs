@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Components;
-using MovieClient.Shared;
-
 namespace MovieClient.Pages;
 
 public partial class Logout
