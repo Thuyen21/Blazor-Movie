@@ -1,6 +1,4 @@
-﻿using UIKit;
-
-namespace Maui;
+﻿namespace Maui;
 
 public class Program
 {
