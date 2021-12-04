@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebView.Maui;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui.Controls.Hosting;
+using Microsoft.Maui.Hosting;
 using MovieClient;
 using MovieClient.Services;
 using MudBlazor.Services;
@@ -23,8 +26,8 @@ public static class MauiProgram
         builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://movie213.herokuapp.com/") });
         builder.Services.AddOptions();
         builder.Services.AddAuthorizationCore();
-        builder.Services.AddScoped<AccountService>();
-        builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+        builder.Services.AddSingleton<AccountService>();
+        builder.Services.AddSingleton<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
         builder.Services.AddMudServices();
 
         return builder.Build();
