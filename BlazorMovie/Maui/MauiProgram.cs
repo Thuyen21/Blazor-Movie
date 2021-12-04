@@ -23,7 +23,7 @@ public static class MauiProgram
             });
 
         builder.Services.AddBlazorWebView();
-        builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://movie213.herokuapp.com/") });
+        builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri("https://movie213.herokuapp.com/") });
         builder.Services.AddOptions();
         builder.Services.AddAuthorizationCore();
         builder.Services.AddSingleton<AccountService>();
