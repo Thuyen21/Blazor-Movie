@@ -7,7 +7,7 @@ public partial class AdminAccountManagement
 {
     private List<AccountManagementModel> accs { get; set; } = new();
     private int index = 0;
-    private string? searchString { get; set; }
+    private string searchString = string.Empty;
     private bool isSearch = false;
     private string? sort = null;
     private async Task NameSortParm()
@@ -16,7 +16,7 @@ public partial class AdminAccountManagement
         sort = sort == "name" ? "nameDesc" : "name";
         accs = (await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"Admin/AccountManagement/ /{sort}/{index}"))!;
         isSearch = false;
-        searchString = null;
+        searchString = string.Empty;
     }
 
     private async Task DateSortParm()
@@ -25,7 +25,7 @@ public partial class AdminAccountManagement
         sort = sort == "date" ? "dateDesc" : "date";
         accs = (await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"Admin/AccountManagement/ /{sort}/{index}"))!;
         isSearch = false;
-        searchString = null;
+        searchString = string.Empty;
     }
 
     private async Task EmailSortParm()
@@ -34,13 +34,13 @@ public partial class AdminAccountManagement
         sort = sort == "email" ? "emailDesc" : "email";
         accs = (await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"Admin/AccountManagement/ /{sort}/{index}"))!;
         isSearch = false;
-        searchString = null;
+        searchString = string.Empty;
     }
 
     private async Task Search()
     {
         index = 0;
-        if (searchString != null)
+        if (!string.IsNullOrWhiteSpace(searchString))
         {
             accs = (await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"admin/AccountManagement/{searchString}/ /{index}"))!;
             isSearch = true;
