@@ -18,13 +18,13 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
     {
         try
         {
-            AccountManagementModel user = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/GetCurrentUser");
+            AccountManagementModel user = (await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/GetCurrentUser"))!;
             if (user.Email != null)
             {
 
                 ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
                     new Claim(ClaimTypes.Name, user.Email),
-                    new Claim(ClaimTypes.Role, user.Role),
+                    new Claim(ClaimTypes.Role, user.Role!),
                     new Claim(ClaimTypes.Email, user.Email)
                 }, "serverAuth");
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);

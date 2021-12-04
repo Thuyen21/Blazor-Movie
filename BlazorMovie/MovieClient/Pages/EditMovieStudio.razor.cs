@@ -2,6 +2,7 @@ using BlazorMovie.Shared;
 using Firebase.Storage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using MovieClient.Services;
 using MudBlazor;
 using System.Net.Http.Json;
 
@@ -11,46 +12,25 @@ public partial class EditMovieStudio
 {
     [Parameter]
     public string? Id { get; set; }
-    private MovieModel? movie;
+    private MovieModel movie = new();
     private IBrowserFile? movieFile;
     private IBrowserFile? imageFile;
-    private string? content;
-    private string? linkUp;
-    private string? linkIframe;
-    private bool more = false;
-    private bool showAlert = false;
-    private Severity severity;
     private string? mp;
     private string? ip;
-    private void CloseAlert()
-    {
-        showAlert = false;
-    }
-
+    private readonly ShowAlertService alertService = new();
+    private bool more = false;
     protected override async Task OnInitializedAsync()
     {
         movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
-        linkUp = $"/Studio/MovieUpload/{movie.MovieId}";
-        linkIframe = $"{_httpClient.BaseAddress}Studio/MovieUpload/{movie.MovieId}";
     }
 
     private async Task HandleValidSubmit()
     {
-        MovieModel moviePost = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
+        MovieModel moviePost = (await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}"))!;
         movie.StudioId = moviePost.StudioId;
         movie.MovieId = moviePost.MovieId;
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync("Studio/EditMovie", movie);
-        content = await response.Content.ReadAsStringAsync();
-        if (response.IsSuccessStatusCode)
-        {
-            severity = Severity.Success;
-        }
-        else
-        {
-            severity = Severity.Error;
-        }
-
-        showAlert = true;
+        alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
     }
 
     private async Task OnChooseMovieFile(InputFileChangeEventArgs e)
@@ -59,7 +39,7 @@ public partial class EditMovieStudio
         if (list.Contains(e.File.ContentType))
         {
             movieFile = e.File;
-            char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken")!;
+            char[] tokena = (await _httpClient.GetFromJsonAsync<char[]>("User/GetToken"))!;
             string token = new string(tokena);
 
             FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie").PutAsync(movieFile.OpenReadStream(long.MaxValue));
@@ -74,17 +54,13 @@ public partial class EditMovieStudio
             }
             catch
             {
-                content = "More 500MB use the other method upload";
-                severity = Severity.Error;
-                showAlert = true;
+                alertService.ShowAlert(Severity.Error, "More 500MB use the other method upload");
             }
 
         }
         else
         {
-            content = "Incorrect MIME";
-            severity = Severity.Error;
-            showAlert = true;
+            alertService.ShowAlert(Severity.Error, "Incorrect MIME");
         }
     }
 
@@ -94,7 +70,7 @@ public partial class EditMovieStudio
         if (list.Contains(e.File.ContentType))
         {
             imageFile = e.File;
-            char[] tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+            char[] tokena = (await _httpClient.GetFromJsonAsync<char[]>("User/GetToken"))!;
             string token = new string(tokena);
             FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(movie.StudioId).Child(movie.MovieId).Child("Image").PutAsync(imageFile.OpenReadStream(long.MaxValue));
             task.Progress.ProgressChanged += (s, e) =>
@@ -108,22 +84,17 @@ public partial class EditMovieStudio
             }
             catch
             {
-                content = "More 500MB use the other method upload";
-                severity = Severity.Error;
-                showAlert = true;
+                alertService.ShowAlert(Severity.Error, "More 500MB use the other method upload");
             }
         }
         else
         {
-            content = "Incorrect MIME";
-            severity = Severity.Error;
-            showAlert = true;
+            alertService.ShowAlert(Severity.Error, "Incorrect MIME");
         }
     }
 
-    private Task Upload()
+    private void Upload()
     {
         more = true;
-        return Task.CompletedTask;
     }
 }

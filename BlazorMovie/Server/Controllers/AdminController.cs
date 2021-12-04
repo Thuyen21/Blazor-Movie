@@ -25,7 +25,7 @@ public class AdminController : Controller
         this.env = env;
         this.db = db;
         this.config = config;
-        this.client = new FirebaseAuthClient(config);
+        client = new FirebaseAuthClient(config);
     }
 
     [HttpGet("AccountManagement/{searchString?}/{sortOrder?}/{index:int:min(0)}")]

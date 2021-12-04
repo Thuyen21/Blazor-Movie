@@ -24,11 +24,11 @@
 								<h5>@accountManagementModel.Role</h5>
 								<p style="font-weight: 300">@accountManagementModel.Id</p>
 								<p>@accountManagementModel.Wallet</p>
-								@if (showAlert)
+								@if (alertService.showAlert)
 								{
-									<MudAlert Severity="severity" Variant="Variant.Filled"
+									<MudAlert Severity="alertService.severity" Variant="Variant.Filled"
 									ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true"
-									CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+									CloseIconClicked="(() => alertService.CloseAlert())">@alertService.content</MudAlert>
 								}
 
 							</div>

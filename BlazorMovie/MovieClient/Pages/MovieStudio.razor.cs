@@ -8,8 +8,7 @@ public partial class MovieStudio
 {
     private List<MovieModel> movies = new();
     private int index = 0;
-    private string? searchString { get; set; }
-
+    private string searchString = string.Empty;
     private bool isSearch = false;
     private string? sort = null;
     private readonly Dictionary<string, string> DicImageLink = new();
@@ -19,7 +18,7 @@ public partial class MovieStudio
         sort = sort == "name" ? "nameDesc" : "name";
         movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}");
         isSearch = false;
-        searchString = null;
+        searchString = string.Empty;
         await LoadImg();
     }
 
@@ -29,7 +28,7 @@ public partial class MovieStudio
         sort = sort == "date" ? "dateDesc" : "date";
         movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}");
         isSearch = false;
-        searchString = null;
+        searchString = string.Empty;
         await LoadImg();
     }
     private string? token;
@@ -39,10 +38,9 @@ public partial class MovieStudio
         sort = sort == "genre" ? "genreDesc" : "genre";
         movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}");
         isSearch = false;
-        searchString = null;
+        searchString = string.Empty;
         await LoadImg();
     }
-
     protected override async Task OnInitializedAsync()
     {
         Task? moviesTask = Task.Run(async () =>
@@ -83,7 +81,7 @@ public partial class MovieStudio
     private async Task Search()
     {
         index = 0;
-        if (searchString != null)
+        if (!string.IsNullOrWhiteSpace(searchString))
         {
             movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/{searchString}/ /{index}");
             isSearch = true;

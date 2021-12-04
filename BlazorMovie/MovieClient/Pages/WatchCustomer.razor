@@ -4,11 +4,11 @@
 @using Firebase.Storage
 
 
-<PageTitle>Xem phim</PageTitle>
+<PageTitle>Watch Movie</PageTitle>
 
-	@if (showAlert)
+	@if (alertService.showAlert)
 {
-    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+    <MudAlert Severity="alertService.severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => alertService.CloseAlert())">@alertService.content</MudAlert>
 }
 
 
@@ -100,7 +100,6 @@
                                 </div>
                                 <div class="d-flex flex-row-reverse" style="margin: 1%">
                                     <button type="button" class="btn btn-primary" @onclick="@Com">Comment</button>
-                                    <div class="d-flex justify-content-center">@content</div>
                                 </div>
                             </div>
 

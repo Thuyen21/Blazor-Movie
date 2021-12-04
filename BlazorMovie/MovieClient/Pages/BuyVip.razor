@@ -24,7 +24,7 @@
                             <div class="card-header">
                                 <div class=row>
                                     <div class="col">Get Vip</div>
-                                    @if (content == "Success" && movieId != null)
+                                    @if (alertService.content == "Success" && movieId != null)
                                     {
                                         string linkWatch = $"WatchCustomer/{movieId}";
                                         <div class="col text-md-right">
@@ -70,9 +70,9 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md" style="margin:5px">
-                                                @if (showAlert)
+                                                @if (alertService.showAlert)
                                                 {
-                                                    <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+                                                    <MudAlert Severity="alertService.severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => alertService.CloseAlert())">@alertService.content</MudAlert>
                                                 }
                                             </div>
                                         </div>

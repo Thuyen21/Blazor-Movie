@@ -77,11 +77,11 @@
                                     </button>
                                 </div>
 
-                                @if (showAlert)
+                                @if (alertService.showAlert)
                                 {
                                     <div class="form-group row">
                                         <div class="col-md">
-                                            <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+                                            <MudAlert Severity="alertService.severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => alertService.CloseAlert())">@alertService.content</MudAlert>
                                         </div>
                                     </div>
                                 }

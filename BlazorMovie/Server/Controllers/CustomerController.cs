@@ -406,7 +406,7 @@ public class CustomerController : Controller
 
     }
     [HttpPost("View")]
-    public async Task<ActionResult> View([FromBody] string Id)
+    public async Task<ActionResult> Viewing([FromBody] string Id)
     {
         QuerySnapshot collectionView = await db.Collection("View").WhereEqualTo("Id", Id).WhereEqualTo("Viewer", User.FindFirstValue(ClaimTypes.Sid)).WhereGreaterThanOrEqualTo("Time", DateTime.UtcNow.AddHours(-0.5)).WhereLessThanOrEqualTo("Time", DateTime.UtcNow).GetSnapshotAsync();
         if (collectionView.Documents.Count == 0)

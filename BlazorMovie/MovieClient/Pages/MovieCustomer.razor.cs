@@ -7,8 +7,7 @@ namespace MovieClient.Pages;
 public partial class MovieCustomer
 {
     private List<MovieModel> movies = new();
-    private string? searchString { get; set; }
-
+    private string searchString = string.Empty;
     private bool isSearch = false;
     private readonly Dictionary<string, string> DicImageLink = new();
     private string? sort = null;
@@ -19,7 +18,7 @@ public partial class MovieCustomer
         sort = sort == "name" ? "nameDesc" : "name";
         movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
         isSearch = false;
-        searchString = null;
+        searchString = string.Empty;
         await LoadImg();
     }
 
@@ -29,7 +28,7 @@ public partial class MovieCustomer
         sort = sort == "date" ? "dateDesc" : "date";
         movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
         isSearch = false;
-        searchString = null;
+        searchString = string.Empty;
         await LoadImg();
     }
 
@@ -39,7 +38,7 @@ public partial class MovieCustomer
         sort = sort == "genre" ? "genreDesc" : "genre";
         movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
         isSearch = false;
-        searchString = null;
+        searchString = string.Empty;
         await LoadImg();
     }
     private string? token;
@@ -70,7 +69,6 @@ public partial class MovieCustomer
                     DicImageLink.Add(item.MovieId, ImageLink);
                     StateHasChanged();
                 }
-
             }
             catch
             {
@@ -82,7 +80,7 @@ public partial class MovieCustomer
     private async Task Search()
     {
         index = 0;
-        if (searchString != null)
+        if (!string.IsNullOrWhiteSpace(searchString))
         {
             movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/{searchString}/ /{index}");
             isSearch = true;

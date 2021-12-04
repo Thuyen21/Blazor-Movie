@@ -1,6 +1,6 @@
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Components;
-using MudBlazor;
+using MovieClient.Services;
 using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
@@ -10,18 +10,11 @@ public partial class EditAccount
     [Parameter]
     public string? Id { get; set; }
 
-    private AccountManagementModel? acc;
-    private string? content;
-    private bool showAlert = false;
-    private Severity severity;
-    private void CloseAlert()
-    {
-        showAlert = false;
-    }
-
+    private AccountManagementModel acc = new();
+    private readonly ShowAlertService alertService = new();
     protected override async Task OnInitializedAsync()
     {
-        acc = await _httpClient.GetFromJsonAsync<AccountManagementModel>($"Admin/EditAccount/{Id}");
+        acc = (await _httpClient.GetFromJsonAsync<AccountManagementModel>($"Admin/EditAccount/{Id}"))!;
     }
 
     private async Task HandleValidSubmit()
@@ -29,16 +22,6 @@ public partial class EditAccount
         AccountManagementModel accNew = acc;
         accNew.DateOfBirth = accNew.DateOfBirth.ToUniversalTime().AddDays(1);
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync("Admin/EditAccount", accNew);
-        content = await response.Content.ReadAsStringAsync();
-        if (response.IsSuccessStatusCode)
-        {
-            severity = Severity.Success;
-        }
-        else
-        {
-            severity = Severity.Error;
-        }
-
-        showAlert = true;
+        alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
     }
 }
