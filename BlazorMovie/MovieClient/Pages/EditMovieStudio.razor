@@ -27,7 +27,7 @@
             if (more)
             {
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md">
                         <form action="@(_httpClient.BaseAddress)Studio/MovieUpload/@movie.MovieId/@movie.StudioId" enctype="multipart/form-data" method="post">
                             <div asp-validation-summary="ModelOnly" class="text-danger">
                                 If it is not a movie or image correct MIME it
