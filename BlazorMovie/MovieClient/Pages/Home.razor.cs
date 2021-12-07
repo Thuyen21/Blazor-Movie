@@ -10,13 +10,24 @@ public partial class Home
     private readonly Dictionary<string, string> DicImageLink = new();
     protected override async Task OnInitializedAsync()
     {
-        movies = (await _httpClient.GetFromJsonAsync<List<MovieModel>>("user/Trending"))!;
+        Task? movieTask = Task.Run(async () =>
+        {
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>("user/Trending");
+        });
+        char[] tokena = { };
+        Task? tokenaTask = Task.Run(async () =>
+        {
+            tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+        });
+        await Task.WhenAll(movieTask, tokenaTask);
+        string token = new string(tokena);
+
         Parallel.ForEach(movies, async item =>
         {
             DicImageLink.Add(item.MovieId, null);
             try
             {
-                string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
+                string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(token), ThrowOnCancel = true, HttpClientTimeout = TimeSpan.FromHours(2) }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
                 if (!DicImageLink.ContainsKey(item.MovieId))
                 {
                     DicImageLink.Add(item.MovieId, ImageLink);

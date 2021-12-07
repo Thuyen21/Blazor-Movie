@@ -135,11 +135,9 @@ public class AdminController : Controller
     {
         try
         {
-            string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
-            FirebaseApp.Create(new AppOptions { Credential = GoogleCredential.FromFile(path) });
+            string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json")); 
             UserRecordArgs userRecordArgs = new UserRecordArgs() { Uid = Id, Disabled = true };
             await FirebaseAuth.DefaultInstance.UpdateUserAsync(userRecordArgs);
-            FirebaseApp.DefaultInstance.Delete();
             return Ok("Success");
         }
         catch (Exception ex)
@@ -153,10 +151,8 @@ public class AdminController : Controller
         try
         {
             string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
-            FirebaseApp.Create(new AppOptions { Credential = GoogleCredential.FromFile(path) });
             UserRecordArgs userRecordArgs = new UserRecordArgs() { Uid = Id, Disabled = false };
             await FirebaseAuth.DefaultInstance.UpdateUserAsync(userRecordArgs);
-            FirebaseApp.DefaultInstance.Delete();
             return Ok("Success");
         }
         catch (Exception ex)

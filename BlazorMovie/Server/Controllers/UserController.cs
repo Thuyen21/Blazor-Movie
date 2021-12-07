@@ -235,17 +235,43 @@ public class UserController : Controller
     }
 
     [HttpGet("GetToken")]
-    [Authorize]
     public async Task<ActionResult<char[]>> GetToken()
     {
-
-        string token = User.FindFirstValue("Token");
-        char[] ch = new char[token.Length];
-        for (int i = 0; i < token.Length; i++)
+        if(User.Identity.IsAuthenticated)
         {
-            ch[i] = token[i];
+            string token = User.FindFirstValue("Token");
+            char[] ch = new char[token.Length];
+            for (int i = 0; i < token.Length; i++)
+            {
+                ch[i] = token[i];
+            }
+            return await Task.FromResult(ch);
         }
-        return await Task.FromResult(ch);
+        else
+        {
+            try
+            {
+                var uid = "wgiW4ncipWSsHzaHIrHyaD0sSFL2";
+
+                string customToken = await FirebaseAdmin.Auth.FirebaseAuth.DefaultInstance.CreateCustomTokenAsync(uid);
+
+                char[] ch = new char[customToken.Length];
+                for (int i = 0; i < customToken.Length; i++)
+                {
+                    ch[i] = customToken[i];
+                }
+
+                return await Task.FromResult(ch);
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                return BadRequest();
+            }
+            
+        }
+        
     }
     [HttpPost("feedback")]
     public async Task<ActionResult> Feedback([FromBody] FeedbackMessageModel feedback)
