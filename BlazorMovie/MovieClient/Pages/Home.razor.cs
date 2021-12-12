@@ -21,7 +21,7 @@ public partial class Home
         });
         await Task.WhenAll(movieTask, tokenaTask);
         string token = new string(tokena);
-        
+
         Parallel.ForEach(movies, async item =>
         {
             DicImageLink.Add(item.MovieId, null);

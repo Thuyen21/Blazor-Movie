@@ -135,7 +135,7 @@ public class AdminController : Controller
     {
         try
         {
-            string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json")); 
+            string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
             UserRecordArgs userRecordArgs = new UserRecordArgs() { Uid = Id, Disabled = true };
             await FirebaseAuth.DefaultInstance.UpdateUserAsync(userRecordArgs);
             return Ok("Success");
