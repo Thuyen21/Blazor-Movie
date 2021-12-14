@@ -1,9 +1,7 @@
 ﻿using BlazorMovie.Shared;
 using Firebase.Auth;
 using Firebase.Storage;
-using FirebaseAdmin;
 using FirebaseAdmin.Auth;
-using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

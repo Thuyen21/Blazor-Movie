@@ -1,19 +1,15 @@
-﻿using Android.Runtime;
-using Microsoft.Maui;
-using Microsoft.Maui.Hosting;
+﻿using Android.App;
+using Android.Runtime;
 
 namespace Maui;
 
 [Application]
 public class MainApplication : MauiApplication
 {
-    public MainApplication(IntPtr handle, JniHandleOwnership ownership)
-        : base(handle, ownership)
-    {
-    }
+	public MainApplication(IntPtr handle, JniHandleOwnership ownership)
+		: base(handle, ownership)
+	{
+	}
 
-    protected override MauiApp CreateMauiApp()
-    {
-        return MauiProgram.CreateMauiApp();
-    }
+	protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 }

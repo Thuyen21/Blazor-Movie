@@ -1,13 +1,9 @@
-﻿using Microsoft.Maui;
-using Microsoft.Maui.Hosting;
+﻿using Foundation;
 
 namespace Maui;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate
 {
-    protected override MauiApp CreateMauiApp()
-    {
-        return MauiProgram.CreateMauiApp();
-    }
+	protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 }
