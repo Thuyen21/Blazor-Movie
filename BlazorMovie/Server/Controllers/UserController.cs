@@ -237,7 +237,7 @@ public class UserController : Controller
     [HttpGet("GetToken")]
     public async Task<ActionResult<char[]>> GetToken()
     {
-        if(User.Identity.IsAuthenticated)
+        if (User.Identity.IsAuthenticated)
         {
             string token = User.FindFirstValue("Token");
             char[] ch = new char[token.Length];
@@ -269,9 +269,9 @@ public class UserController : Controller
                 Console.WriteLine(ex.Message);
                 return BadRequest();
             }
-            
+
         }
-        
+
     }
     [HttpPost("feedback")]
     public async Task<ActionResult> Feedback([FromBody] FeedbackMessageModel feedback)

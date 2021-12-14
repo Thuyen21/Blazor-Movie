@@ -1,9 +1,7 @@
 ﻿using BlazorMovie.Shared;
 using Firebase.Auth;
 using Firebase.Storage;
-using FirebaseAdmin;
 using FirebaseAdmin.Auth;
-using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -135,7 +133,7 @@ public class AdminController : Controller
     {
         try
         {
-            string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json")); 
+            string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
             UserRecordArgs userRecordArgs = new UserRecordArgs() { Uid = Id, Disabled = true };
             await FirebaseAuth.DefaultInstance.UpdateUserAsync(userRecordArgs);
             return Ok("Success");
