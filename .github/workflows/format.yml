@@ -15,9 +15,9 @@ jobs:
         with:
           path: |
             C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
-          key: ${{ runner.os }}-format-dotnet-6.0.100
+          key: ${{ runner.os }}-format-dotnet-6.0.100.1
           restore-keys: |
-            ${{ runner.os }}-format-dotnet-6.0.100
+            ${{ runner.os }}-format-dotnet-6.0.100.1
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v1.9.0
@@ -37,8 +37,6 @@ jobs:
       - name: Install tools
         run: |
           dotnet workload restore
-          dotnet workload repair
-          dotnet workload update
 
       - name: Dotnet Restore
         run: dotnet restore

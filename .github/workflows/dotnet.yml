@@ -16,9 +16,9 @@ jobs:
         with:
           path: |
             C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
-          key: ${{ runner.os }}-build-dotnet-6.0.100
+          key: ${{ runner.os }}-build-dotnet-6.0.100.1
           restore-keys: |
-            ${{ runner.os }}-build-dotnet-6.0.100
+            ${{ runner.os }}-build-dotnet-6.0.100.1
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v1.9.0
@@ -35,9 +35,8 @@ jobs:
       - name: Install tools
         run: |
           dotnet workload restore
-          dotnet workload repair
-          dotnet workload update
         # dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
+        
       - name: Restore dependencies
         run: dotnet restore
       # - name: Build
