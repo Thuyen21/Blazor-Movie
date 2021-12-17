@@ -12,7 +12,8 @@ This project was built on .NET 6
 
 ## Current News
 
-- [.NET Blazor Movie 2.0](https://github.com/Thuyen21/Blazor-Movie-/tree/v2)
+- [.NET Blazor Movie 2.1](https://github.com/Thuyen21/Blazor-Movie-/tree/v2.1)
+- [.NET Blazor Movie 2.0](https://github.com/Thuyen21/Blazor-Movie-/tree/v2.0)
 
 ## Contributor Guide
 
