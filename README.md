@@ -73,4 +73,4 @@ Run project
 dotnet BlazorMovie.Server.dll
 ```
 
-![Alt](https://repobeats.axiom.co/api/embed/76100e07b36834c17ad226d024ec31e65ad00081.svg "Repobeats analytics image")
+![Alt](https://repobeats.axiom.co/api/embed/def3589590e0d9a320ec6c0ae6f338eb11a0a2a9.svg "Repobeats analytics image")
