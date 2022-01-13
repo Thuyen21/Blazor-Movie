@@ -43,7 +43,7 @@ jobs:
 
       - name: Formating
         run: |
-          dotnet format --no-restore --include-generated -v diag --fix-analyzers
+          dotnet format --no-restore --include-generated -v diag
 
       - name: Commit files
         if: steps.format.outputs.has-changes == 'true'
