@@ -1,4 +1,5 @@
 ﻿using BlazorMovie.Shared;
+using BlazorMovie_Server;
 using Firebase.Storage;
 using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Authorization;
@@ -331,7 +332,7 @@ public class StudioController : Controller
                     sampleData.Review = commentConvert.CommentText;
                     //Load model and predict output
                     MLModel1.ModelOutput result = MLModel1.Predict(sampleData);
-                    if (result.Prediction == "positive")
+                    if (result.PredictedLabel == "positive")
                     {
                         list[0] = list[0] + 1;
                         await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Positive" } });
