@@ -32,7 +32,7 @@ jobs:
           check-latest: true
 
       - name: Install format
-        run: dotnet tool install -g dotnet-format --version "7.0.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet-tools/nuget/v3/index.json
+        run: dotnet tool install -g dotnet-format --version "7.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet7/nuget/v3/index.json
 
       - name: Install tools
         run: |
@@ -43,7 +43,7 @@ jobs:
 
       - name: Formating
         run: |
-          dotnet format --no-restore --include-generated -v diag
+          dotnet format --no-restore --include-generated -v diag --fix-analyzers
 
       - name: Commit files
         if: steps.format.outputs.has-changes == 'true'
