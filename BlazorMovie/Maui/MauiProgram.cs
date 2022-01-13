@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Components.WebView.Maui;
+﻿using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.WebView.Maui;
+using MovieClient;
 using MovieClient.Services;
 using MudBlazor.Services;
-using Microsoft.AspNetCore.Components.Authorization;
-using MovieClient;
 
 namespace Maui;
 
