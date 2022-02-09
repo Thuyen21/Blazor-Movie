@@ -16,9 +16,9 @@ jobs:
         with:
           path: |
             C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
-          key: ${{ runner.os }}-build-dotnet-6.0.100.1
+          key: ${{ runner.os }}-build-dotnet-6.0.102
           restore-keys: |
-            ${{ runner.os }}-build-dotnet-6.0.100.1
+            ${{ runner.os }}-build-dotnet-6.0.102
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v1.9.0
