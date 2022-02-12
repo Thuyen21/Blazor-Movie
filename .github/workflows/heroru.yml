@@ -35,7 +35,8 @@ jobs:
           dotnet workload install wasm-tools
           
       - name: Publish 
-        run: dotnet publish "Blazor-Movie/BlazorMovie/Server/BlazorMovie.Server.csproj"
+        working-directory: ./Blazor Movie\Blazor-Movie-\BlazorMovie\Server
+        run: dotnet publish BlazorMovie.Server.csproj
 
 
       
