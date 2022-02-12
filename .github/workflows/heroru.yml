@@ -1,0 +1,48 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "movie213" 
+          heroku_email: "thuyennhgch18080@fpt.edu.vn"
+          usedocker: true
+
+      - uses: actions/cache@v2.1.7
+        with:
+          path: |
+            C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
+          key: ${{ runner.os }}-build-dotnet-6.0.102
+          restore-keys: |
+            ${{ runner.os }}-build-dotnet-6.0.102
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1.9.0
+        with:
+          dotnet-version: "6.0.x"
+          include-prerelease: true
+
+      - uses: actions/setup-java@v2.5.0
+        with:
+          distribution: "adopt"
+          java-version: "11"
+          check-latest: true
+
+      - name: Install tools
+        run: |
+          dotnet workload restore
+          
+      - name: Publish 
+        run: dotnet publish "Blazor-Movie/BlazorMovie/Server/BlazorMovie.Server.csproj"
+
+
+      
