@@ -49,7 +49,7 @@ jobs:
         run: |
           heroku container:login
           heroku container:push -a movie213 --recursive
-          heroku container:release -a movie213 --recursive
+          heroku container:release -a movie213
 
       
 
