@@ -17,6 +17,7 @@ jobs:
           heroku_app_name: "movie213" 
           heroku_email: "thuyennhgch18080@fpt.edu.vn"
           usedocker: true
+          justlogin: true
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v1.9.0
