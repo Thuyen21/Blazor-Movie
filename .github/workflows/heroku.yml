@@ -46,6 +46,7 @@ jobs:
       - name: Deploy 
         working-directory: "./BlazorMovie/Server/bin/Debug/net6.0/publish/"
         run: |
+          heroku container:login
           heroku container:push -a movie213
           heroku container:release -a movie213
 
