@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: docker-practice/actions-setup-docker@master
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
@@ -47,6 +48,7 @@ jobs:
         working-directory: "./BlazorMovie/Server/bin/Debug/net6.0/publish/"
         run: |
           heroku container:login
+          docker ps
           heroku container:push -a movie213
           heroku container:release -a movie213
 
