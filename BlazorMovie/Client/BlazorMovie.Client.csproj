@@ -13,7 +13,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-	<RunAOTCompilation>true</RunAOTCompilation>
+	<RunAOTCompilation>flase</RunAOTCompilation>
 	<ImplicitUsings>enable</ImplicitUsings>
 	<SignAssembly>true</SignAssembly>
 	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
