@@ -1,0 +1,56 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "movie213" 
+          heroku_email: "thuyennhgch18080@fpt.edu.vn"
+          usedocker: true
+          justlogin: true
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1.9.0
+        with:
+          dotnet-version: "6.0.x"
+          include-prerelease: true
+
+      - uses: actions/setup-java@v2.5.0
+        with:
+          distribution: "adopt"
+          java-version: "11"
+          check-latest: true
+
+      - name: Install tools
+        run: |
+          dotnet workload install wasm-tools
+          
+      - name: Publish 
+        working-directory: "./BlazorMovie/Server/"
+        run: dotnet publish BlazorMovie.Server.csproj
+      - name: copy file
+        uses: canastro/copy-file-action@master
+        with:
+          source: "Dockerfile"
+          target: "BlazorMovie/Server/bin/Debug/net6.0/publish/Dockerfile"
+      - name: Deploy 
+        working-directory: "./BlazorMovie/Server/bin/Debug/net6.0/publish/"
+        run: |
+          heroku container:login
+          heroku container:push web -a movie213
+          heroku container:release web -a movie213 
+
+      
+
+
+      
