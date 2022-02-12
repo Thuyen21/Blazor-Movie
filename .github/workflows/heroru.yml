@@ -35,7 +35,7 @@ jobs:
           dotnet workload install wasm-tools
           
       - name: Publish 
-        working-directory: "./Blazor Movie/Blazor-Movie-/BlazorMovie/Server/"
+        working-directory: "./BlazorMovie/Server/"
         run: dotnet publish BlazorMovie.Server.csproj
       - name: copy file
         uses: canastro/copy-file-action@master
