@@ -47,7 +47,7 @@ jobs:
         working-directory: "./BlazorMovie/Server/bin/Debug/net6.0/publish/"
         run: |
           heroku container:login
-          heroku container:push -a movie213 --recursive
+          heroku container:push web -a movie213
           heroku container:release web -a movie213 
 
       
