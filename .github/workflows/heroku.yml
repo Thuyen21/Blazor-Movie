@@ -48,8 +48,8 @@ jobs:
         working-directory: "./BlazorMovie/Server/bin/Debug/net6.0/publish/"
         run: |
           heroku container:login
-          heroku container:push
-          heroku container:release
+          heroku container:push -a movie213 --recursive
+          heroku container:release -a movie213 --recursive
 
       
 
