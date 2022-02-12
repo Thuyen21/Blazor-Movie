@@ -18,14 +18,6 @@ jobs:
           heroku_email: "thuyennhgch18080@fpt.edu.vn"
           usedocker: true
 
-      - uses: actions/cache@v2.1.7
-        with:
-          path: |
-            C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
-          key: ${{ runner.os }}-build-dotnet-6.0.102
-          restore-keys: |
-            ${{ runner.os }}-build-dotnet-6.0.102
-
       - name: Setup .NET
         uses: actions/setup-dotnet@v1.9.0
         with:
@@ -40,7 +32,7 @@ jobs:
 
       - name: Install tools
         run: |
-          dotnet workload restore
+          dotnet workload install wasm-tools
           
       - name: Publish 
         run: dotnet publish "Blazor-Movie/BlazorMovie/Server/BlazorMovie.Server.csproj"
