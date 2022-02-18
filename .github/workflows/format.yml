@@ -34,7 +34,8 @@ jobs:
           check-latest: true
 
       - name: Install format
-        run: dotnet tool install -g dotnet-format --version "7.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet7/nuget/v3/index.json
+        run: dotnet tool install -g dotnet-format 
+        # dotnet tool install -g dotnet-format --version "7.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet7/nuget/v3/index.json
 
       - name: Install tools
         run: |
