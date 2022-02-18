@@ -11,13 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
 
-      - uses: actions/cache@v2.1.7
-        with:
-          path: |
-            C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
-          key: ${{ runner.os }}-format-dotnet-6.0.100.1
-          restore-keys: |
-            ${{ runner.os }}-format-dotnet-6.0.100.1
+      # - uses: actions/cache@v2.1.7
+      #   with:
+      #     path: |
+      #       C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
+      #     key: ${{ runner.os }}-format-dotnet-6.0.200
+      #     restore-keys: |
+      #       ${{ runner.os }}-format-dotnet-6.0.200
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v1.9.0
@@ -41,7 +41,7 @@ jobs:
       - name: Dotnet Restore
         run: dotnet restore
 
-      - name: Formating
+      - name: Formatting
         run: |
           dotnet format --no-restore --include-generated -v diag
 
