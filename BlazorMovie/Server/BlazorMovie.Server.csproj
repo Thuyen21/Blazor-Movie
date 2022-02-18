@@ -6,7 +6,7 @@
     <TypeScriptTarget>ESNext</TypeScriptTarget>
   </PropertyGroup>
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
@@ -25,9 +25,8 @@
     <PackageReference Include="Google.Apis.Drive.v3" Version="1.55.0.2601" />
     <PackageReference Include="Google.Cloud.Firestore" Version="2.5.0" />
     <PackageReference Include="Google.Cloud.Storage.V1" Version="3.7.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.2" />
-    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.2-mauipre.1.22054.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.0-preview.1.22109.13" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="7.0.0-preview.1.22109.13" />
     <PackageReference Include="Microsoft.ML" Version="1.7.0" />
     <PackageReference Include="Microsoft.ML.FastTree" Version="1.7.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.14.0" />
