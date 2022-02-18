@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.WebView.Maui;
 using MovieClient;
 using MovieClient.Services;
 using MudBlazor.Services;
+using Maui.Data;
 
 namespace Maui;
 

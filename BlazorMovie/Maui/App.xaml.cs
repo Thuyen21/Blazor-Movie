@@ -1,11 +1,12 @@
-﻿namespace Maui;
-
-public partial class App : Application
+﻿namespace Maui
 {
-    public App()
+    public partial class App : Application
     {
-        InitializeComponent();
+        public App()
+        {
+            InitializeComponent();
 
-        MainPage = new MainPage();
+            MainPage = new MainPage();
+        }
     }
 }
