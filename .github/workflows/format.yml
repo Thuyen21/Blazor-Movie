@@ -38,7 +38,6 @@ jobs:
       - name: Install tools
         run: |
           dotnet workload restore
-          dotnet build
 
       - name: Dotnet Restore
         run: dotnet restore
