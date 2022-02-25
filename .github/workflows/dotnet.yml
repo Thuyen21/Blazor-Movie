@@ -21,7 +21,7 @@ jobs:
             ${{ runner.os }}-build-dotnet-6.0.102
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1.9.0
+        uses: actions/setup-dotnet@v1.9.1
         with:
           dotnet-version: "6.0.x"
           include-prerelease: true
