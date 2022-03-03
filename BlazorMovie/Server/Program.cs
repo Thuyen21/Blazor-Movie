@@ -10,8 +10,9 @@ using Microsoft.AspNetCore.Http.Features;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json")));
-FirebaseApp.Create(new AppOptions { Credential = GoogleCredential.FromFile(Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"))) });
+var config = new ConfigurationBuilder().Build();
+Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", config["movie"]);
+FirebaseApp.Create(new AppOptions { Credential = GoogleCredential.FromJson(config["movie"]) });
 builder.Services.AddScoped(sp => FirestoreDb.Create("movie2-e3c7b"));
 builder.Services.AddScoped(sp => new FirebaseAuthConfig() { ApiKey = "AIzaSyAqCxl98i68Te5_xy3vgMcAEoF5qiBKE9o", AuthDomain = "movie2-e3c7b.firebaseapp.com", Providers = new FirebaseAuthProvider[] { new EmailProvider() } });
 builder.Services.AddSingleton<Censor>();
