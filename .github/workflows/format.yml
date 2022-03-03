@@ -33,7 +33,7 @@ jobs:
           check-latest: true
 
       - name: Install format
-        run: dotnet tool install -g dotnet-format --version "7.*" --add-source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet7/nuget/v3/index.json
+        run: dotnet tool install -g dotnet-format
 
       - name: Install tools
         run: |
@@ -44,7 +44,7 @@ jobs:
 
 #     - name: Formating
 #        run: |
-#          dotnet format --no-restore --include-generated -v diag
+#          dotnet format --no-restore
 
       - name: Formating
         working-directory: "./BlazorMovie/Server/"
