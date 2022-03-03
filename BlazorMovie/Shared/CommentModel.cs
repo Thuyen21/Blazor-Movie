@@ -8,10 +8,9 @@ namespace BlazorMovie.Shared;
 public class CommentModel
 {
     [FirestoreProperty]
-
     [DataType(DataType.Text)]
     [DisplayName("Id")]
-    public string? Id { get; set; }
+    public string Id { get; set; }
     [FirestoreProperty]
 
     [DataType(DataType.DateTime)]

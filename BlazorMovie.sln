@@ -3,15 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31903.286
 MinimumVisualStudioVersion = 17.1.31903.286
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMovie.Server", "BlazorMovie\Server\BlazorMovie.Server.csproj", "{BDEDC1E6-BF8C-4EEE-8427-51B34C9DF232}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMovie.Client", "BlazorMovie\Client\BlazorMovie.Client.csproj", "{84B2C0BB-88D8-4787-9704-D1ACFA243549}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMovie.Shared", "BlazorMovie\Shared\BlazorMovie.Shared.csproj", "{68B04E57-C5F7-4EA9-B811-CE1919F62977}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClient", "BlazorMovie\MovieClient\MovieClient.csproj", "{8ADA8FE4-341A-458A-BF33-ECE11E0EB608}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMovie.Maui", "BlazorMovie\Maui\BlazorMovie.Maui.csproj", "{2C860AA3-B822-4F26-9526-FD4C549B43A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Enity", "Enity\Enity.csproj", "{7FFF058F-3533-48B2-B68B-74FEB465642E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,28 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BDEDC1E6-BF8C-4EEE-8427-51B34C9DF232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BDEDC1E6-BF8C-4EEE-8427-51B34C9DF232}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BDEDC1E6-BF8C-4EEE-8427-51B34C9DF232}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BDEDC1E6-BF8C-4EEE-8427-51B34C9DF232}.Release|Any CPU.Build.0 = Release|Any CPU
-		{84B2C0BB-88D8-4787-9704-D1ACFA243549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84B2C0BB-88D8-4787-9704-D1ACFA243549}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84B2C0BB-88D8-4787-9704-D1ACFA243549}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84B2C0BB-88D8-4787-9704-D1ACFA243549}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68B04E57-C5F7-4EA9-B811-CE1919F62977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{68B04E57-C5F7-4EA9-B811-CE1919F62977}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68B04E57-C5F7-4EA9-B811-CE1919F62977}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68B04E57-C5F7-4EA9-B811-CE1919F62977}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8ADA8FE4-341A-458A-BF33-ECE11E0EB608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8ADA8FE4-341A-458A-BF33-ECE11E0EB608}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8ADA8FE4-341A-458A-BF33-ECE11E0EB608}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8ADA8FE4-341A-458A-BF33-ECE11E0EB608}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C860AA3-B822-4F26-9526-FD4C549B43A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C860AA3-B822-4F26-9526-FD4C549B43A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C860AA3-B822-4F26-9526-FD4C549B43A2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{2C860AA3-B822-4F26-9526-FD4C549B43A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C860AA3-B822-4F26-9526-FD4C549B43A2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C860AA3-B822-4F26-9526-FD4C549B43A2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7FFF058F-3533-48B2-B68B-74FEB465642E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FFF058F-3533-48B2-B68B-74FEB465642E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FFF058F-3533-48B2-B68B-74FEB465642E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FFF058F-3533-48B2-B68B-74FEB465642E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
