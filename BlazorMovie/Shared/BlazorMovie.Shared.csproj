@@ -22,7 +22,6 @@
 		<PackageReference Include="Google.Cloud.Storage.V1" Version="3.7.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="6.0.2" />
-		<PackageReference Include="Microsoft.CodeAnalysis" Version="4.1.0" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.2-mauipre.1.22054.8" />
 		<PackageReference Include="MudBlazor" Version="6.0.7" />
 		<PackageReference Include="PayoutsSdk" Version="1.1.1" />
