@@ -42,9 +42,16 @@ jobs:
       - name: Dotnet Restore
         run: dotnet restore
 
+#     - name: Formating
+#        run: |
+#          dotnet format --no-restore --include-generated -v diag
+
       - name: Formating
+        working-directory: "./BlazorMovie/Server/"
         run: |
-          dotnet format --no-restore --include-generated -v diag
+          dotnet format BlazorMovie.Server.csproj --no-restore --include-generated -v diag
+
+
 
       - name: Commit files
         if: steps.format.outputs.has-changes == 'true'
