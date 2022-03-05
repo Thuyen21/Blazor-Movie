@@ -1,9 +1,11 @@
 ﻿using BlazorMovie.Shared;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Enity.Data
 {
-    public class Context : DbContext
+    public class Context : IdentityDbContext
     {
         public DbSet<AccountManagementModel> AccountManagementModels { get; set; }
         public DbSet<MovieModel> Movies { get; set; }

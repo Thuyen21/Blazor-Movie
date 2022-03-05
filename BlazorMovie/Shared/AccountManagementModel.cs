@@ -8,39 +8,15 @@ namespace BlazorMovie.Shared;
 [FirestoreData]
 public class AccountManagementModel
 {
-    [FirestoreProperty]
-    [DataType(DataType.Text)]
-    [DisplayName("Id")]
     public Guid Id { get; set; }
-    [FirestoreProperty]
-    [EmailAddress]
-    [DisplayName("Email")]
-
     public string? Email { get; set; }
-
-    [FirestoreProperty]
-    [DisplayName("Name")]
-    [DataType(DataType.Text)]
+    [Display(Name = "Name")]
+    [StringLength(50)]
     public string? Name { get; set; }
-
-    [FirestoreProperty]
-    [DisplayName("Date of birth")]
-    [DataType(DataType.Date)]
-
-    public DateTime DateOfBirth { get; set; }
-
-    [FirestoreProperty]
-    [DisplayName("Role")]
-    [DataType(DataType.Text)]
+    public DateTime? DateOfBirth { get; set; }
     public string? Role { get; set; }
-
-    [FirestoreProperty]
-    [DisplayName("Wallet")]
-    [DataType(DataType.Text)]
-    public double Wallet { get; set; }
-
-    [FirestoreProperty]
+    public double? Wallet { get; set; }
     public string? UserAgent { get; set; }
-    List<MovieModel> Movies { get; set; }
+    public List<MovieModel> Movies { get; set; } = new();
 }
 

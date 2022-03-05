@@ -1,35 +1,36 @@
 using Enity.Data;
 using BlazorMovie.Shared;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 try
 {
-    Console.WriteLine("Hello");
-    Context context = new Context();
-    AccountManagementModel accModel = new AccountManagementModel();
-    accModel.Name = "haha123asdasdads";
-    context.AccountManagementModels.Add(accModel);
-    //context.SaveChanges();
-    //accModel = context.AccountManagementModels.First(f => f.Id == accModel.Id);
+    // Console.WriteLine("Hello");
+    Context ctx = new Context();
+    //AccountManagementModel accountManagementModel = new AccountManagementModel();
+    //accountManagementModel.Name = "accTest";
     MovieModel movieModel = new MovieModel();
-    movieModel.MovieName = "test";
-    movieModel.Studio = accModel;
-    movieModel.MovieGenre = "asd";
-    context.Movies.Add(movieModel);
-    
-    context.SaveChanges();
+    movieModel.MovieName = "Movie Test2";
+    ctx.Movies.Add(movieModel);
+    ////ctx.AccountManagementModels.Add(accountManagementModel);
+
+    ////ctx.Movies.FirstOrDefault().Studio.Add(accountManagementModel);
+    ctx.SaveChanges();
 
 }
 catch (Exception ex)
 {
 
-    Console.WriteLine(ex.Message);
+    Console.WriteLine(ex.InnerException.Message);
 }
 
 
 
 var builder = WebApplication.CreateBuilder(args);
-
+var connectionString = builder.Configuration.GetConnectionString("EnityContextConnection");builder.Services.AddDbContext<Context>(options =>
+    options.UseSqlServer(connectionString));builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<Context>();
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSwaggerGen();
@@ -58,7 +59,7 @@ app.UseSwaggerUI(options =>
 });
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();
