@@ -1,13 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+ <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-	<SignAssembly>true</SignAssembly>
-	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-	<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
-	<AnalysisLevel>preview</AnalysisLevel>
   </PropertyGroup>
 
 	<ItemGroup>
