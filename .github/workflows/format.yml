@@ -44,6 +44,8 @@ jobs:
       - name: Formating
         env:
           ConnectionString: ${{ secrets.CONNECTIONSTRING }}
+          SendGridKey: ${{ secrets.SENDGRIDKEY }}
+          MyEmail: ${{ secrets.MYEMAIL }}
         run: |
           dotnet format --no-restore --include-generated -v diag
 

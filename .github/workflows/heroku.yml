@@ -36,6 +36,8 @@ jobs:
       - name: Publish 
         env:
           ConnectionString: ${{ secrets.CONNECTIONSTRING }}
+          SendGridKey: ${{ secrets.SENDGRIDKEY }}
+          MyEmail: ${{ secrets.MYEMAIL }}
         working-directory: "./BlazorMovie/Server/"
         run: dotnet publish BlazorMovie.Server.csproj
       - name: copy file

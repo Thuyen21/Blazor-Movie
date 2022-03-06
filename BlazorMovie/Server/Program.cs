@@ -5,9 +5,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using BlazorMovie.Server.Data;
 using BlazorMovie.Server.Areas.Identity.Pages.Account;
-
-//using Microsoft.EntityFrameworkCore;
-//using BlazorMovie.Server.Data;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using BlazorMovie.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +26,8 @@ builder.Services.AddDefaultIdentity<IdentityUser<Guid>>(options => {
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<Censor>();
+builder.Services.AddScoped<IEmailSender, EmailSenderService>();
+builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 builder.Services.Configure<FormOptions>(options =>
 {

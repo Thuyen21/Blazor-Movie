@@ -44,4 +44,6 @@ jobs:
       - name: Test
         env:
           ConnectionString: ${{ secrets.CONNECTIONSTRING }}
+          SendGridKey: ${{ secrets.SENDGRIDKEY }}
+          MyEmail: ${{ secrets.MYEMAIL }}
         run: dotnet test --no-restore

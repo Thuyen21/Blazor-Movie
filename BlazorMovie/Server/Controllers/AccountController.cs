@@ -1,4 +1,5 @@
-﻿using BlazorMovie.Shared;
+﻿using BlazorMovie.Server.Services;
+using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -99,12 +100,19 @@ namespace BlazorMovie.Server.Controllers
             return Ok();
 
         }
-        [HttpPost("ResetPasswordCode")]
-        public async Task<IActionResult> ResetPasswordCode()
+        [HttpPost("ResetPasswordConfirmation")]
+        public async Task<IActionResult> ResetPasswordConfirmation([FromBody] ResetPasswordConfirmationModel resetPasswordConfirmation)
         {
-            var user = await userManager.GetUserAsync(User);
-            //var result = await userManager.ResetPasswordAsync(user, Input.Code, Input.Password);
-            return Ok();
+            var user = await userManager.FindByEmailAsync(resetPasswordConfirmation.Email);
+            var result = await userManager.ResetPasswordAsync(user, resetPasswordConfirmation.Code, resetPasswordConfirmation.Password);
+            if(result.Succeeded)
+            {
+                return Ok("Succeeded");
+            }    
+            else
+            {
+                return BadRequest();
+            }
         }
 
     }
