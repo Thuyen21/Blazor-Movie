@@ -12,7 +12,7 @@ using BlazorMovie.Server.Areas.Identity.Pages.Account;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<Context>(options =>
-    options.UseSqlServer(builder.Configuration["Movies:ConnectionString"]));
+    options.UseSqlServer(builder.Configuration["ConnectionString"]));
 // @"Server=DESKTOP-UO4APTR\SQLEXPRESS;Database=movie;Trusted_Connection=True;"
 builder.Services.AddDefaultIdentity<IdentityUser<Guid>>(options => {
     options.SignIn.RequireConfirmedAccount = false;

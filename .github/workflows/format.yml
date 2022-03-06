@@ -42,6 +42,8 @@ jobs:
         run: dotnet restore
 
       - name: Formating
+        env:
+          ConnectionString: ${{ secrets.CONNECTIONSTRING }}
         run: |
           dotnet format --no-restore --include-generated -v diag
 

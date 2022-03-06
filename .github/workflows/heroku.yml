@@ -34,6 +34,8 @@ jobs:
           dotnet workload install wasm-tools
           
       - name: Publish 
+        env:
+          ConnectionString: ${{ secrets.CONNECTIONSTRING }}
         working-directory: "./BlazorMovie/Server/"
         run: dotnet publish BlazorMovie.Server.csproj
       - name: copy file
