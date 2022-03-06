@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorMovie.Server.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220305163113_a")]
-    partial class a
+    [Migration("20220306125025_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

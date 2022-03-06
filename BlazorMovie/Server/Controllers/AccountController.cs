@@ -1,6 +1,8 @@
 ﻿using BlazorMovie.Shared;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorMovie.Server.Controllers
@@ -9,12 +11,16 @@ namespace BlazorMovie.Server.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<IdentityUser<Guid>> UserManager;
-       
+        private readonly UserManager<IdentityUser<Guid>> userManager;
 
-        public AccountController(UserManager<IdentityUser<Guid>> UserManager)
+        private readonly SignInManager<IdentityUser<Guid>> signInManager;
+        private readonly IEmailSender emailSender;
+
+        public AccountController(UserManager<IdentityUser<Guid>> userManager, SignInManager<IdentityUser<Guid>> signInManager, IEmailSender emailSender)
         {
-            this.UserManager = UserManager;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+            this.emailSender = emailSender; 
         }
         // Will learn  Email Confirmation later
         [HttpPost("Register")]
@@ -24,23 +30,82 @@ namespace BlazorMovie.Server.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    if (!UserManager.SupportsUserEmail)
+                    if (!userManager.SupportsUserEmail)
                     {
                         return BadRequest("The default UI requires a user store with email support.");
                     }
 
-                    var mess = await UserManager.CreateAsync(new IdentityUser<Guid> {UserName = registerModel.Email, Email = registerModel.Email }, registerModel.Password);
-                    var user = await UserManager.FindByNameAsync(registerModel.Email);
-                    await UserManager.AddToRoleAsync(user, "Admin");
+                    var result = await userManager.CreateAsync(new IdentityUser<Guid> {UserName = registerModel.Email, Email = registerModel.Email }, registerModel.Password);
+                    if (result.Succeeded)
+                    {
+                        var user = await userManager.FindByNameAsync(registerModel.Email);
+                        await userManager.AddToRoleAsync(user, registerModel.Role.ToString());
+                    }
+                    else
+                    {
+                        return BadRequest(result.Errors.ElementAt(0).Description);
+                    }
                 }
-                return Ok();
+                return Ok("Register success");
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
                 
-            }
-            
+            } 
         }
+        [HttpPost("Login")]
+        public async Task<ActionResult> Login([FromBody] LoginModel loginModel)
+        {
+            
+            var result = await signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password, isPersistent: loginModel.RememberMe, false);
+            if (result.Succeeded)
+            {
+                return Ok("User logged in.");
+            }
+            else
+            {
+                return BadRequest("Invalid login attempt.");
+            }
+           
+        }
+        [Authorize]
+        [HttpPost("Logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+                return Ok("User logged out.");
+
+        }
+        [HttpPost("ResetPassword")]
+        public async Task<IActionResult> ResetPassword([FromBody] string email)
+        {
+            try
+            {
+                var user = await userManager.FindByEmailAsync(email);
+                var code = await userManager.GeneratePasswordResetTokenAsync(user);
+               
+
+                await emailSender.SendEmailAsync(
+                    email,
+                    "Reset Password",
+                    $"Code : {code}");
+            }
+            catch (Exception ex)
+            {
+
+            }
+           
+            return Ok();
+
+        }
+        [HttpPost("ResetPasswordCode")]
+        public async Task<IActionResult> ResetPasswordCode()
+        {
+            var user = await userManager.GetUserAsync(User);
+            //var result = await userManager.ResetPasswordAsync(user, Input.Code, Input.Password);
+            return Ok();
+        }
+
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using BlazorMovie.Server.Data;
+using BlazorMovie.Server.Areas.Identity.Pages.Account;
 
 //using Microsoft.EntityFrameworkCore;
 //using BlazorMovie.Server.Data;
@@ -11,11 +12,14 @@ using BlazorMovie.Server.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<Context>(options =>
-    options.UseSqlServer(@"Server=DESKTOP-UO4APTR\SQLEXPRESS;Database=movie;Trusted_Connection=True;"));
-
+    options.UseSqlServer(builder.Configuration["Movies:ConnectionString"]));
+// @"Server=DESKTOP-UO4APTR\SQLEXPRESS;Database=movie;Trusted_Connection=True;"
 builder.Services.AddDefaultIdentity<IdentityUser<Guid>>(options => {
     options.SignIn.RequireConfirmedAccount = false;
-    options.User.RequireUniqueEmail = true;
+    options.User.RequireUniqueEmail = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireDigit = false;  
+    
     })
     .AddRoles<IdentityRole<Guid>>()
     .AddEntityFrameworkStores<Context>();
@@ -23,10 +27,7 @@ builder.Services.AddDefaultIdentity<IdentityUser<Guid>>(options => {
 
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<Censor>();
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
-{
-    options.ExpireTimeSpan = TimeSpan.FromHours(1);
-});
+
 builder.Services.Configure<FormOptions>(options =>
 {
     options.ValueLengthLimit = int.MaxValue;
