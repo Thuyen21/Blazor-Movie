@@ -8,13 +8,13 @@ public partial class Profile
 {
     private readonly ChangeEmailModel changeEmail = new ChangeEmailModel();
     private readonly ShowAlertService alertService = new();
-    private AccountManagementModel accountManagementModel = new AccountManagementModel();
+    private Account accountManagementModel = new Account();
     private async Task ChangeEmail()
     {
         HttpResponseMessage? response = await _httpClient.PostAsJsonAsync("User/ChangeEmail", changeEmail);
         alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
         _accountService.checkAuthentication();
-        accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");
+        accountManagementModel = await _httpClient.GetFromJsonAsync<Account>("user/Profile");
     }
 
     private Task ChangePass()
@@ -26,7 +26,7 @@ public partial class Profile
 
     protected override async Task OnInitializedAsync()
     {
-        accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");
+        accountManagementModel = await _httpClient.GetFromJsonAsync<Account>("user/Profile");
     }
 
     private async Task HandleValidSubmit()

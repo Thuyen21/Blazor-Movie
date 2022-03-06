@@ -18,7 +18,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
     {
         try
         {
-            AccountManagementModel user = (await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/GetCurrentUser"))!;
+            Account user = (await _httpClient.GetFromJsonAsync<Account>("user/GetCurrentUser"))!;
             if (user.Email != null)
             {
 
