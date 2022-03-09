@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebView.Maui;
+using Microsoft.Extensions.Logging;
 using MovieClient;
 using MovieClient.Services;
 using MudBlazor.Services;
@@ -18,7 +19,8 @@ public static class MauiProgram
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
             });
-
+        builder.Logging.ClearProviders();
+        builder.Logging.AddConsole();
         builder.Services.AddBlazorWebView();
         builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri("https://movie213.herokuapp.com/") });
         builder.Services.AddOptions();
