@@ -11,7 +11,7 @@ public partial class EditAccount
     public string? Id { get; set; }
 
     private AccountManagementModel acc = new();
-    private readonly ShowAlertService alertService = new();
+    
     protected override async Task OnInitializedAsync()
     {
         acc = (await _httpClient.GetFromJsonAsync<AccountManagementModel>($"Admin/EditAccount/{Id}"))!;

@@ -18,5 +18,6 @@ builder.Services.AddAuthorizationCore();
 builder.Services.AddSingleton<AccountService>();
 builder.Services.AddSingleton<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddMudServices();
+builder.Services.AddSingleton<ShowAlertService>();
 
 await builder.Build().RunAsync();

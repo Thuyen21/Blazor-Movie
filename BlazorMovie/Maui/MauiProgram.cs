@@ -28,6 +28,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<AccountService>();
         builder.Services.AddSingleton<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
         builder.Services.AddMudServices();
+        builder.Services.AddSingleton<ShowAlertService>();
 
         return builder.Build();
     }

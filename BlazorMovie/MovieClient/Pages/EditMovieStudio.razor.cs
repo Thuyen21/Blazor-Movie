@@ -17,7 +17,7 @@ public partial class EditMovieStudio
     private IBrowserFile? imageFile;
     private string? mp;
     private string? ip;
-    private readonly ShowAlertService alertService = new();
+    
     private bool more = false;
     protected override async Task OnInitializedAsync()
     {

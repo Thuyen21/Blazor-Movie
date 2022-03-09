@@ -10,7 +10,7 @@ public partial class DeleteMovieAdmin
     [Parameter]
     public string? Id { get; set; }
     private MovieModel? movie;
-    private readonly ShowAlertService alertService = new();
+    
     protected override async Task OnInitializedAsync()
     {
         movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}");
