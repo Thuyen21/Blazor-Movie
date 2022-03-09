@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMovie.Client", "Blazo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClient", "BlazorMovie\MovieClient\MovieClient.csproj", "{1CB996A6-3E3F-4CBB-B816-C936880FAF89}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMovie.Maui", "BlazorMovie\Maui\BlazorMovie.Maui.csproj", "{2E8B467E-7ACF-4F27-8D50-90310D5712EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,12 @@ Global
 		{1CB996A6-3E3F-4CBB-B816-C936880FAF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CB996A6-3E3F-4CBB-B816-C936880FAF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CB996A6-3E3F-4CBB-B816-C936880FAF89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E8B467E-7ACF-4F27-8D50-90310D5712EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E8B467E-7ACF-4F27-8D50-90310D5712EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E8B467E-7ACF-4F27-8D50-90310D5712EA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2E8B467E-7ACF-4F27-8D50-90310D5712EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E8B467E-7ACF-4F27-8D50-90310D5712EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E8B467E-7ACF-4F27-8D50-90310D5712EA}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

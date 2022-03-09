@@ -24,8 +24,6 @@ builder.Services.AddDefaultIdentity<IdentityUser<Guid>>(options => {
     .AddRoles<IdentityRole<Guid>>()
     .AddEntityFrameworkStores<Context>();
 
-builder.Services.AddAuthentication().AddIdentityServerJwt();
-
 
 // Add services to the container.
 

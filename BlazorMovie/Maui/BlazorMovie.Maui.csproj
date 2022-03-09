@@ -67,6 +67,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\MovieClient\MovieClient.csproj" />
 	  <ProjectReference Include="..\Shared\BlazorMovie.Shared.csproj" />
 	</ItemGroup>
 
