@@ -12,8 +12,8 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddOptions();
 builder.Services.AddAuthorizationCore();
-builder.Services.AddSingleton<AccountService>();
-builder.Services.AddSingleton<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+builder.Services.AddScoped<IAccountService , AccountService>();
+builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddMudServices();
 
 await builder.Build().RunAsync();

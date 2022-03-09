@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorMovie.Shared
+namespace MovieClient.Services
 {
-    public enum Roles
+    public interface IAccountService
     {
-        Admin,
-        Studio,
-        Customer
+       public void checkAuthentication();
     }
 }

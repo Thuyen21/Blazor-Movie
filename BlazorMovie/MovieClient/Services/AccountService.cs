@@ -2,7 +2,7 @@
 
 namespace MovieClient.Services;
 
-public class AccountService
+public class AccountService : IAccountService
 {
     private readonly AuthenticationStateProvider authenticationStateProvider;
     public AccountService(AuthenticationStateProvider authenticationStateProvider)

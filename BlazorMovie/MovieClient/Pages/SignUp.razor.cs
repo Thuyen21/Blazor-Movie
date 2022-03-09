@@ -21,7 +21,7 @@ public partial class SignUp
         }
     }
 
-    private readonly SignUpModel signUpModel = new()
+    private readonly RegisterModel signUpModel = new()
     { DateOfBirth = DateTime.Now };
     protected async Task HandleValidSubmit()
     {
@@ -31,7 +31,7 @@ public partial class SignUp
             return;
         }
         signUpModel.Role = role;
-        HttpResponseMessage response = await _httpClient.PostAsJsonAsync("user/signUp", signUpModel);
+        HttpResponseMessage response = await _httpClient.PostAsJsonAsync("api/Account/Register", signUpModel);
         alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
         _accountService.checkAuthentication();
         _navigationManager.NavigateTo("/");

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace BlazorMovie.Server.Controllers
 {
@@ -40,7 +41,7 @@ namespace BlazorMovie.Server.Controllers
                     if (result.Succeeded)
                     {
                         var user = await userManager.FindByNameAsync(registerModel.Email);
-                        await userManager.AddToRoleAsync(user, registerModel.Role.ToString());
+                        await userManager.AddToRoleAsync(user, registerModel.Role);
                     }
                     else
                     {
@@ -114,6 +115,11 @@ namespace BlazorMovie.Server.Controllers
                 return BadRequest();
             }
         }
-
+        [Authorize]
+        [HttpPost("GetCurrentUser")]
+        public async Task<ActionResult<ClaimsPrincipal>> GetCurrentUser()
+        {
+            return User;
+        }
     }
 }

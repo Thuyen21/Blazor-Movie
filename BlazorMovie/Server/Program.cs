@@ -7,6 +7,7 @@ using BlazorMovie.Server.Data;
 using BlazorMovie.Server.Areas.Identity.Pages.Account;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using BlazorMovie.Server.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +23,10 @@ builder.Services.AddDefaultIdentity<IdentityUser<Guid>>(options => {
     })
     .AddRoles<IdentityRole<Guid>>()
     .AddEntityFrameworkStores<Context>();
+
+builder.Services.AddAuthentication().AddIdentityServerJwt();
+
+
 // Add services to the container.
 
 builder.Services.AddSwaggerGen();
