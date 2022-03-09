@@ -25,6 +25,8 @@ builder.Services.AddDefaultIdentity<IdentityUser<Guid>>(options => {
     .AddEntityFrameworkStores<Context>();
 
 
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 // Add services to the container.
 
 builder.Services.AddSwaggerGen();

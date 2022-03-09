@@ -6,6 +6,9 @@ using MovieClient.Services;
 using MudBlazor.Services;
 
 WebAssemblyHostBuilder? builder = WebAssemblyHostBuilder.CreateDefault(args);
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
@@ -15,5 +18,6 @@ builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<IAccountService , AccountService>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddMudServices();
+builder.Services.AddSingleton<ShowAlertService>();
 
 await builder.Build().RunAsync();

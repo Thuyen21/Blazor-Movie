@@ -12,13 +12,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/cache@v2.1.7
-        with:
-          path: |
-            C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
-          key: ${{ runner.os }}-build-dotnet-6.0.102
-          restore-keys: |
-            ${{ runner.os }}-build-dotnet-6.0.102
+      # - uses: actions/cache@v2.1.7
+      #   with:
+      #     path: |
+      #       C:\Users\runneradmin\AppData\Local\Microsoft\dotnet
+      #     key: ${{ runner.os }}-build-dotnet-6.0.102
+      #     restore-keys: |
+      #       ${{ runner.os }}-build-dotnet-6.0.102
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v2

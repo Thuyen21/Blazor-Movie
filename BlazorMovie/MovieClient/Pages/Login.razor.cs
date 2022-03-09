@@ -8,8 +8,8 @@ namespace MovieClient.Pages;
 
 public partial class Login
 {
-    private readonly LoginModel login = new LoginModel();
-    private readonly ShowAlertService alertService = new();
+    private readonly LogInModel login = new LogInModel();
+    
     private async Task HandleValidSubmit()
     {
         try

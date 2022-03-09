@@ -8,7 +8,7 @@ namespace MovieClient.Pages;
 public partial class SignUp
 {
     private string role = "Customer";
-    private readonly ShowAlertService alertService = new();
+    
     private void Role()
     {
         if (role == "Customer")
