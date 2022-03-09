@@ -13,7 +13,7 @@ public partial class BuyVip
     private readonly VipModel vip = new VipModel()
     { Choose = 1 };
     private string? vipStatus;
-    private readonly ShowAlertService alertService = new();
+    
 
     protected override async Task OnInitializedAsync()
     {

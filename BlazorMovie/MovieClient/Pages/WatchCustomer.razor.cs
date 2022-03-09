@@ -20,7 +20,7 @@ public partial class WatchCustomer
     private List<CommentModel> commentList = new();
     private bool sameDevice = false;
     private bool firstPlay = true;
-    private readonly ShowAlertService alertService = new();
+    
     private int index = 0;
     protected override async Task OnInitializedAsync()
     {

@@ -19,7 +19,7 @@ public partial class EditMovieAdmin
     private string? mp;
     private string? ip;
     private bool more = false;
-    private readonly ShowAlertService alertService = new();
+    
     protected override async Task OnInitializedAsync()
     {
         movie = (await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}"))!;

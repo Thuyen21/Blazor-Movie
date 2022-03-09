@@ -10,7 +10,7 @@ public partial class BanAccount
     [Parameter]
     public string? Id { get; set; }
     private AccountManagementModel acc = new();
-    private readonly ShowAlertService alertService = new();
+    
     protected override async Task OnInitializedAsync()
     {
         acc = (await _httpClient.GetFromJsonAsync<AccountManagementModel>($"Admin/EditAccount/{Id}"))!;

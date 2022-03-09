@@ -7,7 +7,7 @@ namespace MovieClient.Pages;
 public partial class Profile
 {
     private readonly ChangeEmailModel changeEmail = new ChangeEmailModel();
-    private readonly ShowAlertService alertService = new();
+    
     private AccountManagementModel accountManagementModel = new AccountManagementModel();
     private async Task ChangeEmail()
     {

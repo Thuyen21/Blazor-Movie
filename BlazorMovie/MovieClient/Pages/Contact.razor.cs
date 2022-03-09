@@ -7,7 +7,7 @@ namespace MovieClient.Pages;
 public partial class Contact
 {
     private readonly FeedbackMessageModel feedbackMessageModel = new();
-    private readonly ShowAlertService alertService = new();
+    
 
     private async Task SendFeedbackMessage()
     {
