@@ -1,5 +1,4 @@
 ﻿using BlazorMovie.Shared;
-using BlazorMovie_Server;
 using Firebase.Storage;
 using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Authorization;
