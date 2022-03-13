@@ -34,6 +34,14 @@ namespace BlazorMovie.Server.Controllers
         [HttpPost("Register")]
         public async Task<ActionResult> Register([FromBody] RegisterModel registerModel)
         {
+            if(registerModel.Role == Role.Customer || registerModel.Role == Role.Studio)
+            {
+
+            }
+            else
+            {
+                return BadRequest("Error");    
+            }
             ApplicationUser user = new();
             try
             {
@@ -44,12 +52,11 @@ namespace BlazorMovie.Server.Controllers
                         return BadRequest("The default UI requires a user store with email support.");
                     }
 
-                    var result = await userManager.CreateAsync(new ApplicationUser {UserName = registerModel.Email, Email = registerModel.Email }, registerModel.Password);
+                    var result = await userManager.CreateAsync(new ApplicationUser {UserName = registerModel.Email, Email = registerModel.Email, Wallet = 0, DateOfBirth = registerModel.DateOfBirth, Name= registerModel.Name }, registerModel.Password);
                     if (result.Succeeded)
                     {
                         user = await userManager.FindByNameAsync(registerModel.Email);
                         await userManager.AddToRoleAsync(user, registerModel.Role.ToString());
-                        
                     }
                     else
                     {
