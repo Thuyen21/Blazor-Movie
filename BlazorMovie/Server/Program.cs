@@ -8,21 +8,25 @@ using BlazorMovie.Server.Areas.Identity.Pages.Account;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using BlazorMovie.Server.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using BlazorMovie.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<Context>(options =>
-    options.UseSqlServer(builder.Configuration["ConnectionString"]));
-// @"Server=DESKTOP-UO4APTR\SQLEXPRESS;Database=movie;Trusted_Connection=True;"
-builder.Services.AddDefaultIdentity<IdentityUser<Guid>>(options => {
+    options.UseSqlServer("Server=localhost;Database=movie;Trusted_Connection=True;"));
+//builder.Configuration["ConnectionString"]
+
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => {
     options.SignIn.RequireConfirmedAccount = false;
     options.User.RequireUniqueEmail = false;
     options.Password.RequireUppercase = false;
     options.Password.RequireDigit = false;  
     
     })
-    .AddRoles<IdentityRole<Guid>>()
-    .AddEntityFrameworkStores<Context>();
+    .AddRoles<ApplicationRole>()
+    .AddEntityFrameworkStores<Context>()
+    .AddDefaultUI()
+    .AddDefaultTokenProviders();
 
 
 builder.Logging.ClearProviders();
