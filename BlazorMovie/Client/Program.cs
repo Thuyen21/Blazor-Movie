@@ -20,4 +20,7 @@ builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStat
 builder.Services.AddMudServices();
 builder.Services.AddSingleton<ShowAlertService>();
 
+builder.Services.AddApiAuthorization();
+
+
 await builder.Build().RunAsync();
