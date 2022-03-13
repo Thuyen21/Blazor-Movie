@@ -48,7 +48,7 @@ namespace BlazorMovie.Server.Controllers
                     if (result.Succeeded)
                     {
                         user = await userManager.FindByNameAsync(registerModel.Email);
-                        await userManager.AddToRoleAsync(user, registerModel.Role);
+                        await userManager.AddToRoleAsync(user, registerModel.Role.ToString());
                         
                     }
                     else
@@ -134,13 +134,22 @@ namespace BlazorMovie.Server.Controllers
         }
         [Authorize]
         [HttpPost("GetCurrentUser")]
-        public async Task<ActionResult<ApplicationUser>> GetCurrentUser()
+        public async Task<ActionResult<User>> GetCurrentUser()
         {
-            ApplicationUser user = context.Users.Where(c => c.UserName == User.Identity.Name).First();
-            
-            var userRoles = context.UserRoles.Where(c => c.UserId == user.Id).First();
-            var role = context.Roles.Where(c => c.Id == userRoles.RoleId).First();
-            
+            User user = context.Users.Where(c => c.UserName == User.Identity.Name).Select(c => new User()
+            {
+                Id = c.Id,
+                Email = c.Email,
+                Name = c.Name,
+                DateOfBirth = c.DateOfBirth,
+                Wallet = c.Wallet,
+                UserAgent = c.UserAgent
+            }).First();
+
+            Role role;
+            Enum.TryParse<Role>((await userManager.GetRolesAsync(new ApplicationUser() { Id = user.Id.Value }))[0], out role);
+            user.Role = role;
+                 
             return user;
         }
     }

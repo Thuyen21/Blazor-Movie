@@ -9,6 +9,7 @@ namespace BlazorMovie.Shared
 {
     public class ApplicationUser : IdentityUser<Guid>
     {
+        public string? Name { get; set; }
         public DateTime DateOfBirth { get; set; }
         public double Wallet { get; set; } = 0;
         public string? UserAgent { get; set; }

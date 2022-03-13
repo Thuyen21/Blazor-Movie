@@ -30,7 +30,15 @@ public partial class SignUp
             alertService.ShowAlert(Severity.Warning, "Password and Confirm Password are different");
             return;
         }
-        signUpModel.Role = role;
+        if(role == "Studio")
+        {
+            signUpModel.Role = BlazorMovie.Shared.Role.Studio;
+        }
+        else
+        {
+            signUpModel.Role = BlazorMovie.Shared.Role.Customer;
+        }
+
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync("api/Account/Register", signUpModel);
         alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
         _accountService.checkAuthentication();

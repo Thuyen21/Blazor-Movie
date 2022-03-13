@@ -6,8 +6,6 @@ using MovieClient.Services;
 using MudBlazor.Services;
 
 WebAssemblyHostBuilder? builder = WebAssemblyHostBuilder.CreateDefault(args);
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
 
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
