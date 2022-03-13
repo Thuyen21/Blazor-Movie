@@ -28,5 +28,14 @@ public class Context : IdentityDbContext<ApplicationUser, ApplicationRole, Guid>
                 .HasForeignKey(ur => ur.RoleId)
                 .IsRequired();
         });
+
+        builder.Entity<ApplicationUser>(b =>
+        {
+            // Each User can have many entries in the UserRole join table
+            b.HasMany(e => e.UserRoles)
+                .WithOne(e => e.User)
+                .HasForeignKey(ur => ur.UserId)
+                .IsRequired();
+        });
     }
 }

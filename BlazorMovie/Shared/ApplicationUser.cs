@@ -13,6 +13,6 @@ namespace BlazorMovie.Shared
         public double Wallet { get; set; } = 0;
         public string? UserAgent { get; set; }
 
-        public virtual ICollection<ApplicationUserRole> UserRoles { get; set; }
+        public virtual ICollection<ApplicationUserRole> UserRoles { get; set; } = new List<ApplicationUserRole>();
     }
 }

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using BlazorMovie.Server.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using BlazorMovie.Shared;
+using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +28,6 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => {
     .AddEntityFrameworkStores<Context>()
     .AddDefaultUI()
     .AddDefaultTokenProviders();
-
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();

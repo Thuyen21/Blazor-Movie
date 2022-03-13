@@ -1,4 +1,5 @@
-﻿using BlazorMovie.Server.Services;
+﻿using BlazorMovie.Server.Data;
+using BlazorMovie.Server.Services;
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -13,21 +14,27 @@ namespace BlazorMovie.Server.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly UserManager<IdentityUser<Guid>> userManager;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        private readonly SignInManager<IdentityUser<Guid>> signInManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
+
+        private readonly RoleManager<ApplicationRole> roleManager;
         private readonly IEmailSender emailSender;
+        private readonly Context context;
 
-        public AccountController(UserManager<IdentityUser<Guid>> userManager, SignInManager<IdentityUser<Guid>> signInManager, IEmailSender emailSender)
+        public AccountController(Context context, RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.emailSender = emailSender; 
+            this.roleManager = roleManager;
+            this.context = context;
         }
         // Will learn  Email Confirmation later
         [HttpPost("Register")]
         public async Task<ActionResult> Register([FromBody] RegisterModel registerModel)
         {
+            ApplicationUser user = new();
             try
             {
                 if (ModelState.IsValid)
@@ -37,11 +44,12 @@ namespace BlazorMovie.Server.Controllers
                         return BadRequest("The default UI requires a user store with email support.");
                     }
 
-                    var result = await userManager.CreateAsync(new IdentityUser<Guid> {UserName = registerModel.Email, Email = registerModel.Email }, registerModel.Password);
+                    var result = await userManager.CreateAsync(new ApplicationUser {UserName = registerModel.Email, Email = registerModel.Email }, registerModel.Password);
                     if (result.Succeeded)
                     {
-                        var user = await userManager.FindByNameAsync(registerModel.Email);
+                        user = await userManager.FindByNameAsync(registerModel.Email);
                         await userManager.AddToRoleAsync(user, registerModel.Role);
+                        
                     }
                     else
                     {
@@ -52,8 +60,16 @@ namespace BlazorMovie.Server.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
-                
+                try
+                {
+                    await userManager.DeleteAsync(user);
+                }
+                catch
+                {
+
+                    
+                }
+                return BadRequest(ex.Message);    
             } 
         }
         [HttpPost("Login")]
@@ -61,6 +77,7 @@ namespace BlazorMovie.Server.Controllers
         {
             
             var result = await signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password, isPersistent: loginModel.RememberMe, false);
+            
             if (result.Succeeded)
             {
                 return Ok("User logged in.");
@@ -117,9 +134,14 @@ namespace BlazorMovie.Server.Controllers
         }
         [Authorize]
         [HttpPost("GetCurrentUser")]
-        public async Task<ActionResult<ClaimsPrincipal>> GetCurrentUser()
+        public async Task<ActionResult<ApplicationUser>> GetCurrentUser()
         {
-            return User;
+            ApplicationUser user = context.Users.Where(c => c.UserName == User.Identity.Name).First();
+            
+            var userRoles = context.UserRoles.Where(c => c.UserId == user.Id).First();
+            var role = context.Roles.Where(c => c.Id == userRoles.RoleId).First();
+            
+            return user;
         }
     }
 }
