@@ -42,22 +42,30 @@ namespace BlazorMovie.Server.Repository.User
         public List<UserModel> GetAll()
         {
 
-            ApplicationUser test = context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).OrderBy(c => c.Name).Last();
+           var user = context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Select(c => 
+            
+                new ApplicationUser()
+                {
+                        Id = c.Id,
+                        Name = c.Name,
+                        Email = c.Email,
+                        DateOfBirth = c.DateOfBirth,
+                        Wallet = c.Wallet,
+                        UserRoles = c.UserRoles,
+                        UserAgent = c.UserAgent,
+               
+            }
+                
+            ).ToList();
 
-            //Id = c.Id,
-            //            Name = c.Name,
-            //            Email = c.Email,
-            //            DateOfBirth = c.DateOfBirth,
-            //            Role = Haaaaaa(c.UserRoles.ToArray()[0].Role.Name),
-            //          //(RoleEnum)Enum.Parse(typeof(RoleEnum), c.UserRoles.ToArray()[0].Role.Name)
-            //            Wallet = c.Wallet,
-            //            UserAgent = c.UserAgent,
-            throw new NotImplementedException();
+            List<UserModel> list = new();
+            foreach(var item in user)
+            {
+                list.Add(new UserModel() { DateOfBirth = item.DateOfBirth, Email = item.Email, Id = item.Id, Name = item.Name, Role= (RoleEnum)Enum.Parse(typeof(RoleEnum), item.UserRoles.ToList()[0].Role.Name), UserAgent= item.UserAgent, Wallet= item.Wallet });
+            }
 
-        }
-        public RoleEnum Haaaaaa(string a)
-        {
-            return RoleEnum.Admin;
+            return list;
+
         }
         public UserModel GetById(Guid Id)
         {

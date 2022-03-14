@@ -34,14 +34,14 @@ namespace BlazorMovie.Server.Controllers
         [HttpPost("Register")]
         public async Task<ActionResult> Register([FromBody] RegisterModel registerModel)
         {
-            if(registerModel.Role == RoleEnum.Customer || registerModel.Role == RoleEnum.Studio)
-            {
+            //if(registerModel.Role == RoleEnum.Customer || registerModel.Role == RoleEnum.Studio)
+            //{
 
-            }
-            else
-            {
-                return BadRequest("Error");    
-            }
+            //}
+            //else
+            //{
+            //    return BadRequest("Error");    
+            //}
             ApplicationUser user = new();
             try
             {
@@ -56,6 +56,9 @@ namespace BlazorMovie.Server.Controllers
                     if (result.Succeeded)
                     {
                         user = await userManager.FindByNameAsync(registerModel.Email);
+                        //await roleManager.CreateAsync(new ApplicationRole() { Name = "Admin" });
+                        //await roleManager.CreateAsync(new ApplicationRole() { Name = "Studio" });
+                        //await roleManager.CreateAsync(new ApplicationRole() { Name = "Customer" });
                         await userManager.AddToRoleAsync(user, registerModel.Role.ToString());
                         
                     }
