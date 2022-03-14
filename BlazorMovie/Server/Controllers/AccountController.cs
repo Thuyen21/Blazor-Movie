@@ -119,13 +119,15 @@ namespace BlazorMovie.Server.Controllers
                     email.Email,
                     "Reset Password",
                     $"Code : {code}");
+
+                return Ok("A mail had sent");
             }
             catch (Exception ex)
             {
-
+                return BadRequest("Error");
             }
            
-            return Ok();
+            
 
         }
         [HttpPost("ResetPasswordConfirmation")]

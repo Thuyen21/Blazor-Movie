@@ -10,6 +10,7 @@ using BlazorMovie.Server.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Authentication;
+using BlazorMovie.Server.Repository.User;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,8 @@ builder.Logging.AddConsole();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<Censor>();
 builder.Services.AddScoped<IEmailSender, EmailSenderService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 builder.Services.Configure<FormOptions>(options =>
