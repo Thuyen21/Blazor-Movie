@@ -15,5 +15,8 @@ namespace BlazorMovie.Shared
         public string? UserAgent { get; set; }
 
         public virtual ICollection<ApplicationUserRole> UserRoles { get; set; } = new List<ApplicationUserRole>();
+        public virtual ICollection<IdentityUserClaim<Guid>> Claims { get; set; }
+        public virtual ICollection<IdentityUserLogin<Guid>> Logins { get; set; }
+        public virtual ICollection<IdentityUserToken<Guid>> Tokens { get; set; }
     }
 }

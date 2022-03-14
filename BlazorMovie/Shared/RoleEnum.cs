@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlazorMovie.Shared
 {
-    public enum Role
+    public enum RoleEnum
     {
         Admin,
         Studio,

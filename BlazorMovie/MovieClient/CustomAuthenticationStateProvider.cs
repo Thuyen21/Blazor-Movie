@@ -20,7 +20,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
         {
             var respon = await _httpClient.PostAsync("api/Account/GetCurrentUser", null);
 
-            var user = await respon.Content.ReadFromJsonAsync<User>();
+            var user = await respon.Content.ReadFromJsonAsync<UserModel>();
 
 
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {

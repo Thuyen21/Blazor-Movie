@@ -34,7 +34,7 @@ namespace BlazorMovie.Server.Controllers
         [HttpPost("Register")]
         public async Task<ActionResult> Register([FromBody] RegisterModel registerModel)
         {
-            if(registerModel.Role == Role.Customer || registerModel.Role == Role.Studio)
+            if(registerModel.Role == RoleEnum.Customer || registerModel.Role == RoleEnum.Studio)
             {
 
             }
@@ -57,6 +57,7 @@ namespace BlazorMovie.Server.Controllers
                     {
                         user = await userManager.FindByNameAsync(registerModel.Email);
                         await userManager.AddToRoleAsync(user, registerModel.Role.ToString());
+                        
                     }
                     else
                     {
@@ -104,16 +105,18 @@ namespace BlazorMovie.Server.Controllers
 
         }
         [HttpPost("ResetPassword")]
-        public async Task<IActionResult> ResetPassword([FromBody] string email)
+        public async Task<IActionResult> ResetPassword([FromBody] EmailModel email)
         {
+
             try
             {
-                var user = await userManager.FindByEmailAsync(email);
+                var addr = new System.Net.Mail.MailAddress(email.Email);
+                var user = await userManager.FindByEmailAsync(email.Email);
                 var code = await userManager.GeneratePasswordResetTokenAsync(user);
                
 
                 await emailSender.SendEmailAsync(
-                    email,
+                    email.Email,
                     "Reset Password",
                     $"Code : {code}");
             }
@@ -141,9 +144,9 @@ namespace BlazorMovie.Server.Controllers
         }
         [Authorize]
         [HttpPost("GetCurrentUser")]
-        public async Task<ActionResult<User>> GetCurrentUser()
+        public async Task<ActionResult<UserModel>> GetCurrentUser()
         {
-            User user = context.Users.Where(c => c.UserName == User.Identity.Name).Select(c => new User()
+            UserModel user = context.Users.Where(c => c.UserName == User.Identity.Name).Select(c => new UserModel()
             {
                 Id = c.Id,
                 Email = c.Email,
@@ -153,11 +156,56 @@ namespace BlazorMovie.Server.Controllers
                 UserAgent = c.UserAgent
             }).First();
 
-            Role role;
-            Enum.TryParse<Role>((await userManager.GetRolesAsync(new ApplicationUser() { Id = user.Id.Value }))[0], out role);
+            RoleEnum role;
+            Enum.TryParse<RoleEnum>((await userManager.GetRolesAsync(new ApplicationUser() { Id = user.Id.Value }))[0], out role);
             user.Role = role;
                  
             return user;
+        }
+        [Authorize]
+        [HttpPost("ChangeEmail")]
+        public async Task<ActionResult<string>> ChangeEmail([FromBody] ChangeEmailModel model)
+        {
+            var user = await userManager.GetUserAsync(User);
+            var checkPass = await userManager.CheckPasswordAsync(user, model.Password);
+            if(checkPass)
+            {
+                try
+                {
+                    user.Email = model.Email;
+                    user.NormalizedEmail = model.Email.ToUpper();
+                    user.UserName = model.Email;
+                    user.NormalizedUserName = model.Email.ToUpper();
+                    await userManager.UpdateAsync(user);
+                    return Ok("Success");
+                }
+                catch (Exception ex)
+                {
+                    
+
+                    return BadRequest("Error");
+                }
+            }
+            return BadRequest("Error password");
+        }
+        [Authorize]
+        [HttpPost("UpdateProfile")]
+        public async Task<ActionResult<string>> UpdateProfile([FromBody] UserModel model)
+        {
+            var user = await userManager.GetUserAsync(User);
+            try
+            {
+                user.Name = model.Email;
+                user.DateOfBirth = model.DateOfBirth.Value;
+                await userManager.UpdateAsync(user);
+                return Ok("Updated");
+            }
+            catch (Exception ex)
+            {
+
+
+                return BadRequest("Error");
+            }
         }
     }
 }

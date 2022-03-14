@@ -32,17 +32,21 @@ public partial class SignUp
         }
         if(role == "Studio")
         {
-            signUpModel.Role = BlazorMovie.Shared.Role.Studio;
+            signUpModel.Role = BlazorMovie.Shared.RoleEnum.Studio;
         }
         else
         {
-            signUpModel.Role = BlazorMovie.Shared.Role.Customer;
+            signUpModel.Role = BlazorMovie.Shared.RoleEnum.Customer;
         }
 
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync("api/Account/Register", signUpModel);
         alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
-        _accountService.checkAuthentication();
-        _navigationManager.NavigateTo("/");
+        //if(response.IsSuccessStatusCode)
+        //{
+        //    _accountService.checkAuthentication();
+        //    _navigationManager.NavigateTo("/");
+        //}
+        
     }
 
 }
