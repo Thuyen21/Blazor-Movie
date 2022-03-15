@@ -15,19 +15,19 @@ namespace BlazorMovie.Server.Repository.User
             this.userManager = userManager;
             this.context = context;
         }
-        public async void BanById(Guid Id)
+        public async Task BanById(Guid Id)
         {
             var user = await userManager.FindByIdAsync(Id.ToString());
             user.LockoutEnabled = true;
            await userManager.UpdateAsync(user);
         }
-        public async void UnBanById(Guid Id)
+        public async Task UnBanById(Guid Id)
         {
             var user = await userManager.FindByIdAsync(Id.ToString());
             user.LockoutEnabled = false;
             await userManager.UpdateAsync(user);
         }
-        public async void Edit(UserModel userModel)
+        public async Task Edit(UserModel userModel)
         {
             var user = await userManager.FindByIdAsync(userModel.Id.ToString());
             user.DateOfBirth = userModel.DateOfBirth.Value;
@@ -39,47 +39,87 @@ namespace BlazorMovie.Server.Repository.User
             await userManager.UpdateAsync(user);
         }
 
-        public List<UserModel> GetAll()
+        public async Task<List<UserModel>> GetAll()
         {
-
-           var user = context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Select(c => 
+           var user = await context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Select(c => 
             
-                new ApplicationUser()
+                new UserModel()
                 {
                         Id = c.Id,
                         Name = c.Name,
                         Email = c.Email,
                         DateOfBirth = c.DateOfBirth,
                         Wallet = c.Wallet,
-                        UserRoles = c.UserRoles,
+                        Role = c.UserRoles.ToList()[0].Role.Name,
                         UserAgent = c.UserAgent,
-               
             }
                 
-            ).ToList();
+            ).ToListAsync();
+            return user;
 
-            List<UserModel> list = new();
-            foreach(var item in user)
+        }
+        public async Task<UserModel> GetById(Guid Id)
+        { 
+            var user = await context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Where(c => c.Id == Id).Select(c =>
+
+                new UserModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Email = c.Email,
+                    DateOfBirth = c.DateOfBirth,
+                    Wallet = c.Wallet,
+                    Role = c.UserRoles.ToList()[0].Role.Name,
+                    UserAgent = c.UserAgent,
+                }
+            ).FirstAsync();
+
+            return user;
+        }
+
+        public async Task<List<UserModel>> GetWithPaging(int pageSize, int pageIndex, string searchString, string orderBy)
+        {
+            var query = context.Users.Select(c =>
+
+                new UserModel()
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Email = c.Email,
+                    DateOfBirth = c.DateOfBirth,
+                    Wallet = c.Wallet,
+                    Role = c.UserRoles.ToList()[0].Role.Name,
+                    UserAgent = c.UserAgent,
+                }
+            );
+
+            if (!String.IsNullOrEmpty(searchString))
             {
-                list.Add(new UserModel() { DateOfBirth = item.DateOfBirth, Email = item.Email, Id = item.Id, Name = item.Name, Role= (RoleEnum)Enum.Parse(typeof(RoleEnum), item.UserRoles.ToList()[0].Role.Name), UserAgent= item.UserAgent, Wallet= item.Wallet });
+                query = query.Where(x => EF.Functions.FreeText(x.Email, searchString));
             }
-
-            return list;
-
-        }
-        public UserModel GetById(Guid Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public UserModel GetWithPaging(int PageSize, int PageIndex, string SearchString, string OrderBy)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<UserModel> Search(string text)
-        {
-            throw new NotImplementedException();
+                switch (orderBy)
+            {
+                case "name":
+                    query = query.OrderBy(c => c.Name);
+                    break;
+                case "nameDesc":
+                    query = query.OrderByDescending(c => c.Name);
+                    break;
+                case "date":
+                    query = query.OrderBy(c => c.DateOfBirth);
+                    break;
+                case "dateDesc":
+                    query = query.OrderByDescending(c => c.DateOfBirth);
+                    break;
+                case "email":
+                    query = query.OrderBy(c => c.Email);
+                    break;
+                case "emailDesc":
+                    query = query.OrderByDescending(c => c.Email);
+                    break;
+            }
+            var user = await query.ToListAsync();
+            return user;
         }
     }
 }

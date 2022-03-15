@@ -1,4 +1,5 @@
 ﻿using BlazorMovie.Server.Data;
+using BlazorMovie.Server.Repository.User;
 using BlazorMovie.Server.Services;
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Authorization;
@@ -21,27 +22,29 @@ namespace BlazorMovie.Server.Controllers
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly IEmailSender emailSender;
         private readonly Context context;
+        private readonly IUserRepository userRepository;
 
-        public AccountController(Context context, RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender)
+        public AccountController(IUserRepository userRepository, Context context, RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.emailSender = emailSender; 
             this.roleManager = roleManager;
             this.context = context;
+            this.userRepository = userRepository;
         }
         // Will learn  Email Confirmation later
         [HttpPost("Register")]
         public async Task<ActionResult> Register([FromBody] RegisterModel registerModel)
         {
-            //if(registerModel.Role == RoleEnum.Customer || registerModel.Role == RoleEnum.Studio)
-            //{
+            if (registerModel.Role == "Customer" || registerModel.Role == "Studio")
+            {
 
-            //}
-            //else
-            //{
-            //    return BadRequest("Error");    
-            //}
+            }
+            else
+            {
+                return BadRequest("Error");
+            }
             ApplicationUser user = new();
             try
             {
@@ -78,17 +81,15 @@ namespace BlazorMovie.Server.Controllers
                 catch
                 {
 
-                    
                 }
                 return BadRequest(ex.Message);    
             } 
         }
+
         [HttpPost("Login")]
         public async Task<ActionResult> Login([FromBody] LoginModel loginModel)
         {
-            
             var result = await signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password, isPersistent: loginModel.RememberMe, false);
-            
             if (result.Succeeded)
             {
                 return Ok("User logged in.");
@@ -97,20 +98,19 @@ namespace BlazorMovie.Server.Controllers
             {
                 return BadRequest("Invalid login attempt.");
             }
-           
         }
+
         [Authorize]
         [HttpPost("Logout")]
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
                 return Ok("User logged out.");
-
         }
+
         [HttpPost("ResetPassword")]
         public async Task<IActionResult> ResetPassword([FromBody] EmailModel email)
         {
-
             try
             {
                 var addr = new System.Net.Mail.MailAddress(email.Email);
@@ -129,10 +129,8 @@ namespace BlazorMovie.Server.Controllers
             {
                 return BadRequest("Error");
             }
-           
-            
-
         }
+
         [HttpPost("ResetPasswordConfirmation")]
         public async Task<IActionResult> ResetPasswordConfirmation([FromBody] ResetPasswordConfirmationModel resetPasswordConfirmation)
         {
@@ -147,26 +145,23 @@ namespace BlazorMovie.Server.Controllers
                 return BadRequest();
             }
         }
+
         [Authorize]
         [HttpPost("GetCurrentUser")]
         public async Task<ActionResult<UserModel>> GetCurrentUser()
         {
-            UserModel user = context.Users.Where(c => c.UserName == User.Identity.Name).Select(c => new UserModel()
+            try
             {
-                Id = c.Id,
-                Email = c.Email,
-                Name = c.Name,
-                DateOfBirth = c.DateOfBirth,
-                Wallet = c.Wallet,
-                UserAgent = c.UserAgent
-            }).First();
+                UserModel user = userRepository.GetById(new Guid(userManager.GetUserId(User)));
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
-            RoleEnum role;
-            Enum.TryParse<RoleEnum>((await userManager.GetRolesAsync(new ApplicationUser() { Id = user.Id.Value }))[0], out role);
-            user.Role = role;
-                 
-            return user;
         }
+
         [Authorize]
         [HttpPost("ChangeEmail")]
         public async Task<ActionResult<string>> ChangeEmail([FromBody] ChangeEmailModel model)
@@ -193,6 +188,7 @@ namespace BlazorMovie.Server.Controllers
             }
             return BadRequest("Error password");
         }
+
         [Authorize]
         [HttpPost("UpdateProfile")]
         public async Task<ActionResult<string>> UpdateProfile([FromBody] UserModel model)
@@ -207,8 +203,6 @@ namespace BlazorMovie.Server.Controllers
             }
             catch (Exception ex)
             {
-
-
                 return BadRequest("Error");
             }
         }

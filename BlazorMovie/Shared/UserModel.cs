@@ -12,7 +12,7 @@ namespace BlazorMovie.Shared
         public string? Email { get; set; }
         public string? Name { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        public RoleEnum? Role { get; set; }
+        public string? Role { get; set; }
         public double? Wallet { get; set; }
         public string? UserAgent { get; set; }
     }
