@@ -19,5 +19,7 @@ namespace BlazorMovie.Server.Controllers
         public async Task DeleteAccount(Guid Id) => await userRepository.DeleteAsync(Id);
         [HttpPost("EditAccount")]
         public async Task EditAccount(UserModel user) => await userRepository.EditAsync(user);
+        [HttpGet("GetUserById")]
+        public async Task<UserModel> GetUserByIdAsync(Guid Id) => await userRepository.GetByIdAsync(Id);
     }
 }

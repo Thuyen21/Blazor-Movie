@@ -28,6 +28,7 @@ namespace BlazorMovie.Server.Repository.User
             catch (Exception ex)
             {
                 logger.LogWarning(ex, ex.Message);
+                throw;
             }
             
         }
@@ -42,24 +43,36 @@ namespace BlazorMovie.Server.Repository.User
             catch (Exception ex)
             {
                 logger.LogWarning(ex, ex.Message);
+                throw;
             }
         }
         public async Task EditAsync(UserModel userModel)
         {
-            var user = await userManager.FindByIdAsync(userModel.Id.ToString());
-            user.DateOfBirth = userModel.DateOfBirth.Value;
+            try
+            {
+                var user = await userManager.FindByIdAsync(userModel.Id.ToString());
+                user.DateOfBirth = userModel.DateOfBirth.Value;
 
-            var roles = await userManager.GetRolesAsync(user);
-            await userManager.RemoveFromRolesAsync(user, roles.ToArray());
-            await userManager.AddToRoleAsync(user, userModel.Role.ToString());
-            user.Name = userModel.Name;
-            await userManager.UpdateAsync(user);
+                var roles = await userManager.GetRolesAsync(user);
+                await userManager.RemoveFromRolesAsync(user, roles.ToArray());
+                await userManager.AddToRoleAsync(user, userModel.Role.ToString());
+                user.Name = userModel.Name;
+                await userManager.UpdateAsync(user);
+            }
+            catch (Exception ex)
+            {
+
+                logger.LogWarning(ex, ex.Message);
+                throw;
+            }
+            
         }
 
         public async Task<List<UserModel>> GetAllAsync()
         {
-            
-            var user = await context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Select(c =>
+            try
+            {
+                var user = await context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Select(c =>
 
                  new UserModel()
                  {
@@ -73,12 +86,22 @@ namespace BlazorMovie.Server.Repository.User
                  }
 
              ).ToListAsync();
-            return user;
+                return user;
+            }
+            catch (Exception ex)
+            {
+
+                logger.LogWarning(ex, ex.Message);
+                throw;
+            }
+            
 
         }
         public async Task<UserModel> GetByIdAsync(Guid Id)
         {
-            var user = await context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Where(c => c.Id == Id).Select(c =>
+            try
+            {
+                var user = await context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Where(c => c.Id == Id).Select(c =>
 
                 new UserModel()
                 {
@@ -92,7 +115,15 @@ namespace BlazorMovie.Server.Repository.User
                 }
             ).FirstAsync();
 
-            return user;
+                return user;
+            }
+            catch (Exception ex)
+            {
+
+                logger.LogWarning(ex, ex.Message);
+                throw;
+            }
+            
         }
 
         public async Task<List<UserModel>> GetWithPagingAsync(int pageSize, int pageIndex, string searchString, string orderBy)
@@ -143,16 +174,27 @@ namespace BlazorMovie.Server.Repository.User
                 var user = await query.ToListAsync();
                 return user;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+
+                logger.LogWarning(ex, ex.Message);
                 throw;
             }
-            
+
         }
 
         public async Task DeleteAsync(Guid Id)
         {
-            await userManager.DeleteAsync(new ApplicationUser() { Id = Id });
+            try
+            {
+                await userManager.DeleteAsync(new ApplicationUser() { Id = Id });
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, ex.Message);
+                throw;
+            }
+           
         }
     }
 }
