@@ -13,15 +13,14 @@ namespace BlazorMovie.Server.Controllers
     public class AccountController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> userManager;
-
         private readonly SignInManager<ApplicationUser> signInManager;
-
         private readonly RoleManager<ApplicationRole> roleManager;
         private readonly IEmailSender emailSender;
         private readonly Context context;
         private readonly IUserRepository userRepository;
+        private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
 
-        public AccountController(IUserRepository userRepository, Context context, RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender)
+        public AccountController(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment, IUserRepository userRepository, Context context, RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -29,19 +28,24 @@ namespace BlazorMovie.Server.Controllers
             this.roleManager = roleManager;
             this.context = context;
             this.userRepository = userRepository;
+            this.hostingEnvironment = hostingEnvironment;
         }
-        // Will learn  Email Confirmation later
+
         [HttpPost("Register")]
         public async Task<ActionResult> Register([FromBody] RegisterModel registerModel)
         {
-            if (registerModel.Role == "Customer" || registerModel.Role == "Studio")
+            if(!hostingEnvironment.IsDevelopment())
             {
+                if (registerModel.Role == "Customer" || registerModel.Role == "Studio")
+                {
 
+                }
+                else
+                {
+                    return BadRequest("Error");
+                }
             }
-            else
-            {
-                return BadRequest("Error");
-            }
+            
             ApplicationUser user = new();
             try
             {
@@ -56,9 +60,6 @@ namespace BlazorMovie.Server.Controllers
                     if (result.Succeeded)
                     {
                         user = await userManager.FindByNameAsync(registerModel.Email);
-                        //await roleManager.CreateAsync(new ApplicationRole() { Name = "Admin" });
-                        //await roleManager.CreateAsync(new ApplicationRole() { Name = "Studio" });
-                        //await roleManager.CreateAsync(new ApplicationRole() { Name = "Customer" });
                         await userManager.AddToRoleAsync(user, registerModel.Role.ToString());
 
                     }
@@ -73,11 +74,25 @@ namespace BlazorMovie.Server.Controllers
             {
                 try
                 {
-                    await userManager.DeleteAsync(user);
+                    if(!await roleManager.RoleExistsAsync("Admin"))
+                    {
+                        await roleManager.CreateAsync(new ApplicationRole() { Name = "Admin" });
+                    }
+                    if (!await roleManager.RoleExistsAsync("Studio"))
+                    {
+                        await roleManager.CreateAsync(new ApplicationRole() { Name = "Studio" });
+                    }
+                    if (!await roleManager.RoleExistsAsync("Customer"))
+                    {
+                        await roleManager.CreateAsync(new ApplicationRole() { Name = "Customer" });
+                    }
+                    await userManager.AddToRoleAsync(user, registerModel.Role.ToString());
+                    return Ok("Register success");
                 }
                 catch
                 {
-
+                    await userManager.DeleteAsync(user);
+                    return BadRequest(ex.Message);
                 }
                 return BadRequest(ex.Message);
             }
@@ -145,19 +160,7 @@ namespace BlazorMovie.Server.Controllers
 
         [Authorize]
         [HttpPost("GetCurrentUser")]
-        public async Task<ActionResult<UserModel>> GetCurrentUser()
-        {
-            try
-            {
-                UserModel user = await userRepository.GetById(new Guid(userManager.GetUserId(User)));
-                return Ok(user);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-
-        }
+        public async Task<ActionResult<UserModel>> GetCurrentUser() => await userRepository.GetByIdAsync(new Guid(userManager.GetUserId(User)));
 
         [Authorize]
         [HttpPost("ChangeEmail")]
@@ -178,8 +181,6 @@ namespace BlazorMovie.Server.Controllers
                 }
                 catch (Exception ex)
                 {
-
-
                     return BadRequest("Error");
                 }
             }

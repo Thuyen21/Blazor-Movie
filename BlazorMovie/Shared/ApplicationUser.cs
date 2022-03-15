@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlazorMovie.Shared
 {
+    [Index(nameof(Email))]
     public class ApplicationUser : IdentityUser<Guid>
     {
         public string? Name { get; set; }

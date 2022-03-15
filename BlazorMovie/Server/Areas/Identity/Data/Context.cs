@@ -1,5 +1,4 @@
-﻿using BlazorMovie.Server.Models;
-using BlazorMovie.Shared;
+﻿using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +15,6 @@ public class Context : IdentityDbContext<ApplicationUser, ApplicationRole, Guid,
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
         base.OnConfiguring(options);
-        options.UseModel(ContextModel.Instance);
     }
     protected override void OnModelCreating(ModelBuilder builder)
     {

@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 
 builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer("Server=localhost;Database=movie;Trusted_Connection=True;"));
@@ -27,8 +29,7 @@ builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
     .AddDefaultUI()
     .AddDefaultTokenProviders();
 
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
+
 // Add services to the container.
 
 builder.Services.AddSwaggerGen();
@@ -45,6 +46,7 @@ builder.Services.Configure<FormOptions>(options =>
     options.MultipartBoundaryLengthLimit = int.MaxValue;
     options.MultipartHeadersCountLimit = int.MaxValue;
     options.MultipartHeadersLengthLimit = int.MaxValue;
+
 });
 
 builder.Services.AddControllersWithViews();
@@ -56,6 +58,13 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        c.RoutePrefix = string.Empty;
+
+    });
 }
 else
 {
@@ -68,13 +77,6 @@ app.Use((context, next) =>
 {
     context.Response.Headers.AltSvc = "h3=\":443\"";
     return next(context);
-});
-
-app.UseSwagger();
-app.UseSwaggerUI(c =>
-{
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-    c.RoutePrefix = string.Empty;
 });
 
 app.UseHttpsRedirection();

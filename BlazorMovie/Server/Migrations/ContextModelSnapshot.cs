@@ -117,6 +117,8 @@ namespace BlazorMovie.Server.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Email");
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 

@@ -13,10 +13,11 @@ namespace BlazorMovie.Server.Controllers
         {
             this.userRepository = userRepository;
         }
-        [HttpGet("Get")]
-        public async Task<ActionResult<List<UserModel>>> Get()
-        {
-            return await userRepository.GetAll();
-        }
+        [HttpGet("UserManagement")]
+        public async Task<ActionResult<List<UserModel>>> UserManagement(string? searchString, string? orderBy, int index) => await userRepository.GetWithPagingAsync(20, index, searchString, orderBy);
+        [HttpPost("DeleteAccount")]
+        public async Task DeleteAccount(Guid Id) => await userRepository.DeleteAsync(Id);
+        [HttpPost("EditAccount")]
+        public async Task EditAccount(UserModel user) => await userRepository.EditAsync(user);
     }
 }
