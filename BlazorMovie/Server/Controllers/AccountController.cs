@@ -19,8 +19,9 @@ namespace BlazorMovie.Server.Controllers
         private readonly Context context;
         private readonly IUserRepository userRepository;
         private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment;
+        private readonly ILogger logger;
 
-        public AccountController(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment, IUserRepository userRepository, Context context, RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender)
+        public AccountController(ILogger<AccountController> logger, Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment, IUserRepository userRepository, Context context, RoleManager<ApplicationRole> roleManager, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -29,6 +30,7 @@ namespace BlazorMovie.Server.Controllers
             this.context = context;
             this.userRepository = userRepository;
             this.hostingEnvironment = hostingEnvironment;
+            this.logger = logger;
         }
 
         [HttpPost("Register")]
@@ -92,32 +94,54 @@ namespace BlazorMovie.Server.Controllers
                 catch
                 {
                     await userManager.DeleteAsync(user);
-                    return BadRequest(ex.Message);
+                    logger.LogWarning(ex, ex.Message);
+                    return BadRequest();
                 }
-                return BadRequest(ex.Message);
+                logger.LogWarning(ex, ex.Message);
+                return BadRequest("Error");
             }
         }
 
         [HttpPost("Login")]
         public async Task<ActionResult> Login([FromBody] LoginModel loginModel)
         {
-            var result = await signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password, isPersistent: loginModel.RememberMe, false);
-            if (result.Succeeded)
+            try
             {
-                return Ok("User logged in.");
+                var result = await signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password, isPersistent: loginModel.RememberMe, false);
+                if (result.Succeeded)
+                {
+                    return Ok("User logged in.");
+                }
+                else
+                {
+                    return BadRequest("Invalid login attempt.");
+                }
             }
-            else
+            catch (Exception ex)
             {
+
+                logger.LogWarning(ex, ex.Message);
                 return BadRequest("Invalid login attempt.");
             }
+            
         }
 
         [Authorize]
         [HttpPost("Logout")]
         public async Task<IActionResult> Logout()
         {
-            await signInManager.SignOutAsync();
-            return Ok("User logged out.");
+            try
+            {
+                await signInManager.SignOutAsync();
+                return Ok("User logged out.");
+            }
+            catch (Exception ex)
+            {
+
+                logger.LogWarning(ex, ex.Message);
+                return BadRequest("Error");
+            }
+           
         }
 
         [HttpPost("ResetPassword")]
@@ -139,6 +163,7 @@ namespace BlazorMovie.Server.Controllers
             }
             catch (Exception ex)
             {
+                logger.LogWarning(ex, ex.Message);
                 return BadRequest("Error");
             }
         }
@@ -146,21 +171,43 @@ namespace BlazorMovie.Server.Controllers
         [HttpPost("ResetPasswordConfirmation")]
         public async Task<IActionResult> ResetPasswordConfirmation([FromBody] ResetPasswordConfirmationModel resetPasswordConfirmation)
         {
-            var user = await userManager.FindByEmailAsync(resetPasswordConfirmation.Email);
-            var result = await userManager.ResetPasswordAsync(user, resetPasswordConfirmation.Code, resetPasswordConfirmation.Password);
-            if (result.Succeeded)
+            try
             {
-                return Ok("Succeeded");
+                var user = await userManager.FindByEmailAsync(resetPasswordConfirmation.Email);
+                var result = await userManager.ResetPasswordAsync(user, resetPasswordConfirmation.Code, resetPasswordConfirmation.Password);
+                if (result.Succeeded)
+                {
+                    return Ok("Succeeded");
+                }
+                else
+                {
+                    return BadRequest("Error");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest();
+
+                logger.LogWarning(ex, ex.Message);
+                return BadRequest("Error");
             }
         }
 
         [Authorize]
         [HttpPost("GetCurrentUser")]
-        public async Task<ActionResult<UserModel>> GetCurrentUser() => await userRepository.GetByIdAsync(new Guid(userManager.GetUserId(User)));
+        public async Task<ActionResult<UserModel>> GetCurrentUser()
+        {
+            try
+            {
+                return await userRepository.GetByIdAsync(new Guid(userManager.GetUserId(User)));
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, ex.Message);
+                return BadRequest("Error");
+            }
+            
+        }
+        
 
         [Authorize]
         [HttpPost("ChangeEmail")]
@@ -181,6 +228,7 @@ namespace BlazorMovie.Server.Controllers
                 }
                 catch (Exception ex)
                 {
+                    logger.LogWarning(ex, ex.Message);
                     return BadRequest("Error");
                 }
             }
@@ -201,6 +249,7 @@ namespace BlazorMovie.Server.Controllers
             }
             catch (Exception ex)
             {
+                logger.LogWarning(ex, ex.Message);
                 return BadRequest("Error");
             }
         }

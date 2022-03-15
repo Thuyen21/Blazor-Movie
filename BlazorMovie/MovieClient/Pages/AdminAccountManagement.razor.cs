@@ -32,8 +32,8 @@ public partial class AdminAccountManagement
 
     private async Task Search()
     {
-      index = 0;
-      accs = (await _httpClient.GetFromJsonAsync<List<UserModel>>($"api/Admin/UserManagement?searchString={searchString}&orderBy={sort}&index={index}"))!;
+        index = 0;
+        accs = (await _httpClient.GetFromJsonAsync<List<UserModel>>($"api/Admin/UserManagement?searchString={searchString}&orderBy={sort}&index={index}"))!;
     }
 
     protected override async Task OnInitializedAsync()

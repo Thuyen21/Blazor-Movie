@@ -19,37 +19,19 @@ namespace BlazorMovie.Server.Repository.User
         }
         public async Task BanByIdAsync(Guid Id)
         {
-            try
-            {
                 var user = await userManager.FindByIdAsync(Id.ToString());
                 user.LockoutEnabled = true;
-                await userManager.UpdateAsync(user);
-            }
-            catch (Exception ex)
-            {
-                logger.LogWarning(ex, ex.Message);
-                throw;
-            }
-            
+                await userManager.UpdateAsync(user);            
         }
         public async Task UnBanByIdAsync(Guid Id)
         {
-            try
-            {
                 var user = await userManager.FindByIdAsync(Id.ToString());
                 user.LockoutEnabled = false;
                 await userManager.UpdateAsync(user);
-            }
-            catch (Exception ex)
-            {
-                logger.LogWarning(ex, ex.Message);
-                throw;
-            }
+
         }
         public async Task EditAsync(UserModel userModel)
         {
-            try
-            {
                 var user = await userManager.FindByIdAsync(userModel.Id.ToString());
                 user.DateOfBirth = userModel.DateOfBirth.Value;
 
@@ -58,20 +40,11 @@ namespace BlazorMovie.Server.Repository.User
                 await userManager.AddToRoleAsync(user, userModel.Role.ToString());
                 user.Name = userModel.Name;
                 await userManager.UpdateAsync(user);
-            }
-            catch (Exception ex)
-            {
-
-                logger.LogWarning(ex, ex.Message);
-                throw;
-            }
             
         }
 
         public async Task<List<UserModel>> GetAllAsync()
         {
-            try
-            {
                 var user = await context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Select(c =>
 
                  new UserModel()
@@ -87,20 +60,10 @@ namespace BlazorMovie.Server.Repository.User
 
              ).ToListAsync();
                 return user;
-            }
-            catch (Exception ex)
-            {
-
-                logger.LogWarning(ex, ex.Message);
-                throw;
-            }
-            
 
         }
         public async Task<UserModel> GetByIdAsync(Guid Id)
         {
-            try
-            {
                 var user = await context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Where(c => c.Id == Id).Select(c =>
 
                 new UserModel()
@@ -116,20 +79,11 @@ namespace BlazorMovie.Server.Repository.User
             ).FirstAsync();
 
                 return user;
-            }
-            catch (Exception ex)
-            {
-
-                logger.LogWarning(ex, ex.Message);
-                throw;
-            }
-            
+  
         }
 
         public async Task<List<UserModel>> GetWithPagingAsync(int pageSize, int pageIndex, string searchString, string orderBy)
         {
-            try
-            {
                 var query = context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Select(c =>
 
                 new UserModel()
@@ -173,28 +127,11 @@ namespace BlazorMovie.Server.Repository.User
                 query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
                 var user = await query.ToListAsync();
                 return user;
-            }
-            catch (Exception ex)
-            {
-
-                logger.LogWarning(ex, ex.Message);
-                throw;
-            }
-
         }
 
         public async Task DeleteAsync(Guid Id)
         {
-            try
-            {
-                await userManager.DeleteAsync(new ApplicationUser() { Id = Id });
-            }
-            catch (Exception ex)
-            {
-                logger.LogWarning(ex, ex.Message);
-                throw;
-            }
-           
+                await userManager.DeleteAsync(new ApplicationUser() { Id = Id }); 
         }
     }
 }

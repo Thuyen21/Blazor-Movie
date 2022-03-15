@@ -9,17 +9,69 @@ namespace BlazorMovie.Server.Controllers
     public class AdminController : ControllerBase
     {
         private readonly IUserRepository userRepository;
-        public AdminController(IUserRepository userRepository)
+        private readonly ILogger logger;
+        public AdminController(ILogger<AdminController> logger, IUserRepository userRepository)
         {
             this.userRepository = userRepository;
+            this.logger = logger;
         }
         [HttpGet("UserManagement")]
-        public async Task<ActionResult<List<UserModel>>> UserManagement(string? searchString, string? orderBy, int index) => await userRepository.GetWithPagingAsync(20, index, searchString, orderBy);
+        public async Task<ActionResult<List<UserModel>>> UserManagement(string? searchString, string? orderBy, int index)
+        {
+            try
+            {
+                return Ok(await userRepository.GetWithPagingAsync(20, index, searchString, orderBy));
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, ex.Message);
+                return BadRequest("Error");
+            }
+           
+        }
+
         [HttpPost("DeleteAccount")]
-        public async Task DeleteAccount(Guid Id) => await userRepository.DeleteAsync(Id);
+        public async Task<ActionResult> DeleteAccount(Guid Id)
+        {
+            try
+            {
+                await userRepository.DeleteAsync(Id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, ex.Message);
+                return BadRequest("Error");
+            } 
+        }
         [HttpPost("EditAccount")]
-        public async Task EditAccount(UserModel user) => await userRepository.EditAsync(user);
+        public async Task<ActionResult> EditAccount(UserModel user)
+        {
+            
+            try
+            {
+                await userRepository.EditAsync(user);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, ex.Message);
+                return BadRequest("Error");
+            }
+        }
         [HttpGet("GetUserById")]
-        public async Task<UserModel> GetUserByIdAsync(Guid Id) => await userRepository.GetByIdAsync(Id);
+        public async Task<ActionResult<UserModel>> GetUserByIdAsync(Guid Id)
+        {
+
+            try
+            {
+                return Ok(await userRepository.GetByIdAsync(Id));
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, ex.Message);
+                return BadRequest("Error");
+            }
+        }
     }
 }
