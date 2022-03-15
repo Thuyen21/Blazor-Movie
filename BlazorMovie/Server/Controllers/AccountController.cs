@@ -1,13 +1,10 @@
 ﻿using BlazorMovie.Server.Data;
 using BlazorMovie.Server.Repository.User;
-using BlazorMovie.Server.Services;
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace BlazorMovie.Server.Controllers
 {
@@ -28,7 +25,7 @@ namespace BlazorMovie.Server.Controllers
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-            this.emailSender = emailSender; 
+            this.emailSender = emailSender;
             this.roleManager = roleManager;
             this.context = context;
             this.userRepository = userRepository;
@@ -55,7 +52,7 @@ namespace BlazorMovie.Server.Controllers
                         return BadRequest("The default UI requires a user store with email support.");
                     }
 
-                    var result = await userManager.CreateAsync(new ApplicationUser {UserName = registerModel.Email, Email = registerModel.Email, Wallet = 0, DateOfBirth = registerModel.DateOfBirth, Name= registerModel.Name }, registerModel.Password);
+                    var result = await userManager.CreateAsync(new ApplicationUser { UserName = registerModel.Email, Email = registerModel.Email, Wallet = 0, DateOfBirth = registerModel.DateOfBirth, Name = registerModel.Name }, registerModel.Password);
                     if (result.Succeeded)
                     {
                         user = await userManager.FindByNameAsync(registerModel.Email);
@@ -63,7 +60,7 @@ namespace BlazorMovie.Server.Controllers
                         //await roleManager.CreateAsync(new ApplicationRole() { Name = "Studio" });
                         //await roleManager.CreateAsync(new ApplicationRole() { Name = "Customer" });
                         await userManager.AddToRoleAsync(user, registerModel.Role.ToString());
-                        
+
                     }
                     else
                     {
@@ -82,8 +79,8 @@ namespace BlazorMovie.Server.Controllers
                 {
 
                 }
-                return BadRequest(ex.Message);    
-            } 
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost("Login")]
@@ -105,7 +102,7 @@ namespace BlazorMovie.Server.Controllers
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-                return Ok("User logged out.");
+            return Ok("User logged out.");
         }
 
         [HttpPost("ResetPassword")]
@@ -116,7 +113,7 @@ namespace BlazorMovie.Server.Controllers
                 var addr = new System.Net.Mail.MailAddress(email.Email);
                 var user = await userManager.FindByEmailAsync(email.Email);
                 var code = await userManager.GeneratePasswordResetTokenAsync(user);
-               
+
 
                 await emailSender.SendEmailAsync(
                     email.Email,
@@ -136,10 +133,10 @@ namespace BlazorMovie.Server.Controllers
         {
             var user = await userManager.FindByEmailAsync(resetPasswordConfirmation.Email);
             var result = await userManager.ResetPasswordAsync(user, resetPasswordConfirmation.Code, resetPasswordConfirmation.Password);
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 return Ok("Succeeded");
-            }    
+            }
             else
             {
                 return BadRequest();
@@ -152,7 +149,7 @@ namespace BlazorMovie.Server.Controllers
         {
             try
             {
-                UserModel user = userRepository.GetById(new Guid(userManager.GetUserId(User)));
+                UserModel user = await userRepository.GetById(new Guid(userManager.GetUserId(User)));
                 return Ok(user);
             }
             catch (Exception ex)
@@ -168,7 +165,7 @@ namespace BlazorMovie.Server.Controllers
         {
             var user = await userManager.GetUserAsync(User);
             var checkPass = await userManager.CheckPasswordAsync(user, model.Password);
-            if(checkPass)
+            if (checkPass)
             {
                 try
                 {
@@ -181,7 +178,7 @@ namespace BlazorMovie.Server.Controllers
                 }
                 catch (Exception ex)
                 {
-                    
+
 
                     return BadRequest("Error");
                 }

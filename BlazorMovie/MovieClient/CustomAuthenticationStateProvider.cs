@@ -34,11 +34,11 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
             return new AuthenticationState(claimsPrincipal);
 
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
         }
-        
+
     }
     public void Update()
     {

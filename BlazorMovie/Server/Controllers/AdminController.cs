@@ -1,6 +1,5 @@
 ﻿using BlazorMovie.Server.Repository.User;
 using BlazorMovie.Shared;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorMovie.Server.Controllers
@@ -17,7 +16,7 @@ namespace BlazorMovie.Server.Controllers
         [HttpGet("Get")]
         public async Task<ActionResult<List<UserModel>>> Get()
         {
-            return userRepository.GetAll();
+            return await userRepository.GetAll();
         }
     }
 }

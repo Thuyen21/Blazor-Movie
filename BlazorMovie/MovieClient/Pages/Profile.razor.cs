@@ -1,5 +1,4 @@
 using BlazorMovie.Shared;
-using MovieClient.Services;
 using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
@@ -7,7 +6,7 @@ namespace MovieClient.Pages;
 public partial class Profile
 {
     private readonly ChangeEmailModel changeEmail = new ChangeEmailModel();
-    
+
     private UserModel user = new UserModel();
     private async Task ChangeEmail()
     {
@@ -41,7 +40,7 @@ public partial class Profile
     {
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync("api/Account/UpdateProfile", user);
         alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
-        
+
         if (response.IsSuccessStatusCode)
         {
             response = await _httpClient.PostAsync("api/Account/GetCurrentUser", null);

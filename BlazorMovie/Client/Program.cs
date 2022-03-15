@@ -13,7 +13,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddOptions();
 builder.Services.AddAuthorizationCore();
-builder.Services.AddScoped<IAccountService , AccountService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddMudServices();
 builder.Services.AddSingleton<ShowAlertService>();

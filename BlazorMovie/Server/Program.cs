@@ -1,16 +1,12 @@
 using BlazorMovie.Server;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using BlazorMovie.Server.Data;
+using BlazorMovie.Server.Repository.User;
+using BlazorMovie.Server.Services;
+using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using BlazorMovie.Server.Data;
-using BlazorMovie.Server.Areas.Identity.Pages.Account;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using BlazorMovie.Server.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using BlazorMovie.Shared;
-using Microsoft.AspNetCore.Authentication;
-using BlazorMovie.Server.Repository.User;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,13 +14,14 @@ builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer("Server=localhost;Database=movie;Trusted_Connection=True;"));
 //builder.Configuration["ConnectionString"]
 
-builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options => {
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+{
     options.SignIn.RequireConfirmedAccount = false;
     options.User.RequireUniqueEmail = false;
     options.Password.RequireUppercase = false;
-    options.Password.RequireDigit = false;  
-    
-    })
+    options.Password.RequireDigit = false;
+
+})
     .AddRoles<ApplicationRole>()
     .AddEntityFrameworkStores<Context>()
     .AddDefaultUI()

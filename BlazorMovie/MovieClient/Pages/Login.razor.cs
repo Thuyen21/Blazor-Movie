@@ -1,6 +1,5 @@
 using BlazorMovie.Shared;
 using Microsoft.JSInterop;
-using MovieClient.Services;
 using MudBlazor;
 using System.Net.Http.Json;
 
@@ -9,7 +8,7 @@ namespace MovieClient.Pages;
 public partial class Login
 {
     private readonly LoginModel login = new LoginModel();
-    
+
     private async Task HandleValidSubmit()
     {
         try

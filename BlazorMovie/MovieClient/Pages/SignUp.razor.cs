@@ -1,5 +1,4 @@
 using BlazorMovie.Shared;
-using MovieClient.Services;
 using MudBlazor;
 using System.Net.Http.Json;
 
@@ -8,7 +7,7 @@ namespace MovieClient.Pages;
 public partial class SignUp
 {
     private string role = "Customer";
-    
+
     private void Role()
     {
         if (role == "Customer")
@@ -38,7 +37,7 @@ public partial class SignUp
         //    _accountService.checkAuthentication();
         //    _navigationManager.NavigateTo("/");
         //}
-        
+
     }
 
 }

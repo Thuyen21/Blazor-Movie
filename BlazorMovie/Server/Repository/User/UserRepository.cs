@@ -19,7 +19,7 @@ namespace BlazorMovie.Server.Repository.User
         {
             var user = await userManager.FindByIdAsync(Id.ToString());
             user.LockoutEnabled = true;
-           await userManager.UpdateAsync(user);
+            await userManager.UpdateAsync(user);
         }
         public async Task UnBanById(Guid Id)
         {
@@ -35,31 +35,31 @@ namespace BlazorMovie.Server.Repository.User
             var roles = await userManager.GetRolesAsync(user);
             await userManager.RemoveFromRolesAsync(user, roles.ToArray());
             await userManager.AddToRoleAsync(user, userModel.Role.ToString());
-            user.Name = userModel.Name; 
+            user.Name = userModel.Name;
             await userManager.UpdateAsync(user);
         }
 
         public async Task<List<UserModel>> GetAll()
         {
-           var user = await context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Select(c => 
-            
-                new UserModel()
-                {
-                        Id = c.Id,
-                        Name = c.Name,
-                        Email = c.Email,
-                        DateOfBirth = c.DateOfBirth,
-                        Wallet = c.Wallet,
-                        Role = c.UserRoles.ToList()[0].Role.Name,
-                        UserAgent = c.UserAgent,
-            }
-                
-            ).ToListAsync();
+            var user = await context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Select(c =>
+
+                 new UserModel()
+                 {
+                     Id = c.Id,
+                     Name = c.Name,
+                     Email = c.Email,
+                     DateOfBirth = c.DateOfBirth,
+                     Wallet = c.Wallet,
+                     Role = c.UserRoles.ToList()[0].Role.Name,
+                     UserAgent = c.UserAgent,
+                 }
+
+             ).ToListAsync();
             return user;
 
         }
         public async Task<UserModel> GetById(Guid Id)
-        { 
+        {
             var user = await context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Where(c => c.Id == Id).Select(c =>
 
                 new UserModel()
@@ -97,7 +97,7 @@ namespace BlazorMovie.Server.Repository.User
             {
                 query = query.Where(x => EF.Functions.FreeText(x.Email, searchString));
             }
-                switch (orderBy)
+            switch (orderBy)
             {
                 case "name":
                     query = query.OrderBy(c => c.Name);
