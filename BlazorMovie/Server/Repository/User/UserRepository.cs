@@ -118,6 +118,7 @@ namespace BlazorMovie.Server.Repository.User
                     query = query.OrderByDescending(c => c.Email);
                     break;
             }
+            query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var user = await query.ToListAsync();
             return user;
         }
