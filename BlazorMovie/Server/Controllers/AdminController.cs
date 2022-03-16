@@ -73,5 +73,33 @@ namespace BlazorMovie.Server.Controllers
                 return BadRequest("Error");
             }
         }
+        [HttpPost("Ban")]
+        public async Task<ActionResult> Ban([FromBody] Guid Id)
+        {
+            try
+            {
+                await userRepository.BanByIdAsync(Id);
+                return Ok("Banned");
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, ex.Message);
+                return BadRequest("Error");
+            }
+        }
+        [HttpPost("UnBan")]
+        public async Task<ActionResult> UnBan([FromBody] Guid Id)
+        {
+            try
+            {
+                await userRepository.UnBanByIdAsync(Id);
+                return Ok("UnBanned");
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, ex.Message);
+                return BadRequest("Error");
+            }
+        }
     }
 }

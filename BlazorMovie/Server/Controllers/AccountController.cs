@@ -107,9 +107,14 @@ namespace BlazorMovie.Server.Controllers
         {
             try
             {
+                if (await userManager.IsLockedOutAsync(await userManager.FindByEmailAsync(loginModel.Email)))
+                {
+                    return BadRequest("Account had banned");
+                }
                 var result = await signInManager.PasswordSignInAsync(loginModel.Email, loginModel.Password, isPersistent: loginModel.RememberMe, false);
                 if (result.Succeeded)
                 {
+                    
                     return Ok("User logged in.");
                 }
                 else

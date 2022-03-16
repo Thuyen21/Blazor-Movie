@@ -21,13 +21,15 @@ namespace BlazorMovie.Server.Repository.User
         {
                 var user = await userManager.FindByIdAsync(Id.ToString());
                 user.LockoutEnabled = true;
+            user.LockoutEnd = DateTime.UtcNow.AddYears(100);
                 await userManager.UpdateAsync(user);            
         }
         public async Task UnBanByIdAsync(Guid Id)
         {
                 var user = await userManager.FindByIdAsync(Id.ToString());
                 user.LockoutEnabled = false;
-                await userManager.UpdateAsync(user);
+            user.LockoutEnd = DateTime.UtcNow;
+            await userManager.UpdateAsync(user);
 
         }
         public async Task EditAsync(UserModel userModel)
