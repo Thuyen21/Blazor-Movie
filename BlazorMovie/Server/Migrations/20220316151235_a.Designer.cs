@@ -4,6 +4,7 @@ using BlazorMovie.Server.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorMovie.Server.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220316151235_a")]
+    partial class a
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,15 +45,10 @@ namespace BlazorMovie.Server.Migrations
                     b.Property<DateTime>("PremiereDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("StudioId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("StudioId");
 
                     b.ToTable("Movies");
                 });
@@ -267,17 +264,6 @@ namespace BlazorMovie.Server.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("BlazorMovie.Shared.ApplicationMovie", b =>
-                {
-                    b.HasOne("BlazorMovie.Shared.ApplicationUser", "Studio")
-                        .WithMany("Movies")
-                        .HasForeignKey("StudioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Studio");
-                });
-
             modelBuilder.Entity("BlazorMovie.Shared.ApplicationUserRole", b =>
                 {
                     b.HasOne("BlazorMovie.Shared.ApplicationRole", "Role")
@@ -343,8 +329,6 @@ namespace BlazorMovie.Server.Migrations
                     b.Navigation("Claims");
 
                     b.Navigation("Logins");
-
-                    b.Navigation("Movies");
 
                     b.Navigation("Tokens");
 

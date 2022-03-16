@@ -15,5 +15,7 @@ namespace BlazorMovie.Shared
         public virtual ICollection<IdentityUserClaim<Guid>> Claims { get; set; }
         public virtual ICollection<IdentityUserLogin<Guid>> Logins { get; set; }
         public virtual ICollection<IdentityUserToken<Guid>> Tokens { get; set; }
+
+        public ICollection<ApplicationMovie> Movies { get; set; }
     }
 }

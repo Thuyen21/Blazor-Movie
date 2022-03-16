@@ -7,6 +7,7 @@ namespace BlazorMovie.Server.Data;
 
 public class Context : IdentityDbContext<ApplicationUser, ApplicationRole, Guid, IdentityUserClaim<Guid>, ApplicationUserRole, IdentityUserLogin<Guid>,IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>
 {
+    public DbSet<ApplicationMovie> Movies { get; set; }
     public Context(DbContextOptions<Context> options)
         : base(options)
     {

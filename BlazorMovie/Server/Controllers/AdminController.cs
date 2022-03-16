@@ -101,5 +101,13 @@ namespace BlazorMovie.Server.Controllers
                 return BadRequest("Error");
             }
         }
+
+        [HttpPost("MovieUpload")]
+
+        public async Task<ActionResult> MovieUpload([FromBody] MovieModel movie)
+        {
+            
+            return Ok();
+        }
     }
 }
