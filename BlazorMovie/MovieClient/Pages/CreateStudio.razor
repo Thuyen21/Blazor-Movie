@@ -1,0 +1,33 @@
+﻿
+@*@attribute [Authorize(Roles = "Studio")]*@
+@page "/CreateStudio"
+
+<PageTitle>Create Movie</PageTitle>
+<head>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+          integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossOrigin="anonymous" />
+</head>
+<div class="container">
+    <form class="login-form" autocomplete="off" action="#">
+        <EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <a style="font-weight: 500;">Gender </a>
+            <input type="text" placeholder="Type gender of movie" @bind="@movie.Genre" />
+            <a style="font-weight: 500;">Name </a>
+            <input type="text" placeholder="Type name of movie" @bind="@movie.Name" />
+            <a style="font-weight: 500;">Description</a>
+            <textarea style="outline:1px;" rows="9" cols="70" type="text" placeholder="Type description of movie"
+                      @bind="@movie.MoviesDescription" />
+            <a style="font-weight: 600;">Premiere Date</a>
+            <input type="date" @bind="@movie.PremiereDate" />
+            <button class="button">Submit</button>
+        </EditForm>
+        @if (alertService.showAlert)
+        {
+            <MudAlert Severity="alertService.severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => alertService.CloseAlert())">@alertService.content</MudAlert>
+        }
+
+    </form>
+</div>
+

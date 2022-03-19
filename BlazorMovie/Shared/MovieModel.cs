@@ -12,6 +12,7 @@ namespace BlazorMovie.Shared
         public Guid Id { get; set; }
         public string? Name { get; set; }
         public string? Title { get; set; }
+        public string? Genre { get; set; }
         public DateTime PremiereDate { get; set; }
         public string? MoviesDescription { get; set; }
 

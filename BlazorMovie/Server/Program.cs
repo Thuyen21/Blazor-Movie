@@ -1,5 +1,6 @@
 using BlazorMovie.Server;
 using BlazorMovie.Server.Data;
+using BlazorMovie.Server.Repository.Movie;
 using BlazorMovie.Server.Repository.User;
 using BlazorMovie.Server.Services;
 using BlazorMovie.Shared;
@@ -36,7 +37,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<Censor>();
 builder.Services.AddScoped<IEmailSender, EmailSenderService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-
+builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
 builder.Services.Configure<FormOptions>(options =>

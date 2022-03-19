@@ -1,0 +1,166 @@
+﻿@page "/EditMovieAdmin/{Id}"
+<PageTitle>Admin - Edit Movie</PageTitle>
+@using System.IO
+@*@attribute [Authorize(Roles = "Admin")]*@
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    @*    @if (showAlert)
+        {
+        <MudAlert Severity="severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => CloseAlert())">@content</MudAlert>
+        }*@
+    <div class="container">
+        <input type="checkbox" id="flip">
+        @if (movie == null)
+        {
+            <p>
+                <em>Loading...</em>
+            </p>
+        }
+        else
+        {
+            if (more)
+            {
+
+                <div class="row">
+                    <div class="col-md">
+                        <form action="@(_httpClient.BaseAddress)Admin/MovieUpload/@movie.Id/@movie.StudioId" enctype="multipart/form-data" method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger">
+                                If it is not a movie or image correct MIME it
+                                will not be uploaded.
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="ImageFile" class="control-label">Image</label>
+                                <input id="ImageFileUp" name="ImageFileUp" class="form-control" type="file" />
+                                <span asp-validation-for="ImageFile" class="text-danger"></span>
+                            </div>
+
+
+                            @* <div class="iframe">
+                                <iframe src="@linkIframe"></iframe>
+                                </div>*@
+
+
+                            <div class="form-group">
+                                <label asp-for="MovieFile" class="control-label">Movie</label>
+                                <input id="MovieFileUp" name="MovieFileUp" class="form-control" type="file" />
+                                <span asp-validation-for="MovieFile" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Save" class="btn btn-primary" />
+                            </div>
+                        </form>
+                        <span id="spnMessage"></span>
+                    </div>
+                </div>
+
+
+            }
+            else
+            {
+
+
+                <div class="forms">
+                    <div class="form-content">
+                        <div class="login-form">
+                            <div class="title">Replace any data of ID </div>
+                            <div class="title">@movie.Id</div>
+                            @if (alertService.showAlert)
+                            {
+                                <MudAlert Severity="alertService.severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => alertService.CloseAlert())">@alertService.content</MudAlert>
+                            }
+
+                            <form action="#">
+                                <div class="input-boxes">
+                                    <EditForm Model="@movie" OnValidSubmit="@HandleValidSubmit">
+                                        <DataAnnotationsValidator />
+                                        <ValidationSummary />
+                                        <div class="input-box">
+                                            <i class="fas fa-envelope"></i>
+                                            <input type="text" placeholder="@movie.Id" style="pointer-events:none" @bind="@movie.Id">
+                                            <a>Movie ID</a>
+                                        </div>
+                                        <div class="input-box">
+                                            <i class="fas fa-lock"></i>
+                                            <input type="text" placeholder="@movie.StudioId" style="pointer-events:none" @bind="@movie.StudioId">
+                                            <a>Studio ID</a>
+                                        </div>
+                                        <div class="input-box">
+                                            <i class="fas fa-user"></i>
+                                            <input type="text" placeholder="Replace movie genre" @bind="@movie.Genre" required>
+                                            <a>Movie genre</a>
+                                        </div>
+                                        <div class="input-box">
+                                            <i class="fas fa-money-check"></i>
+                                            <input type="text" placeholder="Replace movie name" @bind="@movie.Name" required>
+                                            <a>Movie name</a>
+                                        </div>
+                                        <div class="input-box">
+                                            <i class="far fa-calendar-alt"></i>
+                                            <input type="date" placeholder="Premiere Date" @bind="@movie.PremiereDate" required>
+                                            <a>Pre Date</a>
+                                        </div>
+
+                                        <div class="input-box">
+                                            <i class="far fa-calendar-alt"></i>
+                                            <input type="text" placeholder="Premiere Date" @bind="@movie.MoviesDescription" required>
+                                            <a>MoviesDescription</a>
+                                        </div>
+
+                                        <div class="button input-box">
+                                            <input type="submit" value="Confirm">
+                                        </div>
+                                    </EditForm>
+                                </div>
+                            </form>
+                            <div>After pick a file it auto Upload. If it is not a movie or image correct MIME it will not be uploaded.</div>
+                            @*<div>Movie Up</div>*@
+                            <InputFile id="fileMovieInput" hidden OnChange="OnChooseMovieFile" />
+                            <MudButton HtmlTag="label"
+                               Variant="Variant.Filled"
+                               Color="Color.Primary"
+                               StartIcon="@Icons.Filled.CloudUpload"
+                               for="fileMovieInput">
+                                Upload Movie File
+                            </MudButton>
+
+                            @*<div>Image Up</div>*@
+                            <InputFile id="filePictureInput" hidden OnChange="OnChooseImageFile" />
+                            <MudButton HtmlTag="label"
+                               Variant="Variant.Filled"
+                               Color="Color.Secondary"
+                               Icon="@Icons.Filled.Image"
+                               for="filePictureInput">
+                                Upload Picture File
+                            </MudButton>
+                            <div class="button input-box">
+                                <MudChip Color="Color.Primary">Movie @mp</MudChip>
+                                <MudChip Color="Color.Secondary">Picture @ip</MudChip>
+                            </div>
+                         
+                            
+                            <div>For app version no limited if web version click this button for upload file more then 500MB</div> 
+                            <div class="button input-box">
+                                <input type="submit" @onclick="@Upload" value="Upload Movie High Capacity">
+                            </div>
+                            @*<button type="submit" @onclick="@Upload">Upload Movie High Capacity</button>*@
+                        </div>
+                    </div>
+                </div>
+            }
+        } @*end else*@
+
+    </div>
+</body>
+
+
+
+
