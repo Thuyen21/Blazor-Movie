@@ -1,4 +1,5 @@
 ﻿@page "/EditMovieAdmin/{Id}"
+@page "/EditMovieAdmin"
 <PageTitle>Admin - Edit Movie</PageTitle>
 @using System.IO
 @*@attribute [Authorize(Roles = "Admin")]*@
@@ -72,7 +73,7 @@
                     <div class="form-content">
                         <div class="login-form">
                             <div class="title">Replace any data of ID </div>
-                            <div class="title">@movie.Id</div>
+                            <div class="title">@movie.Id.ToString()</div>
                             @if (alertService.showAlert)
                             {
                                 <MudAlert Severity="alertService.severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => alertService.CloseAlert())">@alertService.content</MudAlert>
@@ -85,7 +86,7 @@
                                         <ValidationSummary />
                                         <div class="input-box">
                                             <i class="fas fa-envelope"></i>
-                                            <input type="text" placeholder="@movie.Id" style="pointer-events:none" @bind="@movie.Id">
+                                            <input type="text" placeholder="@movie.Id.ToString()" style="pointer-events:none>
                                             <a>Movie ID</a>
                                         </div>
                                         <div class="input-box">
@@ -114,6 +115,18 @@
                                             <input type="text" placeholder="Premiere Date" @bind="@movie.MoviesDescription" required>
                                             <a>MoviesDescription</a>
                                         </div>
+@*
+                                        <div class="input-box">
+                                            <i class="far fa-calendar-alt"></i>
+                                            <input type="file" placeholder="Movie File" @bind="@movie.MovieFile">
+                                            <a>MoviesDescription</a>
+                                        </div>
+
+                                        <div class="input-box">
+                                            <i class="far fa-calendar-alt"></i>
+                                            <input type="file" placeholder="Image File" @bind="@movie.ImageFile">
+                                            <a>MoviesDescription</a>
+                                        </div>*@
 
                                         <div class="button input-box">
                                             <input type="submit" value="Confirm">

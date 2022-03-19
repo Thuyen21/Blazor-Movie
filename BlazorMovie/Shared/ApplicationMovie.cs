@@ -18,6 +18,6 @@ namespace BlazorMovie.Shared
         public byte[]? ImageFile { get; set; }
         public byte[]? MovieFile { get; set; }
 
-        public ApplicationUser Studio { get; set; }
+        public ApplicationUser? Studio { get; set; }
     }
 }

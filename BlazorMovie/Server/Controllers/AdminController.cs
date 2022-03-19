@@ -110,8 +110,24 @@ namespace BlazorMovie.Server.Controllers
 
         public async Task<ActionResult> MovieUpload([FromBody] MovieModel movie)
         {
+            movie.StudioId = Guid.NewGuid();
+            movie.Id = Guid.NewGuid();
             await movieRepository.Add(movie);
             return Ok();
         }
+        [HttpGet("Movie")]
+        public async Task<ActionResult<List<MovieModel>>> Movie([FromBody] string? searchString, string? orderBy, int index)
+        {
+            try
+            {
+                return Ok(await movieRepository.GetWithPagingAsync(20, index, searchString, orderBy));
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, ex.Message);
+                return BadRequest("Error");
+            }
+        }
+
     }
 }

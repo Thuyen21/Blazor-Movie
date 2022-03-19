@@ -1,0 +1,84 @@
+﻿<h3>Test</h3>
+@page "/Test"
+
+<EditForm Model="@movie" OnValidSubmit="HandleValidSubmit">
+
+                                        
+                                            <div class="input-box">
+                                            <i class="fas fa-envelope"></i>
+                                            <input type="text" placeholder="@movie.Id" style="pointer-events:none" @bind="@movie.Id">
+                                            <a>Movie ID</a>
+                                        </div>
+
+                                        <div class="input-box">
+                                            <i class="fas fa-lock"></i>
+                                            <input type="text" placeholder="@movie.StudioId" style="pointer-events:none" @bind="@movie.StudioId">
+                                            <a>Studio ID</a>
+                                        </div>
+                                        <div class="input-box">
+                                            <i class="fas fa-user"></i>
+                                            <input type="text" placeholder="Replace movie genre" @bind="@movie.Genre" >
+                                            <a>Movie genre</a>
+                                        </div>
+                                        <div class="input-box">
+                                            <i class="fas fa-money-check"></i>
+                                            <input type="text" placeholder="Replace movie name" @bind="@movie.Name" >
+                                            <a>Movie name</a>
+                                        </div>
+                                        <div class="input-box">
+                                            <i class="far fa-calendar-alt"></i>
+                                            <input type="date" placeholder="Premiere Date" @bind="@movie.PremiereDate" >
+                                            <a>Pre Date</a>
+                                        </div>
+
+                                        <div class="input-box">
+                                            <i class="far fa-calendar-alt"></i>
+                                            <input type="text" placeholder="Premiere Date" @bind="@movie.MoviesDescription" >
+                                            <a>MoviesDescription</a>
+                                        </div>
+
+                                        <div class="input-box">
+                                            <i class="far fa-calendar-alt"></i>
+                                            <InputFile OnChange="GetImageFile" />
+                                            <a>Image File</a>
+                                        </div>
+
+                                        <div class="input-box">
+                                            <i class="far fa-calendar-alt"></i>
+                                            <InputFile OnChange="GetMovieFile" />
+                                            <a>Movie File</a>
+                                        </div>
+
+                                        <div class="button input-box">
+                                            <input type="submit" value="Confirm">
+                                        </div>
+    
+   </EditForm>
+
+   @if(!String.IsNullOrEmpty(a))
+{
+    <img src="@a" style="width: 250px; height: 250px;"> 
+}
+@code {
+    MovieModel movie = new();
+
+    public string a = string.Empty;
+    private async Task GetImageFile(InputFileChangeEventArgs e)
+    {
+        movie.ImageFile = new byte[e.File.Size];
+        await e.File.OpenReadStream().ReadAsync(movie.ImageFile);
+    }
+
+    private async Task GetMovieFile(InputFileChangeEventArgs e)
+    {
+        movie.MovieFile = new byte[e.File.Size];
+        await e.File.OpenReadStream().ReadAsync(movie.MovieFile);
+    }
+
+
+    public async Task HandleValidSubmit()
+    {
+        a =  $"data:image/png;base64,{Convert.ToBase64String(movie.ImageFile)}";
+       await _httpClient.PostAsJsonAsync("api/Admin/MovieUpload", movie);
+    }
+}

@@ -21,7 +21,7 @@ public partial class EditMovieAdmin
     
     protected override async Task OnInitializedAsync()
     {
-        movie = (await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}"))!;
+        //movie = (await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}"))!;
     }
 
     private async Task HandleValidSubmit()
@@ -39,8 +39,8 @@ public partial class EditMovieAdmin
         List<string> list = new List<string> { "video/x-msvideo", "video/mp4", "video/mpeg", "video/ogg", "video/mp2t", "video/webm", "video/3gpp", "video/3gpp2", "video/x-matroska" };
         if (list.Contains(e.File.ContentType))
         {
-           
-
+           var buffer = new byte[e.File.Size];
+            await e.File.OpenReadStream().ReadAsync(buffer);
 
         }
         else

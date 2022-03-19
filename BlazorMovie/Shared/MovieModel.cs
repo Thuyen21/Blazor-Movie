@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
 
 namespace BlazorMovie.Shared
 {
@@ -15,10 +21,11 @@ namespace BlazorMovie.Shared
         public string? Genre { get; set; }
         public DateTime PremiereDate { get; set; }
         public string? MoviesDescription { get; set; }
-
-        public IFormFile? ImageFile { get; set; }
-        public IFormFile? MovieFile { get; set; }
+        public byte[]? ImageFile { get; set; }
+        public byte[]? MovieFile { get; set; }
 
         public Guid StudioId { get; set; }
+
+        
     }
 }

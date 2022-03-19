@@ -18,16 +18,10 @@ namespace BlazorMovie.Server.Repository.Movie
             applicationMovie.Title = movie.Title;
              applicationMovie.PremiereDate = movie.PremiereDate;
             applicationMovie.MoviesDescription = movie.MoviesDescription;
-            //applicationMovie.MovieFile = FileHelpers
-            using (var writer = new BinaryWriter(movie.ImageFile.OpenReadStream()))
-            {
-                writer.Write(applicationMovie.ImageFile);
-            }
-            using (var writer = new BinaryWriter(movie.MovieFile.OpenReadStream()))
-            {
-                writer.Write(applicationMovie.MovieFile);
-            }
-            applicationMovie.Studio.Id = movie.StudioId;
+            applicationMovie.MovieFile = movie.MovieFile;
+            applicationMovie.ImageFile = movie.ImageFile;
+
+            //applicationMovie.Studio = context.St movie.StudioId;
             await context.Movies.AddAsync(applicationMovie);
         }
 
