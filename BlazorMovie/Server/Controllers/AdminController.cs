@@ -29,7 +29,7 @@ namespace BlazorMovie.Server.Controllers
             catch (Exception ex)
             {
                 logger.LogWarning(ex, ex.Message);
-                return BadRequest("Error");
+                return Ok(new List<UserModel>());
             }
            
         }
@@ -116,7 +116,7 @@ namespace BlazorMovie.Server.Controllers
             return Ok();
         }
         [HttpGet("Movie")]
-        public async Task<ActionResult<List<MovieModel>>> Movie([FromBody] string? searchString, string? orderBy, int index)
+        public async Task<ActionResult<List<MovieViewModel>>> Movie(string? searchString, string? orderBy, int index)
         {
             try
             {
@@ -125,9 +125,9 @@ namespace BlazorMovie.Server.Controllers
             catch (Exception ex)
             {
                 logger.LogWarning(ex, ex.Message);
-                return BadRequest("Error");
+                return Ok(new List<MovieViewModel>());
             }
         }
-
+        
     }
 }

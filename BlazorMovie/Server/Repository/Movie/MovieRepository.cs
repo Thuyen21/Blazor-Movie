@@ -1,5 +1,6 @@
 ﻿using BlazorMovie.Server.Data;
 using BlazorMovie.Shared;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlazorMovie.Server.Repository.Movie
 {
@@ -21,8 +22,18 @@ namespace BlazorMovie.Server.Repository.Movie
             applicationMovie.MovieFile = movie.MovieFile;
             applicationMovie.ImageFile = movie.ImageFile;
 
-            //applicationMovie.Studio = context.St movie.StudioId;
-            await context.Movies.AddAsync(applicationMovie);
+            applicationMovie.Studio = context.Users.Find(movie.StudioId);
+            try
+            {
+                await context.Movies.AddAsync(applicationMovie);
+                await context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
         }
 
         public Task DeleteAsync(Guid Id)
@@ -50,9 +61,47 @@ namespace BlazorMovie.Server.Repository.Movie
             throw new NotImplementedException();
         }
 
-        public Task<List<MovieModel>> GetWithPagingAsync(int pageSize, int pageIndex, string searchString, string orderBy)
+        public async Task<List<MovieViewModel>> GetWithPagingAsync(int pageSize, int pageIndex, string searchString, string orderBy)
         {
-            throw new NotImplementedException();
+            var query = context.Movies.Select(x => new MovieViewModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Title = x.Title,
+                PremiereDate = x.PremiereDate,
+                MoviesDescription = x.MoviesDescription,
+                StudioName = x.Studio.Name,
+                Genre = x.Genre,
+            });
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                query = query.Where(x => EF.Functions.Like(x.Name, "%" + searchString + "%"));
+            }
+            switch (orderBy)
+            {
+                case "name":
+                    query = query.OrderBy(c => c.Name);
+                    break;
+                case "nameDesc":
+                    query = query.OrderByDescending(c => c.Name);
+                    break;
+                case "date":
+                    query = query.OrderBy(c => c.PremiereDate);
+                    break;
+                case "dateDesc":
+                    query = query.OrderByDescending(c => c.PremiereDate);
+                    break;
+                case "genre":
+                    query = query.OrderBy(c => c.Genre);
+                    break;
+                case "genreDesc":
+                    query = query.OrderByDescending(c => c.Genre);
+                    break;
+            }
+
+            query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            var movies = await query.ToListAsync();
+            return movies;
         }
     }
 }

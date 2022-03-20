@@ -10,6 +10,6 @@ namespace BlazorMovie.Server.Repository.Movie
         public Task EditAsync(MovieModel movie);
         public Task DeleteAsync(Guid Id);
         public Task DeleteById(Guid Id);
-        public Task<List<MovieModel>> GetWithPagingAsync(int pageSize, int pageIndex, string searchString, string orderBy);
+        public Task<List<MovieViewModel>> GetWithPagingAsync(int pageSize, int pageIndex, string searchString, string orderBy);
     }
 }
