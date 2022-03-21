@@ -17,6 +17,8 @@ builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer("Server=localhost;Database=movie;Trusted_Connection=True;"));
 //builder.Configuration["ConnectionString"]
 
+
+
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 {
     options.SignIn.RequireConfirmedAccount = false;

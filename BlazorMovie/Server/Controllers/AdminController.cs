@@ -128,15 +128,5 @@ namespace BlazorMovie.Server.Controllers
                 return Ok(new List<MovieViewModel>());
             }
         }
-        [HttpGet("GetMovieImage")]
-        public IResult GetMovieImage(Guid Id)
-        {
-            return movieRepository.GetImageFile(Id);
-        }
-        [HttpGet("GetMovieFile")]
-        public IResult GetMovieFile(Guid Id)
-        {
-            return movieRepository.GetMoiveFile(Id);
-        }
     }
 }

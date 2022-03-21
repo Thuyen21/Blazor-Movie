@@ -12,7 +12,7 @@ namespace BlazorMovie.Server.Repository.Movie
         public Task DeleteAsync(Guid Id);
         public Task DeleteById(Guid Id);
         public Task<List<MovieViewModel>> GetWithPagingAsync(int pageSize, int pageIndex, string searchString, string orderBy);
-        public IResult GetMoiveFile(Guid Id);
-        public IResult GetImageFile(Guid Id);
+        public string GetMoiveFile(Guid Id);
+        public string GetImageFile(Guid Id);
     }
 }

@@ -24,10 +24,7 @@ namespace BlazorMovie.Server.Repository.Movie
                 applicationMovie.MoviesDescription = movie.MoviesDescription;
                 applicationMovie.Studio = context.Users.Find(movie.StudioId);
                 applicationMovie.Id = Guid.NewGuid();
-                applicationMovie.MovieFileData = movie.MovieFile;
-                applicationMovie.ImageFileData = movie.ImageFile;
-                applicationMovie.ImageFileExtensions = movie.ImageFileExtensions;
-                applicationMovie.MovieFileExtensions = movie.MovieFileExtensions;
+                
 
                 await context.Movies.AddAsync(applicationMovie);
                 await context.SaveChangesAsync();
@@ -64,22 +61,14 @@ namespace BlazorMovie.Server.Repository.Movie
             throw new NotImplementedException();
         }
         
-        public FileStreamResult GetImageFile(Guid Id)
+        public string GetImageFile(Guid Id)
         {
-            var file = context.Movies.Where(x => x.Id == Id).Select(x => x.ImageFileData).AsNoTracking().First();
-
-            MemoryStream ms = new MemoryStream();
-            ms.Write(file, 0, file.Length);
-
-
-            return new FileStreamResult(ms, "image/jpeg");
+            throw new NotImplementedException();
         }
 
-        public IResult GetMoiveFile(Guid Id)
+        public string GetMoiveFile(Guid Id)
         {
-            string path = Path.GetFullPath(Path.Combine($"wwwroot/File/Movie/{Id.ToString()}.mkv"));
-            var filestream = System.IO.File.OpenRead(path);
-            return Results.File(filestream, contentType: "video/x-matroska", fileDownloadName: Id.ToString(), enableRangeProcessing: true);
+            throw new NotImplementedException();
         }
 
         public async Task<List<MovieViewModel>> GetWithPagingAsync(int pageSize, int pageIndex, string searchString, string orderBy)
