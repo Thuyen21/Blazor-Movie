@@ -14,5 +14,7 @@ namespace BlazorMovie.Server.Repository.User
         public Task UnBanByIdAsync(Guid Id);
         public Task<List<UserModel>> GetWithPagingAsync(int pageSize, int pageIndex, string searchString, string orderBy);
 
+
+
     }
 }

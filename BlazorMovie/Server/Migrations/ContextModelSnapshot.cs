@@ -31,12 +31,6 @@ namespace BlazorMovie.Server.Migrations
                     b.Property<string>("Genre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("ImageFile")
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<byte[]>("MovieFile")
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<string>("MoviesDescription")
                         .HasColumnType("nvarchar(max)");
 

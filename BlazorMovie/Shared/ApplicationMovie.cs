@@ -14,12 +14,14 @@ namespace BlazorMovie.Shared
         public string? Title { get; set; }
         public DateTime PremiereDate { get; set; }
         public string? MoviesDescription { get; set; }
-
         public string? Genre { get; set; }
-
-        public byte[]? ImageFile { get; set; }
-        public byte[]? MovieFile { get; set; }
-
         public ApplicationUser? Studio { get; set; }
+        public string? MovieFileName { get; set; }
+        public string? MovieFileExtensions { get; set; }
+        public byte[] MovieFileData { get; set; }
+        public string? ImageFileExtensions { get; set; }
+        public byte[] ImageFileData { get; set; }
+        public string? ImageFileName { get; set; }
+
     }
 }

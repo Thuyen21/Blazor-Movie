@@ -1,5 +1,6 @@
 ﻿using BlazorMovie.Server.Data;
 using BlazorMovie.Shared;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlazorMovie.Server.Repository.Movie
@@ -15,25 +16,27 @@ namespace BlazorMovie.Server.Repository.Movie
         }
         public async Task Add(MovieModel movie)
         {
-            ApplicationMovie applicationMovie = new ApplicationMovie();
-            applicationMovie.Title = movie.Title;
-             applicationMovie.PremiereDate = movie.PremiereDate;
-            applicationMovie.MoviesDescription = movie.MoviesDescription;
-            applicationMovie.MovieFile = movie.MovieFile;
-            applicationMovie.ImageFile = movie.ImageFile;
-
-            applicationMovie.Studio = context.Users.Find(movie.StudioId);
             try
             {
+                ApplicationMovie applicationMovie = new ApplicationMovie();
+                applicationMovie.Title = movie.Title;
+                applicationMovie.PremiereDate = movie.PremiereDate;
+                applicationMovie.MoviesDescription = movie.MoviesDescription;
+                applicationMovie.Studio = context.Users.Find(movie.StudioId);
+                applicationMovie.Id = Guid.NewGuid();
+                applicationMovie.MovieFileData = movie.MovieFile;
+                applicationMovie.ImageFileData = movie.ImageFile;
+                applicationMovie.ImageFileExtensions = movie.ImageFileExtensions;
+                applicationMovie.MovieFileExtensions = movie.MovieFileExtensions;
+
                 await context.Movies.AddAsync(applicationMovie);
                 await context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
                 throw;
             }
-            
         }
 
         public Task DeleteAsync(Guid Id)
@@ -59,6 +62,24 @@ namespace BlazorMovie.Server.Repository.Movie
         public Task<MovieModel> GetByIdAsync(Guid Id)
         {
             throw new NotImplementedException();
+        }
+        
+        public FileStreamResult GetImageFile(Guid Id)
+        {
+            var file = context.Movies.Where(x => x.Id == Id).Select(x => x.ImageFileData).AsNoTracking().First();
+
+            MemoryStream ms = new MemoryStream();
+            ms.Write(file, 0, file.Length);
+
+
+            return new FileStreamResult(ms, "image/jpeg");
+        }
+
+        public IResult GetMoiveFile(Guid Id)
+        {
+            string path = Path.GetFullPath(Path.Combine($"wwwroot/File/Movie/{Id.ToString()}.mkv"));
+            var filestream = System.IO.File.OpenRead(path);
+            return Results.File(filestream, contentType: "video/x-matroska", fileDownloadName: Id.ToString(), enableRangeProcessing: true);
         }
 
         public async Task<List<MovieViewModel>> GetWithPagingAsync(int pageSize, int pageIndex, string searchString, string orderBy)

@@ -107,7 +107,7 @@ namespace BlazorMovie.Server.Controllers
         }
 
         [HttpPost("MovieUpload")]
-
+        [DisableRequestSizeLimit]
         public async Task<ActionResult> MovieUpload([FromBody] MovieModel movie)
         {
             movie.StudioId = Guid.NewGuid();
@@ -128,6 +128,15 @@ namespace BlazorMovie.Server.Controllers
                 return Ok(new List<MovieViewModel>());
             }
         }
-        
+        [HttpGet("GetMovieImage")]
+        public IResult GetMovieImage(Guid Id)
+        {
+            return movieRepository.GetImageFile(Id);
+        }
+        [HttpGet("GetMovieFile")]
+        public IResult GetMovieFile(Guid Id)
+        {
+            return movieRepository.GetMoiveFile(Id);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BlazorMovie.Shared;
+﻿using BlazorMovie.Server.Areas.Identity.Data;
+using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -30,6 +31,7 @@ public class Context : IdentityDbContext<ApplicationUser, ApplicationRole, Guid,
                 .WithOne(e => e.Role)
                 .HasForeignKey(ur => ur.RoleId)
                 .IsRequired();
+            b.HasData(Seed.Roles);
         });
 
         builder.Entity<ApplicationUser>(b =>

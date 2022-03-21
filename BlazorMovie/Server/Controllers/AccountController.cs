@@ -74,30 +74,9 @@ namespace BlazorMovie.Server.Controllers
             }
             catch (Exception ex)
             {
-                try
-                {
-                    if(!await roleManager.RoleExistsAsync("Admin"))
-                    {
-                        await roleManager.CreateAsync(new ApplicationRole() { Name = "Admin" });
-                    }
-                    if (!await roleManager.RoleExistsAsync("Studio"))
-                    {
-                        await roleManager.CreateAsync(new ApplicationRole() { Name = "Studio" });
-                    }
-                    if (!await roleManager.RoleExistsAsync("Customer"))
-                    {
-                        await roleManager.CreateAsync(new ApplicationRole() { Name = "Customer" });
-                    }
-                    await userManager.AddToRoleAsync(user, registerModel.Role.ToString());
-                    return Ok("Register success");
-                }
-                catch
-                {
+
                     await userManager.DeleteAsync(user);
                     logger.LogWarning(ex, ex.Message);
-                    return BadRequest();
-                }
-                logger.LogWarning(ex, ex.Message);
                 return BadRequest("Error");
             }
         }
