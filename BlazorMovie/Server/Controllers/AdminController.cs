@@ -111,10 +111,18 @@ namespace BlazorMovie.Server.Controllers
         [DisableRequestSizeLimit]
         public async Task<ActionResult> MovieUpload([FromBody] MovieModel movie)
         {
-            movie.StudioId = Guid.NewGuid();
-            movie.Id = Guid.NewGuid();
-            await movieRepository.Add(movie);
-            return Ok();
+            try
+            {
+                movie.StudioId = Guid.NewGuid();
+                movie.Id = Guid.NewGuid();
+                await movieRepository.Add(movie);
+                return Ok("Success");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Error");
+            }
+            
         }
         [HttpGet("Movie")]
         public async Task<ActionResult<List<MovieViewModel>>> Movie(string? searchString, string? orderBy, int index)

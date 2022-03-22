@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BlazorMovie.Server.Migrations
 {
-    public partial class A : Migration
+    public partial class B : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -163,12 +163,12 @@ namespace BlazorMovie.Server.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PremiereDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MoviesDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StudioId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    MoviesDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Genre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StudioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MovieFileLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImageFileLink = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -179,7 +179,8 @@ namespace BlazorMovie.Server.Migrations
                         name: "FK_Movies_AspNetUsers_StudioId",
                         column: x => x.StudioId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -187,9 +188,9 @@ namespace BlazorMovie.Server.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("c294babc-bed5-4402-adc0-d80bf48466ec"), "0181cf5d-8fed-42e6-b56f-8f1254fd9dcb", "Admin", "ADMIN" },
-                    { new Guid("cf8c7373-c04f-40a1-b1b7-64612eba45d8"), "21ce2d68-2041-4f94-9d83-829c18f26073", "Studio", "STUDIO" },
-                    { new Guid("d6fceefd-466a-4b02-b748-221c84112a42"), "abef35d4-9fd0-4a98-9b0d-7616b0fd5aca", "Customer", "CUSTOMER" }
+                    { new Guid("c294babc-bed5-4402-adc0-d80bf48466ec"), "921b99fb-c11f-4520-ac5e-f13a15af03c1", "Admin", "ADMIN" },
+                    { new Guid("cf8c7373-c04f-40a1-b1b7-64612eba45d8"), "a5822236-e067-407d-bef9-3b15c7715c79", "Studio", "STUDIO" },
+                    { new Guid("d6fceefd-466a-4b02-b748-221c84112a42"), "3cb9592f-1298-412a-8631-ebb510b345ce", "Customer", "CUSTOMER" }
                 });
 
             migrationBuilder.InsertData(
@@ -197,9 +198,9 @@ namespace BlazorMovie.Server.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "DateOfBirth", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "Name", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserAgent", "UserName", "Wallet" },
                 values: new object[,]
                 {
-                    { new Guid("219bb40e-0cab-4f08-a408-f33ecb138ed0"), 0, "9110f74e-d0a1-44da-b997-8a0c867a53d1", null, "admin@thuyen.com", true, false, null, null, "ADMIN@THUYEN.COM", "ADMIN@THUYEN.COM", "AQAAAAEAACcQAAAAEKdfEck5i/HRQodcAbSBR7eZmTQSIEKnl5KVn/icA2FyQE/GXe6/HHhQN/jIGnuwIA==", null, false, "", false, null, "admin@thuyen.com", 0.0 },
-                    { new Guid("8aacfc8a-3418-46f4-9cf8-395fc5b90499"), 0, "c9347515-7b7f-4c1c-aeea-058e44f7062a", null, "studio@thuyen.com", true, false, null, null, "STUDIO@THUYEN.COM", "STUDIO@THUYEN.COM", "AQAAAAEAACcQAAAAEHm+P5roba39lpJaffchnvuWLuBG/u4LnBx7OP5I+uv+1gZNVY+nclJNqGrss/9ulA==", null, false, "", false, null, "studio@thuyen.com", 0.0 },
-                    { new Guid("c37a3f36-08b8-44ba-adda-85f3827811ba"), 0, "ce481015-843f-45e2-aa3b-4a78da1eb41e", null, "customer@thuyen.com", true, false, null, null, "CUSTOMER@THUYEN.COM", "CUSTOMER@THUYEN.COM", "AQAAAAEAACcQAAAAEDKV5olb/4CP5FRYArtEJ2UGIAxSPAcqzCgEQ6PUBv548FDOcKGI2Lf3NbTEOtNaSg==", null, false, null, false, null, "customer@thuyen.com", 0.0 }
+                    { new Guid("219bb40e-0cab-4f08-a408-f33ecb138ed0"), 0, "015a6f8e-24c2-4419-8377-4772af13ce84", new DateTime(2022, 3, 22, 21, 51, 47, 60, DateTimeKind.Local).AddTicks(2624), "admin@thuyen.com", true, false, null, "admin@thuyen.com", "ADMIN@THUYEN.COM", "ADMIN@THUYEN.COM", "AQAAAAEAACcQAAAAEHh7bu5ffUJpTYBIioMFFfMCDG36tesFrxVUgMZeJsFVbttwnPQfvnO6/AWObOByMQ==", null, false, "", false, null, "admin@thuyen.com", 0.0 },
+                    { new Guid("8aacfc8a-3418-46f4-9cf8-395fc5b90499"), 0, "4c46b7e6-17aa-4d36-9ad4-237129386aa0", new DateTime(2022, 3, 22, 21, 51, 47, 61, DateTimeKind.Local).AddTicks(3523), "studio@thuyen.com", true, false, null, "admin@thuyen.com", "STUDIO@THUYEN.COM", "STUDIO@THUYEN.COM", "AQAAAAEAACcQAAAAEL8j8RBcRu6YBy7Ez1MpQj+wxR5sxbJ9LqEQx99A/YEyZeaPdoRmFjJD83Zm0tvArA==", null, false, "", false, null, "studio@thuyen.com", 0.0 },
+                    { new Guid("c37a3f36-08b8-44ba-adda-85f3827811ba"), 0, "cca3c4b1-ef9b-4422-8529-b7decaeb2d27", new DateTime(2022, 3, 22, 21, 51, 47, 61, DateTimeKind.Local).AddTicks(3541), "customer@thuyen.com", true, false, null, "admin@thuyen.com", "CUSTOMER@THUYEN.COM", "CUSTOMER@THUYEN.COM", "AQAAAAEAACcQAAAAEEXqeSzIzPFDpdC27Xa+rBMlBv3aTcR7TA4BPNACIWkZMeRWEyTNi8xd0h8EZQx7vQ==", null, false, null, false, null, "customer@thuyen.com", 0.0 }
                 });
 
             migrationBuilder.InsertData(

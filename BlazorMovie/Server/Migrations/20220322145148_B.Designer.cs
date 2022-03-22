@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlazorMovie.Server.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220322134520_A")]
-    partial class A
+    [Migration("20220322145148_B")]
+    partial class B
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,7 @@ namespace BlazorMovie.Server.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Genre")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageFileLink")
@@ -40,18 +41,21 @@ namespace BlazorMovie.Server.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MoviesDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("PremiereDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("StudioId")
+                    b.Property<Guid>("StudioId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -92,21 +96,21 @@ namespace BlazorMovie.Server.Migrations
                         new
                         {
                             Id = new Guid("c294babc-bed5-4402-adc0-d80bf48466ec"),
-                            ConcurrencyStamp = "0181cf5d-8fed-42e6-b56f-8f1254fd9dcb",
+                            ConcurrencyStamp = "921b99fb-c11f-4520-ac5e-f13a15af03c1",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("cf8c7373-c04f-40a1-b1b7-64612eba45d8"),
-                            ConcurrencyStamp = "21ce2d68-2041-4f94-9d83-829c18f26073",
+                            ConcurrencyStamp = "a5822236-e067-407d-bef9-3b15c7715c79",
                             Name = "Studio",
                             NormalizedName = "STUDIO"
                         },
                         new
                         {
                             Id = new Guid("d6fceefd-466a-4b02-b748-221c84112a42"),
-                            ConcurrencyStamp = "abef35d4-9fd0-4a98-9b0d-7616b0fd5aca",
+                            ConcurrencyStamp = "3cb9592f-1298-412a-8631-ebb510b345ce",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         });
@@ -196,13 +200,15 @@ namespace BlazorMovie.Server.Migrations
                         {
                             Id = new Guid("219bb40e-0cab-4f08-a408-f33ecb138ed0"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9110f74e-d0a1-44da-b997-8a0c867a53d1",
+                            ConcurrencyStamp = "015a6f8e-24c2-4419-8377-4772af13ce84",
+                            DateOfBirth = new DateTime(2022, 3, 22, 21, 51, 47, 60, DateTimeKind.Local).AddTicks(2624),
                             Email = "admin@thuyen.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
+                            Name = "admin@thuyen.com",
                             NormalizedEmail = "ADMIN@THUYEN.COM",
                             NormalizedUserName = "ADMIN@THUYEN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKdfEck5i/HRQodcAbSBR7eZmTQSIEKnl5KVn/icA2FyQE/GXe6/HHhQN/jIGnuwIA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHh7bu5ffUJpTYBIioMFFfMCDG36tesFrxVUgMZeJsFVbttwnPQfvnO6/AWObOByMQ==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -213,13 +219,15 @@ namespace BlazorMovie.Server.Migrations
                         {
                             Id = new Guid("8aacfc8a-3418-46f4-9cf8-395fc5b90499"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c9347515-7b7f-4c1c-aeea-058e44f7062a",
+                            ConcurrencyStamp = "4c46b7e6-17aa-4d36-9ad4-237129386aa0",
+                            DateOfBirth = new DateTime(2022, 3, 22, 21, 51, 47, 61, DateTimeKind.Local).AddTicks(3523),
                             Email = "studio@thuyen.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
+                            Name = "admin@thuyen.com",
                             NormalizedEmail = "STUDIO@THUYEN.COM",
                             NormalizedUserName = "STUDIO@THUYEN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHm+P5roba39lpJaffchnvuWLuBG/u4LnBx7OP5I+uv+1gZNVY+nclJNqGrss/9ulA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEL8j8RBcRu6YBy7Ez1MpQj+wxR5sxbJ9LqEQx99A/YEyZeaPdoRmFjJD83Zm0tvArA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -230,13 +238,15 @@ namespace BlazorMovie.Server.Migrations
                         {
                             Id = new Guid("c37a3f36-08b8-44ba-adda-85f3827811ba"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ce481015-843f-45e2-aa3b-4a78da1eb41e",
+                            ConcurrencyStamp = "cca3c4b1-ef9b-4422-8529-b7decaeb2d27",
+                            DateOfBirth = new DateTime(2022, 3, 22, 21, 51, 47, 61, DateTimeKind.Local).AddTicks(3541),
                             Email = "customer@thuyen.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
+                            Name = "admin@thuyen.com",
                             NormalizedEmail = "CUSTOMER@THUYEN.COM",
                             NormalizedUserName = "CUSTOMER@THUYEN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDKV5olb/4CP5FRYArtEJ2UGIAxSPAcqzCgEQ6PUBv548FDOcKGI2Lf3NbTEOtNaSg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEXqeSzIzPFDpdC27Xa+rBMlBv3aTcR7TA4BPNACIWkZMeRWEyTNi8xd0h8EZQx7vQ==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "customer@thuyen.com",
@@ -368,7 +378,9 @@ namespace BlazorMovie.Server.Migrations
                 {
                     b.HasOne("BlazorMovie.Shared.ApplicationUser", "Studio")
                         .WithMany("Movies")
-                        .HasForeignKey("StudioId");
+                        .HasForeignKey("StudioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Studio");
                 });

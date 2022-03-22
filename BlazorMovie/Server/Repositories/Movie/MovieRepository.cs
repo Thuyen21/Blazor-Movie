@@ -19,38 +19,46 @@ namespace BlazorMovie.Server.Repositories.Movie
         }
         public async Task Add(MovieModel movie)
         {
-            try
-            {
                 ApplicationMovie applicationMovie = new ApplicationMovie();
-                applicationMovie.Title = movie.Title;
+            applicationMovie.Name = movie.Name;
+            applicationMovie.Title = movie.Title;
                 applicationMovie.PremiereDate = movie.PremiereDate;
-                applicationMovie.MoviesDescription = movie.MoviesDescription;
+                applicationMovie.Description = movie.Description;
+                applicationMovie.Genre = movie.Genre;
                 applicationMovie.Studio = context.Users.Find(movie.StudioId);
                 applicationMovie.Id = Guid.NewGuid();
-                Stream stream = new MemoryStream(movie.ImageFile);
-                applicationMovie.ImageFileLink = await fileService.UploadAsync(stream, applicationMovie.Id + movie.ImageFileExtensions);
-                stream.Close();
-                stream = new MemoryStream(movie.MovieFile);
-                applicationMovie.MovieFileLink = await fileService.UploadAsync(stream, applicationMovie.Id + movie.MovieFileExtensions);
-                stream.Close();
-                await context.Movies.AddAsync(applicationMovie);
+                if(movie.ImageFile != null && movie.ImageFile.Length > 0)
+                {
+                    Stream streamImage = new MemoryStream(movie.ImageFile);
+                    applicationMovie.ImageFileLink = await fileService.UploadAsync(streamImage, applicationMovie.Id + movie.ImageFileExtensions);
+                    streamImage.Close();
+                }
+            else
+            {
+                applicationMovie.ImageFileLink = null;
+            }
+
+                if (movie.MovieFile != null && movie.MovieFile.Length > 0)
+                {
+                    Stream streamMovie = new MemoryStream(movie.MovieFile);
+                    applicationMovie.MovieFileLink = await fileService.UploadAsync(streamMovie, applicationMovie.Id + movie.MovieFileExtensions);
+                    streamMovie.Close();
+                }
+            else
+            {
+                applicationMovie.MovieFileLink = null;
+            }
+            await context.Movies.AddAsync(applicationMovie);
                 await context.SaveChangesAsync();
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                throw;
-            }
-        }
+            
+        
 
-        public Task DeleteAsync(Guid Id)
+        public async Task DeleteByIdAsync(Guid Id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteById(Guid Id)
-        {
-            throw new NotImplementedException();
+            var movie = context.Movies.Find(Id);
+            context.Movies.Remove(movie);
+            await context.SaveChangesAsync();
         }
 
         public Task EditAsync(MovieModel movie)
@@ -80,15 +88,18 @@ namespace BlazorMovie.Server.Repositories.Movie
 
         public async Task<List<MovieViewModel>> GetWithPagingAsync(int pageSize, int pageIndex, string searchString, string orderBy)
         {
-            var query = context.Movies.Select(x => new MovieViewModel
+            var query = context.Movies.Include(c => c.Studio).Select(x => new MovieViewModel
             {
                 Id = x.Id,
                 Name = x.Name,
                 Title = x.Title,
                 PremiereDate = x.PremiereDate,
-                MoviesDescription = x.MoviesDescription,
+                Description = x.Description,
                 StudioName = x.Studio.Name,
                 Genre = x.Genre,
+                MovieFileLink = x.MovieFileLink,
+                ImageFileLink = x.ImageFileLink,
+
             });
             if (!string.IsNullOrEmpty(searchString))
             {

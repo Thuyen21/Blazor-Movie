@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
 
-public partial class MovieAdmin
+public partial class MovieCustomer
 {
     private List<MovieViewModel>? movies = new();
     private int index = 0;

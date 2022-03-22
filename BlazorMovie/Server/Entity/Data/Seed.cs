@@ -36,7 +36,10 @@ namespace BlazorMovie.Server.Entity.Data
                 NormalizedEmail = "admin@thuyen.com".ToUpper(),
                 EmailConfirmed = true,
                 SecurityStamp = string.Empty,
-                LockoutEnabled = false
+                LockoutEnabled = false,
+                Wallet = 0,
+                DateOfBirth= DateTime.Now,
+                Name ="admin@thuyen.com"
             },
             new()
             {
@@ -48,7 +51,10 @@ namespace BlazorMovie.Server.Entity.Data
                 EmailConfirmed = true,
                 PasswordHash = "AQAAAAEAACcQAAAAEP00TRDpYIeC8EuQYg8Gts0tf3GYua9guO0irf1F+koiluvei0n/WE8fjg71Bo2TMQ==" ,
                 SecurityStamp = string.Empty,
-                LockoutEnabled = false
+                LockoutEnabled = false,
+                Wallet = 0,
+                DateOfBirth= DateTime.Now,
+                Name ="studio@thuyen.com"
             },
             new()
             {
@@ -59,7 +65,11 @@ namespace BlazorMovie.Server.Entity.Data
                 NormalizedEmail = "customer@thuyen.com".ToUpper(),
                 EmailConfirmed = true,
                 PasswordHash = "AQAAAAEAACcQAAAAEO5DQLS1nAVaqJ1Mx4dWWs8Fwqd7me6LneYfPrdfGUK/Egvme3gYr6Yz481HfWVSDQ==",
-                LockoutEnabled = false
+                LockoutEnabled = false,
+                SecurityStamp = string.Empty,
+                Wallet = 0,
+                DateOfBirth= DateTime.Now,
+                Name ="customer@thuyen.com"
             }
             
         };

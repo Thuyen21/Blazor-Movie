@@ -14,11 +14,14 @@
             <ValidationSummary />
             <a style="font-weight: 500;">Gender </a>
             <input type="text" placeholder="Type gender of movie" @bind="@movie.Genre" />
+            <a style="font-weight: 500;">Title </a>
+            <input type="text" placeholder="Type name of movie" @bind="@movie.Title" />
             <a style="font-weight: 500;">Name </a>
             <input type="text" placeholder="Type name of movie" @bind="@movie.Name" />
             <a style="font-weight: 500;">Description</a>
+
             <textarea style="outline:1px;" rows="9" cols="70" type="text" placeholder="Type description of movie"
-                      @bind="@movie.MoviesDescription" />
+                      @bind="@movie.Description" />
             <a style="font-weight: 600;">Premiere Date</a>
             <input type="date" @bind="@movie.PremiereDate" />
             <button class="button">Submit</button>

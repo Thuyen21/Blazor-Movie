@@ -33,7 +33,7 @@
 
                                         <div class="input-box">
                                             <i class="far fa-calendar-alt"></i>
-                                            <input type="text" placeholder="Premiere Date" @bind="@movie.MoviesDescription" >
+                                            <input type="text" placeholder="Premiere Date" @bind="@movie.Description" >
                                             <a>MoviesDescription</a>
                                         </div>
 
@@ -55,12 +55,6 @@
     
    </EditForm>
 
-   @if(!String.IsNullOrEmpty(a))
-{
-    <img src="@a" style="width: 250px; height: 250px;"> 
-}
-
-<video src="https://localhost:5001/api/admin/GetMovieFile?Id=bdb9043c-9e26-4d6a-99a8-f056c319a3a4"></video>
 @code {
     MovieModel movie = new();
 

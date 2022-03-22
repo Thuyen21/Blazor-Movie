@@ -16,15 +16,15 @@ namespace BlazorMovie.Shared
     public class MovieModel
     {
         public Guid Id { get; set; }
-        public string? Name { get; set; }
-        public string? Title { get; set; }
-        public string? Genre { get; set; }
+        public string Name { get; set; }
+        public string Title { get; set; }
+        public string Genre { get; set; }
         public DateTime PremiereDate { get; set; }
-        public string? MoviesDescription { get; set; }
+        public string Description { get; set; }
         public byte[]? ImageFile { get; set; }
         public byte[]? MovieFile { get; set; }
         public string? ImageFileExtensions { get; set; }
-        public Guid StudioId { get; set; }
+        public Guid? StudioId { get; set; }
         public string? MovieFileExtensions { get; set; }
     }
 }

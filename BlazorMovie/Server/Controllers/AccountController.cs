@@ -86,6 +86,14 @@ namespace BlazorMovie.Server.Controllers
         {
             try
             {
+                await signInManager.SignOutAsync();
+            }
+            catch
+            {
+
+            }
+            try
+            {
                 if (await userManager.IsLockedOutAsync(await userManager.FindByEmailAsync(loginModel.Email)))
                 {
                     return BadRequest("Account had banned");
@@ -110,7 +118,6 @@ namespace BlazorMovie.Server.Controllers
             
         }
 
-        [Authorize]
         [HttpPost("Logout")]
         public async Task<IActionResult> Logout()
         {

@@ -13,7 +13,9 @@ namespace BlazorMovie.Shared
         public string? Title { get; set; }
         public string? Genre { get; set; }
         public DateTime PremiereDate { get; set; }
-        public string? MoviesDescription { get; set; }
+        public string? Description { get; set; }
         public string? StudioName { get; set; }
+        public string? MovieFileLink { get; set; }
+        public string? ImageFileLink { get; set; }
     }
 }
