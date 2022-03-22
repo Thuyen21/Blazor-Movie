@@ -1,5 +1,5 @@
-﻿using BlazorMovie.Server.Repository.Movie;
-using BlazorMovie.Server.Repository.User;
+﻿using BlazorMovie.Server.Repositories.Movie;
+using BlazorMovie.Server.Repositories.User;
 using BlazorMovie.Server.Services;
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Mvc;

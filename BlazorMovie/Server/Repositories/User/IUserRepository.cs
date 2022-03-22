@@ -1,6 +1,6 @@
 ﻿using BlazorMovie.Shared;
 
-namespace BlazorMovie.Server.Repository.User
+namespace BlazorMovie.Server.Repositories.User
 {
     public interface IUserRepository
     {

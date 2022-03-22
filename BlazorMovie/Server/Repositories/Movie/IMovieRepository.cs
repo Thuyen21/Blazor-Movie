@@ -1,7 +1,7 @@
 ﻿using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BlazorMovie.Server.Repository.Movie
+namespace BlazorMovie.Server.Repositories.Movie
 {
     public interface IMovieRepository
     {

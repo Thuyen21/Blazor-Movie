@@ -4,14 +4,14 @@ using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace BlazorMovie.Server.Repository.Movie
+namespace BlazorMovie.Server.Repositories.Movie
 {
     public class MovieRepository : IMovieRepository
     {
         private readonly Context context;
         private readonly ILogger logger;
         private readonly FileService fileService;
-        public MovieRepository( Context context, ILogger<MovieRepository> logger, FileService fileService)
+        public MovieRepository(Context context, ILogger<MovieRepository> logger, FileService fileService)
         {
             this.context = context;
             this.logger = logger;
@@ -67,7 +67,7 @@ namespace BlazorMovie.Server.Repository.Movie
         {
             throw new NotImplementedException();
         }
-        
+
         public string GetImageFile(Guid Id)
         {
             throw new NotImplementedException();

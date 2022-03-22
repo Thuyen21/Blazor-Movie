@@ -37,7 +37,10 @@ jobs:
         env:
           ConnectionString: ${{ secrets.CONNECTIONSTRING }}
           SendGridKey: ${{ secrets.SENDGRIDKEY }}
-          MyEmail: ${{ secrets.MYEMAIL }}
+          Email: ${{ secrets.EMAIL }}
+          Bucket: ${{ secrets.BUCKET }}
+          FirebaseApiKey: ${{ secrets.FIREBASEAPIKEY }}
+          Password: ${{ secrets.PASSWORD }}
         working-directory: "./BlazorMovie/Server/"
         run: dotnet publish BlazorMovie.Server.csproj
       - name: copy file

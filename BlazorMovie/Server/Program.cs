@@ -1,7 +1,8 @@
 using BlazorMovie.Server;
 using BlazorMovie.Server.Entity.Data;
-using BlazorMovie.Server.Repository.Movie;
-using BlazorMovie.Server.Repository.User;
+using BlazorMovie.Server.Options;
+using BlazorMovie.Server.Repositories.Movie;
+using BlazorMovie.Server.Repositories.User;
 using BlazorMovie.Server.Services;
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Http.Features;
@@ -42,7 +43,9 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
-builder.Services.AddScoped(o => new FileService(builder.Configuration["FirebaseApiKey"], builder.Configuration["Bucket"]));
+builder.Services.Configure<SuperUser>(builder.Configuration);
+
+builder.Services.AddScoped(o => new FileService(builder.Configuration["FirebaseApiKey"], builder.Configuration["Bucket"], builder.Configuration["Email"], builder.Configuration["Password"]));
 
 
 builder.Services.Configure<FormOptions>(options =>
