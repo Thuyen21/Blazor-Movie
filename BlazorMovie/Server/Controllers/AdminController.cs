@@ -1,5 +1,6 @@
 ﻿using BlazorMovie.Server.Repository.Movie;
 using BlazorMovie.Server.Repository.User;
+using BlazorMovie.Server.Services;
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,12 +13,12 @@ namespace BlazorMovie.Server.Controllers
         private readonly IUserRepository userRepository;
         private readonly ILogger logger;
         private readonly IMovieRepository movieRepository;
+        
         public AdminController(ILogger<AdminController> logger, IUserRepository userRepository, IMovieRepository movieRepository)
         {
             this.userRepository = userRepository;
             this.logger = logger;
             this.movieRepository = movieRepository;
-
         }
         [HttpGet("UserManagement")]
         public async Task<ActionResult<List<UserModel>>> UserManagement(string? searchString, string? orderBy, int index)

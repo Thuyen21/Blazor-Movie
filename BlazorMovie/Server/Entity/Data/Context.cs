@@ -1,18 +1,17 @@
-﻿using BlazorMovie.Server.Areas.Identity.Data;
-using BlazorMovie.Shared;
+﻿using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace BlazorMovie.Server.Data;
+namespace BlazorMovie.Server.Entity.Data;
 
-public class Context : IdentityDbContext<ApplicationUser, ApplicationRole, Guid, IdentityUserClaim<Guid>, ApplicationUserRole, IdentityUserLogin<Guid>,IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>
+public class Context : IdentityDbContext<ApplicationUser, ApplicationRole, Guid, IdentityUserClaim<Guid>, ApplicationUserRole, IdentityUserLogin<Guid>, IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>
 {
     public DbSet<ApplicationMovie> Movies { get; set; }
     public Context(DbContextOptions<Context> options)
         : base(options)
     {
-        
+
     }
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BlazorMovie.Server.Migrations
 {
-    public partial class Init : Migration
+    public partial class a : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -158,6 +158,45 @@ namespace BlazorMovie.Server.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Movies",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PremiereDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    MoviesDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Genre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StudioId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    MovieFileLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageFileLink = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Movies", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Movies_AspNetUsers_StudioId",
+                        column: x => x.StudioId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { new Guid("c294babc-bed5-4402-adc0-d80bf48466ec"), "90994904-3890-4e70-b705-b845bf0a4a06", "Admin", "ADMIN" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { new Guid("cf8c7373-c04f-40a1-b1b7-64612eba45d8"), "6ff94cb3-14d1-4d4b-8846-7ae3959b0974", "Studio", "STUDIO" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { new Guid("d6fceefd-466a-4b02-b748-221c84112a42"), "82a0f09d-23b9-4025-82e9-6a07271c1b7e", "Customer", "CUSTOMER" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -201,6 +240,11 @@ namespace BlazorMovie.Server.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Movies_StudioId",
+                table: "Movies",
+                column: "StudioId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -219,6 +263,9 @@ namespace BlazorMovie.Server.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Movies");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

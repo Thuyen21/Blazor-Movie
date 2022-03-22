@@ -1,24 +1,32 @@
-﻿
-using Google.Apis.Storage.v1.Data;
-using Google.Cloud.Storage.V1;
+﻿using Firebase.Auth;
+using Firebase.Storage;
+using System.Text;
 
 namespace BlazorMovie.Server.Services
 {
     public class FileService
     {
-        private static readonly string projectId = "movie2-e3c7b";
-        private static readonly string bucketName = "movie2-e3c7b.appspot.com";
-        private static readonly StorageClient storage = StorageClient.Create();
-        private static readonly Bucket bucket = storage.CreateBucket(projectId, bucketName);
-
-        public async Task Upload(Stream stream, string filename)
+        private readonly FirebaseAuthProvider authProvider;
+        private readonly string bucket;
+        public FileService(string apiKey, string bucket)
         {
-            await storage.UploadObjectAsync(bucketName, filename, null, stream);
+            this.authProvider = new FirebaseAuthProvider(new FirebaseConfig(apiKey));
+            this.bucket = bucket;
+
         }
-
-        public async Task Download(Stream stream, string filename)
+        public async Task<string> UploadAsync(Stream stream, string filename)
         {
-            
+            var auth = await authProvider.SignInWithEmailAndPasswordAsync("thuyenminh5@gmail.com", "thuyenminh5@gmail.com");
+            var task = new FirebaseStorage(bucket,
+     new FirebaseStorageOptions
+     {
+         AuthTokenAsyncFactory = () => Task.FromResult(auth.FirebaseToken),
+         ThrowOnCancel = true,
+     })
+    .Child(filename)
+    .PutAsync(stream);
+            var url = await task;
+            return url;
         }
     }
 }

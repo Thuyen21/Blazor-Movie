@@ -1,5 +1,5 @@
 using BlazorMovie.Server;
-using BlazorMovie.Server.Data;
+using BlazorMovie.Server.Entity.Data;
 using BlazorMovie.Server.Repository.Movie;
 using BlazorMovie.Server.Repository.User;
 using BlazorMovie.Server.Services;
@@ -41,6 +41,9 @@ builder.Services.AddScoped<IEmailSender, EmailSenderService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
+
+builder.Services.AddScoped(o => new FileService(builder.Configuration["FirebaseApiKey"], builder.Configuration["Bucket"]));
+
 
 builder.Services.Configure<FormOptions>(options =>
 {

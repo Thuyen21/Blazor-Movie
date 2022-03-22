@@ -1,4 +1,5 @@
-﻿using BlazorMovie.Server.Data;
+﻿using BlazorMovie.Server.Entity.Data;
+using BlazorMovie.Server.Services;
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,10 +10,12 @@ namespace BlazorMovie.Server.Repository.Movie
     {
         private readonly Context context;
         private readonly ILogger logger;
-        public MovieRepository( Context context, ILogger<MovieRepository> logger)
+        private readonly FileService fileService;
+        public MovieRepository( Context context, ILogger<MovieRepository> logger, FileService fileService)
         {
             this.context = context;
             this.logger = logger;
+            this.fileService = fileService;
         }
         public async Task Add(MovieModel movie)
         {
@@ -24,8 +27,12 @@ namespace BlazorMovie.Server.Repository.Movie
                 applicationMovie.MoviesDescription = movie.MoviesDescription;
                 applicationMovie.Studio = context.Users.Find(movie.StudioId);
                 applicationMovie.Id = Guid.NewGuid();
-                
-
+                Stream stream = new MemoryStream(movie.ImageFile);
+                applicationMovie.ImageFileLink = await fileService.UploadAsync(stream, applicationMovie.Id + movie.ImageFileExtensions);
+                stream.Close();
+                stream = new MemoryStream(movie.MovieFile);
+                applicationMovie.MovieFileLink = await fileService.UploadAsync(stream, applicationMovie.Id + movie.MovieFileExtensions);
+                stream.Close();
                 await context.Movies.AddAsync(applicationMovie);
                 await context.SaveChangesAsync();
             }

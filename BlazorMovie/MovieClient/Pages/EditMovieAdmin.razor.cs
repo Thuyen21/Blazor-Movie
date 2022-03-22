@@ -11,10 +11,7 @@ public partial class EditMovieAdmin
 {
     [Parameter]
     public string? Id { get; set; }
-
     private MovieModel movie = new();
-    private IBrowserFile? movieFile;
-    private IBrowserFile? imageFile;
     private string? mp;
     private string? ip;
     private bool more = false;
@@ -39,8 +36,9 @@ public partial class EditMovieAdmin
         List<string> list = new List<string> { "video/x-msvideo", "video/mp4", "video/mpeg", "video/ogg", "video/mp2t", "video/webm", "video/3gpp", "video/3gpp2", "video/x-matroska" };
         if (list.Contains(e.File.ContentType))
         {
-           var buffer = new byte[e.File.Size];
-            await e.File.OpenReadStream().ReadAsync(buffer);
+            movie.MovieFile = new byte[e.File.Size];
+            await e.File.OpenReadStream(movie.MovieFile.Length).ReadAsync(movie.MovieFile);
+            movie.MovieFileExtensions = e.File.ContentType;
 
         }
         else
@@ -54,7 +52,9 @@ public partial class EditMovieAdmin
         List<string> list = new List<string> { "image/bmp", "image/gif", "image/jpg", "image/jpeg", "image/png", "image/svg+xml", "image/tiff", "image/webp" };
         if (list.Contains(e.File.ContentType))
         {
-
+            movie.ImageFile = new byte[e.File.Size];
+            await e.File.OpenReadStream(movie.ImageFile.Length).ReadAsync(movie.ImageFile);
+            movie.ImageFileExtensions = e.File.ContentType;
 
         }
         else

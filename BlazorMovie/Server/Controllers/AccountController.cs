@@ -1,4 +1,4 @@
-﻿using BlazorMovie.Server.Data;
+﻿using BlazorMovie.Server.Entity.Data;
 using BlazorMovie.Server.Repository.User;
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Authorization;
