@@ -113,7 +113,6 @@ namespace BlazorMovie.Server.Controllers
         {
             try
             {
-                movie.StudioId = Guid.NewGuid();
                 movie.Id = Guid.NewGuid();
                 await movieRepository.Add(movie);
                 return Ok("Success");

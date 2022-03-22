@@ -8,7 +8,7 @@ public partial class MovieAdmin
     private List<MovieViewModel>? movies = new();
     private int index = 0;
     private string searchString = string.Empty;
-    private string? sort = null;
+    private string sort = string.Empty;
     private async Task NameSortParm()
     {
         index = 0;

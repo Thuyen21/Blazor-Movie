@@ -7,27 +7,26 @@ using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
 
-public partial class EditMovieAdmin
+public partial class EditMovieStudio
 {
     [Parameter]
     public string? Id { get; set; }
     private MovieModel movie = new();
     private string? mp;
     private string? ip;
-    private bool more = false;
     
+    private bool more = false;
     protected override async Task OnInitializedAsync()
     {
-        movie = (await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}"))!;
+        movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
     }
 
     private async Task HandleValidSubmit()
     {
-
-        MovieModel moviePost = (await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}"))!;
+        MovieModel moviePost = (await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}"))!;
         movie.StudioId = moviePost.StudioId;
         movie.Id = moviePost.Id;
-        HttpResponseMessage response = await _httpClient.PostAsJsonAsync("Admin/EditMovie", movie);
+        HttpResponseMessage response = await _httpClient.PostAsJsonAsync("Studio/EditMovie", movie);
         alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
     }
 
@@ -49,7 +48,7 @@ public partial class EditMovieAdmin
 
     private async Task OnChooseImageFile(InputFileChangeEventArgs e)
     {
-        List<string> list = new List<string> { "image/bmp", "image/gif", "image/jpg", "image/jpeg", "image/png", "image/svg+xml", "image/tiff", "image/webp" };
+        List<string> list = new List<string> { "image/bmp", "image/gif", "image/jpeg", "image/jpg", "image/png", "image/svg+xml", "image/tiff", "image/webp" };
         if (list.Contains(e.File.ContentType))
         {
             movie.ImageFile = new byte[e.File.Size];

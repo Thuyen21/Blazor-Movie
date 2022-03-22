@@ -76,16 +76,6 @@ namespace BlazorMovie.Server.Repositories.Movie
             throw new NotImplementedException();
         }
 
-        public string GetImageFile(Guid Id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetMoiveFile(Guid Id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<List<MovieViewModel>> GetWithPagingAsync(int pageSize, int pageIndex, string searchString, string orderBy)
         {
             var query = context.Movies.Include(c => c.Studio).Select(x => new MovieViewModel
@@ -130,6 +120,62 @@ namespace BlazorMovie.Server.Repositories.Movie
             query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
             var movies = await query.ToListAsync();
             return movies;
+        }
+
+        public async Task<List<MovieViewModel>> GetWithPagingForStudioAsync(int pageSize, int pageIndex, string searchString, string orderBy, string StudioId)
+        {
+            var query = context.Movies.Include(c => c.Studio).Where(c => c.Studio.Id == new Guid(StudioId)).Select(x => new MovieViewModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                Title = x.Title,
+                PremiereDate = x.PremiereDate,
+                Description = x.Description,
+                StudioName = x.Studio.Name,
+                Genre = x.Genre,
+                MovieFileLink = x.MovieFileLink,
+                ImageFileLink = x.ImageFileLink,
+
+            });
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                query = query.Where(x => EF.Functions.Like(x.Name, "%" + searchString + "%"));
+            }
+            switch (orderBy)
+            {
+                case "name":
+                    query = query.OrderBy(c => c.Name);
+                    break;
+                case "nameDesc":
+                    query = query.OrderByDescending(c => c.Name);
+                    break;
+                case "date":
+                    query = query.OrderBy(c => c.PremiereDate);
+                    break;
+                case "dateDesc":
+                    query = query.OrderByDescending(c => c.PremiereDate);
+                    break;
+                case "genre":
+                    query = query.OrderBy(c => c.Genre);
+                    break;
+                case "genreDesc":
+                    query = query.OrderByDescending(c => c.Genre);
+                    break;
+            }
+
+            query.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            var movies = await query.ToListAsync();
+            return movies;
+        }
+        public async Task EditFileAsync(string Id, Stream streamImage, string ImageFileExtensions, Stream streamMovie, string MovieFileExtensions)
+        {
+            ApplicationMovie applicationMovie = context.Movies.Find(Id);
+
+            applicationMovie.ImageFileLink = await fileService.UploadAsync(streamImage, applicationMovie.Id + ImageFileExtensions);
+            applicationMovie.MovieFileLink = await fileService.UploadAsync(streamMovie, applicationMovie.Id + MovieFileExtensions);
+
+            context.Movies.Update(applicationMovie);
+            context.SaveChanges();  
         }
     }
 }
