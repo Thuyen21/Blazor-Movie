@@ -1,8 +1,8 @@
 ﻿@page "/EditMovieAdmin/{Id}"
+@page "/EditMovieAdmin"
 <PageTitle>Admin - Edit Movie</PageTitle>
 @using System.IO
-@using Firebase.Storage
-@attribute [Authorize(Roles = "Admin")]
+@*@attribute [Authorize(Roles = "Admin")]*@
 
 <head>
     <meta charset="UTF-8">
@@ -31,7 +31,7 @@
 
                 <div class="row">
                     <div class="col-md">
-                        <form action="@(_httpClient.BaseAddress)Admin/MovieUpload/@movie.MovieId/@movie.StudioId" enctype="multipart/form-data" method="post">
+                        <form action="@(_httpClient.BaseAddress)Admin/MovieUpload/@movie.Id/@movie.StudioId" enctype="multipart/form-data" method="post">
                             <div asp-validation-summary="ModelOnly" class="text-danger">
                                 If it is not a movie or image correct MIME it
                                 will not be uploaded.
@@ -73,7 +73,7 @@
                     <div class="form-content">
                         <div class="login-form">
                             <div class="title">Replace any data of ID </div>
-                            <div class="title">@movie.MovieId</div>
+                            <div class="title">@movie.Id.ToString()</div>
                             @if (alertService.showAlert)
                             {
                                 <MudAlert Severity="alertService.severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => alertService.CloseAlert())">@alertService.content</MudAlert>
@@ -86,7 +86,7 @@
                                         <ValidationSummary />
                                         <div class="input-box">
                                             <i class="fas fa-envelope"></i>
-                                            <input type="text" placeholder="@movie.MovieId" style="pointer-events:none" @bind="@movie.MovieId">
+                                            <input type="text" placeholder="@movie.Id.ToString()" style="pointer-events:none>
                                             <a>Movie ID</a>
                                         </div>
                                         <div class="input-box">
@@ -96,12 +96,12 @@
                                         </div>
                                         <div class="input-box">
                                             <i class="fas fa-user"></i>
-                                            <input type="text" placeholder="Replace movie genre" @bind="@movie.MovieGenre" required>
+                                            <input type="text" placeholder="Replace movie genre" @bind="@movie.Genre" required>
                                             <a>Movie genre</a>
                                         </div>
                                         <div class="input-box">
                                             <i class="fas fa-money-check"></i>
-                                            <input type="text" placeholder="Replace movie name" @bind="@movie.MovieName" required>
+                                            <input type="text" placeholder="Replace movie name" @bind="@movie.Name" required>
                                             <a>Movie name</a>
                                         </div>
                                         <div class="input-box">
@@ -112,9 +112,21 @@
 
                                         <div class="input-box">
                                             <i class="far fa-calendar-alt"></i>
-                                            <input type="text" placeholder="Premiere Date" @bind="@movie.MoviesDescription" required>
+                                            <input type="text" placeholder="Premiere Date" @bind="@movie.Description" required>
                                             <a>MoviesDescription</a>
                                         </div>
+@*
+                                        <div class="input-box">
+                                            <i class="far fa-calendar-alt"></i>
+                                            <input type="file" placeholder="Movie File" @bind="@movie.MovieFile">
+                                            <a>MoviesDescription</a>
+                                        </div>
+
+                                        <div class="input-box">
+                                            <i class="far fa-calendar-alt"></i>
+                                            <input type="file" placeholder="Image File" @bind="@movie.ImageFile">
+                                            <a>MoviesDescription</a>
+                                        </div>*@
 
                                         <div class="button input-box">
                                             <input type="submit" value="Confirm">

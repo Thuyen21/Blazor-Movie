@@ -1,26 +1,53 @@
 using BlazorMovie.Server;
-using Firebase.Auth;
-using Firebase.Auth.Providers;
-using FirebaseAdmin;
-using Google.Apis.Auth.OAuth2;
-using Google.Cloud.Firestore;
-using Microsoft.AspNetCore.Authentication.Cookies;
+using BlazorMovie.Server.Entity.Data;
+using BlazorMovie.Server.Options;
+using BlazorMovie.Server.Repositories.Movie;
+using BlazorMovie.Server.Repositories.User;
+using BlazorMovie.Server.Services;
+using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
-// Add services to the container.
-Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json")));
-FirebaseApp.Create(new AppOptions { Credential = GoogleCredential.FromFile(Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"))) });
-builder.Services.AddScoped(sp => FirestoreDb.Create("movie2-e3c7b"));
-builder.Services.AddScoped(sp => new FirebaseAuthConfig() { ApiKey = "AIzaSyAqCxl98i68Te5_xy3vgMcAEoF5qiBKE9o", AuthDomain = "movie2-e3c7b.firebaseapp.com", Providers = new FirebaseAuthProvider[] { new EmailProvider() } });
-builder.Services.AddSingleton<Censor>();
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+
+builder.Services.AddDbContext<Context>(options =>
+    options.UseSqlServer("Server=localhost;Database=movie;Trusted_Connection=True;"));
+//builder.Configuration["ConnectionString"]
+
+
+
+builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 {
-    options.ExpireTimeSpan = TimeSpan.FromHours(1);
-});
+    options.SignIn.RequireConfirmedAccount = false;
+    options.User.RequireUniqueEmail = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireDigit = false;
+
+})
+    .AddRoles<ApplicationRole>()
+    .AddEntityFrameworkStores<Context>()
+    .AddDefaultUI()
+    .AddDefaultTokenProviders();
+
+
+// Add services to the container.
+
+builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<Censor>();
+builder.Services.AddScoped<IEmailSender, EmailSenderService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IMovieRepository, MovieRepository>();
+builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
+
+builder.Services.Configure<SuperUser>(builder.Configuration);
+
+builder.Services.AddScoped(o => new FileService(builder.Configuration["FirebaseApiKey"], builder.Configuration["Bucket"], builder.Configuration["Email"], builder.Configuration["Password"]));
+
+
 builder.Services.Configure<FormOptions>(options =>
 {
     options.ValueLengthLimit = int.MaxValue;
@@ -28,6 +55,7 @@ builder.Services.Configure<FormOptions>(options =>
     options.MultipartBoundaryLengthLimit = int.MaxValue;
     options.MultipartHeadersCountLimit = int.MaxValue;
     options.MultipartHeadersLengthLimit = int.MaxValue;
+
 });
 
 builder.Services.AddControllersWithViews();
@@ -39,6 +67,13 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        c.RoutePrefix = string.Empty;
+
+    });
 }
 else
 {

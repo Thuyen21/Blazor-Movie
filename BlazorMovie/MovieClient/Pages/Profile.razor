@@ -1,7 +1,7 @@
 ﻿<h3>Profile</h3>
 @attribute [Authorize]
 @page "/profile"
-@inject AccountService _accountService;
+@inject IAccountService _accountService;
 
 <PageTitle>Profile</PageTitle>
 
@@ -17,13 +17,13 @@
 									<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin"
 										style="border-radius:75%">
 								</div>
-								<h5 class="user-name">@accountManagementModel.Name</h5>
-								<h6 class="user-email">@accountManagementModel.Email</h6>
+								<h5 class="user-name">@user.Name</h5>
+								<h6 class="user-email">@user.Email</h6>
 							</div>
 							<div class="about">
-								<h5>@accountManagementModel.Role</h5>
-								<p style="font-weight: 300">@accountManagementModel.Id</p>
-								<p>@accountManagementModel.Wallet</p>
+								<h5>@user.Role</h5>
+								<p style="font-weight: 300">@user.Id</p>
+								<p>@user.Wallet</p>
 								@if (alertService.showAlert)
 								{
 									<MudAlert Severity="alertService.severity" Variant="Variant.Filled"
@@ -39,7 +39,7 @@
 			<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
 				<div class="card h-100">
 					<div class="card-body">
-						<EditForm Model="@accountManagementModel" OnValidSubmit="HandleValidSubmit">
+						<EditForm Model="@user" OnValidSubmit="HandleValidSubmit">
 							<DataAnnotationsValidator />
 							<ValidationSummary />
 							<div class="row gutters">
@@ -50,47 +50,47 @@
 									<div class="form-group">
 										<label>Full Name</label>
 										<input type="text" class="form-control"
-											placeholder="@accountManagementModel.Name"
-											@bind="@accountManagementModel.Name">
+											placeholder="@user.Name"
+											@bind="@user.Name">
 									</div>
 								</div>
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 									<div class="form-group">
 										<label><span style="color:red">Email</span></label>
 										<input type="email" class="form-control"
-											placeholder="@accountManagementModel.Email" style="pointer-events:none"
-											@bind="@accountManagementModel.Email">
+											placeholder="@user.Email" style="pointer-events:none"
+											@bind="@user.Email">
 									</div>
 								</div>
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 									<div class="form-group">
 										<label for="phone">Date of Birth</label>
 										<input type="date" class="form-control"
-											placeholder="@accountManagementModel.DateOfBirth"
-											@bind="@accountManagementModel.DateOfBirth">
+											placeholder="@user.DateOfBirth"
+											@bind="@user.DateOfBirth">
 									</div>
 								</div>
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 									<div class="form-group">
 										<label><span style="color:red">Wallet</span></label>
 										<input type="text" class="form-control"
-											placeholder="@accountManagementModel.Wallet" style="pointer-events:none"
-											@bind="@accountManagementModel.Wallet">
+											placeholder="@user.Wallet" style="pointer-events:none"
+											@bind="@user.Wallet">
 									</div>
 								</div>
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 									<div class="form-group">
 										<label><span style="color:red">Role</span></label>
 										<input type="text" class="form-control"
-											placeholder="@accountManagementModel.Role" style="pointer-events:none"
-											@bind="@accountManagementModel.Role">
+											placeholder="@user.Role" style="pointer-events:none"
+											@bind="@user.Role">
 									</div>
 								</div>
 								<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
 									<div class="form-group">
 										<label><span style="color:red">ID</span></label>
-										<input type="text" class="form-control" placeholder="@accountManagementModel.Id"
-											style="pointer-events:none" @bind="@accountManagementModel.Id">
+										<input type="text" class="form-control" placeholder="@user.Id"
+											style="pointer-events:none" @bind="@user.Id">
 									</div>
 								</div>
 								<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">

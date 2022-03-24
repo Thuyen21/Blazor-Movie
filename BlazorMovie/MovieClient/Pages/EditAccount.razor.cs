@@ -10,18 +10,17 @@ public partial class EditAccount
     [Parameter]
     public string? Id { get; set; }
 
-    private AccountManagementModel acc = new();
+    private UserModel acc = new();
     
     protected override async Task OnInitializedAsync()
     {
-        acc = (await _httpClient.GetFromJsonAsync<AccountManagementModel>($"Admin/EditAccount/{Id}"))!;
+        acc = (await _httpClient.GetFromJsonAsync<UserModel>($"api/Admin/GetUserById?Id={Id}"))!;
     }
 
     private async Task HandleValidSubmit()
     {
-        AccountManagementModel accNew = acc;
-        accNew.DateOfBirth = accNew.DateOfBirth.ToUniversalTime().AddDays(1);
-        HttpResponseMessage response = await _httpClient.PostAsJsonAsync("Admin/EditAccount", accNew);
+        UserModel accNew = acc;
+        HttpResponseMessage response = await _httpClient.PostAsJsonAsync("api/Admin/EditAccount", accNew);
         alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
     }
 }

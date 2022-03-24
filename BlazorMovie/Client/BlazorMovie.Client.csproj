@@ -13,7 +13,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-	<RunAOTCompilation>true</RunAOTCompilation>
+	<!--<RunAOTCompilation>true</RunAOTCompilation>-->
 	<ImplicitUsings>enable</ImplicitUsings>
 	<SignAssembly>true</SignAssembly>
 	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="6.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.3" PrivateAssets="all" />
   </ItemGroup>
 

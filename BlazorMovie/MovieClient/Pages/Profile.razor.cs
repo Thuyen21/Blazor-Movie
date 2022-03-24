@@ -1,5 +1,4 @@
 using BlazorMovie.Shared;
-using MovieClient.Services;
 using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
@@ -7,14 +6,20 @@ namespace MovieClient.Pages;
 public partial class Profile
 {
     private readonly ChangeEmailModel changeEmail = new ChangeEmailModel();
-    
-    private AccountManagementModel accountManagementModel = new AccountManagementModel();
+
+    private UserModel user = new UserModel();
     private async Task ChangeEmail()
     {
-        HttpResponseMessage? response = await _httpClient.PostAsJsonAsync("User/ChangeEmail", changeEmail);
+        HttpResponseMessage? response = await _httpClient.PostAsJsonAsync("api/Account/ChangeEmail", changeEmail);
         alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
-        _accountService.checkAuthentication();
-        accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");
+
+        if (response.IsSuccessStatusCode)
+        {
+            response = await _httpClient.PostAsync("api/Account/GetCurrentUser", null);
+            user = await response.Content.ReadFromJsonAsync<UserModel>();
+        }
+
+        //_accountService.checkAuthentication
     }
 
     private Task ChangePass()
@@ -26,13 +31,21 @@ public partial class Profile
 
     protected override async Task OnInitializedAsync()
     {
-        accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");
+        var response = await _httpClient.PostAsync("api/Account/GetCurrentUser", null);
+
+        user = await response.Content.ReadFromJsonAsync<UserModel>();
     }
 
     private async Task HandleValidSubmit()
     {
-        HttpResponseMessage response = await _httpClient.PostAsJsonAsync("user/EditProfile", accountManagementModel);
+        HttpResponseMessage response = await _httpClient.PostAsJsonAsync("api/Account/UpdateProfile", user);
         alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
+
+        if (response.IsSuccessStatusCode)
+        {
+            response = await _httpClient.PostAsync("api/Account/GetCurrentUser", null);
+            user = await response.Content.ReadFromJsonAsync<UserModel>();
+        }
     }
 
 }

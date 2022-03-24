@@ -34,6 +34,13 @@ jobs:
           dotnet workload install wasm-tools
           
       - name: Publish 
+        env:
+          ConnectionString: ${{ secrets.CONNECTIONSTRING }}
+          SendGridKey: ${{ secrets.SENDGRIDKEY }}
+          Email: ${{ secrets.EMAIL }}
+          Bucket: ${{ secrets.BUCKET }}
+          FirebaseApiKey: ${{ secrets.FIREBASEAPIKEY }}
+          Password: ${{ secrets.PASSWORD }}
         working-directory: "./BlazorMovie/Server/"
         run: dotnet publish BlazorMovie.Server.csproj
       - name: copy file

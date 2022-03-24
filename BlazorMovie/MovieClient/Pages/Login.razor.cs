@@ -1,6 +1,5 @@
 using BlazorMovie.Shared;
 using Microsoft.JSInterop;
-using MovieClient.Services;
 using MudBlazor;
 using System.Net.Http.Json;
 
@@ -8,8 +7,8 @@ namespace MovieClient.Pages;
 
 public partial class Login
 {
-    private readonly LogInModel login = new LogInModel();
-    
+    private readonly LoginModel login = new LoginModel();
+
     private async Task HandleValidSubmit()
     {
         try
@@ -23,11 +22,11 @@ public partial class Login
             return;
         }
 
-        HttpResponseMessage response = await _httpClient.PostAsJsonAsync("user/login", login);
+        HttpResponseMessage response = await _httpClient.PostAsJsonAsync("api/Account/Login", login);
         if (response.IsSuccessStatusCode)
         {
             alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
-            _accountService.checkAuthentication();
+            accountService.checkAuthentication();
             _navigationManager.NavigateTo("/");
         }
         else

@@ -10,13 +10,13 @@ public class ChangeEmailModel
     [DisplayName("Email")]
     [EmailAddress]
 
-    public string? Email { get; set; }
+    public string Email { get; set; }
 
     [Required]
     [DisplayName("Password")]
     [DataType(DataType.Password)]
     [StringLength(50, MinimumLength = 7)]
     [PasswordPropertyText]
-    public string? Password { get; set; }
+    public string Password { get; set; }
 }
 

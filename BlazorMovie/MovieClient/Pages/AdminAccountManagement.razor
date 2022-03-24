@@ -132,7 +132,7 @@
 								<li class="topic"><i class='bx bx-calendar'></i> DOB</li>
 								@foreach (var acc in accs)
 								{
-									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;"><a href="#">@acc.DateOfBirth.ToShortDateString()</a></li>
+									<li style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;"><a href="#">@acc.DateOfBirth.Value.ToShortDateString()</a></li>
 								}
 							</ul>
 							<ul class="details">

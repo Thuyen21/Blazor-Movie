@@ -42,6 +42,13 @@ jobs:
         run: dotnet restore
 
       - name: Formating
+        env:
+          ConnectionString: ${{ secrets.CONNECTIONSTRING }}
+          SendGridKey: ${{ secrets.SENDGRIDKEY }}
+          Email: ${{ secrets.EMAIL }}
+          Bucket: ${{ secrets.BUCKET }}
+          FirebaseApiKey: ${{ secrets.FIREBASEAPIKEY }}
+          Password: ${{ secrets.PASSWORD }}
         run: |
           dotnet format --no-restore --include-generated -v diag
 

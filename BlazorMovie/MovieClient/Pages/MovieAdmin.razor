@@ -62,17 +62,17 @@
                                 @foreach (var item in movies)
                                 {
                                     <li style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;">
-                                        <a>@item.MovieId</a>
+                                        <a>@item.Id</a>
                                     </li>
                                 }
 
                             </ul>
                             <ul class="details">
-                                <li class="topic"><i class='bx bx-mail-send'></i> Studio ID</li>
+                                <li class="topic"><i class='bx bx-mail-send'></i> Studio Name</li>
                                 @foreach (var item in movies)
                                 {
                                     <li style="overflow: hidden; text-overflow: ellipsis; max-width: 150px; margin-right: 10px;">
-                                        <a>@item.StudioId</a>
+                                        <a>@item.StudioName</a>
                                     </li>
                                 }
                             </ul>
@@ -81,7 +81,16 @@
                                 @foreach (var item in movies)
                                 {
                                     <li style="overflow: hidden; text-overflow: ellipsis; width: 200px; margin-right: 10px;">
-                                        <a>@item.MovieGenre</a>
+                                        <a>@item.Genre</a>
+                                    </li>
+                                }
+                            </ul>
+                            <ul class="details">
+                                <li class="topic"><i class='bx bx-user'></i> Description</li>
+                                @foreach (var item in movies)
+                                {
+                                    <li style="overflow: hidden; text-overflow: ellipsis; width: 200px; margin-right: 10px;">
+                                        <a>@item.Description</a>
                                     </li>
                                 }
                             </ul>
@@ -90,7 +99,7 @@
                                 @foreach (var item in movies)
                                 {
                                     <li style="overflow: hidden; text-overflow: ellipsis;white-space: nowrap; max-width: 300px; margin-right: 10px;">
-                                        <a>@item.MovieName</a>
+                                        <a>@item.Name</a>
                                     </li>
                                 }
                             </ul>
@@ -109,8 +118,8 @@
                                 {
                                     <li>
                                         @{
-                                            var linkEdit = $"EditMovieAdmin/{item.MovieId}"; var linkBan =
-                    $"DeleteMovieAdmin/{item.MovieId}";
+                                            var linkEdit = $"EditMovieAdmin/{item.Id}"; var linkBan =
+                    $"DeleteMovieAdmin/{item.Id}";
                                         }
                                         <div class="button">
                                             <a href="@linkEdit" style="margin-right:5px">Edit</a>

@@ -30,6 +30,7 @@ public static class MauiProgram
         builder.Services.AddMudServices();
         builder.Services.AddSingleton<ShowAlertService>();
 
+        builder.Services.AddApiAuthorization();
         return builder.Build();
     }
 }

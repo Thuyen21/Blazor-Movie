@@ -1,6 +1,5 @@
 ﻿@page "/MovieStudio"
 @attribute [Authorize(Roles = "Studio")]
-@using Firebase.Storage
 <PageTitle>Studio - Movie Management</PageTitle>
 
 <head>
@@ -50,27 +49,28 @@ else
             {
                 <div class="col">
                     <div class="card h-100">
-                        @if(DicImageLink.ContainsKey(item.MovieId))
+                        @if(item.ImageFileLink != null)
                         {
-                            <img src="@DicImageLink[item.MovieId]" class="card-img-top" alt="..." style="width=320px; height: 280px"/>
+                            <img src="@item.ImageFileLink" class="card-img-top" alt="..." style="width=320px; height: 280px"/>
                         }
+                        
                         else
                         {
                             <img class="card-img-top" alt="..." style="width=320px; height: 280px"/>
                         }
                         
                         <div class="card-body">
-                            <h1 class="card-title" style="display: -webkit-box; max-width: 200px; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">@item.MovieName</h1>
+                            <h1 class="card-title" style="display: -webkit-box; max-width: 200px; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">@item.Name</h1>
                             <p class="card-text" style="display: -webkit-box; max-width: 200px; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">
-                                @item.MoviesDescription
+                                @item.Description
                             </p>
-                            <h5 class="card-text">Gender: @item.MovieGenre</h5>
+                            <h5 class="card-text">Gender: @item.Genre</h5>
                             <h6 class="card-text">Premiere Date: @item.PremiereDate.ToShortDateString()</h6>
                         </div>
                         <div class="card-footer">
                             @{
-                                var linkEdit = $"EditMovieStudio/{item.MovieId}"; var linkBan = $"DeleteMovieStudio/{item.MovieId}";
-                                var linkStatus = $"StatusStudio/{item.MovieId}";
+                                var linkEdit = $"EditMovieStudio/{item.Id}"; var linkBan = $"DeleteMovieStudio/{item.Id}";
+                                var linkStatus = $"StatusStudio/{item.Id}";
                             }
                             <a href="@linkEdit" class="btn btn-primary">Edit</a>
                             <a href="@linkBan" class="btn btn-danger">Delete</a>

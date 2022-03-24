@@ -1,5 +1,5 @@
 ﻿@page "/signup"
-@inject AccountService _accountService;
+@inject IAccountService _accountService;
 <PageTitle>Register</PageTitle>
 <head>
 	<meta charset="UTF-8">
@@ -36,6 +36,10 @@
 					<div class="title">Signup</div>
 					<form action="#">
 						<div class="input-boxes">
+								@if (alertService.showAlert)
+{
+    <MudAlert Severity="alertService.severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => alertService.CloseAlert())">@alertService.content</MudAlert>
+}
 							<EditForm Model="@signUpModel" OnValidSubmit="HandleValidSubmit">
 								<DataAnnotationsValidator />
 								<ValidationSummary />
@@ -91,8 +95,5 @@
 
 </body>
 
-	@if (alertService.showAlert)
-{
-    <MudAlert Severity="alertService.severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => alertService.CloseAlert())">@alertService.content</MudAlert>
-}
+
 

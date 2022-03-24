@@ -5,11 +5,11 @@ VisualStudioVersion = 17.1.31903.286
 MinimumVisualStudioVersion = 17.1.31903.286
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMovie.Server", "BlazorMovie\Server\BlazorMovie.Server.csproj", "{BDEDC1E6-BF8C-4EEE-8427-51B34C9DF232}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMovie.Client", "BlazorMovie\Client\BlazorMovie.Client.csproj", "{84B2C0BB-88D8-4787-9704-D1ACFA243549}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMovie.Shared", "BlazorMovie\Shared\BlazorMovie.Shared.csproj", "{68B04E57-C5F7-4EA9-B811-CE1919F62977}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClient", "BlazorMovie\MovieClient\MovieClient.csproj", "{8ADA8FE4-341A-458A-BF33-ECE11E0EB608}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMovie.Client", "BlazorMovie\Client\BlazorMovie.Client.csproj", "{396C7F6E-A7BB-4C71-AB29-65A7B2FC635E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieClient", "BlazorMovie\MovieClient\MovieClient.csproj", "{1CB996A6-3E3F-4CBB-B816-C936880FAF89}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMovie.Maui", "BlazorMovie\Maui\BlazorMovie.Maui.csproj", "{264D7422-91B8-4FE6-BD1C-496D213A12F1}"
 EndProject
@@ -23,18 +23,18 @@ Global
 		{BDEDC1E6-BF8C-4EEE-8427-51B34C9DF232}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDEDC1E6-BF8C-4EEE-8427-51B34C9DF232}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDEDC1E6-BF8C-4EEE-8427-51B34C9DF232}.Release|Any CPU.Build.0 = Release|Any CPU
-		{84B2C0BB-88D8-4787-9704-D1ACFA243549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84B2C0BB-88D8-4787-9704-D1ACFA243549}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84B2C0BB-88D8-4787-9704-D1ACFA243549}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84B2C0BB-88D8-4787-9704-D1ACFA243549}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68B04E57-C5F7-4EA9-B811-CE1919F62977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{68B04E57-C5F7-4EA9-B811-CE1919F62977}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68B04E57-C5F7-4EA9-B811-CE1919F62977}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68B04E57-C5F7-4EA9-B811-CE1919F62977}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8ADA8FE4-341A-458A-BF33-ECE11E0EB608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8ADA8FE4-341A-458A-BF33-ECE11E0EB608}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8ADA8FE4-341A-458A-BF33-ECE11E0EB608}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8ADA8FE4-341A-458A-BF33-ECE11E0EB608}.Release|Any CPU.Build.0 = Release|Any CPU
+		{396C7F6E-A7BB-4C71-AB29-65A7B2FC635E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{396C7F6E-A7BB-4C71-AB29-65A7B2FC635E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{396C7F6E-A7BB-4C71-AB29-65A7B2FC635E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{396C7F6E-A7BB-4C71-AB29-65A7B2FC635E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CB996A6-3E3F-4CBB-B816-C936880FAF89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CB996A6-3E3F-4CBB-B816-C936880FAF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CB996A6-3E3F-4CBB-B816-C936880FAF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CB996A6-3E3F-4CBB-B816-C936880FAF89}.Release|Any CPU.Build.0 = Release|Any CPU
 		{264D7422-91B8-4FE6-BD1C-496D213A12F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{264D7422-91B8-4FE6-BD1C-496D213A12F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{264D7422-91B8-4FE6-BD1C-496D213A12F1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU

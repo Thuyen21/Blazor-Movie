@@ -1,10 +1,7 @@
 ﻿@using System.IO
-@using Firebase.Storage
 @attribute [Authorize(Roles = "Studio")]
 @page "/EditMovieStudio/{Id}"
 <PageTitle>Studio - Edit Movie</PageTitle>
-
-
 
 <head>
     <meta charset="UTF-8">
@@ -28,7 +25,7 @@
             {
                 <div class="row">
                     <div class="col-md">
-                        <form action="@(_httpClient.BaseAddress)Studio/MovieUpload/@movie.MovieId/@movie.StudioId" enctype="multipart/form-data" method="post">
+                        <form action="@(_httpClient.BaseAddress)Studio/MovieUploadForWeb?Id=@movie.Id" enctype="multipart/form-data" method="post">
                             <div asp-validation-summary="ModelOnly" class="text-danger">
                                 If it is not a movie or image correct MIME it
                                 will not be uploaded.
@@ -60,7 +57,7 @@
                     <div class="form-content">
                         <div class="login-form">
                             <div class="title">Replace any data of ID: </div>
-                            <div class="title">@movie.MovieId</div>
+                            <div class="title">@movie.Id</div>
                             @if (alertService.showAlert)
                             {
                                 <MudAlert Severity="alertService.severity" Variant="Variant.Filled" ContentAlignment="HorizontalAlignment.Center" ShowCloseIcon="true" CloseIconClicked="(() => alertService.CloseAlert())">@alertService.content</MudAlert>
@@ -73,22 +70,17 @@
                                         <ValidationSummary />
                                         <div class="input-box">
                                             <i class="fas fa-envelope"></i>
-                                            <input type="text" placeholder="@movie.MovieId" style="pointer-events:none" @bind="@movie.MovieId">
+                                            <input type="text" placeholder="@movie.Id" style="pointer-events:none" @bind="@movie.Id">
                                             <a>Movie ID</a>
                                         </div>
                                         <div class="input-box">
-                                            <i class="fas fa-lock"></i>
-                                            <input type="text" placeholder="@movie.StudioId" style="pointer-events:none" @bind="@movie.StudioId">
-                                            <a>Studio ID</a>
-                                        </div>
-                                        <div class="input-box">
                                             <i class="fas fa-user"></i>
-                                            <input type="text" placeholder="Replace movie genre" @bind="@movie.MovieGenre" required>
+                                            <input type="text" placeholder="Replace movie genre" @bind="@movie.Genre" required>
                                             <a>Movie genre</a>
                                         </div>
                                         <div class="input-box">
                                             <i class="fas fa-money-check"></i>
-                                            <input type="text" placeholder="Replace movie name" @bind="@movie.MovieName" required>
+                                            <input type="text" placeholder="Replace movie name" @bind="@movie.Name" required>
                                             <a>Movie name</a>
                                         </div>
                                         <div class="input-box">
@@ -99,7 +91,7 @@
 
                                         <div class="input-box">
                                             <i class="far fa-calendar-alt"></i>
-                                            <input type="text" placeholder="Movies Description" @bind="@movie.MoviesDescription" required>
+                                            <input type="text" placeholder="Movies Description" @bind="@movie.Description" required>
                                             <a>MoviesDescription</a>
                                         </div>
 

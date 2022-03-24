@@ -42,4 +42,11 @@ jobs:
       # - name: Build
       #   run: dotnet build --no-restore
       - name: Test
+        env:
+          ConnectionString: ${{ secrets.CONNECTIONSTRING }}
+          SendGridKey: ${{ secrets.SENDGRIDKEY }}
+          Email: ${{ secrets.EMAIL }}
+          Bucket: ${{ secrets.BUCKET }}
+          FirebaseApiKey: ${{ secrets.FIREBASEAPIKEY }}
+          Password: ${{ secrets.PASSWORD }}
         run: dotnet test --no-restore

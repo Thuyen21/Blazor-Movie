@@ -18,24 +18,27 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
     {
         try
         {
-            AccountManagementModel user = (await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/GetCurrentUser"))!;
-            if (user.Email != null)
-            {
+            var respon = await _httpClient.PostAsync("api/Account/GetCurrentUser", null);
 
-                ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
-                    new Claim(ClaimTypes.Name, user.Email),
-                    new Claim(ClaimTypes.Role, user.Role!),
-                    new Claim(ClaimTypes.Email, user.Email)
+            var user = await respon.Content.ReadFromJsonAsync<UserModel>();
+
+
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
+                    //new Claim(ClaimTypes.Name, user.Name),
+                    new Claim(ClaimTypes.Role, user.Role.ToString()),
+                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.Sid, user.Id.Value.ToString())
                 }, "serverAuth");
-                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
-                return new AuthenticationState(claimsPrincipal);
-            }
-        }
-        catch
-        {
+            ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+
+            return new AuthenticationState(claimsPrincipal);
 
         }
-        return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
+        catch (Exception ex)
+        {
+            return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
+        }
+
     }
     public void Update()
     {

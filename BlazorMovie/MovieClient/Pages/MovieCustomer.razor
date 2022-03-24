@@ -1,6 +1,4 @@
-﻿
-@page "/MovieCustomer"
-@using Firebase.Storage
+﻿@page "/MovieCustomer"
 @attribute [Authorize(Roles = "Customer")]
 <PageTitle>Movie</PageTitle>
 
@@ -42,10 +40,12 @@
                 {
                     <div class="col-12 col-md-6 col-lg-3">
                         <div class="card">
-                            @if(DicImageLink.ContainsKey(item.MovieId))
-                        {
-                            <img class="card-img-top" src="@DicImageLink[item.MovieId]" alt="Unsplash" style="width=320px; height: 280px"> 
-                        }
+                           @if(item.ImageFileLink != null)
+                           {
+                               <img class="card-img-top" src="@item.ImageFileLink" alt="Unsplash" style="width=320px; height: 280px"> 
+                           }
+                            
+                        
                         else
                         {
                             <img class="card-img-top" alt="Unsplash" style="width=320px; height: 280px" />
@@ -71,13 +71,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h2 class="card-title mb-0" style="display: -webkit-box; max-width: 200px; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">@item.MovieName</h2>
-                                <div class="badge bg-warning my-2">@item.MovieGenre movie</div>
+                                <h2 class="card-title mb-0" style="display: -webkit-box; max-width: 200px; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">@item.Name</h2>
+                                <div class="badge bg-warning my-2">@item.Genre movie</div>
                             </div>
                             <div class="card-body px-4 pt-2">
                                 <p style="display: -webkit-box; max-width: 200px; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">
                                     [MOVIE DESCRIPTION]
-                                    @item.MoviesDescription
+                                    @item.Description
                                 </p>
                              <h5 style="font-weight: 200; font-size: .775rem; justify-content:center">Public since: @item.PremiereDate.ToShortDateString()</h5>
                                 
@@ -101,7 +101,7 @@
                                     </i>
                                 </a>
                                 @{
-                                    var linkWatch = $"WatchCustomer/{item.MovieId}";
+                                    var linkWatch = $"WatchCustomer/{item.Id}";
                                 }
                                 <a href="@linkWatch" class="btn btn-success btn-lg btn-block" role="button">
                                     Play<i class="bi bi-play"></i>
