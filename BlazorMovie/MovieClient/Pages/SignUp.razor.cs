@@ -1,5 +1,4 @@
 using BlazorMovie.Shared;
-using MovieClient.Services;
 using MudBlazor;
 using System.Net.Http.Json;
 
@@ -8,17 +7,10 @@ namespace MovieClient.Pages;
 public partial class SignUp
 {
     private string role = "Customer";
-    
+
     private void Role()
     {
-        if (role == "Customer")
-        {
-            role = "Studio";
-        }
-        else
-        {
-            role = "Customer";
-        }
+        role = role == "Customer" ? "Studio" : "Customer";
     }
 
     private readonly SignUpModel signUpModel = new()

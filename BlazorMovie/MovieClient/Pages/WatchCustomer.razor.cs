@@ -2,7 +2,6 @@ using BlazorMovie.Shared;
 using Firebase.Storage;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
-using MovieClient.Services;
 using MudBlazor;
 using System.Net.Http.Json;
 
@@ -20,7 +19,7 @@ public partial class WatchCustomer
     private List<CommentModel> commentList = new();
     private bool sameDevice = false;
     private bool firstPlay = true;
-    
+
     private int index = 0;
     protected override async Task OnInitializedAsync()
     {
@@ -57,7 +56,7 @@ public partial class WatchCustomer
             alertService.ShowAlert(Severity.Error, "Turn off AdBlock");
             return;
         }
-        string token = new string(tokena);
+        string token = new(tokena);
 
         if (canWatch == true)
         {
@@ -75,7 +74,7 @@ public partial class WatchCustomer
     {
         if (firstPlay)
         {
-            await _httpClient.PostAsJsonAsync("Customer/View", Id);
+            _ = await _httpClient.PostAsJsonAsync("Customer/View", Id);
             firstPlay = false;
         }
 
@@ -103,7 +102,7 @@ public partial class WatchCustomer
 
     private async Task Com()
     {
-        CommentModel up = new CommentModel()
+        CommentModel up = new()
         { Time = DateTime.UtcNow, MovieId = Id, CommentText = Acomment };
         HttpResponseMessage? response = await _httpClient.PostAsJsonAsync("Customer/Acomment", up);
         alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
@@ -120,7 +119,7 @@ public partial class WatchCustomer
 
     private async Task AcDisLike(string Id)
     {
-        await _httpClient.PostAsJsonAsync($"Customer/ac/{Id}", "DisLike");
+        _ = await _httpClient.PostAsJsonAsync($"Customer/ac/{Id}", "DisLike");
         List<CommentModel> commentListTemp = new();
         for (int i = 0; i <= index; i++)
         {
@@ -134,7 +133,7 @@ public partial class WatchCustomer
 
     private async Task AcLike(string Id)
     {
-        await _httpClient.PostAsJsonAsync($"Customer/ac/{Id}", "Like");
+        _ = await _httpClient.PostAsJsonAsync($"Customer/ac/{Id}", "Like");
         List<CommentModel> commentListTemp = new();
         for (int i = 0; i <= index; i++)
         {

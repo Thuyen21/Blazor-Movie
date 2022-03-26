@@ -20,9 +20,9 @@ public partial class Home
             tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
         });
         await Task.WhenAll(movieTask, tokenaTask);
-        string token = new string(tokena);
+        string token = new(tokena);
 
-        Parallel.ForEach(movies, async item =>
+        _ = Parallel.ForEach(movies, async item =>
         {
             DicImageLink.Add(item.MovieId, null);
             try
@@ -47,7 +47,7 @@ public partial class Home
     private string getLink(int index)
     {
         List<string> img = new() { "D3D3D3", "FFB6C1", "87CEFA", "B0C4DE", "20B2AA", "FFA07A" };
-        var random = new Random();
+        Random? random = new();
         try
         {
             return DicImageLink.ElementAt(index).Value;

@@ -1,14 +1,13 @@
 using BlazorMovie.Shared;
-using MovieClient.Services;
 using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
 
 public partial class Profile
 {
-    private readonly ChangeEmailModel changeEmail = new ChangeEmailModel();
-    
-    private AccountManagementModel accountManagementModel = new AccountManagementModel();
+    private readonly ChangeEmailModel changeEmail = new();
+
+    private AccountManagementModel accountManagementModel = new();
     private async Task ChangeEmail()
     {
         HttpResponseMessage? response = await _httpClient.PostAsJsonAsync("User/ChangeEmail", changeEmail);

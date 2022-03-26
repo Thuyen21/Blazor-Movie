@@ -1,6 +1,5 @@
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Components;
-using MovieClient.Services;
 using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
@@ -10,10 +9,10 @@ public partial class BuyVip
     [Parameter]
     public string? movieId { get; set; }
 
-    private readonly VipModel vip = new VipModel()
+    private readonly VipModel vip = new()
     { Choose = 1 };
     private string? vipStatus;
-    
+
 
     protected override async Task OnInitializedAsync()
     {

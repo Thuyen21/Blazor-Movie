@@ -58,7 +58,7 @@ public partial class MovieStudio
     }
     private Task LoadImg()
     {
-        Parallel.ForEach(movies, async item =>
+        _ = Parallel.ForEach(movies, async item =>
         {
             try
             {

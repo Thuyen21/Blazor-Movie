@@ -1,4 +1,3 @@
-using MovieClient.Services;
 using MudBlazor;
 using System.Net.Http.Json;
 
@@ -9,12 +8,12 @@ public partial class SalaryStudio
     private string? Email;
     private string? EmailConfirm;
     private double Cash;
-    
+
     private bool isMail(string Email)
     {
         try
         {
-            System.Net.Mail.MailAddress addr = new System.Net.Mail.MailAddress(Email);
+            System.Net.Mail.MailAddress addr = new(Email);
             return true;
         }
         catch

@@ -7,7 +7,7 @@ public class Censor
 
     public Censor()
     {
-        StreamReader reader = new StreamReader(Path.GetFullPath(Path.Combine("wwwroot/Bad Words/base-list-of-bad-words_csv-file_2021_01_18.csv")));
+        StreamReader reader = new(Path.GetFullPath(Path.Combine("wwwroot/Bad Words/base-list-of-bad-words_csv-file_2021_01_18.csv")));
         while (!reader.EndOfStream)
         {
             string line = reader.ReadLine();
@@ -51,7 +51,7 @@ public class Censor
 
         if (regexPattern.StartsWith(".*?"))
         {
-            regexPattern = regexPattern.Substring(3);
+            regexPattern = regexPattern[3..];
             regexPattern = @"(^\b)*?" + regexPattern;
         }
 

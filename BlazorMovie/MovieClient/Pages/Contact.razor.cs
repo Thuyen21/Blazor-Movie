@@ -1,5 +1,4 @@
 using BlazorMovie.Shared;
-using MovieClient.Services;
 using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
@@ -7,7 +6,7 @@ namespace MovieClient.Pages;
 public partial class Contact
 {
     private readonly FeedbackMessageModel feedbackMessageModel = new();
-    
+
 
     private async Task SendFeedbackMessage()
     {

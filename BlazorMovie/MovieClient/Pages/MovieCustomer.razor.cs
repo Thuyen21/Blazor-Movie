@@ -59,7 +59,7 @@ public partial class MovieCustomer
     }
     private Task LoadImg()
     {
-        Parallel.ForEach(movies, async item =>
+        _ = Parallel.ForEach(movies, async item =>
         {
             try
             {

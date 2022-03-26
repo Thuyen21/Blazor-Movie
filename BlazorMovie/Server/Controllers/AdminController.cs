@@ -101,8 +101,8 @@ public class AdminController : Controller
     {
         try
         {
-            if (account.Role == "Admin" || account.Role == "Studio" || account.Role == "Customer" ||
-            account.Role == "Admin")
+            if (account.Role is "Admin" or "Studio" or "Customer" or
+            "Admin")
             {
             }
             else
@@ -117,9 +117,9 @@ public class AdminController : Controller
                 { "Role", account.Role },
                 { "DateOfBirth", account.DateOfBirth.ToUniversalTime() }
             };
-            Parallel.ForEach(snapshot.Documents, async snapshotDocument =>
+            _ = Parallel.ForEach(snapshot.Documents, async snapshotDocument =>
             {
-                await snapshotDocument.Reference.UpdateAsync(update);
+                _ = await snapshotDocument.Reference.UpdateAsync(update);
             });
             return Ok("Success");
         }
@@ -134,8 +134,8 @@ public class AdminController : Controller
         try
         {
             string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
-            UserRecordArgs userRecordArgs = new UserRecordArgs() { Uid = Id, Disabled = true };
-            await FirebaseAuth.DefaultInstance.UpdateUserAsync(userRecordArgs);
+            UserRecordArgs userRecordArgs = new() { Uid = Id, Disabled = true };
+            _ = await FirebaseAuth.DefaultInstance.UpdateUserAsync(userRecordArgs);
             return Ok("Success");
         }
         catch (Exception ex)
@@ -149,8 +149,8 @@ public class AdminController : Controller
         try
         {
             string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
-            UserRecordArgs userRecordArgs = new UserRecordArgs() { Uid = Id, Disabled = false };
-            await FirebaseAuth.DefaultInstance.UpdateUserAsync(userRecordArgs);
+            UserRecordArgs userRecordArgs = new() { Uid = Id, Disabled = false };
+            _ = await FirebaseAuth.DefaultInstance.UpdateUserAsync(userRecordArgs);
             return Ok("Success");
         }
         catch (Exception ex)
@@ -234,9 +234,9 @@ public class AdminController : Controller
             Dictionary<string, dynamic> dictionary = movie.GetType()
                 .GetProperties(BindingFlags.Instance | BindingFlags.Public)
                 .ToDictionary(prop => prop.Name, prop => prop.GetValue(movie, null));
-            Parallel.ForEach(snapshot.Documents, async snapshotDocument =>
+            _ = Parallel.ForEach(snapshot.Documents, async snapshotDocument =>
             {
-                await snapshotDocument.Reference.UpdateAsync(dictionary);
+                _ = await snapshotDocument.Reference.UpdateAsync(dictionary);
             });
             return Ok("Success");
         }
@@ -271,8 +271,8 @@ public class AdminController : Controller
     {
         if (ImageFileUp != null)
         {
-            List<string> list = new List<string>
-                {
+            List<string> list = new()
+            {
                     "image/bmp",
                     "image/gif",
                     "image/jpeg",
@@ -293,7 +293,7 @@ public class AdminController : Controller
                                 HttpClientTimeout = TimeSpan.FromHours(2)
                             }).Child(StudioId).Child(MovieId).Child("Image")
                         .PutAsync(fileStream);
-                    await task;
+                    _ = await task;
 
                     fileStream.Close();
                 }
@@ -301,8 +301,8 @@ public class AdminController : Controller
         }
         if (MovieFileUp != null)
         {
-            List<string> list = new List<string>
-                {
+            List<string> list = new()
+            {
                     "video/x-msvideo",
                     "video/mp4",
                     "video/mpeg",
@@ -332,7 +332,7 @@ public class AdminController : Controller
 
                     };
 
-                    await task;
+                    _ = await task;
 
                     fileStream.Close();
                 }
@@ -383,7 +383,7 @@ public class AdminController : Controller
 
 
             }
-            await snapshotDocument.Reference.DeleteAsync();
+            _ = await snapshotDocument.Reference.DeleteAsync();
             return Ok("Success");
         }
         return BadRequest("Not success");

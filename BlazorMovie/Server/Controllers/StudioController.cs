@@ -75,7 +75,7 @@ public class StudioController : Controller
             movie.PremiereDate = movie.PremiereDate.ToUniversalTime();
             movie.StudioId = User.FindFirstValue(ClaimTypes.Sid);
             DocumentReference MovieId = await collection.AddAsync(movie);
-            await MovieId.UpdateAsync(new Dictionary<string, dynamic> { { "MovieId", MovieId.Id } });
+            _ = await MovieId.UpdateAsync(new Dictionary<string, dynamic> { { "MovieId", MovieId.Id } });
             return Ok("You can go to edit this movie to upload movie and image");
         }
         catch (Exception ex)
@@ -112,9 +112,9 @@ public class StudioController : Controller
             .GetProperties(BindingFlags.Instance | BindingFlags.Public)
             .ToDictionary(prop => prop.Name, prop => prop.GetValue(movie, null));
 
-        Parallel.ForEach(snapshot.Documents, async snapshotDocument =>
+        _ = Parallel.ForEach(snapshot.Documents, async snapshotDocument =>
         {
-            await snapshotDocument.Reference.UpdateAsync(dictionary);
+            _ = await snapshotDocument.Reference.UpdateAsync(dictionary);
         });
 
         return Ok("Success");
@@ -144,8 +144,8 @@ public class StudioController : Controller
         StudioId = User.FindFirstValue(ClaimTypes.Sid);
         if (ImageFileUp != null)
         {
-            List<string> list = new List<string>
-                {
+            List<string> list = new()
+            {
                     "image/bmp",
                     "image/gif",
                     "image/jpeg",
@@ -175,7 +175,7 @@ public class StudioController : Controller
 
                     };
 
-                    await task;
+                    _ = await task;
 
                     fileStream.Close();
                 }
@@ -184,8 +184,8 @@ public class StudioController : Controller
         }
         if (MovieFileUp != null)
         {
-            List<string> list = new List<string>
-                {
+            List<string> list = new()
+            {
                     "video/x-msvideo",
                     "video/mp4",
                     "video/mpeg",
@@ -216,7 +216,7 @@ public class StudioController : Controller
 
                     };
 
-                    await task;
+                    _ = await task;
 
                     fileStream.Close();
                 }
@@ -232,7 +232,7 @@ public class StudioController : Controller
     {
         Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time");
         QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
-        List<CommentModel> commentList = new List<CommentModel>();
+        List<CommentModel> commentList = new();
 
         foreach (DocumentSnapshot item in commentSnapshot.Documents)
         {
@@ -278,7 +278,7 @@ public class StudioController : Controller
             {
                 double buy0 = (await db.Collection("Buy").WhereEqualTo("MovieId", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
                 double m0 = buy0 * 4.49;
-                List<double> result0 = new List<double>
+                List<double> result0 = new()
                 {
                     0,
                     buy0
@@ -289,7 +289,7 @@ public class StudioController : Controller
             double buy = (await db.Collection("Buy").WhereEqualTo("MovieId", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
             double vip = (await db.Collection("Vip").WhereGreaterThanOrEqualTo("Time", StartDate).GetSnapshotAsync()).Documents.Count;
 
-            List<double> result = new List<double>
+            List<double> result = new()
             {
                 viewt,
                 buy
@@ -316,11 +316,13 @@ public class StudioController : Controller
             Query commentSend = db.Collection("Comment").WhereEqualTo("MovieId", Id).OrderByDescending("Time").WhereGreaterThanOrEqualTo("Time", StartDate.ToUniversalTime()).WhereLessThanOrEqualTo("Time", EndDate.ToUniversalTime());
             QuerySnapshot commentSnapshot = await commentSend.GetSnapshotAsync();
 
-            List<int> list = new();
-            list.Add(0);
-            list.Add(0);
+            List<int> list = new()
+            {
+                0,
+                0
+            };
 
-            MLModel1.ModelInput sampleData = new MLModel1.ModelInput();
+            MLModel1.ModelInput sampleData = new();
             foreach (DocumentSnapshot item in commentSnapshot.Documents)
             {
                 CommentModel commentConvert = item.ConvertTo<CommentModel>();
@@ -334,12 +336,12 @@ public class StudioController : Controller
                     if (result.PredictedLabel == "positive")
                     {
                         list[0] = list[0] + 1;
-                        await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Positive" } });
+                        _ = await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Positive" } });
                     }
                     else
                     {
                         list[1] = list[1] + 1;
-                        await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Negative" } });
+                        _ = await item.Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Prediction", "Negative" } });
                     }
                 }
                 else
@@ -384,9 +386,9 @@ public class StudioController : Controller
 
             foreach (DocumentSnapshot? item in updateCash.Documents)
             {
-                await item.Reference.UpdateAsync("Wallet", item.GetValue<double>("Wallet") + cash);
+                _ = await item.Reference.UpdateAsync("Wallet", item.GetValue<double>("Wallet") + cash);
             }
-            await snapshot.Documents[0].Reference.UpdateAsync(new Dictionary<string, object> { { ss[1], 0 } });
+            _ = await snapshot.Documents[0].Reference.UpdateAsync(new Dictionary<string, object> { { ss[1], 0 } });
 
         }
         catch
@@ -430,7 +432,7 @@ public class StudioController : Controller
                 return BadRequest($"Lower than {cashTest}");
             }
 
-            await snapshotDocument.Reference.UpdateAsync(
+            _ = await snapshotDocument.Reference.UpdateAsync(
                 new Dictionary<string, dynamic> { { "Wallet", cashTest - Convert.ToDouble(dic["Cash"]) } });
         }
         string clientId = "AUiGr3FOSHrsVSTbFwS_NFq8g-fGt1ovVj0LY9f0D260rprZgDB-VL8-Ww0Gwz4bsShhLz0YG8iawmjf";
@@ -457,7 +459,7 @@ public class StudioController : Controller
         try
         {
             PayoutsPostRequest request = new();
-            request.RequestBody(createPayoutRequest);
+            _ = request.RequestBody(createPayoutRequest);
 
             PayPalHttp.HttpResponse response = await client.Execute(request);
 
@@ -517,7 +519,7 @@ public class StudioController : Controller
 
             }
 
-            await snapshotDocument.Reference.DeleteAsync();
+            _ = await snapshotDocument.Reference.DeleteAsync();
             return Ok("Success");
         }
         return BadRequest("Not success");
