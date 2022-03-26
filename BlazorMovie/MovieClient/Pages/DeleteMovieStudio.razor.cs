@@ -1,6 +1,5 @@
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Components;
-using MovieClient.Services;
 using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
@@ -11,7 +10,7 @@ public partial class DeleteMovieStudio
     public string? Id { get; set; }
 
     private MovieModel? movie;
-    
+
     protected override async Task OnInitializedAsync()
     {
         movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");

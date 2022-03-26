@@ -29,6 +29,6 @@ public partial class NavMenu
 
     public void MenuChanged()
     {
-        InvokeAsync(StateHasChanged);
+        _ = InvokeAsync(StateHasChanged);
     }
 }

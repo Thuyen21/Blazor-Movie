@@ -11,24 +11,24 @@ public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
-        var builder = MauiApp.CreateBuilder();
-        builder
+        MauiAppBuilder builder = MauiApp.CreateBuilder();
+        _ = builder
             .RegisterBlazorMauiWebView()
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                _ = fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
             });
-        builder.Logging.ClearProviders();
-        builder.Logging.AddConsole();
-        builder.Services.AddBlazorWebView();
-        builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri("https://movie213.herokuapp.com/") });
-        builder.Services.AddOptions();
-        builder.Services.AddAuthorizationCore();
-        builder.Services.AddSingleton<AccountService>();
-        builder.Services.AddSingleton<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
-        builder.Services.AddMudServices();
-        builder.Services.AddSingleton<ShowAlertService>();
+        _ = builder.Logging.ClearProviders();
+        _ = builder.Logging.AddConsole();
+        _ = builder.Services.AddBlazorWebView();
+        _ = builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri("https://movie213.herokuapp.com/") });
+        _ = builder.Services.AddOptions();
+        _ = builder.Services.AddAuthorizationCore();
+        _ = builder.Services.AddSingleton<AccountService>();
+        _ = builder.Services.AddSingleton<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+        _ = builder.Services.AddMudServices();
+        _ = builder.Services.AddSingleton<ShowAlertService>();
 
         return builder.Build();
     }

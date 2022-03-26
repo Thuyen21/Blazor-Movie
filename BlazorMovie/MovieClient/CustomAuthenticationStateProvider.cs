@@ -22,12 +22,12 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
             if (user.Email != null)
             {
 
-                ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
+                ClaimsIdentity claimsIdentity = new(new[] {
                     new Claim(ClaimTypes.Name, user.Email),
                     new Claim(ClaimTypes.Role, user.Role!),
                     new Claim(ClaimTypes.Email, user.Email)
                 }, "serverAuth");
-                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+                ClaimsPrincipal claimsPrincipal = new(claimsIdentity);
                 return new AuthenticationState(claimsPrincipal);
             }
         }

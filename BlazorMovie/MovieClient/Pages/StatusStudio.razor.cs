@@ -48,16 +48,18 @@ public partial class StatusStudio
                 dateToCheck.Add(i);
             }
 
-            Parallel.ForEach(dateToCheck, async date =>
+            _ = Parallel.ForEach(dateToCheck, async date =>
             {
-                commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/{date.ToString("MM-dd-yyyy")}");
-                List<double> getInfor = await _httpClient.GetFromJsonAsync<List<double>>($"Studio/PayCheck/{Id}/{date.ToString("MM-dd-yyyy")}");
-                Dictionary<string, string> dic = new();
-                dic.Add("Date", date.ToString());
-                dic.Add("Positive", commentStatus[0].ToString());
-                dic.Add("Negative", commentStatus[1].ToString());
-                dic.Add("View", getInfor[0].ToString());
-                dic.Add("Buy", getInfor[1].ToString());
+                commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/{date:MM-dd-yyyy}");
+                List<double> getInfor = await _httpClient.GetFromJsonAsync<List<double>>($"Studio/PayCheck/{Id}/{date:MM-dd-yyyy}");
+                Dictionary<string, string> dic = new()
+                {
+                    { "Date", date.ToString() },
+                    { "Positive", commentStatus[0].ToString() },
+                    { "Negative", commentStatus[1].ToString() },
+                    { "View", getInfor[0].ToString() },
+                    { "Buy", getInfor[1].ToString() }
+                };
                 fullStatus.Add(dic);
 
                 await InvokeAsync(() => StateHasChanged());

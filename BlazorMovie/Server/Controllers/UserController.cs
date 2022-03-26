@@ -45,10 +45,10 @@ public class UserController : Controller
         AccountManagementModel acc = new();
         foreach (DocumentSnapshot document in snapshot.Documents)
         {
-            await document.Reference.UpdateAsync("UserAgent", logIn.UserAgent);
+            _ = await document.Reference.UpdateAsync("UserAgent", logIn.UserAgent);
             acc = document.ConvertTo<AccountManagementModel>();
         }
-        ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
+        ClaimsIdentity claimsIdentity = new(new[] {
                 new Claim(ClaimTypes.Email, logIn.Email),
                     new Claim(ClaimTypes.Sid, user.Uid),
                     new Claim(ClaimTypes.Name, acc.Name),
@@ -58,7 +58,7 @@ public class UserController : Controller
 
             }, "serverAuth");
         //create claimsPrincipal
-        ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+        ClaimsPrincipal claimsPrincipal = new(claimsIdentity);
         //Sign In User
         await HttpContext.SignInAsync(claimsPrincipal);
         return Ok();
@@ -100,13 +100,13 @@ public class UserController : Controller
                         changeEmailModel.Password);
             UserCredential newUserCredentiall = userCredential;
             newUserCredentiall.AuthCredential = EmailProvider.GetCredential(changeEmailModel.Email, changeEmailModel.Password);
-            await newUserCredentiall.User.LinkWithCredentialAsync(userCredential.AuthCredential);
+            _ = await newUserCredentiall.User.LinkWithCredentialAsync(userCredential.AuthCredential);
             QuerySnapshot snapshot = await db.Collection("Account").WhereEqualTo("Id", userCredential.User.Uid)
                 .GetSnapshotAsync();
             Dictionary<string, dynamic> update = new() { { "Email", changeEmailModel.Email } };
             foreach (DocumentSnapshot document in snapshot.Documents)
             {
-                await document.Reference.UpdateAsync(update);
+                _ = await document.Reference.UpdateAsync(update);
             }
             ClaimsIdentity identity = new(User.Identity);
             identity.RemoveClaim(identity.FindFirst(ClaimTypes.Email));
@@ -166,7 +166,7 @@ public class UserController : Controller
             };
             foreach (DocumentSnapshot document in snapshot.Documents)
             {
-                await document.Reference.UpdateAsync(update);
+                _ = await document.Reference.UpdateAsync(update);
             }
 
             return Ok("Success");
@@ -179,7 +179,7 @@ public class UserController : Controller
     [HttpPost("SignUp")]
     public async Task<ActionResult> SignUp([FromBody] SignUpModel signUpModel)
     {
-        if (signUpModel.Role == "Customer" || signUpModel.Role == "Studio")
+        if (signUpModel.Role is "Customer" or "Studio")
         {
 
         }
@@ -215,8 +215,8 @@ public class UserController : Controller
                 Role = signUpModel.Role,
                 Wallet = 0.0
             };
-            await docRef.AddAsync(account);
-            ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
+            _ = await docRef.AddAsync(account);
+            ClaimsIdentity claimsIdentity = new(new[] {
                 new Claim(ClaimTypes.Email, account.Email),
                     new Claim(ClaimTypes.Sid, user.Uid),
                     new Claim(ClaimTypes.Name, account.Name),
@@ -224,7 +224,7 @@ public class UserController : Controller
                     new Claim(ClaimTypes.DateOfBirth, account.DateOfBirth.ToString()),
                     new Claim("Token", await user.GetIdTokenAsync())
             }, "serverAuth");
-            ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
+            ClaimsPrincipal claimsPrincipal = new(claimsIdentity);
             await HttpContext.SignInAsync(claimsPrincipal);
             return Ok();
         }
@@ -251,7 +251,7 @@ public class UserController : Controller
         {
             try
             {
-                var uid = "wgiW4ncipWSsHzaHIrHyaD0sSFL2";
+                string? uid = "wgiW4ncipWSsHzaHIrHyaD0sSFL2";
 
                 string customToken = await FirebaseAdmin.Auth.FirebaseAuth.DefaultInstance.CreateCustomTokenAsync(uid);
 
@@ -276,7 +276,7 @@ public class UserController : Controller
     [HttpPost("feedback")]
     public async Task<ActionResult> Feedback([FromBody] FeedbackMessageModel feedback)
     {
-        await db.Collection("Feedback").AddAsync(feedback);
+        _ = await db.Collection("Feedback").AddAsync(feedback);
         return Ok("Done");
     }
     //FIXING

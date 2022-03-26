@@ -1,5 +1,4 @@
 using BlazorMovie.Shared;
-using MovieClient.Services;
 using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
@@ -7,7 +6,7 @@ namespace MovieClient.Pages;
 public partial class CreateStudio
 {
     private readonly MovieModel movie = new();
-    
+
     private async Task HandleValidSubmit()
     {
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync("Studio/Upload", movie);

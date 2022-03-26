@@ -26,18 +26,7 @@ public class ShowAlertService
     }
     public void ShowAlert(bool? severity, string content)
     {
-        if (severity == null)
-        {
-            this.severity = Severity.Warning;
-        }
-        else if (severity == true)
-        {
-            this.severity = Severity.Success;
-        }
-        else
-        {
-            this.severity = Severity.Error;
-        }
+        this.severity = severity == null ? Severity.Warning : severity == true ? Severity.Success : Severity.Error;
         this.content = content;
         showAlert = true;
     }
