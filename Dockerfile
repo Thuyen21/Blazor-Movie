@@ -4,4 +4,5 @@ WORKDIR /app
 
 COPY . .
 
+CMD dotnet dev-certs https --trust
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet BlazorMovie.Server.dll
