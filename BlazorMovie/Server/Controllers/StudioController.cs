@@ -146,14 +146,14 @@ public class StudioController : Controller
         {
             List<string> list = new()
             {
-                    "image/bmp",
-                    "image/gif",
-                    "image/jpeg",
-                    "image/png",
-                    "image/svg+xml",
-                    "image/tiff",
-                    "image/webp"
-                };
+                "image/bmp",
+                "image/gif",
+                "image/jpeg",
+                "image/png",
+                "image/svg+xml",
+                "image/tiff",
+                "image/webp"
+            };
             if (list.Contains(ImageFileUp.ContentType))
             {
                 using Stream fileStream = ImageFileUp.OpenReadStream();
@@ -186,16 +186,16 @@ public class StudioController : Controller
         {
             List<string> list = new()
             {
-                    "video/x-msvideo",
-                    "video/mp4",
-                    "video/mpeg",
-                    "video/ogg",
-                    "video/mp2t",
-                    "video/webm",
-                    "video/3gpp",
-                    "video/3gpp2",
-                    "video/x-matroska"
-                };
+                "video/x-msvideo",
+                "video/mp4",
+                "video/mpeg",
+                "video/ogg",
+                "video/mp2t",
+                "video/webm",
+                "video/3gpp",
+                "video/3gpp2",
+                "video/x-matroska"
+            };
 
             if (list.Contains(MovieFileUp.ContentType))
             {
