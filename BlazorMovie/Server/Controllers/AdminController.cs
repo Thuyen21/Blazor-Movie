@@ -1,8 +1,8 @@
 ﻿using BlazorMovie.Server.Repositories.Movie;
 using BlazorMovie.Server.Repositories.User;
 using BlazorMovie.Server.Services;
-using BlazorMovie.Shared;
 using BlazorMovie.Shared.Account;
+using BlazorMovie.Shared.Movie;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorMovie.Server.Controllers

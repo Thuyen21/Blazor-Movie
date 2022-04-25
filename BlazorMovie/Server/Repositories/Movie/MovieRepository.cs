@@ -1,6 +1,7 @@
 ﻿using BlazorMovie.Server.Entity.Context;
 using BlazorMovie.Server.Services;
 using BlazorMovie.Shared;
+using BlazorMovie.Shared.Movie;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

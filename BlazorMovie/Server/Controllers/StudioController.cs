@@ -1,5 +1,5 @@
 ﻿using BlazorMovie.Server.Repositories.Movie;
-using BlazorMovie.Shared;
+using BlazorMovie.Shared.Movie;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;

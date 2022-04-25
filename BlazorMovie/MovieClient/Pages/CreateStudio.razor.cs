@@ -1,4 +1,4 @@
-using BlazorMovie.Shared;
+using BlazorMovie.Shared.Movie;
 using Microsoft.AspNetCore.Components.Forms;
 using MovieClient.Services;
 using MudBlazor;

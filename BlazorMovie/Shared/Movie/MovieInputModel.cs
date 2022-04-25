@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace BlazorMovie.Shared
+namespace BlazorMovie.Shared.Movie
 {
     public class MovieInputModel
     {
