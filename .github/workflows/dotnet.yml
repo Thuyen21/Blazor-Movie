@@ -34,7 +34,7 @@ jobs:
 
       - name: Install tools
         run: |
-          Invoke-WebRequest 'https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.ps1' -Proxy $env:HTTP_PROXY -ProxyUseDefaultCredentials -OutFile 'workload-install.ps1';
+          Invoke-WebRequest 'https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.ps1' -OutFile 'workload-install.ps1';
           ./workload-install.ps1
           dotnet workload install maui `
           --from-rollback-file https://aka.ms/dotnet/maui/main.json `
