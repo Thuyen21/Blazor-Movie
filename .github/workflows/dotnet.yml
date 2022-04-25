@@ -34,8 +34,6 @@ jobs:
 
       - name: Install tools
         run: |
-          Invoke-WebRequest 'https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.ps1' -OutFile 'workload-install.ps1';
-          ./workload-install.ps1
           dotnet workload install maui `
           --from-rollback-file https://aka.ms/dotnet/maui/main.json `
           --source https://pkgs.dev.azure.com/dnceng/public/_packaging/darc-pub-dotnet-runtime-bd261ea4/nuget/v3/index.json `
