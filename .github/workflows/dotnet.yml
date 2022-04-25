@@ -34,10 +34,19 @@ jobs:
 
       - name: Install tools
         run: |
-          dotnet workload install maui wasm-tools --include-previews
+          Invoke-WebRequest 'https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.ps1' -Proxy $env:HTTP_PROXY -ProxyUseDefaultCredentials -OutFile 'workload-install.ps1';
+          ./workload-install.ps1
+          dotnet workload install maui `
+          --from-rollback-file https://aka.ms/dotnet/maui/main.json `
+          --source https://pkgs.dev.azure.com/dnceng/public/_packaging/darc-pub-dotnet-runtime-bd261ea4/nuget/v3/index.json `
+          --source https://pkgs.dev.azure.com/dnceng/public/_packaging/darc-pub-dotnet-emsdk-52e9452f-3/nuget/v3/index.json `
+          --source https://pkgs.dev.azure.com/dnceng/public/_packaging/dotnet6/nuget/v3/index.json `
+          --source https://api.nuget.org/v3/index.json
+
+          # dotnet workload install maui wasm-tools
           # dotnet workload restore
           # dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
-        
+
       - name: Restore dependencies
         run: dotnet restore
       # - name: Build
