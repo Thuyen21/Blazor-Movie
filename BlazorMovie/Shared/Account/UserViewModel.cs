@@ -1,6 +1,6 @@
-﻿namespace BlazorMovie.Shared
+﻿namespace BlazorMovie.Shared.Account
 {
-    public class UserModel
+    public class UserViewModel
     {
         public Guid? Id { get; set; }
         public string? Email { get; set; }

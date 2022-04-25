@@ -1,4 +1,4 @@
-using BlazorMovie.Shared;
+using BlazorMovie.Shared.Account;
 using System.Net.Http.Json;
 
 namespace MovieClient.Pages;
@@ -7,7 +7,7 @@ public partial class Profile
 {
     private readonly ChangeEmailModel changeEmail = new ChangeEmailModel();
 
-    private UserModel user = new UserModel();
+    private UserViewModel user = new UserViewModel();
     private async Task ChangeEmail()
     {
         HttpResponseMessage? response = await _httpClient.PostAsJsonAsync("api/Account/ChangeEmail", changeEmail);
@@ -16,7 +16,7 @@ public partial class Profile
         if (response.IsSuccessStatusCode)
         {
             response = await _httpClient.PostAsync("api/Account/GetCurrentUser", null);
-            user = await response.Content.ReadFromJsonAsync<UserModel>();
+            user = await response.Content.ReadFromJsonAsync<UserViewModel>();
         }
 
         //_accountService.checkAuthentication
@@ -33,7 +33,7 @@ public partial class Profile
     {
         var response = await _httpClient.PostAsync("api/Account/GetCurrentUser", null);
 
-        user = await response.Content.ReadFromJsonAsync<UserModel>();
+        user = await response.Content.ReadFromJsonAsync<UserViewModel>();
     }
 
     private async Task HandleValidSubmit()
@@ -44,7 +44,7 @@ public partial class Profile
         if (response.IsSuccessStatusCode)
         {
             response = await _httpClient.PostAsync("api/Account/GetCurrentUser", null);
-            user = await response.Content.ReadFromJsonAsync<UserModel>();
+            user = await response.Content.ReadFromJsonAsync<UserViewModel>();
         }
     }
 

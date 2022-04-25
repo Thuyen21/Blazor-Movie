@@ -1,6 +1,7 @@
-﻿using BlazorMovie.Server.Entity.Data;
+﻿using BlazorMovie.Server.Entity.Context;
+using BlazorMovie.Server.Entity.Data.Account;
 using BlazorMovie.Server.Repositories.User;
-using BlazorMovie.Shared;
+using BlazorMovie.Shared.Account;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -185,7 +186,7 @@ namespace BlazorMovie.Server.Controllers
 
         [Authorize]
         [HttpPost("GetCurrentUser")]
-        public async Task<ActionResult<UserModel>> GetCurrentUser()
+        public async Task<ActionResult<UserViewModel>> GetCurrentUser()
         {
             try
             {
@@ -228,7 +229,7 @@ namespace BlazorMovie.Server.Controllers
 
         [Authorize]
         [HttpPost("UpdateProfile")]
-        public async Task<ActionResult<string>> UpdateProfile([FromBody] UserModel model)
+        public async Task<ActionResult<string>> UpdateProfile([FromBody] UserViewModel model)
         {
             var user = await userManager.GetUserAsync(User);
             try

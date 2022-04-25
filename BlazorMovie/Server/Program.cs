@@ -1,10 +1,10 @@
 using BlazorMovie.Server;
-using BlazorMovie.Server.Entity.Data;
+using BlazorMovie.Server.Entity.Context;
+using BlazorMovie.Server.Entity.Data.Account;
 using BlazorMovie.Server.Options;
 using BlazorMovie.Server.Repositories.Movie;
 using BlazorMovie.Server.Repositories.User;
 using BlazorMovie.Server.Services;
-using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;

@@ -1,5 +1,7 @@
-﻿using BlazorMovie.Server.Entity.Data;
+﻿using BlazorMovie.Server.Entity.Context;
+using BlazorMovie.Server.Entity.Data.Account;
 using BlazorMovie.Shared;
+using BlazorMovie.Shared.Account;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,7 +34,7 @@ namespace BlazorMovie.Server.Repositories.User
             await userManager.UpdateAsync(user);
 
         }
-        public async Task EditAsync(UserModel userModel)
+        public async Task EditAsync(UserViewModel userModel)
         {
             var user = await userManager.FindByIdAsync(userModel.Id.ToString());
             user.DateOfBirth = userModel.DateOfBirth.Value;
@@ -45,11 +47,11 @@ namespace BlazorMovie.Server.Repositories.User
 
         }
 
-        public async Task<List<UserModel>> GetAllAsync()
+        public async Task<List<UserViewModel>> GetAllAsync()
         {
             var user = await context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Select(c =>
 
-             new UserModel()
+             new UserViewModel()
              {
                  Id = c.Id,
                  Name = c.Name,
@@ -64,11 +66,11 @@ namespace BlazorMovie.Server.Repositories.User
             return user;
 
         }
-        public async Task<UserModel> GetByIdAsync(Guid Id)
+        public async Task<UserViewModel> GetByIdAsync(Guid Id)
         {
             var user = await context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Where(c => c.Id == Id).Select(c =>
 
-            new UserModel()
+            new UserViewModel()
             {
                 Id = c.Id,
                 Name = c.Name,
@@ -84,11 +86,11 @@ namespace BlazorMovie.Server.Repositories.User
 
         }
 
-        public async Task<List<UserModel>> GetWithPagingAsync(int pageSize, int pageIndex, string searchString, string orderBy)
+        public async Task<List<UserViewModel>> GetWithPagingAsync(int pageSize, int pageIndex, string searchString, string orderBy)
         {
             var query = context.Users.Include(c => c.UserRoles).ThenInclude(c => c.Role).Select(c =>
 
-            new UserModel()
+            new UserViewModel()
             {
                 Id = c.Id,
                 Name = c.Name,

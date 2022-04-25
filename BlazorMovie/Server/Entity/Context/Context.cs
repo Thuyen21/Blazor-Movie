@@ -1,15 +1,16 @@
-﻿using BlazorMovie.Server.Options;
+﻿using BlazorMovie.Server.Entity.Data.Account;
+using BlazorMovie.Server.Options;
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
-namespace BlazorMovie.Server.Entity.Data;
+namespace BlazorMovie.Server.Entity.Context;
 
 public class Context : IdentityDbContext<ApplicationUser, ApplicationRole, Guid, IdentityUserClaim<Guid>, ApplicationUserRole, IdentityUserLogin<Guid>, IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>
 {
-    public DbSet<ApplicationMovie> Movies { get; set; }
+    public DbSet<MovieData> Movies { get; set; }
     private SuperUser Options { get; }
     private ApplicationUser[] users { get; } = Seed.Users;
     public Context(DbContextOptions<Context> options, IOptions<SuperUser> optionsAccessor)
@@ -38,7 +39,7 @@ public class Context : IdentityDbContext<ApplicationUser, ApplicationRole, Guid,
             b.HasData(Seed.Roles);
         });
         var hasher = new PasswordHasher<IdentityUser>();
-        
+
         users[0].PasswordHash = hasher.HashPassword(null, Options.Password);
         users[1].PasswordHash = hasher.HashPassword(null, Options.Password);
         users[2].PasswordHash = hasher.HashPassword(null, Options.Password);

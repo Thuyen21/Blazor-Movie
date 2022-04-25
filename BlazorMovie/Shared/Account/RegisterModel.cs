@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BlazorMovie.Shared
+namespace BlazorMovie.Shared.Account
 {
     public class RegisterModel
     {

@@ -1,4 +1,5 @@
 ﻿using BlazorMovie.Shared;
+using BlazorMovie.Shared.Account;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Net.Http.Json;
 using System.Security.Claims;
@@ -20,7 +21,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
         {
             var respon = await _httpClient.PostAsync("api/Account/GetCurrentUser", null);
 
-            var user = await respon.Content.ReadFromJsonAsync<UserModel>();
+            var user = await respon.Content.ReadFromJsonAsync<UserViewModel>();
 
 
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {

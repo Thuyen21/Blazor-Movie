@@ -20,7 +20,7 @@ namespace BlazorMovie.Server.Controllers
         }
         [HttpPost("MovieUpload")]
         [DisableRequestSizeLimit]
-        public async Task<ActionResult> MovieUpload([FromBody] MovieModel movie)
+        public async Task<ActionResult> MovieUpload([FromBody] MovieInputModel movie)
         {
             try
             {

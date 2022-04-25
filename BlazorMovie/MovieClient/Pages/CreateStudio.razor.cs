@@ -8,7 +8,7 @@ namespace MovieClient.Pages;
 
 public partial class CreateStudio
 {
-    private readonly MovieModel movie = new();
+    private readonly MovieInputModel movie = new();
     
     private async Task HandleValidSubmit()
     {

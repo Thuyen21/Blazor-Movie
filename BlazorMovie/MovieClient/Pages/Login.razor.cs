@@ -1,4 +1,4 @@
-using BlazorMovie.Shared;
+using BlazorMovie.Shared.Account;
 using Microsoft.JSInterop;
 using MudBlazor;
 using System.Net.Http.Json;

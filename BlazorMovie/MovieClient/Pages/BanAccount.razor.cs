@@ -1,4 +1,5 @@
 using BlazorMovie.Shared;
+using BlazorMovie.Shared.Account;
 using Microsoft.AspNetCore.Components;
 using MovieClient.Services;
 using System.Net.Http.Json;
@@ -9,11 +10,11 @@ public partial class BanAccount
 {
     [Parameter]
     public string? Id { get; set; }
-    private UserModel acc = new();
+    private UserViewModel acc = new();
     
     protected override async Task OnInitializedAsync()
     {
-        acc = (await _httpClient.GetFromJsonAsync<UserModel>($"api/Admin/GetUserById?Id={Id}"))!;
+        acc = (await _httpClient.GetFromJsonAsync<UserViewModel>($"api/Admin/GetUserById?Id={Id}"))!;
     }
 
     private async Task Ban()

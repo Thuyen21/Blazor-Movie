@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BlazorMovie.Server.Entity.Data.Account;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlazorMovie.Shared
 {
-    public class ApplicationMovie
+    public class MovieData
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

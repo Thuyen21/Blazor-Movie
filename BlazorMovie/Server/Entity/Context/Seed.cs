@@ -1,6 +1,6 @@
-﻿using BlazorMovie.Shared;
+﻿using BlazorMovie.Server.Entity.Data.Account;
 
-namespace BlazorMovie.Server.Entity.Data
+namespace BlazorMovie.Server.Entity.Context
 {
     internal static class Seed
     {
@@ -71,7 +71,7 @@ namespace BlazorMovie.Server.Entity.Data
                 DateOfBirth= DateTime.Now,
                 Name ="customer@thuyen.com"
             }
-            
+
         };
         internal static ApplicationUserRole[] UserRole =
         {

@@ -2,6 +2,7 @@
 using BlazorMovie.Server.Repositories.User;
 using BlazorMovie.Server.Services;
 using BlazorMovie.Shared;
+using BlazorMovie.Shared.Account;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorMovie.Server.Controllers
@@ -21,7 +22,7 @@ namespace BlazorMovie.Server.Controllers
             this.movieRepository = movieRepository;
         }
         [HttpGet("UserManagement")]
-        public async Task<ActionResult<List<UserModel>>> UserManagement(string? searchString, string? orderBy, int index)
+        public async Task<ActionResult<List<UserViewModel>>> UserManagement(string? searchString, string? orderBy, int index)
         {
             try
             {
@@ -30,7 +31,7 @@ namespace BlazorMovie.Server.Controllers
             catch (Exception ex)
             {
                 logger.LogWarning(ex, ex.Message);
-                return Ok(new List<UserModel>());
+                return Ok(new List<UserViewModel>());
             }
            
         }
@@ -50,7 +51,7 @@ namespace BlazorMovie.Server.Controllers
             } 
         }
         [HttpPost("EditAccount")]
-        public async Task<ActionResult> EditAccount(UserModel user)
+        public async Task<ActionResult> EditAccount(UserViewModel user)
         {
             
             try
@@ -65,7 +66,7 @@ namespace BlazorMovie.Server.Controllers
             }
         }
         [HttpGet("GetUserById")]
-        public async Task<ActionResult<UserModel>> GetUserByIdAsync(Guid Id)
+        public async Task<ActionResult<UserViewModel>> GetUserByIdAsync(Guid Id)
         {
 
             try
@@ -109,7 +110,7 @@ namespace BlazorMovie.Server.Controllers
 
         [HttpPost("MovieUpload")]
         [DisableRequestSizeLimit]
-        public async Task<ActionResult> MovieUpload([FromBody] MovieModel movie)
+        public async Task<ActionResult> MovieUpload([FromBody] MovieInputModel movie)
         {
             try
             {

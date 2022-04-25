@@ -1,4 +1,4 @@
-using BlazorMovie.Shared;
+using BlazorMovie.Shared.Account;
 using System.Net.Http.Json;
 
 namespace MovieClient.Pages;

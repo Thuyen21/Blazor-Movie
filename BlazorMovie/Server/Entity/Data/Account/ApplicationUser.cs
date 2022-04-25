@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using BlazorMovie.Shared;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace BlazorMovie.Shared
+namespace BlazorMovie.Server.Entity.Data.Account
 {
     [Index(nameof(Email))]
     public class ApplicationUser : IdentityUser<Guid>
@@ -14,6 +15,6 @@ namespace BlazorMovie.Shared
         public virtual ICollection<IdentityUserClaim<Guid>> Claims { get; set; }
         public virtual ICollection<IdentityUserLogin<Guid>> Logins { get; set; }
         public virtual ICollection<IdentityUserToken<Guid>> Tokens { get; set; }
-        public ICollection<ApplicationMovie> Movies { get; set; }
+        public ICollection<MovieData> Movies { get; set; }
     }
 }

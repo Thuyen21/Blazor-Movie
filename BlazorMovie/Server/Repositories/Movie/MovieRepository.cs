@@ -1,4 +1,4 @@
-﻿using BlazorMovie.Server.Entity.Data;
+﻿using BlazorMovie.Server.Entity.Context;
 using BlazorMovie.Server.Services;
 using BlazorMovie.Shared;
 using Microsoft.AspNetCore.Mvc;
@@ -17,9 +17,9 @@ namespace BlazorMovie.Server.Repositories.Movie
             this.logger = logger;
             this.fileService = fileService;
         }
-        public async Task Add(MovieModel movie)
+        public async Task Add(MovieInputModel movie)
         {
-                ApplicationMovie applicationMovie = new ApplicationMovie();
+                MovieData applicationMovie = new MovieData();
             applicationMovie.Name = movie.Name;
             applicationMovie.Title = movie.Title;
                 applicationMovie.PremiereDate = movie.PremiereDate;
@@ -61,17 +61,17 @@ namespace BlazorMovie.Server.Repositories.Movie
             await context.SaveChangesAsync();
         }
 
-        public Task EditAsync(MovieModel movie)
+        public Task EditAsync(MovieInputModel movie)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<MovieModel>> GetAllAsync()
+        public Task<List<MovieInputModel>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<MovieModel> GetByIdAsync(Guid Id)
+        public Task<MovieInputModel> GetByIdAsync(Guid Id)
         {
             throw new NotImplementedException();
         }
@@ -169,7 +169,7 @@ namespace BlazorMovie.Server.Repositories.Movie
         }
         public async Task EditFileAsync(string Id, Stream streamImage, string ImageFileExtensions, Stream streamMovie, string MovieFileExtensions)
         {
-            ApplicationMovie applicationMovie = context.Movies.Find(Id);
+            MovieData applicationMovie = context.Movies.Find(Id);
 
             applicationMovie.ImageFileLink = await fileService.UploadAsync(streamImage, applicationMovie.Id + ImageFileExtensions);
             applicationMovie.MovieFileLink = await fileService.UploadAsync(streamMovie, applicationMovie.Id + MovieFileExtensions);

@@ -11,19 +11,19 @@ public partial class EditMovieStudio
 {
     [Parameter]
     public string? Id { get; set; }
-    private MovieModel movie = new();
+    private MovieInputModel movie = new();
     private string? mp;
     private string? ip;
     
     private bool more = false;
     protected override async Task OnInitializedAsync()
     {
-        movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
+        movie = await _httpClient.GetFromJsonAsync<MovieInputModel>($"Studio/EditMovie/{Id}");
     }
 
     private async Task HandleValidSubmit()
     {
-        MovieModel moviePost = (await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}"))!;
+        MovieInputModel moviePost = (await _httpClient.GetFromJsonAsync<MovieInputModel>($"Studio/EditMovie/{Id}"))!;
         movie.StudioId = moviePost.StudioId;
         movie.Id = moviePost.Id;
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync("Studio/EditMovie", movie);

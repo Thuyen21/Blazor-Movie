@@ -13,7 +13,7 @@ using System.Web;
 
 namespace BlazorMovie.Shared
 {
-    public class MovieModel
+    public class MovieInputModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
