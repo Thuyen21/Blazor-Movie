@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace BlazorMovie.Server.Repositories.Base;
 
 
-public class BaseRepository<InputModel, ViewModel, Data> : IBaseRepository<InputModel, ViewModel, Data>
+public abstract class BaseRepository<InputModel, ViewModel, Data> : IBaseRepository<InputModel, ViewModel, Data>
     where InputModel : BaseInputModel, new()
     where ViewModel : BaseViewModel, new()
     where Data : BaseData, new()
@@ -26,18 +26,24 @@ public class BaseRepository<InputModel, ViewModel, Data> : IBaseRepository<Input
        await context.SaveChangesAsync();
     }
 
-    public Task DeleteAsync(ViewModel model)
+    public async Task DeleteAsync(ViewModel model)
     {
-        throw new NotImplementedException();
+        var data = await dbSet.FirstAsync(c => c.Id == model.Id && c.UserId == model.UserId);
+        dbSet.Remove(data);
+        await context.SaveChangesAsync();
     }
 
-    public Task<ViewModel> GetByIdAsync(Guid id)
+    public async Task<ViewModel> GetByIdAsync(Guid id)
     {
-        throw new NotImplementedException();
+       var data =  dbSet.Where(c => c.Id == id).AsEnumerable().Select(c => c.ConvertTo<ViewModel>()).First();
+       return data;
     }
 
-    public Task UpdateAsync(ViewModel model)
+    public async Task UpdateAsync(ViewModel model)
     {
-        throw new NotImplementedException();
+        var data = await dbSet.FirstAsync(c => c.Id == model.Id && c.UserId == model.UserId);
+        data = model.ConvertTo<Data>();
+        dbSet.Update(data);
+        await context.SaveChangesAsync();
     }
 }

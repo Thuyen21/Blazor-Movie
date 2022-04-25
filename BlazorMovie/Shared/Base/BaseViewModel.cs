@@ -9,5 +9,6 @@ namespace BlazorMovie.Shared.Base
     public class BaseViewModel
     {
         public Guid Id { get; set; }
+        public Guid UserId { get; set; }
     }
 }
