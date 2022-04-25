@@ -5,12 +5,6 @@
 <EditForm Model="@movie" OnValidSubmit="HandleValidSubmit">
 
                                         
-                                            <div class="input-box">
-                                            <i class="fas fa-envelope"></i>
-                                            <input type="text" placeholder="@movie.Id" style="pointer-events:none" @bind="@movie.Id">
-                                            <a>Movie ID</a>
-                                        </div>
-
                                         <div class="input-box">
                                             <i class="fas fa-lock"></i>
                                             <input type="text" placeholder="@movie.StudioId" style="pointer-events:none" @bind="@movie.StudioId">

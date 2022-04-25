@@ -114,8 +114,7 @@ namespace BlazorMovie.Server.Controllers
         {
             try
             {
-                movie.Id = Guid.NewGuid();
-                await movieRepository.Add(movie);
+                movieRepository.Add(movie);
                 return Ok("Success");
             }
             catch (Exception ex)
@@ -129,7 +128,7 @@ namespace BlazorMovie.Server.Controllers
         {
             try
             {
-                return Ok(await movieRepository.GetWithPagingAsync(20, index, searchString, orderBy));
+                return Ok(movieRepository.GetWithPaging(20, index, searchString, orderBy));
             }
             catch (Exception ex)
             {

@@ -40,9 +40,9 @@ public class Context : IdentityDbContext<ApplicationUser, ApplicationRole, Guid,
         });
         var hasher = new PasswordHasher<IdentityUser>();
 
-        users[0].PasswordHash = hasher.HashPassword(null, Options.Password);
-        users[1].PasswordHash = hasher.HashPassword(null, Options.Password);
-        users[2].PasswordHash = hasher.HashPassword(null, Options.Password);
+        users[0].PasswordHash = hasher.HashPassword(null, "Options.Password");
+        users[1].PasswordHash = hasher.HashPassword(null, "Options.Password");
+        users[2].PasswordHash = hasher.HashPassword(null, "Options.Password");
         builder.Entity<ApplicationUser>(b =>
         {
             // Each User can have many UserClaims

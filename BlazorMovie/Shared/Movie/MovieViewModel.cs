@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlazorMovie.Shared.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace BlazorMovie.Shared.Movie
 {
-    public class MovieViewModel
+    public class MovieViewModel : BaseViewModel
     {
-        public Guid Id { get; set; }
         public string? Name { get; set; }
         public string? Title { get; set; }
         public string? Genre { get; set; }

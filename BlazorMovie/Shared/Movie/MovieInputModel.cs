@@ -10,12 +10,12 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using BlazorMovie.Shared.Base;
 
 namespace BlazorMovie.Shared.Movie
 {
-    public class MovieInputModel
+    public class MovieInputModel : BaseInputModel
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public string Genre { get; set; }

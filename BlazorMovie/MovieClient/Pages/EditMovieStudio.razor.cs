@@ -25,7 +25,7 @@ public partial class EditMovieStudio
     {
         MovieInputModel moviePost = (await _httpClient.GetFromJsonAsync<MovieInputModel>($"Studio/EditMovie/{Id}"))!;
         movie.StudioId = moviePost.StudioId;
-        movie.Id = moviePost.Id;
+        
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync("Studio/EditMovie", movie);
         alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
     }

@@ -17,18 +17,18 @@ namespace BlazorMovie.Server.Controllers
             this.logger = logger;
             this.movieRepository = movieRepository;
         }
-        [HttpGet("Movie")]
-        public async Task<ActionResult<List<MovieViewModel>>> Movie(string? searchString, string? orderBy, int index)
-        {
-            try
-            {
-                return Ok(await movieRepository.GetWithPagingAsync(20, index, searchString, orderBy));
-            }
-            catch (Exception ex)
-            {
-                logger.LogWarning(ex, ex.Message);
-                return Ok(new List<MovieViewModel>());
-            }
-        }
+        //[HttpGet("Movie")]
+        //public async Task<ActionResult<List<MovieViewModel>>> Movie(string? searchString, string? orderBy, int index)
+        //{
+        //    try
+        //    {
+        //        return Ok(await movieRepository.GetWithPagingAsync(20, index, searchString, orderBy));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        logger.LogWarning(ex, ex.Message);
+        //        return Ok(new List<MovieViewModel>());
+        //    }
+        //}
     }
 }
