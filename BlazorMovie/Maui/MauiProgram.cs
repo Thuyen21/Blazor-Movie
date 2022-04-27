@@ -20,7 +20,7 @@ public static class MauiProgram
             });
         builder.Services.AddMauiBlazorWebView();
 #if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools(); 
+        builder.Services.AddBlazorWebViewDeveloperTools();
 #endif
         builder.Logging.ClearProviders();
         builder.Logging.AddConsole();
