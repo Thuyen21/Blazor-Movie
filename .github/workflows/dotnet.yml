@@ -23,7 +23,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: "6.0.3"
+          dotnet-version: "6.x"
           include-prerelease: true
 
       - uses: actions/setup-java@v3.1.1
