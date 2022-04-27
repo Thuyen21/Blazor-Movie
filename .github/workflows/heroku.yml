@@ -20,13 +20,12 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: "6.0.x"
           include-prerelease: true
 
       - uses: actions/setup-java@v3.1.1
         with:
-          distribution: "adopt"
-          java-version: "11"
+          distribution: 'adopt'
+          java-version: '11'
           check-latest: true
 
       - name: Install tools
@@ -34,15 +33,15 @@ jobs:
           dotnet workload install wasm-tools
           
       - name: Publish 
-        working-directory: "./BlazorMovie/Server/"
+        working-directory: './BlazorMovie/Server/'
         run: dotnet publish BlazorMovie.Server.csproj
       - name: copy file
         uses: canastro/copy-file-action@master
         with:
-          source: "Dockerfile"
-          target: "BlazorMovie/Server/bin/Debug/net6.0/publish/Dockerfile"
+          source: 'Dockerfile'
+          target: 'BlazorMovie/Server/bin/Debug/net6.0/publish/Dockerfile'
       - name: Deploy 
-        working-directory: "./BlazorMovie/Server/bin/Debug/net6.0/publish/"
+        working-directory: './BlazorMovie/Server/bin/Debug/net6.0/publish/'
         run: |
           heroku container:login
           heroku container:push web -a movie213
