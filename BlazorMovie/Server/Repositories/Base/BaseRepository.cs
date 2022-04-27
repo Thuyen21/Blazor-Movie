@@ -56,7 +56,7 @@ public abstract class BaseRepository<InputModel, ViewModel, Data, Repository> : 
     }
     public List<ViewModel> GetWithPaging(int pageSize, int pageIndex, string searchString, string orderBy)
     {
-        var query = context.Movies.Include(c => c.Studio).AsEnumerable();
+        var query = context.Set<Data>().AsEnumerable();
         if (!string.IsNullOrEmpty(searchString))
         {
             query = query.Where(x => EF.Functions.Like(x.Name, "%" + searchString + "%"));

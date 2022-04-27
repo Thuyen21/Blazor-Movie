@@ -8,6 +8,6 @@ namespace BlazorMovie.Shared.Base
 {
     public class BaseInputModel
     {
-        
+        public Guid? Id { get; set; }
     }
 }

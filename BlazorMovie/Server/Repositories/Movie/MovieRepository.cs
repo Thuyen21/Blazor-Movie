@@ -1,4 +1,5 @@
 ﻿using BlazorMovie.Server.Entity.Context;
+using BlazorMovie.Server.Extension;
 using BlazorMovie.Server.Repositories.Base;
 using BlazorMovie.Server.Services;
 using BlazorMovie.Shared;
@@ -17,7 +18,9 @@ namespace BlazorMovie.Server.Repositories.Movie
         }
         public override void Add(MovieInputModel movie)
         {
-            MovieData movieData = new();
+            MovieData movieData = movie.ConvertTo<MovieData>();
+
+
             if (movie.ImageFile != null && movie.ImageFile.Length > 0)
             {
                 Stream streamImage = new MemoryStream(movie.ImageFile);

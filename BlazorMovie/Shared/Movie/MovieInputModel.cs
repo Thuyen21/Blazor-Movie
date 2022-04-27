@@ -24,7 +24,6 @@ namespace BlazorMovie.Shared.Movie
         public byte[]? ImageFile { get; set; }
         public byte[]? MovieFile { get; set; }
         public string? ImageFileExtensions { get; set; }
-        public Guid? StudioId { get; set; }
         public string? MovieFileExtensions { get; set; }
     }
 }
