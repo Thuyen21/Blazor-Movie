@@ -1,29 +1,29 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
-	<SignAssembly>true</SignAssembly>
-	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-	<Version>4.0</Version>
-	<AssemblyVersion>4.0.0.*</AssemblyVersion>
-	<Deterministic>false</Deterministic>
-	<AnalysisLevel>preview</AnalysisLevel>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
+		<SignAssembly>true</SignAssembly>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<Version>4.0</Version>
+		<AssemblyVersion>4.0.0.*</AssemblyVersion>
+		<Deterministic>false</Deterministic>
+		<AnalysisLevel>preview</AnalysisLevel>
+	</PropertyGroup>
 
 
-  <ItemGroup>
-    <SupportedPlatform Include="browser" />
-  </ItemGroup>
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.4" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.4" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Shared\BlazorMovie.Shared.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Shared\BlazorMovie.Shared.csproj" />
+	</ItemGroup>
 
 </Project>
