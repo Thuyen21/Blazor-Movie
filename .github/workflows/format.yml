@@ -61,6 +61,6 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           labels: t/housekeeping ♻︎
-          assignees: github-actions[bot]
+
           reviewers: Thuyen21
           branch: housekeeping/fix-codeformatting
