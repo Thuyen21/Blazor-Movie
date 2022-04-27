@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-	<SignAssembly>true</SignAssembly>
-	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-	<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
-	<AnalysisLevel>preview</AnalysisLevel>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<SignAssembly>true</SignAssembly>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
+		<AnalysisLevel>preview</AnalysisLevel>
+	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Braintree" Version="5.11.0" />
@@ -29,8 +29,8 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.3" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.3" PrivateAssets="all" />
 	</ItemGroup>
-	
-  <ItemGroup>
-    <SupportedPlatform Include="browser" />
-  </ItemGroup>
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
 </Project>

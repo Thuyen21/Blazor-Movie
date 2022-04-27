@@ -1,61 +1,54 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <TypeScriptTarget>ESNext</TypeScriptTarget>
-  </PropertyGroup>
-  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <TypeScriptTarget>ESNext</TypeScriptTarget>
-  </PropertyGroup>
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
-    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-    <SignAssembly>True</SignAssembly>
-    <PlatformTarget>x64</PlatformTarget>
-    <AnalysisLevel>preview</AnalysisLevel>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Braintree" Version="5.11.0" />
-    <PackageReference Include="FirebaseAuthentication.net" Version="3.7.2" />
-    <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="6.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="6.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.2-mauipre.1.22102.15" />
-    <PackageReference Include="Microsoft.ML" Version="1.7.1" />
-    <PackageReference Include="Microsoft.ML.FastTree" Version="1.7.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.0" />
-    <PackageReference Include="PayoutsSdk" Version="1.1.1" />
-    <PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
-    <PackageReference Include="PayPalHttp" Version="1.0.1" />
-    <PackageReference Include="SendGrid" Version="9.26.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Shared\BlazorMovie.Shared.csproj" />
-  </ItemGroup>
-  <ItemGroup Label="MLModel1">
-    <None Include="MLModel1.consumption.cs">
-      <DependentUpon>MLModel1.mbconfig</DependentUpon>
-    </None>
-    <None Include="MLModel1.training.cs">
-      <DependentUpon>MLModel1.mbconfig</DependentUpon>
-    </None>
-    <None Include="MLModel1.zip">
-      <DependentUpon>MLModel1.mbconfig</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<TypeScriptTarget>ESNext</TypeScriptTarget>
+	</PropertyGroup>
+	<PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<TypeScriptTarget>ESNext</TypeScriptTarget>
+	</PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<SignAssembly>True</SignAssembly>
+		<PlatformTarget>x64</PlatformTarget>
+		<AnalysisLevel>preview</AnalysisLevel>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="AspNetCore.Firebase.Authentication" Version="2.0.1" />
+		<PackageReference Include="Braintree" Version="5.12.0" />
+		<PackageReference Include="FirebaseAdmin" Version="2.3.0" />
+		<PackageReference Include="FirebaseAuthentication.net" Version="4.0.0-alpha.2" />
+		<PackageReference Include="FirebaseDatabase.net" Version="4.0.7" />
+		<PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
+		<PackageReference Include="Google.Apis.Drive.v3" Version="1.57.0.2656" />
+		<PackageReference Include="Google.Cloud.Firestore" Version="2.5.0" />
+		<PackageReference Include="Google.Cloud.Storage.V1" Version="3.7.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.2-mauipre.1.22102.15" />
+		<PackageReference Include="Microsoft.ML" Version="1.7.1" />
+		<PackageReference Include="Microsoft.ML.FastTree" Version="1.7.1" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.0" />
+		<PackageReference Include="PayoutsSdk" Version="1.1.1" />
+		<PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
+		<PackageReference Include="PayPalHttp" Version="1.0.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Client\BlazorMovie.Client.csproj" />
+		<ProjectReference Include="..\Shared\BlazorMovie.Shared.csproj" />
+	</ItemGroup>
+	<ItemGroup Label="MLModel1">
+		<None Include="MLModel1.consumption.cs">
+			<DependentUpon>MLModel1.mbconfig</DependentUpon>
+		</None>
+		<None Include="MLModel1.training.cs">
+			<DependentUpon>MLModel1.mbconfig</DependentUpon>
+		</None>
+		<None Include="MLModel1.zip">
+			<DependentUpon>MLModel1.mbconfig</DependentUpon>
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 </Project>

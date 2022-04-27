@@ -22,13 +22,12 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: "6.0.x"
           include-prerelease: true
 
       - uses: actions/setup-java@v3.0.0
         with:
-          distribution: "adopt"
-          java-version: "11"
+          distribution: 'adopt'
+          java-version: '11'
           check-latest: true
 
       - name: Install format
@@ -36,7 +35,8 @@ jobs:
 
       - name: Install tools
         run: |
-          dotnet workload restore
+          dotnet workload install maui wasm-tools
+          # dotnet workload restore
 
       - name: Dotnet Restore
         run: dotnet restore
@@ -68,6 +68,6 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           labels: t/housekeeping ♻︎
-          assignees: Thuyen21
+          assignees: github-actions[bot]
           reviewers: Thuyen21
           branch: housekeeping/fix-codeformatting
