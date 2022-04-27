@@ -36,7 +36,7 @@ For Maui Run
 
 ![Screenshot 2021-11-10 215220](https://user-images.githubusercontent.com/65522631/141135723-4ae08096-20cb-47f8-b85f-8a0f43cf3933.png)
 
-Choose Window, Android, macOS, IOS
+Choose Window, Android, macOS, IOS, Tizen
 
 ![Screenshot 2021-11-10 215407](https://user-images.githubusercontent.com/65522631/141136014-5b7d58d4-b354-41ca-85af-2a1a7def3d56.png)
 
