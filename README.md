@@ -11,9 +11,14 @@ This project was built on .NET 6
 - [.NET MAUI documentation](https://docs.microsoft.com/dotnet/maui)
 
 ## Current News
-
-- [.NET Blazor Movie 2.1](https://github.com/Thuyen21/Blazor-Movie-/tree/v2.1)
-- [.NET Blazor Movie 2.0](https://github.com/Thuyen21/Blazor-Movie-/tree/v2.0)
+- [.NET Blazor Movie v3.3.0](https://github.com/Thuyen21/Blazor-Movie-/releases/tag/v3.2.0)
+- [.NET Blazor Movie v3.2.0](https://github.com/Thuyen21/Blazor-Movie/releases/tag/v3.2)
+- [.NET Blazor Movie v3.1.0](https://github.com/Thuyen21/Blazor-Movie/releases/tag/v3.1)
+- [.NET Blazor Movie v3.0.0](https://github.com/Thuyen21/Blazor-Movie/releases/tag/v3.0)
+- [.NET Blazor Movie v2.1.2](https://github.com/Thuyen21/Blazor-Movie/releases/tag/v2.1.2)
+- [.NET Blazor Movie v2.1.1](https://github.com/Thuyen21/Blazor-Movie/releases/tag/v2.2)
+- [.NET Blazor Movie 2.1.0](https://github.com/Thuyen21/Blazor-Movie-/releases/tag/v2.1)
+- [.NET Blazor Movie 2.0.0](https://github.com/Thuyen21/Blazor-Movie-/releases/tag/v2.0)
 
 ## Contributor Guide
 
