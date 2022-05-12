@@ -21,7 +21,7 @@
 		<PackageReference Include="Google.Cloud.Firestore" Version="2.5.0" />
 		<PackageReference Include="Google.Cloud.Storage.V1" Version="3.7.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.5" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="6.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="6.0.5" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.2-mauipre.1.22102.15" />
 		<PackageReference Include="MudBlazor" Version="6.0.10" />
 		<PackageReference Include="PayoutsSdk" Version="1.1.1" />
