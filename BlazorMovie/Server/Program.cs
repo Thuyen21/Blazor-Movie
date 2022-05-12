@@ -11,14 +11,9 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
-
 builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer("Server=localhost;Database=movie;Trusted_Connection=True;"));
 //builder.Configuration["ConnectionString"]
-
-
 
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
 {

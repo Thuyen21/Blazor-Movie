@@ -25,13 +25,15 @@ public static class MauiProgram
         builder.Logging.ClearProviders();
         builder.Logging.AddConsole();
         builder.Services.AddBlazorWebView();
-        builder.Services.AddSingleton(sp => new HttpClient { BaseAddress = new Uri("https://movie213.herokuapp.com/") });
+        //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://movie213.herokuapp.com/") });
+        builder.Services.AddHttpClient("Movie213.ServerAPI", client => client.BaseAddress = new Uri("https://movie213.herokuapp.com/"));
+        builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("Movie213.ServerAPI"));
         builder.Services.AddOptions();
         builder.Services.AddAuthorizationCore();
-        builder.Services.AddSingleton<AccountService>();
-        builder.Services.AddSingleton<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+        builder.Services.AddScoped<AccountService>();
+        builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
         builder.Services.AddMudServices();
-        builder.Services.AddSingleton<ShowAlertService>();
+        builder.Services.AddScoped<ShowAlertService>();
 
         builder.Services.AddApiAuthorization();
         return builder.Build();
