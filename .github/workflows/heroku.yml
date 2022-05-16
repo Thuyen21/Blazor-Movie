@@ -1,21 +1,14 @@
 name: Deploy
 
 on:
-  push:
+  pull_request:
     branches: [main]
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  Publish:
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: akhileshns/heroku-deploy@v3.12.12 
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "movie213" 
-          heroku_email: "thuyennhgch18080@fpt.edu.vn"
-          usedocker: true
-          justlogin: true
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
@@ -24,30 +17,52 @@ jobs:
 
       - uses: actions/setup-java@v3.3.0
         with:
-          distribution: 'adopt'
-          java-version: '11'
+          distribution: "adopt"
+          java-version: "11"
           check-latest: true
 
       - name: Install tools
         run: |
           dotnet workload install wasm-tools
-          
-      - name: Publish 
-        working-directory: './BlazorMovie/Server/'
+
+      - name: Publish
+        working-directory: "./BlazorMovie/Server/"
         run: dotnet publish BlazorMovie.Server.csproj
+
       - name: copy file
         uses: canastro/copy-file-action@master
         with:
-          source: 'Dockerfile'
-          target: 'BlazorMovie/Server/bin/Debug/net6.0/publish/Dockerfile'
-      - name: Deploy 
-        working-directory: './BlazorMovie/Server/bin/Debug/net6.0/publish/'
+          source: "Dockerfile"
+          target: "./BlazorMovie/Server/bin/Debug/net6.0/publish/Dockerfile"
+
+      - name: Archive production artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: publish
+          path: "./BlazorMovie/Server/bin/Debug/net6.0/publish/"
+
+  Deploy:
+    needs: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "movie213"
+          heroku_email: "thuyennhgch18080@fpt.edu.vn"
+          usedocker: true
+          justlogin: true
+
+      - name: Download artifact
+        uses: actions/download-artifact@main
+        with:
+          name: publish
+          path: "./BlazorMovie/Server/bin/Debug/net6.0/publish/"
+
+      - name: Deploy
+        working-directory: "./BlazorMovie/Server/bin/Debug/net6.0/publish/"
         run: |
           heroku container:login
           heroku container:push web -a movie213
-          heroku container:release web -a movie213 
-
-      
-
-
-      
+          heroku container:release web -a movie213
