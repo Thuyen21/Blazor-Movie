@@ -30,10 +30,7 @@ jobs:
         run: dotnet publish BlazorMovie.Server.csproj
 
       - name: copy file
-        uses: canastro/copy-file-action@master
-        with:
-          source: "Dockerfile"
-          target: "./BlazorMovie/Server/bin/Debug/net6.0/publish/Dockerfile"
+        run: copy "./Dockerfile" "./BlazorMovie/Server/bin/Debug/net6.0/publish/"
 
       - name: Archive production artifact
         uses: actions/upload-artifact@main
