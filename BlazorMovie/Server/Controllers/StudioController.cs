@@ -1,4 +1,5 @@
 ﻿using BlazorMovie.Shared;
+using BlazorMovie_Server;
 using Firebase.Storage;
 using Google.Cloud.Firestore;
 using Microsoft.AspNetCore.Authorization;
@@ -322,7 +323,7 @@ public class StudioController : Controller
                 0
             };
 
-            MLModel1.ModelInput sampleData = new();
+            MLModel.ModelInput sampleData = new();
             foreach (DocumentSnapshot item in commentSnapshot.Documents)
             {
                 CommentModel commentConvert = item.ConvertTo<CommentModel>();
@@ -332,7 +333,7 @@ public class StudioController : Controller
                     //Load sample data
                     sampleData.Review = commentConvert.CommentText;
                     //Load model and predict output
-                    MLModel1.ModelOutput result = MLModel1.Predict(sampleData);
+                    MLModel.ModelOutput result = MLModel.Predict(sampleData);
                     if (result.PredictedLabel == "positive")
                     {
                         list[0] = list[0] + 1;

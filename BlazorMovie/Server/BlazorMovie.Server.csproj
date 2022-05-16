@@ -39,15 +39,15 @@
 		<ProjectReference Include="..\Client\BlazorMovie.Client.csproj" />
 		<ProjectReference Include="..\Shared\BlazorMovie.Shared.csproj" />
 	</ItemGroup>
-	<ItemGroup Label="MLModel1">
-		<None Include="MLModel1.consumption.cs">
-			<DependentUpon>MLModel1.mbconfig</DependentUpon>
+	<ItemGroup Label="MLModel">
+		<None Include="MLModel.consumption.cs">
+			<DependentUpon>MLModel.mbconfig</DependentUpon>
 		</None>
-		<None Include="MLModel1.training.cs">
-			<DependentUpon>MLModel1.mbconfig</DependentUpon>
+		<None Include="MLModel.training.cs">
+			<DependentUpon>MLModel.mbconfig</DependentUpon>
 		</None>
-		<None Include="MLModel1.zip">
-			<DependentUpon>MLModel1.mbconfig</DependentUpon>
+		<None Include="MLModel.zip">
+			<DependentUpon>MLModel.mbconfig</DependentUpon>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
