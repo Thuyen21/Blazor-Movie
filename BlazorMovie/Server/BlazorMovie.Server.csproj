@@ -22,11 +22,11 @@
 		<PackageReference Include="FirebaseAuthentication.net" Version="4.0.0-alpha.2" />
 		<PackageReference Include="FirebaseDatabase.net" Version="4.0.7" />
 		<PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
-		<PackageReference Include="Google.Apis.Drive.v3" Version="1.57.0.2663" />
+		<PackageReference Include="Google.Apis.Drive.v3" Version="1.57.0.2684" />
 		<PackageReference Include="Google.Cloud.Firestore" Version="2.5.0" />
 		<PackageReference Include="Google.Cloud.Storage.V1" Version="3.7.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.4" />
-		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.5" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.2-mauipre.1.22102.15" />
 		<PackageReference Include="Microsoft.ML" Version="1.7.1" />
 		<PackageReference Include="Microsoft.ML.FastTree" Version="1.7.1" />
