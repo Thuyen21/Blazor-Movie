@@ -23,7 +23,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.7" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="6.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.2-mauipre.1.22102.15" />
-		<PackageReference Include="MudBlazor" Version="6.0.10" />
+		<PackageReference Include="MudBlazor" Version="6.0.11" />
 		<PackageReference Include="PayoutsSdk" Version="1.1.1" />
 		<PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
 		<PackageReference Include="PayPalHttp" Version="1.0.1" />
