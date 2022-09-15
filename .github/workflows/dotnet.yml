@@ -23,15 +23,12 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: |
-            6.x
-            7.x
           include-prerelease: true
 
       - uses: actions/setup-java@v3.4.1
         with:
-          distribution: "adopt"
-          java-version: "11"
+          distribution: 'adopt'
+          java-version: '11'
           check-latest: true
 
       - name: Install tools
