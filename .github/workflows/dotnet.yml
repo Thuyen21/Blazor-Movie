@@ -33,8 +33,8 @@ jobs:
 
       - name: Install tools
         run: |
-          dotnet workload install maui wasm-tools
-          # dotnet workload restore
+          dotnet workload restore
+          # dotnet workload install maui wasm-tools
           # dotnet workload install android ios maccatalyst tvos macos maui wasm-tools
 
       - name: Restore dependencies

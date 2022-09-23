@@ -6,7 +6,7 @@
 		<TypeScriptTarget>ESNext</TypeScriptTarget>
 	</PropertyGroup>
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
@@ -25,11 +25,11 @@
 		<PackageReference Include="Google.Apis.Drive.v3" Version="1.57.0.2789" />
 		<PackageReference Include="Google.Cloud.Firestore" Version="3.0.0" />
 		<PackageReference Include="Google.Cloud.Storage.V1" Version="4.1.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.8" />
-		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="6.0.8" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.2-mauipre.1.22102.15" />
-		<PackageReference Include="Microsoft.ML" Version="1.7.1" />
-		<PackageReference Include="Microsoft.ML.FastTree" Version="1.7.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="7.0.0-rc.1.22427.2" />
+		<PackageReference Include="Microsoft.AspNetCore.SignalR.Client.Core" Version="7.0.0-rc.1.22427.2" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0-rc.1.22426.10" />
+		<PackageReference Include="Microsoft.ML" Version="2.0.0-preview.22313.1" />
+		<PackageReference Include="Microsoft.ML.FastTree" Version="2.0.0-preview.22313.1" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
 		<PackageReference Include="PayoutsSdk" Version="1.1.1" />
 		<PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
