@@ -279,7 +279,7 @@
   margin: 18px;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 768px) {
   .sidebar li .tooltip {
     display: none;
   }
