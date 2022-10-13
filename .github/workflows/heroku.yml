@@ -13,7 +13,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-quality: 'preview'
+          dotnet-quality: "preview"
 
       - uses: actions/setup-java@v3.5.1
         with:
@@ -23,8 +23,8 @@ jobs:
 
       - name: Install tools
         run: |
-          dotnet workload restore
-          # dotnet workload install wasm-tools
+          # dotnet workload restore
+          dotnet workload install wasm-tools wasm-experimental
 
       - name: Publish
         working-directory: "./BlazorMovie/Server/"

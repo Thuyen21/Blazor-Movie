@@ -14,6 +14,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
 		<RunAOTCompilation>true</RunAOTCompilation>
+		<WasmEnableThreads>true</WasmEnableThreads>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<SignAssembly>true</SignAssembly>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
@@ -24,6 +25,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0-rc.2.22476.2" />
+		<PackageReference Include="Microsoft.NET.WebAssembly.Threading" Version="7.0.0-rc.2.22472.3" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.0-rc.2.22476.2" PrivateAssets="all" />
 	</ItemGroup>
 
