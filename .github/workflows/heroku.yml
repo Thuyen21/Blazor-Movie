@@ -15,11 +15,17 @@ jobs:
         with:
           dotnet-quality: "preview"
 
-      - uses: actions/setup-java@v3.5.1
+      - name: Setup Java
+        uses: actions/setup-java@v3.5.1
         with:
           distribution: "adopt"
           java-version: "11"
           check-latest: true
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
 
       - name: Install tools
         run: |
