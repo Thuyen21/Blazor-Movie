@@ -25,7 +25,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.9"
+          python-version: "3.10"
 
       - name: Install tools
         run: |
@@ -37,13 +37,13 @@ jobs:
         run: dotnet publish BlazorMovie.Server.csproj
 
       - name: copy file
-        run: copy "./Dockerfile" "./BlazorMovie/Server/bin/Release/net7.0/publish/"
+        run: copy "./Dockerfile" "./BlazorMovie/Server/bin/Debug/net7.0/publish/"
 
       - name: Archive production artifact
         uses: actions/upload-artifact@main
         with:
           name: publish
-          path: "./BlazorMovie/Server/bin/Release/net7.0/publish/"
+          path: "./BlazorMovie/Server/bin/Debug/net7.0/publish/"
 
   Deploy:
     needs: Publish
@@ -62,10 +62,10 @@ jobs:
         uses: actions/download-artifact@main
         with:
           name: publish
-          path: "./BlazorMovie/Server/bin/Release/net7.0/publish/"
+          path: "./BlazorMovie/Server/bin/Debug/net7.0/publish/"
 
       - name: Deploy
-        working-directory: "./BlazorMovie/Server/bin/Release/net7.0/publish/"
+        working-directory: "./BlazorMovie/Server/bin/Debug/net7.0/publish/"
         run: |
           heroku container:login
           heroku container:push web -a movie213

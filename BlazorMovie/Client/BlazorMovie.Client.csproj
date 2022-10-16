@@ -13,8 +13,8 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-		<RunAOTCompilation>false</RunAOTCompilation>
-		<WasmEnableThreads>false</WasmEnableThreads>
+		<RunAOTCompilation>true</RunAOTCompilation>
+		<WasmEnableThreads>true</WasmEnableThreads>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<SignAssembly>true</SignAssembly>
 		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
