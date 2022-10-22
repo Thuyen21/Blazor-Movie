@@ -6,7 +6,7 @@ on:
       - main
 jobs:
   format:
-    runs-on: windows-2022
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v3
@@ -22,12 +22,12 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-quality: 'preview'
+          dotnet-quality: "preview"
 
       - uses: actions/setup-java@v3.6.0
         with:
-          distribution: 'adopt'
-          java-version: '11'
+          distribution: "adopt"
+          java-version: "11"
           check-latest: true
 
       - name: Install format
