@@ -20,9 +20,9 @@
 		<PackageReference Include="Google.Apis.Drive.v3" Version="1.57.0.2859" />
 		<PackageReference Include="Google.Cloud.Firestore" Version="3.0.0" />
 		<PackageReference Include="Google.Cloud.Storage.V1" Version="4.1.0" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="7.0.0-rc.2.22476.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="7.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="7.0.0-rc.2.22476.2" />
-		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0-rc.2.22472.3" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
 		<PackageReference Include="MudBlazor" Version="6.0.17" />
 		<PackageReference Include="PayoutsSdk" Version="1.1.1" />
 		<PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
