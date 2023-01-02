@@ -35,10 +35,6 @@
 		<PackageReference Include="PayPalCheckoutSdk" Version="1.0.4" />
 		<PackageReference Include="PayPalHttp" Version="1.0.1" />
 	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\Client\BlazorMovie.Client.csproj" />
-		<ProjectReference Include="..\Shared\BlazorMovie.Shared.csproj" />
-	</ItemGroup>
 	<ItemGroup Label="MLModel">
 		<None Include="MLModel.consumption.cs">
 			<DependentUpon>MLModel.mbconfig</DependentUpon>
