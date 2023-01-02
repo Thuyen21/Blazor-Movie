@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BlazorMovie.Entities.Entities;
 
-public class ApplicationUser : IdentityUser<Guid>
+public class ApplicationUser : IdentityUser
 {
     [ProtectedPersonalData]
     public DateOnly DateOfBirth { get; set; }

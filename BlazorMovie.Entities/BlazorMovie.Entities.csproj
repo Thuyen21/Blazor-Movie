@@ -7,6 +7,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="12.0.0" />
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.1">
 			<PrivateAssets>all</PrivateAssets>
@@ -21,7 +23,6 @@
 		</PackageReference>
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.1" />
-		<PackageReference Include="Mapster" Version="7.4.0-pre03" />
 	</ItemGroup>
 
 </Project>

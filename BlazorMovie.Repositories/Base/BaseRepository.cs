@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace BlazorMovie.Repositories.Base;
 
-public class BaseRepository<TEntity> where TEntity : class
+public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
 {
     protected readonly ApplicationDbContext context;
     protected readonly DbSet<TEntity> dbSet;
-    protected readonly IMapper mapper;
+    private readonly IMapper mapper;
 
     public BaseRepository(ApplicationDbContext context, IMapper mapper)
     {
@@ -44,8 +44,8 @@ public class BaseRepository<TEntity> where TEntity : class
         }
         return await query.ToListAsync();
     }
-    public virtual async Task<IEnumerable<TResult>> GetAsync<TResult>(int? page = null, 
-        int? pageSize = null, Expression<Func<TEntity, bool>>? filter = null, 
+    public virtual async Task<IEnumerable<TResult>> GetAsync<TResult>(int? page = null,
+        int? pageSize = null, Expression<Func<TEntity, bool>>? filter = null,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null)
     {
         IQueryable<TEntity> query = dbSet.AsQueryable();
@@ -67,8 +67,71 @@ public class BaseRepository<TEntity> where TEntity : class
         }
         return await query.ProjectTo<TResult>(mapper.ConfigurationProvider).ToListAsync();
     }
+
+    public virtual async Task<int> CountAsync(
+        Expression<Func<TEntity, bool>>? filter = null)
+    {
+        IQueryable<TEntity> query = dbSet.AsQueryable();
+        if (filter != null)
+        {
+            query = query.Where(filter);
+        }
+        return await query.CountAsync();
+    }
+    public virtual async Task AddRangeAsync(IEnumerable<TEntity> entities)
+    {
+        await dbSet.AddRangeAsync(entities);
+    }
+    public virtual void DeleteRange(IEnumerable<TEntity> entities)
+    {
+        dbSet.RemoveRange(entities);
+    }
+    public virtual void UpdateRange(IEnumerable<TEntity> entities)
+    {
+        dbSet.UpdateRange(entities);
+    }
+    public virtual async Task<TResult?> FirstOrDefaultAsync<TResult>(Expression<Func<TEntity, bool>> filter)
+    {
+        return await dbSet.Where(filter).ProjectTo<TResult>(mapper.ConfigurationProvider).FirstOrDefaultAsync();
+    }
+    public virtual async Task<TResult?> SingleOrDefaultAsync<TResult>(Expression<Func<TEntity, bool>> filter)
+    {
+        return await dbSet.Where(filter).ProjectTo<TResult>(mapper.ConfigurationProvider).SingleOrDefaultAsync();
+    }
+
+    public virtual async Task<TEntity?> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> filter)
+    {
+        return await dbSet.Where(filter).FirstOrDefaultAsync();
+    }
+    public virtual async Task<TEntity?> SingleOrDefaultAsync(Expression<Func<TEntity, bool>> filter)
+    {
+        return await dbSet.Where(filter).SingleOrDefaultAsync();
+    }
+
+
     public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> filter)
     {
         return await dbSet.AnyAsync(filter);
     }
+    public virtual void Delete(object id)
+    {
+        TEntity? entityToDelete = dbSet.Find(id);
+        if (entityToDelete != null)
+        {
+            dbSet.Remove(entityToDelete);
+        }
+    }
+    public virtual void Delete(TEntity entityToDelete)
+    {
+        dbSet.Remove(entityToDelete);
+    }
+    public virtual void Update(TEntity entityToUpdate)
+    {
+        dbSet.Update(entityToUpdate);
+    }
+    public virtual async Task AddAsync(TEntity entity)
+    {
+        await dbSet.AddAsync(entity);
+    }
 }
+
