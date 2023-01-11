@@ -2,16 +2,16 @@
 
 [![.NET](https://github.com/Thuyen21/Blazor-Movie-/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/Thuyen21/Blazor-Movie-/actions/workflows/dotnet.yml)
 
-This project was built on .NET 6
+This project was built on .NET 6 and it had been upgraded to .NET 7
 
 ## Getting Started
 
-- [Install .NET 6](https://dotnet.microsoft.com/download/dotnet/6.0/)
-- [.NET Blazor documentation](https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-6.0/)
+- [Install .NET 7](https://dotnet.microsoft.com/download/dotnet/7.0/)
+- [.NET Blazor documentation](https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-7.0/)
 - [.NET MAUI documentation](https://docs.microsoft.com/dotnet/maui)
 
 ## Current News
-
+- [.NET Blazor Movie v4.0.0](https://github.com/Thuyen21/Blazor-Movie/releases/tag/v4.0.0)
 - [.NET Blazor Movie v3.3.0](https://github.com/Thuyen21/Blazor-Movie/releases/tag/v3.3.0)
 - [.NET Blazor Movie v3.2.0](https://github.com/Thuyen21/Blazor-Movie/releases/tag/v3.2)
 - [.NET Blazor Movie v3.1.0](https://github.com/Thuyen21/Blazor-Movie/releases/tag/v3.1)
@@ -25,7 +25,7 @@ This project was built on .NET 6
 
 ### Requirements
 
-- [Install .NET6](https://dotnet.microsoft.com/download/dotnet/6.0)
+- [Install .NET7](https://dotnet.microsoft.com/download/dotnet/7.0)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
 
 ### Running
@@ -50,7 +50,7 @@ For Blazor Run
 
 ![Screenshot 2021-11-10 215328](https://user-images.githubusercontent.com/65522631/141135873-7ecd3d4b-a51c-497f-b053-f3bde979e48d.png)
 
-#### .NET 6 Cli user
+#### .NET 7 Cli user
 
 ##### Compile with globally installed `dotnet`
 
