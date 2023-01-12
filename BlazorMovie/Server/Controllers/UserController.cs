@@ -67,7 +67,7 @@ public class UserController : Controller
     [HttpGet("Logout")]
     public async Task<ActionResult> LogOut()
     {
-        await client.SignOutAsync();
+        client.SignOut();
         await HttpContext.SignOutAsync();
         return Ok();
     }
