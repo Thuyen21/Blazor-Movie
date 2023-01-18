@@ -20,6 +20,16 @@ public class StudioController : Controller
     {
         this.db = db;
     }
+    /// <summary>
+    /// It takes in a search string, a sort order, and an index, and returns a list of movies that match
+    /// the search string, sorted by the sort order, and offset by the index.
+    /// </summary>
+    /// <param name="searchString">The search string that the user entered in the search box.</param>
+    /// <param name="sortOrder">The sort order of the movies.</param>
+    /// <param name="index">the page number</param>
+    /// <returns>
+    /// A list of movies.
+    /// </returns>
     [HttpGet("Index/{searchString?}/{sortOrder?}/{index:int:min(0)}")]
     public async Task<ActionResult<List<MovieModel>>> Index(string? searchString, string? sortOrder, int index)
     {
@@ -67,6 +77,13 @@ public class StudioController : Controller
         }
 
     }
+    /// <summary>
+    /// It takes a movie object, adds it to the database, and returns the id of the movie
+    /// </summary>
+    /// <param name="MovieModel">This is the model that I'm using to store the data.</param>
+    /// <returns>
+    /// The MovieId is being returned.
+    /// </returns>
     [HttpPost("Upload")]
     public async Task<ActionResult> Upload([FromBody] MovieModel movie)
     {
@@ -85,6 +102,13 @@ public class StudioController : Controller
         }
 
     }
+    /// <summary>
+    /// It gets the movie from the database and returns it to the user.
+    /// </summary>
+    /// <param name="Id">The Id of the movie to edit</param>
+    /// <returns>
+    /// A MovieModel object.
+    /// </returns>
     [HttpGet("EditMovie/{Id}")]
     public async Task<ActionResult<MovieModel>> EditMovie(string Id)
     {
@@ -103,6 +127,14 @@ public class StudioController : Controller
 
         return await Task.FromResult(movie);
     }
+   /// <summary>
+   /// It takes a movie object, finds all documents in the Movie collection that match the movieId, and
+   /// updates all of those documents with the new movie object
+   /// </summary>
+   /// <param name="MovieModel">This is the model that I'm using to pass the data to the API.</param>
+   /// <returns>
+   /// The method returns an HTTP 200 OK response with the string "Success" in the body.
+   /// </returns>
     [HttpPost("EditMovie")]
     public async Task<ActionResult> EditMovie([FromBody] MovieModel movie)
     {
@@ -120,11 +152,24 @@ public class StudioController : Controller
 
         return Ok("Success");
     }
+  /// <summary>
+  /// The function returns a view called "Done"
+  /// </summary>
+  /// <returns>
+  /// A view called Done.
+  /// </returns>
     [HttpGet("Done")]
     public async Task<ActionResult> Done()
     {
         return await Task.FromResult(View());
     }
+  /// <summary>
+  /// It gets the movie from the database and returns it to the view.
+  /// </summary>
+  /// <param name="MovieId">The MovieId is the unique identifier for the movie.</param>
+  /// <returns>
+  /// A view of the movie model.
+  /// </returns>
     [HttpGet("MovieUpload/{MovieId}")]
     public async Task<ActionResult> MovieUpload(string MovieId)
     {
@@ -137,6 +182,16 @@ public class StudioController : Controller
         }
         return View(movie);
     }
+ /// <summary>
+ /// It takes a movie id and a studio id, and uploads an image and a movie to firebase storage.
+ /// </summary>
+ /// <param name="StudioId">The id of the studio that the movie belongs to.</param>
+ /// <param name="MovieId">The ID of the movie that is being uploaded.</param>
+ /// <param name="IFormFile">The file that is being uploaded.</param>
+ /// <param name="IFormFile">The file that is being uploaded.</param>
+ /// <returns>
+ /// The code is returning a redirect to the hostname.
+ /// </returns>
     [HttpPost("MovieUpload/{MovieId}/{StudioId}")]
     [RequestSizeLimit(long.MaxValue)]
     [RequestFormLimits(MultipartBodyLengthLimit = long.MaxValue)]
@@ -228,6 +283,13 @@ public class StudioController : Controller
         string redirect = hostname;
         return Redirect(redirect);
     }
+ /// <summary>
+ /// It's a function that gets the comments of a movie from the database
+ /// </summary>
+ /// <param name="Id">The id of the movie</param>
+ /// <returns>
+ /// A list of comments.
+ /// </returns>
     [HttpGet("Comment/{Id}")]
     public async Task<ActionResult<List<CommentModel>>> Comment(string Id)
     {
@@ -267,6 +329,14 @@ public class StudioController : Controller
 
     //}
 
+ /// <summary>
+ /// It returns the number of views and purchases of a movie in a given day
+ /// </summary>
+ /// <param name="Id">Movie ID</param>
+ /// <param name="Start">The start time of the day, in the format of "yyyy-MM-dd"</param>
+ /// <returns>
+ /// A list of doubles
+ /// </returns>
     [HttpGet("PayCheck/{Id}/{Start}")]
     public async Task<ActionResult<List<double>>> PayCheck(string Id, string Start)
     {
@@ -305,6 +375,14 @@ public class StudioController : Controller
         }
 
     }
+  /// <summary>
+  /// This function is used to get the number of positive and negative comments for a particular movie
+  /// </summary>
+  /// <param name="Id">MovieId</param>
+  /// <param name="Start">The start date of the movie</param>
+  /// <returns>
+  /// A list of integers.
+  /// </returns>
     [HttpGet("CommentStatus/{Id}/{Start}")]
     public async Task<ActionResult<List<int>>> CommentStatus(string Id, string Start)
     {
@@ -367,6 +445,11 @@ public class StudioController : Controller
         }
 
     }
+  /// <summary>
+  /// I want to get the value of the field in the document and then update the value of the field in the
+  /// document
+  /// </summary>
+  /// <param name="ss">List<string></param>
     [HttpPost("SalaryMovie")]
     public async Task<ActionResult> SalaryMovie([FromBody] List<string> ss)
     {
@@ -399,6 +482,14 @@ public class StudioController : Controller
 
         return Ok("Done check your Wallet");
     }
+   /// <summary>
+   /// It takes a list of strings, the first string is the movie id, the second string is the date, and
+   /// the third string is the studio id.
+   /// </summary>
+   /// <param name="ss">List of strings</param>
+   /// <returns>
+   /// The cash for the month and year that is passed in.
+   /// </returns>
     [HttpPost("Check")]
     public async Task<ActionResult> Check([FromBody] List<string> ss)
     {
@@ -415,6 +506,14 @@ public class StudioController : Controller
         }
 
     }
+   /// <summary>
+   /// It takes a dictionary of strings, and then checks if the user has enough money to send the amount
+   /// of money they want to send. If they do, it sends the money to the email they provided
+   /// </summary>
+   /// <param name="dic">Dictionary<string, string></param>
+   /// <returns>
+   /// The error message
+   /// </returns>
     [HttpPost("Salary")]
     public async Task<ActionResult> Salary([FromBody] Dictionary<string, string> dic)
     {
@@ -475,6 +574,13 @@ public class StudioController : Controller
         }
 
     }
+/// <summary>
+/// It deletes a movie from the database and deletes the movie and image from the storage
+/// </summary>
+/// <param name="MovieModel">This is the model that I'm using to store the data.</param>
+/// <returns>
+/// The movie is being returned.
+/// </returns>
     [HttpPost("DeleteMovie")]
 
     public async Task<ActionResult> DeleteMovie([FromBody] MovieModel movie)

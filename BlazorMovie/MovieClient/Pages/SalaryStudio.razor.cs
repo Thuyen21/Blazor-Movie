@@ -5,10 +5,20 @@ namespace MovieClient.Pages;
 
 public partial class SalaryStudio
 {
+    /* A nullable string. */
     private string? Email;
+    /* A nullable string. */
     private string? EmailConfirm;
+    /* A variable that is used to store the amount of money that the user wants to send. */
     private double Cash;
 
+    /// <summary>
+    /// It takes a string and returns a boolean
+    /// </summary>
+    /// <param name="Email">The email address to validate.</param>
+    /// <returns>
+    /// A boolean value.
+    /// </returns>
     private bool isMail(string Email)
     {
         try
@@ -23,6 +33,12 @@ public partial class SalaryStudio
         }
 
     }
+    /// <summary>
+    /// If the email is valid, then if the email and email confirmation are the same, then send a post
+    /// request to the server with the email and cash amount. If the response is successful, show an
+    /// alert with the response message. If the email and email confirmation are not the same, show an
+    /// alert with a warning message. If the email is not valid, show an alert with a warning message.
+    /// </summary>
     private async Task Submit()
     {
         if (isMail(Email))

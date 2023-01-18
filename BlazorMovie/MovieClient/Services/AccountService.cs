@@ -9,6 +9,9 @@ public class AccountService
     {
         this.authenticationStateProvider = authenticationStateProvider;
     }
+    /// <summary>
+    /// It calls the Update() function of the CustomAuthenticationStateProvider class
+    /// </summary>
     public void checkAuthentication()
     {
         (authenticationStateProvider as CustomAuthenticationStateProvider).Update();
