@@ -7,8 +7,18 @@ namespace MovieClient.Pages;
 
 public partial class Login
 {
+    /* Creating a new instance of the LogInModel class. */
     private readonly LogInModel login = new();
 
+    /// <summary>
+    /// The function is called when the user clicks the submit button. It calls a javascript function
+    /// that returns the user agent. It then sends the user agent and the user's credentials to the
+    /// server. If the server returns a success status code, the user is redirected to the home page. If
+    /// the server returns an error status code, the user is shown an error message
+    /// </summary>
+    /// <returns>
+    /// The response from the server.
+    /// </returns>
     private async Task HandleValidSubmit()
     {
         try

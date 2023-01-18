@@ -6,12 +6,21 @@ namespace MovieClient.Pages;
 
 public partial class MovieCustomer
 {
+    /* Creating a new instance of the list. */
     private List<MovieModel> movies = new();
+    /* A variable that is used to store the search string. */
     private string searchString = string.Empty;
+    /* A variable that is used to store the search string. */
     private bool isSearch = false;
+    /* A dictionary that is used to store the image links. */
     private readonly Dictionary<string, string> DicImageLink = new();
+    /* A variable that is used to store the sort string. */
     private string? sort = null;
+    /* Used to store the index of the page. */
     private int index = 0;
+    /// <summary>
+    /// This function is used to sort the movies by name
+    /// </summary>
     private async Task NameSortParm()
     {
         index = 0;
@@ -22,6 +31,9 @@ public partial class MovieCustomer
         await LoadImg();
     }
 
+    /// <summary>
+    /// It's a function that sorts the movies by date
+    /// </summary>
     private async Task DateSortParm()
     {
         index = 0;
@@ -32,6 +44,9 @@ public partial class MovieCustomer
         await LoadImg();
     }
 
+    /// <summary>
+    /// This function is used to sort the movies by genre
+    /// </summary>
     private async Task GenreSortParm()
     {
         index = 0;
@@ -41,7 +56,11 @@ public partial class MovieCustomer
         searchString = string.Empty;
         await LoadImg();
     }
+    /* Used to store the token. */
     private string? token;
+    /// <summary>
+    /// It gets a list of movies from the server, and then gets a token from the server.
+    /// </summary>
     protected override async Task OnInitializedAsync()
     {
         Task? moviesTask = Task.Run(async () =>
@@ -57,6 +76,12 @@ public partial class MovieCustomer
         token = new string(tokena);
         await LoadImg();
     }
+    /// <summary>
+    /// It's a function that loads images from firebase storage and stores them in a dictionary
+    /// </summary>
+    /// <returns>
+    /// A Task.
+    /// </returns>
     private Task LoadImg()
     {
         _ = Parallel.ForEach(movies, async item =>
@@ -77,6 +102,9 @@ public partial class MovieCustomer
         return Task.CompletedTask;
     }
 
+    /// <summary>
+    /// It gets a list of movies from the server and loads the images for each movie
+    /// </summary>
     private async Task Search()
     {
         index = 0;
@@ -95,6 +123,9 @@ public partial class MovieCustomer
         await LoadImg();
     }
 
+    /// <summary>
+    /// It loads more movies from the database and adds them to the list of movies
+    /// </summary>
     private async Task LoadMore()
     {
         index++;

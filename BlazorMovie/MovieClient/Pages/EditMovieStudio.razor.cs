@@ -9,20 +9,35 @@ namespace MovieClient.Pages;
 
 public partial class EditMovieStudio
 {
+    /* A parameter that is passed to the component. */
     [Parameter]
     public string? Id { get; set; }
+    /* Initializing the movie variable to a new instance of the MovieModel class. */
     private MovieModel movie = new();
+    /* A variable that is used to store the file that is uploaded. */
     private IBrowserFile? movieFile;
+    /* A variable that is used to store the file that is uploaded. */
     private IBrowserFile? imageFile;
+    /* A variable that is used to store the progress of the upload. */
     private string? mp;
+    /* A variable that is used to store the progress of the upload. */
     private string? ip;
 
+    /* A variable that is used to show the upload button. */
     private bool more = false;
+    /// <summary>
+    /// The function is called when the page is initialized. It gets the movie data from the API and
+    /// stores it in the movie variable.
+    /// </summary>
     protected override async Task OnInitializedAsync()
     {
         movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
     }
 
+    /// <summary>
+    /// It gets the movie from the database, sets the movie's id and studio id, and then posts the movie
+    /// to the database.
+    /// </summary>
     private async Task HandleValidSubmit()
     {
         MovieModel moviePost = (await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}"))!;
@@ -32,6 +47,11 @@ public partial class EditMovieStudio
         alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
     }
 
+    /// <summary>
+    /// It takes a file from the user, checks if it's a video, then uploads it to Firebase Storage
+    /// </summary>
+    /// <param name="InputFileChangeEventArgs">The event arguments for the file input change
+    /// event.</param>
     private async Task OnChooseMovieFile(InputFileChangeEventArgs e)
     {
         List<string> list = new() { "video/x-msvideo", "video/mp4", "video/mpeg", "video/ogg", "video/mp2t", "video/webm", "video/3gpp", "video/3gpp2", "video/x-matroska" };
@@ -63,6 +83,12 @@ public partial class EditMovieStudio
         }
     }
 
+    /// <summary>
+    /// The function is called when the user selects a file to upload. The function checks the file type
+    /// and if it is an image, it uploads the image to Firebase Storage
+    /// </summary>
+    /// <param name="InputFileChangeEventArgs">The event arguments for the input file change
+    /// event.</param>
     private async Task OnChooseImageFile(InputFileChangeEventArgs e)
     {
         List<string> list = new() { "image/bmp", "image/gif", "image/jpeg", "image/jpg", "image/png", "image/svg+xml", "image/tiff", "image/webp" };
@@ -92,6 +118,9 @@ public partial class EditMovieStudio
         }
     }
 
+    /// <summary>
+    /// It sets the variable more to true.
+    /// </summary>
     private void Upload()
     {
         more = true;

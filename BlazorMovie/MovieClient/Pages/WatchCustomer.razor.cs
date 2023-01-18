@@ -9,18 +9,34 @@ namespace MovieClient.Pages;
 
 public partial class WatchCustomer
 {
+    /* A parameter that is passed to the component. */
     [Parameter]
     public string? Id { get; set; }
 
+    /* A private field that is used to store the movie model. */
     private MovieModel? movie;
+    /* A private field that is used to store the movie link. */
     private string? movieLink = null;
+    /* A private field that is used to store the movie link. */
     private bool? canWatch;
+    /* A private field that is used to store the comment text. */
     private string? Acomment;
+    /* Creating a new instance of the `List<CommentModel>` class. */
     private List<CommentModel> commentList = new();
+    /* Used to check if the user is watching the movie on the same device. */
     private bool sameDevice = false;
+    /* Used to check if the user is watching the movie on the same device. */
     private bool firstPlay = true;
 
+    /* Used to load more comments. */
     private int index = 0;
+    /// <summary>
+    /// It gets the movie, comments, and whether the user can watch the movie
+    /// </summary>
+    /// <returns>
+    /// The movie object, the comment list, the sameDevice bool, the canWatch bool, and the token char
+    /// array.
+    /// </returns>
     protected override async Task OnInitializedAsync()
     {
         Task? movieTask = Task.Run(async () =>
@@ -70,6 +86,13 @@ public partial class WatchCustomer
             }
         }
     }
+    /// <summary>
+    /// It's a function that runs every minute and checks if the user is watching the video from the
+    /// same device
+    /// </summary>
+    /// <returns>
+    /// The return value is a Task.
+    /// </returns>
     private async Task View()
     {
         if (firstPlay)
@@ -100,6 +123,10 @@ public partial class WatchCustomer
         }
     }
 
+    /// <summary>
+    /// It sends a comment to the server, then it gets the comments from the server and puts them in a
+    /// list
+    /// </summary>
     private async Task Com()
     {
         CommentModel up = new()
@@ -117,6 +144,10 @@ public partial class WatchCustomer
         StateHasChanged();
     }
 
+    /// <summary>
+    /// It sends a post request to the server and then gets the updated list of comments.
+    /// </summary>
+    /// <param name="Id">The id of the comment</param>
     private async Task AcDisLike(string Id)
     {
         _ = await _httpClient.PostAsJsonAsync($"Customer/ac/{Id}", "DisLike");
@@ -131,6 +162,11 @@ public partial class WatchCustomer
         StateHasChanged();
     }
 
+    /// <summary>
+    /// It sends a post request to the server, then gets the updated list of comments from the server,
+    /// and then updates the list of comments in the client
+    /// </summary>
+    /// <param name="Id">The id of the comment</param>
     private async Task AcLike(string Id)
     {
         _ = await _httpClient.PostAsJsonAsync($"Customer/ac/{Id}", "Like");
@@ -145,6 +181,9 @@ public partial class WatchCustomer
         StateHasChanged();
     }
 
+    /// <summary>
+    /// It adds the next page of comments to the list of comments
+    /// </summary>
     private async Task LoadMore()
     {
         index++;
