@@ -6,7 +6,7 @@ namespace MovieClient.Pages;
 
 public partial class BuyVip
 {
-   /* A parameter that is passed from the parent component. */
+    /* A parameter that is passed from the parent component. */
     [Parameter]
     public string? movieId { get; set; }
 
