@@ -18,8 +18,12 @@ FirebaseApp.Create(new AppOptions { Credential = GoogleCredential.FromFile(Path.
 /* Creating a FirestoreDb object. */
 builder.Services.AddScoped(sp => FirestoreDb.Create("movie2-e3c7b"));
 /* Creating a FirebaseAuthConfig object. */
-builder.Services.AddScoped(sp => new FirebaseAuthConfig() { ApiKey = "AIzaSyAqCxl98i68Te5_xy3vgMcAEoF5qiBKE9o", 
-    AuthDomain = "movie2-e3c7b.firebaseapp.com", Providers = new FirebaseAuthProvider[] { new EmailProvider() } });
+builder.Services.AddScoped(sp => new FirebaseAuthConfig()
+{
+    ApiKey = "AIzaSyAqCxl98i68Te5_xy3vgMcAEoF5qiBKE9o",
+    AuthDomain = "movie2-e3c7b.firebaseapp.com",
+    Providers = new FirebaseAuthProvider[] { new EmailProvider() }
+});
 /* Adding a singleton service to the service collection. */
 builder.Services.AddSingleton<Censor>();
 /* Adding a cookie authentication scheme to the service collection. */

@@ -18,9 +18,9 @@ public partial class AdminAccountManagement
     /// <summary>
     /// This function is used to sort the data in the table by name
     /// </summary>
-   /// <summary>
-   /// It's an async function that calls an API to get a list of accounts, then sorts them by name
-   /// </summary>
+    /// <summary>
+    /// It's an async function that calls an API to get a list of accounts, then sorts them by name
+    /// </summary>
     private async Task NameSortParm()
     {
         index = 0;
@@ -44,11 +44,11 @@ public partial class AdminAccountManagement
         searchString = string.Empty;
     }
 
-   /// <summary>
-   /// It's an async function that gets a list of AccountManagementModel objects from a web api, and
-   /// then sets the sort string to either email or emailDesc, depending on the current value of the
-   /// sort string
-   /// </summary>
+    /// <summary>
+    /// It's an async function that gets a list of AccountManagementModel objects from a web api, and
+    /// then sets the sort string to either email or emailDesc, depending on the current value of the
+    /// sort string
+    /// </summary>
     private async Task EmailSortParm()
     {
         index = 0;

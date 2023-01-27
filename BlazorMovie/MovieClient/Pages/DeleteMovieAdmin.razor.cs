@@ -6,7 +6,7 @@ namespace MovieClient.Pages;
 
 public partial class DeleteMovieAdmin
 {
-   /* A parameter that is passed to the component. */
+    /* A parameter that is passed to the component. */
     [Parameter]
     public string? Id { get; set; }
     /* A private variable that is used to store the movie data. */

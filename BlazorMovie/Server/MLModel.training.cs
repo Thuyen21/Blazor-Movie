@@ -34,11 +34,11 @@ namespace BlazorMovie_Server
         public static IEstimator<ITransformer> BuildPipeline(MLContext mlContext)
         {
             // Data process configuration with pipeline data transformations
-            var pipeline = mlContext.Transforms.Text.FeaturizeText(inputColumnName:@"review",outputColumnName:@"review")      
-                                    .Append(mlContext.Transforms.Concatenate(@"Features", new []{@"review"}))      
-                                    .Append(mlContext.Transforms.Conversion.MapValueToKey(outputColumnName:@"sentiment",inputColumnName:@"sentiment"))      
-                                    .Append(mlContext.MulticlassClassification.Trainers.LbfgsMaximumEntropy(new LbfgsMaximumEntropyMulticlassTrainer.Options(){L1Regularization=1F,L2Regularization=1F,LabelColumnName=@"sentiment",FeatureColumnName=@"Features"}))      
-                                    .Append(mlContext.Transforms.Conversion.MapKeyToValue(outputColumnName:@"PredictedLabel",inputColumnName:@"PredictedLabel"));
+            var pipeline = mlContext.Transforms.Text.FeaturizeText(inputColumnName: @"review", outputColumnName: @"review")
+                                    .Append(mlContext.Transforms.Concatenate(@"Features", new[] { @"review" }))
+                                    .Append(mlContext.Transforms.Conversion.MapValueToKey(outputColumnName: @"sentiment", inputColumnName: @"sentiment"))
+                                    .Append(mlContext.MulticlassClassification.Trainers.LbfgsMaximumEntropy(new LbfgsMaximumEntropyMulticlassTrainer.Options() { L1Regularization = 1F, L2Regularization = 1F, LabelColumnName = @"sentiment", FeatureColumnName = @"Features" }))
+                                    .Append(mlContext.Transforms.Conversion.MapKeyToValue(outputColumnName: @"PredictedLabel", inputColumnName: @"PredictedLabel"));
 
             return pipeline;
         }

@@ -121,14 +121,14 @@ public class AdminController : Controller
             return BadRequest(ex.Message);
         }
     }
-   /// <summary>
-   /// A function to edit the account information.
-   /// </summary>
-   /// <param name="AccountManagementModel">This is a model that contains the data that will be
-   /// updated.</param>
-   /// <returns>
-   /// The return type is an ActionResult<AccountManagementModel>
-   /// </returns>
+    /// <summary>
+    /// A function to edit the account information.
+    /// </summary>
+    /// <param name="AccountManagementModel">This is a model that contains the data that will be
+    /// updated.</param>
+    /// <returns>
+    /// The return type is an ActionResult<AccountManagementModel>
+    /// </returns>
     [HttpPost("EditAccount")]
     public async Task<ActionResult<AccountManagementModel>> EditAccount([FromBody] AccountManagementModel account)
     {
