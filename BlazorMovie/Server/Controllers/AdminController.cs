@@ -1,4 +1,5 @@
-﻿using BlazorMovie.Shared;
+﻿/* The above code is a controller that is used to manage the admin page. */
+using BlazorMovie.Shared;
 using Firebase.Auth;
 using Firebase.Storage;
 using FirebaseAdmin.Auth;
@@ -10,14 +11,21 @@ using System.Security.Claims;
 
 namespace BlazorMovie.Server.Controllers;
 [ApiController]
+/* A route attribute that tells the controller to use the name of the controller as the route. */
 [Route("[controller]")]
+/* Restricting access to the controller to only users who are in the Admin role. */
 [Authorize(Roles = "Admin")]
 public class AdminController : Controller
 {
+    /* Creating a private readonly variable called env. */
     private readonly IWebHostEnvironment env;
+    /* Creating a new instance of the FirestoreDb class. */
     private readonly FirestoreDb db;
+    /* Creating a new instance of the FirebaseAuthClient class. */
     private readonly FirebaseAuthClient client;
+    /* Creating a private readonly variable called config. */
     private readonly FirebaseAuthConfig config;
+    /* The above code is creating a new instance of the FirebaseAuthClient class. */
     public AdminController(IWebHostEnvironment env, FirestoreDb db, FirebaseAuthConfig config)
     {
         this.env = env;
@@ -26,6 +34,16 @@ public class AdminController : Controller
         client = new FirebaseAuthClient(config);
     }
 
+    /// <summary>
+    /// I'm trying to get a list of users from the database, and then return them to the front end
+    /// </summary>
+    /// <param name="searchString">The search string that the user entered in the search box.</param>
+    /// <param name="sortOrder">This is the name of the column that the user clicked on to sort the
+    /// data.</param>
+    /// <param name="index">The page number</param>
+    /// <returns>
+    /// A list of AccountManagementModel objects.
+    /// </returns>
     [HttpGet("AccountManagement/{searchString?}/{sortOrder?}/{index:int:min(0)}")]
     public async Task<ActionResult<List<AccountManagementModel>>> AccountManagement(string? searchString, string? sortOrder, int index)
     {
@@ -77,6 +95,13 @@ public class AdminController : Controller
         }
 
     }
+    /// <summary>
+    /// It gets the account information from the database and returns it to the user.
+    /// </summary>
+    /// <param name="Id">The Id of the account to be edited.</param>
+    /// <returns>
+    /// The account information for the user with the Id that was passed in.
+    /// </returns>
     [HttpGet("EditAccount/{Id}")]
     public async Task<ActionResult<AccountManagementModel>> EditAccount(string Id)
     {
@@ -96,6 +121,14 @@ public class AdminController : Controller
             return BadRequest(ex.Message);
         }
     }
+    /// <summary>
+    /// A function to edit the account information.
+    /// </summary>
+    /// <param name="AccountManagementModel">This is a model that contains the data that will be
+    /// updated.</param>
+    /// <returns>
+    /// The return type is an ActionResult<AccountManagementModel>
+    /// </returns>
     [HttpPost("EditAccount")]
     public async Task<ActionResult<AccountManagementModel>> EditAccount([FromBody] AccountManagementModel account)
     {
@@ -128,6 +161,13 @@ public class AdminController : Controller
             return BadRequest(ex.Message);
         }
     }
+    /// <summary>
+    /// It takes a user's ID, and then bans them
+    /// </summary>
+    /// <param name="Id">The user's ID.</param>
+    /// <returns>
+    /// The user's ID is being returned.
+    /// </returns>
     [HttpPost("Ban")]
     public async Task<ActionResult> Ban([FromBody] string Id)
     {
@@ -143,6 +183,13 @@ public class AdminController : Controller
             return BadRequest(ex.Message);
         }
     }
+    /// <summary>
+    /// It takes a user's ID, and then un-bans them
+    /// </summary>
+    /// <param name="Id">The user's ID.</param>
+    /// <returns>
+    /// The user's ID is being returned.
+    /// </returns>
     [HttpPost("UnBan")]
     public async Task<ActionResult> UnBan([FromBody] string Id)
     {
@@ -158,6 +205,16 @@ public class AdminController : Controller
             return BadRequest(ex.Message);
         }
     }
+    /// <summary>
+    /// I'm trying to get a list of movies from a database, and I'm trying to sort them by name, genre,
+    /// or date.
+    /// </summary>
+    /// <param name="sortOrder">The sort order of the list.</param>
+    /// <param name="searchString">The string that the user is searching for.</param>
+    /// <param name="index">The index of the page to return.</param>
+    /// <returns>
+    /// A list of movies.
+    /// </returns>
     [HttpGet("Movie/{searchString?}/{sortOrder?}/{index:int:min(0)}")]
     public async Task<ActionResult<List<MovieModel>>> Movie(string? sortOrder, string? searchString, int index)
     {
@@ -204,6 +261,13 @@ public class AdminController : Controller
         }
 
     }
+    /// <summary>
+    /// It gets the movie from the database and returns it to the client.
+    /// </summary>
+    /// <param name="Id">The Id of the movie you want to edit.</param>
+    /// <returns>
+    /// The movie with the Id that was passed in.
+    /// </returns>
     [HttpGet("EditMovie/{Id}")]
     public async Task<ActionResult<MovieModel>> EditMovie(string Id)
     {
@@ -223,6 +287,14 @@ public class AdminController : Controller
             return BadRequest(ex.Message);
         }
     }
+    /// <summary>
+    /// It takes a movie object, gets the movie from the database, updates the movie in the database
+    /// with the movie object, and returns a success message
+    /// </summary>
+    /// <param name="MovieModel"></param>
+    /// <returns>
+    /// The method returns an HTTP 200 OK response with the string "Success" in the body.
+    /// </returns>
     [HttpPost("EditMovie")]
     public async Task<ActionResult> EditMoviePost([FromBody] MovieModel movie)
     {
@@ -247,6 +319,13 @@ public class AdminController : Controller
         }
     }
 
+    /// <summary>
+    /// This function is used to get the movie details from the database and display it on the view
+    /// </summary>
+    /// <param name="MovieId">The unique identifier for the movie.</param>
+    /// <returns>
+    /// The MovieUpload view is being returned.
+    /// </returns>
     [HttpGet("MovieUpload/{MovieId}")]
     public async Task<ActionResult> MovieUpload(string MovieId)
     {
@@ -259,11 +338,27 @@ public class AdminController : Controller
         }
         return View(movie);
     }
+    /// <summary>
+    /// It returns a view called "Done" when the user navigates to the URL /Done
+    /// </summary>
+    /// <returns>
+    /// A view
+    /// </returns>
     [HttpGet("Done")]
     public ActionResult Done()
     {
         return View();
     }
+    /// <summary>
+    /// It uploads a movie and an image to firebase storage
+    /// </summary>
+    /// <param name="StudioId">The ID of the studio that the movie belongs to.</param>
+    /// <param name="MovieId">The ID of the movie that is being uploaded.</param>
+    /// <param name="IFormFile">The file that is being uploaded.</param>
+    /// <param name="IFormFile">The file that is being uploaded.</param>
+    /// <returns>
+    /// The code is returning a redirect to the hostname.
+    /// </returns>
     [HttpPost("MovieUpload/{MovieId}/{StudioId}")]
     [RequestSizeLimit(long.MaxValue)]
     [RequestFormLimits(MultipartBodyLengthLimit = long.MaxValue)]
@@ -343,8 +438,16 @@ public class AdminController : Controller
         string redirect = hostname;
         return Redirect(redirect);
     }
-    [HttpPost("DeleteMovie")]
 
+    /// <summary>
+    /// It deletes the movie from the database and deletes the movie and image from the storage
+    /// </summary>
+    /// <param name="MovieModel">This is the model that I'm using to store the data in the
+    /// database.</param>
+    /// <returns>
+    /// The movie is being deleted from the database and the storage.
+    /// </returns>
+    [HttpPost("DeleteMovie")]
     public async Task<ActionResult> DeleteMovie([FromBody] MovieModel movie)
     {
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
@@ -388,8 +491,15 @@ public class AdminController : Controller
         }
         return BadRequest("Not success");
     }
+    /// <summary>
+    /// It takes an index, and returns the next 5 feedback messages from the database, ordered by time,
+    /// starting from the index
+    /// </summary>
+    /// <param name="index">The index of the page you want to get.</param>
+    /// <returns>
+    /// A list of FeedbackMessageModel objects.
+    /// </returns>
     [HttpGet("ReadFeedBack/{index:int:min(0)}")]
-
     public async Task<ActionResult<List<FeedbackMessageModel>>> ReadFeedBack(int index)
     {
         index--;
@@ -404,5 +514,4 @@ public class AdminController : Controller
         }
         return await Task.FromResult(Ok(myFoo));
     }
-
 }

@@ -6,8 +6,14 @@ namespace MovieClient.Pages;
 
 public partial class Home
 {
+    /* Creating a new instance of the `List<MovieModel>` class. */
     private List<MovieModel> movies = new();
+    /* Creating a new instance of the `Dictionary<string, string>` class. */
     private readonly Dictionary<string, string> DicImageLink = new();
+    /// <summary>
+    /// It gets a list of movies from the server, then it gets a token from the server, then it uses the
+    /// token to get the image links from the firebase storage
+    /// </summary>
     protected override async Task OnInitializedAsync()
     {
         Task? movieTask = Task.Run(async () =>
@@ -44,6 +50,13 @@ public partial class Home
             }
         });
     }
+    /// <summary>
+    /// It takes an index as a parameter and returns the link of the image at that index
+    /// </summary>
+    /// <param name="index">The index of the image in the dictionary.</param>
+    /// <returns>
+    /// A string.
+    /// </returns>
     private string getLink(int index)
     {
         List<string> img = new() { "D3D3D3", "FFB6C1", "87CEFA", "B0C4DE", "20B2AA", "FFA07A" };

@@ -27,6 +27,14 @@ public class UserController : Controller
 
     private static UserCredential? userCredential;
 
+    /// <summary>
+    /// It takes in a user's email and password, checks if the user exists in the database, if the user
+    /// exists, it creates a claims identity and signs the user in
+    /// </summary>
+    /// <param name="LogInModel"></param>
+    /// <returns>
+    /// The token is being returned.
+    /// </returns>
     [HttpPost("login")]
     public async Task<ActionResult> LogIn([FromBody] LogInModel logIn)
     {
@@ -63,6 +71,12 @@ public class UserController : Controller
         await HttpContext.SignInAsync(claimsPrincipal);
         return Ok();
     }
+    /// <summary>
+    /// It signs out the user from the IdentityServer4 server and the client application
+    /// </summary>
+    /// <returns>
+    /// The user is being returned.
+    /// </returns>
     [Authorize]
     [HttpGet("Logout")]
     public async Task<ActionResult> LogOut()
@@ -71,6 +85,12 @@ public class UserController : Controller
         await HttpContext.SignOutAsync();
         return Ok();
     }
+    /// <summary>
+    /// It gets the current user's information from the database and returns it to the client
+    /// </summary>
+    /// <returns>
+    /// The current user's information.
+    /// </returns>
     [Authorize]
     [HttpGet("GetCurrentUser")]
     public async Task<ActionResult<AccountManagementModel>> GetCurrentUser()
@@ -88,6 +108,14 @@ public class UserController : Controller
         }
         return await Task.FromResult(acc);
     }
+    /// <summary>
+    /// It takes a user's current email and password, and a new email, and changes the user's email to
+    /// the new email
+    /// </summary>
+    /// <param name="ChangeEmailModel"></param>
+    /// <returns>
+    /// The user's email address.
+    /// </returns>
     [Authorize]
     [HttpPost("ChangeEmail")]
     public async Task<ActionResult> ChangeEmail([FromBody] ChangeEmailModel changeEmailModel)
@@ -121,6 +149,13 @@ public class UserController : Controller
             return BadRequest(ex.Message);
         }
     }
+    /// <summary>
+    /// The function takes the email address of the user and sends a reset password email to the user
+    /// </summary>
+    /// <param name="ResetPasswordModel"></param>
+    /// <returns>
+    /// The result of the operation.
+    /// </returns>
     [HttpPost("ResetPassword")]
     public async Task<ActionResult> ResetPassword([FromBody] ResetPasswordModel resetPassword)
     {
@@ -134,6 +169,12 @@ public class UserController : Controller
             return BadRequest(ex.Reason.ToString());
         }
     }
+    /// <summary>
+    /// It gets the user's profile information from the database and returns it to the user
+    /// </summary>
+    /// <returns>
+    /// The AccountManagementModel object is being returned.
+    /// </returns>
     [Authorize]
     [HttpGet("Profile")]
     public async Task<ActionResult<AccountManagementModel>> Profile()
@@ -151,6 +192,14 @@ public class UserController : Controller
         }
         return await Task.FromResult(acc);
     }
+    /// <summary>
+    /// It takes in a model, queries the database for the user's account, updates the account with the
+    /// model's data, and returns a success message
+    /// </summary>
+    /// <param name="AccountManagementModel"></param>
+    /// <returns>
+    /// The return type is an ActionResult.
+    /// </returns>
     [Authorize]
     [HttpPost("EditProfile")]
     public async Task<ActionResult> EditProfile([FromBody] AccountManagementModel accountManagementModel)
@@ -176,6 +225,14 @@ public class UserController : Controller
             return BadRequest(ex);
         }
     }
+    /// <summary>
+    /// It creates a user with the email and password provided in the request body, then creates a
+    /// document in the Account collection with the user's information
+    /// </summary>
+    /// <param name="SignUpModel"></param>
+    /// <returns>
+    /// The return type is an ActionResult.
+    /// </returns>
     [HttpPost("SignUp")]
     public async Task<ActionResult> SignUp([FromBody] SignUpModel signUpModel)
     {
@@ -234,6 +291,12 @@ public class UserController : Controller
         }
     }
 
+    /// <summary>
+    /// If the user is authenticated, return the token, otherwise, create a custom token and return it
+    /// </summary>
+    /// <returns>
+    /// A char array of the token.
+    /// </returns>
     [HttpGet("GetToken")]
     public async Task<ActionResult<char[]>> GetToken()
     {
@@ -273,13 +336,26 @@ public class UserController : Controller
         }
 
     }
+    /// <summary>
+    /// It takes a JSON object from the body of the request, and adds it to the database
+    /// </summary>
+    /// <param name="FeedbackMessageModel"></param>
+    /// <returns>
+    /// The return type is an ActionResult.
+    /// </returns>
     [HttpPost("feedback")]
     public async Task<ActionResult> Feedback([FromBody] FeedbackMessageModel feedback)
     {
         _ = await db.Collection("Feedback").AddAsync(feedback);
         return Ok("Done");
     }
-    //FIXING
+
+    /// <summary>
+    /// It gets the top 10 most viewed movies in the last 24 hours
+    /// </summary>
+    /// <returns>
+    /// A list of movies
+    /// </returns>
     [HttpGet("Trending")]
     public async Task<ActionResult<List<MovieModel>>> Trending()
     {
@@ -340,5 +416,5 @@ public class UserController : Controller
 
 
     }
-    //ENDFIX
+
 }

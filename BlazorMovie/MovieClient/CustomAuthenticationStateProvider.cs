@@ -14,6 +14,14 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
         _httpClient = httpClient;
     }
 
+    /// <summary>
+    /// It gets the current user from the server, and if the user is not null, it creates a new
+    /// ClaimsIdentity with the user's email, role, and email, and then creates a new ClaimsPrincipal
+    /// with the ClaimsIdentity, and returns a new AuthenticationState with the ClaimsPrincipal
+    /// </summary>
+    /// <returns>
+    /// The AuthenticationState is being returned.
+    /// </returns>
     public override async Task<AuthenticationState> GetAuthenticationStateAsync()
     {
         try
@@ -37,6 +45,16 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
         }
         return new AuthenticationState(new ClaimsPrincipal(new ClaimsIdentity()));
     }
+    /// <summary>
+    /// "If the user is authenticated, then we'll get the user's profile information and store it in the
+    /// `UserProfile` property. If the user is not authenticated, then we'll clear the `UserProfile`
+    /// property."
+    /// 
+    /// The `GetAuthenticationStateAsync` function is an `async` function, which means that it will
+    /// return immediately and the rest of the function will be executed on a background thread. This is
+    /// important because we don't want to block the UI thread while we're waiting for the
+    /// authentication state to be retrieved
+    /// </summary>
     public void Update()
     {
         NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());

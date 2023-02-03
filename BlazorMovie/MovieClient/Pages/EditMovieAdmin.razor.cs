@@ -9,21 +9,36 @@ namespace MovieClient.Pages;
 
 public partial class EditMovieAdmin
 {
+    /* A parameter that is passed to the component. */
     [Parameter]
     public string? Id { get; set; }
 
+    /* Initializing the movie variable to a new instance of the MovieModel class. */
     private MovieModel movie = new();
+    /* A variable that is used to store the file that is uploaded. */
     private IBrowserFile? movieFile;
+    /* A variable that is used to store the file that is uploaded. */
     private IBrowserFile? imageFile;
+    /* A variable that is used to store the file that is uploaded. */
     private string? mp;
+    /* A variable that is used to store the file that is uploaded. */
     private string? ip;
+    /* A variable that is used to store the file that is uploaded. */
     private bool more = false;
 
+    /// <summary>
+    /// The function is called when the component is initialized. It gets the movie from the database
+    /// and assigns it to the movie variable
+    /// </summary>
     protected override async Task OnInitializedAsync()
     {
         movie = (await _httpClient.GetFromJsonAsync<MovieModel>($"Admin/EditMovie/{Id}"))!;
     }
 
+    /// <summary>
+    /// It gets the movie from the database, sets the movie id and studio id, then posts the movie to
+    /// the database.
+    /// </summary>
     private async Task HandleValidSubmit()
     {
 
@@ -34,6 +49,11 @@ public partial class EditMovieAdmin
         alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
     }
 
+    /// <summary>
+    /// It's a function that uploads a video file to Firebase Storage
+    /// </summary>
+    /// <param name="InputFileChangeEventArgs">The event arguments for the file input change
+    /// event.</param>
     private async Task OnChooseMovieFile(InputFileChangeEventArgs e)
     {
         List<string> list = new() { "video/x-msvideo", "video/mp4", "video/mpeg", "video/ogg", "video/mp2t", "video/webm", "video/3gpp", "video/3gpp2", "video/x-matroska" };
@@ -64,6 +84,12 @@ public partial class EditMovieAdmin
         }
     }
 
+    /// <summary>
+    /// It takes a file from the user, uploads it to Firebase Storage, and then displays the progress of
+    /// the upload
+    /// </summary>
+    /// <param name="InputFileChangeEventArgs">The event arguments for the input file change
+    /// event.</param>
     private async Task OnChooseImageFile(InputFileChangeEventArgs e)
     {
         List<string> list = new() { "image/bmp", "image/gif", "image/jpg", "image/jpeg", "image/png", "image/svg+xml", "image/tiff", "image/webp" };
@@ -95,6 +121,9 @@ public partial class EditMovieAdmin
         }
     }
 
+    /// <summary>
+    /// It sets the variable more to true.
+    /// </summary>
     private void Upload()
     {
         more = true;
