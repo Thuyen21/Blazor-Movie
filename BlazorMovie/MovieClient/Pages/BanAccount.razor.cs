@@ -12,18 +12,18 @@ public partial class BanAccount
     /* Creating a new instance of the AccountManagementModel class. */
     private AccountManagementModel acc = new();
 
-   /// <summary>
-   /// The function is called when the page is initialized. It gets the account information from the
-   /// database and stores it in the acc variable
-   /// </summary>
+    /// <summary>
+    /// The function is called when the page is initialized. It gets the account information from the
+    /// database and stores it in the acc variable
+    /// </summary>
     protected override async Task OnInitializedAsync()
     {
         acc = (await _httpClient.GetFromJsonAsync<AccountManagementModel>($"Admin/EditAccount/{Id}"))!;
     }
 
-   /// <summary>
-   /// It sends a POST request to the server with the account id as the body of the request
-   /// </summary>
+    /// <summary>
+    /// It sends a POST request to the server with the account id as the body of the request
+    /// </summary>
     private async Task Ban()
     {
         HttpResponseMessage response = await _httpClient.PostAsJsonAsync("Admin/Ban", acc.Id);
