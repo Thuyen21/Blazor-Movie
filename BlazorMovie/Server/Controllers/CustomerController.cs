@@ -15,9 +15,9 @@ public class CustomerController : Controller
 {
     /* Creating a new instance of FirestoreDb. */
     private readonly FirestoreDb db;
-/* Creating a private readonly field called censor. */
+    /* Creating a private readonly field called censor. */
     private readonly Censor censor;
-/* The above code is creating a constructor for the CustomerController class. */
+    /* The above code is creating a constructor for the CustomerController class. */
     public CustomerController(Censor censor, FirestoreDb db)
     {
         this.censor = censor;
@@ -124,12 +124,12 @@ public class CustomerController : Controller
 
     //    return View();
     //}
-   /// <summary>
-   /// It generates a client token for the client to use to make a payment
-   /// </summary>
-   /// <returns>
-   /// A client token is being returned.
-   /// </returns>
+    /// <summary>
+    /// It generates a client token for the client to use to make a payment
+    /// </summary>
+    /// <returns>
+    /// A client token is being returned.
+    /// </returns>
     [HttpGet("Deposit")]
     public async Task<ActionResult<char[]>> Deposit()
     {
@@ -151,16 +151,16 @@ public class CustomerController : Controller
             return await Task.FromResult(BadRequest(ex.Message));
         }
     }
-   /// <summary>
-   /// It takes a nonce and a cash amount, then it creates a transaction request, then it creates a
-   /// gateway, then it creates a result, then it checks if the result is successful, then it gets the
-   /// transaction, then it gets the user's wallet, then it updates the user's wallet, then it returns a
-   /// success message.
-   /// </summary>
-   /// <param name="d">List<string></param>
-   /// <returns>
-   /// The error message is being returned.
-   /// </returns>
+    /// <summary>
+    /// It takes a nonce and a cash amount, then it creates a transaction request, then it creates a
+    /// gateway, then it creates a result, then it checks if the result is successful, then it gets the
+    /// transaction, then it gets the user's wallet, then it updates the user's wallet, then it returns a
+    /// success message.
+    /// </summary>
+    /// <param name="d">List<string></param>
+    /// <returns>
+    /// The error message is being returned.
+    /// </returns>
     [HttpPost("DoCard")]
     public async Task<ActionResult> DoCard([FromBody] List<string> d)
     {
@@ -231,14 +231,14 @@ public class CustomerController : Controller
 
         return Ok();
     }
-  /// <summary>
-  /// It takes the nonce and the amount from the client, then sends it to the Braintree server to
-  /// process the payment
-  /// </summary>
-  /// <param name="d">List<string></param>
-  /// <returns>
-  /// The error message is being returned.
-  /// </returns>
+    /// <summary>
+    /// It takes the nonce and the amount from the client, then sends it to the Braintree server to
+    /// process the payment
+    /// </summary>
+    /// <param name="d">List<string></param>
+    /// <returns>
+    /// The error message is being returned.
+    /// </returns>
     [HttpPost("DoPayPal")]
     public async Task<ActionResult> DoPaypal([FromBody] List<string> d)
     {
@@ -324,13 +324,13 @@ public class CustomerController : Controller
         }
         return Ok();
     }
-   /// <summary>
-   /// If the user is not a vip, return "Not Vip", if the user is a vip but the time has expired, return
-   /// "Expires Vip", if the user is a vip and the time has not expired, return the time the vip expires
-   /// </summary>
-   /// <returns>
-   /// A char array
-   /// </returns>
+    /// <summary>
+    /// If the user is not a vip, return "Not Vip", if the user is a vip but the time has expired, return
+    /// "Expires Vip", if the user is a vip and the time has not expired, return the time the vip expires
+    /// </summary>
+    /// <returns>
+    /// A char array
+    /// </returns>
     [HttpGet("VipCheck")]
     public async Task<ActionResult<char[]>> VipCheck()
     {
@@ -341,19 +341,19 @@ public class CustomerController : Controller
                 ? (ActionResult<char[]>)await Task.FromResult("Expires Vip".ToCharArray())
                 : (ActionResult<char[]>)await Task.FromResult(vipCheck.Documents[0].GetValue<DateTime>("Time").ToString().ToCharArray());
     }
-   /// <summary>
-   /// If the user chooses to buy a movie, check if the user has enough money, if the user has already
-   /// bought the movie, and if the user has enough money, then subtract the money from the user's
-   /// wallet and add the money to the movie's wallet.
-   /// 
-   /// If the user chooses to buy a VIP, check if the user has enough money, if the user has already
-   /// bought a VIP, and if the user has enough money, then subtract the money from the user's wallet
-   /// and add the VIP to the user's account
-   /// </summary>
-   /// <param name="VipModel"></param>
-   /// <returns>
-   /// The return type is an ActionResult.
-   /// </returns>
+    /// <summary>
+    /// If the user chooses to buy a movie, check if the user has enough money, if the user has already
+    /// bought the movie, and if the user has enough money, then subtract the money from the user's
+    /// wallet and add the money to the movie's wallet.
+    /// 
+    /// If the user chooses to buy a VIP, check if the user has enough money, if the user has already
+    /// bought a VIP, and if the user has enough money, then subtract the money from the user's wallet
+    /// and add the VIP to the user's account
+    /// </summary>
+    /// <param name="VipModel"></param>
+    /// <returns>
+    /// The return type is an ActionResult.
+    /// </returns>
     [HttpPost("BuyVip")]
     public async Task<ActionResult> BuyVip([FromBody] VipModel vip)
     {
@@ -441,13 +441,13 @@ public class CustomerController : Controller
         }
         return Ok("Success");
     }
-/// <summary>
-/// If the user agent of the user is not the same as the one sent in the request, return a bad request
-/// </summary>
-/// <param name="Device">The user agent of the device that the user is using.</param>
-/// <returns>
-/// The UserAgent of the user.
-/// </returns>
+    /// <summary>
+    /// If the user agent of the user is not the same as the one sent in the request, return a bad request
+    /// </summary>
+    /// <param name="Device">The user agent of the device that the user is using.</param>
+    /// <returns>
+    /// The UserAgent of the user.
+    /// </returns>
     [HttpPost("UserAgent")]
     public async Task<ActionResult> UserAgent([FromBody] string Device)
     {
@@ -462,15 +462,15 @@ public class CustomerController : Controller
         }
 
     }
-  /// <summary>
-  /// It's a function that is called when a user views a movie. It checks if the user has viewed the
-  /// movie in the last 30 minutes, if not, it adds the movie to the database and updates the cash of
-  /// the movie and the other movies that the user has viewed in the last 30 minutes
-  /// </summary>
-  /// <param name="Id">The movie id</param>
-  /// <returns>
-  /// The return is a list of movies that are being viewed by the user.
-  /// </returns>
+    /// <summary>
+    /// It's a function that is called when a user views a movie. It checks if the user has viewed the
+    /// movie in the last 30 minutes, if not, it adds the movie to the database and updates the cash of
+    /// the movie and the other movies that the user has viewed in the last 30 minutes
+    /// </summary>
+    /// <param name="Id">The movie id</param>
+    /// <returns>
+    /// The return is a list of movies that are being viewed by the user.
+    /// </returns>
     [HttpPost("View")]
     public async Task<ActionResult> Viewing([FromBody] string Id)
     {
@@ -549,14 +549,14 @@ public class CustomerController : Controller
         }
 
     }
- /// <summary>
- /// If the user has a vip subscription, return true. If not, check if the user has bought the movie. If
- /// not, return false. If yes, return true
- /// </summary>
- /// <param name="Id">The movie id</param>
- /// <returns>
- /// A boolean value.
- /// </returns>
+    /// <summary>
+    /// If the user has a vip subscription, return true. If not, check if the user has bought the movie. If
+    /// not, return false. If yes, return true
+    /// </summary>
+    /// <param name="Id">The movie id</param>
+    /// <returns>
+    /// A boolean value.
+    /// </returns>
     [HttpGet("CanWatch/{Id}")]
     public async Task<ActionResult<bool>> CanWatch(string Id)
     {
@@ -583,14 +583,14 @@ public class CustomerController : Controller
             return collectionCheckBuy.Documents.Count == 0 ? (ActionResult<bool>)await Task.FromResult(false) : (ActionResult<bool>)await Task.FromResult(true);
         }
     }
-/// <summary>
-/// It gets the comments from the database and returns them to the user
-/// </summary>
-/// <param name="Id">The movie id</param>
-/// <param name="index">The index of the page, starting from 0.</param>
-/// <returns>
-/// A list of comments.
-/// </returns>
+    /// <summary>
+    /// It gets the comments from the database and returns them to the user
+    /// </summary>
+    /// <param name="Id">The movie id</param>
+    /// <param name="index">The index of the page, starting from 0.</param>
+    /// <returns>
+    /// A list of comments.
+    /// </returns>
     [HttpGet("Comment/{Id?}/{index:int:min(0)}")]
     public async Task<ActionResult<List<CommentModel>>> Comment(string? Id, int index)
     {
@@ -608,13 +608,13 @@ public class CustomerController : Controller
         }
         return await Task.FromResult(commentList);
     }
- /// <summary>
- /// It takes a comment from the user and adds it to the database
- /// </summary>
- /// <param name="CommentModel"></param>
- /// <returns>
- /// The question is being returned.
- /// </returns>
+    /// <summary>
+    /// It takes a comment from the user and adds it to the database
+    /// </summary>
+    /// <param name="CommentModel"></param>
+    /// <returns>
+    /// The question is being returned.
+    /// </returns>
     [HttpPost("Acomment")]
     public async Task<ActionResult> Acomment([FromBody] CommentModel comment)
     {
@@ -630,14 +630,14 @@ public class CustomerController : Controller
             return BadRequest(ex.Message);
         }
     }
-   /// <summary>
-   /// The function is used to like or dislike a comment
-   /// </summary>
-   /// <param name="ac">Like or DisLike</param>
-   /// <param name="Id">The id of the comment</param>
-   /// <returns>
-   /// The return type is an ActionResult.
-   /// </returns>
+    /// <summary>
+    /// The function is used to like or dislike a comment
+    /// </summary>
+    /// <param name="ac">Like or DisLike</param>
+    /// <param name="Id">The id of the comment</param>
+    /// <returns>
+    /// The return type is an ActionResult.
+    /// </returns>
     [HttpPost("Ac/{Id}")]
     public async Task<ActionResult> Ac([FromBody] string ac, string Id)
     {

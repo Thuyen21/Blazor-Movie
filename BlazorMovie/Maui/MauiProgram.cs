@@ -11,7 +11,7 @@ public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
-    /* Creating a new instance of the MauiAppBuilder class. */
+        /* Creating a new instance of the MauiAppBuilder class. */
         MauiAppBuilder builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
