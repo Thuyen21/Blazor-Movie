@@ -19,7 +19,7 @@
 		<PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
 		<PackageReference Include="Google.Apis.Drive.v3" Version="1.60.0.2986" />
 		<PackageReference Include="Google.Cloud.Firestore" Version="3.1.0" />
-		<PackageReference Include="Google.Cloud.Storage.V1" Version="4.4.0" />
+		<PackageReference Include="Google.Cloud.Storage.V1" Version="4.6.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="7.0.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="7.0.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="7.0.4" />
