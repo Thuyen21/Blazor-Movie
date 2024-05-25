@@ -1,29 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
-
-	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
-		<Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
-		<SignAssembly>true</SignAssembly>
-		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-		<Version>5.0</Version>
-		<AssemblyVersion>5.0.0.*</AssemblyVersion>
-		<Deterministic>false</Deterministic>
-		<AnalysisLevel>preview</AnalysisLevel>
-	</PropertyGroup>
-
-
-	<ItemGroup>
-		<SupportedPlatform Include="browser" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.4" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\Shared\BlazorMovie.Shared.csproj" />
-	</ItemGroup>
-
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>2f0b7cb7-4db2-420e-b6d4-dfd9b437d531</UserSecretsId>
+    <SignAssembly>true</SignAssembly>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <Version>5.0</Version>
+    <AssemblyVersion>5.0.0.*</AssemblyVersion>
+    <Deterministic>false</Deterministic>
+    <AnalysisLevel>preview</AnalysisLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shared\BlazorMovie.Shared.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.5" />
+  </ItemGroup>
 </Project>

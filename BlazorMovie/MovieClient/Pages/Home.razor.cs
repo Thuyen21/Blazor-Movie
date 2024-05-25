@@ -18,12 +18,12 @@ public partial class Home
     {
         Task? movieTask = Task.Run(async () =>
         {
-            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>("user/Trending");
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>("user/Trending") ?? new();
         });
         char[] tokena = { };
         Task? tokenaTask = Task.Run(async () =>
         {
-            tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+            tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken") ?? [];
         });
         await Task.WhenAll(movieTask, tokenaTask);
         string token = new(tokena);

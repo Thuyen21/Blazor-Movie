@@ -17,7 +17,7 @@ public partial class MovieStudio
     /* Used to sort the movies by name, date, or genre. */
     private string? sort = null;
     /* A dictionary that is used to store the image links. */
-    private readonly Dictionary<string, string> DicImageLink = new();
+    private readonly Dictionary<string?, string> DicImageLink = new();
     /// <summary>
     /// This function is called when the user clicks on the Name column header. It sorts the movies by
     /// name
@@ -26,7 +26,7 @@ public partial class MovieStudio
     {
         index = 0;
         sort = sort == "name" ? "nameDesc" : "name";
-        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}");
+        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}") ?? new();
         isSearch = false;
         searchString = string.Empty;
         await LoadImg();
@@ -39,7 +39,7 @@ public partial class MovieStudio
     {
         index = 0;
         sort = sort == "date" ? "dateDesc" : "date";
-        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}");
+        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}") ?? new();
         isSearch = false;
         searchString = string.Empty;
         await LoadImg();
@@ -58,7 +58,7 @@ public partial class MovieStudio
     {
         index = 0;
         sort = sort == "genre" ? "genreDesc" : "genre";
-        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}");
+        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}") ?? new();
         isSearch = false;
         searchString = string.Empty;
         await LoadImg();
@@ -71,12 +71,12 @@ public partial class MovieStudio
     {
         Task? moviesTask = Task.Run(async () =>
         {
-            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}");
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}") ?? new();
         });
         char[] tokena = { };
         Task? tokenaTask = Task.Run(async () =>
         {
-            tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken");
+            tokena = await _httpClient.GetFromJsonAsync<char[]>("User/GetToken") ?? [];
         });
         await Task.WhenAll(moviesTask, tokenaTask);
         token = new string(tokena);
@@ -92,20 +92,15 @@ public partial class MovieStudio
     {
         _ = Parallel.ForEach(movies, async item =>
         {
-            try
-            {
-                if (!DicImageLink.ContainsKey(item.MovieId))
-                {
-                    string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
-                    DicImageLink.Add(item.MovieId, ImageLink);
 
-                    StateHasChanged();
-                }
-            }
-            catch
+            if (!DicImageLink.ContainsKey(item.MovieId))
             {
+                string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
+                DicImageLink.Add(item.MovieId, ImageLink);
 
+                StateHasChanged();
             }
+
         });
         return Task.CompletedTask;
     }
@@ -118,12 +113,12 @@ public partial class MovieStudio
         index = 0;
         if (!string.IsNullOrWhiteSpace(searchString))
         {
-            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/{searchString}/ /{index}");
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/{searchString}/ /{index}") ?? new();
             isSearch = true;
         }
         else
         {
-            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}");
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}") ?? new();
             isSearch = false;
         }
 
@@ -139,15 +134,15 @@ public partial class MovieStudio
         index++;
         if (isSearch)
         {
-            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/{searchString}//{index}"));
+            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/{searchString}//{index}") ?? new());
         }
         else if (sort != null)
         {
-            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}"));
+            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ /{sort}/{index}") ?? new());
         }
         else
         {
-            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}"));
+            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Studio/Index/ / /{index}") ?? new());
         }
         await LoadImg();
     }

@@ -19,7 +19,7 @@ public partial class Profile
         HttpResponseMessage? response = await _httpClient.PostAsJsonAsync("User/ChangeEmail", changeEmail);
         alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
         _accountService.checkAuthentication();
-        accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");
+        accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile") ?? new();
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public partial class Profile
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile");
+        accountManagementModel = await _httpClient.GetFromJsonAsync<AccountManagementModel>("user/Profile") ?? new();
     }
 
     /// <summary>

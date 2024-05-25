@@ -31,7 +31,7 @@ public partial class EditMovieStudio
     /// </summary>
     protected override async Task OnInitializedAsync()
     {
-        movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}");
+        movie = await _httpClient.GetFromJsonAsync<MovieModel>($"Studio/EditMovie/{Id}") ?? new();
     }
 
     /// <summary>

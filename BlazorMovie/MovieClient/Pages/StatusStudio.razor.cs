@@ -41,7 +41,7 @@ public partial class StatusStudio
     /// </summary>
     private async Task Salary()
     {
-        content = await (await _httpClient.PostAsJsonAsync($"Studio/SalaryMovie", new List<string> { { Id }, { month.ToString("MM-dd-yyyy") } })).Content.ReadAsStringAsync();
+        content = await (await _httpClient.PostAsJsonAsync($"Studio/SalaryMovie", new List<string?> { { Id }, { month.ToString("MM-dd-yyyy") } })).Content.ReadAsStringAsync();
         showAlert = true;
     }
 
@@ -51,7 +51,7 @@ public partial class StatusStudio
     /// </summary>
     private async Task Check()
     {
-        content = await (await _httpClient.PostAsJsonAsync($"Studio/Check", new List<string> { { Id }, { check.ToString("MM-dd-yyyy") } })).Content.ReadAsStringAsync();
+        content = await (await _httpClient.PostAsJsonAsync($"Studio/Check", new List<string?> { { Id }, { check.ToString("MM-dd-yyyy") } })).Content.ReadAsStringAsync();
         showAlert = true;
     }
 
@@ -95,12 +95,12 @@ public partial class StatusStudio
             _ = Parallel.ForEach(dateToCheck, async date =>
             {
                 commentStatus = await _httpClient.GetFromJsonAsync<List<int>>($"Studio/CommentStatus/{Id}/{date:MM-dd-yyyy}");
-                List<double> getInfor = await _httpClient.GetFromJsonAsync<List<double>>($"Studio/PayCheck/{Id}/{date:MM-dd-yyyy}");
+                List<double> getInfor = await _httpClient.GetFromJsonAsync<List<double>>($"Studio/PayCheck/{Id}/{date:MM-dd-yyyy}") ?? new();
                 Dictionary<string, string> dic = new()
                 {
                     { "Date", date.ToString() },
-                    { "Positive", commentStatus[0].ToString() },
-                    { "Negative", commentStatus[1].ToString() },
+                    { "Positive", commentStatus?[0].ToString() ?? string.Empty },
+                    { "Negative", commentStatus?[1].ToString() ?? string.Empty},
                     { "View", getInfor[0].ToString() },
                     { "Buy", getInfor[1].ToString() }
                 };

@@ -6,7 +6,7 @@ namespace MovieClient.Pages;
 public partial class MovieAdmin
 {
     /* Initializing the movies variable to an empty list. */
-    private List<MovieModel>? movies = new();
+    private List<MovieModel?>? movies = new();
     /* Used to keep track of the page number. */
     private int index = 0;
     /* Initializing the searchString variable to an empty string. */
@@ -88,15 +88,15 @@ public partial class MovieAdmin
         index++;
         if (isSearch)
         {
-            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/{searchString}//{index}"));
+            movies?.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/{searchString}//{index}"));
         }
         else if (sort != null)
         {
-            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ /{sort}/{index}"));
+            movies?.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ /{sort}/{index}"));
         }
         else
         {
-            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ / /{index}"));
+            movies?.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"admin/Movie/ / /{index}"));
         }
     }
 }

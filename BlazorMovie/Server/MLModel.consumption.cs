@@ -17,11 +17,11 @@ namespace BlazorMovie_Server
         {
             [LoadColumn(0)]
             [ColumnName(@"review")]
-            public string Review { get; set; }
+            public string? Review { get; set; }
 
             [LoadColumn(1)]
             [ColumnName(@"sentiment")]
-            public string Sentiment { get; set; }
+            public string? Sentiment { get; set; }
 
         }
 
@@ -34,19 +34,19 @@ namespace BlazorMovie_Server
         public class ModelOutput
         {
             [ColumnName(@"review")]
-            public float[] Review { get; set; }
+            public float[]? Review { get; set; }
 
             [ColumnName(@"sentiment")]
             public uint Sentiment { get; set; }
 
             [ColumnName(@"Features")]
-            public float[] Features { get; set; }
+            public float[]? Features { get; set; }
 
             [ColumnName(@"PredictedLabel")]
-            public string PredictedLabel { get; set; }
+            public string? PredictedLabel { get; set; }
 
             [ColumnName(@"Score")]
-            public float[] Score { get; set; }
+            public float[]? Score { get; set; }
 
         }
 

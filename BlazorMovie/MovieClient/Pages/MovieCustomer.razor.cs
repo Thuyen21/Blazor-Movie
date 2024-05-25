@@ -25,7 +25,7 @@ public partial class MovieCustomer
     {
         index = 0;
         sort = sort == "name" ? "nameDesc" : "name";
-        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
+        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}") ?? new();
         isSearch = false;
         searchString = string.Empty;
         await LoadImg();
@@ -38,7 +38,7 @@ public partial class MovieCustomer
     {
         index = 0;
         sort = sort == "date" ? "dateDesc" : "date";
-        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
+        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}") ?? new();
         isSearch = false;
         searchString = string.Empty;
         await LoadImg();
@@ -51,7 +51,7 @@ public partial class MovieCustomer
     {
         index = 0;
         sort = sort == "genre" ? "genreDesc" : "genre";
-        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}");
+        movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}") ?? new();
         isSearch = false;
         searchString = string.Empty;
         await LoadImg();
@@ -65,7 +65,7 @@ public partial class MovieCustomer
     {
         Task? moviesTask = Task.Run(async () =>
         {
-            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}");
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}") ?? new();
         });
         char[] tokena = { };
         Task? tokenaTask = Task.Run(async () =>
@@ -86,18 +86,14 @@ public partial class MovieCustomer
     {
         _ = Parallel.ForEach(movies, async item =>
         {
-            try
+
+            if (!DicImageLink.ContainsKey(item.MovieId))
             {
-                if (!DicImageLink.ContainsKey(item.MovieId))
-                {
-                    string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
-                    DicImageLink.Add(item.MovieId, ImageLink);
-                    StateHasChanged();
-                }
+                string ImageLink = await new FirebaseStorage("movie2-e3c7b.appspot.com", new FirebaseStorageOptions { AuthTokenAsyncFactory = async () => await Task.FromResult(await Task.FromResult(token)), ThrowOnCancel = true }).Child(item.StudioId).Child(item.MovieId).Child("Image").GetDownloadUrlAsync();
+                DicImageLink.Add(item.MovieId, ImageLink);
+                StateHasChanged();
             }
-            catch
-            {
-            }
+
         });
         return Task.CompletedTask;
     }
@@ -110,12 +106,12 @@ public partial class MovieCustomer
         index = 0;
         if (!string.IsNullOrWhiteSpace(searchString))
         {
-            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/{searchString}/ /{index}");
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/{searchString}/ /{index}") ?? new();
             isSearch = true;
         }
         else
         {
-            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}");
+            movies = await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}") ?? new();
             isSearch = false;
         }
 
@@ -131,15 +127,15 @@ public partial class MovieCustomer
         index++;
         if (isSearch)
         {
-            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/{searchString}//{index}"));
+            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/{searchString}//{index}") ?? new());
         }
         else if (sort != null)
         {
-            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}"));
+            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ /{sort}/{index}") ?? new());
         }
         else
         {
-            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}"));
+            movies.AddRange(await _httpClient.GetFromJsonAsync<List<MovieModel>>($"Customer/Movie/ / /{index}") ?? new());
         }
         await LoadImg();
     }

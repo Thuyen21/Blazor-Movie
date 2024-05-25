@@ -17,15 +17,13 @@ public class UserController : Controller
 
     private readonly FirestoreDb db;
     private readonly FirebaseAuthClient client;
-    private readonly FirebaseAuthConfig config;
     public UserController(FirestoreDb db, FirebaseAuthConfig config)
     {
         this.db = db;
         client = new FirebaseAuthClient(config);
-        this.config = config;
     }
 
-    private static UserCredential? userCredential;
+    private UserCredential? userCredential;
 
     /// <summary>
     /// It takes in a user's email and password, checks if the user exists in the database, if the user
@@ -57,10 +55,10 @@ public class UserController : Controller
             acc = document.ConvertTo<AccountManagementModel>();
         }
         ClaimsIdentity claimsIdentity = new(new[] {
-                new Claim(ClaimTypes.Email, logIn.Email),
-                    new Claim(ClaimTypes.Sid, user.Uid),
-                    new Claim(ClaimTypes.Name, acc.Name),
-                    new Claim(ClaimTypes.Role, acc.Role),
+                new Claim(ClaimTypes.Email, logIn.Email?? string.Empty),
+                    new Claim(ClaimTypes.Sid, user.Uid?? string.Empty),
+                    new Claim(ClaimTypes.Name, acc.Name?? string.Empty),
+                    new Claim(ClaimTypes.Role, acc.Role?? string.Empty),
                     new Claim(ClaimTypes.DateOfBirth, acc.DateOfBirth.ToShortDateString()),
                     new Claim("Token", await client.User.GetIdTokenAsync(true))
 
@@ -96,9 +94,9 @@ public class UserController : Controller
     public async Task<ActionResult<AccountManagementModel>> GetCurrentUser()
     {
         AccountManagementModel acc = new();
-        if (User.Identity.IsAuthenticated)
+        if (User.Identity is not null && User.Identity.IsAuthenticated)
         {
-            string Id = User.FindFirst(ClaimTypes.Sid).Value;
+            string? Id = User.FindFirst(ClaimTypes.Sid)?.Value;
             Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
             QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
             foreach (DocumentSnapshot VARIABLE in snapshot.Documents)
@@ -120,25 +118,25 @@ public class UserController : Controller
     [HttpPost("ChangeEmail")]
     public async Task<ActionResult> ChangeEmail([FromBody] ChangeEmailModel changeEmailModel)
     {
-        changeEmailModel.Email = changeEmailModel.Email.ToLower();
+        changeEmailModel.Email = changeEmailModel.Email?.ToLower();
         try
         {
             userCredential =
-                    await client.SignInWithEmailAndPasswordAsync(User.FindFirst(ClaimTypes.Email).Value,
+                    await client.SignInWithEmailAndPasswordAsync(User.FindFirst(ClaimTypes.Email)?.Value,
                         changeEmailModel.Password);
             UserCredential newUserCredentiall = userCredential;
             newUserCredentiall.AuthCredential = EmailProvider.GetCredential(changeEmailModel.Email, changeEmailModel.Password);
             _ = await newUserCredentiall.User.LinkWithCredentialAsync(userCredential.AuthCredential);
             QuerySnapshot snapshot = await db.Collection("Account").WhereEqualTo("Id", userCredential.User.Uid)
                 .GetSnapshotAsync();
-            Dictionary<string, dynamic> update = new() { { "Email", changeEmailModel.Email } };
+            Dictionary<string, dynamic?> update = new() { { "Email", changeEmailModel.Email } };
             foreach (DocumentSnapshot document in snapshot.Documents)
             {
                 _ = await document.Reference.UpdateAsync(update);
             }
             ClaimsIdentity identity = new(User.Identity);
             identity.RemoveClaim(identity.FindFirst(ClaimTypes.Email));
-            identity.AddClaim(new Claim(ClaimTypes.Email, changeEmailModel.Email));
+            identity.AddClaim(new Claim(ClaimTypes.Email, changeEmailModel.Email ?? string.Empty));
             await HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(identity));
@@ -177,20 +175,20 @@ public class UserController : Controller
     /// </returns>
     [Authorize]
     [HttpGet("Profile")]
-    public async Task<ActionResult<AccountManagementModel>> Profile()
+    public Task<ActionResult<AccountManagementModel>> Profile()
     {
-        AccountManagementModel acc = new();
-        if (User.Identity.IsAuthenticated)
-        {
-            string Id = User.FindFirst(ClaimTypes.Sid).Value;
-            Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
-            QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
-            foreach (DocumentSnapshot VARIABLE in snapshot.Documents)
-            {
-                acc = VARIABLE.ConvertTo<AccountManagementModel>();
-            }
-        }
-        return await Task.FromResult(acc);
+        //AccountManagementModel acc = new();
+        //if (User.Identity is not null && User.Identity.IsAuthenticated)
+        //{
+        //    string? Id = User.FindFirst(ClaimTypes.Sid)?.Value;
+        //    Query usersRef = db.Collection("Account").WhereEqualTo("Id", Id);
+        //    QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
+        //    foreach (DocumentSnapshot VARIABLE in snapshot.Documents)
+        //    {
+        //        acc = VARIABLE.ConvertTo<AccountManagementModel>();
+        //    }
+        //}
+        return GetCurrentUser();
     }
     /// <summary>
     /// It takes in a model, queries the database for the user's account, updates the account with the
@@ -208,7 +206,7 @@ public class UserController : Controller
         {
             QuerySnapshot snapshot = await db.Collection("Account")
                 .WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
-            Dictionary<string, dynamic> update = new()
+            Dictionary<string, dynamic?> update = new()
             {
                 { "Name", accountManagementModel.Name },
                 { "DateOfBirth", accountManagementModel.DateOfBirth.AddDays(1).ToUniversalTime() }
@@ -239,55 +237,56 @@ public class UserController : Controller
         if (signUpModel.Role is "Customer" or "Studio")
         {
 
-        }
-        else
-        {
-            return BadRequest("Check role");
-        }
-        if (signUpModel.ConfirmPassword != signUpModel.Password)
-        {
-            return BadRequest("Password and Confirm Password are different");
-        }
-        signUpModel.Email = signUpModel.Email!.ToLower();
-        try
-        {
+
+            if (signUpModel.ConfirmPassword != signUpModel.Password)
+            {
+                return BadRequest("Password and Confirm Password are different");
+            }
+            signUpModel.Email = signUpModel.Email!.ToLower();
             try
             {
-                userCredential =
-                    await client.CreateUserWithEmailAndPasswordAsync(signUpModel.Email, signUpModel.Password, signUpModel.Name);
-            }
-            catch (FirebaseAuthException ex)
-            {
+                try
+                {
+                    userCredential =
+                        await client.CreateUserWithEmailAndPasswordAsync(signUpModel.Email, signUpModel.Password, signUpModel.Name);
+                }
+                catch (FirebaseAuthException ex)
+                {
 
-                return BadRequest(ex.Reason.ToString());
-            }
-            User user = userCredential.User;
-            CollectionReference docRef = db.Collection("Account");
-            AccountManagementModel account = new()
-            {
-                DateOfBirth = signUpModel.DateOfBirth.AddDays(1).ToUniversalTime(),
-                Email = signUpModel.Email,
-                Id = user.Uid,
-                Name = signUpModel.Name,
-                Role = signUpModel.Role,
-                Wallet = 0.0
-            };
-            _ = await docRef.AddAsync(account);
-            ClaimsIdentity claimsIdentity = new(new[] {
+                    return BadRequest(ex.Reason.ToString());
+                }
+                User user = userCredential.User;
+                CollectionReference docRef = db.Collection("Account");
+                AccountManagementModel account = new()
+                {
+                    DateOfBirth = signUpModel.DateOfBirth.AddDays(1).ToUniversalTime(),
+                    Email = signUpModel.Email,
+                    Id = user.Uid,
+                    Name = signUpModel.Name,
+                    Role = signUpModel.Role,
+                    Wallet = 0.0
+                };
+                _ = await docRef.AddAsync(account);
+                ClaimsIdentity claimsIdentity = new(new[] {
                 new Claim(ClaimTypes.Email, account.Email),
                     new Claim(ClaimTypes.Sid, user.Uid),
-                    new Claim(ClaimTypes.Name, account.Name),
+                    new Claim(ClaimTypes.Name, account.Name ?? string.Empty),
                     new Claim(ClaimTypes.Role, account.Role),
                     new Claim(ClaimTypes.DateOfBirth, account.DateOfBirth.ToString()),
                     new Claim("Token", await user.GetIdTokenAsync())
             }, "serverAuth");
-            ClaimsPrincipal claimsPrincipal = new(claimsIdentity);
-            await HttpContext.SignInAsync(claimsPrincipal);
-            return Ok();
+                ClaimsPrincipal claimsPrincipal = new(claimsIdentity);
+                await HttpContext.SignInAsync(claimsPrincipal);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
-        catch (Exception ex)
+        else
         {
-            return BadRequest(ex.Message);
+            return BadRequest("Check role");
         }
     }
 
@@ -300,11 +299,11 @@ public class UserController : Controller
     [HttpGet("GetToken")]
     public async Task<ActionResult<char[]>> GetToken()
     {
-        if (User.Identity.IsAuthenticated)
+        if (User.Identity is not null && User.Identity.IsAuthenticated)
         {
-            string token = User.FindFirstValue("Token");
-            char[] ch = new char[token.Length];
-            for (int i = 0; i < token.Length; i++)
+            string? token = User.FindFirstValue("Token");
+            char[] ch = new char[token?.Length ?? 0];
+            for (int i = 0; i < token?.Length; i++)
             {
                 ch[i] = token[i];
             }
@@ -383,16 +382,8 @@ public class UserController : Controller
         {
             for (int i = 0; i <= 10; i++)
             {
-                try
-                {
                     movies.Add((await db.Collection("Movie").WhereEqualTo("MovieId", view.ElementAt(i).Key).GetSnapshotAsync()).Documents[0].ConvertTo<MovieModel>());
-                }
-                catch
-                {
 
-
-
-                }
             }
         }
         else
@@ -400,16 +391,7 @@ public class UserController : Controller
             foreach (KeyValuePair<string, double> item in view)
             {
 
-                try
-                {
-                    movies.Add((await db.Collection("Movie").WhereEqualTo("MovieId", item.Key).GetSnapshotAsync()).Documents[0].ConvertTo<MovieModel>());
-                }
-                catch
-                {
-
-
-
-                }
+                movies.Add((await db.Collection("Movie").WhereEqualTo("MovieId", item.Key).GetSnapshotAsync()).Documents[0].ConvertTo<MovieModel>());
             }
         }
         return await Task.FromResult(movies);

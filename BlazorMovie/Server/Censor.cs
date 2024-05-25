@@ -3,16 +3,16 @@
 namespace BlazorMovie.Server;
 public class Censor
 {
-    public IList<string> CensoredWords { get; private set; } = new List<string>();
+    public IList<string?> CensoredWords { get; private set; } = new List<string?>();
 
     /* Reading the csv file and adding the words to the list. */
     public Censor()
     {
-        StreamReader reader = new(Path.GetFullPath(Path.Combine("wwwroot/Bad Words/base-list-of-bad-words_csv-file_2021_01_18.csv")));
+        using StreamReader reader = new(Path.GetFullPath(Path.Combine("wwwroot/Bad Words/base-list-of-bad-words_csv-file_2021_01_18.csv")));
         while (!reader.EndOfStream)
         {
-            string line = reader.ReadLine();
-            string[] values = line.Split(',');
+            string? line = reader.ReadLine();
+            string?[] values = line?.Split(',') ?? [];
             CensoredWords.Add(values[0]);
         }
     }
@@ -43,7 +43,7 @@ public class Censor
     /// <returns>
     /// The censored text.
     /// </returns>
-    public string CensorText(string text)
+    public string CensorText(string? text)
     {
         if (text == null)
         {
@@ -52,13 +52,17 @@ public class Censor
 
         string censoredText = text;
 
-        foreach (string censoredWord in CensoredWords)
+        foreach (string? censoredWord in CensoredWords)
         {
-            string regularExpression = ToRegexPattern(censoredWord);
+            string? regularExpression = ToRegexPattern(censoredWord);
 
-            censoredText = Regex.Replace(censoredText, regularExpression, StarCensoredMatch,
-              RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+            if (regularExpression != null)
+            {
+                censoredText = Regex.Replace(censoredText, regularExpression, StarCensoredMatch,
+                  RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+            }
         }
+
 
         return censoredText;
     }
@@ -85,8 +89,12 @@ public class Censor
     /// <returns>
     /// A string that is a regex pattern.
     /// </returns>
-    private string ToRegexPattern(string wildcardSearch)
+    private string? ToRegexPattern(string? wildcardSearch)
     {
+        if (wildcardSearch is null)
+        {
+            return wildcardSearch;
+        }
         string regexPattern = Regex.Escape(wildcardSearch);
 
         regexPattern = regexPattern.Replace(@"\*", ".*?");
