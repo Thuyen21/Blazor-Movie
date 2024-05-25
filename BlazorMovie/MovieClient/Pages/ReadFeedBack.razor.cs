@@ -16,7 +16,12 @@ public partial class ReadFeedBack
     {
         try
         {
-            feedbacks.AddRange(await _httpClient.GetFromJsonAsync<List<FeedbackMessageModel>>($"admin/ReadFeedBack/{index}"));
+            var newFeedbacks = await _httpClient.GetFromJsonAsync<List<FeedbackMessageModel>>($"admin/ReadFeedBack/{index}");
+            if (newFeedbacks?.Any() is true)
+            {
+                feedbacks.AddRange(newFeedbacks);
+            }
+
         }
         catch (Exception ex)
         {
@@ -29,8 +34,9 @@ public partial class ReadFeedBack
     /// </summary>
     private async Task LoadMore()
     {
+
         index++;
-        feedbacks.AddRange(await _httpClient.GetFromJsonAsync<List<FeedbackMessageModel>>($"admin/ReadFeedBack/{index}"));
+        await this.OnInitializedAsync();
     }
 
 }

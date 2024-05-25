@@ -50,9 +50,9 @@ else
             {
                 <div class="col">
                     <div class="card h-100">
-                        @if(DicImageLink.ContainsKey(item.MovieId))
+                        @if(DicImageLink.ContainsKey(item?.MovieId))
                         {
-                            <img src="@DicImageLink[item.MovieId]" class="card-img-top" alt="..." style="width=320px; height: 280px"/>
+                            <img src="@DicImageLink[item?.MovieId]" class="card-img-top" alt="..." style="width=320px; height: 280px"/>
                         }
                         else
                         {

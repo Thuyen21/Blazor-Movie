@@ -1,5 +1,6 @@
 using MudBlazor;
 using System.Net.Http.Json;
+using System.Net.Mail;
 
 namespace MovieClient.Pages;
 
@@ -19,11 +20,11 @@ public partial class SalaryStudio
     /// <returns>
     /// A boolean value.
     /// </returns>
-    private bool isMail(string Email)
+    private bool isMail(string? Email)
     {
         try
         {
-            System.Net.Mail.MailAddress addr = new(Email);
+            _ = new MailAddress(Email ?? string.Empty);
             return true;
         }
         catch
@@ -50,7 +51,7 @@ public partial class SalaryStudio
             else
             {
                 HttpResponseMessage? response = await _httpClient.PostAsJsonAsync("Studio/Salary", new Dictionary<string, string>()
-                {{"Email", Email}, {"Cash", Cash.ToString()}});
+                {{"Email", Email ?? string.Empty}, {"Cash", Cash.ToString()}});
                 alertService.ShowAlert(response.IsSuccessStatusCode, await response.Content.ReadAsStringAsync());
             }
         }

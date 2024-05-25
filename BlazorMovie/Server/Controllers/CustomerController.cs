@@ -216,7 +216,8 @@ public class CustomerController : Controller
         }
         else
         {
-            foreach (ValidationError error in result.Errors.DeepAll())
+            var error = result.Errors.DeepAll();
+            if (error.Any())
             {
                 //ModelState.AddModelError(string.Empty, "Attribute: " + error.Attribute);
                 //ModelState.AddModelError(string.Empty, "  Code: " + error.Code);
@@ -225,7 +226,7 @@ public class CustomerController : Controller
                 //string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
 
                 //return Redirect($"{hostname}/Deposit/{error.Message}");
-                return BadRequest(error.Message);
+                return BadRequest(string.Join(", ", error));
             }
         }
 
@@ -310,7 +311,8 @@ public class CustomerController : Controller
         }
         else
         {
-            foreach (ValidationError error in result.Errors.DeepAll())
+            var error = result.Errors.DeepAll();
+            if (error.Any())
             {
                 //ModelState.AddModelError(string.Empty, "Attribute: " + error.Attribute);
                 //ModelState.AddModelError(string.Empty, "  Code: " + error.Code);
@@ -318,8 +320,7 @@ public class CustomerController : Controller
                 //string hostname = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
 
                 //return Redirect($"{hostname}/Deposit/{error.Message}");
-
-                return BadRequest(error.Message);
+                return BadRequest(string.Join(", ", error));
             }
         }
         return Ok();
@@ -335,11 +336,18 @@ public class CustomerController : Controller
     public async Task<ActionResult<char[]>> VipCheck()
     {
         QuerySnapshot vipCheck = await db.Collection("Vip").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
-        return vipCheck.Documents.Count == 0
+        if (vipCheck.Documents[0].GetValue<DateTime>("Time") < DateTime.UtcNow)
+        {
+            return vipCheck.Documents.Count == 0
             ? (ActionResult<char[]>)await Task.FromResult("Not Vip".ToCharArray())
-            : vipCheck.Documents[0].GetValue<DateTime>("Time") < DateTime.UtcNow
-                ? (ActionResult<char[]>)await Task.FromResult("Expires Vip".ToCharArray())
-                : (ActionResult<char[]>)await Task.FromResult(vipCheck.Documents[0].GetValue<DateTime>("Time").ToString().ToCharArray());
+            : (ActionResult<char[]>)await Task.FromResult("Expires Vip".ToCharArray());
+        }
+        else
+        {
+            return vipCheck.Documents.Count == 0
+            ? (ActionResult<char[]>)await Task.FromResult("Not Vip".ToCharArray())
+            : (ActionResult<char[]>)await Task.FromResult(vipCheck.Documents[0].GetValue<DateTime>("Time").ToString().ToCharArray());
+        }
     }
     /// <summary>
     /// If the user chooses to buy a movie, check if the user has enough money, if the user has already
@@ -358,7 +366,7 @@ public class CustomerController : Controller
     public async Task<ActionResult> BuyVip([FromBody] VipModel vip)
     {
 
-        CollectionReference collection = db.Collection("Buy");
+        //CollectionReference collection = db.Collection("Buy");
         if (vip.Choose == 0 && vip.Id != null)
         {
             if ((await db.Collection("Account").
@@ -370,7 +378,7 @@ public class CustomerController : Controller
             {
                 return BadRequest("Already buy this movie");
             }
-            Task<DocumentReference>? buyTask = Task.Run(async () => await db.Collection("Buy").AddAsync(new Dictionary<string, dynamic>() { { "MovieId", vip.Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow } }));
+            Task<DocumentReference>? buyTask = Task.Run(async () => await db.Collection("Buy").AddAsync(new Dictionary<string, dynamic?>() { { "MovieId", vip.Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow } }));
 
             Task<WriteResult>? cashTask = Task.Run(async () => await (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic> { { "Wallet", (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>("Wallet") - 4.99 } }));
             Task addMoneyMovie = Task.Run(async () =>
@@ -410,7 +418,7 @@ public class CustomerController : Controller
                 QuerySnapshot vipCheck = await db.Collection("Vip").WhereEqualTo("User", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
                 if (vipCheck.Documents.Count == 0)
                 {
-                    Task<DocumentReference>? buyTask = Task.Run(async () => await db.Collection("Vip").AddAsync(new Dictionary<string, dynamic>() { { "User", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow.AddMonths(vip.Choose) } }));
+                    Task<DocumentReference>? buyTask = Task.Run(async () => await db.Collection("Vip").AddAsync(new Dictionary<string, dynamic?>() { { "User", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow.AddMonths(vip.Choose) } }));
                     Task<WriteResult>? cashTask = Task.Run(async () => await (await db.Collection("Account").WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).
                         Documents[0].Reference.UpdateAsync(new Dictionary<string, dynamic>{{"Wallet", (await db.Collection("Account").
                             WhereEqualTo("Id", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>("Wallet") - minus} }));
@@ -483,17 +491,17 @@ public class CustomerController : Controller
             {
                 return BadRequest();
             }
-            DateTime time = new(DateTime.UtcNow.Year, DateTime.UtcNow.Month, timeVip.Day);
+            DateTime time = new(DateTime.UtcNow.Year, DateTime.UtcNow.Month, timeVip.Day, 0, 0, 0, DateTimeKind.Utc);
             collectionView = await db.Collection("View").WhereGreaterThanOrEqualTo("Time", time.ToUniversalTime()).WhereLessThan("Time", time.AddMonths(1).ToUniversalTime()).GetSnapshotAsync();
-            _ = await db.Collection("View").AddAsync(new Dictionary<string, dynamic>() { { "Id", Id }, { "Viewer", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow } });
+            _ = await db.Collection("View").AddAsync(new Dictionary<string, dynamic?>() { { "Id", Id }, { "Viewer", User.FindFirstValue(ClaimTypes.Sid) }, { "Time", DateTime.UtcNow } });
             List<string> movie = new();
             foreach (DocumentSnapshot? item in collectionView.Documents)
             {
                 movie.Add(item.GetValue<string>("Id"));
             }
 
-            double oldCash = movie.Count == 0 ? 0 : 8 / (movie.Count() * 1.0);
-            double newCash = 8 / ((movie.Count() * 1.0) + 1.0);
+            double oldCash = movie.Count == 0 ? 0 : 8 / (movie.Count * 1.0);
+            double newCash = 8 / ((movie.Count * 1.0) + 1.0);
             QuerySnapshot? newUP = await db.Collection("Movie").WhereEqualTo("MovieId", Id).GetSnapshotAsync();
             double newUPCash = 0;
             try
@@ -646,14 +654,14 @@ public class CustomerController : Controller
         {
             if (ac == "Like")
             {
-                Task<DocumentReference>? Task1 = Task.Run(async () => await db.Collection("CommentAcction").AddAsync(new Dictionary<string, dynamic>() { { "Action", "Like" }, { "CommentId", Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) } }));
+                Task<DocumentReference>? Task1 = Task.Run(async () => await db.Collection("CommentAcction").AddAsync(new Dictionary<string, dynamic?>() { { "Action", "Like" }, { "CommentId", Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) } }));
                 QuerySnapshot? temp = await db.Collection("Comment").WhereEqualTo("Id", Id).GetSnapshotAsync();
                 Task<WriteResult>? Task2 = Task.Run(async () => await temp.Documents[0].Reference.UpdateAsync("Like", temp.Documents[0].ConvertTo<CommentModel>().Like + 1));
                 await Task.WhenAll(Task1, Task2);
             }
             if (ac == "DisLike")
             {
-                Task<DocumentReference>? Task1 = Task.Run(async () => await db.Collection("CommentAcction").AddAsync(new Dictionary<string, dynamic>() { { "Action", "DisLike" }, { "CommentId", Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) } }));
+                Task<DocumentReference>? Task1 = Task.Run(async () => await db.Collection("CommentAcction").AddAsync(new Dictionary<string, dynamic?>() { { "Action", "DisLike" }, { "CommentId", Id }, { "User", User.FindFirstValue(ClaimTypes.Sid) } }));
                 QuerySnapshot? temp = await db.Collection("Comment").WhereEqualTo("Id", Id).GetSnapshotAsync();
                 Task<WriteResult>? Task2 = Task.Run(async () => await temp.Documents[0].Reference.UpdateAsync("DisLike", temp.Documents[0].ConvertTo<CommentModel>().DisLike + 1));
                 await Task.WhenAll(Task1, Task2);
@@ -678,7 +686,7 @@ public class CustomerController : Controller
                 {
                     if (ac == "Like")
                     {
-                        Task<WriteResult>? Task1 = Task.Run(async () => await item.Reference.UpdateAsync(new Dictionary<string, dynamic>() { { "Action", "Like" } }));
+                        Task<WriteResult>? Task1 = Task.Run(async () => await item.Reference.UpdateAsync(new Dictionary<string, dynamic?>() { { "Action", "Like" } }));
                         QuerySnapshot? temp = await db.Collection("Comment").WhereEqualTo("Id", Id).GetSnapshotAsync();
                         Task<WriteResult>? Task2 = Task.Run(async () => await temp.Documents[0].Reference.UpdateAsync("Like", temp.Documents[0].ConvertTo<CommentModel>().Like + 1));
                         Task<WriteResult>? Task3 = Task.Run(async () => await temp.Documents[0].Reference.UpdateAsync("DisLike", temp.Documents[0].ConvertTo<CommentModel>().DisLike - 1));
@@ -686,7 +694,7 @@ public class CustomerController : Controller
                     }
                     if (ac == "DisLike")
                     {
-                        Task<WriteResult>? Task1 = Task.Run(async () => await item.Reference.UpdateAsync(new Dictionary<string, dynamic>() { { "Action", "DisLike" } }));
+                        Task<WriteResult>? Task1 = Task.Run(async () => await item.Reference.UpdateAsync(new Dictionary<string, dynamic?>() { { "Action", "DisLike" } }));
                         QuerySnapshot? temp = await db.Collection("Comment").WhereEqualTo("Id", Id).GetSnapshotAsync();
                         Task<WriteResult>? Task2 = Task.Run(async () => await temp.Documents[0].Reference.UpdateAsync("Like", temp.Documents[0].ConvertTo<CommentModel>().Like - 1));
                         Task<WriteResult>? Task3 = Task.Run(async () => await temp.Documents[0].Reference.UpdateAsync("DisLike", temp.Documents[0].ConvertTo<CommentModel>().DisLike + 1));

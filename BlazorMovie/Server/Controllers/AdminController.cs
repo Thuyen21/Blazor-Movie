@@ -17,21 +17,12 @@ namespace BlazorMovie.Server.Controllers;
 [Authorize(Roles = "Admin")]
 public class AdminController : Controller
 {
-    /* Creating a private readonly variable called env. */
-    private readonly IWebHostEnvironment env;
     /* Creating a new instance of the FirestoreDb class. */
     private readonly FirestoreDb db;
-    /* Creating a new instance of the FirebaseAuthClient class. */
-    private readonly FirebaseAuthClient client;
-    /* Creating a private readonly variable called config. */
-    private readonly FirebaseAuthConfig config;
     /* The above code is creating a new instance of the FirebaseAuthClient class. */
     public AdminController(IWebHostEnvironment env, FirestoreDb db, FirebaseAuthConfig config)
     {
-        this.env = env;
         this.db = db;
-        this.config = config;
-        client = new FirebaseAuthClient(config);
     }
 
     /// <summary>
@@ -49,7 +40,7 @@ public class AdminController : Controller
     {
         try
         {
-            List<AccountManagementModel> myFoo = new();
+            List<AccountManagementModel> myFoo = [];
 
             Query usersRef = db.Collection("Account");
 
@@ -137,24 +128,25 @@ public class AdminController : Controller
             if (account.Role is "Admin" or "Studio" or "Customer" or
             "Admin")
             {
-            }
-            else
-            {
-                return BadRequest("Don't edit role");
-            }
-            Query collection = db.Collection("Account").WhereEqualTo("Id", account.Id);
-            QuerySnapshot snapshot = await collection.GetSnapshotAsync();
-            Dictionary<string, dynamic> update = new()
+
+                Query collection = db.Collection("Account").WhereEqualTo("Id", account.Id);
+                QuerySnapshot snapshot = await collection.GetSnapshotAsync();
+                Dictionary<string, dynamic?> update = new()
             {
                 { "Name", account.Name },
                 { "Role", account.Role },
                 { "DateOfBirth", account.DateOfBirth.ToUniversalTime() }
             };
-            _ = Parallel.ForEach(snapshot.Documents, async snapshotDocument =>
+                _ = Parallel.ForEach(snapshot.Documents, async snapshotDocument =>
+                {
+                    _ = await snapshotDocument.Reference.UpdateAsync(update);
+                });
+                return Ok("Success");
+            }
+            else
             {
-                _ = await snapshotDocument.Reference.UpdateAsync(update);
-            });
-            return Ok("Success");
+                return BadRequest("Don't edit role");
+            }
         }
         catch (Exception ex)
         {
@@ -173,7 +165,6 @@ public class AdminController : Controller
     {
         try
         {
-            string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
             UserRecordArgs userRecordArgs = new() { Uid = Id, Disabled = true };
             _ = await FirebaseAuth.DefaultInstance.UpdateUserAsync(userRecordArgs);
             return Ok("Success");
@@ -195,7 +186,6 @@ public class AdminController : Controller
     {
         try
         {
-            string path = Path.GetFullPath(Path.Combine("movie2-e3c7b-firebase-adminsdk-dk3zo-cbfa735233.json"));
             UserRecordArgs userRecordArgs = new() { Uid = Id, Disabled = false };
             _ = await FirebaseAuth.DefaultInstance.UpdateUserAsync(userRecordArgs);
             return Ok("Success");
@@ -246,7 +236,7 @@ public class AdminController : Controller
                     usersRef = usersRef.OrderByDescending("MovieGenre");
                     break;
             }
-            List<MovieModel> myFoo = new();
+            List<MovieModel> myFoo = [];
             usersRef = usersRef.Offset(index * 5).Limit(5);
             QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
             foreach (DocumentSnapshot document in snapshot.Documents)
@@ -303,9 +293,10 @@ public class AdminController : Controller
             Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
             QuerySnapshot snapshot = await collection.GetSnapshotAsync();
             movie.PremiereDate = movie.PremiereDate.ToUniversalTime();
-            Dictionary<string, dynamic> dictionary = movie.GetType()
+            Dictionary<string, dynamic?> dictionary = movie.GetType()
                 .GetProperties(BindingFlags.Instance | BindingFlags.Public)
                 .ToDictionary(prop => prop.Name, prop => prop.GetValue(movie, null));
+
             _ = Parallel.ForEach(snapshot.Documents, async snapshotDocument =>
             {
                 _ = await snapshotDocument.Reference.UpdateAsync(dictionary);
@@ -327,7 +318,7 @@ public class AdminController : Controller
     /// The MovieUpload view is being returned.
     /// </returns>
     [HttpGet("MovieUpload/{MovieId}")]
-    public async Task<ActionResult> MovieUpload(string MovieId)
+    public async Task<ActionResult> MovieIdUpload(string MovieId)
     {
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", MovieId);
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
@@ -366,8 +357,8 @@ public class AdminController : Controller
     {
         if (ImageFileUp != null)
         {
-            List<string> list = new()
-            {
+            List<string> list =
+            [
                 "image/bmp",
                 "image/gif",
                 "image/jpeg",
@@ -375,29 +366,29 @@ public class AdminController : Controller
                 "image/svg+xml",
                 "image/tiff",
                 "image/webp"
-            };
+            ];
             if (list.Contains(ImageFileUp.ContentType))
             {
                 using Stream fileStream = ImageFileUp.OpenReadStream();
-                {
-                    FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com",
-                            new FirebaseStorageOptions
-                            {
-                                AuthTokenAsyncFactory = async () => await Task.FromResult(User.FindFirstValue("Token")),
-                                ThrowOnCancel = true,
-                                HttpClientTimeout = TimeSpan.FromHours(2)
-                            }).Child(StudioId).Child(MovieId).Child("Image")
-                        .PutAsync(fileStream);
-                    _ = await task;
 
-                    fileStream.Close();
-                }
+                FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com",
+                        new FirebaseStorageOptions
+                        {
+                            AuthTokenAsyncFactory = async () => await Task.FromResult(User.FindFirstValue("Token")),
+                            ThrowOnCancel = true,
+                            HttpClientTimeout = TimeSpan.FromHours(2)
+                        }).Child(StudioId).Child(MovieId).Child("Image")
+                    .PutAsync(fileStream);
+                _ = await task;
+
+                fileStream.Close();
+
             }
         }
         if (MovieFileUp != null)
         {
-            List<string> list = new()
-            {
+            List<string> list =
+            [
                 "video/x-msvideo",
                 "video/mp4",
                 "video/mpeg",
@@ -407,30 +398,30 @@ public class AdminController : Controller
                 "video/3gpp",
                 "video/3gpp2",
                 "video/x-matroska"
-            };
+            ];
             if (list.Contains(MovieFileUp.ContentType))
             {
                 using Stream fileStream = MovieFileUp.OpenReadStream();
+
+                FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com",
+                        new FirebaseStorageOptions
+                        {
+                            AuthTokenAsyncFactory = async () => await Task.FromResult(User.FindFirstValue("Token")),
+                            ThrowOnCancel = true,
+                            HttpClientTimeout = TimeSpan.FromHours(2)
+                        }).Child(StudioId).Child(MovieId).Child("Movie")
+                    .PutAsync(fileStream);
+
+
+                task.Progress.ProgressChanged += (s, e) =>
                 {
-                    FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com",
-                            new FirebaseStorageOptions
-                            {
-                                AuthTokenAsyncFactory = async () => await Task.FromResult(User.FindFirstValue("Token")),
-                                ThrowOnCancel = true,
-                                HttpClientTimeout = TimeSpan.FromHours(2)
-                            }).Child(StudioId).Child(MovieId).Child("Movie")
-                        .PutAsync(fileStream);
 
+                };
 
-                    task.Progress.ProgressChanged += (s, e) =>
-                    {
+                _ = await task;
 
-                    };
+                fileStream.Close();
 
-                    _ = await task;
-
-                    fileStream.Close();
-                }
             }
 
         }
@@ -464,32 +455,21 @@ public class AdminController : Controller
                     }).Child(movie.StudioId).Child(movie.MovieId).Child("Image")
                 .DeleteAsync();
                 await delete;
-            }
-            catch
-            {
-
-
-            }
-
-            try
-            {
-                Task delete = new FirebaseStorage("movie2-e3c7b.appspot.com",
-                    new FirebaseStorageOptions
-                    {
-                        AuthTokenAsyncFactory = async () => await Task.FromResult(User.FindFirstValue("Token"))
-                    }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie")
-                .DeleteAsync();
+                delete = new FirebaseStorage("movie2-e3c7b.appspot.com",
+                   new FirebaseStorageOptions
+                   {
+                       AuthTokenAsyncFactory = async () => await Task.FromResult(User.FindFirstValue("Token"))
+                   }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie")
+               .DeleteAsync();
                 await delete;
+                await snapshotDocument.Reference.DeleteAsync();              
             }
             catch
             {
-
-
-            }
-            _ = await snapshotDocument.Reference.DeleteAsync();
-            return Ok("Success");
+                return BadRequest("Not success");
+            }        
         }
-        return BadRequest("Not success");
+        return Ok("Success");
     }
     /// <summary>
     /// It takes an index, and returns the next 5 feedback messages from the database, ordered by time,
@@ -503,7 +483,7 @@ public class AdminController : Controller
     public async Task<ActionResult<List<FeedbackMessageModel>>> ReadFeedBack(int index)
     {
         index--;
-        List<FeedbackMessageModel> myFoo = new();
+        List<FeedbackMessageModel> myFoo = [];
         Query usersRef = db.Collection("Feedback");
         usersRef = usersRef.OrderByDescending("Time").Offset(index * 5).Limit(5);
         QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PayoutsSdk.Core;
 using PayoutsSdk.Payouts;
+using System.Globalization;
 using System.Reflection;
 using System.Security.Claims;
 
@@ -141,7 +142,7 @@ public class StudioController : Controller
         Query collection = db.Collection("Movie").WhereEqualTo("MovieId", movie.MovieId);
         QuerySnapshot snapshot = await collection.GetSnapshotAsync();
         movie.PremiereDate = movie.PremiereDate.ToUniversalTime();
-        Dictionary<string, dynamic> dictionary = movie.GetType()
+        Dictionary<string, dynamic?> dictionary = movie.GetType()
             .GetProperties(BindingFlags.Instance | BindingFlags.Public)
             .ToDictionary(prop => prop.Name, prop => prop.GetValue(movie, null));
 
@@ -186,19 +187,19 @@ public class StudioController : Controller
     /// It takes a movie id and a studio id, and uploads an image and a movie to firebase storage.
     /// </summary>
     /// <param name="StudioId">The id of the studio that the movie belongs to.</param>
-    /// <param name="MovieId">The ID of the movie that is being uploaded.</param>
+    /// <param name="movieId">The ID of the movie that is being uploaded.</param>
     /// <param name="IFormFile">The file that is being uploaded.</param>
     /// <param name="IFormFile">The file that is being uploaded.</param>
     /// <returns>
     /// The code is returning a redirect to the hostname.
     /// </returns>
-    [HttpPost("MovieUpload/{MovieId}/{StudioId}")]
+    [HttpPost("MovieUpload/{MovieId}")]
     [RequestSizeLimit(long.MaxValue)]
     [RequestFormLimits(MultipartBodyLengthLimit = long.MaxValue)]
-    public async Task<ActionResult> MovieUpload(string StudioId, string MovieId, IFormFile ImageFileUp, IFormFile MovieFileUp)
+    public async Task<ActionResult> MovieUpload(string movieId, IFormFile imageFileUp, IFormFile movieFileUp)
     {
-        StudioId = User.FindFirstValue(ClaimTypes.Sid);
-        if (ImageFileUp != null)
+        string? studioId = User.FindFirstValue(ClaimTypes.Sid);
+        if (imageFileUp != null)
         {
             List<string> list = new()
             {
@@ -210,35 +211,34 @@ public class StudioController : Controller
                 "image/tiff",
                 "image/webp"
             };
-            if (list.Contains(ImageFileUp.ContentType))
+            if (list.Contains(imageFileUp.ContentType))
             {
-                using Stream fileStream = ImageFileUp.OpenReadStream();
+                using Stream fileStream = imageFileUp.OpenReadStream();
+
+
+
+                FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com",
+                        new FirebaseStorageOptions
+                        {
+                            AuthTokenAsyncFactory = async () => await Task.FromResult(User.FindFirstValue("Token")),
+                            ThrowOnCancel = true,
+                            HttpClientTimeout = TimeSpan.FromHours(2)
+                        }).Child(studioId).Child(movieId).Child("Image")
+                    .PutAsync(fileStream);
+
+
+                task.Progress.ProgressChanged += (s, e) =>
                 {
 
+                };
 
-                    FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com",
-                            new FirebaseStorageOptions
-                            {
-                                AuthTokenAsyncFactory = async () => await Task.FromResult(User.FindFirstValue("Token")),
-                                ThrowOnCancel = true,
-                                HttpClientTimeout = TimeSpan.FromHours(2)
-                            }).Child(StudioId).Child(MovieId).Child("Image")
-                        .PutAsync(fileStream);
+                _ = await task;
 
-
-                    task.Progress.ProgressChanged += (s, e) =>
-                    {
-
-                    };
-
-                    _ = await task;
-
-                    fileStream.Close();
-                }
+                fileStream.Close();
             }
 
         }
-        if (MovieFileUp != null)
+        if (movieFileUp != null)
         {
             List<string> list = new()
             {
@@ -253,29 +253,29 @@ public class StudioController : Controller
                 "video/x-matroska"
             };
 
-            if (list.Contains(MovieFileUp.ContentType))
+            if (list.Contains(movieFileUp.ContentType))
             {
-                using Stream fileStream = MovieFileUp.OpenReadStream();
+                using Stream fileStream = movieFileUp.OpenReadStream();
+
+                FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com",
+                        new FirebaseStorageOptions
+                        {
+                            AuthTokenAsyncFactory = async () => await Task.FromResult(User.FindFirstValue("Token")),
+                            ThrowOnCancel = true,
+                            HttpClientTimeout = TimeSpan.FromHours(2)
+                        }).Child(studioId).Child(movieId).Child("Movie")
+                    .PutAsync(fileStream);
+
+
+                task.Progress.ProgressChanged += (s, e) =>
                 {
-                    FirebaseStorageTask task = new FirebaseStorage("movie2-e3c7b.appspot.com",
-                            new FirebaseStorageOptions
-                            {
-                                AuthTokenAsyncFactory = async () => await Task.FromResult(User.FindFirstValue("Token")),
-                                ThrowOnCancel = true,
-                                HttpClientTimeout = TimeSpan.FromHours(2)
-                            }).Child(StudioId).Child(MovieId).Child("Movie")
-                        .PutAsync(fileStream);
 
+                };
 
-                    task.Progress.ProgressChanged += (s, e) =>
-                    {
+                _ = await task;
 
-                    };
+                fileStream.Close();
 
-                    _ = await task;
-
-                    fileStream.Close();
-                }
             }
 
         }
@@ -338,17 +338,18 @@ public class StudioController : Controller
     /// A list of doubles
     /// </returns>
     [HttpGet("PayCheck/{Id}/{Start}")]
-    public async Task<ActionResult<List<double>>> PayCheck(string Id, string Start)
+    public async Task<ActionResult<List<double>>> PayCheck(string id, string start)
     {
-        DateTime StartDate = DateTime.Parse(Start).AddHours(12).ToUniversalTime();
-        DateTime EndDate = StartDate.AddDays(1);
+        DateTime startDate = DateTime.Parse(start, new CultureInfo("en-US")).AddHours(12).ToUniversalTime();
+
+        DateTime endDate = startDate.AddDays(1);
         try
         {
-            double viewCount = (await db.Collection("View").WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
-            if (viewCount == 0)
+            double viewCount = (await db.Collection("View").WhereGreaterThanOrEqualTo("Time", startDate).WhereLessThanOrEqualTo("Time", endDate).GetSnapshotAsync()).Documents.Count;
+            if (viewCount is 0)
             {
-                double buy0 = (await db.Collection("Buy").WhereEqualTo("MovieId", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
-                double m0 = buy0 * 4.49;
+                double buy0 = (await db.Collection("Buy").WhereEqualTo("MovieId", id).WhereGreaterThanOrEqualTo("Time", startDate).WhereLessThanOrEqualTo("Time", endDate).GetSnapshotAsync()).Documents.Count;
+                //double m0 = buy0 * 4.49;
                 List<double> result0 = new()
                 {
                     0,
@@ -356,9 +357,9 @@ public class StudioController : Controller
                 };
                 return result0;
             }
-            double viewt = (await db.Collection("View").WhereEqualTo("Id", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
-            double buy = (await db.Collection("Buy").WhereEqualTo("MovieId", Id).WhereGreaterThanOrEqualTo("Time", StartDate).WhereLessThanOrEqualTo("Time", EndDate).GetSnapshotAsync()).Documents.Count;
-            double vip = (await db.Collection("Vip").WhereGreaterThanOrEqualTo("Time", StartDate).GetSnapshotAsync()).Documents.Count;
+            double viewt = (await db.Collection("View").WhereEqualTo("Id", id).WhereGreaterThanOrEqualTo("Time", startDate).WhereLessThanOrEqualTo("Time", endDate).GetSnapshotAsync()).Documents.Count;
+            double buy = (await db.Collection("Buy").WhereEqualTo("MovieId", id).WhereGreaterThanOrEqualTo("Time", startDate).WhereLessThanOrEqualTo("Time", endDate).GetSnapshotAsync()).Documents.Count;
+            //double vip = (await db.Collection("Vip").WhereGreaterThanOrEqualTo("Time", startDate).GetSnapshotAsync()).Documents.Count;
 
             List<double> result = new()
             {
@@ -388,7 +389,7 @@ public class StudioController : Controller
     {
         try
         {
-            DateTime StartDate = DateTime.Parse(Start).AddHours(12);
+            DateTime StartDate = DateTime.Parse(Start, new CultureInfo("en-US")).AddHours(12);
             DateTime EndDate = StartDate.AddDays(1);
 
 
@@ -454,13 +455,13 @@ public class StudioController : Controller
     public async Task<ActionResult> SalaryMovie([FromBody] List<string> ss)
     {
 
-        if (DateTime.Parse(ss[1]).Month > DateTime.UtcNow.Month - 1)
+        if (DateTime.Parse(ss[1], new CultureInfo("en-US")).Month > DateTime.UtcNow.Month - 1)
         {
             return BadRequest("Cant Salary In lower than month now -1");
         }
         try
         {
-            ss[1] = DateTime.Parse(ss[1]).ToString("MM yyyy");
+            ss[1] = DateTime.Parse(ss[1], new CultureInfo("en-US")).ToString("MM yyyy");
 
             QuerySnapshot? snapshot = await db.Collection("Movie").WhereEqualTo("MovieId", ss[0]).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync();
             double cash = snapshot.Documents[0].GetValue<double>(ss[1]);
@@ -477,7 +478,7 @@ public class StudioController : Controller
         }
         catch
         {
-
+            return BadRequest("Salary Failed");
         }
 
         return Ok("Done check your Wallet");
@@ -495,7 +496,7 @@ public class StudioController : Controller
     {
         try
         {
-            ss[1] = DateTime.Parse(ss[1]).ToString("MM yyyy");
+            ss[1] = DateTime.Parse(ss[1], new CultureInfo("en-US")).ToString("MM yyyy");
 
             double snapshot = (await db.Collection("Movie").WhereEqualTo("MovieId", ss[0]).WhereEqualTo("StudioId", User.FindFirstValue(ClaimTypes.Sid)).GetSnapshotAsync()).Documents[0].GetValue<double>(ss[1]);
             return Ok($"Cash for {ss[1]} is {snapshot}");
@@ -561,10 +562,10 @@ public class StudioController : Controller
             PayoutsPostRequest request = new();
             _ = request.RequestBody(createPayoutRequest);
 
-            PayPalHttp.HttpResponse response = await client.Execute(request);
+             await client.Execute(request);
 
 
-            CreatePayoutResponse result = response.Result<CreatePayoutResponse>();
+            //CreatePayoutResponse result = response.Result<CreatePayoutResponse>();
 
             return Ok("Success");
         }
@@ -606,7 +607,7 @@ public class StudioController : Controller
             }
             catch
             {
-
+                return BadRequest("Not success");
 
             }
 
@@ -622,13 +623,12 @@ public class StudioController : Controller
             }
             catch
             {
-
+                return BadRequest("Not success");
 
             }
 
-            _ = await snapshotDocument.Reference.DeleteAsync();
-            return Ok("Success");
+            _ = await snapshotDocument.Reference.DeleteAsync();        
         }
-        return BadRequest("Not success");
+        return Ok("Success");
     }
 }

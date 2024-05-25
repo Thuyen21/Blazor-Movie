@@ -21,14 +21,14 @@ public partial class AdminAccountManagement
     /// <summary>
     /// It's an async function that calls an API to get a list of accounts, then sorts them by name
     /// </summary>
-    private async Task NameSortParm()
-    {
-        index = 0;
-        sort = sort == "name" ? "nameDesc" : "name";
-        accs = (await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"Admin/AccountManagement/ /{sort}/{index}"))!;
-        isSearch = false;
-        searchString = string.Empty;
-    }
+    //private async Task NameSortParm()
+    //{
+    //    index = 0;
+    //    sort = sort == "name" ? "nameDesc" : "name";
+    //    accs = (await _httpClient.GetFromJsonAsync<List<AccountManagementModel>>($"Admin/AccountManagement/ /{sort}/{index}"))!;
+    //    isSearch = false;
+    //    searchString = string.Empty;
+    //}
 
     /// <summary>
     /// It's an async function that gets a list of AccountManagementModel objects from a web api, and

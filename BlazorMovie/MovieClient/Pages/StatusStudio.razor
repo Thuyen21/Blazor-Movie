@@ -84,7 +84,7 @@
                 </div>
                 @try
                 {
-                    foreach (var status in fullStatus)
+                    foreach (var status in fullStatus ?? new())
                 {
                     double[] data = { Double.Parse(status["Positive"]), Double.Parse(status["Negative"]) };
                     string[] labels = { "Positive", "Negative" };
