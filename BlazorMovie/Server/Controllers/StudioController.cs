@@ -562,7 +562,7 @@ public class StudioController : Controller
             PayoutsPostRequest request = new();
             _ = request.RequestBody(createPayoutRequest);
 
-             await client.Execute(request);
+            await client.Execute(request);
 
 
             //CreatePayoutResponse result = response.Result<CreatePayoutResponse>();
@@ -627,7 +627,7 @@ public class StudioController : Controller
 
             }
 
-            _ = await snapshotDocument.Reference.DeleteAsync();        
+            _ = await snapshotDocument.Reference.DeleteAsync();
         }
         return Ok("Success");
     }

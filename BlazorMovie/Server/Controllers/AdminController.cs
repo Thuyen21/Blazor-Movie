@@ -462,12 +462,12 @@ public class AdminController : Controller
                    }).Child(movie.StudioId).Child(movie.MovieId).Child("Movie")
                .DeleteAsync();
                 await delete;
-                await snapshotDocument.Reference.DeleteAsync();              
+                await snapshotDocument.Reference.DeleteAsync();
             }
             catch
             {
                 return BadRequest("Not success");
-            }        
+            }
         }
         return Ok("Success");
     }
